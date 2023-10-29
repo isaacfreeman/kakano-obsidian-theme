@@ -1,34 +1,937 @@
+/*
+
+Principles:
+1. Use the accent colour to distinguish between different vaults.
+2. Separate content (white/black background) from controls (accent colour background)
+3. Use spacing for grouping rather than lines
+4. Distinguish controls visually
+5. Buttons are lighter, content containers darker
+
+*/
+
+/* @settings
+
+name: Kakano
+id: kakano-style
+settings:
+  -
+    id: base
+    title: Base Color
+    type: variable-color
+    format: hsl-split
+    default: '#007AFF'
+*/
+
 body {
-	--radius-s: 0px;
-	--radius-m: 0px;
-	--radius-l: 0px;
-	--input-radius: 0px;
-	--tab-radius-active: 0px;
-	--checkbox-radius: 0px;
-	--toggle-radius: 0px;
-	--toggle-thumb-radius: 0px;
-	--slider-thumb-radius: 0px;
+  --background-secondary: transparent;
+  --input-border-width: 2px;
+  --modal-border-color: black;
+  --modal-border-width: 0;
+  --prompt-border-color: transparent;
+  --prompt-border-width: 0;
+  --ribbon-background-collapsed: transparent;
+  --ribbon-background: transparent;
+  --ribbon-width: 3em;
+  --status-bar-text-color: var(--text-normal);
+  --tab-container-background: transparent;
+  --tab-curve: calc(var(--tab-radius) * 0.5);
+  --tab-radius-active: 0.25em;
+  --tab-radius: 0.25em;
+  --titlebar-background-focused: transparent;
+  --titlebar-background: transparent;
+  --divider-width: 0;
+  --tab-outline-width: 0;
+
+  /* Base all theme colours off these */
+  /*   The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
+  --base-h: var(--accent-h);
+  --base-s: var(--accent-s);
+  --base-l: var(--accent-l);
+  --color-base: hsl(var(--base-h), calc(var(--base-s) * 1.0), calc(var(--base-l) * 1.0));
+
+  /* Controls */
+  --interactive-accent: var(--color-base);
+  --slider-track-background: var(--color-base);
+
+  /*  Base colour variants */
+  --color-base-very-very-lightened: color-mix(in srgb, var(--color-base), white 95%);
+  --color-base-very-lightened: color-mix(in srgb, var(--color-base), white 80%);
+  --color-base-lightened: color-mix(in srgb, var(--color-base), white 70%);
+  --color-base-slightly-lightened: color-mix(in srgb, var(--color-base), white 60%);
+  --color-base-slightly-darkened: color-mix(in srgb, var(--color-base), black 60%);
+  --color-base-darkened: color-mix(in srgb, var(--color-base), black 70%);
+  --color-base-very-darkened: color-mix(in srgb, var(--color-base), black 80%);
+  --color-base-very-very-darkened: color-mix(in srgb, var(--color-base), black 95%);
+
 }
 
-.workspace-tab-header.is-active::before, .workspace-tab-header.is-active::after {
-	display: none;
+.theme-light {
+  /* Built-in variables */
+  --background-modifier-border-focus: var(--color-base);
+  --background-modifier-border: var(--color-base-slightly-lightened);
+  --background-modifier-hover: var(--color-base);
+  --background-modifier-active-hover: var(--color-base-lightened);
+  --background-modifier-active-hover-alt: var(--color-base-slightly-lightened);
+  --empty-pane-color: var(--color-base-darkened);
+  --icon-color-focused: white;
+  --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
+  --icon-color-hover: white;
+  --icon-color: var(--color-base);
+  --modal-background: var(--color-base-very-lightened);
+  --nav-collapse-icon-color-collapsed: var(--color-base);
+  --nav-collapse-icon-color: var(--color-base);
+  --nav-indentation-guide-color: var(--color-base-slightly-lightened);
+  --nav-item-background-active: var(--color-base);
+  --nav-item-background-hover: var(--color-base-slightly-lightened);
+  --nav-item-color-active: var(--color-base-lightened);
+  --nav-item-color: var(--color-base-darkened);
+  --search-icon-color: var(--color-base);
+  --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.25);
+  --status-bar-text-color: black;
+  --tab-background-active: var(--background-primary);
+  --tab-background-inactive: var(--color-base-very-lightened);
+  --text-normal: var(--color-base-very-darkened);
+  --text-faint: var(--color-base-darkened);
+  --background-prompt: var(--color-base-very-very-lightened);
+
+  /* Background for content area */
+  --background-primary: white;
+  /* Background for controls area */
+  --background-secondary: var(--color-base-lightened);
+
+
+  /* New variables for this theme */
+  --text-meta: var(--color-base);
+  --background-inactive-tab-hover: var(--color-base-lightened);
+  --background-secondary-gradient-bottom: var(--color-base-slightly-lightened);
+  --background-secondary-gradient-top: var(--color-base-lightened);
+  --background-settings-stripe: var(--color-base-very-very-lightened);
+  --background-settings: var(--color-base-very-lightened);
+  --color-text-interactive-hover: var(--color-base-lightened);
+  --color-text-interactive: var(--color-base-slightly-darkened);
+  --background-control: var(--color-base-very-very-lightened);
+  --background-control-hover: var(--color-base);
+  --background-input: var(--color-base-lightened);
+  --background-switcher-active: var(--color-base);
+  --color-control-text: var(--color-base-darkened);
+  --color-control-text-hover: var(--color-base-very-lightened);
+  --color-input-border: var(--color-base-slightly-lightened);
+  --color-input-placeholder: var(--color-base-slightly-lightened);
+  --color-hotkey: var(--color-base);
+  --nav-file-tag-active-border-color: var(--nav-item-color-active);
+  --nav-file-tag-active-color: var(--nav-item-color-active);
+  --nav-file-tag-border-color: var(--color-base);
+  --nav-file-tag-color: var(--color-base);
+  --background-side-dock-actions: transparent;
+  --tab-text-color-inactive: var(--color-base-slightly-darkened);
+  --text-selected: var(--color-base-very-lightened);
+  --background-embedded-backlinks: var(--color-base-very-very-lightened);
+  --background-mod-root: linear-gradient(0deg, var(--color-base-lightened) 0%, var(--color-base-slightly-lightened) 100%);
+  --modal-background-search-results: linear-gradient(0deg, var(--color-base-very-lightened) 0%, var(--color-base-slightly-lightened) 100%);
+  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-very-lightened) 0%, var(--color-base-slightly-lightened) 100%);
+  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
+  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
 }
 
-svg * {
-	stroke-linecap: square;
-	stroke-linejoin: miter;
-	rx: 0;
-	ry: 0;
+.theme-dark {
+  /* Built-in variables */
+  --background-modifier-border-focus: var(--color-base-slightly-darkened);
+  --background-modifier-border: var(--color-base-slightly-darkened);
+  --background-modifier-hover: var(--color-base);
+  --background-modifier-active-hover: var(--color-base-darkened);
+  --background-modifier-active-hover-alt: var(--color-base-slightly-darkened);
+  --empty-pane-color: var(--color-base-darkened);
+  --icon-color-focused: white;
+  --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
+  --icon-color-hover: white;
+  --icon-color: var(--color-base);
+  --modal-background: var(--color-base-very-darkened);
+  --nav-collapse-icon-color-collapsed: var(--color-base);
+  --nav-collapse-icon-color: var(--color-base);
+  --nav-indentation-guide-color: var(--color-base-darkened);
+  --nav-item-background-active: var(--color-base);
+  --nav-item-background-hover: var(--color-base-slightly-darkened);
+  --nav-item-color-active: var(--color-base-darkened);
+  --nav-item-color: var(--color-base);
+  --search-icon-color: var(--color-base);
+  --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.25);
+  --tab-background-active: var(--background-primary);
+  --tab-background-inactive: var(--color-base-very-darkened);
+  --background-inactive-tab-hover: var(--color-base-darkened);
+  --text-normal: var(--color-base-lightened);
+  --text-faint: var(--color-base-slightly-lightened);
+  --background-prompt: var(--color-base-very-darkened);
+
+  /* Background for content area */
+  --background-primary: #111111;
+  /* Background for controls area */
+  --background-secondary: var(--color-base-darkened);
+
+  /* New variables for this theme */
+  --text-meta: var(--color-base);
+  --background-inactive-tab-hover: var(--color-base-slightly-darkened);
+  --background-secondary-gradient-bottom: var(--color-base-darkened);
+  --background-secondary-gradient-top: var(--color-base-very-darkened);
+  --background-settings-stripe: var(--color-base-very-very-darkened);
+  --background-settings: var(--color-base-very-darkened);
+  --background-switcher-active: var(--color-base);
+  --color-text-interactive: var(--color-base-slightly-lightened);
+  --color-text-interactive-hover: var(--color-base-darkened);
+  --background-control: var(--color-base-slightly-darkened);
+  --background-control-hover: var(--color-base);
+  --color-control-text: var(--color-base-lightened);
+  --color-control-text-hover: var(--color-base);
+  --color-input-border: var(--color-base-slightly-lightened);
+  --color-hotkey: var(--color-base);
+  --nav-file-tag-active-border-color: var(--nav-item-color-active);
+  --nav-file-tag-active-color: var(--nav-item-color-active);
+  --nav-file-tag-border-color: var(--color-base-slightly-darkened);
+  --nav-file-tag-color: var(--color-base-slightly-darkened);
+  --background-side-dock-actions: transparent;
+  --tab-text-color-inactive: var(--color-base-slightly-lightened);
+  --text-selected: var(--color-base-very-darkened);
+  --background-embedded-backlinks: var(--color-base-very-very-darkened);
+  --background-mod-root: linear-gradient(0deg, var(--color-base-very-darkened) 0%, var(--color-base-darkened) 100%);
+  --modal-background-search-results: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
+  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
+  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.75), 0.5);
+  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.75), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.95);
 }
 
-.menu {
-	padding: var(--size-2-1);
+/* Tab close button on left, macOS standard */
+.mod-macos .workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+  position: static;
+  order: 0;
+}
+.mod-macos .workspace .mod-root .workspace-tab-header-inner-icon,
+.mod-macos .workspace .mod-root .workspace-tab-header-inner-title {
+  order: 1;
+}
+.mod-macos .modal-close-button {
+  left: var(--size-2-3);
+  right: auto;
+}
+.mod-macos .mod-community-modal .modal-sidebar .setting-item:first-child {
+  margin-left: auto;
+}
+.mod-macos .modal-sidebar .community-modal-controls {
+  margin-left: var(--size-4-5);
 }
 
-.menu-item {
-	padding: var(--size-4-1) var(--size-4-2);
+.mod-close,
+.modal-close-button,
+.document-search-close-button,
+.workspace-tab-header-inner-close-button {
+  background-color: transparent;
+  border-radius: 100%;
+  border: none;
+  color: var(--color-text-interactive);
+}
+.workspace-tab-header-inner-close-button .svg-icon {
+  stroke: var(--color-text-interactive);
+}
+/* When sitting on background-primary */
+.mod-close:hover,
+.modal-close-button:hover,
+.workspace-tab-header-inner-close-button:hover {
+  color: var(--color-text-interactive);
+  background-color: var(--background-modifier-active-hover);
+}
+/* When sitting on background-secondary */
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,
+.mod-settings .modal-close-button:hover {
+  color: var(--color-text-interactive);
+  background-color: var(--background-modifier-active-hover);
+}
+/* When sitting on darker background */
+.workspace-tab-header-inner-close-button:hover {
+  background-color: var(--background-modifier-active-hover);
 }
 
-.menu-separator {
-	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+/* close buttons that use a text cross instead of an SVG */
+.document-search-close-button,
+.modal-close-button {
+  padding: var(--size-2-1);
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-content: center;
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  color: var(--tab-text-color-focused);
+  text-align: center;
+  justify-content: center;
+
+}
+.document-search-close-button:before,
+.modal-close-button:before {
+  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
+  margin-top: -1px;
+}
+.document-search-close-button:hover,
+.modal-close-button:hover {
+  background-color: var(--background-modifier-active-hover-alt);
+}
+
+/* Lightweight Buttons */
+.clickable-icon,
+.side-dock-actions .side-dock-ribbon-action.clickable-icon {
+  border-radius: var(--clickable-icon-radius);
+  color: var(--color-text-interactive);
+}
+.clickable-icon:hover,
+.side-dock-actions .side-dock-ribbon-action.clickable-icon:hover {
+  color: var(--color-text-interactive-hover);
+}
+
+/* Pin button (and presumably similar controls), styled same as close button */
+.mod-root .workspace-tab-header-status-icon {
+  color: var(--color-text-interactive);
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
+}
+.mod-root .workspace-tab-header-status-icon:hover {
+  color: var(--color-text-interactive);
+  background-color: var(--background-modifier-active-hover);
+}
+
+/* Overall workspace */
+.workspace {
+  background-color: var(--background-secondary);
+  background: linear-gradient(0deg, var(--background-secondary-gradient-bottom) 0%, var(--background-secondary-gradient-top) 100%);
+}
+
+.workspace-tabs .workspace-leaf {
+  background: transparent;
+}
+
+.workspace-split.mod-root {
+  background: transparent;
+  background: var(--background-mod-root);
+  padding-bottom: 1.5rem;
+  padding: 0.5em 0.5em 2em 0.5em;
+}
+
+.sidebar-toggle-button,
+.workspace-tabs.mod-top,
+.is-focused .sidebar-toggle-button,
+.is-focused .workspace-tabs.mod-top {
+  --tab-container-background: transparent;
+}
+
+.workspace-tab-header {
+  color: var(--tab-text-color-inactive);
+  background-color: var(--tab-background-inactive);
+}
+
+
+.workspace-tab-header.is-active {
+  color: var(--tab-text-color-active);
+  background-color: var(--tab-background-active);
+}
+
+/* Tab styling */
+.workspace-tab-header {
+  border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+}
+
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background-color: var(--background-inactive-tab-hover);
+}
+
+.workspace-tab-header-container-inner {
+  gap: 0.25em;
+}
+
+/* Center workspace styling */
+.mod-root .workspace-tab-header-container-inner {
+  /* Define spacing on tabs to fit with radius */
+  padding: 0.5em calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
+}
+.workspace .mod-root .workspace-tab-header {
+  padding: 0;
+}
+
+.mod-root .workspace-tab-header-inner {
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+}
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
+  padding-left: 0.25em;
+}
+.workspace .mod-root .workspace-tab-header-inner::after {
+  /* Not sure what this is for */
+  background: transparent;
+}
+
+.mod-root .workspace-tabs {
+  padding: 0 0.5em 0 0.5em;
+  border-radius: 0;
+}
+
+.mod-root .workspace-tabs .workspace-leaf {
+  background-color: var(--background-primary);
+  border-radius: var(--tab-radius);
+}
+
+/* Ribbon styling */
+
+.workspace-ribbon {
+  padding-left: 0;
+}
+
+.side-dock-actions {
+  border-top-right-radius: var(--radius-m);
+  border-bottom-right-radius: var(--radius-m);
+  padding: var(--size-2-3);
+  background: var(--background-side-dock-actions)
+}
+
+.side-dock-actions .side-dock-ribbon-action {
+  margin: 0;
+}
+
+/* Pane styling */
+.pane-empty {
+  color: var(--empty-pane-color);
+}
+
+/* File navigation */
+.nav-files-container .nav-file-title {
+  justify-content: space-between;
+}
+.nav-file-tag {
+  background: transparent;
+  border: solid 1px var(--nav-file-tag-border-color);
+  color: var(--nav-file-tag-color);
+}
+.nav-file-title.is-active .nav-file-tag {
+  color: var(--nav-file-tag-active-color);
+  border-color: var(--nav-file-tag-active-border-color);
+}
+
+/* Left/Right workspace tab header styling */
+.mod-left-split .workspace-tab-header-container,
+.mod-right-split .workspace-tab-header-container {
+  justify-content: center;
+}
+
+.mod-left-split .workspace-tab-header-container-inner,
+.mod-right-split .workspace-tab-header-container-inner {
+  background: var(--tab-background-inactive);
+}
+
+.mod-left-split .workspace-tab-header-container-inner,
+.mod-right-split .workspace-tab-header-container-inner {
+  border-radius: var(--radius-s);
+  gap: 0;
+  padding: 0;
+}
+
+.mod-left-split .workspace-tab-header,
+.mod-right-split .workspace-tab-header {
+  border-radius: 0;
+}
+
+.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+  color: var(--text-normal);
+}
+
+.is-focused .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.is-focused .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+  color: var(--icon-color-focused);
+}
+.mod-left-split .workspace-tab-header.has-active-menu,
+.mod-right-split .workspace-tab-header.has-active-menu,
+.mod-left-split .workspace-tab-header.is-active,
+.mod-right-split .workspace-tab-header.is-active {
+  background: var(--background-switcher-active);
+}
+
+.mod-left-split .workspace-tab-header-spacer,
+.mod-right-split .workspace-tab-header-spacer {
+  display: none;
+}
+
+.mod-left-split .workspace-tab-header-inner,
+.mod-right-split .workspace-tab-header-inner {
+  border-radius: 0;
+}
+
+/* Sidebar toggle buttons */
+.sidebar-toggle-button.mod-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--ribbon-width);
+  justify-content: center;
+}
+
+.sidebar-toggle-button.mod-left .clickable-icon,
+.sidebar-toggle-button.mod-right .clickable-icon {
+  color: var(--color-text-interactive);
+}
+
+.sidebar-toggle-button.mod-left .clickable-icon:hover,
+.sidebar-toggle-button.mod-right .clickable-icon:hover {
+  color: var(--color-text-interactive-hover);
+}
+
+.workspace-tab-header-tab-list {
+  /* Tab list control makes space for sidebar control when sidebar is closed */
+  margin-right: calc(var(--icon-size) * 2);
+}
+
+.is-right-sidedock-open .workspace-tab-header-tab-list {
+  margin-right: 0;
+}
+
+.mod-right-split .workspace-tab-header-container {
+  padding-right: 2.5rem;
+}
+
+/* Status bar */
+.status-bar {
+  background: var(--background-secondary-gradient-bottom);
+  border: none;
+  border-top-left-radius: var(--radius-m);
+  gap: 0.5rem;
+  padding: 0 0.5rem 0;
+  margin: 0;
+}
+.status-bar-item {
+  line-height: 1rem;
+  padding: 0.25em 0.5em;
+  width: auto;
+  white-space: nowrap;
+  gap: 0.25em;
+  height: 100%
+}
+.status-bar-item:has(.status-bar-item) {
+  padding: 0;
+}
+.status-bar-item.mod-clickable {
+  color: var(--color-text-interactive);
+}
+.status-bar-item.mod-clickable:hover {
+  color: var(--color-text-interactive-hover);
+
+}
+.theme-picker-color-scheme-icon > svg {
+  fill: var(--color-text-interactive);
+}
+.theme-picker-color-scheme-icon:hover > svg {
+  fill: var(--color-text-interactive-hover);
+}
+.status-bar-item:hover .sync-status-icon.mod-working {
+  color: var(--text-normal);
+}
+.status-bar-item.plugin-editor-status, .status-bar-item.plugin-sync {
+  padding: 0.25em 0.5em;
+}
+
+/* Search results */
+.search-result-file-matches {
+  background: var(--tab-background-inactive);
+  box-shadow: none;
+}
+.search-result-file-match {}
+.search-result-file-matched-text {
+  font-weight: bold;
+}
+.search-result:not(.is-collapsed) .search-result-file-title {
+  color: var(--color-text-interactive);
+}
+
+
+/* Modals */
+.modal-title {
+  /* Undo padding at top of modal */
+  margin-top: calc(var(--size-4-4) * -1);
+  /* Space for modal-close-button in line with title */
+  margin-left: calc(var(--size-2-3) + 1em);
+  margin-right: calc(var(--size-2-3) + 1em);
+
+  /* Same as top position for modal-close-button */
+  padding-top: var(--size-2-3);
+}
+
+/* Trees */
+.tree-item-icon,
+.tree-item-self .tree-item-icon {
+  /* Icons that represent an object have the samer colour as the related text */
+  color: inherit;
+}
+
+/* Prompt */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.prompt {
+  background-color: var(--background-prompt);
+}
+
+input.prompt-input {
+  background: var(--background-secondary);
+  border-bottom: none;
+}
+input.prompt-input[type=text]:focus {
+  border-bottom: none;
+  box-shadow: none;
+}
+input.prompt-input::placeholder {
+  color: var(--color-base);
+}
+.prompt-instructions {
+  background: var(--background-secondary);
+  border-top: 0;
+}
+
+/* Suggestions */
+/* Search suggestions */
+.suggestion-container,
+.suggestion-container.mod-search-suggestion  {
+  background-color: var(--background-prompt);
+}
+.suggestion-container.mod-search-suggestion .suggestion {
+  background: transparent;
+}
+.suggestion-title.list-item-part {
+  color: var(--text-normal);
+}
+.suggestion-aux {
+  gap: 0.25em;
+}
+.suggestion-item.is-selected {
+  background-color: var(--background-modifier-hover);
+  color: var(--nav-item-color-active);
+}
+
+/* Hotkeys */
+.suggestion-hotkey,
+.setting-hotkey {
+  color: var(--color-hotkey);
+  background: transparent;
+  border: solid 1px var(--color-hotkey);
+}
+.suggestion-item.is-selected .suggestion-hotkey {
+  color: var(--text-selected);
+  border-color: var(--text-selected);
+}
+
+/* Action lists */
+.vertical-tab-header-group-title {
+  color: var(--text-normal);
+}
+.horizontal-tab-nav-item,
+.vertical-tab-nav-item {
+  color: var(--color-text-interactive);
+}
+
+/* Standardised Controls */
+/* Text fields */
+.search-input-container input[type='search'],
+input.document-search-input,
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='text'],
+textarea {
+  box-shadow: 0 0 0 var(--input-border-width) var(--color-base);
+  border: none;
+  background: var(--background-input);
+}
+
+.search-input-container input[type='search']:active,
+.search-input-container input[type='search']:focus-visible,
+.search-input-container input[type='search']:focus,
+input.document-search-input:active,
+input.document-search-input:focus-visible,
+input.document-search-input:focus,
+input[type='email']:active,
+input[type='email']:focus-visible,
+input[type='email']:focus,
+input[type='number']:active,
+input[type='number']:focus-visible,
+input[type='number']:focus,
+input[type='password']:active,
+input[type='password']:focus-visible,
+input[type='password']:focus,
+input[type='search']:active,
+input[type='search']:focus-visible,
+input[type='search']:focus,
+input[type='text']:active,
+input[type='text']:focus-visible,
+input[type='text']:focus,
+textarea:active,
+textarea:focus-visible,
+textarea:focus {
+  box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
+}
+
+.search-input-container input[type='search']:hover,
+input.document-search-input:hover,
+input[type='email']:hover,
+input[type='number']:hover,
+input[type='password']:hover,
+input[type='search']:hover,
+input[type='text']:hover,
+textarea:hover {
+  box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
+}
+
+/* Buttons */
+button:not(.clickable-icon),
+button:not(.clickable-icon).mod-cta {
+  border: none;
+  background: var(--background-control);
+  box-shadow: var(--control-shadow);
+  color: var(--color-control-text);
+}
+button:not(.clickable-icon):hover,
+button:not(.clickable-icon).mod-cta:hover {
+  border: none;
+  background: var(--background-control-hover);
+  color: var(--color-control-text-hover);
+}
+button:not(.clickable-icon):focus,
+button:not(.clickable-icon).mod-cta:focus {
+  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+}
+
+.search-input-container input::placeholder,
+input.document-search-input::placeholder,
+input[type='email']::placeholder,
+input[type='number']::placeholder,
+input[type='password']::placeholder,
+input[type='search']::placeholder,
+input[type='text']::placeholder,
+textarea::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+/* Selects */
+select,
+.setting-item-control select {
+  border: none;
+  box-shadow: var(--control-shadow);
+  background-color: var(--background-control);
+}
+select:focus,
+.dropdown:focus {
+    box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+    outline: none;
+}
+
+/* Modals */
+.modal-bg,
+.modal,
+.prompt,
+.document-search-container {
+  animation: 0.5s 1 alternate fadein;
+}
+
+/* Settings modal */
+.modal.mod-settings .vertical-tabs-container {}
+.modal.mod-settings .vertical-tab-header {
+  border-right: none;
+  padding: 2.5em 0 1em 1.5em;
+  margin: 0 1.5em 0 0;
+  background: var(--modal-background-vertical-tab-header);
+}
+.modal.mod-settings .vertical-tab-header-group {
+  border-right: none;
+  padding: 0 0 1.5em 0;
+}
+.modal.mod-settings .vertical-tab-header-group-title {
+  padding: 0 0.5em 0.5em 0.5em;
+}
+.mod-settings .vertical-tab-content {
+  background: var(--background-settings);
+  padding: 0 var(--size-4-12);
+}
+.mod-settings .vertical-tab-content > .setting-item {
+  border-top: none;
+  padding: 0 var(--size-4-12) var(--size-4-6);
+  margin: 0 calc(-1 * var(--size-4-12))
+}
+.mod-settings .vertical-tab-content .setting-item.setting-item-heading,
+.mod-settings .vertical-tab-content .setting-item:first-child {
+  padding: var(--size-4-6) var(--size-4-12) var(--size-4-6);
+  margin: 0 calc(-1 * var(--size-4-12))
+}
+.modal-setting-nav-bar {
+  border: none;
+  padding: 0.5em 0 0 0;
+}
+
+/* Font settings modal */
+.setting-font-list + .setting-item {
+  border: none;
+}
+
+/* Community modal */
+.community-modal-details {
+  border: none;
+}
+.community-modal-search-results-wrapper {
+  background: var(--modal-background-search-results);
+  border: 0;
+}
+.community-modal-search-results {
+  padding: 1.5em;
+  gap: 1.5em;
+}
+.community-item {
+  border: none;
+  box-shadow: var(--shadow-l);
+}
+
+/* Document search */
+.document-search-container,
+.mod-active .document-search-container {
+  background: var(--background-secondary);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-s);
+  margin: 0 auto;
+}
+.document-search-button {
+  border: none;
+  color: var(--color-text-interactive);
+}
+
+/* Backlink pane (embedded and sidebar */
+.backlink-pane > .tree-item-self .collapse-icon {
+  display: block;
+  margin-left: 0;
+  position: relative;
+}
+.backlink-pane > .tree-item-self {
+  color: var(--color-text-interactive);
+}
+.backlink-pane .search-result:not(.is-collapsed) .search-result-file-title {
+  color: var(--color-text-interactive);
+}
+.backlink-pane .search-result-container {
+  margin-left: 1em;
+}
+.backlink-pane .search-result-file-matches {
+  background: none;
+}
+
+/* Content area */
+.view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
+  padding: 1em 2em 3em 2em;
+  padding: 0;
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  width: 100%;
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer {
+  margin: 3em auto;
+  max-width: var(--file-line-width);
+  width: 100%;
+}
+.cm-content {
+  padding-bottom: 0 !important;
+}
+
+/* Metadata in content area */
+.view-header-title {
+  display: none;
+}
+.inline-title {
+  background: var(--background-embedded-backlinks);
+  padding: 0.5rem 2rem;
+  margin: 0;
+  border-radius: 0;
+  width: 100%;
+}
+.metadata-container {
+  background: var(--background-embedded-backlinks);
+  padding: 0 2rem 1rem 2em;
+  margin: 0;
+  border-radius: 0;
+  width: 100%;
+}
+.embedded-backlinks {
+  background: var(--background-embedded-backlinks);
+  border: 0;
+  padding: 2rem;
+  border-radius: 0;
+  /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
+  min-height: 0 !important;
+}
+.embedded-backlinks .backlink-pane {
+  padding: 0;
+}
+.embedded-backlinks .nav-buttons-container {
+  top: 0;
+  right: 0;
+}
+
+/* Typograhy */
+body {
+  --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-text-size: 16px;
+  --h1-size: 2.25em;
+  --h2-size: 1.5em;
+  --h3-size: 1.25em;
+  --h4-size: 1em;
+  --h5-size: 1em;
+  --h6-size: 1em;
+  --h1-weight: 200;
+  --h2-weight: 300;
+  --h3-weight: 400;
+  --h4-weight: 500;
+  --h5-weight: 400;
+  --h6-weight: 300;
+  --line-height-normal: 1.6;
+  --h1-line-height: var(--line-height-normal);
+  --h2-line-height: var(--line-height-normal);
+  --h3-line-height: var(--line-height-normal);
+  --h4-line-height: var(--line-height-normal);
+  --h5-line-height: var(--line-height-normal);
+  --h6-line-height: var(--line-height-normal);
+}
+/* Space before headings... */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+  padding: 0.67em 0 0 0;
+}
+/* ...except when they immediately follow another heading */
+:is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) + :is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) {
+  padding-top: 0;
+}
+
+/* Markdown formatting shown while editing e.g. ### for headings */
+.cm-formatting.cm-formatting-header {
+  color: var(--text-meta);
+  font-size: 0.8rem !important;
+  vertical-align: middle;
 }
