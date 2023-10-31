@@ -24,6 +24,7 @@ settings:
 
 body {
   --background-secondary: transparent;
+  --file-line-width: 40rem;
   --input-border-width: 2px;
   --modal-border-color: black;
   --modal-border-width: 0;
@@ -839,8 +840,9 @@ select:focus,
   width: 100%;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer {
-  margin: 3em auto;
+  margin: 3rem auto;
   max-width: var(--file-line-width);
+  padding: 0 2rem;
   width: 100%;
 }
 .cm-content {
@@ -906,12 +908,7 @@ body {
   --h6-line-height: var(--line-height-normal);
 }
 /* Space before headings... */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
   padding: 0.67em 0 0 0;
 }
 /* ...except when they immediately follow another heading */
@@ -926,6 +923,10 @@ body {
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) {
+  padding-top: 0;
+}
+/* ...or the first on the page */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header:first-child {
   padding-top: 0;
 }
 
