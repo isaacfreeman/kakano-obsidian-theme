@@ -1,6 +1,8 @@
 # Kakano
 
-Theme for Obsidian
+![Minimal theme with a smooth gradient background based on your accent color. Image shows six screenshots with differently-colored backgrounds.](/hero.png)
+
+Kakano is an [Obsidian](https://obsidian.md/) theme with a mooth gradient background based on your accent color.
 
 ## Features
 - Uses the accent colour extensively as a base for workspace backgrounds and controls. If you reguarly use multiple vaults, setting a different accent colour for each makes them easy to distinguish visually.
