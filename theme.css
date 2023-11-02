@@ -578,7 +578,6 @@ body {
 .prompt {
   background-color: var(--background-prompt);
 }
-
 input.prompt-input {
   background: var(--background-secondary);
   border-bottom: none;
@@ -587,7 +586,7 @@ input.prompt-input[type=text]:focus {
   border-bottom: none;
   box-shadow: none;
 }
-input.prompt-input::placeholder {
+input[type='text'].prompt-input::placeholder {
   color: var(--color-base);
 }
 .prompt-instructions {
