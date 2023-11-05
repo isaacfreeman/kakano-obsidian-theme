@@ -17,6 +17,7 @@ settings:
   -
     id: base
     title: Base Color
+    description: 'Base color, from which the Kakano theme will generate background gradients.'
     type: variable-color
     format: hsl-split
     default: '#007AFF'
@@ -183,6 +184,7 @@ body {
   --color-control-text: var(--color-base-lightened);
   --color-control-text-hover: var(--color-base);
   --color-input-border: var(--color-base-slightly-lightened);
+  --color-input-placeholder: var(--color-base);
   --color-hotkey: var(--color-base);
   --nav-file-tag-active-border-color: var(--nav-item-color-active);
   --nav-file-tag-active-color: var(--nav-item-color-active);
@@ -867,6 +869,7 @@ select:focus,
   border-radius: 0;
   width: 100%;
 }
+
 .embedded-backlinks {
   background: var(--background-embedded-backlinks);
   border: 0;
