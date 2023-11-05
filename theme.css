@@ -117,7 +117,7 @@ body {
   --color-control-text: var(--color-base-darkened);
   --color-control-text-hover: var(--color-base-very-lightened);
   --color-input-border: var(--color-base-slightly-lightened);
-  --color-input-placeholder: var(--color-base-slightly-lightened);
+  --color-input-placeholder: var(--color-base);
   --color-hotkey: var(--color-base);
   --nav-file-tag-active-border-color: var(--nav-item-color-active);
   --nav-file-tag-active-color: var(--nav-item-color-active);
@@ -589,6 +589,7 @@ input.prompt-input[type=text]:focus {
 input[type='text'].prompt-input::placeholder {
   color: var(--color-base);
 }
+
 .prompt-instructions {
   background: var(--background-secondary);
   border-top: 0;
@@ -934,4 +935,9 @@ body {
   color: var(--text-meta);
   font-size: 0.8rem !important;
   vertical-align: middle;
+}
+
+/* Mobile */
+.is-mobile .workspace > .mod-root {
+    padding: 0.5em;
 }
