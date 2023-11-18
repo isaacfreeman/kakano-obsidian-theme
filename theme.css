@@ -21,6 +21,20 @@ settings:
     type: variable-color
     format: hsl-split
     default: '#007AFF'
+  -
+    id: setting-properties-position
+    title: 'Properties position'
+    description: 'Place properties before or after your note content'
+    type: class-select
+    allowEmpty: false
+    default: 'setting-properties-position-above'
+    options:
+      -
+        label: 'Above main note content'
+        value: 'setting-properties-position-above'
+      -
+        label: 'Below main note content'
+        value: 'setting-properties-position-below'
 */
 
 body {
@@ -43,6 +57,7 @@ body {
   --titlebar-background: transparent;
   --divider-width: 0;
   --tab-outline-width: 0;
+  --metadata-property-background-hover: var(--nav-item-background-hover);
 
   /* Base all theme colours off these */
   /*   The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
@@ -59,12 +74,18 @@ body {
   --color-base-very-very-lightened: color-mix(in srgb, var(--color-base), white 95%);
   --color-base-very-lightened: color-mix(in srgb, var(--color-base), white 80%);
   --color-base-lightened: color-mix(in srgb, var(--color-base), white 70%);
-  --color-base-slightly-lightened: color-mix(in srgb, var(--color-base), white 60%);
-  --color-base-slightly-darkened: color-mix(in srgb, var(--color-base), black 60%);
+  --color-base-slightly-lightened: color-mix(in srgb, var(--color-base), white 50%);
+  --color-base-slightly-darkened: color-mix(in srgb, var(--color-base), black 50%);
   --color-base-darkened: color-mix(in srgb, var(--color-base), black 70%);
   --color-base-very-darkened: color-mix(in srgb, var(--color-base), black 80%);
   --color-base-very-very-darkened: color-mix(in srgb, var(--color-base), black 95%);
 
+}
+body,
+body .metadata-property:not([data-property-key="tags"]),
+body .metadata-property[data-property-key="tags"] {
+  --pill-padding-x: 1em;
+  --pill-padding-y: 0.125em;
 }
 
 .theme-light {
@@ -95,6 +116,11 @@ body {
   --text-normal: var(--color-base-very-darkened);
   --text-faint: var(--color-base-darkened);
   --background-prompt: var(--color-base-very-very-lightened);
+
+  --metadata-property-background: var(--color-base-very-very-lightened);
+  --metadata-property-background-hover: var(--color-base-very-lightened);
+  --metadata-label-background-active: var(--color-base-very-very-lightened);
+  --metadata-input-background-active: var(--color-base-very-very-lightened);
 
   /* Background for content area */
   --background-primary: white;
@@ -127,12 +153,22 @@ body {
   --background-side-dock-actions: transparent;
   --tab-text-color-inactive: var(--color-base-slightly-darkened);
   --text-selected: var(--color-base-very-lightened);
-  --background-embedded-backlinks: var(--color-base-very-very-lightened);
   --background-mod-root: linear-gradient(0deg, var(--color-base-lightened) 0%, var(--color-base-slightly-lightened) 100%);
   --modal-background-search-results: linear-gradient(0deg, var(--color-base-very-lightened) 0%, var(--color-base-slightly-lightened) 100%);
   --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-very-lightened) 0%, var(--color-base-slightly-lightened) 100%);
   --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
   --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
+}
+.theme-light,
+.theme-light .metadata-property:not([data-property-key="tags"]),
+.theme-light .metadata-property[data-property-key="tags"] {
+  --pill-background: var(--color-base-slightly-lightened);
+  --pill-background-hover: var(--color-base);
+  --pill-color: white;
+  --pill-color-hover: white;
+  --pill-color-remove: var(--color-base-very-lightened);
+  --pill-color-remove-hover: var(--color-base-very-lightened);
+  --pill-background-remove-hover: var(--color-base-slightly-lightened);
 }
 
 .theme-dark {
@@ -164,6 +200,11 @@ body {
   --text-faint: var(--color-base-slightly-lightened);
   --background-prompt: var(--color-base-very-darkened);
 
+  --metadata-property-background: var(--color-base-very-very-darkened);
+  --metadata-property-background-hover: var(--color-base-very-darkened);
+  --metadata-label-background-active: var(--color-base-very-very-darkened);
+  --metadata-input-background-active: var(--color-base-very-very-darkened);
+
   /* Background for content area */
   --background-primary: #111111;
   /* Background for controls area */
@@ -193,12 +234,22 @@ body {
   --background-side-dock-actions: transparent;
   --tab-text-color-inactive: var(--color-base-slightly-lightened);
   --text-selected: var(--color-base-very-darkened);
-  --background-embedded-backlinks: var(--color-base-very-very-darkened);
   --background-mod-root: linear-gradient(0deg, var(--color-base-very-darkened) 0%, var(--color-base-darkened) 100%);
   --modal-background-search-results: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
   --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
   --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.75), 0.5);
   --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.75), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.95);
+}
+.theme-dark,
+.theme-dark .metadata-property:not([data-property-key="tags"]),
+.theme-dark .metadata-property[data-property-key="tags"] {
+  --pill-background: var(--color-base-slightly-darkened);
+  --pill-background-hover: var(--color-base);
+  --pill-color: black;
+  --pill-color-hover: black;
+  --pill-color-remove: var(--color-base-very-darkened);
+  --pill-color-remove-hover: var(--color-base-very-darkened);
+  --pill-background-remove-hover: var(--color-base-slightly-darkened);
 }
 
 /* Tab close button on left, macOS standard */
@@ -220,7 +271,18 @@ body {
 .mod-macos .modal-sidebar .community-modal-controls {
   margin-left: var(--size-4-5);
 }
+.mod-macos .multi-select-pill {
+  padding-left: 0.25em;
+}
+.mod-macos .multi-select-pill .multi-select-pill-remove-button {
+  order: 0;
+}
+.mod-macos .multi-select-pill .multi-select-pill-content {
+  order: 1;
+  margin: 0;
+}
 
+/* Close buttons */
 .mod-close,
 .modal-close-button,
 .document-search-close-button,
@@ -851,39 +913,189 @@ select:focus,
   padding-bottom: 0 !important;
 }
 
+/* Order in content area */
+.inline-title {
+  order: 0;
+}
+.metadata-container {
+  order: 1;
+}
+.setting-properties-position-above .metadata-container {
+  order: 1;
+}
+.setting-properties-position-below .metadata-container {
+  order: 3;
+  padding: 2em 2em 0 2em;
+}
+.setting-properties-position-below .embedded-backlinks {
+  padding-top: 0;
+}
+.cm-contentContainer {
+  order: 2;
+}
+.embedded-backlinks {
+  order: 3;
+}
+
 /* Metadata in content area */
 .view-header-title {
   display: none;
 }
 .inline-title {
-  background: var(--background-embedded-backlinks);
+  background: var(--metadata-property-background);
   padding: 0.5rem 2rem;
   margin: 0;
   border-radius: 0;
   width: 100%;
 }
-.metadata-container {
-  background: var(--background-embedded-backlinks);
-  padding: 0 2rem 1rem 2em;
+
+/* Consistent metadata styles for embedde dlinks and properties */
+.metadata-container,
+.embedded-backlinks {
+  background: var(--metadata-property-background);
+  border: 0;
+  padding: 0.5rem 2rem;
   margin: 0;
   border-radius: 0;
+  transform: none;
   width: 100%;
 }
+.metadata-properties-heading,
+.embedded-backlinks .backlink-pane .tree-item-self {
+  align-items: center;
+  border-radius: var(--radius-s);
+  color: var(--text-faint);
+  font-size: 1rem;
+  gap: 0;
+  margin-bottom: 0.5em;
+  padding: 0.25em 0.5em;
+  line-height: var(--line-height-tight);
+  width: fit-content;
+  display: flex;
+}
+.metadata-properties-heading:hover,
+.embedded-backlinks .backlink-pane .tree-item-self:hover {
+  color: var(--nav-item-color-hover);
+  background-color: var(--nav-item-background-hover);
+  font-weight: var(--nav-item-weight-hover);
+}
+.metadata-properties-heading .collapse-indicator,
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-icon {
+  color: var(--color-text-interactive);
+  display: block;
+  left: inherit;
+  opacity: var(--icon-opacity);
+  padding: 0;
+  position: relative;
+  width: var(--size-4-4);
+}
+.metadata-properties-heading .collapse-indicator svg,
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-icon svg {
+  color: var(--color-text-interactive);
+}
+.metadata-content,
+.embedded-backlinks .backlink-pane .search-result-container {
+  margin: 0 0 1em 1em;
+  font-size: var(--font-ui-smaller);
+}
 
+/* Embedded backlinks*/
 .embedded-backlinks {
-  background: var(--background-embedded-backlinks);
-  border: 0;
-  padding: 2rem;
-  border-radius: 0;
   /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
   min-height: 0 !important;
 }
 .embedded-backlinks .backlink-pane {
   padding: 0;
 }
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+}
 .embedded-backlinks .nav-buttons-container {
   top: 0;
   right: 0;
+}
+.embedded-backlinks .backlink-pane .search-result-file-title .tree-item-icon {
+  position: relative;
+  padding: 0;
+  margin-left: 0;
+  left: inherit;
+}
+.embedded-backlinks .backlink-pane .search-result-file-matches {
+  margin-left: 1em;
+}
+.embedded-backlinks .backlink-pane .search-empty-state {
+  margin: 0;
+}
+
+/* Properties */
+.metadata-properties-heading .metadata-properties-title {
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+}
+.view-content .metadata-properties-heading .collapse-indicator svg.svg-icon,
+.view-content .metadata-properties-heading .is-collapsed .collapse-indicator svg.svg-icon {
+  color: var(--color-text-interactive);
+}
+.metadata-properties-title {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  font-weight: var(--font-semibold);
+  padding: 0;
+  user-select: none;
+}
+.metadata-property {
+  border: solid 2px transparent;
+  box-shadow: none;
+  display: flex;
+  gap: 0;
+}
+.metadata-property:focus-within {
+  background: var(--nav-item-background-hover);
+  border-color: var(--nav-item-background-hover);
+  box-shadow: none;
+}
+.metadata-property:hover {
+  box-shadow: none;
+}
+.metadata-property .metadata-property-key {
+  align-items: center;
+  display: flex;
+  gap: 0.5em;
+}
+.metadata-property .metadata-property-key:focus-within {
+  background: transparent;
+}
+.metadata-property .metadata-property-key input {
+  border: none;
+  box-shadow: none;
+  display: block;
+  background: transparent;
+  height: 100%;
+}
+.metadata-property .metadata-property-key input:focus,
+.metadata-property .metadata-property-value:focus-within {
+  border: none;
+  background: var(--metadata-property-background);
+}
+.metadata-property-icon,
+.metadata-property-icon:hover {
+  background: transparent;
+}
+.metadata-property .multi-select-input {
+  padding: var(--pill-padding-y) 0;
+}
+
+/* Multi-select pill */
+.multi-select-pill {
+  padding: var(--pill-padding-y) var(--pill-padding-x);
+}
+.multi-select-pill-remove-button {
+  margin: 0;
+  border-radius: 100%;
+}
+.multi-select-pill-remove-button:hover {
+  background: var(--pill-background-remove-hover);
 }
 
 /* Typograhy */
