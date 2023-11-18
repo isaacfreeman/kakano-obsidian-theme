@@ -5,6 +5,7 @@ on:
     # Sequence of patterns matched against refs/tags
     tags:
       - "*" # Push events to matching any tag format, i.e. 1.0, 20.15.10
+  workflow_dispatch:
 
 jobs:
   build:
