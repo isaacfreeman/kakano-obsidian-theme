@@ -1,7 +1,7 @@
 /*
 
 Principles:
-1. Use the accent colour to distinguish between different vaults.
+1. Use the base colour to distinguish between different vaults.
 2. Separate content (white/black background) from controls (accent colour background)
 3. Use spacing for grouping rather than lines
 4. Distinguish controls visually
@@ -16,7 +16,7 @@ id: kakano-style
 settings:
   -
     id: base
-    title: Base Color
+    title: Base color
     description: 'Base color, from which the Kakano theme will generate background gradients.'
     type: variable-color
     format: hsl-split
@@ -24,7 +24,7 @@ settings:
   -
     id: setting-properties-position
     title: 'Properties position'
-    description: 'Place properties before or after your note content'
+    description: 'Place properties before or after your main note content. Note that this only applies to Live Preview mode'
     type: class-select
     allowEmpty: false
     default: 'setting-properties-position-above'
@@ -40,6 +40,7 @@ settings:
 body {
   --background-secondary: transparent;
   --file-line-width: 40rem;
+  --file-margins: 0;
   --input-border-width: 2px;
   --modal-border-color: black;
   --modal-border-width: 0;
@@ -912,19 +913,28 @@ select:focus,
   padding: 1em 2em 3em 2em;
   padding: 0;
 }
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
   margin-left: 0;
   margin-right: 0;
   max-width: none;
   width: 100%;
 }
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer {
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer,
+ .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:not([class]),
+markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class=""] {
   margin: 3rem auto;
   max-width: var(--file-line-width);
   padding: 0 2rem;
   width: 100%;
 }
+/* Override inline styles */
 .cm-content {
+  /* Live Preview */
+  padding-bottom: 0 !important;
+}
+.markdown-preview-sizer {
+  /* Reading Mode */
   padding-bottom: 0 !important;
 }
 
