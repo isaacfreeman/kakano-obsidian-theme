@@ -120,6 +120,7 @@ body .metadata-property[data-property-key="tags"] {
   --text-normal: var(--color-base-very-darkened);
   --text-faint: var(--color-base-darkened);
   --background-prompt: var(--color-base-very-very-lightened);
+  --status-bar-background: var(--color-base-lightened);
 
   --metadata-property-background: var(--color-base-very-very-lightened);
   --metadata-property-background-hover: var(--color-base-very-lightened);
@@ -206,6 +207,7 @@ body .metadata-property[data-property-key="tags"] {
   --text-normal: var(--color-base-lightened);
   --text-faint: var(--color-base-slightly-lightened);
   --background-prompt: var(--color-base-very-darkened);
+  --status-bar-background: var(--color-base-darkened);
 
   --metadata-property-background: var(--color-base-very-very-darkened);
   --metadata-property-background-hover: var(--color-base-very-darkened);
@@ -577,12 +579,17 @@ body .metadata-property[data-property-key="tags"] {
 
 /* Status bar */
 .status-bar {
-  background: var(--background-secondary-gradient-bottom);
   border: none;
   border-top-left-radius: var(--radius-m);
+  border-top-right-radius: var(--radius-m);
   gap: 0.5rem;
   padding: 0 0.5rem 0;
-  margin: 0;
+  margin: 0 0 0.25em 0;
+  right: auto;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 2em;
 }
 .status-bar-item {
   line-height: 1rem;
