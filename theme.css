@@ -924,8 +924,7 @@ select:focus,
   width: 100%;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer,
- .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:not([class]),
-markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class=""] {
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
   margin: 3rem auto;
   max-width: var(--file-line-width);
   padding: 0 2rem;
