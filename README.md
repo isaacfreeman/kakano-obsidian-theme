@@ -19,3 +19,10 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
 - **Properties position**
   In Live Preview mode, properties can be positioned before (default) or after the main note content. If you rarely use properties, you may prefer to make them less prominent.
   _This setting only works for Live Preview mode. Reading mode doesn't provide suitable HTML structure to support it, and Source Mode makes properties editable within the main content area.
+
+## Plugin support
+Kakano has specific styling for the following plugins:
+
+### Core Plugins
+- Graph
+- Canvas

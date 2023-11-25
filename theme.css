@@ -70,10 +70,6 @@ body {
   --base-l: var(--accent-l);
   --color-base: hsl(var(--base-h), calc(var(--base-s) * 1.0), calc(var(--base-l) * 1.0));
 
-  /* Controls */
-  --interactive-accent: var(--color-base);
-  --slider-track-background: var(--color-base);
-
   /*  Base colour variants */
   --color-base-very-very-lightened: color-mix(in srgb, var(--color-base), white 95%);
   --color-base-very-lightened: color-mix(in srgb, var(--color-base), white 80%);
@@ -121,6 +117,9 @@ body .metadata-property[data-property-key="tags"] {
   --text-faint: var(--color-base-darkened);
   --background-prompt: var(--color-base-very-very-lightened);
   --status-bar-background: var(--color-base-lightened);
+  --interactive-accent: var(--color-base);
+  --slider-track-background: var(--color-base);
+
 
   --metadata-property-background: var(--color-base-very-very-lightened);
   --metadata-property-background-hover: var(--color-base-very-lightened);
@@ -207,7 +206,9 @@ body .metadata-property[data-property-key="tags"] {
   --text-normal: var(--color-base-lightened);
   --text-faint: var(--color-base-slightly-lightened);
   --background-prompt: var(--color-base-very-darkened);
-  --status-bar-background: var(--color-base-darkened);
+  --status-bar-background: var(--color-base-very-darkened);
+  --interactive-accent: var(--color-base);
+  --slider-track-background: var(--color-base);
 
   --metadata-property-background: var(--color-base-very-very-darkened);
   --metadata-property-background-hover: var(--color-base-very-darkened);
@@ -247,7 +248,7 @@ body .metadata-property[data-property-key="tags"] {
   --modal-background-search-results: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
   --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
   --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.75), 0.5);
-  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.75), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.95);
+  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.5), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.75), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15);
   --controls-container-background: var(--color-base-very-darkened);
   --color-text-interactive-active: var(--color-text-interactive);
   --background-interactive-active: var(--color-base-slightly-darkened);
@@ -635,17 +636,30 @@ body .metadata-property[data-property-key="tags"] {
   color: var(--color-text-interactive);
 }
 
-
 /* Modals */
+.modal {
+  padding: 1rem;
+}
 .modal-title {
   /* Undo padding at top of modal */
   margin-top: calc(var(--size-4-4) * -1);
+  margin-top: -1em;
   /* Space for modal-close-button in line with title */
   margin-left: calc(var(--size-2-3) + 1em);
   margin-right: calc(var(--size-2-3) + 1em);
 
   /* Same as top position for modal-close-button */
   padding-top: var(--size-2-3);
+
+  font-size: var(--font-ui-medium);
+  line-height: 1.5em;
+}
+
+/* Help modal */
+.modal.mod-canvas-help .modal-content {
+  height: 100%;
+  overflow: scroll;
+  padding-right: 1em;
 }
 
 /* Trees */
@@ -830,14 +844,87 @@ select:focus,
   animation: 0.5s 1 alternate fadein;
 }
 
+/* Item lists: tab navs and community items */
+body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
+.horizontal-tab-nav-item:hover,
+.vertical-tab-nav-item:hover,
+.community-item:hover {
+  color: var(--nav-item-color-hover);
+  background-color: var(--nav-item-background-hover);
+  font-weight: var(--nav-item-weight-hover);
+}
+.horizontal-tab-nav-item.is-active,
+.vertical-tab-nav-item.is-active,
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.community-item.is-selected,
+.community-item.mod-active {
+  background-color: var(--interactive-accent);
+  color: var(--nav-item-color-active);
+}
+body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
+.horizontal-tab-nav-item.is-active:hover,
+.vertical-tab-nav-item.is-active:hover,
+.nav-file-title.is-active:hover,
+.nav-folder-title.is-active:hover,
+.community-item.is-selected:hover,
+.community-item.mod-active:hover {
+  background-color: var(--interactive-accent);
+  color: var(--nav-item-color-active);
+}
+
+
+/* Community modal */
+.community-modal-details {
+  border: none;
+}
+.community-modal-search-results-wrapper {
+  background: var(--modal-background-search-results);
+  border: 0;
+}
+.community-modal-search-results {
+  padding: 1.5em;
+  gap: 1.5em;
+}
+.community-item {
+  border: none;
+  box-shadow: var(--shadow-l);
+}
+.community-item.is-selected .flair.mod-pop,
+.community-item.is-selected:hover .flair.mod-pop,
+.community-item.mod-active .flair.mod-pop,
+.community-item.mod-active:hover .flair.mod-pop {
+  display: none;
+}
+.community-item.is-selected .community-item-author,
+.community-item.is-selected:hover .community-item-author,
+.community-item.is-selected .community-item-repo,
+.community-item.is-selected:hover .community-item-repo,
+.community-item.is-selected .community-item-downloads,
+.community-item.is-selected:hover .community-item-downloads,
+.community-item.is-selected .community-item-updated,
+.community-item.is-selected:hover .community-item-updated,
+.community-item.mod-active .community-item-author,
+.community-item.mod-active:hover .community-item-author,
+.community-item.mod-active .community-item-repo,
+.community-item.mod-active:hover .community-item-repo,
+.community-item.mod-active .community-item-downloads,
+.community-item.mod-active:hover .community-item-downloads,
+.community-item.mod-active .community-item-updated,
+.community-item.mod-active:hover .community-item-updated {
+    color: var(--text-on-accent);
+    opacity: 0.8;
+}
+
 /* Settings modal */
-.modal.mod-settings .vertical-tabs-container {}
 .modal.mod-settings .vertical-tab-header {
   border-right: none;
-  padding: 2.5em 0 1em 1.5em;
+  padding: 2.5em 1em 1em 1.5em;
   margin: 0 1.5em 0 0;
   background: var(--modal-background-vertical-tab-header);
+  color: var(--color-text-interactive);
 }
+
 .modal.mod-settings .vertical-tab-header-group {
   border-right: none;
   padding: 0 0 1.5em 0;
@@ -867,23 +954,6 @@ select:focus,
 /* Font settings modal */
 .setting-font-list + .setting-item {
   border: none;
-}
-
-/* Community modal */
-.community-modal-details {
-  border: none;
-}
-.community-modal-search-results-wrapper {
-  background: var(--modal-background-search-results);
-  border: 0;
-}
-.community-modal-search-results {
-  padding: 1.5em;
-  gap: 1.5em;
-}
-.community-item {
-  border: none;
-  box-shadow: var(--shadow-l);
 }
 
 /* Document search */
@@ -1112,24 +1182,59 @@ select:focus,
   background: var(--pill-background-remove-hover);
 }
 
-/* Graph View Plugin */
-.graph-controls {
-  padding: 0.5em 0;
-}
+/* Toolbars: Graph & Canvas plugins */
+.canvas-controls,
+.graph-controls,
 .graph-controls.is-close,
-.graph-controls:not(.is-close) {
+.graph-controls:not(.is-close),
+.canvas-card-menu,
+.canvas-menu,
+.canvas-submenu {
   background: var(--controls-container-background);
   border: none;
+  padding: 0.25rem;
+  gap: 0;
+  box-shadow: var(--input-shadow);
+  border-radius: 0.5rem;
 }
+.canvas-submenu {
+  background: var(--background-interactive-active);
+  top: calc(100% - 0.5em);
+  box-shadow: none;
+}
+.canvas-control-item,
+.graph-controls-button,
+.canvas-card-menu .canvas-card-menu-button {
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  border-radius: var(--clickable-icon-radius);
+  color: var(--color-text-interactive);
+  opacity: var(--icon-opacity);
+  background-color: transparent;
+  border: none;
+}
+.canvas-control-item:hover,
+.graph-controls-button:hover,
+.canvas-card-menu .canvas-card-menu-button:hover {
+  color: var(--color-text-interactive-hover);
+  background-color: var(--background-modifier-hover);
+}
+.canvas-card-menu .canvas-card-menu-button.mod-draggable:hover svg {
+    transform: translateY(0);
+    filter: none;
+}
+.canvas-controls {
+  gap: 0.5em;
+}
+.canvas-control-group {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 .graph-control-section {
   border: none;
-  padding: 0 0.5em;
-}
-.graph-control-section>.tree-item-children {
-
-}
-.graph-controls-button {
-  color: var(--color-text-interactive);
+  padding: 0 0.5rem 0 1.5rem;
 }
 .graph-controls-button.mod-close {
   border-radius: 100%;
