@@ -60,6 +60,9 @@ body {
   --tab-outline-width: 0;
   --metadata-property-background-hover: var(--nav-item-background-hover);
 
+  --inline-title-weight: bold;
+  --inline-title-size: var(--font-ui-medium);
+
   /* Base all theme colours off these */
   /*   The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
   --base-h: var(--accent-h);
@@ -942,18 +945,15 @@ markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class
 .inline-title {
   order: 0;
 }
-.metadata-container {
+.metadata-container,
+.setting-properties-position-above .is-live-preview .metadata-container {
   order: 1;
 }
-.setting-properties-position-above .metadata-container {
-  order: 1;
-}
-.setting-properties-position-below .metadata-container {
+.setting-properties-position-below .is-live-preview .metadata-container {
   order: 3;
-  padding: 1em 2em 0 2em;
 }
-.setting-properties-position-below .embedded-backlinks {
-  padding: 0 2em 1em 2em;
+.setting-properties-position-below .is-live-preview .embedded-backlinks {
+  padding: 0 2rem 0.5rem 2rem;
 }
 .cm-contentContainer {
   order: 2;
@@ -962,21 +962,14 @@ markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class
   order: 3;
 }
 
-/* Metadata in content area */
 .view-header-title {
   display: none;
 }
-.inline-title {
-  background: var(--metadata-property-background);
-  padding: 0.5rem 2rem;
-  margin: 0;
-  border-radius: 0;
-  width: 100%;
-}
 
-/* Consistent metadata styles for embedded links and properties */
+/* Consistent styles for inline metadata sections */
 .metadata-container,
-.embedded-backlinks {
+.embedded-backlinks,
+.inline-title {
   background: var(--metadata-property-background);
   border: 0;
   padding: 0.5rem 2rem;
@@ -986,40 +979,28 @@ markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class
   width: 100%;
 }
 
-/* Embedded backlinks*/
-.embedded-backlinks {
-  /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
-  min-height: 0 !important;
+/* Inline title (i.e. filename) */
+.inline-title,
+.setting-properties-position-above .is-live-preview .inline-title {
+  /* Adjust spacing to fit well with properties directly underneath */
+  padding-left: 2.5rem;
+  padding-bottom: 0;
 }
-.embedded-backlinks .backlink-pane {
-  padding: 0;
-}
-.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
-  font-size: var(--font-ui-smaller);
-  font-weight: var(--font-medium);
-}
-.embedded-backlinks .nav-buttons-container {
-  top: 0;
-  right: 0;
-}
-.embedded-backlinks .backlink-pane .search-result-file-title .tree-item-icon {
-  position: relative;
-  padding: 0;
-  margin-left: 0;
-  left: inherit;
-}
-.embedded-backlinks .backlink-pane .search-result-file-matches {
-  margin-left: 1em;
-}
-.embedded-backlinks .backlink-pane .search-empty-state {
-  margin: 0;
-}
-.embedded-backlinks .nav-header ~ .search-input-container {
-    width: calc(100% - 150px);
-    margin: 0 0 0 0;
+[data-mode="source"] .inline-title,
+.setting-properties-position-below .is-live-preview .inline-title {
+  /* Standard spacing, when properties aren't directly underneath */
+  padding-left: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Properties */
+.metadata-container,
+.setting-properties-position-above .is-live-preview .metadata-container {
+  padding-top: 0;
+}
+.setting-properties-position-below .is-live-preview .metadata-container {
+  padding: 0.5em 2em 0 2em;
+}
 .metadata-properties-heading .metadata-properties-title {
   font-size: var(--font-ui-smaller);
   font-weight: var(--font-medium);
@@ -1075,6 +1056,42 @@ markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class
 }
 .metadata-property .multi-select-input {
   padding: var(--pill-padding-y) 0;
+}
+
+/* Embedded backlinks*/
+.embedded-backlinks {
+  /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
+  min-height: 0 !important;
+}
+.setting-properties-position-below .is-live-preview .metadata-container[data-property-count="0"] ~ .embedded-backlinks {
+  padding-top: 0.5rem;
+}
+.embedded-backlinks .backlink-pane {
+  padding: 0;
+}
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+}
+.embedded-backlinks .nav-buttons-container {
+  top: 0;
+  right: 0;
+}
+.embedded-backlinks .backlink-pane .search-result-file-title .tree-item-icon {
+  position: relative;
+  padding: 0;
+  margin-left: 0;
+  left: inherit;
+}
+.embedded-backlinks .backlink-pane .search-result-file-matches {
+  margin-left: 1em;
+}
+.embedded-backlinks .backlink-pane .search-empty-state {
+  margin: 0;
+}
+.embedded-backlinks .nav-header ~ .search-input-container {
+    width: calc(100% - 150px);
+    margin: 0 0 0 0;
 }
 
 /* Multi-select pill */
@@ -1162,7 +1179,7 @@ markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div[class
 }
 
 
-/* Typograhy */
+/* Main content typograhy */
 body {
   --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-text-size: 16px;
