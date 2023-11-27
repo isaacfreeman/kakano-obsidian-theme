@@ -24,5 +24,10 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
 Kakano has specific styling for the following plugins:
 
 ### Core Plugins
-- Graph
+- Audio recorder
+- Backlinks
+- Bookmarks
 - Canvas
+- Command Palette
+- Graph
+- Quick Switcher
