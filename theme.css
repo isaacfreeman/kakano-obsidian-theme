@@ -141,6 +141,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-settings: var(--color-base-very-lightened);
   --color-text-interactive-hover: var(--color-base-lightened);
   --color-text-interactive: var(--color-base-slightly-darkened);
+  --color-text-interactive-content-area-hover: var(--color-base-very-lightened);
+  --color-text-interactive-content-area: var(--color-base);
   --background-control: var(--color-base-very-very-lightened);
   --background-control-hover: var(--color-base);
   --background-input: var(--color-base-lightened);
@@ -231,6 +233,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-switcher-active: var(--color-base);
   --color-text-interactive: var(--color-base-slightly-lightened);
   --color-text-interactive-hover: var(--color-base-darkened);
+  --color-text-interactive-content-area: var(--color-base-lightened);
+  --color-text-interactive-content-area-hover: var(--color-base-very-darkened);
   --background-control: var(--color-base-slightly-darkened);
   --background-control-hover: var(--color-base);
   --color-control-text: var(--color-base-lightened);
@@ -1039,14 +1043,9 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   order: 3;
 }
 
-.view-header-title {
-  display: none;
-}
-
 /* Consistent styles for inline metadata sections */
 .metadata-container,
-.embedded-backlinks,
-.inline-title {
+.embedded-backlinks {
   background: var(--metadata-property-background);
   border: 0;
   padding: 0.5rem 2rem;
@@ -1056,25 +1055,41 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   width: 100%;
 }
 
-/* Inline title (i.e. filename) */
-.inline-title,
-.setting-properties-position-above .is-live-preview .inline-title {
-  /* Adjust spacing to fit well with properties directly underneath */
-  padding-left: 2.5rem;
-  padding-bottom: 0;
+/* Tab content header */
+.view-header {
+  height: auto; /* Don't use --header-height */
+  justify-content: space-between;
+  padding: 0.5em;
 }
-[data-mode="source"] .inline-title,
-.setting-properties-position-below .is-live-preview .inline-title {
-  /* Standard spacing, when properties aren't directly underneath */
-  padding-left: 2rem;
-  padding-bottom: 0.5rem;
+/* TODO: style controls */
+
+/* Inline title (i.e. filename) */
+.inline-title {
+  /* We don't need an extra inline title below the header. */
+  display: none;
+}
+.view-header-title-container {
+  display: none;
+}
+.show-inline-title .view-header-title-container {
+  display: flex;
+}
+.view-header-title {
+  display: none;
+}
+.show-inline-title.is-focused .workspace-leaf.mod-active .view-header-title  {
+  /* Use the "Display Inline Title" setting to show/hide the title in the header. */
+  display: block;
+}
+
+.view-header-title-parent .view-header-breadcrumb {
+}
+.view-header-title-parent .view-header-breadcrumb:hover {
+  background: transparent;
+  cursor: auto;
 }
 
 /* Properties */
-.metadata-container,
-.setting-properties-position-above .is-live-preview .metadata-container {
-  padding-top: 0;
-}
 .setting-properties-position-below .is-live-preview .metadata-container {
   padding: 0.5em 2em 0 2em;
 }
