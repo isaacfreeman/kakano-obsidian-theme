@@ -238,7 +238,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-control: var(--color-base-slightly-darkened);
   --background-control-hover: var(--color-base);
   --color-control-text: var(--color-base-lightened);
-  --color-control-text-hover: var(--color-base);
+  --color-control-text-hover: var(--color-base-very-darkened);
   --color-input-border: var(--color-base-slightly-lightened);
   --color-input-placeholder: var(--color-base);
   --color-hotkey: var(--color-base);
