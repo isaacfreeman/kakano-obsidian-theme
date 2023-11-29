@@ -201,7 +201,7 @@ body .metadata-property[data-property-key="tags"] {
   --nav-item-color-active: var(--color-base-darkened);
   --nav-item-color: var(--color-base);
   --search-icon-color: var(--color-base);
-  --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.25);
+  --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
 
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--color-base-very-darkened);
@@ -252,8 +252,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-mod-root: linear-gradient(0deg, var(--color-base-very-darkened) 0%, var(--color-base-darkened) 100%);
   --modal-background-search-results: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
   --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
-  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.75), 0.5);
-  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.5), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.75), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15);
+  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
+  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
   --controls-container-background: var(--color-base-very-darkened);
   --color-text-interactive-active: var(--color-text-interactive);
   --background-interactive-active: var(--color-base-slightly-darkened);
@@ -1061,7 +1061,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   justify-content: space-between;
   padding: 0.5em;
 }
-/* TODO: style controls */
 
 /* Inline title (i.e. filename) */
 .inline-title {
