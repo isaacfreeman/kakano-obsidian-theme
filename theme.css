@@ -861,6 +861,14 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .document-search-container {
   animation: 0.5s 1 alternate fadein;
 }
+.modal-sidebar,
+.modal.mod-settings .vertical-tab-header {
+  border-right: none;
+  padding: 2.5em 1em 1em 1.5em;
+  margin: 0;
+  background: var(--modal-background-vertical-tab-header);
+  color: var(--color-text-interactive);
+}
 
 /* Help modal */
 .modal.mod-canvas-help .modal-content {
@@ -912,16 +920,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 
 /* Settings modal */
-/* TODO: standardise for all modals? */
-.modal-sidebar,
-.modal.mod-settings .vertical-tab-header {
-  border-right: none;
-  padding: 2.5em 1em 1em 1.5em;
-  margin: 0;
-  background: var(--modal-background-vertical-tab-header);
-  color: var(--color-text-interactive);
-}
-
 .modal.mod-settings .vertical-tab-header-group {
   border-right: none;
   padding: 0 0 1.5em 0;
@@ -1220,7 +1218,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   border: none;
 }
 .canvas-control-item:hover,
-.graph-controls-button:hover,
+.graph-controls-button:not(.mod-close):hover,
 .canvas-card-menu .canvas-card-menu-button:hover {
   color: var(--color-text-interactive-hover);
   background-color: var(--background-modifier-hover);
@@ -1240,7 +1238,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 
 .graph-control-section {
   border: none;
-  padding: 0 0.5rem 0 1.5rem;
+  padding: 0.25rem;
 }
 .graph-controls-button.mod-close {
   border-radius: 100%;
@@ -1294,8 +1292,11 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .metadata-content,
 .embedded-backlinks .backlink-pane .search-result-container,
 .graph-control-section .tree-item-children {
-  margin: 0 0 1em 1em;
+  margin: 0 1em 1em 1em;
   font-size: var(--font-ui-smaller);
+}
+.graph-controls .tree-item-self .tree-item-icon {
+  margin: 0;
 }
 
 /* Audio Plugin */
