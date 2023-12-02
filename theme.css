@@ -120,7 +120,6 @@ body .metadata-property[data-property-key="tags"] {
   --interactive-accent: var(--color-base);
   --slider-track-background: var(--color-base);
 
-
   --metadata-property-background: var(--color-base-very-very-lightened);
   --metadata-property-background-hover: var(--color-base-very-lightened);
   --metadata-label-background-active: var(--color-base-very-very-lightened);
@@ -133,6 +132,7 @@ body .metadata-property[data-property-key="tags"] {
 
 
   /* New variables for this theme */
+  --background-close-hover: hsla(var(--base-h), calc(var(--base-s) * 2), calc(var(--base-l) * 1), 0.25);
   --text-meta: var(--color-base);
   --background-inactive-tab-hover: var(--color-base-lightened);
   --background-secondary-gradient-bottom: var(--color-base-slightly-lightened);
@@ -224,6 +224,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--color-base-darkened);
 
   /* New variables for this theme */
+  --background-close-hover: hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l) * 0.1), 0.9);
   --text-meta: var(--color-base);
   --background-inactive-tab-hover: var(--color-base-slightly-darkened);
   --background-secondary-gradient-bottom: var(--color-base-darkened);
@@ -313,22 +314,16 @@ body .metadata-property[data-property-key="tags"] {
 .workspace-tab-header-inner-close-button .svg-icon {
   stroke: var(--color-text-interactive);
 }
-/* When sitting on background-primary */
+
 .mod-close:hover,
 .modal-close-button:hover,
-.workspace-tab-header-inner-close-button:hover {
-  color: var(--color-text-interactive);
-  background-color: var(--background-modifier-active-hover);
-}
-/* When sitting on background-secondary */
+.workspace-tab-header-inner-close-button:hover,
 .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,
-.mod-settings .modal-close-button:hover {
-  color: var(--color-text-interactive);
-  background-color: var(--background-modifier-active-hover);
-}
-/* When sitting on darker background */
+.mod-sync-history .modal-close-button:hover,
+.mod-settings .modal-close-button:hover,
 .workspace-tab-header-inner-close-button:hover {
-  background-color: var(--background-modifier-active-hover);
+  color: var(--color-text-interactive);
+  background-color: var(--background-close-hover);
 }
 
 /* close buttons that use a text cross instead of an SVG */
@@ -341,19 +336,13 @@ body .metadata-property[data-property-key="tags"] {
   align-content: center;
   --icon-size: var(--icon-s);
   --icon-stroke: var(--icon-s-stroke-width);
-  color: var(--tab-text-color-focused);
   text-align: center;
   justify-content: center;
-
 }
 .document-search-close-button:before,
 .modal-close-button:before {
   /* This uses a text cross instead of an SVG. Hack for visual alignment. */
   margin-top: -1px;
-}
-.document-search-close-button:hover,
-.modal-close-button:hover {
-  background-color: var(--background-modifier-active-hover-alt);
 }
 
 /* Lightweight Buttons */
@@ -641,32 +630,6 @@ body .metadata-property[data-property-key="tags"] {
   color: var(--color-text-interactive);
 }
 
-/* Modals */
-.modal {
-  padding: 1rem;
-}
-.modal-title {
-  /* Undo padding at top of modal */
-  margin-top: calc(var(--size-4-4) * -1);
-  margin-top: -1em;
-  /* Space for modal-close-button in line with title */
-  margin-left: calc(var(--size-2-3) + 1em);
-  margin-right: calc(var(--size-2-3) + 1em);
-
-  /* Same as top position for modal-close-button */
-  padding-top: var(--size-2-3);
-
-  font-size: var(--font-ui-medium);
-  line-height: 1.5em;
-}
-
-/* Help modal */
-.modal.mod-canvas-help .modal-content {
-  height: 100%;
-  overflow: scroll;
-  padding-right: 1em;
-}
-
 /* Trees */
 .tree-item-icon,
 .tree-item-self .tree-item-icon {
@@ -845,14 +808,6 @@ select:focus,
     outline: none;
 }
 
-/* Modals */
-.modal-bg,
-.modal,
-.prompt,
-.document-search-container {
-  animation: 0.5s 1 alternate fadein;
-}
-
 /* Item lists: tab navs and community items */
 body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
 .horizontal-tab-nav-item:hover,
@@ -882,6 +837,37 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   color: var(--nav-item-color-active);
 }
 
+/* Modals */
+.modal {
+  padding: 1rem;
+}
+.modal-title {
+  /* Undo padding at top of modal */
+  margin-top: calc(var(--size-4-4) * -1);
+  margin-top: -1em;
+  /* Space for modal-close-button in line with title */
+  margin-left: calc(var(--size-2-3) + 1em);
+  margin-right: calc(var(--size-2-3) + 1em);
+
+  /* Same as top position for modal-close-button */
+  padding-top: var(--size-2-3);
+
+  font-size: var(--font-ui-medium);
+  line-height: 1.5em;
+}
+.modal-bg,
+.modal,
+.prompt,
+.document-search-container {
+  animation: 0.5s 1 alternate fadein;
+}
+
+/* Help modal */
+.modal.mod-canvas-help .modal-content {
+  height: 100%;
+  overflow: scroll;
+  padding-right: 1em;
+}
 
 /* Community modal */
 .community-modal-details {
@@ -926,6 +912,8 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 
 /* Settings modal */
+/* TODO: standardise for all modals? */
+.modal-sidebar,
 .modal.mod-settings .vertical-tab-header {
   border-right: none;
   padding: 2.5em 1em 1em 1.5em;
