@@ -59,6 +59,7 @@ body {
   --divider-width: 0;
   --tab-outline-width: 0;
   --metadata-property-background-hover: var(--nav-item-background-hover);
+  --callout-padding: 0.75em 1.5em;
 
   --inline-title-weight: bold;
   --inline-title-size: var(--font-ui-medium);
@@ -346,11 +347,22 @@ body .metadata-property[data-property-key="tags"] {
 }
 
 /* Lightweight Buttons */
+.markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
 .side-dock-actions .side-dock-ribbon-action.clickable-icon {
+  align-items: center;
+  background-color: transparent;
   border-radius: var(--clickable-icon-radius);
   color: var(--color-text-interactive);
+  cursor: var(--cursor);
+  display: flex;
+  height: auto;
+  justify-content: center;
+  opacity: var(--icon-opacity);
+  padding: var(--size-2-2) var(--size-2-3);
+  transition: opacity 0.15s ease-in-out;
 }
+.markdown-source-view.mod-cm6 .code-block-flair:hover,
 .clickable-icon:hover,
 .side-dock-actions .side-dock-ribbon-action.clickable-icon:hover {
   color: var(--color-text-interactive-hover);
@@ -1034,6 +1046,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .embedded-backlinks {
   background: var(--metadata-property-background);
   border: 0;
+  font-family: var(--font-interface);
   padding: 0.5rem 2rem;
   margin: 0;
   border-radius: 0;
@@ -1325,7 +1338,14 @@ audio::-webkit-media-controls-panel {
 
 /* Main content typograhy */
 body {
+  --blockquote-border-color: var(--color-base-very-lightened);
+  --blockquote-border-thickness: 0.25em;
+  /* Use the system font by default for both text and interface, unless user has chosen something else.  */
   --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-monospace-default: ui-monospace, Menlo, SFMono-Regular, Consolas, "Roboto Mono", 'Source Code Pro', monospace;
+  --font-text-theme: var(--font-default);
+  --font-interface-theme: var(--font-default);
+  --font-monospace-theme: var(--font-monospace-default);
   --font-text-size: 16px;
   --h1-size: 2.25em;
   --h2-size: 1.5em;
@@ -1346,6 +1366,9 @@ body {
   --h4-line-height: var(--line-height-normal);
   --h5-line-height: var(--line-height-normal);
   --h6-line-height: var(--line-height-normal);
+
+  /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
+  hanging-punctuation: first allow-end last;
 }
 /* Space before headings... */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
@@ -1368,6 +1391,21 @@ body {
 /* ...or the first on the page */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header:first-child {
   padding-top: 0;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote,
+.callout {
+  font-weight: 300;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  /* Matched to --callout-padding */
+  padding: 0 1.5em;
+}
+
+.markdown-source-view.mod-cm6 .code-block-flair {
+  top: 0.5em;
+  right: 0.5em;
 }
 
 /* Markdown formatting shown while editing e.g. ### for headings */

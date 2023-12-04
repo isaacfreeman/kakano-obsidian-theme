@@ -11,6 +11,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
 - Light/dark modes.
 - On macOS, close buttons appear at the left of tabs and modals, where they belong.
 - Minimal design with consistent appearance for controls.
+- Uses system fonts by default to be consistent with other apps. User settings are of course respected if you want something different.
 
 ### Settings
 If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, Kakano offers the following settings.
