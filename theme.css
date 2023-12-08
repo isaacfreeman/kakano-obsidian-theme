@@ -39,9 +39,17 @@ settings:
 
 body {
   --background-secondary: transparent;
+  --callout-padding: 0.75em 1.5em;
+  --checkbox-border-color-hover: var(--interactive-accent-hover);
+  --checkbox-border-color: var(--interactive-accent);
+  --checkbox-color: var(--interactive-accent);
+  --divider-width: 0;
   --file-line-width: 40rem;
   --file-margins: 0;
+  --inline-title-size: var(--font-ui-medium);
+  --inline-title-weight: bold;
   --input-border-width: 2px;
+  --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
   --prompt-border-color: transparent;
@@ -52,35 +60,34 @@ body {
   --status-bar-text-color: var(--text-normal);
   --tab-container-background: transparent;
   --tab-curve: calc(var(--tab-radius) * 0.5);
+  --tab-outline-width: 0;
   --tab-radius-active: 0.25em;
   --tab-radius: 0.25em;
   --titlebar-background-focused: transparent;
   --titlebar-background: transparent;
-  --divider-width: 0;
-  --tab-outline-width: 0;
-  --metadata-property-background-hover: var(--nav-item-background-hover);
-  --callout-padding: 0.75em 1.5em;
-
-  --inline-title-weight: bold;
-  --inline-title-size: var(--font-ui-medium);
 
   /* Base all theme colours off these */
-  /*   The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
+  /* The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
   --base-h: var(--accent-h);
   --base-s: var(--accent-s);
   --base-l: var(--accent-l);
-  --color-base: hsl(var(--base-h), calc(var(--base-s) * 1.0), calc(var(--base-l) * 1.0));
+
+  /* The base color */
+  --theme-color-base: hsl(var(--base-h), calc(var(--base-s) * 1.0), calc(var(--base-l) * 1.0));
 
   /*  Base colour variants */
-  --color-base-very-very-lightened: color-mix(in srgb, var(--color-base), white 95%);
-  --color-base-very-lightened: color-mix(in srgb, var(--color-base), white 80%);
-  --color-base-lightened: color-mix(in srgb, var(--color-base), white 70%);
-  --color-base-slightly-lightened: color-mix(in srgb, var(--color-base), white 50%);
-  --color-base-slightly-darkened: color-mix(in srgb, var(--color-base), black 50%);
-  --color-base-darkened: color-mix(in srgb, var(--color-base), black 70%);
-  --color-base-very-darkened: color-mix(in srgb, var(--color-base), black 80%);
-  --color-base-very-very-darkened: color-mix(in srgb, var(--color-base), black 95%);
+  --theme-color-baseVeryVeryLightened: color-mix(in srgb, var(--theme-color-base), white 95%);
+  --theme-color-baseVeryLightened: color-mix(in srgb, var(--theme-color-base), white 80%);
+  --theme-color-baseLightened: color-mix(in srgb, var(--theme-color-base), white 70%);
+  --theme-color-baseSlightlyLightened: color-mix(in srgb, var(--theme-color-base), white 50%);
+  --theme-color-baseSlightlyDarkened: color-mix(in srgb, var(--theme-color-base), black 50%);
+  --theme-color-baseDarkened: color-mix(in srgb, var(--theme-color-base), black 70%);
+  --theme-color-baseVeryDarkened: color-mix(in srgb, var(--theme-color-base), black 80%);
+  --theme-color-baseVeryVeryDarkened: color-mix(in srgb, var(--theme-color-base), black 95%);
 
+  --theme-color-baseTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.5);
+  --theme-color-baseSlightlyTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.75);
+  --theme-color-baseVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.25);
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
@@ -91,185 +98,194 @@ body .metadata-property[data-property-key="tags"] {
 
 .theme-light {
   /* Built-in variables */
-  --background-modifier-border-focus: var(--color-base);
-  --background-modifier-border: var(--color-base-slightly-lightened);
-  --background-modifier-hover: var(--color-base);
-  --background-modifier-active-hover: var(--color-base-lightened);
-  --background-modifier-active-hover-alt: var(--color-base-slightly-lightened);
-  --empty-pane-color: var(--color-base-darkened);
+  --background-modifier-border-focus: var(--theme-color-base);
+  --background-modifier-border: var(--theme-color-baseSlightlyLightened);
+  --background-modifier-hover: var(--theme-color-base);
+  --background-modifier-active-hover: var(--theme-color-baseLightened);
+  --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyLightened);
+  --blockquote-border-color: var(--theme-color-baseVeryLightened);
+  --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: white;
   --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
   --icon-color-hover: white;
-  --icon-color: var(--color-base);
-  --modal-background: var(--color-base-very-lightened);
-  --nav-collapse-icon-color-collapsed: var(--color-base);
-  --nav-collapse-icon-color: var(--color-base);
-  --nav-indentation-guide-color: var(--color-base-slightly-lightened);
-  --nav-item-background-active: var(--color-base);
-  --nav-item-background-hover: var(--color-base-slightly-lightened);
-  --nav-item-color-active: var(--color-base-lightened);
-  --nav-item-color: var(--color-base-darkened);
-  --search-icon-color: var(--color-base);
+  --icon-color: var(--theme-color-base);
+  --modal-background: var(--theme-color-baseVeryLightened);
+  --nav-collapse-icon-color-collapsed: var(--theme-color-base);
+  --nav-collapse-icon-color: var(--theme-color-base);
+  --nav-indentation-guide-color: var(--theme-color-baseSlightlyLightened);
+  --nav-item-background-active: var(--theme-color-base);
+  --nav-item-background-hover: var(--theme-color-baseSlightlyLightened);
+  --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
+  --nav-item-color-active: var(--theme-color-baseLightened);
+  --nav-item-color: var(--theme-color-baseDarkened);
+  --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.25);
   --status-bar-text-color: black;
   --tab-background-active: var(--background-primary);
-  --tab-background-inactive: var(--color-base-very-lightened);
-  --text-normal: var(--color-base-very-darkened);
-  --text-faint: var(--color-base-darkened);
-  --background-prompt: var(--color-base-very-very-lightened);
-  --status-bar-background: var(--color-base-lightened);
-  --interactive-accent: var(--color-base);
-  --slider-track-background: var(--color-base);
+  --tab-background-inactive: var(--theme-color-baseVeryLightened);
+  --text-normal: var(--theme-color-baseVeryDarkened);
+  --text-faint: var(--theme-color-baseDarkened);
+  --background-prompt: var(--theme-color-baseVeryVeryLightened);
+  --status-bar-background: var(--theme-color-baseLightened);
+  --interactive-accent: var(--theme-color-base);
+  --interactive-accent-hover: var(--theme-color-base);
+  --slider-track-background: var(--theme-color-baseLightened);
 
-  --metadata-property-background: var(--color-base-very-very-lightened);
-  --metadata-property-background-hover: var(--color-base-very-lightened);
-  --metadata-label-background-active: var(--color-base-very-very-lightened);
-  --metadata-input-background-active: var(--color-base-very-very-lightened);
+  --metadata-property-background: var(--theme-color-baseVeryVeryLightened);
+  --metadata-property-background-hover: var(--theme-color-baseVeryLightened);
+  --metadata-label-background-active: var(--theme-color-baseVeryVeryLightened);
+  --metadata-input-background-active: var(--theme-color-baseVeryVeryLightened);
 
   /* Background for content area */
   --background-primary: white;
   /* Background for controls area */
-  --background-secondary: var(--color-base-lightened);
+  --background-secondary: var(--theme-color-baseLightened);
 
 
   /* New variables for this theme */
-  --background-close-hover: hsla(var(--base-h), calc(var(--base-s) * 2), calc(var(--base-l) * 1), 0.25);
-  --text-meta: var(--color-base);
-  --background-inactive-tab-hover: var(--color-base-lightened);
-  --background-secondary-gradient-bottom: var(--color-base-slightly-lightened);
-  --background-secondary-gradient-top: var(--color-base-lightened);
-  --background-settings-stripe: var(--color-base-very-very-lightened);
-  --background-settings: var(--color-base-very-lightened);
-  --color-text-interactive-hover: var(--color-base-lightened);
-  --color-text-interactive: var(--color-base-slightly-darkened);
-  --color-text-interactive-content-area-hover: var(--color-base-very-lightened);
-  --color-text-interactive-content-area: var(--color-base);
-  --background-control: var(--color-base-very-very-lightened);
-  --background-control-hover: var(--color-base);
-  --background-input: var(--color-base-lightened);
-  --background-switcher-active: var(--color-base);
-  --color-control-text: var(--color-base-darkened);
-  --color-control-text-hover: var(--color-base-very-lightened);
-  --color-input-border: var(--color-base-slightly-lightened);
-  --color-input-placeholder: var(--color-base);
-  --color-hotkey: var(--color-base);
+  --background-close-hover: var(--theme-color-baseVeryTransparent);
+  --background-control-hover: var(--theme-color-base);
+  --background-control: var(--theme-color-baseVeryVeryLightened);
+  --background-inactive-tab-hover: var(--theme-color-baseLightened);
+  --background-input: var(--theme-color-baseLightened);
+  --background-interactive-active: var(--theme-color-baseSlightlyLightened);
+  --background-mod-root: linear-gradient(0deg, var(--theme-color-baseLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
+  --background-secondary-gradient-bottom: var(--theme-color-baseSlightlyLightened);
+  --background-secondary-gradient-top: var(--theme-color-baseLightened);
+  --background-settings-stripe: var(--theme-color-baseVeryVeryLightened);
+  --background-settings: var(--theme-color-baseVeryLightened);
+  --background-side-dock-actions: transparent;
+  --background-switcher-active: var(--theme-color-base);
+  --color-text-interactive-active: var(--color-text-interactive);
+  --color-text-interactive-content-area-hover: var(--theme-color-baseVeryLightened);
+  --color-text-interactive-content-area: var(--theme-color-base);
+  --color-text-interactive-hover: var(--theme-color-baseLightened);
+  --color-text-interactive: var(--theme-color-baseSlightlyDarkened);
+  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
+  --controls-container-background: var(--theme-color-baseVeryLightened);
+  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
+  --modal-background-search-results: linear-gradient(0deg, var(--theme-color-baseVeryLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
+  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--theme-color-baseVeryLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
   --nav-file-tag-active-border-color: var(--nav-item-color-active);
   --nav-file-tag-active-color: var(--nav-item-color-active);
-  --nav-file-tag-border-color: var(--color-base);
-  --nav-file-tag-color: var(--color-base);
-  --background-side-dock-actions: transparent;
-  --tab-text-color-inactive: var(--color-base-slightly-darkened);
-  --text-selected: var(--color-base-very-lightened);
-  --background-mod-root: linear-gradient(0deg, var(--color-base-lightened) 0%, var(--color-base-slightly-lightened) 100%);
-  --modal-background-search-results: linear-gradient(0deg, var(--color-base-very-lightened) 0%, var(--color-base-slightly-lightened) 100%);
-  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-very-lightened) 0%, var(--color-base-slightly-lightened) 100%);
-  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
-  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
-  --controls-container-background: var(--color-base-very-lightened);
-  --color-text-interactive-active: var(--color-text-interactive);
-  --background-interactive-active: var(--color-base-slightly-lightened);
+  --nav-file-tag-border-color: var(--theme-color-base);
+  --nav-file-tag-color: var(--theme-color-base);
+  --tab-text-color-inactive: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-textMeta: var(--theme-color-base);
+  --text-selected: var(--theme-color-baseVeryLightened);
+  --theme-color-controlText: var(--theme-color-baseDarkened);
+  --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
+  --theme-color-hotkey: var(--theme-color-base);
+  --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
+  --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
+  --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
+  --theme-color-communityItemBgSelected: var(--theme-color-baseSlightlyLightened);
+  --theme-color-communityItemBgActive: var(--theme-color-base);
 }
 .theme-light,
 .theme-light .metadata-property:not([data-property-key="tags"]),
 .theme-light .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--color-base-slightly-lightened);
-  --pill-background-hover: var(--color-base);
+  --pill-background: var(--theme-color-baseSlightlyLightened);
+  --pill-background-hover: var(--theme-color-base);
   --pill-color: white;
   --pill-color-hover: white;
-  --pill-color-remove: var(--color-base-very-lightened);
-  --pill-color-remove-hover: var(--color-base-very-lightened);
-  --pill-background-remove-hover: var(--color-base-slightly-lightened);
+  --pill-color-remove: var(--theme-color-baseVeryLightened);
+  --pill-color-remove-hover: var(--theme-color-baseVeryLightened);
+  --pill-background-remove-hover: var(--theme-color-baseSlightlyLightened);
 }
 
 .theme-dark {
   /* Built-in variables */
-  --background-modifier-border-focus: var(--color-base-slightly-darkened);
-  --background-modifier-border: var(--color-base-slightly-darkened);
-  --background-modifier-hover: var(--color-base);
-  --background-modifier-active-hover: var(--color-base-darkened);
-  --background-modifier-active-hover-alt: var(--color-base-slightly-darkened);
-  --empty-pane-color: var(--color-base-darkened);
+  --background-modifier-border-focus: var(--theme-color-baseSlightlyDarkened);
+  --background-modifier-border: var(--theme-color-baseSlightlyDarkened);
+  --background-modifier-hover: var(--theme-color-base);
+  --background-modifier-active-hover: var(--theme-color-baseDarkened);
+  --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyDarkened);
+  --blockquote-border-color: var(--theme-color-baseVeryDarkened);
+  --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: white;
   --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
   --icon-color-hover: white;
-  --icon-color: var(--color-base);
-  --modal-background: var(--color-base-very-darkened);
-  --nav-collapse-icon-color-collapsed: var(--color-base);
-  --nav-collapse-icon-color: var(--color-base);
-  --nav-indentation-guide-color: var(--color-base-darkened);
-  --nav-item-background-active: var(--color-base);
-  --nav-item-background-hover: var(--color-base-slightly-darkened);
-  --nav-item-color-active: var(--color-base-darkened);
-  --nav-item-color: var(--color-base);
-  --search-icon-color: var(--color-base);
+  --icon-color: var(--theme-color-base);
+  --modal-background: var(--theme-color-baseVeryDarkened);
+  --nav-collapse-icon-color-collapsed: var(--theme-color-base);
+  --nav-collapse-icon-color: var(--theme-color-base);
+  --nav-indentation-guide-color: var(--theme-color-baseDarkened);
+  --nav-item-background-active: var(--theme-color-base);
+  --nav-item-background-hover: var(--theme-color-baseSlightlyDarkened);
+  --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
+  --nav-item-color-active: var(--theme-color-baseDarkened);
+  --nav-item-color: var(--theme-color-base);
+  --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
 
   --tab-background-active: var(--background-primary);
-  --tab-background-inactive: var(--color-base-very-darkened);
-  --background-inactive-tab-hover: var(--color-base-darkened);
-  --text-normal: var(--color-base-lightened);
-  --text-faint: var(--color-base-slightly-lightened);
-  --background-prompt: var(--color-base-very-darkened);
-  --status-bar-background: var(--color-base-very-darkened);
-  --interactive-accent: var(--color-base);
-  --slider-track-background: var(--color-base);
+  --tab-background-inactive: var(--theme-color-baseVeryDarkened);
+  --background-inactive-tab-hover: var(--theme-color-baseDarkened);
+  --text-normal: var(--theme-color-baseLightened);
+  --text-faint: var(--theme-color-baseSlightlyLightened);
+  --background-prompt: var(--theme-color-baseVeryDarkened);
+  --status-bar-background: var(--theme-color-baseVeryDarkened);
+  --interactive-accent: var(--theme-color-base);
+  --slider-track-background: var(--theme-color-base);
 
-  --metadata-property-background: var(--color-base-very-very-darkened);
-  --metadata-property-background-hover: var(--color-base-very-darkened);
-  --metadata-label-background-active: var(--color-base-very-very-darkened);
-  --metadata-input-background-active: var(--color-base-very-very-darkened);
+  --metadata-property-background: var(--theme-color-baseVeryVeryDarkened);
+  --metadata-property-background-hover: var(--theme-color-baseVeryDarkened);
+  --metadata-label-background-active: var(--theme-color-baseVeryVeryDarkened);
+  --metadata-input-background-active: var(--theme-color-baseVeryVeryDarkened);
 
   /* Background for content area */
   --background-primary: #111111;
   /* Background for controls area */
-  --background-secondary: var(--color-base-darkened);
+  --background-secondary: var(--theme-color-baseDarkened);
 
   /* New variables for this theme */
-  --background-close-hover: hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l) * 0.1), 0.9);
-  --text-meta: var(--color-base);
-  --background-inactive-tab-hover: var(--color-base-slightly-darkened);
-  --background-secondary-gradient-bottom: var(--color-base-darkened);
-  --background-secondary-gradient-top: var(--color-base-very-darkened);
-  --background-settings-stripe: var(--color-base-very-very-darkened);
-  --background-settings: var(--color-base-very-darkened);
-  --background-switcher-active: var(--color-base);
-  --color-text-interactive: var(--color-base-slightly-lightened);
-  --color-text-interactive-hover: var(--color-base-darkened);
-  --color-text-interactive-content-area: var(--color-base-lightened);
-  --color-text-interactive-content-area-hover: var(--color-base-very-darkened);
-  --background-control: var(--color-base-slightly-darkened);
-  --background-control-hover: var(--color-base);
-  --color-control-text: var(--color-base-lightened);
-  --color-control-text-hover: var(--color-base-very-darkened);
-  --color-input-border: var(--color-base-slightly-lightened);
-  --color-input-placeholder: var(--color-base);
-  --color-hotkey: var(--color-base);
+  --background-close-hover: var(--theme-color-baseVeryTransparent);
+  --background-control-hover: var(--theme-color-base);
+  --background-control: var(--theme-color-baseSlightlyDarkened);
+  --background-inactive-tab-hover: var(--theme-color-baseSlightlyDarkened);
+  --background-interactive-active: var(--theme-color-baseSlightlyDarkened);
+  --background-mod-root: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
+  --background-secondary-gradient-bottom: var(--theme-color-baseDarkened);
+  --background-secondary-gradient-top: var(--theme-color-baseVeryDarkened);
+  --background-settings-stripe: var(--theme-color-baseVeryVeryDarkened);
+  --background-settings: var(--theme-color-baseVeryDarkened);
+  --background-side-dock-actions: transparent;
+  --background-switcher-active: var(--theme-color-base);
+  --color-text-interactive-active: var(--color-text-interactive);
+  --color-text-interactive-content-area-hover: var(--theme-color-baseVeryDarkened);
+  --color-text-interactive-content-area: var(--theme-color-baseLightened);
+  --color-text-interactive-hover: var(--theme-color-baseDarkened);
+  --color-text-interactive: var(--theme-color-baseSlightlyLightened);
+  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
+  --controls-container-background: var(--theme-color-baseVeryDarkened);
+  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
+  --modal-background-search-results: linear-gradient(0deg, var(--theme-color-baseDarkened) 0%, var(--theme-color-baseVeryDarkened) 100%);
+  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--theme-color-baseDarkened) 0%, var(--theme-color-baseVeryDarkened) 100%);
   --nav-file-tag-active-border-color: var(--nav-item-color-active);
   --nav-file-tag-active-color: var(--nav-item-color-active);
-  --nav-file-tag-border-color: var(--color-base-slightly-darkened);
-  --nav-file-tag-color: var(--color-base-slightly-darkened);
-  --background-side-dock-actions: transparent;
-  --tab-text-color-inactive: var(--color-base-slightly-lightened);
-  --text-selected: var(--color-base-very-darkened);
-  --background-mod-root: linear-gradient(0deg, var(--color-base-very-darkened) 0%, var(--color-base-darkened) 100%);
-  --modal-background-search-results: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
-  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--color-base-darkened) 0%, var(--color-base-very-darkened) 100%);
-  --control-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
-  --input-shadow: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
-  --controls-container-background: var(--color-base-very-darkened);
-  --color-text-interactive-active: var(--color-text-interactive);
-  --background-interactive-active: var(--color-base-slightly-darkened);
+  --nav-file-tag-border-color: var(--theme-color-baseSlightlyDarkened);
+  --nav-file-tag-color: var(--theme-color-baseSlightlyDarkened);
+  --tab-text-color-inactive: var(--theme-color-baseSlightlyLightened);
+  --theme-color-controlText: var(--theme-color-baseLightened);
+  --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
+  --theme-color-hotkey: var(--theme-color-base);
+  --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
+  --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-textMeta: var(--theme-color-base);
+  --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
 }
 .theme-dark,
 .theme-dark .metadata-property:not([data-property-key="tags"]),
 .theme-dark .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--color-base-slightly-darkened);
-  --pill-background-hover: var(--color-base);
+  --pill-background: var(--theme-color-baseSlightlyDarkened);
+  --pill-background-hover: var(--theme-color-base);
   --pill-color: black;
   --pill-color-hover: black;
-  --pill-color-remove: var(--color-base-very-darkened);
-  --pill-color-remove-hover: var(--color-base-very-darkened);
-  --pill-background-remove-hover: var(--color-base-slightly-darkened);
+  --pill-color-remove: var(--theme-color-baseVeryDarkened);
+  --pill-color-remove-hover: var(--theme-color-baseVeryDarkened);
+  --pill-background-remove-hover: var(--theme-color-baseSlightlyDarkened);
 }
 
 /* Tab close button on left, macOS standard */
@@ -422,6 +438,7 @@ body .metadata-property[data-property-key="tags"] {
 .workspace-tab-header.is-active {
   color: var(--tab-text-color-active);
   background-color: var(--tab-background-active);
+  box-shadow: var(--input-shadow);
 }
 
 /* Tab styling */
@@ -466,6 +483,10 @@ body .metadata-property[data-property-key="tags"] {
 .mod-root .workspace-tabs .workspace-leaf {
   background-color: var(--background-primary);
   border-radius: var(--tab-radius);
+}
+
+.mod-root .workspace-tabs .workspace-leaf.mod-active {
+  box-shadow: var(--input-shadow);
 }
 
 /* Ribbon styling */
@@ -671,7 +692,7 @@ input.prompt-input[type=text]:focus {
   box-shadow: none;
 }
 input[type='text'].prompt-input::placeholder {
-  color: var(--color-base);
+  color: var(--theme-color-base);
 }
 
 .prompt-instructions {
@@ -706,9 +727,9 @@ input[type='text'].prompt-input::placeholder {
 /* Hotkeys */
 .suggestion-hotkey,
 .setting-hotkey {
-  color: var(--color-hotkey);
+  color: var(--theme-color-hotkey);
   background: transparent;
-  border: solid 1px var(--color-hotkey);
+  border: solid 1px var(--theme-color-hotkey);
 }
 .suggestion-item.is-selected .suggestion-hotkey {
   color: var(--text-selected);
@@ -734,7 +755,7 @@ input[type='password'],
 input[type='search'],
 input[type='text'],
 textarea {
-  box-shadow: 0 0 0 var(--input-border-width) var(--color-base);
+  box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
   border: none;
   background: var(--background-input);
 }
@@ -783,13 +804,13 @@ button:not(.clickable-icon).mod-cta {
   border: none;
   background: var(--background-control);
   box-shadow: var(--control-shadow);
-  color: var(--color-control-text);
+  color: var(--theme-color-controlText);
 }
 button:not(.clickable-icon):hover,
 button:not(.clickable-icon).mod-cta:hover {
   border: none;
   background: var(--background-control-hover);
-  color: var(--color-control-text-hover);
+  color: var(--theme-color-controlTextHover);
 }
 button:not(.clickable-icon):focus,
 button:not(.clickable-icon).mod-cta:focus {
@@ -804,7 +825,7 @@ input[type='password']::placeholder,
 input[type='search']::placeholder,
 input[type='text']::placeholder,
 textarea::placeholder {
-  color: var(--color-input-placeholder);
+  color: var(--theme-color-inputPlaceholder);
 }
 
 /* Selects */
@@ -832,9 +853,7 @@ body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
 .horizontal-tab-nav-item.is-active,
 .vertical-tab-nav-item.is-active,
 .nav-file-title.is-active,
-.nav-folder-title.is-active,
-.community-item.is-selected,
-.community-item.mod-active {
+.nav-folder-title.is-active {
   background-color: var(--interactive-accent);
   color: var(--nav-item-color-active);
 }
@@ -842,30 +861,30 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .horizontal-tab-nav-item.is-active:hover,
 .vertical-tab-nav-item.is-active:hover,
 .nav-file-title.is-active:hover,
-.nav-folder-title.is-active:hover,
-.community-item.is-selected:hover,
-.community-item.mod-active:hover {
+.nav-folder-title.is-active:hover {
   background-color: var(--interactive-accent);
   color: var(--nav-item-color-active);
 }
+
+/* Checkboxes */
+/* ...see checkbox colors at top */
 
 /* Modals */
 .modal {
   padding: 1rem;
 }
 .modal-title {
-  /* Undo padding at top of modal */
-  margin-top: calc(var(--size-4-4) * -1);
-  margin-top: -1em;
   /* Space for modal-close-button in line with title */
   margin-left: calc(var(--size-2-3) + 1em);
   margin-right: calc(var(--size-2-3) + 1em);
 
-  /* Same as top position for modal-close-button */
-  padding-top: var(--size-2-3);
+  /* Align with top position for modal-close-button */
+  margin-top: calc(var(--size-2-3) * -1);
+
+  margin-bottom: 1em;
 
   font-size: var(--font-ui-medium);
-  line-height: 1.5em;
+  line-height: 1.125em;
 }
 .modal-bg,
 .modal,
@@ -880,6 +899,19 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   margin: 0;
   background: var(--modal-background-vertical-tab-header);
   color: var(--color-text-interactive);
+}
+.modal-button-container {
+  margin-top: 1em;
+}
+.modal-content p {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  /* Space for modal-close-button in line with title */
+  margin-left: calc(var(--size-2-3) + 1em);
+  margin-right: calc(var(--size-2-3) + 1em);
+}
+.modal-content p:last-child {
+  margin-bottom: 0;
 }
 
 /* Help modal */
@@ -904,6 +936,17 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .community-item {
   border: none;
   box-shadow: var(--shadow-l);
+  background: var(--theme-color-communityItemBg)
+}
+.community-item:hover {
+  background: var(--theme-color-communityItemBgHover)
+}
+.community-item.is-selected,
+.community-item.is-selected:hover {
+  background: var(--theme-color-communityItemBgSelected)
+}
+.community-item.mod-active {
+  background: var(--theme-color-communityItemBgActive)
 }
 .community-item.is-selected .flair.mod-pop,
 .community-item.is-selected:hover .flair.mod-pop,
@@ -911,6 +954,8 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .community-item.mod-active:hover .flair.mod-pop {
   display: none;
 }
+.community-item.is-selected,
+.community-item.is-selected:hover,
 .community-item.is-selected .community-item-author,
 .community-item.is-selected:hover .community-item-author,
 .community-item.is-selected .community-item-repo,
@@ -918,7 +963,9 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .community-item.is-selected .community-item-downloads,
 .community-item.is-selected:hover .community-item-downloads,
 .community-item.is-selected .community-item-updated,
-.community-item.is-selected:hover .community-item-updated,
+.community-item.is-selected:hover .community-item-updated {
+  color: var(--text-normal);
+}
 .community-item.mod-active .community-item-author,
 .community-item.mod-active:hover .community-item-author,
 .community-item.mod-active .community-item-repo,
@@ -1338,7 +1385,6 @@ audio::-webkit-media-controls-panel {
 
 /* Main content typograhy */
 body {
-  --blockquote-border-color: var(--color-base-very-lightened);
   --blockquote-border-thickness: 0.25em;
   /* Use the system font by default for both text and interface, unless user has chosen something else.  */
   --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -1410,7 +1456,7 @@ body {
 
 /* Markdown formatting shown while editing e.g. ### for headings */
 .cm-formatting.cm-formatting-header {
-  color: var(--text-meta);
+  color: var(--theme-color-textMeta);
   font-size: 0.8rem !important;
   vertical-align: middle;
 }

@@ -24,11 +24,12 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
 ## Plugin support
 Kakano has specific styling for the following plugins:
 
-### Core Plugins
+### Core Plugins supported
 - Audio recorder
 - Backlinks
 - Bookmarks
 - Canvas
 - Command Palette
+- Files
 - Graph
 - Quick Switcher
