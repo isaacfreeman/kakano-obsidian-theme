@@ -922,6 +922,27 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 
 /* Community modal */
+.mod-community-modal .modal-sidebar {
+  padding: 0;
+}
+.mod-community-modal .community-modal-controls {
+  padding: 2.5em 1em 1em 0;
+}
+.mod-community-modal .community-modal-controls .setting-item {
+  padding: 0;
+  margin-bottom: 1em;
+}
+.mod-community-modal .community-modal-controls .setting-item:first-child {
+  /* Filter control */
+  max-width: var(--modal-community-sidebar-width);
+  margin-bottom: 1em;
+}
+
+.community-modal-search-summary {
+  margin: 0;
+  padding: 0;
+}
+
 .community-modal-details {
   border: none;
 }
