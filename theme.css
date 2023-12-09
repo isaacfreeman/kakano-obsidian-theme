@@ -732,10 +732,13 @@ body {
 
 /* Search results */
 .search-result-file-matches {
-  background: var(--tab-background-inactive);
+  background: var(--theme-color-contentItemBg);
   box-shadow: none;
 }
 .search-result-file-match {}
+.search-result-file-match:hover {
+  background: var(--theme-color-contentItemBgHover)
+}
 .search-result-file-matched-text {
   font-weight: bold;
 }
@@ -1401,8 +1404,9 @@ audio::-webkit-media-controls-panel {
 .backlink-pane .search-result-container {
   margin-left: 1em;
 }
-.backlink-pane .search-result-file-matches {
+.embedded-backlinks .backlink-pane .search-result-file-matches {
   background: none;
+  box-shadow: none;
 }
 .embedded-backlinks {
   /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
