@@ -152,8 +152,6 @@ body .metadata-property[data-property-key="tags"] {
   --background-mod-root: linear-gradient(0deg, var(--theme-color-baseLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
   --background-secondary-gradient-bottom: var(--theme-color-baseSlightlyLightened);
   --background-secondary-gradient-top: var(--theme-color-baseLightened);
-  --background-settings-stripe: var(--theme-color-baseVeryVeryLightened);
-  --background-settings: var(--theme-color-baseVeryLightened);
   --background-side-dock-actions: transparent;
   --background-switcher-active: var(--theme-color-base);
   --color-text-interactive-active: var(--color-text-interactive);
@@ -171,17 +169,22 @@ body .metadata-property[data-property-key="tags"] {
   --nav-file-tag-border-color: var(--theme-color-base);
   --nav-file-tag-color: var(--theme-color-base);
   --tab-text-color-inactive: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-textMeta: var(--theme-color-base);
-  --text-selected: var(--theme-color-baseVeryLightened);
+  --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
+  --theme-color-communityItemBgActive: var(--theme-color-base);
+  --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
+  --theme-color-communityItemBgSelected: var(--theme-color-baseSlightlyLightened);
+  --theme-color-contentItemBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-contentItemBgActive: var(--theme-color-base);
+  --theme-color-contentItemBgHover: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
-  --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
-  --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
-  --theme-color-communityItemBgSelected: var(--theme-color-baseSlightlyLightened);
-  --theme-color-communityItemBgActive: var(--theme-color-base);
+  --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
+  --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-textMeta: var(--theme-color-base);
+  --theme-color-textSelected: var(--theme-color-baseVeryLightened);
 }
 .theme-light,
 .theme-light .metadata-property:not([data-property-key="tags"]),
@@ -245,12 +248,11 @@ body .metadata-property[data-property-key="tags"] {
   --background-control-hover: var(--theme-color-base);
   --background-control: var(--theme-color-baseSlightlyDarkened);
   --background-inactive-tab-hover: var(--theme-color-baseSlightlyDarkened);
+  --background-input: var(--theme-color-baseDarkened);
   --background-interactive-active: var(--theme-color-baseSlightlyDarkened);
   --background-mod-root: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
   --background-secondary-gradient-bottom: var(--theme-color-baseDarkened);
   --background-secondary-gradient-top: var(--theme-color-baseVeryDarkened);
-  --background-settings-stripe: var(--theme-color-baseVeryVeryDarkened);
-  --background-settings: var(--theme-color-baseVeryDarkened);
   --background-side-dock-actions: transparent;
   --background-switcher-active: var(--theme-color-base);
   --color-text-interactive-active: var(--color-text-interactive);
@@ -268,11 +270,20 @@ body .metadata-property[data-property-key="tags"] {
   --nav-file-tag-border-color: var(--theme-color-baseSlightlyDarkened);
   --nav-file-tag-color: var(--theme-color-baseSlightlyDarkened);
   --tab-text-color-inactive: var(--theme-color-baseSlightlyLightened);
+  --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-communityItemBgActive: var(--theme-color-base);
+  --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
+  --theme-color-communityItemBgSelected: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-contentItemBg: var(--theme-color-baseVeryVeryDarkened);
+  --theme-color-contentItemBgActive: var(--theme-color-base);
+  --theme-color-contentItemBgHover: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
 }
@@ -769,10 +780,10 @@ input[type='text'].prompt-input::placeholder {
   border-top: 0;
 }
 
-/* Suggestions */
-/* Search suggestions */
+/* Suggestions (Search, File Recovery) */
 .suggestion-container,
 .suggestion-container.mod-search-suggestion  {
+  display: block;
   background-color: var(--background-prompt);
 }
 .suggestion-container.mod-search-suggestion .suggestion {
@@ -792,7 +803,6 @@ input[type='text'].prompt-input::placeholder {
   color: var(--nav-item-color-active);
 }
 
-
 /* Hotkeys */
 .suggestion-hotkey,
 .setting-hotkey {
@@ -801,8 +811,8 @@ input[type='text'].prompt-input::placeholder {
   border: solid 1px var(--theme-color-hotkey);
 }
 .suggestion-item.is-selected .suggestion-hotkey {
-  color: var(--text-selected);
-  border-color: var(--text-selected);
+  color: var(--theme-color-textSelected);
+  border-color: var(--theme-color-textSelected);
 }
 
 /* Action lists */
@@ -910,11 +920,10 @@ select:focus,
     outline: none;
 }
 
-/* Item lists: tab navs and community items */
+/* Item lists */
 body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
 .horizontal-tab-nav-item:hover,
-.vertical-tab-nav-item:hover,
-.community-item:hover {
+.vertical-tab-nav-item:hover {
   color: var(--nav-item-color-hover);
   background-color: var(--nav-item-background-hover);
   font-weight: var(--nav-item-weight-hover);
@@ -1006,12 +1015,10 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   max-width: var(--modal-community-sidebar-width);
   margin-bottom: 1em;
 }
-
 .community-modal-search-summary {
   margin: 0;
   padding: 0;
 }
-
 .community-modal-details {
   border: none;
 }
@@ -1029,7 +1036,9 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   background: var(--theme-color-communityItemBg)
 }
 .community-item:hover {
-  background: var(--theme-color-communityItemBgHover)
+  background: var(--theme-color-communityItemBgHover);
+  color: var(--nav-item-color-hover);
+  font-weight: var(--nav-item-weight-hover);
 }
 .community-item.is-selected,
 .community-item.is-selected:hover {
@@ -1077,7 +1086,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   padding: 0 0.5em 0.5em 0.5em;
 }
 .mod-settings .vertical-tab-content {
-  background: var(--background-settings);
+  background: var(--theme-color-settingsBg);
   padding: 2em;
 }
 .modal-setting-nav-bar {
@@ -1476,6 +1485,35 @@ audio::-webkit-media-controls-panel {
 }
 
 /* Core Plugin: File Recovery */
+.mode-sync-history {}
+.sync-history-list-container {
+  border: none;
+}
+.sync-history-list-item-container {}
+.sync-history-list-item {
+  border: none;
+  box-shadow: var(--control-shadow);
+  background: var(--theme-color-contentItemBg);
+}
+.sync-history-list-item:hover {
+  background: var(--theme-color-contentItemBgHover);
+  color: var(--nav-item-color-hover);
+  font-weight: var(--nav-item-weight-hover);
+}
+.sync-history-list-item.is-active {
+  background: var(--theme-color-contentItemBgActive);
+}
+.sync-history-content-container {
+  background-color: var(--theme-color-settingsBg);
+}
+.sync-history-content .setting-item,
+.sync-history-content .setting-item:first-child,
+.mod-sync-history .sync-history-content-buttons {
+  background-color: var(--theme-color-settingsBg);
+  border: none;
+  margin: 0;
+  padding: 1em;
+}
 
 /* Core Plugin: Graph */
 .graph-control-section {

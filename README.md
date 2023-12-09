@@ -31,5 +31,6 @@ Kakano has specific styling for the following plugins:
 - Canvas
 - Command Palette
 - Files
+- File Recovery
 - Graph
 - Quick Switcher
