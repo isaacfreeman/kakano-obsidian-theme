@@ -288,6 +288,89 @@ body .metadata-property[data-property-key="tags"] {
   --pill-background-remove-hover: var(--theme-color-baseSlightlyDarkened);
 }
 
+/* Typograhy */
+body {
+  --blockquote-border-thickness: 0.25em;
+  /* Use the system font by default for both text and interface, unless user has chosen something else.  */
+  --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-monospace-default: ui-monospace, Menlo, SFMono-Regular, Consolas, "Roboto Mono", 'Source Code Pro', monospace;
+  --font-text-theme: var(--font-default);
+  --font-interface-theme: var(--font-default);
+  --font-monospace-theme: var(--font-monospace-default);
+  --font-text-size: 16px;
+  --h1-size: 2.25em;
+  --h2-size: 1.5em;
+  --h3-size: 1.25em;
+  --h4-size: 1em;
+  --h5-size: 1em;
+  --h6-size: 1em;
+  --h1-weight: 200;
+  --h2-weight: 300;
+  --h3-weight: 400;
+  --h4-weight: 500;
+  --h5-weight: 400;
+  --h6-weight: 300;
+  --line-height-normal: 1.6;
+  --h1-line-height: var(--line-height-normal);
+  --h2-line-height: var(--line-height-normal);
+  --h3-line-height: var(--line-height-normal);
+  --h4-line-height: var(--line-height-normal);
+  --h5-line-height: var(--line-height-normal);
+  --h6-line-height: var(--line-height-normal);
+
+  /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
+  hanging-punctuation: first allow-end last;
+}
+/* Space before headings... */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
+  padding: 0.67em 0 0 0;
+}
+/* ...except when they immediately follow another heading */
+:is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) + :is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) {
+  padding-top: 0;
+}
+/* ...or the first on the page */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header:first-child {
+  padding-top: 0;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote,
+.callout {
+  font-weight: 300;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  /* Matched to --callout-padding */
+  padding: 0 1.5em;
+}
+
+.markdown-source-view.mod-cm6 .code-block-flair {
+  top: 0.5em;
+  right: 0.5em;
+}
+
+/* Markdown formatting shown while editing e.g. ### for headings */
+.cm-formatting.cm-formatting-header {
+  color: var(--theme-color-textMeta);
+  font-size: 0.8rem !important;
+  vertical-align: middle;
+}
+
+/* Mobile */
+.is-mobile .workspace > .mod-root {
+    padding: 0.5em;
+}
+
 /* Tab close button on left, macOS standard */
 .mod-macos .workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
   position: static;
@@ -509,20 +592,6 @@ body .metadata-property[data-property-key="tags"] {
 /* Pane styling */
 .pane-empty {
   color: var(--empty-pane-color);
-}
-
-/* File navigation */
-.nav-files-container .nav-file-title {
-  justify-content: space-between;
-}
-.nav-file-tag {
-  background: transparent;
-  border: solid 1px var(--nav-file-tag-border-color);
-  color: var(--nav-file-tag-color);
-}
-.nav-file-title.is-active .nav-file-tag {
-  color: var(--nav-file-tag-active-color);
-  border-color: var(--nav-file-tag-active-border-color);
 }
 
 /* Left/Right workspace tab header styling */
@@ -1040,25 +1109,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   color: var(--color-text-interactive);
 }
 
-/* Backlink pane (embedded and sidebar */
-.backlink-pane > .tree-item-self .collapse-icon {
-  display: block;
-  margin-left: 0;
-  position: relative;
-}
-.backlink-pane > .tree-item-self {
-  color: var(--color-text-interactive);
-}
-.backlink-pane .search-result:not(.is-collapsed) .search-result-file-title {
-  color: var(--color-text-interactive);
-}
-.backlink-pane .search-result-container {
-  margin-left: 1em;
-}
-.backlink-pane .search-result-file-matches {
-  background: none;
-}
-
 /* Content area */
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
   padding: 1em 2em 3em 2em;
@@ -1219,42 +1269,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   padding: var(--pill-padding-y) 0;
 }
 
-/* Embedded backlinks*/
-.embedded-backlinks {
-  /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
-  min-height: 0 !important;
-}
-.setting-properties-position-below .is-live-preview .metadata-container[data-property-count="0"] ~ .embedded-backlinks {
-  padding-top: 0.5rem;
-}
-.embedded-backlinks .backlink-pane {
-  padding: 0;
-}
-.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
-  font-size: var(--font-ui-smaller);
-  font-weight: var(--font-medium);
-}
-.embedded-backlinks .nav-buttons-container {
-  top: 0;
-  right: 0;
-}
-.embedded-backlinks .backlink-pane .search-result-file-title .tree-item-icon {
-  position: relative;
-  padding: 0;
-  margin-left: 0;
-  left: inherit;
-}
-.embedded-backlinks .backlink-pane .search-result-file-matches {
-  margin-left: 1em;
-}
-.embedded-backlinks .backlink-pane .search-empty-state {
-  margin: 0;
-}
-.embedded-backlinks .nav-header ~ .search-input-container {
-    width: calc(100% - 150px);
-    margin: 0 0 0 0;
-}
-
 /* Multi-select pill */
 .multi-select-pill {
   padding: var(--pill-padding-y) var(--pill-padding-x);
@@ -1267,7 +1281,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   background: var(--pill-background-remove-hover);
 }
 
-/* Toolbars: Graph & Canvas plugins */
+/* Toolbars */
 .canvas-controls,
 .graph-controls,
 .graph-controls.is-close,
@@ -1281,11 +1295,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   gap: 0;
   box-shadow: var(--input-shadow);
   border-radius: 0.5rem;
-}
-.canvas-submenu {
-  background: var(--background-interactive-active);
-  top: calc(100% - 0.5em);
-  box-shadow: none;
 }
 .canvas-control-item,
 .graph-controls-button,
@@ -1303,30 +1312,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .canvas-card-menu .canvas-card-menu-button:hover {
   color: var(--color-text-interactive-hover);
   background-color: var(--background-modifier-hover);
-}
-.canvas-card-menu .canvas-card-menu-button.mod-draggable:hover svg {
-    transform: translateY(0);
-    filter: none;
-}
-.canvas-controls {
-  gap: 0.5em;
-}
-.canvas-control-group {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.graph-control-section {
-  border: none;
-  padding: 0.25rem;
-}
-.graph-controls-button.mod-close {
-  border-radius: 100%;
-  color: var(--color-text-interactive);
-}
-.graph-controls-button.mod-close:hover {
-  color: var(--color-text-interactive);
 }
 
 /* Collapsible controls */
@@ -1376,11 +1361,8 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   margin: 0 1em 1em 1em;
   font-size: var(--font-ui-smaller);
 }
-.graph-controls .tree-item-self .tree-item-icon {
-  margin: 0;
-}
 
-/* Audio Plugin */
+/* Core Plugin: Audio Recorder */
 audio::-webkit-media-controls-enclosure {
   border: none;
   background: transparent;
@@ -1395,7 +1377,60 @@ audio::-webkit-media-controls-panel {
   border-radius: 0.5rem;
 }
 
-/* Bookmarks */
+/* Core Plugin: Backlinks */
+.backlink-pane > .tree-item-self .collapse-icon {
+  display: block;
+  margin-left: 0;
+  position: relative;
+}
+.backlink-pane > .tree-item-self {
+  color: var(--color-text-interactive);
+}
+.backlink-pane .search-result:not(.is-collapsed) .search-result-file-title {
+  color: var(--color-text-interactive);
+}
+.backlink-pane .search-result-container {
+  margin-left: 1em;
+}
+.backlink-pane .search-result-file-matches {
+  background: none;
+}
+.embedded-backlinks {
+  /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
+  min-height: 0 !important;
+}
+.setting-properties-position-below .is-live-preview .metadata-container[data-property-count="0"] ~ .embedded-backlinks {
+  padding-top: 0.5rem;
+}
+.embedded-backlinks .backlink-pane {
+  padding: 0;
+}
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+}
+.embedded-backlinks .nav-buttons-container {
+  top: 0;
+  right: 0;
+}
+.embedded-backlinks .backlink-pane .search-result-file-title .tree-item-icon {
+  position: relative;
+  padding: 0;
+  margin-left: 0;
+  left: inherit;
+}
+.embedded-backlinks .backlink-pane .search-result-file-matches {
+  margin-left: 1em;
+}
+.embedded-backlinks .backlink-pane .search-empty-state {
+  margin: 0;
+}
+.embedded-backlinks .nav-header ~ .search-input-container {
+    width: calc(100% - 150px);
+    margin: 0 0 0 0;
+}
+
+/* Core Plugin: Bookmarks */
 .view-action.mod-bookmark {
   --icon-color: transparent;
   color: var(--color-text-interactive);
@@ -1404,85 +1439,56 @@ audio::-webkit-media-controls-panel {
   color: var(--color-text-interactive-hover)
 }
 
-/* Main content typograhy */
-body {
-  --blockquote-border-thickness: 0.25em;
-  /* Use the system font by default for both text and interface, unless user has chosen something else.  */
-  --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-monospace-default: ui-monospace, Menlo, SFMono-Regular, Consolas, "Roboto Mono", 'Source Code Pro', monospace;
-  --font-text-theme: var(--font-default);
-  --font-interface-theme: var(--font-default);
-  --font-monospace-theme: var(--font-monospace-default);
-  --font-text-size: 16px;
-  --h1-size: 2.25em;
-  --h2-size: 1.5em;
-  --h3-size: 1.25em;
-  --h4-size: 1em;
-  --h5-size: 1em;
-  --h6-size: 1em;
-  --h1-weight: 200;
-  --h2-weight: 300;
-  --h3-weight: 400;
-  --h4-weight: 500;
-  --h5-weight: 400;
-  --h6-weight: 300;
-  --line-height-normal: 1.6;
-  --h1-line-height: var(--line-height-normal);
-  --h2-line-height: var(--line-height-normal);
-  --h3-line-height: var(--line-height-normal);
-  --h4-line-height: var(--line-height-normal);
-  --h5-line-height: var(--line-height-normal);
-  --h6-line-height: var(--line-height-normal);
-
-  /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
-  hanging-punctuation: first allow-end last;
+/* Core Plugin: Canvas */
+.canvas-submenu {
+  background: var(--background-interactive-active);
+  top: calc(100% - 0.5em);
+  box-shadow: none;
 }
-/* Space before headings... */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
-  padding: 0.67em 0 0 0;
+.canvas-card-menu .canvas-card-menu-button.mod-draggable:hover svg {
+    transform: translateY(0);
+    filter: none;
 }
-/* ...except when they immediately follow another heading */
-:is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) + :is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) {
-  padding-top: 0;
+.canvas-controls {
+  gap: 0.5em;
 }
-/* ...or the first on the page */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header:first-child {
-  padding-top: 0;
+.canvas-control-group {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.markdown-source-view.mod-cm6 .HyperMD-quote,
-.callout {
-  font-weight: 300;
+/* Core Plugin: Command Palette */
+/*   No special styles: uses shared .prompt */
+
+/* Core Plugin: Files */
+.nav-files-container .nav-file-title {
+  justify-content: space-between;
+}
+.nav-file-tag {
+  background: transparent;
+  border: solid 1px var(--nav-file-tag-border-color);
+  color: var(--nav-file-tag-color);
+}
+.nav-file-title.is-active .nav-file-tag {
+  color: var(--nav-file-tag-active-color);
+  border-color: var(--nav-file-tag-active-border-color);
 }
 
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-  /* Matched to --callout-padding */
-  padding: 0 1.5em;
-}
+/* Core Plugin: File Recovery */
 
-.markdown-source-view.mod-cm6 .code-block-flair {
-  top: 0.5em;
-  right: 0.5em;
+/* Core Plugin: Graph */
+.graph-control-section {
+  border: none;
+  padding: 0.25rem;
 }
-
-/* Markdown formatting shown while editing e.g. ### for headings */
-.cm-formatting.cm-formatting-header {
-  color: var(--theme-color-textMeta);
-  font-size: 0.8rem !important;
-  vertical-align: middle;
+.graph-controls-button.mod-close {
+  border-radius: 100%;
+  color: var(--color-text-interactive);
 }
-
-/* Mobile */
-.is-mobile .workspace > .mod-root {
-    padding: 0.5em;
+.graph-controls-button.mod-close:hover {
+  color: var(--color-text-interactive);
+}
+.graph-controls .tree-item-self .tree-item-icon {
+  margin: 0;
 }
