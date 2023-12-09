@@ -1520,6 +1520,9 @@ audio::-webkit-media-controls-panel {
   border: none;
   padding: 0.25rem;
 }
+.graph-controls .graph-controls-button {
+  display: none;
+}
 .graph-controls-button.mod-close {
   border-radius: 100%;
   color: var(--color-text-interactive);
@@ -1529,4 +1532,10 @@ audio::-webkit-media-controls-panel {
 }
 .graph-controls .tree-item-self .tree-item-icon {
   margin: 0;
+}
+.workspace-leaf-content[data-type="graph"] .view-content {
+  background: var(--background-primary);
+  background-color: var(--theme-color-baseVeryVeryLightened);
+  margin-top: 6px;
+  border-radius: var(--tab-radius);
 }
