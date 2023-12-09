@@ -169,6 +169,7 @@ body .metadata-property[data-property-key="tags"] {
   --nav-file-tag-border-color: var(--theme-color-base);
   --nav-file-tag-color: var(--theme-color-base);
   --tab-text-color-inactive: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-checkboxBgOff: var(--theme-color-baseLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
@@ -270,6 +271,7 @@ body .metadata-property[data-property-key="tags"] {
   --nav-file-tag-border-color: var(--theme-color-baseSlightlyDarkened);
   --nav-file-tag-color: var(--theme-color-baseSlightlyDarkened);
   --tab-text-color-inactive: var(--theme-color-baseSlightlyLightened);
+  --theme-color-checkboxBgOff: var(--theme-color-baseDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
@@ -399,7 +401,7 @@ body {
   margin-left: auto;
 }
 .mod-macos .modal-sidebar .community-modal-controls {
-  margin-left: var(--size-4-5);
+  padding-left: var(--size-4-5);
 }
 .mod-macos .multi-select-pill {
   padding-left: 0.25em;
@@ -948,16 +950,21 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 
 /* Checkboxes */
-/* ...see checkbox colors at top */
-
+.checkbox-container {
+  background-color: var(--theme-color-checkboxBgOff);
+}
+.checkbox-container.is-enabled {
+    background-color: var(--interactive-accent);
+}
 /* Modals */
 .modal {
-  padding: 1rem;
+  padding: 1rem 0;
+  overflow: hidden;
 }
 .modal-title {
   /* Space for modal-close-button in line with title */
-  margin-left: calc(var(--size-2-3) + 1em);
-  margin-right: calc(var(--size-2-3) + 1em);
+  margin-left: calc(var(--size-2-3) + 2em);
+  margin-right: calc(var(--size-2-3) + 2em);
 
   /* Align with top position for modal-close-button */
   margin-top: calc(var(--size-2-3) * -1);
@@ -983,16 +990,25 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 .modal-button-container {
   margin-top: 1em;
+  padding-left: calc(var(--size-2-3) + 1.5em);
+  padding-right: calc(var(--size-2-3) + 1.5em);
+}
+.modal-content {
+  margin: 0 0.5em;
+  /* Space for modal-close-button in line with title */
+  padding-left: calc(var(--size-2-3) + 1.5em);
+  padding-right: calc(var(--size-2-3) + 1.5em);
+  overflow: auto;
 }
 .modal-content p {
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  /* Space for modal-close-button in line with title */
-  margin-left: calc(var(--size-2-3) + 1em);
-  margin-right: calc(var(--size-2-3) + 1em);
+  margin: 0 0 0.5em 0;
 }
 .modal-content p:last-child {
   margin-bottom: 0;
+}
+.mod-sidebar-layout .modal-content {
+  padding: 0;
+  margin: 0;
 }
 
 /* Help modal */
@@ -1007,16 +1023,17 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   padding: 0;
 }
 .mod-community-modal .community-modal-controls {
+  background: var(--theme-color-settingsBg);
   padding: 2.5em 1em 1em 0;
 }
 .mod-community-modal .community-modal-controls .setting-item {
   padding: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 .mod-community-modal .community-modal-controls .setting-item:first-child {
   /* Filter control */
   max-width: var(--modal-community-sidebar-width);
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 .community-modal-search-summary {
   margin: 0;
@@ -1078,6 +1095,28 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .community-item.mod-active:hover .community-item-updated {
     color: var(--text-on-accent);
     opacity: 0.8;
+}
+
+/* Messages */
+.mod-warning,
+p.mod-warning,
+.setting-message {
+  background: var(--theme-color-baseVeryVeryLightened);
+  border-radius: var(--clickable-icon-radius);
+  font-size: var(--font-ui-small);
+  padding: 0.5em 1em;
+}
+p.mod-warning,.setting-message + p.mod-warning,.setting-message {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+p.mod-warning:has(+ p.mod-warning,.setting-message),
+.setting-message:has(+ p.mod-warning,.setting-message) {
+  border-top-left-radius: var(--clickable-icon-radius);
+  border-top-right-radius: var(--clickable-icon-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* Settings modal */
