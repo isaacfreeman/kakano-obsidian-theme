@@ -541,11 +541,13 @@ body {
 .workspace-tab-header {
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
 }
-
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
   background-color: var(--background-inactive-tab-hover);
 }
-
+.workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
+  color: var(--icon-color);
+  opacity: var(--icon-opacity);
+}
 .workspace-tab-header-container-inner {
   gap: 0.25em;
 }
