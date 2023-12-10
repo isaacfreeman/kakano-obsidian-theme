@@ -34,4 +34,6 @@ Kakano has specific styling for the following plugins:
 - File Recovery
 - Format converter
 - Graph view
+- Note composer
+- Outgoing Links
 - Quick Switcher
