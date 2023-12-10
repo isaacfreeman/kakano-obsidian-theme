@@ -183,6 +183,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-navFileTagBorder: var(--theme-color-base);
   --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
@@ -286,6 +287,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-navFileTagBorder: var(--theme-color-baseSlightlyDarkened);
   --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
+  --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
@@ -851,7 +853,8 @@ input[type='text'].prompt-input::placeholder {
 .suggestion-container,
 .suggestion-container.mod-search-suggestion  {
   display: block;
-  background-color: var(--background-prompt);
+  background-color: var(--theme-color-suggestionBg);
+  border: none;
 }
 .suggestion-container.mod-search-suggestion .suggestion {
   background: transparent;
@@ -1040,6 +1043,10 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 
   font-size: var(--font-ui-medium);
   line-height: 1.125em;
+}
+.modal-title:empty + .modal-content {
+  /* If the title is empty, apply the same top margin to the content */
+  margin-top: calc(var(--size-2-3) * -1);
 }
 .modal-bg,
 .modal,
@@ -1680,4 +1687,17 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
 }
 .popover.hover-popover {
   padding: 0.5rem;
+}
+
+/* Community Plugin: Style Settings */
+.modal-style-settings {
+  /* Show shadow below buttons */
+  overflow: visible;
+}
+.modal-style-settings textarea {
+  margin-top: var(--input-border-width);
+}
+.modal-style-settings .modal-content {
+  padding-bottom: 1em;
+  margin-bottom: -1em;
 }
