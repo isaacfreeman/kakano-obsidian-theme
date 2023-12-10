@@ -699,8 +699,7 @@ body {
   border-top-left-radius: var(--radius-m);
   border-top-right-radius: var(--radius-m);
   gap: 0.5rem;
-  padding: 0 0.5rem 0;
-  margin: 0 0 0.25em 0;
+  padding: 0 0.5rem 0.25em 0;
   right: auto;
   left: 50%;
   bottom: 0;
