@@ -832,11 +832,13 @@ body {
 .prompt {
   background-color: var(--background-prompt);
 }
-input.prompt-input {
+input.prompt-input[type='text'] {
   background: var(--background-secondary);
   border-bottom: none;
+  box-shadow: none;
 }
 input.prompt-input[type=text]:focus {
+  background: var(--background-secondary);
   border-bottom: none;
   box-shadow: none;
 }
