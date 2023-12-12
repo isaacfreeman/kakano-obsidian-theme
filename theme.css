@@ -53,6 +53,12 @@ body {
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
+
+  --nav-item-children-margin-left: 0.75em;
+  --nav-item-children-padding-left: 0.25em;
+  --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
+  --nav-item-parent-padding: 0.25em 0 0.25em 0;
+
   --prompt-border-color: transparent;
   --prompt-border-width: 0;
   --ribbon-background-collapsed: transparent;
@@ -145,8 +151,6 @@ body .metadata-property[data-property-key="tags"] {
 
   /* New variables for this theme */
   --background-close-hover: var(--theme-color-baseVeryTransparent);
-  --background-control-hover: var(--theme-color-base);
-  --background-control: var(--theme-color-baseVeryVeryLightened);
   --background-inactive-tab-hover: var(--theme-color-baseLightened);
   --background-input: var(--theme-color-baseLightened);
   --background-interactive-active: var(--theme-color-baseSlightlyLightened);
@@ -171,6 +175,10 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBg: rgba(255, 255, 255, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgba(255, 255, 255, 0.1);
+  --theme-color-controlBgHover: var(--theme-color-base);
+  --theme-color-controlBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-controlBgLowWeightHover: var(--theme-color-baseLightened);
+  --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
@@ -249,8 +257,6 @@ body .metadata-property[data-property-key="tags"] {
 
   /* New variables for this theme */
   --background-close-hover: var(--theme-color-baseVeryTransparent);
-  --background-control-hover: var(--theme-color-base);
-  --background-control: var(--theme-color-baseSlightlyDarkened);
   --background-inactive-tab-hover: var(--theme-color-baseSlightlyDarkened);
   --background-input: var(--theme-color-baseDarkened);
   --background-interactive-active: var(--theme-color-baseSlightlyDarkened);
@@ -275,6 +281,10 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBg: rgba(0, 0, 0, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgba(0, 0, 0, 0.1);
+  --theme-color-controlBgHover: var(--theme-color-base);
+  --theme-color-controlBg: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-controlBgLowWeightHover: var(--theme-color-baseDarkened);
+  --theme-color-controlBgLowWeight: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryDarkened);
@@ -739,46 +749,12 @@ body {
   padding: 0.25em 0.5em;
 }
 
-/* Search */
-.workspace-leaf-content[data-type="search"] {
-  padding: 0.5rem 1rem;
-}
-.search-row,
-.search-info-container,
-.search-params,
-.search-results-info {
-  margin: 0 0 0.5rem 0;
-}
-.search-params .setting-item {
-  margin: 0;
-}
-.search-result-container.mod-global-search {
-  padding-right: 0;
-}
-.search-results-info {
-  border-bottom: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0 1em;
-  margin: 0;
-}
-.search-results-result-count {
-}
-.search-results-info .dropdown {
-  border: none;
-  box-shadow: var(--theme-shadow-control);
-  background-color: var(--background-control);
-  max-width: 12em;
-  text-align-last: left;
-}
-
 /* Content references (search results, incoming/outgoing links, etc.) */
 .search-result-file-matches {
   background: none;
   box-shadow: none;
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   flex-direction: column;
   margin: 0;
 }
@@ -815,7 +791,7 @@ body {
 /* Trees */
 .tree-item-icon,
 .tree-item-self .tree-item-icon {
-  /* Icons that represent an object have the samer colour as the related text */
+  /* Icons that represent an object have the same colour as the related text */
   color: inherit;
 }
 
@@ -956,14 +932,14 @@ textarea {
 button:not(.clickable-icon),
 button:not(.clickable-icon).mod-cta {
   border: none;
-  background: var(--background-control);
+  background: var(--theme-color-controlBg);
   box-shadow: var(--theme-shadow-control);
   color: var(--theme-color-controlText);
 }
 button:not(.clickable-icon):hover,
 button:not(.clickable-icon).mod-cta:hover {
   border: none;
-  background: var(--background-control-hover);
+  background: var(--theme-color-controlBgHover);
   color: var(--theme-color-controlTextHover);
 }
 button:not(.clickable-icon):focus,
@@ -982,16 +958,36 @@ textarea::placeholder {
   color: var(--theme-color-inputPlaceholder);
 }
 
-/* Selects */
+/* Selects – regular */
 select,
-.setting-item-control select,
+.setting-item-control select {
+  border: none;
+  box-shadow: var(--theme-shadow-control);
+  background-color: var(--theme-color-controlBg);
+}
+select:hover,
+.setting-item-control select:hover {
+  border: none;
+  background: var(--theme-color-controlBgHover);
+  color: var(--theme-color-controlTextHover);
+}
+select:focus,
+.dropdown:focus {
+    box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+    outline: none;
+}
+
+/* Selects – lower visual weight */
 .search-results-info .dropdown {
   border: none;
   box-shadow: var(--theme-shadow-control);
-  background-color: var(--background-control);
+  background-color: var(--theme-color-controlBgLowWeight);
 }
-select:focus,
-.dropdown:focus,
+.search-results-info .dropdown:hover {
+  border: none;
+  background: var(--theme-color-controlBgLowWeightHover);
+  color: var(--theme-color-controlText);
+}
 .search-results-info .dropdown:focus {
     box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
     outline: none;
@@ -1456,7 +1452,6 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   margin: 0;
   padding: 0.25em 0.5em;
   line-height: var(--line-height-tight);
-  width: fit-content;
   display: flex;
 }
 .metadata-properties-heading:hover,
@@ -1469,8 +1464,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   font-weight: var(--font-medium);
 }
 .metadata-properties-heading .collapse-indicator,
-.embedded-backlinks .backlink-pane .tree-item-self .tree-item-icon,
-.graph-controls .mod-collapsible .collapse-icon {
+.graph-controls .mod-collapsible .collapse-icon,
+.tree-item-self .tree-item-icon.collapse-icon {
   color: var(--color-text-interactive);
   display: block;
   left: inherit;
@@ -1478,6 +1473,10 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   padding: 0;
   position: relative;
   width: var(--size-4-4);
+  margin: 0;
+}
+.tree-item-self .tree-item-icon.collapse-icon {
+  margin-left: 0.5em;
 }
 .backlink-pane > .tree-item-self .collapse-icon,
 .outgoing-link-pane > .tree-item-self .collapse-icon {
@@ -1527,6 +1526,7 @@ audio::-webkit-media-controls-panel {
 /* Core Plugin: Backlinks */
 .backlink-pane > .tree-item-self {
   color: var(--color-text-interactive);
+  width: inherit;
 }
 .backlink-pane .search-result:not(.is-collapsed) .search-result-file-title {
   color: var(--color-text-interactive);
@@ -1551,6 +1551,10 @@ audio::-webkit-media-controls-panel {
 .embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
   font-size: var(--font-ui-smaller);
   font-weight: var(--font-medium);
+}
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-flair-outer {
+  /* Normally this would be positioned ot the right, but for embedded backlinks this overlaps with the controls */
+  margin-left: 1em;
 }
 .embedded-backlinks .nav-buttons-container {
   top: 0;
@@ -1607,6 +1611,10 @@ audio::-webkit-media-controls-panel {
 /* Core Plugin: Files */
 .nav-files-container .nav-file-title {
   justify-content: space-between;
+  padding: 0;
+}
+.nav-file-title-content {
+  padding: var(--nav-item-padding);
 }
 .nav-file-tag {
   background: transparent;
@@ -1689,6 +1697,44 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
 }
 .popover.hover-popover {
   padding: 0.5rem;
+}
+
+/* Core Plugin: Search */
+.workspace-leaf-content[data-type="search"] {
+  padding: 0.5rem 1rem;
+}
+.search-row,
+.search-info-container,
+.search-params,
+.search-results-info {
+  margin: 0 0 0.5rem 0;
+}
+
+.search-params .setting-item {
+  margin: 0;
+}
+.search-result-container.mod-global-search {
+  margin-top: 1em;
+  padding: 0;
+}
+.search-results-children {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.search-results-info {
+  border-bottom: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 1em;
+  margin: 0;
+}
+.search-results-result-count {
+}
+.search-results-info .dropdown {
+  max-width: 12em;
+  text-align-last: left;
 }
 
 /* Community Plugin: Style Settings */
