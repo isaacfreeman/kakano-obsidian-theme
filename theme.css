@@ -177,8 +177,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBgHover: rgba(255, 255, 255, 0.1);
   --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBg: var(--theme-color-baseVeryVeryLightened);
-  --theme-color-controlBgLowWeightHover: var(--theme-color-baseLightened);
-  --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
+  --theme-color-controlBgLowWeightHover: var(--theme-color-baseSlightlyLightened);
+  --theme-color-controlBgLowWeight: var(--theme-color-baseLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
@@ -1475,9 +1475,6 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   width: var(--size-4-4);
   margin: 0;
 }
-.tree-item-self .tree-item-icon.collapse-icon {
-  margin-left: 0.5em;
-}
 .backlink-pane > .tree-item-self .collapse-icon,
 .outgoing-link-pane > .tree-item-self .collapse-icon {
   display: block;
@@ -1624,6 +1621,9 @@ audio::-webkit-media-controls-panel {
 .nav-file-title.is-active .nav-file-tag {
   color: var(--theme-color-navFileTagActive);
   border-color: var(--theme-color-navFileTagActiveBorder);
+}
+.nav-files-container .tree-item-self .tree-item-icon.collapse-icon {
+  margin-left: 0.5em;
 }
 
 /* Core Plugin: File Recovery */
