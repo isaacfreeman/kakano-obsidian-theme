@@ -1178,10 +1178,14 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .mod-warning,
 p.mod-warning,
 .setting-message {
-  background: var(--theme-color-baseVeryVeryLightened);
   border-radius: var(--clickable-icon-radius);
   font-size: var(--font-ui-small);
+  background: var(--theme-color-baseVeryVeryLightened);
   padding: 0.5em 1em;
+}
+.mod-warning:not(button) {
+  display: inline-block;
+  margin: 0.5em 0;
 }
 p.mod-warning,.setting-message + p.mod-warning,.setting-message {
   margin-bottom: 0;
