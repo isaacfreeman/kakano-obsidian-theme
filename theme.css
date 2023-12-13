@@ -54,8 +54,8 @@ body {
   --modal-border-color: black;
   --modal-border-width: 0;
 
-  --nav-item-children-margin-left: 0.75em;
-  --nav-item-children-padding-left: 0.25em;
+  --nav-item-children-margin-left: 0.5em;
+  --nav-item-children-padding-left: 0.5em;
   --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
 
@@ -789,10 +789,15 @@ body {
 }
 
 /* Trees */
+.tree-item-self {
+  gap: 0.5em;
+}
 .tree-item-icon,
 .tree-item-self .tree-item-icon {
   /* Icons that represent an object have the same colour as the related text */
   color: inherit;
+  margin: 0;
+  position: relative;
 }
 
 /* Prompt */
@@ -1443,7 +1448,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .graph-controls .mod-collapsible,
 .mod-collapsible,
 .search-result-file-title {
-  align-items: center;
+  align-items: flex-start;
   border-radius: var(--radius-s);
   color: var(--text-faint);
   font-size: var(--nav-item-size);
@@ -1467,7 +1472,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .graph-controls .mod-collapsible .collapse-icon,
 .tree-item-self .tree-item-icon.collapse-icon {
   color: var(--color-text-interactive);
-  display: block;
+  display: flex;
   left: inherit;
   opacity: var(--icon-opacity);
   padding: 0;
@@ -1622,9 +1627,6 @@ audio::-webkit-media-controls-panel {
   color: var(--theme-color-navFileTagActive);
   border-color: var(--theme-color-navFileTagActiveBorder);
 }
-.nav-files-container .tree-item-self .tree-item-icon.collapse-icon {
-  margin-left: 0.5em;
-}
 
 /* Core Plugin: File Recovery */
 .mode-sync-history {}
@@ -1666,6 +1668,10 @@ audio::-webkit-media-controls-panel {
   background-color: var(--theme-color-graphViewBg);
   margin-top: 6px;
   border-radius: var(--tab-radius);
+}
+.mod-left-split .workspace-leaf-content[data-type="graph"] .view-content,
+.mod-right-split .workspace-leaf-content[data-type="graph"] .view-content {
+  background-color: transparent;
 }
 
 /* Core Plugin: Note composer */
