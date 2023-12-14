@@ -185,6 +185,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-modalContentBg: var(--theme-color-baseLightened);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
@@ -291,6 +292,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-modalContentBg: var(--theme-color-baseDarkened);
   --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
@@ -349,6 +351,7 @@ body {
   /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
   hanging-punctuation: first allow-end last;
 }
+
 /* Space before headings... */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
   padding: 0.67em 0 0 0;
@@ -397,6 +400,33 @@ body {
 /* Mobile */
 .is-mobile .workspace > .mod-root {
     padding: 0.5em;
+}
+
+
+/* Messages */
+.mod-warning,
+p.mod-warning,
+.setting-message {
+  border-radius: var(--clickable-icon-radius);
+  font-size: var(--font-ui-small);
+  background: var(--theme-color-baseVeryVeryLightened);
+  padding: 0.5em 1em;
+}
+.mod-warning:not(button) {
+  display: inline-block;
+  margin: 0.5em 0;
+}
+p.mod-warning,.setting-message + p.mod-warning,.setting-message {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+p.mod-warning:has(+ p.mod-warning,.setting-message),
+.setting-message:has(+ p.mod-warning,.setting-message) {
+  border-top-left-radius: var(--clickable-icon-radius);
+  border-top-right-radius: var(--clickable-icon-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* Tab close button on left, macOS standard */
@@ -1036,15 +1066,12 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 .modal-title {
   /* Space for modal-close-button in line with title */
-  margin-left: calc(var(--size-2-3) + 2em);
-  margin-right: calc(var(--size-2-3) + 2em);
-
+  margin-left: calc(var(--size-2-3) + 2rem);
+  margin-right: calc(var(--size-2-3) + 2rem);
   /* Align with top position for modal-close-button */
-  margin-top: calc(var(--size-2-3) * -1);
-
-  margin-bottom: 1em;
-
-  font-size: var(--font-ui-medium);
+  margin-top: -0.4em;
+  margin-bottom: 0.5em;
+  font-size: var(--font-ui-large);
   line-height: 1.125em;
 }
 .modal-title:empty + .modal-content {
@@ -1072,6 +1099,9 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 .modal-content {
   margin: 0 0;
+  /* Space for input borders */
+  padding-top: var(--input-border-width);
+  padding-bottom: var(--input-border-width);
   /* Space for modal-close-button in line with title */
   padding-left: calc(var(--size-2-3) + 2em);
   padding-right: calc(var(--size-2-3) + 2em);
@@ -1172,32 +1202,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .community-item.mod-active:hover .community-item-updated {
     color: var(--text-on-accent);
     opacity: 0.8;
-}
-
-/* Messages */
-.mod-warning,
-p.mod-warning,
-.setting-message {
-  border-radius: var(--clickable-icon-radius);
-  font-size: var(--font-ui-small);
-  background: var(--theme-color-baseVeryVeryLightened);
-  padding: 0.5em 1em;
-}
-.mod-warning:not(button) {
-  display: inline-block;
-  margin: 0.5em 0;
-}
-p.mod-warning,.setting-message + p.mod-warning,.setting-message {
-  margin-bottom: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-p.mod-warning:has(+ p.mod-warning,.setting-message),
-.setting-message:has(+ p.mod-warning,.setting-message) {
-  border-top-left-radius: var(--clickable-icon-radius);
-  border-top-right-radius: var(--clickable-icon-radius);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 /* Settings modal */
@@ -1503,15 +1507,31 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 
 /* Debug modal */
-.modal-content:has(.debug-textarea) {
+.modal-content:has(.modal-button-container):has(.debug-textarea) {
   /* Show shadow below buttons */
   overflow: visible;
+  padding: var(--input-border-width);
+  margin-bottom: 2.5rem;
 }
 .debug-textarea {
-  margin-top: var(--input-border-width);
+  margin: 0;
+  border-radius: 0;
 }
-.debug-textarea + .modal-button-container {
-  padding: 0;
+
+/* Settings > Appearance > Ribbon menu modal */
+.modal-content:has(.modal-button-container) {
+  overflow: scroll;
+  margin-bottom: 3rem;
+  background-color: var(--theme-color-modalContentBg);
+  padding: 1em 2em;
+}
+.modal-content > .modal-button-container {
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Core Plugin: Audio Recorder */
