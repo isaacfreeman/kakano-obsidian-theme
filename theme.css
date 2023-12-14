@@ -475,6 +475,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 
 .mod-close:hover,
 .modal-close-button:hover,
+.document-search-close-button:hover,
 .workspace-tab-header-inner-close-button:hover,
 .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,
 .mod-sync-history .modal-close-button:hover,
