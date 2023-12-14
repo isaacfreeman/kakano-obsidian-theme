@@ -177,8 +177,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBgHover: rgba(255, 255, 255, 0.1);
   --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBg: var(--theme-color-baseVeryVeryLightened);
-  --theme-color-controlBgLowWeightHover: var(--theme-color-baseSlightlyLightened);
-  --theme-color-controlBgLowWeight: var(--theme-color-baseLightened);
+  --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
@@ -284,7 +283,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBgHover: rgba(0, 0, 0, 0.1);
   --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBg: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-controlBgLowWeightHover: var(--theme-color-baseDarkened);
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
@@ -963,8 +961,18 @@ textarea:hover {
 textarea {
   padding: 1em;
 }
+.search-input-container input::placeholder,
+input.document-search-input::placeholder,
+input[type='email']::placeholder,
+input[type='number']::placeholder,
+input[type='password']::placeholder,
+input[type='search']::placeholder,
+input[type='text']::placeholder,
+textarea::placeholder {
+  color: var(--theme-color-inputPlaceholder);
+}
 
-/* Buttons */
+/* Buttons - regular */
 button:not(.clickable-icon),
 button:not(.clickable-icon).mod-cta {
   border: none;
@@ -983,15 +991,23 @@ button:not(.clickable-icon).mod-cta:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
 }
 
-.search-input-container input::placeholder,
-input.document-search-input::placeholder,
-input[type='email']::placeholder,
-input[type='number']::placeholder,
-input[type='password']::placeholder,
-input[type='search']::placeholder,
-input[type='text']::placeholder,
-textarea::placeholder {
-  color: var(--theme-color-inputPlaceholder);
+/* Buttons - lower visual weight */
+.search-result-file-match-destination-file {
+  border: none;
+  box-shadow: var(--theme-shadow-control);
+  background-color: var(--theme-color-controlBgLowWeight);
+}
+.search-result-file-match:hover .search-result-file-match-destination-file:hover {
+  border: none;
+  background: var(--theme-color-controlBgHover);
+  color: var(--theme-color-controlTextHover);
+}
+.search-result-file-match-destination-file:focus {
+    box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+    outline: none;
+}
+.search-result-file-match:hover .search-result-file-match-destination-file:hover .search-result-file-match-destination-file-icon {
+  color: var(--theme-color-controlTextHover);
 }
 
 /* Selects – regular */
@@ -1021,8 +1037,8 @@ select:focus,
 }
 .search-results-info .dropdown:hover {
   border: none;
-  background: var(--theme-color-controlBgLowWeightHover);
-  color: var(--theme-color-controlText);
+  background: var(--theme-color-controlBgHover);
+  color: var(--theme-color-controlTextHover);
 }
 .search-results-info .dropdown:focus {
     box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
