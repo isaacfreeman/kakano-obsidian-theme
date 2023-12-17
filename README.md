@@ -36,4 +36,11 @@ Kakano has specific styling for the following plugins:
 - Graph view
 - Note composer
 - Outgoing Links
+- Outline
+- Page Preview
+- Properties view
 - Quick Switcher
+- Random note
+- Search
+
+### Core Plugins supported
