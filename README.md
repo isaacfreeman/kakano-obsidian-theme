@@ -42,5 +42,5 @@ Kakano has specific styling for the following plugins:
 - Quick Switcher
 - Random note
 - Search
-
-### Core Plugins supported
+- Slides
+- Tags view
