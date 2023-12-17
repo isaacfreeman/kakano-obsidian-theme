@@ -137,6 +137,8 @@ body .metadata-property[data-property-key="tags"] {
   --interactive-accent: var(--theme-color-base);
   --interactive-accent-hover: var(--theme-color-base);
   --slider-track-background: var(--theme-color-baseLightened);
+  --table-border-color: var(--theme-color-baseLightened);
+  --table-header-border-color: var(--theme-color-baseLightened);
 
   --metadata-property-background: var(--theme-color-baseVeryVeryLightened);
   --metadata-property-background-hover: var(--theme-color-baseVeryLightened);
@@ -193,6 +195,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
+  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
@@ -245,6 +248,8 @@ body .metadata-property[data-property-key="tags"] {
   --status-bar-background: var(--theme-color-baseVeryDarkened);
   --interactive-accent: var(--theme-color-base);
   --slider-track-background: var(--theme-color-base);
+  --table-border-color: var(--theme-color-baseDarkened);
+  --table-header-border-color: var(--theme-color-baseDarkened);
 
   --metadata-property-background: var(--theme-color-baseVeryVeryDarkened);
   --metadata-property-background-hover: var(--theme-color-baseVeryDarkened);
@@ -252,7 +257,7 @@ body .metadata-property[data-property-key="tags"] {
   --metadata-input-background-active: var(--theme-color-baseVeryVeryDarkened);
 
   /* Background for content area */
-  --background-primary: #111111;
+  --background-primary: black;
   /* Background for controls area */
   --background-secondary: var(--theme-color-baseDarkened);
 
@@ -301,6 +306,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
@@ -389,6 +395,12 @@ body {
 .markdown-source-view.mod-cm6 .code-block-flair {
   top: 0.5em;
   right: 0.5em;
+}
+
+/* Tables */
+.markdown-rendered th,
+.markdown-rendered thead tr > th:nth-child(2n+2) {
+  background: var(--theme-color-tableHeaderBg);
 }
 
 /* Markdown formatting shown while editing e.g. ### for headings */
@@ -866,7 +878,7 @@ input[type='text'].prompt-input::placeholder {
   border-top: 0;
 }
 
-/* Suggestions (Search, File Recovery) */
+/* Suggestions (Search, File Recovery, Slash commands) */
 .suggestion-container,
 .suggestion-container.mod-search-suggestion  {
   display: block;
