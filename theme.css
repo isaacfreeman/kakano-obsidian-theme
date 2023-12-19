@@ -53,6 +53,8 @@ body {
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
+  --p-spacing: 0;
+  --heading-spacing: 0.67em;
 
   --nav-item-children-margin-left: 0.5em;
   --nav-item-children-padding-left: 0.5em;
@@ -360,39 +362,70 @@ body {
 }
 
 /* Space before headings... */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
-  padding: 0.67em 0 0 0;
+.markdown-source-view .cm-line.HyperMD-header,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header,
+.markdown-reading-view h1,
+.markdown-reading-view h2,
+.markdown-reading-view h3,
+.markdown-reading-view h4,
+.markdown-reading-view h5,
+.markdown-reading-view h6 {
+  padding: var(--heading-spacing) 0 0 0;
+  margin: 0;
 }
 /* ...except when they immediately follow another heading */
-:is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) + :is(.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6) {
+.markdown-source-view :is(
+  .cm-line.HyperMD-header-1,
+  .cm-line.HyperMD-header-2,
+  .cm-line.HyperMD-header-3,
+  .cm-line.HyperMD-header-4,
+  .cm-line.HyperMD-header-5,
+  .cm-line.HyperMD-header-6
+) + :is(
+  .cm-line.HyperMD-header-1,
+  .cm-line.HyperMD-header-2,
+  .cm-line.HyperMD-header-3,
+  .cm-line.HyperMD-header-4,
+  .cm-line.HyperMD-header-5,
+  .cm-line.HyperMD-header-6
+) {
+  /* Using padding as margin has an !important applied elsewhere */
   padding-top: 0;
 }
-/* ...or the first on the page */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header:first-child {
+.markdown-reading-view :is(
+  .markdown-preview-section > div:has(h1),
+  .markdown-preview-section > div:has(h2),
+  .markdown-preview-section > div:has(h3),
+  .markdown-preview-section > div:has(h4),
+  .markdown-preview-section > div:has(h5),
+  .markdown-preview-section > div:has(h6)
+) + :is(
+  .markdown-preview-section > div:has(h1),
+  .markdown-preview-section > div:has(h2),
+  .markdown-preview-section > div:has(h3),
+  .markdown-preview-section > div:has(h4),
+  .markdown-preview-section > div:has(h5),
+  .markdown-preview-section > div:has(h6)
+) :is(h1, h2, h3, h4, h5, h6) {
   padding-top: 0;
+}
+/* ...or they're first on the page */
+.markdown-source-view .cm-line.HyperMD-header:first-child,
+.markdown-reading-view .mod-header + div > h1 {
+    padding-top: 0;
 }
 
-.markdown-source-view.mod-cm6 .HyperMD-quote,
+.markdown-source-view .HyperMD-quote,
 .callout {
   font-weight: 300;
 }
 
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+.markdown-source-view .cm-line.HyperMD-codeblock {
   /* Matched to --callout-padding */
   padding: 0 1.5em;
 }
 
-.markdown-source-view.mod-cm6 .code-block-flair {
+.markdown-source-view .code-block-flair {
   top: 0.5em;
   right: 0.5em;
 }
@@ -407,6 +440,7 @@ body {
 .cm-formatting.cm-formatting-header {
   color: var(--theme-color-textMeta);
   font-size: 0.8rem !important;
+  font-weight: normal;
   vertical-align: middle;
 }
 
@@ -1301,10 +1335,14 @@ input[type=checkbox]:checked:after {
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
-  margin: 3rem auto;
+  margin: 0 auto;
   max-width: var(--file-line-width);
   padding: 0 2rem;
   width: 100%;
+}
+.markdown-reading-view .mod-header {
+  background: pink;
+  margin-bottom: 3rem;
 }
 /* Override inline styles */
 .cm-content {
