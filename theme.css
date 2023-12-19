@@ -1333,11 +1333,16 @@ input[type=checkbox]:checked:after {
   max-width: none;
   width: 100%;
 }
+.markdown-source-view .cm-contentContainer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
   margin: 0 auto;
   max-width: var(--file-line-width);
-  padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   width: 100%;
 }
 .markdown-reading-view .mod-header {
