@@ -39,8 +39,13 @@ Kakano has specific styling for the following plugins:
 - Outline
 - Page Preview
 - Properties view
-- Quick Switcher
+- Quick switcher
 - Random note
 - Search
+- Slash commands
 - Slides
 - Tags view
+- Templates
+- Unique note creator
+- Word count
+- Workspaces

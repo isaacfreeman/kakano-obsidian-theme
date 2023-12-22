@@ -1145,7 +1145,7 @@ input[type=checkbox]:checked:after {
   margin-left: calc(var(--size-2-3) + 2rem);
   margin-right: calc(var(--size-2-3) + 2rem);
   /* Align with top position for modal-close-button */
-  margin-top: -0.4em;
+  margin-top: -0.5em;
   margin-bottom: 0.5em;
   font-size: var(--font-ui-large);
   line-height: 1.125em;
@@ -1188,6 +1188,11 @@ input[type=checkbox]:checked:after {
 }
 .modal-content p:last-child {
   margin-bottom: 0;
+}
+.modal-content > hr {
+  /* Used in the Manage Workspaces modal, but there's currently no way to target that. */
+  border: none;
+  margin: 1em 0;
 }
 .mod-sidebar-layout .modal-content {
   padding: 0;
