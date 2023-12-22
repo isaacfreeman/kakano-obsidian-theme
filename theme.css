@@ -1208,6 +1208,11 @@ input[type=checkbox]:checked:after {
 .mod-community-modal .community-modal-controls {
   background: var(--theme-color-settingsBg);
   padding: 2.5em 1em 1em 0;
+  box-shadow: var(--shadow-s);
+  z-index: 1;
+}
+.mod-community-modal .modal-close-button {
+  z-index: 2;
 }
 .mod-community-modal .community-modal-controls .setting-item {
   padding: 0;
@@ -1217,6 +1222,10 @@ input[type=checkbox]:checked:after {
   /* Filter control */
   max-width: var(--modal-community-sidebar-width);
   margin-bottom: 0.5em;
+  float: right;
+}
+.mod-community-modal .modal-content:has(.community-modal-details) .community-modal-controls .setting-item:first-child {
+  float: none;
 }
 .community-modal-search-summary {
   margin: 0;
