@@ -56,7 +56,7 @@ body {
   --p-spacing: 0;
   --heading-spacing: 0.67em;
 
-  --nav-item-children-margin-left: 0.5em;
+  --nav-item-children-margin-left: 1em;
   --nav-item-children-padding-left: 0.5em;
   --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
@@ -119,9 +119,9 @@ body .metadata-property[data-property-key="tags"] {
   --icon-color-hover: white;
   --icon-color: var(--theme-color-base);
   --modal-background: var(--theme-color-baseVeryLightened);
-  --nav-collapse-icon-color-collapsed: var(--theme-color-base);
-  --nav-collapse-icon-color: var(--theme-color-base);
-  --nav-indentation-guide-color: var(--theme-color-baseSlightlyLightened);
+  --nav-collapse-icon-color-collapsed: var(--theme-color-baseSlightlyTransparent);
+  --nav-collapse-icon-color: var(--theme-color-baseSlightlyTransparent);
+  --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
   --nav-item-background-active: var(--theme-color-base);
   --nav-item-background-hover: var(--theme-color-baseSlightlyLightened);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
@@ -230,9 +230,9 @@ body .metadata-property[data-property-key="tags"] {
   --icon-color-hover: white;
   --icon-color: var(--theme-color-base);
   --modal-background: var(--theme-color-baseVeryDarkened);
-  --nav-collapse-icon-color-collapsed: var(--theme-color-base);
-  --nav-collapse-icon-color: var(--theme-color-base);
-  --nav-indentation-guide-color: var(--theme-color-baseDarkened);
+  --nav-collapse-icon-color-collapsed: var(--theme-color-baseSlightlyTransparent);
+  --nav-collapse-icon-color: var(--theme-color-baseSlightlyTransparent);
+  --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
   --nav-item-background-active: var(--theme-color-base);
   --nav-item-background-hover: var(--theme-color-baseSlightlyDarkened);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
@@ -1119,6 +1119,9 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   background-color: var(--interactive-accent);
   color: var(--nav-item-color-active);
 }
+.nav-folder-title {
+  font-weight: var(--font-medium);
+}
 
 /* Checkboxes */
 .checkbox-container {
@@ -1736,9 +1739,11 @@ audio::-webkit-media-controls-panel {
 /* Core Plugin: Files */
 .nav-files-container .nav-file-title {
   justify-content: space-between;
+  gap: 0;
   padding: 0;
 }
 .nav-file-title-content {
+  flex-grow: 1;
   padding: var(--nav-item-padding);
 }
 .nav-file-tag {
