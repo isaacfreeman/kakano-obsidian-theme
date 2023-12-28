@@ -39,8 +39,9 @@ settings:
 
 /* Variables for both light and dark */
 body {
-  --background-secondary: transparent;
   --background-input: var(--theme-color-baseVeryTransparent);
+  --background-modifier-message: var(--theme-color-noticeBg);
+  --background-secondary: transparent;
   --callout-padding: 0.75em 1.5em;
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
@@ -48,20 +49,18 @@ body {
   --divider-width: 0;
   --file-line-width: 40rem;
   --file-margins: 0;
+  --heading-spacing: 0.67em;
   --inline-title-size: var(--font-ui-medium);
   --inline-title-weight: bold;
   --input-border-width: 2px;
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
-  --p-spacing: 0;
-  --heading-spacing: 0.67em;
-
   --nav-item-children-margin-left: 1em;
   --nav-item-children-padding-left: 0.5em;
   --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
-
+  --p-spacing: 0;
   --prompt-border-color: transparent;
   --prompt-border-width: 0;
   --ribbon-background-collapsed: transparent;
@@ -108,11 +107,11 @@ body .metadata-property[data-property-key="tags"] {
 
 .theme-light {
   /* Built-in variables */
+  --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyLightened);
+  --background-modifier-active-hover: var(--theme-color-baseLightened);
   --background-modifier-border-focus: var(--theme-color-base);
   --background-modifier-border: var(--theme-color-baseSlightlyLightened);
   --background-modifier-hover: var(--theme-color-base);
-  --background-modifier-active-hover: var(--theme-color-baseLightened);
-  --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyLightened);
   --blockquote-border-color: var(--theme-color-baseVeryLightened);
   --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: white;
@@ -193,6 +192,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
   --theme-color-navFileTagBorder: var(--theme-color-base);
+  --theme-color-notice: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-noticeBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
@@ -217,11 +218,12 @@ body .metadata-property[data-property-key="tags"] {
 
 .theme-dark {
   /* Built-in variables */
+  --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyDarkened);
+  --background-modifier-active-hover: var(--theme-color-baseDarkened);
   --background-modifier-border-focus: var(--theme-color-baseSlightlyDarkened);
   --background-modifier-border: var(--theme-color-baseSlightlyDarkened);
   --background-modifier-hover: var(--theme-color-base);
-  --background-modifier-active-hover: var(--theme-color-baseDarkened);
-  --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyDarkened);
+  --background-modifier-message: var(--theme-color-baseVeryLightened);
   --blockquote-border-color: var(--theme-color-baseVeryDarkened);
   --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: white;
@@ -302,6 +304,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
   --theme-color-navFileTagBorder: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-notice: var(--theme-color-baseVeryVeryDarkened);
+  --theme-color-noticeBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
@@ -592,6 +596,19 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .mod-root .workspace-tab-header-status-icon:hover {
   color: var(--color-text-interactive);
   background-color: var(--background-modifier-active-hover);
+}
+
+/* Notices */
+.notice-container {
+  padding: 0;
+  right: 1rem;
+  top: 1rem;
+}
+.notice {
+  border-radius: 1em;
+  color: var(--theme-color-notice);
+  box-shadow: var(--theme-shadow-control);
+  padding: 1em 1.5em;
 }
 
 /* Overall workspace */
