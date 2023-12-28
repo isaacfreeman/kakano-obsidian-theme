@@ -40,6 +40,7 @@ settings:
 /* Variables for both light and dark */
 body {
   --background-secondary: transparent;
+  --background-input: var(--theme-color-baseVeryTransparent);
   --callout-padding: 0.75em 1.5em;
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
@@ -156,7 +157,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-colorCloseBgHover: var(--theme-color-baseVeryTransparent);
   --theme-colorSlideBgHover: var(--theme-color-baseVeryTransparent);
   --background-inactive-tab-hover: var(--theme-color-baseLightened);
-  --background-input: var(--theme-color-baseLightened);
   --background-interactive-active: var(--theme-color-baseSlightlyLightened);
   --theme-gradient-modRootBg: linear-gradient(0deg, var(--theme-color-baseLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
   --theme-gradient-graphSidebarBg: hsla(var(--base-h), var(--base-s), var(--base-l), 0.3);
@@ -172,7 +172,6 @@ body .metadata-property[data-property-key="tags"] {
   --controls-container-background: var(--theme-color-baseVeryLightened);
   --modal-background-search-results: linear-gradient(0deg, var(--theme-color-baseVeryLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
   --modal-background-vertical-tab-header: linear-gradient(0deg, var(--theme-color-baseVeryLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
-  --theme-color-checkboxBgOff: var(--theme-color-baseLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
@@ -267,7 +266,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-colorCloseBgHover: var(--theme-color-baseVeryTransparent);
   --theme-colorSlideBgHover: var(--theme-color-baseVeryTransparent);
   --background-inactive-tab-hover: var(--theme-color-baseSlightlyDarkened);
-  --background-input: var(--theme-color-baseDarkened);
   --background-interactive-active: var(--theme-color-baseSlightlyDarkened);
   --theme-gradient-modRootBg: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
   --theme-gradient-graphSidebarBg: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
@@ -283,7 +281,6 @@ body .metadata-property[data-property-key="tags"] {
   --controls-container-background: var(--theme-color-baseVeryDarkened);
   --modal-background-search-results: linear-gradient(0deg, var(--theme-color-baseDarkened) 0%, var(--theme-color-baseVeryDarkened) 100%);
   --modal-background-vertical-tab-header: linear-gradient(0deg, var(--theme-color-baseDarkened) 0%, var(--theme-color-baseVeryDarkened) 100%);
-  --theme-color-checkboxBgOff: var(--theme-color-baseDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
@@ -1125,7 +1122,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 
 /* Checkboxes */
 .checkbox-container {
-  background-color: var(--theme-color-checkboxBgOff);
+  background-color: var(--background-input);
 }
 .checkbox-container.is-enabled {
     background-color: var(--interactive-accent);
