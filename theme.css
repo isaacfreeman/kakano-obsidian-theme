@@ -37,9 +37,10 @@ settings:
         value: 'setting-properties-position-below'
 */
 
-/* Variables for both light and dark */
+/********* Variables *********/
+
 body {
-  --background-input: var(--theme-color-baseVeryTransparent);
+  --background-input: var(--theme-color-baseVeryVeryTransparent);
   --slider-track-background: var(--theme-color-baseTransparent);
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
@@ -98,6 +99,7 @@ body {
   --theme-color-baseTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.5);
   --theme-color-baseSlightlyTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.75);
   --theme-color-baseVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.25);
+  --theme-color-baseVeryVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.125);
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
@@ -327,7 +329,8 @@ body .metadata-property[data-property-key="tags"] {
   --pill-background-remove-hover: var(--theme-color-baseSlightlyDarkened);
 }
 
-/* Typography */
+/********* Markdown Typography *********/
+
 body {
   --blockquote-border-thickness: 0.25em;
   /* Use the system font by default for both text and interface, unless user has chosen something else.  */
@@ -430,7 +433,8 @@ body {
   right: 0.5em;
 }
 
-/* Tables */
+/***** Tables *****/
+
 .markdown-rendered th,
 .markdown-rendered thead tr > th:nth-child(2n+2) {
   background: var(--theme-color-tableHeaderBg);
@@ -444,7 +448,8 @@ body {
   vertical-align: middle;
 }
 
-/* Content Checkboxes */
+/***** Markdown Checkboxes *****/
+
 /* Alternate checkboxes idea borrowed from Minimal theme */
 .markdown-source-view.mod-cm6 .task-list-item-checkbox {
   border-radius: 0.33em;
@@ -491,13 +496,11 @@ li[data-task="<"]>p>input:checked:after {
 input[data-task="/"]:checked:after,
 li[data-task="/"]>input:checked:after,
 li[data-task="/"]>p>input:checked:after {
-  /* TODO: convert to a path with rounded corners */
   -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="12,-12 48,-12 48,36 12,36" transform="rotate(45) translate(5,-12)"></polyline></g></g></svg>');
 }
 input[data-task="<"]:checked:after,
 li[data-task="<"]>input:checked:after,
 li[data-task="<"]>p>input:checked:after {
-  /* TODO: convert to a path with rounded corners */
   -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="15,4.5 6,12 15,19.5 16.75,17.5 10,12 16.75,6.5"></polyline></g></g></svg>');
 }
 /* Complete states */
@@ -571,12 +574,14 @@ li[data-task=">"]>p>input:checked:after {
   -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="9,4.5 18,12 9,19.5 7.25,17.5 14,12 7.25,6.5"></polyline></g></g></svg>');
 }
 
-/* Mobile */
+/********* Mobile *********/
+
 .is-mobile .workspace > .mod-root {
     padding: 0.5em;
 }
 
-/* Messages */
+/********* Messages *********/
+
 .mod-warning,
 p.mod-warning,
 .setting-message {
@@ -588,6 +593,7 @@ p.mod-warning,
 .mod-warning:not(button) {
   display: inline-block;
   margin: 0.5em 0;
+  border: solid var(--text-error) 0.125em;
 }
 p.mod-warning,.setting-message + p.mod-warning,.setting-message {
   margin-bottom: 0;
@@ -602,37 +608,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   border-bottom-right-radius: 0;
 }
 
-/* Tab close button on left, macOS standard */
-.mod-macos .workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
-  position: static;
-  order: 0;
-}
-.mod-macos .workspace .mod-root .workspace-tab-header-inner-icon,
-.mod-macos .workspace .mod-root .workspace-tab-header-inner-title {
-  order: 1;
-}
-.mod-macos .modal-close-button {
-  left: var(--size-2-3);
-  right: auto;
-}
-.mod-macos .mod-community-modal .modal-sidebar .setting-item:first-child {
-  margin-left: auto;
-}
-.mod-macos .modal-sidebar .community-modal-controls {
-  padding-left: var(--size-4-5);
-}
-.mod-macos .multi-select-pill {
-  padding-left: 0.25em;
-}
-.mod-macos .multi-select-pill .multi-select-pill-remove-button {
-  order: 0;
-}
-.mod-macos .multi-select-pill .multi-select-pill-content {
-  order: 1;
-  margin: 0;
-}
+/********* Close buttons *********/
 
-/* Close buttons */
 .mod-close,
 .modal-close-button,
 .document-search-close-button,
@@ -642,6 +619,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   border-radius: 100%;
   border: none;
   color: var(--color-text-interactive);
+  /* Above .modal-title */
+  z-index: 2;
 }
 .workspace-tab-header-inner-close-button .svg-icon {
   stroke: var(--color-text-interactive);
@@ -679,7 +658,38 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   margin-top: -1px;
 }
 
-/* Lightweight Buttons */
+/* Tab close button on left, macOS standard */
+.mod-macos .workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+  position: static;
+  order: 0;
+}
+.mod-macos .workspace .mod-root .workspace-tab-header-inner-icon,
+.mod-macos .workspace .mod-root .workspace-tab-header-inner-title {
+  order: 1;
+}
+.mod-macos .modal-close-button {
+  left: var(--size-2-3);
+  right: auto;
+}
+.mod-macos .mod-community-modal .modal-sidebar .setting-item:first-child {
+  margin-left: auto;
+}
+.mod-macos .modal-sidebar .community-modal-controls {
+  padding-left: var(--size-4-5);
+}
+.mod-macos .multi-select-pill {
+  padding-left: 0.25em;
+}
+.mod-macos .multi-select-pill .multi-select-pill-remove-button {
+  order: 0;
+}
+.mod-macos .multi-select-pill .multi-select-pill-content {
+  order: 1;
+  margin: 0;
+}
+
+/********* Lightweight Buttons *********/
+
 .markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
 .side-dock-actions .side-dock-ribbon-action.clickable-icon {
@@ -723,7 +733,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   background-color: var(--background-modifier-active-hover);
 }
 
-/* Notices */
+/********* Notices *********/
+
 .notice-container {
   padding: 0;
   right: 1rem;
@@ -736,7 +747,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   padding: 1em 1.5em;
 }
 
-/* Overall workspace */
+/********* Workspace *********/
+
 .workspace {
   background-color: var(--background-secondary);
   background: linear-gradient(0deg, var(--background-secondary-gradient-bottom) 0%, var(--background-secondary-gradient-top) 100%);
@@ -968,7 +980,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   padding: 0.25em 0.5em;
 }
 
-/* Content references (search results, incoming/outgoing links, etc.) */
+/********* Content references (search results, incoming/outgoing links, etc.) *********/
+
 .search-result-file-matches {
   background: none;
   box-shadow: none;
@@ -1007,7 +1020,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--color-text-interactive);
 }
 
-/* Trees */
+/********* Trees *********/
+
 .tree-item-self {
   gap: 0.5em;
 }
@@ -1019,7 +1033,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   position: relative;
 }
 
-/* Prompt */
+/********* Prompt *********/
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -1051,7 +1066,8 @@ input[type='text'].prompt-input::placeholder {
   border-top: 0;
 }
 
-/* Suggestions (Search, File Recovery, Slash commands) */
+/********* Suggestions (Search, File Recovery, Slash commands) *********/
+
 .suggestion-container,
 .suggestion-container.mod-search-suggestion  {
   display: block;
@@ -1075,7 +1091,8 @@ input[type='text'].prompt-input::placeholder {
   color: var(--nav-item-color-active);
 }
 
-/* Hotkeys */
+/********* Hotkeys *********/
+
 .suggestion-hotkey,
 .setting-hotkey {
   color: var(--theme-color-hotkey);
@@ -1087,7 +1104,8 @@ input[type='text'].prompt-input::placeholder {
   border-color: var(--theme-color-textSelected);
 }
 
-/* Action lists */
+/********* Action lists *********/
+
 .vertical-tab-header-group-title {
   color: var(--text-normal);
 }
@@ -1096,7 +1114,8 @@ input[type='text'].prompt-input::placeholder {
   color: var(--color-text-interactive);
 }
 
-/* Standardised Controls */
+/********* Standardised Controls *********/
+
 /* Text fields */
 .search-input-container input[type='search'],
 input.document-search-input,
@@ -1235,7 +1254,109 @@ select:focus,
     outline: none;
 }
 
-/* Item lists */
+
+/* Multi-select pill */
+.multi-select-pill {
+  padding: var(--pill-padding-y) var(--pill-padding-x);
+}
+.multi-select-pill-remove-button {
+  margin: 0;
+  border-radius: 100%;
+}
+.multi-select-pill-remove-button:hover {
+  background: var(--pill-background-remove-hover);
+}
+
+/* Toolbars */
+.canvas-controls,
+.graph-controls,
+.graph-controls.is-close,
+.graph-controls:not(.is-close),
+.canvas-card-menu,
+.canvas-menu,
+.canvas-submenu {
+  background: var(--controls-container-background);
+  border: none;
+  padding: 0.25rem;
+  gap: 0;
+  box-shadow: var(--theme-shadow-input);
+  border-radius: 0.5rem;
+}
+.canvas-control-item,
+.graph-controls-button,
+.canvas-card-menu .canvas-card-menu-button {
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  border-radius: var(--clickable-icon-radius);
+  color: var(--color-text-interactive);
+  opacity: var(--icon-opacity);
+  background-color: transparent;
+  border: none;
+}
+.canvas-control-item:hover,
+.graph-controls-button:not(.mod-close):hover,
+.canvas-card-menu .canvas-card-menu-button:hover {
+  color: var(--color-text-interactive-hover);
+  background-color: var(--background-modifier-hover);
+}
+
+/* Collapsible controls */
+.metadata-properties-heading,
+.embedded-backlinks .backlink-pane .tree-item-self,
+.graph-controls .mod-collapsible,
+.mod-collapsible,
+.search-result-file-title {
+  align-items: flex-start;
+  border-radius: var(--radius-s);
+  color: var(--text-faint);
+  font-size: var(--nav-item-size);
+  font-weight: var(--font-medium);
+  gap: 0;
+  margin: 0;
+  padding: 0.25em 0.5em;
+  line-height: var(--line-height-tight);
+  display: flex;
+}
+.metadata-properties-heading:hover,
+.embedded-backlinks .backlink-pane .tree-item-self:hover,
+.graph-controls .mod-collapsible:hover,
+.mod-collapsible:hover,
+.search-result-file-title:hover {
+  color: var(--nav-item-color-hover);
+  background-color: var(--nav-item-background-hover);
+  font-weight: var(--font-medium);
+}
+.metadata-properties-heading .collapse-indicator,
+.graph-controls .mod-collapsible .collapse-icon,
+.tree-item-self .tree-item-icon.collapse-icon {
+  color: var(--color-text-interactive);
+  display: flex;
+  left: inherit;
+  opacity: var(--icon-opacity);
+  padding: 0;
+  position: relative;
+  width: var(--size-4-4);
+  margin: 0;
+}
+.backlink-pane > .tree-item-self .collapse-icon,
+.outgoing-link-pane > .tree-item-self .collapse-icon {
+  display: block;
+  margin-left: 0;
+  position: relative;
+}
+.metadata-properties-heading .collapse-indicator svg,
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-icon svg,
+.graph-controls .mod-collapsible .collapse-icon svg {
+  color: var(--color-text-interactive);
+}
+.metadata-content,
+.embedded-backlinks .backlink-pane .search-result-container,
+.graph-control-section .tree-item-children {
+  margin: 0 1em 1em 1em;
+  font-size: var(--font-ui-smaller);
+}
+
+/********* Item lists *********/
 body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
 .horizontal-tab-nav-item:hover,
 .vertical-tab-nav-item:hover {
@@ -1277,20 +1398,53 @@ input[type=checkbox]:checked:after {
   left: 0;
 }
 
-/* Modals */
+/********** Remote items **********/
+
+.community-modal-search-results-wrapper,
+.vault-list,
+.sync-file-tree-container {
+  background: var(--modal-background-search-results);
+  border: 0;
+  padding: 1.5em;
+  gap: 1.5em;
+}
+.vault-list-item,
+.community-item,
+.sync-file-tree-container>.list-item {
+  background: var(--theme-color-communityItemBg);
+  border-radius: var(--radius-m);
+  border: none;
+  box-shadow: var(--shadow-l);
+  cursor: var(--cursor);
+  padding: var(--size-4-3);
+  position: relative;
+}
+.sync-file-tree-container>.list-item:hover,
+.community-item:hover {
+  background: var(--theme-color-communityItemBgHover);
+  color: var(--nav-item-color-hover);
+  font-weight: var(--nav-item-weight-hover);
+}
+
+/********** Modals **********/
+
+/* Default modal */
+
 .modal {
-  padding: 1rem 0;
+  padding: 0;
   overflow: hidden;
 }
 .modal-title {
   /* Space for modal-close-button in line with title */
-  margin-left: calc(var(--size-2-3) + 2rem);
-  margin-right: calc(var(--size-2-3) + 2rem);
+  padding-left: calc(var(--size-2-3) + 2rem);
+  padding-right: calc(var(--size-2-3) + 2rem);
   /* Align with top position for modal-close-button */
-  margin-top: -0.5em;
-  margin-bottom: 0.5em;
-  font-size: var(--font-ui-large);
-  line-height: 1.125em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: var(--font-ui-medium);
+  line-height: 1.4em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 .modal-title:empty + .modal-content {
   /* If the title is empty, apply the same top margin to the content */
@@ -1302,27 +1456,10 @@ input[type=checkbox]:checked:after {
 .document-search-container {
   animation: 0.5s 1 alternate fadein;
 }
-.modal-sidebar,
-.modal.mod-settings .vertical-tab-header {
-  border-right: none;
-  padding: 2.5em 1em 1em 1.5em;
-  margin: 0;
-  background: var(--modal-background-vertical-tab-header);
-  color: var(--color-text-interactive);
-}
-.modal-button-container {
-  margin-top: 1em;
-  padding-left: calc(var(--size-2-3) + 2em);
-  padding-right: calc(var(--size-2-3) + 2em);
-}
 .modal-content {
   margin: 0 0;
-  /* Space for input borders */
-  padding-top: var(--input-border-width);
-  padding-bottom: var(--input-border-width);
-  /* Space for modal-close-button in line with title */
-  padding-left: calc(var(--size-2-3) + 2em);
-  padding-right: calc(var(--size-2-3) + 2em);
+  /* Allow space for input borders */
+  padding: var(--input-border-width) 2em;
   overflow: auto;
 }
 .modal-content p {
@@ -1336,9 +1473,29 @@ input[type=checkbox]:checked:after {
   border: none;
   margin: 1em 0;
 }
+.modal-sidebar,
+.modal.mod-settings .vertical-tab-header {
+  border-right: none;
+  padding: 2.5em 1em 1em 1.5em;
+  margin: 0;
+  background: var(--modal-background-vertical-tab-header);
+  color: var(--color-text-interactive);
+}
 .mod-sidebar-layout .modal-content {
   padding: 0;
   margin: 0;
+}
+.modal-content:has(.modal-button-container) {
+  overflow: scroll;
+  background-color: var(--theme-color-modalContentBg);
+  padding: 1em 1em 1em 2em;
+}
+.modal-content > .modal-button-container {
+  padding: 0;
+}
+.modal-button-container {
+  margin-top: 1em;
+  padding: 1em calc(var(--size-2-3) + 2rem);
 }
 
 /* Help modal */
@@ -1381,23 +1538,14 @@ input[type=checkbox]:checked:after {
 .community-modal-details {
   border: none;
 }
-.community-modal-search-results-wrapper {
-  background: var(--modal-background-search-results);
-  border: 0;
-}
 .community-modal-search-results {
   padding: 1.5em;
   gap: 1.5em;
 }
 .community-item {
-  border: none;
-  box-shadow: var(--shadow-l);
-  background: var(--theme-color-communityItemBg)
-}
-.community-item:hover {
-  background: var(--theme-color-communityItemBgHover);
-  color: var(--nav-item-color-hover);
-  font-weight: var(--nav-item-weight-hover);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2-1);
 }
 .community-item.is-selected,
 .community-item.is-selected:hover {
@@ -1477,7 +1625,23 @@ input[type=checkbox]:checked:after {
   color: var(--color-text-interactive);
 }
 
-/* Content area */
+/* Debug modal */
+.modal-content:has(.modal-button-container):has(.debug-textarea) {
+  /* Show shadow below buttons */
+  overflow: visible;
+  padding: var(--input-border-width);
+  margin-bottom: 2.5rem;
+}
+.debug-textarea {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Settings > Appearance > Ribbon menu modal */
+/* TODO: This is a weird modal */
+
+/********* Content area *********/
+
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
   padding: 1em 2em 3em 2em;
   padding: 0;
@@ -1582,7 +1746,7 @@ input[type=checkbox]:checked:after {
   cursor: auto;
 }
 
-/* Properties */
+/********* Properties *********/
 .setting-properties-position-below .is-live-preview .metadata-container {
   padding: 0.5em 2em 0 2em;
 }
@@ -1646,136 +1810,9 @@ input[type=checkbox]:checked:after {
   padding: var(--pill-padding-y) 0;
 }
 
-/* Multi-select pill */
-.multi-select-pill {
-  padding: var(--pill-padding-y) var(--pill-padding-x);
-}
-.multi-select-pill-remove-button {
-  margin: 0;
-  border-radius: 100%;
-}
-.multi-select-pill-remove-button:hover {
-  background: var(--pill-background-remove-hover);
-}
 
-/* Toolbars */
-.canvas-controls,
-.graph-controls,
-.graph-controls.is-close,
-.graph-controls:not(.is-close),
-.canvas-card-menu,
-.canvas-menu,
-.canvas-submenu {
-  background: var(--controls-container-background);
-  border: none;
-  padding: 0.25rem;
-  gap: 0;
-  box-shadow: var(--theme-shadow-input);
-  border-radius: 0.5rem;
-}
-.canvas-control-item,
-.graph-controls-button,
-.canvas-card-menu .canvas-card-menu-button {
-  --icon-size: var(--icon-s);
-  --icon-stroke: var(--icon-s-stroke-width);
-  border-radius: var(--clickable-icon-radius);
-  color: var(--color-text-interactive);
-  opacity: var(--icon-opacity);
-  background-color: transparent;
-  border: none;
-}
-.canvas-control-item:hover,
-.graph-controls-button:not(.mod-close):hover,
-.canvas-card-menu .canvas-card-menu-button:hover {
-  color: var(--color-text-interactive-hover);
-  background-color: var(--background-modifier-hover);
-}
+/********** Core Plugin: Audio Recorder **********/
 
-/* Collapsible controls */
-.metadata-properties-heading,
-.embedded-backlinks .backlink-pane .tree-item-self,
-.graph-controls .mod-collapsible,
-.mod-collapsible,
-.search-result-file-title {
-  align-items: flex-start;
-  border-radius: var(--radius-s);
-  color: var(--text-faint);
-  font-size: var(--nav-item-size);
-  font-weight: var(--font-medium);
-  gap: 0;
-  margin: 0;
-  padding: 0.25em 0.5em;
-  line-height: var(--line-height-tight);
-  display: flex;
-}
-.metadata-properties-heading:hover,
-.embedded-backlinks .backlink-pane .tree-item-self:hover,
-.graph-controls .mod-collapsible:hover,
-.mod-collapsible:hover,
-.search-result-file-title:hover {
-  color: var(--nav-item-color-hover);
-  background-color: var(--nav-item-background-hover);
-  font-weight: var(--font-medium);
-}
-.metadata-properties-heading .collapse-indicator,
-.graph-controls .mod-collapsible .collapse-icon,
-.tree-item-self .tree-item-icon.collapse-icon {
-  color: var(--color-text-interactive);
-  display: flex;
-  left: inherit;
-  opacity: var(--icon-opacity);
-  padding: 0;
-  position: relative;
-  width: var(--size-4-4);
-  margin: 0;
-}
-.backlink-pane > .tree-item-self .collapse-icon,
-.outgoing-link-pane > .tree-item-self .collapse-icon {
-  display: block;
-  margin-left: 0;
-  position: relative;
-}
-.metadata-properties-heading .collapse-indicator svg,
-.embedded-backlinks .backlink-pane .tree-item-self .tree-item-icon svg,
-.graph-controls .mod-collapsible .collapse-icon svg {
-  color: var(--color-text-interactive);
-}
-.metadata-content,
-.embedded-backlinks .backlink-pane .search-result-container,
-.graph-control-section .tree-item-children {
-  margin: 0 1em 1em 1em;
-  font-size: var(--font-ui-smaller);
-}
-
-/* Debug modal */
-.modal-content:has(.modal-button-container):has(.debug-textarea) {
-  /* Show shadow below buttons */
-  overflow: visible;
-  padding: var(--input-border-width);
-  margin-bottom: 2.5rem;
-}
-.debug-textarea {
-  margin: 0;
-  border-radius: 0;
-}
-
-/* Settings > Appearance > Ribbon menu modal */
-.modal-content:has(.modal-button-container) {
-  overflow: scroll;
-  margin-bottom: 3rem;
-  background-color: var(--theme-color-modalContentBg);
-  padding: 1em 2em;
-}
-.modal-content > .modal-button-container {
-  padding: 1rem;
-  position: absolute;
-  bottom: 0;
-  top: auto;
-  left: 0;
-  right: 0;
-}
-
-/* Core Plugin: Audio Recorder */
 audio::-webkit-media-controls-enclosure {
   border: none;
   background: transparent;
@@ -1790,7 +1827,8 @@ audio::-webkit-media-controls-panel {
   border-radius: 0.5rem;
 }
 
-/* Core Plugin: Backlinks */
+/********** Core Plugin: Backlinks **********/
+
 .backlink-pane > .tree-item-self {
   color: var(--color-text-interactive);
   width: inherit;
@@ -1844,7 +1882,8 @@ audio::-webkit-media-controls-panel {
     margin: 0 0 0 0;
 }
 
-/* Core Plugin: Bookmarks */
+/********** Core Plugin: Bookmarks **********/
+
 .view-action.mod-bookmark {
   --icon-color: transparent;
   color: var(--color-text-interactive);
@@ -1853,7 +1892,8 @@ audio::-webkit-media-controls-panel {
   color: var(--color-text-interactive-hover)
 }
 
-/* Core Plugin: Canvas */
+/********** Core Plugin: Canvas **********/
+
 .canvas-submenu {
   background: var(--background-interactive-active);
   top: calc(100% - 0.5em);
@@ -1872,10 +1912,12 @@ audio::-webkit-media-controls-panel {
   box-shadow: none;
 }
 
-/* Core Plugin: Command Palette */
+/********** Core Plugin: Command Palette **********/
+
 /*   No special styles: uses shared .prompt */
 
-/* Core Plugin: Files */
+/********** Core Plugin: Files **********/
+
 .nav-files-container .nav-file-title {
   justify-content: space-between;
   gap: 0;
@@ -1895,7 +1937,8 @@ audio::-webkit-media-controls-panel {
   border-color: var(--theme-color-navFileTagActiveBorder);
 }
 
-/* Core Plugin: File Recovery */
+/********** Core Plugin: File Recovery **********/
+
 .mode-sync-history {}
 .sync-history-list-container {
   border: none;
@@ -1913,7 +1956,8 @@ audio::-webkit-media-controls-panel {
   padding: 1em;
 }
 
-/* Core Plugin: Graph */
+/********** Core Plugin: Graph **********/
+
 .graph-control-section {
   border: none;
   padding: 0.25rem;
@@ -1941,10 +1985,12 @@ audio::-webkit-media-controls-panel {
   background: var(--theme-gradient-graphSidebarBg);
 }
 
-/* Core Plugin: Note composer */
+/********** Core Plugin: Note composer **********/
+
 /*   No special styles: uses shared .prompt */
 
-/* Core Plugin: Outgoing links */
+/********** Core Plugin: Outgoing links **********/
+
 .tree-item-self.is-clickable.outgoing-link-item {
   cursor: var(--cursor-link);
   text-decoration-line: var(--link-decoration);
@@ -1962,7 +2008,8 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   text-decoration-line: var(--link-decoration-hover);
 }
 
-/* Core Plugin: Page preview */
+/********** Core Plugin: Page preview **********/
+
 .popover {
   border: none;
   box-shadow: var(--shadow-l);
@@ -1972,7 +2019,8 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   padding: 0.5rem;
 }
 
-/* Core Plugin: Search */
+/********** Core Plugin: Search **********/
+
 .workspace-leaf-content[data-type="search"] {
   padding: 0.5rem 1rem;
 }
@@ -2010,7 +2058,8 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   text-align-last: left;
 }
 
-/* Core Plugin: Slides */
+/********** Core Plugin: Slides **********/
+
 body {
   /* Match slide typography to regular typography */
   --r-background-color: var(--background-primary);
@@ -2079,7 +2128,33 @@ body {
   width: 1rem;
 }
 
-/* Core Plugin: Tags view */
+/********** Core Plugin: Sync **********/
+
+/* Deleted files modal */
+.modal:has(.sync-file-tree-container) .modal-content {
+  /* There's no button container below the list */
+  padding-bottom: 0;
+}
+.modal:has(.vault-list) .vault-list,
+.modal:has(.sync-file-tree-container) .sync-file-tree-container {
+  margin: -2em -2em 0 -2em;
+}
+.modal:has(.vault-list) .modal-title {
+  box-shadow: var(--shadow-s);
+  z-index: 1;
+}
+.modal:has(.vault-list) .modal-button-container {
+  padding: 0;
+}
+.vault-list-item {
+  /* TODO: sticks out at right */
+}
+.mod-sync-history {
+  /* TODO */
+}
+
+/********** Core Plugin: Tags view **********/
+
 .tag-pane-tag > .tree-item-inner {
   /* Tags in sidebar styled the same as in notes */
   background-color: var(--tag-background);
@@ -2101,7 +2176,8 @@ body {
   cursor: var(--cursor-link);
 }
 
-/* Community Plugin: Style Settings */
+/********** Community Plugin: Style Settings **********/
+
 .modal-style-settings {
   /* Show shadow below buttons */
   overflow: visible;
