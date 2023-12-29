@@ -364,12 +364,12 @@ body {
 /* Space before headings... */
 .markdown-source-view .cm-line.HyperMD-header,
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header,
-.markdown-reading-view h1,
-.markdown-reading-view h2,
-.markdown-reading-view h3,
-.markdown-reading-view h4,
-.markdown-reading-view h5,
-.markdown-reading-view h6 {
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
   padding: var(--heading-spacing) 0 0 0;
   margin: 0;
 }
@@ -392,7 +392,7 @@ body {
   /* Using padding as margin has an !important applied elsewhere */
   padding-top: 0;
 }
-.markdown-reading-view :is(
+.markdown-rendered :is(
   .markdown-preview-section > div:has(h1),
   .markdown-preview-section > div:has(h2),
   .markdown-preview-section > div:has(h3),
@@ -411,7 +411,7 @@ body {
 }
 /* ...or they're first on the page */
 .markdown-source-view .cm-line.HyperMD-header:first-child,
-.markdown-reading-view .mod-header + div > h1 {
+.markdown-rendered .mod-header + div > h1 {
     padding-top: 0;
 }
 
@@ -1501,7 +1501,7 @@ input[type=checkbox]:checked:after {
   padding-right: 2rem;
   width: 100%;
 }
-.markdown-reading-view .mod-header {
+.markdown-rendered .mod-header {
   background: pink;
   margin-bottom: 3rem;
 }
