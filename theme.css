@@ -40,6 +40,7 @@ settings:
 /* Variables for both light and dark */
 body {
   --background-input: var(--theme-color-baseVeryTransparent);
+  --slider-track-background: var(--theme-color-baseSlightlyTransparent);
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
   --callout-padding: 0.75em 1.5em;
@@ -138,7 +139,6 @@ body .metadata-property[data-property-key="tags"] {
   --status-bar-background: var(--theme-color-baseLightened);
   --interactive-accent: var(--theme-color-base);
   --interactive-accent-hover: var(--theme-color-base);
-  --slider-track-background: var(--theme-color-baseLightened);
   --table-border-color: var(--theme-color-baseLightened);
   --table-header-border-color: var(--theme-color-baseLightened);
 
@@ -250,7 +250,6 @@ body .metadata-property[data-property-key="tags"] {
   --background-prompt: var(--theme-color-baseVeryDarkened);
   --status-bar-background: var(--theme-color-baseVeryDarkened);
   --interactive-accent: var(--theme-color-base);
-  --slider-track-background: var(--theme-color-base);
   --table-border-color: var(--theme-color-baseDarkened);
   --table-header-border-color: var(--theme-color-baseDarkened);
 
