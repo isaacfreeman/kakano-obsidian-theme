@@ -12,12 +12,13 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
     - [Standardised controls](#standardised-controls)
     - [Light/dark modes](#lightdark-modes)
     - [Properties below content](#properties-below-content)
-    - [Follow OS standards by default](#follow-os-standards-by-default)
+    - [Follows OS standards by default](#follows-os-standards-by-default)
+    - [Alternate checkboxes](#alternate-checkboxes)
     - [Supports core plugins](#supports-core-plugins)
     - [Settings](#settings)
-  - [Roadmap](#roadmap)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
+  - [Roadmap](#roadmap)
   - [About](#about)
 
 ## Getting started
@@ -61,10 +62,18 @@ Light and dark versions are generated from the same base color.
 (Live Preview only)](properties_below_content.png)
 Some people pay a lot of attention to propertioes on their notes, others use them occasionally. If you want them around but not in the way, Kakano let syou place them below your main note content. Currently this only works for Live Preview mode.
 
-### Follow OS standards by default
+### Follows OS standards by default
 ![Close buttons on the left for macOS](close_buttons.png)
 - On macOS, close buttons appear at the left of tabs and modals, as standard.
 - Kakano uses system fonts by default to be consistent with other apps. It respects user font choices if you prefer something else.
+
+### Alternate checkboxes
+![Supports alternate checkboxes](alternate_checkboxes.png)
+Supports some common alternate checkboxes:
+`- [/]` for "partially done"
+`- [<]` for "scheduling"
+`- [-]` for "cancelled"
+`- [>]` for "forwarded"
 
 ### Supports core plugins
 ![Supports core plugins](plugin_support.png)
@@ -79,17 +88,6 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
 - **Properties position**
   In Live Preview mode, properties can be positioned before (default) or after the main note content. If you rarely use properties, you may prefer to make them less prominent.
   _This setting only works for Live Preview mode. Reading mode doesn't provide suitable HTML structure to support it, and Source Mode makes properties editable within the main content area.
-
-## Roadmap
-
-Kakano is a one-person hobby. I'm having a great time exploring what Obsidian can do, and how far CSS has come in recent years. I want to sweat the details and apply good usability practices, but it's also something I'm doing for fun. Sometimes I'll change things on a whim, or focus on obscure areas of the UI because they present interesting challenges.
-
-There are, however, some key areas I want to improve:
-
-1. Support for all the core plugins. I haven't yet worked on Publish or Sync.
-1. Dark mode. At the moment it's mostly just an inverse of light mode, but I'd like to give it specific attention.
-1. Mobile.
-1. Support for the most popular community themes.
 
 ## Plugin support
 Kakano has specific styling for the following plugins:
@@ -120,12 +118,27 @@ Kakano has specific styling for the following plugins:
 - Word count
 - Workspaces
 
+## Roadmap
+
+Kakano is a one-person hobby. I'm having a great time exploring what Obsidian can do, and how far CSS has come in recent years. I want to sweat the details and apply good usability practices, but it's also something I'm doing for fun. Sometimes I'll change things on a whim, or focus on obscure areas of the UI because they present interesting challenges.
+
+There are, however, some key areas I want to improve:
+
+1. Support for all the core plugins. I haven't yet worked on Publish or Sync.
+1. Dark mode. At the moment it's mostly just an inverse of light mode, but I'd like to give it specific attention.
+1. Mobile.
+1. Support for the most popular community themes.
+
 ## About
-I'm a software developer in Aotearoa/New Zealand, and I love to explore usability and design.
+I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explore usability and design.
 
 > [!tip]
 > I'm currently looking for work, so let me know if you're looking for a developer in Ruby on Rails or similar web technologies.
-> I can be contacted at isaac@freeman.org.nz or on Mastodon as @isaacfreeman@cloudisland.nz
+
+- [Personal site](https://isaac.freeman.org.nz)
+- [Github profile](https://github.com/isaacfreeman)
+- [Mastodon](https://cloudisland.nz/@isaacfreeman)
+- [Email](mailto:isaac@freeman.org.nz)
 
 _Kakano_ means "colour" in the Te Reo Māori – the Māori language of New Zealand. Some words for specific colours are:
 
