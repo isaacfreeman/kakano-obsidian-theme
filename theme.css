@@ -40,7 +40,7 @@ settings:
 /* Variables for both light and dark */
 body {
   --background-input: var(--theme-color-baseVeryTransparent);
-  --slider-track-background: var(--theme-color-baseSlightlyTransparent);
+  --slider-track-background: var(--theme-color-baseTransparent);
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
   --callout-padding: 0.75em 1.5em;
@@ -449,7 +449,8 @@ body {
 .markdown-source-view.mod-cm6 .task-list-item-checkbox {
   border-radius: 0.33em;
   border-color: var(--color-text-interactive-content-area);
-  margin-inline-start: 0.5em;
+  /* Needs room at left for collapse indicator */
+  margin-inline-start: 1em;
   margin-inline-end: 0.25em;
 }
 .markdown-source-view.mod-cm6 .task-list-item-checkbox:hover {
