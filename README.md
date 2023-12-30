@@ -112,6 +112,7 @@ Kakano has specific styling for the following plugins:
 - Search
 - Slash commands
 - Slides
+- Sync
 - Tags view
 - Templates
 - Unique note creator
@@ -124,7 +125,7 @@ Kakano is a one-person hobby. I'm having a great time exploring what Obsidian ca
 
 There are, however, some key areas I want to improve:
 
-1. Support for all the core plugins. I haven't yet worked on Publish or Sync.
+1. Support for all the core plugins. I still need to work on Publish, as I don't use it personally.
 1. Dark mode. At the moment it's mostly just an inverse of light mode, but I'd like to give it specific attention.
 1. Mobile.
 1. Support for the most popular community themes.

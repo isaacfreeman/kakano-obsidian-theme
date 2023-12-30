@@ -189,6 +189,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-log: var(--theme-color-baseVeryDarkened);
+  --theme-color-logBg: var(--theme-color-baseSlightlyLightened);
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
@@ -203,6 +205,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
 }
@@ -314,6 +317,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
+  --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
 }
@@ -587,7 +591,7 @@ p.mod-warning,
 .setting-message {
   border-radius: var(--clickable-icon-radius);
   font-size: var(--font-ui-small);
-  background: var(--theme-color-baseVeryVeryLightened);
+  background: var(--theme-color-warningBg);
   padding: 0.5em 1em;
 }
 .mod-warning:not(button) {
@@ -595,10 +599,15 @@ p.mod-warning,
   margin: 0.5em 0;
   border: solid var(--text-error) 0.125em;
 }
-p.mod-warning,.setting-message + p.mod-warning,.setting-message {
+/* Collapse adjacent messages */
+p.mod-warning~p.mod-warning,
+p.setting-message~p.setting-message {
   margin-bottom: 0;
+  padding-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  display: block;
+  border-top: none;
 }
 p.mod-warning:has(+ p.mod-warning,.setting-message),
 .setting-message:has(+ p.mod-warning,.setting-message) {
@@ -606,6 +615,9 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   border-top-right-radius: var(--clickable-icon-radius);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  display: block;
 }
 
 /********* Close buttons *********/
@@ -1010,7 +1022,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .search-result-hover-button:hover {
   color: var(--color-text-interactive-hover);
 }
-.sync-history-list-item.is-active {
+.sync-history-list-item:has(.sync-history-list-item-header.is-active) {
   background: var(--theme-color-contentItemBgActive);
 }
 .search-result-file-matched-text {
@@ -1183,20 +1195,23 @@ textarea::placeholder {
 
 /* Buttons - regular */
 button:not(.clickable-icon),
-button:not(.clickable-icon).mod-cta {
+button:not(.clickable-icon).mod-cta,
+.sync-history-load-more-button {
   border: none;
   background: var(--theme-color-controlBg);
   box-shadow: var(--theme-shadow-control);
   color: var(--theme-color-controlText);
 }
 button:not(.clickable-icon):hover,
-button:not(.clickable-icon).mod-cta:hover {
+button:not(.clickable-icon).mod-cta:hover,
+.sync-history-load-more-button:hover {
   border: none;
   background: var(--theme-color-controlBgHover);
   color: var(--theme-color-controlTextHover);
 }
 button:not(.clickable-icon):focus,
-button:not(.clickable-icon).mod-cta:focus {
+button:not(.clickable-icon).mod-cta:focus,
+.sync-history-load-more-button:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
 }
 
@@ -1436,19 +1451,12 @@ input[type=checkbox]:checked:after {
 }
 .modal-title {
   /* Space for modal-close-button in line with title */
-  padding-left: calc(var(--size-2-3) + 2rem);
-  padding-right: calc(var(--size-2-3) + 2rem);
+  padding: 0.5em calc(var(--size-2-3) + 2rem);
   /* Align with top position for modal-close-button */
   margin-top: 0;
   margin-bottom: 0;
   font-size: var(--font-ui-medium);
   line-height: 1.4em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
-.modal-title:empty + .modal-content {
-  /* If the title is empty, apply the same top margin to the content */
-  margin-top: calc(var(--size-2-3) * -1);
 }
 .modal-bg,
 .modal,
@@ -1473,6 +1481,28 @@ input[type=checkbox]:checked:after {
   border: none;
   margin: 1em 0;
 }
+.modal-button-container {
+  margin-top: 0;
+  padding: 1em 2rem;
+}
+
+.modal-content:has(.modal-button-container),
+.modal-content:has(.button-container) {
+  /* Sometimes the .modal-button-container is nested inside the .modal-content */
+  overflow: scroll;
+  background-color: var(--theme-color-modalContentBg);
+  padding: 1em 2em;
+}
+.modal-content .modal-button-container {
+  padding: 0;
+}
+
+/* Modals with sidebar layout */
+
+.mod-sidebar-layout .modal-content {
+  padding: 0;
+  margin: 0;
+}
 .modal-sidebar,
 .modal.mod-settings .vertical-tab-header {
   border-right: none;
@@ -1480,22 +1510,9 @@ input[type=checkbox]:checked:after {
   margin: 0;
   background: var(--modal-background-vertical-tab-header);
   color: var(--color-text-interactive);
-}
-.mod-sidebar-layout .modal-content {
-  padding: 0;
-  margin: 0;
-}
-.modal-content:has(.modal-button-container) {
-  overflow: scroll;
-  background-color: var(--theme-color-modalContentBg);
-  padding: 1em 1em 1em 2em;
-}
-.modal-content > .modal-button-container {
-  padding: 0;
-}
-.modal-button-container {
-  margin-top: 1em;
-  padding: 1em calc(var(--size-2-3) + 2rem);
+  height: 100%;
+  box-shadow: var(--shadow-s);
+  z-index: 1;
 }
 
 /* Help modal */
@@ -1539,7 +1556,7 @@ input[type=checkbox]:checked:after {
   border: none;
 }
 .community-modal-search-results {
-  padding: 1.5em;
+  padding: 0;
   gap: 1.5em;
 }
 .community-item {
@@ -1943,7 +1960,9 @@ audio::-webkit-media-controls-panel {
 .sync-history-list-container {
   border: none;
 }
-.sync-history-list-item-container {}
+.sync-history-list {
+  gap: 1em;
+}
 .sync-history-content-container {
   background-color: var(--theme-color-settingsBg);
 }
@@ -1954,6 +1973,13 @@ audio::-webkit-media-controls-panel {
   border: none;
   margin: 0;
   padding: 1em;
+}
+.sync-history-content .setting-item:first-child {
+  box-shadow: var(--shadow-s);
+  z-index: 1;
+}
+.sync-history-list-item-header:hover {
+    background: transparent;
 }
 
 /********** Core Plugin: Graph **********/
@@ -2017,6 +2043,19 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
 }
 .popover.hover-popover {
   padding: 0.5rem;
+}
+
+/********** Core Plugin: Publish **********/
+
+.modal.mod-publish {
+  padding: 0;
+}
+.modal.mod-publish .modal-title {
+  font-size: var(--font-ui-medium);
+  line-height: 1.4em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0.5em calc(var(--size-2-3) + 2rem);
 }
 
 /********** Core Plugin: Search **********/
@@ -2135,16 +2174,16 @@ body {
   /* There's no button container below the list */
   padding-bottom: 0;
 }
-.modal:has(.vault-list) .vault-list,
-.modal:has(.sync-file-tree-container) .sync-file-tree-container {
-  margin: -2em -2em 0 -2em;
+.modal .vault-list,
+.modal .sync-file-tree-container {
+  margin: 0 -2em;
 }
 .modal:has(.vault-list) .modal-title {
   box-shadow: var(--shadow-s);
   z-index: 1;
 }
 .modal:has(.vault-list) .modal-button-container {
-  padding: 0;
+  padding: 1em 0 0 0;
 }
 .vault-list-item {
   /* TODO: sticks out at right */
@@ -2152,6 +2191,30 @@ body {
 .mod-sync-history {
   /* TODO */
 }
+.sync-file-tree-container ~ p {
+  /* Targets bulk restore modal */
+  padding: 1em 0
+}
+.modal.mod-sync-log {
+  padding: 0;
+}
+.modal.mod-sync-log .modal-title {
+  font-size: var(--font-ui-medium);
+  line-height: 1.4em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0.5em calc(var(--size-2-3) + 2rem);
+}
+.modal.mod-sync-log .setting-item {
+  margin: 0;
+}
+.modal.mod-sync-log .sync-log-container {
+  border: none;
+  background: var(--theme-color-logBg);
+  color: var(--theme-color-log);
+  padding: 1.5em;
+}
+
 
 /********** Core Plugin: Tags view **********/
 
