@@ -589,10 +589,19 @@ li[data-task=">"]>p>input:checked:after {
 .workspace-drawer {
   top: 0.5rem;
   bottom: 0.5rem;
+  background: none;
 }
 .workspace-drawer-inner {
   background-color: var(--background-secondary);
   background: linear-gradient(0deg, var(--background-secondary-gradient-bottom) 0%, var(--background-secondary-gradient-top) 100%);
+}
+.workspace-drawer.mod-left .workspace-drawer-inner {
+  border-top-right-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
+}
+.workspace-drawer.mod-right .workspace-drawer-inner {
+  border-top-left-radius: var(--radius-xl);
+  border-bottom-left-radius: var(--radius-xl);
 }
 .is-phone .prompt-input-cta:empty {
   display: none;
@@ -605,6 +614,12 @@ li[data-task=">"]>p>input:checked:after {
   margin-right: 2rem;
   position: relative;
 }
+.is-phone .menu {
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
+  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 1rem);
+}
+.mobile-navbar {}
 /* TODO: lightweight button hover states */
 
 /********* Messages *********/
@@ -2258,7 +2273,6 @@ body {
   color: var(--theme-color-log);
   padding: 1.5em;
 }
-
 
 /********** Core Plugin: Tags view **********/
 
