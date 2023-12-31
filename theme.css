@@ -581,8 +581,31 @@ li[data-task=">"]>p>input:checked:after {
 /********* Mobile *********/
 
 .is-mobile .workspace > .mod-root {
-    padding: 0.5em;
+    padding: 1rem;
 }
+.is-mobile .mod-root .workspace-tabs {
+    padding: 0;
+}
+.workspace-drawer {
+  top: 0.5rem;
+  bottom: 0.5rem;
+}
+.workspace-drawer-inner {
+  background-color: var(--background-secondary);
+  background: linear-gradient(0deg, var(--background-secondary-gradient-bottom) 0%, var(--background-secondary-gradient-top) 100%);
+}
+.is-phone .prompt-input-cta:empty {
+  display: none;
+}
+.is-phone .modal-container {
+  padding: 0.5rem;
+}
+.is-phone .modal .modal-title {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  position: relative;
+}
+/* TODO: lightweight button hover states */
 
 /********* Messages *********/
 
@@ -752,11 +775,32 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   right: 1rem;
   top: 1rem;
 }
-.notice {
+.is-mobile .notice-container {
+  padding: 0.5em 0.5em 2em 0.5em;
+  top: 0;
+  left: auto;
+  right: 0;
+}
+.is-phone .notice-container {
+  padding: 0.5em 0.5em 2em 0.5em;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.notice,
+.is-phone .notice  {
   border-radius: 1em;
+  background-color: var(--background-modifier-message);
   color: var(--theme-color-notice);
-  box-shadow: var(--theme-shadow-control);
+  box-shadow: var(--shadow-s);
   padding: 1em 1.5em;
+  margin: 0;
+}
+.is-phone .notice {
+  text-align: center;
+  max-width: none;
 }
 
 /********* Workspace *********/
