@@ -84,22 +84,42 @@ body {
   --base-l: var(--accent-l);
 
   /* The base color */
-  --theme-color-base: hsl(var(--base-h), calc(var(--base-s) * 1.0), calc(var(--base-l) * 1.0));
+  --theme-color-base: hsl(var(--base-h), var(--base-s), var(--base-l));
 
   /*  Base colour variants */
-  --theme-color-baseVeryVeryLightened: color-mix(in srgb, var(--theme-color-base), white 95%);
-  --theme-color-baseVeryLightened: color-mix(in srgb, var(--theme-color-base), white 80%);
-  --theme-color-baseLightened: color-mix(in srgb, var(--theme-color-base), white 70%);
-  --theme-color-baseSlightlyLightened: color-mix(in srgb, var(--theme-color-base), white 50%);
-  --theme-color-baseSlightlyDarkened: color-mix(in srgb, var(--theme-color-base), black 50%);
-  --theme-color-baseDarkened: color-mix(in srgb, var(--theme-color-base), black 70%);
-  --theme-color-baseVeryDarkened: color-mix(in srgb, var(--theme-color-base), black 80%);
-  --theme-color-baseVeryVeryDarkened: color-mix(in srgb, var(--theme-color-base), black 95%);
+  --theme-color-baseVeryVeryLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.95));
+  --theme-color-baseVeryLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.80));
+  --theme-color-baseLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.70));
+  --theme-color-baseSlightlyLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.50));
+  --theme-color-baseSlightlyDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.50));
+  --theme-color-baseDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.70));
+  --theme-color-baseVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.80));
+  --theme-color-baseVeryVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.95));
 
+  /* Base color with transparency */
   --theme-color-baseTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.5);
   --theme-color-baseSlightlyTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.75);
   --theme-color-baseVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.25);
   --theme-color-baseVeryVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.125);
+
+  /* Hues */
+    --color-red-rgb: 233, 49, 71;
+    --color-red: #e93147;
+    --color-orange-rgb: 236, 117, 0;
+    --color-orange: #ec7500;
+    --color-yellow-rgb: 224, 172, 0;
+    --color-yellow: #e0ac00;
+    --color-green-rgb: 8, 185, 78;
+    --color-green: #08b94e;
+    --color-cyan-rgb: 0, 191, 188;
+    --color-cyan: #00bfbc;
+    --color-blue-rgb: 8, 109, 221;
+    --color-blue: #086ddd;
+    --color-purple-rgb: 120, 82, 238;
+    --color-purple: #7852ee;
+    --color-pink-rgb: 213, 57, 132;
+    --color-pink: #d53984;
+
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
@@ -622,6 +642,30 @@ li[data-task=">"]>p>input:checked:after {
 .mobile-navbar {}
 /* TODO: lightweight button hover states */
 
+.pull-action.mod-activated {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.pull-down-action {
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+  margin: var(--safe-area-inset-top) auto 0 auto;
+  padding: 0.5em 1em;
+  text-align: center;
+  border-radius: var(--clickable-icon-radius);
+}
+.pull-action {
+  position: absolute;
+  background-color: var(--background-secondary);
+  z-index: var(--layer-popover);
+  color: var(--text-muted);
+  font-size: 90%;
+  transition: background-color ease-in-out 150ms;
+}
+
 /********* Messages *********/
 
 .mod-warning,
@@ -811,7 +855,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--theme-color-notice);
   box-shadow: var(--shadow-s);
   padding: 1em 1.5em;
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 .is-phone .notice {
   text-align: center;
