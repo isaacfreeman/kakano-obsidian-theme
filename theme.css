@@ -2354,3 +2354,9 @@ body {
   padding-bottom: 1em;
   margin-bottom: -1em;
 }
+
+/********** Community Plugin: Recent Files **********/
+
+.recent-files-title {
+  align-items: center;
+}
