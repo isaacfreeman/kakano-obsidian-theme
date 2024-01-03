@@ -640,7 +640,29 @@ li[data-task=">"]>p>input:checked:after {
   width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 1rem);
 }
 .mobile-navbar {}
-/* TODO: lightweight button hover states */
+
+.mod-tappable,
+.workspace-drawer-active-tab-back-icon ,
+.workspace-drawer-active-tab-icon{
+  align-items: center;
+  background-color: transparent;
+  border-radius: var(--clickable-icon-radius);
+  color: var(--color-text-interactive);
+  cursor: var(--cursor);
+  display: flex;
+  height: auto;
+  justify-content: center;
+  opacity: var(--icon-opacity);
+  padding: var(--size-2-2) var(--size-2-3);
+  transition: opacity 0.15s ease-in-out;
+}
+.mod-tappable:hover,
+.workspace-drawer-active-tab-back-icon:hover,
+.workspace-drawer-active-tab-icon:hover {
+  /* Use hover state for feedback if using a pointing device */
+  color: var(--color-text-interactive-hover);
+  background-color: var(--background-modifier-hover);
+}
 
 .pull-action.mod-activated {
   background-color: var(--interactive-accent);
@@ -1526,6 +1548,10 @@ input[type=checkbox]:checked:after {
   padding: 1.5em;
   gap: 1.5em;
 }
+.is-phone .community-modal-search-results-wrapper {
+  padding: 1em;
+  gap: 1em;
+}
 .vault-list-item,
 .community-item,
 .sync-file-tree-container>.list-item {
@@ -1537,11 +1563,25 @@ input[type=checkbox]:checked:after {
   padding: var(--size-4-3);
   position: relative;
 }
+.is-phone .vault-list-item,
+.is-phone .community-item {
+  border-radius: var(--radius-m);
+  padding: 0.5em 1em;
+}
+
 .sync-file-tree-container>.list-item:hover,
 .community-item:hover {
   background: var(--theme-color-communityItemBgHover);
   color: var(--nav-item-color-hover);
   font-weight: var(--nav-item-weight-hover);
+}
+.community-modal-search-results {
+  padding: 0;
+  gap: 1.5em;
+}
+.is-phone .community-modal-search-results {
+  padding: 0;
+  gap: 1em;
 }
 
 /********** Modals **********/
@@ -1646,7 +1686,11 @@ input[type=checkbox]:checked:after {
   /* Filter control */
   max-width: var(--modal-community-sidebar-width);
   margin-bottom: 0.5em;
+  padding-left: 1em;
   float: right;
+}
+.mod-community-modal .community-modal-controls .setting-item:first-child .setting-item-control {
+  margin: 0;
 }
 .mod-community-modal .modal-content:has(.community-modal-details) .community-modal-controls .setting-item:first-child {
   float: none;
@@ -1657,10 +1701,6 @@ input[type=checkbox]:checked:after {
 }
 .community-modal-details {
   border: none;
-}
-.community-modal-search-results {
-  padding: 0;
-  gap: 1.5em;
 }
 .community-item {
   display: flex;
@@ -1756,9 +1796,6 @@ input[type=checkbox]:checked:after {
   margin: 0;
   border-radius: 0;
 }
-
-/* Settings > Appearance > Ribbon menu modal */
-/* TODO: This is a weird modal */
 
 /********* Content area *********/
 
@@ -2288,11 +2325,9 @@ body {
 .modal:has(.vault-list) .modal-button-container {
   padding: 1em 0 0 0;
 }
-.vault-list-item {
-  /* TODO: sticks out at right */
-}
-.mod-sync-history {
-  /* TODO */
+.is-phone .vault-list-item {
+  /* Fit button snugly to right */
+  padding-right: 0.5em;
 }
 .sync-file-tree-container ~ p {
   /* Targets bulk restore modal */
