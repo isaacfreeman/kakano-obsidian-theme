@@ -222,6 +222,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-noticeBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-textMeta: var(--theme-color-base);
@@ -334,6 +335,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-noticeBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
+  --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-textMeta: var(--theme-color-base);
@@ -663,7 +665,7 @@ li[data-task=">"]>p>input:checked:after {
 }
 .mod-tappable,
 .workspace-drawer-active-tab-back-icon ,
-.workspace-drawer-active-tab-icon{
+.workspace-drawer-active-tab-icon {
   align-items: center;
   background-color: transparent;
   border-radius: var(--clickable-icon-radius);
@@ -680,6 +682,48 @@ li[data-task=">"]>p>input:checked:after {
 .workspace-drawer-active-tab-back-icon:hover,
 .workspace-drawer-active-tab-icon:hover {
   /* Use hover state for feedback if using a pointing device */
+  color: var(--color-text-interactive-hover);
+  background-color: var(--background-modifier-hover);
+}
+
+.workspace-drawer-tab-option-item {
+  border-radius: var(--clickable-icon-radius);
+  padding: var(--size-2-2) var(--size-2-3);
+}
+.workspace-drawer-tab-option-item:hover {
+  color: var(--color-text-interactive-hover);
+  background-color: var(--background-modifier-hover);
+}
+.workspace-drawer-tab-option-item:hover .workspace-drawer-tab-option-item-icon,
+.workspace-drawer-tab-option-item:hover .workspace-drawer-tab-option-item-title {
+  color: var(--color-text-interactive-hover);
+}
+
+/* These are separate elements, but I want them to look like one */
+.workspace-drawer-active-tab-icon,
+.workspace-drawer-active-tab-icon + .workspace-drawer-active-tab-title {
+  padding: var(--size-2-2) var(--size-2-3);
+  border-radius: var(--clickable-icon-radius);
+}
+/* Match height of .workspace-drawer-active-tab-icon */
+.workspace-drawer-active-tab-title {
+  height: calc(24px + var(--size-2-2) * 2);
+  vertical-align: baseline;
+  line-height: 24px;
+}
+.workspace-drawer-active-tab-icon + .workspace-drawer-active-tab-title {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  /* Hide gap */
+  margin-left: calc(-1 * var(--size-4-2));
+}
+.workspace-drawer-active-tab-icon:has(+ .workspace-drawer-active-tab-title) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.workspace-drawer-active-tab-icon + .workspace-drawer-active-tab-title:hover,
+.workspace-drawer-active-tab-icon:hover + .workspace-drawer-active-tab-title,
+.workspace-drawer-active-tab-icon:has(+ .workspace-drawer-active-tab-title:hover) {
   color: var(--color-text-interactive-hover);
   background-color: var(--background-modifier-hover);
 }
@@ -728,8 +772,7 @@ li[data-task=">"]>p>input:checked:after {
     display: flex;
     align-items: center;
     height: 44px;
-    /* TODO: extract color variable */
-    background-color: var(--theme-color-lightenTransparent);
+    background-color: var(--theme-color-settingsGroupBg);
     padding: 0 0.75em;
     margin: 0;
     border-radius: 0;
@@ -740,7 +783,7 @@ li[data-task=">"]>p>input:checked:after {
   border-bottom: none;
 }
 .is-phone .modal.mod-settings .vertical-tab-content {
-  background-color: var(--theme-color-lightenTransparent);
+  background-color: var(--theme-color-settingsGroupBg);
   padding: var(--size-4-5) max(var(--size-4-5), var(--safe-area-inset-right)) 100px max(var(--size-4-5), var(--safe-area-inset-left));
   border-radius: var(--radius-m);
 }
