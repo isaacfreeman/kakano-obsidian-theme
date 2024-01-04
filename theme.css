@@ -639,8 +639,9 @@ li[data-task=">"]>p>input:checked:after {
   padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
   width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 1rem);
 }
-.mobile-navbar {}
-
+.mobile-navbar {
+  background-color: var(--background-secondary);
+}
 .mod-tappable,
 .workspace-drawer-active-tab-back-icon ,
 .workspace-drawer-active-tab-icon{
@@ -672,12 +673,12 @@ li[data-task=">"]>p>input:checked:after {
   top: 0.5rem;
   left: 0.5rem;
   right: 0.5rem;
-  width: 100%;
-  max-width: 500px;
+  width: auto;
+  max-width: 30rem;
   margin: var(--safe-area-inset-top) auto 0 auto;
   padding: 0.5em 1em;
   text-align: center;
-  border-radius: var(--clickable-icon-radius);
+  border-radius: var(--radius-l);
 }
 .pull-action {
   position: absolute;
@@ -686,6 +687,15 @@ li[data-task=">"]>p>input:checked:after {
   color: var(--text-muted);
   font-size: 90%;
   transition: background-color ease-in-out 150ms;
+}
+
+.is-phone {
+  /* I'm pretty sure this isn't used on mobile */
+  --divider-width: 0;
+}
+.is-phone .mod-root .workspace-tab-container {
+  /* Bottom margin the same as height of .mobile-navbar, to avoid overlap */
+  margin-bottom: calc(max(var(--size-4-2), var(--safe-area-inset-bottom)) + var(--size-4-2) + var(--size-2-2) * 4 + var(--icon-size));
 }
 
 /********* Messages *********/
