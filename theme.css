@@ -388,6 +388,10 @@ body {
   hanging-punctuation: first allow-end last;
 }
 
+.markdown-rendered div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1,h2,h3,h4,h5,h6) {
+    margin-top: 0;
+}
+
 /* Space before headings... */
 .markdown-source-view .cm-line.HyperMD-header,
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header,
@@ -455,6 +459,16 @@ body {
 .markdown-source-view .code-block-flair {
   top: 0.5em;
   right: 0.5em;
+}
+
+.markdown-source-view.mod-cm6 hr,
+.markdown-rendered hr {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-top: var(--hr-thickness) solid;
+  border-color: var(--hr-color);
+  margin: 2em 0 !important;
 }
 
 /***** Tables *****/
@@ -600,6 +614,9 @@ li[data-task=">"]>p>input:checked:after {
 
 /********* Mobile *********/
 
+.is-mobile {
+  --file-margins: 0;
+}
 .is-mobile .workspace > .mod-root {
     padding: 1rem;
 }
@@ -640,7 +657,7 @@ li[data-task=">"]>p>input:checked:after {
   width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 1rem);
 }
 .mobile-navbar {
-  background-color: var(--background-secondary);
+  background-color: transparent;
 }
 .mod-tappable,
 .workspace-drawer-active-tab-back-icon ,
