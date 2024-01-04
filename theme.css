@@ -944,7 +944,6 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .workspace .mod-root .workspace-tab-header {
   padding: 0;
 }
-
 .mod-root .workspace-tab-header-inner {
   padding: 0.25em 0.5em 0.25em 0.5em;
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
@@ -956,19 +955,22 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   /* Not sure what this is for */
   background: transparent;
 }
-
 .mod-root .workspace-tabs {
   padding: 0 0.5em 0 0.5em;
   border-radius: 0;
 }
-
-.mod-root .workspace-tabs .workspace-leaf {
+.mod-root .workspace-tabs .workspace-tab-container {
   background-color: var(--background-primary);
   border-radius: var(--tab-radius);
-}
-
-.mod-root .workspace-tabs .workspace-leaf.mod-active {
   box-shadow: var(--theme-shadow-input);
+}
+/* Stacked tabs */
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
+  background-color: var(--tab-background-inactive);;
+  box-shadow: var(--theme-shadow-input);
+}
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header.is-active {
+  background-color: var(--background-primary);
 }
 
 /* Ribbon styling */
