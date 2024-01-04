@@ -2405,6 +2405,61 @@ body {
   cursor: var(--cursor-link);
 }
 
+/********** Community Plugin: Excalidraw **********/
+
+.excalidraw-view .excalidraw .Island,
+.excalidraw-view .excalidraw .mobile-misc-tools-container  {
+  background: var(--controls-container-background);
+  border: none;
+  padding: 0.25rem;
+  gap: 0;
+  box-shadow: var(--theme-shadow-input);
+  border-radius: 0.5rem;
+}
+.excalidraw-view .excalidraw .Island .ToolIcon__icon,
+.excalidraw-view .excalidraw .mobile-misc-tools-container .ToolIcon__icon {
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  border-radius: var(--clickable-icon-radius);
+  color: var(--color-text-interactive);
+  opacity: var(--icon-opacity);
+  background-color: transparent;
+  border: none;
+}
+.excalidraw-view .excalidraw .Island .ToolIcon__icon:hover,
+.excalidraw-view .excalidraw .mobile-misc-tools-container .ToolIcon__icon:hover {
+  color: var(--color-text-interactive-hover);
+  background-color: var(--background-modifier-hover);
+  --icon-fill-color: var(--color-text-interactive-hover);
+}
+/* Active state */
+.excalidraw-view .excalidraw .ToolIcon.fillable .ToolIcon_type_radio:checked+.ToolIcon__icon,
+.excalidraw-view .excalidraw .ToolIcon.fillable .ToolIcon_type_checkbox:checked+.ToolIcon__icon,
+.excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_radio:checked+.ToolIcon__icon,
+.excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_checkbox:checked+.ToolIcon__icon {
+  opacity: var(--icon-opacity-hover);
+  color: var(--color-text-interactive-active);
+  background-color: var(--background-interactive-active);
+  --icon-fill-color: var(--color-text-interactive-active);
+}
+.excalidraw-view .excalidraw .App-toolbar__divider {
+    width: 1rem;
+    height: 1.5rem;
+    align-self: center;
+    background-color: transparent;
+    margin: 0 0.25rem;
+}
+.excalidraw-view .excalidraw .ToolIcon {
+  cursor: default;
+}
+.excalidraw-view .excalidraw .zoom-actions,
+.excalidraw-view .excalidraw .zoom-actions .Stack {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
 /********** Community Plugin: Style Settings **********/
 
 .modal-style-settings {
