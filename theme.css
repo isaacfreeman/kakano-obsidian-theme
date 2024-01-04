@@ -101,6 +101,8 @@ body {
   --theme-color-baseSlightlyTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.75);
   --theme-color-baseVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.25);
   --theme-color-baseVeryVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.125);
+  --theme-color-lightenTransparent: rgba(255,255,255, 0.5);
+  --theme-color-darkenTransparent: rgba(255,255,255, 0.5);
 
   /* Hues */
     --color-red-rgb: 233, 49, 71;
@@ -715,6 +717,34 @@ li[data-task=">"]>p>input:checked:after {
   margin-bottom: calc(max(var(--size-4-2), var(--safe-area-inset-bottom)) + var(--size-4-2) + var(--size-2-2) * 4 + var(--icon-size));
 }
 
+.is-phone .modal.mod-sidebar-layout .modal-content > * {
+  padding: 1em calc(1em + var(--safe-area-inset-right)) 1em calc(1em + var(--safe-area-inset-left));
+}
+.is-phone .vertical-tab-header-group {
+    margin: 0 auto;
+    width: 100%;
+}
+.is-phone .modal.mod-settings .vertical-tab-nav-item {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    /* TODO: extract color variable */
+    background-color: var(--theme-color-lightenTransparent);
+    padding: 0 0.75em;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+.is-phone .modal.mod-settings .modal-title {
+  border-bottom: none;
+}
+.is-phone .modal.mod-settings .vertical-tab-content {
+  background-color: var(--theme-color-lightenTransparent);
+  padding: var(--size-4-5) max(var(--size-4-5), var(--safe-area-inset-right)) 100px max(var(--size-4-5), var(--safe-area-inset-left));
+  border-radius: var(--radius-m);
+}
+
 /********* Messages *********/
 
 .mod-warning,
@@ -829,6 +859,23 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .mod-macos .multi-select-pill .multi-select-pill-content {
   order: 1;
   margin: 0;
+}
+
+/********** Navigation buttons **********/
+/* Styled similarly to close button */
+
+.modal-setting-back-button-icon {
+  background-color: transparent;
+  border-radius: 100%;
+  border: none;
+  color: var(--color-text-interactive);
+  /* Above .modal-title */
+  z-index: 2;
+
+}
+.modal-setting-back-button-icon:hover {
+  color: var(--color-text-interactive);
+  background-color: var(--theme-colorCloseBgHover);
 }
 
 /********* Lightweight Buttons *********/
