@@ -55,6 +55,7 @@ body {
   --inline-title-size: var(--font-ui-medium);
   --inline-title-weight: bold;
   --input-border-width: 2px;
+  --metadata-divider-width: 0;
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
@@ -664,7 +665,7 @@ li[data-task=">"]>p>input:checked:after {
   background-color: transparent;
 }
 .mod-tappable,
-.workspace-drawer-active-tab-back-icon ,
+.workspace-drawer-active-tab-back-icon,
 .workspace-drawer-active-tab-icon {
   align-items: center;
   background-color: transparent;
@@ -752,9 +753,14 @@ li[data-task=">"]>p>input:checked:after {
   transition: background-color ease-in-out 150ms;
 }
 
+.is-mobile .view-header-title-container {
+  padding-left: 0;
+}
+
 .is-phone {
   /* I'm pretty sure this isn't used on mobile */
   --divider-width: 0;
+  --metadata-divider-width: 0;
 }
 .is-phone .mod-root .workspace-tab-container {
   /* Bottom margin the same as height of .mobile-navbar, to avoid overlap */
@@ -2045,7 +2051,7 @@ input[type=checkbox]:checked:after {
   user-select: none;
 }
 .metadata-property {
-  border: solid 2px transparent;
+  border: none;
   box-shadow: none;
   display: flex;
   gap: 0;
