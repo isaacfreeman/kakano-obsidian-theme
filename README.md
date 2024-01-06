@@ -8,9 +8,9 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
   - [Getting started](#getting-started)
   - [Features](#features)
     - [Choose a base color](#choose-a-base-color)
-    - [Distinguish your content from Obsidian controls](#distinguish-your-content-from-obsidian-controls)
+    - [Light and dark modes](#light-and-dark-modes)
+    - [Mobile](#mobile)
     - [Standardised controls](#standardised-controls)
-    - [Light/dark modes](#lightdark-modes)
     - [Properties below content](#properties-below-content)
     - [Follows OS standards by default](#follows-os-standards-by-default)
     - [Alternate checkboxes](#alternate-checkboxes)
@@ -36,7 +36,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
 ![Use accent color to set a base color for the whole theme.](base_color_from_accent.png)
 ![Use Style Settings plugin for separate base and accent colors.](base_color_from_style_settings.png)
 
-Kakano starts with a user-selected base color, and generates lighter and darker versions for a cohesive overall user interface with smooth gradient backgrounds. If you reguarly use multiple vaults, set a different accent color for each to make them easy to tell apart at a glance.
+Kakano starts with a user-selected base color, and generates lighter and darker versions for a cohesive overall user interface with smooth gradient backgrounds. If you reguarly use multiple vaults, set a different accent color for each to make them easy to tell apart at a glance. With Obsidian controls placed on a colored background, there's a clear visual distinction between your content and the tool you use to manage it.
 
 > [!info]
 > I use a work vault with a company brand color, and a separate green vault for my own personal notes.
@@ -44,18 +44,17 @@ Kakano starts with a user-selected base color, and generates lighter and darker 
 - With core plugins, the base color will be your accent color.
 - If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, it provides a separate Kakano base color setting, so you can have one color for your overall theme, and keep the accent color for links and tags.
 
-### Distinguish your content from Obsidian controls
-![Base color applies to Obsidian controls. Your content stands out on a white background (black in dark mode).](primary_secondary_colors.png)
-With Obsidian controls placed on a colored background, there's a clear visual distinction between your content and the tool you use to manage it.
+### Light and dark modes
+![Light and dark from the same base color](light_and_dark.png)
+Light and dark versions are generated from the same base color.
 
-### Standardised controls
-![
-Appearance of controls standardised across plugins for a consistent user interface.](consistent_controls.png)
-The appearance of buttons, switches, form fields and other controls is standardised across different modules, so the user interface looks and behaves consistently.
-
-### Light/dark modes
+### Mobile
 ![Light and dark fromt he same base color](light_and_dark.png)
 Light and dark versions are generated from the same base color.
+
+### Standardised controls
+![Appearance of controls standardised across plugins for a consistent user interface.](consistent_controls.png)
+The appearance of buttons, switches, form fields and other controls is standardised across different modules, so the user interface looks and behaves consistently.
 
 ### Properties below content
 ![With Style Settings plugin, optionally position properties below notes
