@@ -41,7 +41,6 @@ settings:
 
 body {
   --background-input: var(--theme-color-baseVeryVeryTransparent);
-  --slider-track-background: var(--theme-color-baseTransparent);
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
   --callout-padding: 0.75em 1.5em;
@@ -65,11 +64,14 @@ body {
   --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
   --p-spacing: 0;
+  --pill-focus-left-adjust: 0;
+  --pill-focus-width: 100%;
   --prompt-border-color: transparent;
   --prompt-border-width: 0;
   --ribbon-background-collapsed: transparent;
   --ribbon-background: transparent;
   --ribbon-width: 3em;
+  --slider-track-background: var(--theme-color-baseTransparent);
   --status-bar-text-color: var(--text-normal);
   --tab-container-background: transparent;
   --tab-curve: calc(var(--tab-radius) * 0.5);
@@ -1578,7 +1580,7 @@ select:focus,
 /* Multi-select pill */
 .multi-select-container,
 .metadata-property .multi-select-container {
-  padding: 0;
+  padding: 0.25em;
 }
 .multi-select-pill {
   padding: var(--pill-padding-y) var(--pill-padding-x);
