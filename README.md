@@ -8,8 +8,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
   - [Getting started](#getting-started)
   - [Features](#features)
     - [Choose a base color](#choose-a-base-color)
-    - [Light and dark modes](#light-and-dark-modes)
-    - [Mobile](#mobile)
+    - [Light mode, dark mode, and mobile](#light-mode-dark-mode-and-mobile)
     - [Standardised controls](#standardised-controls)
     - [Properties below content](#properties-below-content)
     - [Follows OS standards by default](#follows-os-standards-by-default)
@@ -44,13 +43,10 @@ Kakano starts with a user-selected base color, and generates lighter and darker 
 - With core plugins, the base color will be your accent color.
 - If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, it provides a separate Kakano base color setting, so you can have one color for your overall theme, and keep the accent color for links and tags.
 
-### Light and dark modes
+### Light mode, dark mode, and mobile
 ![Light and dark from the same base color](light_and_dark.png)
-Light and dark versions are generated from the same base color.
-
-### Mobile
-![Light and dark fromt he same base color](light_and_dark.png)
-Light and dark versions are generated from the same base color.
+![Supports mobile](mobile.png)
+Supports light mode and dark mode with the same base color, on desktop and mobile.
 
 ### Standardised controls
 ![Appearance of controls standardised across plugins for a consistent user interface.](consistent_controls.png)
