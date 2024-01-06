@@ -647,6 +647,12 @@ li[data-task=">"]>p>input:checked:after {
 .is-mobile .mod-root .workspace-tabs {
     padding: 0;
 }
+.is-mobile .view-actions {
+  padding: 0;
+}
+.is-mobile .view-header-title-container {
+    height: auto;
+}
 .workspace-drawer {
   top: 0.5rem;
   bottom: 0.5rem;
