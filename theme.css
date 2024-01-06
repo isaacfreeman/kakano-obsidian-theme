@@ -56,6 +56,7 @@ body {
   --inline-title-weight: bold;
   --input-border-width: 2px;
   --metadata-divider-width: 0;
+  --metadata-gap: 0.5em;
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
@@ -236,7 +237,7 @@ body .metadata-property[data-property-key="tags"] {
 .theme-light,
 .theme-light .metadata-property:not([data-property-key="tags"]),
 .theme-light .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--theme-color-baseSlightlyLightened);
+  --pill-background: var(--theme-color-baseTransparent);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: white;
   --pill-color-hover: white;
@@ -349,7 +350,7 @@ body .metadata-property[data-property-key="tags"] {
 .theme-dark,
 .theme-dark .metadata-property:not([data-property-key="tags"]),
 .theme-dark .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--theme-color-baseSlightlyDarkened);
+  --pill-background: var(--theme-color-baseSlightlyTransparent);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: black;
   --pill-color-hover: black;
@@ -868,6 +869,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--color-text-interactive);
   /* Above .modal-title */
   z-index: 2;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .workspace-tab-header-inner-close-button .svg-icon {
   stroke: var(--color-text-interactive);
@@ -890,8 +893,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .document-search-close-button,
 .modal-close-button {
   padding: var(--size-2-1);
-  width: 1em;
-  height: 1em;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-content: center;
   --icon-size: var(--icon-s);
@@ -938,25 +941,35 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 /********** Navigation buttons **********/
 /* Styled similarly to close button */
 
-.modal-setting-back-button-icon {
-  background-color: transparent;
-  border-radius: 100%;
-  border: none;
+.modal-setting-back-button-icon,
+.mod-root .workspace-tab-header-status-icon {
   color: var(--color-text-interactive);
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
   /* Above .modal-title */
   z-index: 2;
-
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
 }
-.modal-setting-back-button-icon:hover {
+.modal-setting-back-button-icon:hover,
+.mod-root .workspace-tab-header-status-icon:hover {
   color: var(--color-text-interactive);
   background-color: var(--theme-colorCloseBgHover);
+}
+.mod-root .workspace-tab-header-status-icon .svg-icon {
+  width: 80%
 }
 
 /********* Lightweight Buttons *********/
 
 .markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
-.side-dock-actions .side-dock-ribbon-action.clickable-icon {
+.side-dock-actions .side-dock-ribbon-action.clickable-icon,
+.metadata-property-icon {
   align-items: center;
   background-color: transparent;
   border-radius: var(--clickable-icon-radius);
@@ -971,7 +984,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 .markdown-source-view.mod-cm6 .code-block-flair:hover,
 .clickable-icon:hover,
-.side-dock-actions .side-dock-ribbon-action.clickable-icon:hover {
+.side-dock-actions .side-dock-ribbon-action.clickable-icon:hover,
+.metadata-property-icon:hover {
   color: var(--color-text-interactive-hover);
   background-color: var(--background-modifier-hover);
 }
@@ -985,16 +999,32 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--color-text-interactive-hover);
 }
 
-/* Pin button (and presumably similar controls), styled same as close button */
-.mod-root .workspace-tab-header-status-icon {
-  color: var(--color-text-interactive);
+/********** Lightweight form controls **********/
+/* Form controls that are rendered as text until they have focus */
+
+.metadata-property .metadata-property-key input,
+.metadata-property .metadata-property-value {
   border: none;
-  border-radius: 100%;
-  background-color: transparent;
+  border-radius: var(--input-radius);
+  box-shadow: none;
+  display: flex;
+  background: transparent;
+  height: 100%;
+  padding: 0 0.5em;
 }
-.mod-root .workspace-tab-header-status-icon:hover {
-  color: var(--color-text-interactive);
-  background-color: var(--background-modifier-active-hover);
+.metadata-property .metadata-property-value input {
+  box-shadow: none;
+}
+.metadata-property .metadata-property-key input:hover,
+.metadata-property .metadata-property-value:hover {
+  background: var(--background-input);
+}
+.metadata-property .metadata-property-key input:focus,
+.metadata-property .metadata-property-value:focus-within {
+  border: none;
+  background: var(--background-input);
+  box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
+  color: var(--text-normal);
 }
 
 /********* Notices *********/
@@ -1546,6 +1576,10 @@ select:focus,
 
 
 /* Multi-select pill */
+.multi-select-container,
+.metadata-property .multi-select-container {
+  padding: 0;
+}
 .multi-select-pill {
   padding: var(--pill-padding-y) var(--pill-padding-x);
 }
@@ -1643,7 +1677,7 @@ select:focus,
 .embedded-backlinks .backlink-pane .search-result-container,
 .graph-control-section .tree-item-children {
   margin: 0 1em 1em 1em;
-  font-size: var(--font-ui-smaller);
+  font-size: var(--font-ui-small);
 }
 
 /********* Item lists *********/
@@ -1990,14 +2024,14 @@ input[type=checkbox]:checked:after {
 .inline-title {
   order: 0;
 }
-.metadata-container,
-.setting-properties-position-above .is-live-preview .metadata-container {
+.mod-root .metadata-container,
+.setting-properties-position-above .mod-root .is-live-preview .metadata-container {
   order: 1;
 }
-.setting-properties-position-below .is-live-preview .metadata-container {
+.setting-properties-position-below .mod-root .is-live-preview .metadata-container {
   order: 3;
 }
-.setting-properties-position-below .is-live-preview .embedded-backlinks {
+.setting-properties-position-below .mod-root .is-live-preview .embedded-backlinks {
   padding: 0 2rem 0.5rem 2rem;
 }
 .cm-contentContainer {
@@ -2008,8 +2042,8 @@ input[type=checkbox]:checked:after {
 }
 
 /* Consistent styles for inline metadata sections */
-.metadata-container,
-.embedded-backlinks {
+.mod-root .metadata-container,
+.mod-root .embedded-backlinks {
   background: var(--metadata-property-background);
   border: 0;
   font-family: var(--font-interface);
@@ -2054,10 +2088,13 @@ input[type=checkbox]:checked:after {
 }
 
 /********* Properties *********/
-.setting-properties-position-below .is-live-preview .metadata-container {
+.workspace > .workspace-split:not(.mod-root) .metadata-container {
+  --metadata-divider-width: inherit;
+}
+.setting-properties-position-below .mod-root .is-live-preview .metadata-container {
   padding: 0.5em 2em 0 2em;
 }
-.setting-properties-position-below .is-live-preview .metadata-container:has(~ .embedded-backlinks[style*="display: none"]) {
+.setting-properties-position-below .mod-root .is-live-preview .metadata-container:has(~ .embedded-backlinks[style*="display: none"]) {
   padding-bottom: 0.5em;
 }
 .metadata-properties-heading .metadata-properties-title {
@@ -2076,10 +2113,12 @@ input[type=checkbox]:checked:after {
   user-select: none;
 }
 .metadata-property {
+  background-color: transparent;
   border: none;
   box-shadow: none;
   display: flex;
-  gap: 0;
+  gap: 0.5em;
+  padding: var(--input-border-width);
 }
 .metadata-property:focus-within {
   background: var(--nav-item-background-hover);
@@ -2095,22 +2134,6 @@ input[type=checkbox]:checked:after {
   gap: 0.5em;
 }
 .metadata-property .metadata-property-key:focus-within {
-  background: transparent;
-}
-.metadata-property .metadata-property-key input {
-  border: none;
-  box-shadow: none;
-  display: block;
-  background: transparent;
-  height: 100%;
-}
-.metadata-property .metadata-property-key input:focus,
-.metadata-property .metadata-property-value:focus-within {
-  border: none;
-  background: var(--metadata-property-background);
-}
-.metadata-property-icon,
-.metadata-property-icon:hover {
   background: transparent;
 }
 .metadata-property .multi-select-input {
@@ -2154,7 +2177,7 @@ audio::-webkit-media-controls-panel {
   /* Terrible to use !important, but otherwise this gets an inline style enforcing a min height that can leave lots of unused space at the bottom. */
   min-height: 0 !important;
 }
-.setting-properties-position-below .is-live-preview .metadata-container[data-property-count="0"] ~ .embedded-backlinks {
+.setting-properties-position-below .mod-root .is-live-preview .metadata-container[data-property-count="0"] ~ .embedded-backlinks {
   padding-top: 0.5rem;
 }
 .embedded-backlinks .backlink-pane {
