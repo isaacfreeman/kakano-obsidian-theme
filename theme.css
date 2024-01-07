@@ -108,7 +108,7 @@ body {
   --theme-color-baseVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.25);
   --theme-color-baseVeryVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.125);
   --theme-color-lightenTransparent: rgba(255,255,255, 0.5);
-  --theme-color-darkenTransparent: rgba(255,255,255, 0.5);
+  --theme-color-darkenTransparent: rgba(0,0,0, 0.5);
 
   /* Hues */
   --color-red-rgb: 233, 49, 71;
@@ -208,6 +208,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-gradientBottom: var(--theme-color-baseSomewhatLightened);
   --theme-color-gradientTop: var(--theme-color-baseLightened);
+  --theme-color-graphLine: var(--theme-color-baseVeryDarkened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
@@ -233,7 +234,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
-  --theme-gradient-graphSidebarBg: hsla(var(--base-h), var(--base-s), var(--base-l), 0.3);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
 }
@@ -318,6 +318,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
   --theme-color-gradientBottom: var(--theme-color-baseVeryDarkened);
   --theme-color-gradientTop: var(--theme-color-baseDarkened);
+  --theme-color-graphLine: var(--theme-color-baseVeryLightened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
@@ -341,7 +342,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
-  --theme-gradient-graphSidebarBg: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
 }
@@ -1066,31 +1066,25 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   background-color: var(--background-secondary);
   background: var(--theme-gradient-bottomToTop);
 }
-
 .workspace-tabs .workspace-leaf {
   background: transparent;
 }
-
 .workspace-split.mod-root {
   background: transparent;
   background: var(--theme-gradient-topToBottom);
   padding-bottom: 1.5rem;
   padding: 0.5em 0.5em 2em 0.5em;
 }
-
 .sidebar-toggle-button,
 .workspace-tabs.mod-top,
 .is-focused .sidebar-toggle-button,
 .is-focused .workspace-tabs.mod-top {
   --tab-container-background: transparent;
 }
-
 .workspace-tab-header {
   color: var(--theme-color-textTabInactive);
   background-color: var(--tab-background-inactive);
 }
-
-
 .workspace-tab-header.is-active {
   color: var(--tab-text-color-active);
   background-color: var(--tab-background-active);
@@ -1112,7 +1106,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   gap: 0.25em;
 }
 
-/* Center workspace styling */
+/* Main area */
 .mod-root .workspace-tab-header-container-inner {
   /* Define spacing on tabs to fit with radius */
   padding: 0.5em calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
@@ -1171,33 +1165,28 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--empty-pane-color);
 }
 
-/* Left/Right workspace tab header styling */
+/* Sidebars, left and right */
 .mod-left-split .workspace-tab-header-container,
 .mod-right-split .workspace-tab-header-container {
   justify-content: center;
 }
-
 .mod-left-split .workspace-tab-header-container-inner,
 .mod-right-split .workspace-tab-header-container-inner {
   background: var(--tab-background-inactive);
 }
-
 .mod-left-split .workspace-tab-header-container-inner,
 .mod-right-split .workspace-tab-header-container-inner {
   border-radius: var(--radius-s);
   gap: 0;
   padding: 0;
 }
-
 .mod-left-split .workspace-tab-header,
 .mod-right-split .workspace-tab-header {
   border-radius: 0;
 }
-
 .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
   color: var(--text-normal);
 }
-
 .is-focused .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
 .is-focused .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
   color: var(--icon-color-focused);
@@ -1208,12 +1197,10 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .mod-right-split .workspace-tab-header.is-active {
   background: var(--background-switcher-active);
 }
-
 .mod-left-split .workspace-tab-header-spacer,
 .mod-right-split .workspace-tab-header-spacer {
   display: none;
 }
-
 .mod-left-split .workspace-tab-header-inner,
 .mod-right-split .workspace-tab-header-inner {
   border-radius: 0;
@@ -2293,7 +2280,7 @@ audio::-webkit-media-controls-panel {
     background: transparent;
 }
 
-/********** Core Plugin: Graph **********/
+/********** Core Plugin: Graph view **********/
 
 .graph-control-section {
   border: none;
@@ -2312,14 +2299,18 @@ audio::-webkit-media-controls-panel {
 .graph-controls .tree-item-self .tree-item-icon {
   margin: 0;
 }
-.workspace-leaf-content[data-type="graph"] .view-content {
+.mod-root .workspace-leaf-content[data-type="graph"] .view-content {
   background-color: var(--theme-color-graphViewBg);
   margin-top: 6px;
   border-radius: var(--tab-radius);
 }
 .mod-left-split .workspace-leaf-content[data-type="graph"] .view-content,
 .mod-right-split .workspace-leaf-content[data-type="graph"] .view-content {
-  background: var(--theme-gradient-graphSidebarBg);
+  background: transparent;
+}
+.graph-view.color-arrow,
+.graph-view.color-line {
+  color: var(--theme-color-graphLine);
 }
 
 /********** Core Plugin: Note composer **********/
