@@ -93,10 +93,12 @@ body {
   /*  Base colour variants */
   --theme-color-baseVeryVeryLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.95));
   --theme-color-baseVeryLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.80));
-  --theme-color-baseLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.70));
-  --theme-color-baseSlightlyLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.50));
-  --theme-color-baseSlightlyDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.50));
-  --theme-color-baseDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.70));
+  --theme-color-baseLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.60));
+  --theme-color-baseSomewhatLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.4));
+  --theme-color-baseSlightlyLightened: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.25));
+  --theme-color-baseSlightlyDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.25));
+  --theme-color-baseSomewhatDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.4));
+  --theme-color-baseDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.60));
   --theme-color-baseVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.80));
   --theme-color-baseVeryVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.95));
 
@@ -109,23 +111,26 @@ body {
   --theme-color-darkenTransparent: rgba(255,255,255, 0.5);
 
   /* Hues */
-    --color-red-rgb: 233, 49, 71;
-    --color-red: #e93147;
-    --color-orange-rgb: 236, 117, 0;
-    --color-orange: #ec7500;
-    --color-yellow-rgb: 224, 172, 0;
-    --color-yellow: #e0ac00;
-    --color-green-rgb: 8, 185, 78;
-    --color-green: #08b94e;
-    --color-cyan-rgb: 0, 191, 188;
-    --color-cyan: #00bfbc;
-    --color-blue-rgb: 8, 109, 221;
-    --color-blue: #086ddd;
-    --color-purple-rgb: 120, 82, 238;
-    --color-purple: #7852ee;
-    --color-pink-rgb: 213, 57, 132;
-    --color-pink: #d53984;
+  --color-red-rgb: 233, 49, 71;
+  --color-red: #e93147;
+  --color-orange-rgb: 236, 117, 0;
+  --color-orange: #ec7500;
+  --color-yellow-rgb: 224, 172, 0;
+  --color-yellow: #e0ac00;
+  --color-green-rgb: 8, 185, 78;
+  --color-green: #08b94e;
+  --color-cyan-rgb: 0, 191, 188;
+  --color-cyan: #00bfbc;
+  --color-blue-rgb: 8, 109, 221;
+  --color-blue: #086ddd;
+  --color-purple-rgb: 120, 82, 238;
+  --color-purple: #7852ee;
+  --color-pink-rgb: 213, 57, 132;
+  --color-pink: #d53984;
 
+  /* Gradients */
+  --theme-gradient-topToBottom: linear-gradient(0deg, var(--theme-color-gradientTop) 0%, var(--theme-color-gradientBottom) 100%);
+  --theme-gradient-bottomToTop: linear-gradient(0deg, var(--theme-color-gradientBottom) 0%, var(--theme-color-gradientTop) 100%);
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
@@ -181,14 +186,6 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseLightened);
 
   /* New variables for this theme */
-  --theme-colorCloseBgHover: var(--theme-color-baseVeryTransparent);
-  --theme-colorSlideBgHover: var(--theme-color-baseVeryTransparent);
-  --background-inactive-tab-hover: var(--theme-color-baseLightened);
-  --background-interactive-active: var(--theme-color-baseSlightlyLightened);
-  --theme-gradient-modRootBg: linear-gradient(0deg, var(--theme-color-baseLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
-  --theme-gradient-graphSidebarBg: hsla(var(--base-h), var(--base-s), var(--base-l), 0.3);
-  --background-secondary-gradient-bottom: var(--theme-color-baseSlightlyLightened);
-  --background-secondary-gradient-top: var(--theme-color-baseLightened);
   --background-side-dock-actions: transparent;
   --background-switcher-active: var(--theme-color-base);
   --color-text-interactive-active: var(--color-text-interactive);
@@ -197,8 +194,6 @@ body .metadata-property[data-property-key="tags"] {
   --color-text-interactive-hover: var(--theme-color-baseLightened);
   --color-text-interactive: var(--theme-color-baseSlightlyDarkened);
   --controls-container-background: var(--theme-color-baseVeryLightened);
-  --modal-background-search-results: linear-gradient(0deg, var(--theme-color-baseVeryLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
-  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--theme-color-baseVeryLightened) 0%, var(--theme-color-baseSlightlyLightened) 100%);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
@@ -206,15 +201,18 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBg: rgba(255, 255, 255, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgba(255, 255, 255, 0.1);
-  --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
+  --theme-color-gradientBottom: var(--theme-color-baseSomewhatLightened);
+  --theme-color-gradientTop: var(--theme-color-baseLightened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-interactiveActive: var(--theme-color-baseSlightlyLightened);
   --theme-color-log: var(--theme-color-baseVeryDarkened);
   --theme-color-logBg: var(--theme-color-baseSlightlyLightened);
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
@@ -222,17 +220,20 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
   --theme-color-navFileTagBorder: var(--theme-color-base);
+  --theme-color-navigationButtonBgHover: var(--theme-color-baseVeryTransparent);
   --theme-color-notice: var(--theme-color-baseVeryVeryLightened);
   --theme-color-noticeBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
+  --theme-color-tabBgInactiveHover: var(--theme-color-baseLightened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-gradient-graphSidebarBg: hsla(var(--base-h), var(--base-s), var(--base-l), 0.3);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
 }
@@ -276,7 +277,6 @@ body .metadata-property[data-property-key="tags"] {
 
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseVeryDarkened);
-  --background-inactive-tab-hover: var(--theme-color-baseDarkened);
   --text-normal: var(--theme-color-baseLightened);
   --text-faint: var(--theme-color-baseSlightlyLightened);
   --background-prompt: var(--theme-color-baseVeryDarkened);
@@ -296,14 +296,6 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseDarkened);
 
   /* New variables for this theme */
-  --theme-colorCloseBgHover: var(--theme-color-baseVeryTransparent);
-  --theme-colorSlideBgHover: var(--theme-color-baseVeryTransparent);
-  --background-inactive-tab-hover: var(--theme-color-baseSlightlyDarkened);
-  --background-interactive-active: var(--theme-color-baseSlightlyDarkened);
-  --theme-gradient-modRootBg: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
-  --theme-gradient-graphSidebarBg: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
-  --background-secondary-gradient-bottom: var(--theme-color-baseDarkened);
-  --background-secondary-gradient-top: var(--theme-color-baseVeryDarkened);
   --background-side-dock-actions: transparent;
   --background-switcher-active: var(--theme-color-base);
   --color-text-interactive-active: var(--color-text-interactive);
@@ -312,8 +304,6 @@ body .metadata-property[data-property-key="tags"] {
   --color-text-interactive-hover: var(--theme-color-baseDarkened);
   --color-text-interactive: var(--theme-color-baseSlightlyLightened);
   --controls-container-background: var(--theme-color-baseVeryDarkened);
-  --modal-background-search-results: linear-gradient(0deg, var(--theme-color-baseDarkened) 0%, var(--theme-color-baseVeryDarkened) 100%);
-  --modal-background-vertical-tab-header: linear-gradient(0deg, var(--theme-color-baseDarkened) 0%, var(--theme-color-baseVeryDarkened) 100%);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
@@ -321,31 +311,37 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBg: rgba(0, 0, 0, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgba(0, 0, 0, 0.1);
-  --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBg: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
+  --theme-color-gradientBottom: var(--theme-color-baseVeryDarkened);
+  --theme-color-gradientTop: var(--theme-color-baseDarkened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
+  --theme-color-interactiveActive: var(--theme-color-baseSlightlyDarkened);
   --theme-color-modalContentBg: var(--theme-color-baseDarkened);
   --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
   --theme-color-navFileTagBorder: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-navigationButtonBgHover: var(--theme-color-baseVeryTransparent);
   --theme-color-notice: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-noticeBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyDarkened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-gradient-graphSidebarBg: linear-gradient(0deg, var(--theme-color-baseVeryDarkened) 0%, var(--theme-color-baseDarkened) 100%);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
 }
@@ -663,7 +659,7 @@ li[data-task=">"]>p>input:checked:after {
 }
 .workspace-drawer-inner {
   background-color: var(--background-secondary);
-  background: linear-gradient(0deg, var(--background-secondary-gradient-bottom) 0%, var(--background-secondary-gradient-top) 100%);
+  background: var(--theme-gradient-bottomToTop);
 }
 .workspace-drawer.mod-left .workspace-drawer-inner {
   border-top-right-radius: var(--radius-xl);
@@ -888,7 +884,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .workspace-tab-header-inner-close-button:hover,
 .slides-close-btn:hover {
   color: var(--color-text-interactive);
-  background-color: var(--theme-colorCloseBgHover);
+  background-color: var(--theme-color-navigationButtonBgHover);
 }
 
 /* close buttons that use a text cross instead of an SVG */
@@ -960,7 +956,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .modal-setting-back-button-icon:hover,
 .mod-root .workspace-tab-header-status-icon:hover {
   color: var(--color-text-interactive);
-  background-color: var(--theme-colorCloseBgHover);
+  background-color: var(--theme-color-navigationButtonBgHover);
 }
 .mod-root .workspace-tab-header-status-icon .svg-icon {
   width: 80%
@@ -994,7 +990,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .clickable-icon.is-active {
   opacity: var(--icon-opacity-hover);
   color: var(--color-text-interactive-active);
-  background-color: var(--background-interactive-active);
+  background-color: var(--theme-color-interactiveActive);
 }
 .clickable-icon.is-active:hover {
   background-color: var(--background-modifier-hover);
@@ -1068,7 +1064,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 
 .workspace {
   background-color: var(--background-secondary);
-  background: linear-gradient(0deg, var(--background-secondary-gradient-bottom) 0%, var(--background-secondary-gradient-top) 100%);
+  background: var(--theme-gradient-bottomToTop);
 }
 
 .workspace-tabs .workspace-leaf {
@@ -1077,7 +1073,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 
 .workspace-split.mod-root {
   background: transparent;
-  background: var(--theme-gradient-modRootBg);
+  background: var(--theme-gradient-topToBottom);
   padding-bottom: 1.5rem;
   padding: 0.5em 0.5em 2em 0.5em;
 }
@@ -1106,7 +1102,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
 }
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
-  background-color: var(--background-inactive-tab-hover);
+  background-color: var(--theme-color-tabBgInactiveHover);
 }
 .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
   color: var(--icon-color);
@@ -1729,7 +1725,7 @@ input[type=checkbox]:checked:after {
 .community-modal-search-results-wrapper,
 .vault-list,
 .sync-file-tree-container {
-  background: var(--modal-background-search-results);
+  background: var(--theme-gradient-topToBottom);
   border: 0;
   padding: 1.5em;
   gap: 1.5em;
@@ -1837,7 +1833,7 @@ input[type=checkbox]:checked:after {
   border-right: none;
   padding: 2.5em 1em 1em 1.5em;
   margin: 0;
-  background: var(--modal-background-vertical-tab-header);
+  background: var(--theme-gradient-topToBottom);
   color: var(--color-text-interactive);
   height: 100%;
   box-shadow: var(--shadow-s);
@@ -2227,7 +2223,7 @@ audio::-webkit-media-controls-panel {
 /********** Core Plugin: Canvas **********/
 
 .canvas-submenu {
-  background: var(--background-interactive-active);
+  background: var(--theme-color-interactiveActive);
   top: calc(100% - 0.5em);
   box-shadow: none;
 }
@@ -2327,7 +2323,6 @@ audio::-webkit-media-controls-panel {
 }
 
 /********** Core Plugin: Note composer **********/
-
 /*   No special styles: uses shared .prompt */
 
 /********** Core Plugin: Outgoing links **********/
@@ -2465,7 +2460,7 @@ body {
   padding: 0.5rem;
 }
 .slides-container .slide .controls button:hover {
-  background: var(  --theme-colorSlideBgHover);
+  background: var(  --theme-color-navigationButtonBgHover);
 }
 .slides-container .slide .controls button .controls-arrow {
   width: 1.5rem;
@@ -2585,7 +2580,7 @@ body {
 .excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_checkbox:checked+.ToolIcon__icon {
   opacity: var(--icon-opacity-hover);
   color: var(--color-text-interactive-active);
-  background-color: var(--background-interactive-active);
+  background-color: var(--theme-color-interactiveActive);
   --icon-fill-color: var(--color-text-interactive-active);
 }
 .excalidraw-view .excalidraw .App-toolbar__divider {
