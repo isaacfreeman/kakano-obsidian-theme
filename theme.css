@@ -59,6 +59,7 @@ body {
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
+  --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
   --nav-item-children-margin-left: 1em;
   --nav-item-children-padding-left: 0.5em;
   --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
@@ -131,6 +132,9 @@ body {
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(0deg, var(--theme-color-gradientTop) 0%, var(--theme-color-gradientBottom) 100%);
   --theme-gradient-bottomToTop: linear-gradient(0deg, var(--theme-color-gradientBottom) 0%, var(--theme-color-gradientTop) 100%);
+
+  /* New variables for this theme */
+  --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
@@ -157,10 +161,10 @@ body .metadata-property[data-property-key="tags"] {
   --nav-collapse-icon-color: var(--theme-color-baseSlightlyTransparent);
   --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
   --nav-item-background-active: var(--theme-color-base);
-  --nav-item-background-hover: var(--theme-color-baseSlightlyLightened);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
   --nav-item-color-active: var(--theme-color-baseLightened);
   --nav-item-color: var(--theme-color-baseDarkened);
+  --nav-item-color-hover: white;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.25);
   --status-bar-text-color: black;
@@ -228,7 +232,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryLightened);
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
-  --theme-color-tabBgInactiveHover: var(--theme-color-baseLightened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
@@ -268,10 +271,10 @@ body .metadata-property[data-property-key="tags"] {
   --nav-collapse-icon-color: var(--theme-color-baseSlightlyTransparent);
   --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
   --nav-item-background-active: var(--theme-color-base);
-  --nav-item-background-hover: var(--theme-color-baseSlightlyDarkened);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
   --nav-item-color-active: var(--theme-color-baseDarkened);
   --nav-item-color: var(--theme-color-base);
+  --nav-item-color-hover: black;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
 
@@ -336,7 +339,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyDarkened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
@@ -886,6 +888,9 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--color-text-interactive);
   background-color: var(--theme-color-navigationButtonBgHover);
 }
+.workspace-tab-header:hover .workspace-tab-header-inner-close-button .svg-icon {
+  stroke: var(--color-text-interactive-hover);
+}
 
 /* close buttons that use a text cross instead of an SVG */
 .document-search-close-button,
@@ -1096,10 +1101,11 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
 }
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  color: var(--icon-color-focused);
   background-color: var(--theme-color-tabBgInactiveHover);
 }
 .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
-  color: var(--icon-color);
+  color: var(--icon-color-focused);
   opacity: var(--icon-opacity);
 }
 .workspace-tab-header-container-inner {
@@ -1386,8 +1392,8 @@ input[type='text'].prompt-input::placeholder {
   gap: 0.25em;
 }
 .suggestion-item.is-selected {
-  background-color: var(--background-modifier-hover);
-  color: var(--nav-item-color-active);
+  background-color: var(--nav-item-background-hover);
+  color: var(--nav-item-color-hover);
 }
 .suggestion-item.is-selected .suggestion-flair {
   color: var(--nav-item-color-active);
@@ -1636,6 +1642,7 @@ select:focus,
   font-weight: var(--font-medium);
 }
 .metadata-properties-heading .collapse-indicator,
+.embedded-backlinks .backlink-pane .tree-item-self .collapse-icon,
 .graph-controls .mod-collapsible .collapse-icon,
 .tree-item-self .tree-item-icon.collapse-icon {
   color: var(--color-text-interactive);
@@ -1646,6 +1653,15 @@ select:focus,
   position: relative;
   width: var(--size-4-4);
   margin: 0;
+}
+.metadata-properties-heading:hover .collapse-indicator svg.svg-icon,
+.embedded-backlinks .backlink-pane .tree-item-self:hover .collapse-icon svg.svg-icon,
+.graph-controls .mod-collapsible:hover .collapse-icon svg.svg-icon,
+.mod-collapsible:hover .collapse-icon svg.svg-icon,
+.search-result-file-title:hover .collapse-icon svg.svg-icon,
+.tree-item-self:hover .tree-item-icon.collapse-icon svg.svg-icon,
+.tree-item-self:hover .menu-item-icon svg.svg-icon {
+  color: var(--color-text-interactive-hover);
 }
 .backlink-pane > .tree-item-self .collapse-icon,
 .outgoing-link-pane > .tree-item-self .collapse-icon {
