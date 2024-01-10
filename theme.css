@@ -154,15 +154,15 @@ body .metadata-property[data-property-key="tags"] {
   --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
   --nav-item-background-active: var(--theme-color-base);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
-  --nav-item-color-active: var(--theme-color-baseLightened);
-  --nav-item-color: var(--theme-color-baseDarkened);
+  --nav-item-color-active: var(--theme-color-baseVeryLightened);
+  --nav-item-color: var(--theme-color-baseVeryDarkened);
   --nav-item-color-hover: white;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.25);
   --status-bar-text-color: black;
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseVeryLightened);
-  --text-normal: var(--theme-color-baseVeryDarkened);
+  --text-normal: var(--theme-color-baseVeryVeryDarkened);
   --text-faint: var(--theme-color-baseDarkened);
   --background-prompt: var(--theme-color-baseVeryVeryLightened);
   --status-bar-background: var(--theme-color-baseLightened);
@@ -188,7 +188,7 @@ body .metadata-property[data-property-key="tags"] {
   --color-text-interactive-content-area-hover: var(--theme-color-baseVeryLightened);
   --color-text-interactive-content-area: var(--theme-color-base);
   --color-text-interactive-hover: var(--theme-color-baseLightened);
-  --color-text-interactive: var(--theme-color-baseSlightlyDarkened);
+  --color-text-interactive: var(--theme-color-baseDarkened);
   --controls-container-background: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
@@ -264,15 +264,15 @@ body .metadata-property[data-property-key="tags"] {
   --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
   --nav-item-background-active: var(--theme-color-base);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
-  --nav-item-color-active: var(--theme-color-baseDarkened);
-  --nav-item-color: var(--theme-color-base);
+  --nav-item-color-active: var(--theme-color-baseVeryDarkened);
+  --nav-item-color: var(--theme-color-baseVeryLightened);
   --nav-item-color-hover: black;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
 
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseVeryDarkened);
-  --text-normal: var(--theme-color-baseLightened);
+  --text-normal: var(--theme-color-baseVeryVeryLightened);
   --text-faint: var(--theme-color-baseSlightlyLightened);
   --background-prompt: var(--theme-color-baseVeryDarkened);
   --status-bar-background: var(--theme-color-baseVeryDarkened);
@@ -297,7 +297,7 @@ body .metadata-property[data-property-key="tags"] {
   --color-text-interactive-content-area-hover: var(--theme-color-baseVeryDarkened);
   --color-text-interactive-content-area: var(--theme-color-baseLightened);
   --color-text-interactive-hover: var(--theme-color-baseDarkened);
-  --color-text-interactive: var(--theme-color-baseSlightlyLightened);
+  --color-text-interactive: var(--theme-color-baseLightened);
   --controls-container-background: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
@@ -1395,13 +1395,18 @@ input[type='text'].prompt-input::placeholder {
 
 .suggestion-hotkey,
 .setting-hotkey {
-  color: var(--theme-color-hotkey);
   background: transparent;
   border: solid 1px var(--theme-color-hotkey);
+  color: var(--theme-color-hotkey);
 }
 .suggestion-item.is-selected .suggestion-hotkey {
-  color: var(--theme-color-textSelected);
   border-color: var(--theme-color-textSelected);
+  color: var(--theme-color-textSelected);
+}
+.setting-hotkey.has-conflict {
+  background: transparent;
+  border: solid 1px var(--background-modifier-error);
+  color: var(--background-modifier-error);
 }
 
 /********* Action lists *********/
