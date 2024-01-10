@@ -101,7 +101,7 @@ body {
   --theme-color-baseSomewhatDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.4));
   --theme-color-baseDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.60));
   --theme-color-baseVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.80));
-  --theme-color-baseVeryVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.95));
+  --theme-color-baseVeryVeryDarkened: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.90));
 
   /* Base color with transparency */
   --theme-color-baseTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.5);
@@ -2147,7 +2147,9 @@ input[type=checkbox]:checked:after {
 .metadata-property .multi-select-input {
   padding: var(--pill-padding-y) 0;
 }
-
+.metadata-property-icon:before {
+  display: none;
+}
 
 /********** Core Plugin: Audio Recorder **********/
 
