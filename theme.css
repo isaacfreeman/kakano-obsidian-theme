@@ -20,7 +20,7 @@ settings:
     description: 'Base color, from which the Kakano theme will generate background gradients.'
     type: variable-color
     format: hsl-split
-    default: '#007AFF'
+    default: '#2176B0'
   -
     id: setting-properties-position
     title: 'Properties position'
@@ -225,6 +225,10 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryLightened);
+  --tag-color: hsl(var(--accent-h), calc(var(--accent-s)), calc(var(--accent-l)*0.8));
+  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+  --theme-color-tagBgSidebar: hsla(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1), 0.4);
+  --theme-color-tagSidebar: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*0.4));
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
@@ -332,6 +336,12 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
+
+  --tag-color: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1.2));
+  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+  --theme-color-tagBgSidebar: hsla(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1), 0.4);
+  --theme-color-tagSidebar: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1.3));
+
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
@@ -2530,11 +2540,12 @@ body {
 /********** Core Plugin: Tags view **********/
 
 .tag-pane-tag > .tree-item-inner {
-  /* Tags in sidebar styled the same as in notes */
-  background-color: var(--tag-background);
+  /* Tags in sidebar styled the same as in notes, but ligher/darker to sit on colored background */
+  /* TODO: darker */
+  background-color: var(--theme-color-tagBgSidebar);
   border-radius: var(--tag-radius);
   border: var(--tag-border-width) solid var(--tag-border-color);
-  color: var(--tag-color);
+  color: var(--theme-color-tagSidebar);
   font-weight: var(--tag-weight);
   padding: var(--tag-padding-y) var(--tag-padding-x);
   vertical-align: baseline;
