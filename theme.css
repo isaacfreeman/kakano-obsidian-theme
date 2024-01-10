@@ -112,22 +112,14 @@ body {
   --theme-color-darkenTransparent: rgba(0,0,0, 0.5);
 
   /* Hues */
-  --color-red-rgb: 233, 49, 71;
-  --color-red: #e93147;
-  --color-orange-rgb: 236, 117, 0;
-  --color-orange: #ec7500;
-  --color-yellow-rgb: 224, 172, 0;
-  --color-yellow: #e0ac00;
-  --color-green-rgb: 8, 185, 78;
-  --color-green: #08b94e;
-  --color-cyan-rgb: 0, 191, 188;
-  --color-cyan: #00bfbc;
-  --color-blue-rgb: 8, 109, 221;
-  --color-blue: #086ddd;
-  --color-purple-rgb: 120, 82, 238;
-  --color-purple: #7852ee;
-  --color-pink-rgb: 213, 57, 132;
-  --color-pink: #d53984;
+  --color-red: hsl(356, var(--base-s), var(--base-l));
+  --color-orange: hsl(27, var(--base-s), var(--base-l));
+  --color-yellow: hsl(44, var(--base-s), var(--base-l));
+  --color-green: hsl(124, var(--base-s), var(--base-l));
+  --color-cyan: hsl(179, var(--base-s), var(--base-l));
+  --color-blue: hsl(219, var(--base-s), var(--base-l));
+  --color-purple: hsl(253, var(--base-s), var(--base-l));
+  --color-pink: hsl(331, var(--base-s), var(--base-l));
 
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(0deg, var(--theme-color-gradientTop) 0%, var(--theme-color-gradientBottom) 100%);
