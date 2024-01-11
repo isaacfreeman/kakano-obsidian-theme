@@ -37,6 +37,20 @@ settings:
     max: 1
     step: 0.1
   -
+    id: theme-value-darkModeNoteBg
+    title: 'Dark mode note background'
+    description: 'In dark mode, note backgrounds can be near black (default) or full black. Near black is a bit easier on the eyes. Full black will save a little energy on OLED screens which will switch back pixels completely off. And some people just like the way it looks.'
+    type: class-select
+    allowEmpty: false
+    default: theme-value-darkModeNoteBgNearBlack
+    options:
+      -
+        label: 'Near black (less eye strain)'
+        value: theme-value-darkModeNoteBgNearBlack
+      -
+        label: 'Full black (OLED screen will switch pixels off)'
+        value: theme-value-darkModeNoteBgFullBlack
+  -
     id: heading-layout-settings
     title: Layout settings
     type: heading
@@ -293,9 +307,9 @@ body .metadata-property[data-property-key="tags"] {
   --background-modifier-message: var(--theme-color-baseVeryLightened);
   --blockquote-border-color: var(--theme-color-baseVeryDarkened);
   --empty-pane-color: var(--theme-color-baseDarkened);
-  --icon-color-focused: white;
+  --icon-color-focused: var(--theme-color-baseVeryLightened);
   --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
-  --icon-color-hover: white;
+  --icon-color-hover: var(--theme-color-baseVeryLightened);
   --icon-color: var(--theme-color-base);
   --modal-background: var(--theme-color-baseVeryDarkened);
   --nav-collapse-icon-color-collapsed: var(--theme-color-baseSlightlyTransparent);
@@ -304,14 +318,14 @@ body .metadata-property[data-property-key="tags"] {
   --nav-item-background-active: var(--theme-color-base);
   --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
   --nav-item-color-active: var(--theme-color-baseVeryDarkened);
-  --nav-item-color: var(--theme-color-baseVeryLightened);
+  --nav-item-color: var(--theme-color-baseLightened);
   --nav-item-color-hover: black;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
 
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseVeryDarkened);
-  --text-normal: var(--theme-color-baseVeryVeryLightened);
+  --text-normal: var(--theme-color-baseLightened);
   --text-faint: var(--theme-color-baseSlightlyLightened);
   --background-prompt: var(--theme-color-baseVeryDarkened);
   --interactive-accent: var(--theme-color-base);
@@ -324,7 +338,8 @@ body .metadata-property[data-property-key="tags"] {
   --metadata-input-background-active: var(--theme-color-baseVeryVeryDarkened);
 
   /* Background for content area */
-  --background-primary: black;
+  /* This may be overridden below by the theme-value-darkModeNoteBg style setting. */
+  --background-primary: color-mix(in srgb, var(--theme-color-base), black calc(100% * 0.95));
   /* Background for controls area */
   --background-secondary: var(--theme-color-baseDarkened);
 
@@ -401,6 +416,11 @@ body .metadata-property[data-property-key="tags"] {
   --pill-color-remove: var(--theme-color-baseVeryDarkened);
   --pill-color-remove-hover: var(--theme-color-baseVeryDarkened);
   --pill-background-remove-hover: var(--theme-color-baseSlightlyDarkened);
+}
+.theme-dark.theme-value-darkModeNoteBgFullBlack {
+  /* Override note background when specified by style settings. */
+  /* There's no equivalent of this for light mode. */
+  --background-primary: black;
 }
 
 /********* Markdown Typography *********/
@@ -2606,7 +2626,6 @@ body {
 
 .tag-pane-tag > .tree-item-inner {
   /* Tags in sidebar styled the same as in notes, but ligher/darker to sit on colored background */
-  /* TODO: darker */
   background-color: var(--theme-color-tagBgSidebar);
   border-radius: var(--tag-radius);
   border: var(--tag-border-width) solid var(--tag-border-color);

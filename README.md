@@ -49,6 +49,8 @@ Kakano starts with a user-selected base color, and generates lighter and darker 
 ![Supports mobile](mobile.png)
 Supports light mode and dark mode with the same base color, on desktop and mobile.
 
+- With [Style Settings](https://github.com/mgmeyers/obsidian-style-settings), choose whether the note background is near black or full black.
+
 ### Standardised controls
 ![Appearance of controls standardised across plugins for a consistent user interface.](consistent_controls.png)
 The appearance of buttons, switches, form fields and other controls is standardised across different modules, so the user interface looks and behaves consistently.
