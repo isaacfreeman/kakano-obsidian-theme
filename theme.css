@@ -1700,6 +1700,8 @@ select:focus,
   position: relative;
   width: var(--size-4-4);
   margin: 0;
+  align-items: center;
+  justify-content: center;
 }
 .metadata-properties-heading:hover .collapse-indicator svg.svg-icon,
 .embedded-backlinks .backlink-pane .tree-item-self:hover .collapse-icon svg.svg-icon,
