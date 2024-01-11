@@ -270,7 +270,7 @@ body .metadata-property[data-property-key="tags"] {
 .theme-light,
 .theme-light .metadata-property:not([data-property-key="tags"]),
 .theme-light .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--theme-color-baseTransparent);
+  --pill-background: var(--theme-color-baseSlightlyTransparent);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: white;
   --pill-color-hover: white;
@@ -1754,6 +1754,7 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
   font-weight: var(--font-medium);
 }
 
+
 /* UI Checkboxes */
 .checkbox-container {
   background-color: var(--background-input);
@@ -2182,6 +2183,9 @@ input[type=checkbox]:checked:after {
 }
 .metadata-property .metadata-property-key:focus-within {
   background: transparent;
+}
+input.metadata-property-key-input {
+  color: var(--color-text-interactive);
 }
 .metadata-property .multi-select-input {
   padding: var(--pill-padding-y) 0;
