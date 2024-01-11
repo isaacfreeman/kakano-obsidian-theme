@@ -130,7 +130,9 @@ body {
   --theme-color-baseVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.25);
   --theme-color-baseVeryVeryTransparent: hsla(var(--base-h), var(--base-s), var(--base-l), 0.125);
   --theme-color-lightenTransparent: rgba(255,255,255, 0.5);
+  --theme-color-lightenSlightlyTransparent: rgba(255,255,255, 0.25);
   --theme-color-darkenTransparent: rgba(0,0,0, 0.5);
+  --theme-color-darkenSlightlyTransparent: rgba(0,0,0, 0.25);
 
   /* Hues */
   --color-red: hsl(356, var(--base-s), var(--base-l));
@@ -217,9 +219,9 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
   --theme-color-communityItemBgSelected: var(--theme-color-baseSlightlyLightened);
-  --theme-color-contentItemBg: rgba(255, 255, 255, 0.2);
+  --theme-color-contentItemBg: var(--theme-color-lightenTransparent);
   --theme-color-contentItemBgActive: var(--theme-color-base);
-  --theme-color-contentItemBgHover: rgba(255, 255, 255, 0.1);
+  --theme-color-contentItemBgHover: var(--theme-color-lightenSlightlyTransparent);
   --theme-color-controlBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
@@ -1352,7 +1354,6 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .search-result-file-match:hover,
 .sync-history-list-item:hover {
   background: var(--theme-color-contentItemBgHover);
-  color: var(--nav-item-color-hover);
   cursor: pointer;
   font-weight: var(--nav-item-weight-hover);
 }
