@@ -24,7 +24,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
 
 1. Install the Kakano theme
    [Open directly in Obsidian](obsidian://show-theme?name=Kakano) or open Obsidian settings and navigate to `Appearance`, then `Manage` and type "Kakano" into the `FIlter...` field. Click on `Install and use`.
-2. (Optional) Install the [Style Settings plugin](https://github.com/mgmeyers/obsidian-style-settings)
+2. (Recommended, but optional) Install the [Style Settings plugin](https://github.com/mgmeyers/obsidian-style-settings)
    This will give you access to some additional theme settings.
 3. Set your vault's base color
    - If you're not using Style Settings, navigate to `Appearance` in the Obsidian settings, and use the `Accent color` control.
