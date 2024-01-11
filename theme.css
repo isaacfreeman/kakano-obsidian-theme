@@ -95,6 +95,7 @@ body {
   --ribbon-background: transparent;
   --ribbon-width: 3em;
   --slider-track-background: var(--theme-color-baseTransparent);
+  --status-bar-background: var(--theme-color-gradientTOp);
   --status-bar-text-color: var(--text-normal);
   --tab-container-background: transparent;
   --tab-curve: calc(var(--tab-radius) * 0.5);
@@ -192,7 +193,6 @@ body .metadata-property[data-property-key="tags"] {
   --text-normal: var(--theme-color-baseVeryVeryDarkened);
   --text-faint: var(--theme-color-baseDarkened);
   --background-prompt: var(--theme-color-baseVeryVeryLightened);
-  --status-bar-background: var(--theme-color-baseLightened);
   --interactive-accent: var(--theme-color-base);
   --interactive-accent-hover: var(--theme-color-base);
   --table-border-color: var(--theme-color-baseLightened);
@@ -314,7 +314,6 @@ body .metadata-property[data-property-key="tags"] {
   --text-normal: var(--theme-color-baseVeryVeryLightened);
   --text-faint: var(--theme-color-baseSlightlyLightened);
   --background-prompt: var(--theme-color-baseVeryDarkened);
-  --status-bar-background: var(--theme-color-baseVeryDarkened);
   --interactive-accent: var(--theme-color-base);
   --table-border-color: var(--theme-color-baseDarkened);
   --table-header-border-color: var(--theme-color-baseDarkened);
