@@ -85,6 +85,7 @@ body {
   --nav-item-children-padding-left: 0.5em;
   --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
+  --nav-item-color-highlighted: var(--nav-item-hover);
   --p-spacing: 0;
   --pill-focus-left-adjust: 0;
   --pill-focus-width: 100%;
@@ -147,12 +148,13 @@ body {
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(0deg, var(--theme-color-gradientTop) 0%, var(--theme-color-gradientBottom) 100%);
   --theme-gradient-bottomToTop: linear-gradient(0deg, var(--theme-color-gradientBottom) 0%, var(--theme-color-gradientTop) 100%);
-
-  /* New variables for this theme */
   /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
   --theme-value-gradientContrast: 0.2;
+
+  /* Other new variables for this theme */
   --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
-}
+  --color-theme-dragTarget: var(--theme-color-baseTransparent);
+  --color-theme-dragTargetBg: var(--theme-color-baseVeryTransparent);}
 body,
 body .metadata-property:not([data-property-key="tags"]),
 body .metadata-property[data-property-key="tags"] {
@@ -1139,6 +1141,17 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   box-shadow: var(--theme-shadow-input);
 }
 
+/* Drag */
+.workspace-drop-overlay:before {
+  animation: 0.5s 1 alternate fadein;
+  background-color: var(--color-theme-dragTarget);
+  border-radius: var(--radius-m);
+  opacity: 1;
+}
+.workspace-fake-target-overlay {
+  background: transparent;
+}
+
 /* Tab styling */
 .workspace-tab-header {
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
@@ -1701,7 +1714,7 @@ select:focus,
   width: var(--size-4-4);
   margin: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .metadata-properties-heading:hover .collapse-indicator svg.svg-icon,
 .embedded-backlinks .backlink-pane .tree-item-self:hover .collapse-icon svg.svg-icon,
@@ -1745,6 +1758,12 @@ body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
   background-color: var(--interactive-accent);
   color: var(--nav-item-color-active);
 }
+.nav-folder.is-being-dragged-over {
+  animation: 0.5s 1 alternate fadein;
+  border-radius: var(--radius-s);
+  border: solid 0.125rem var(--color-theme-dragTarget);
+  background-color: var(--color-theme-dragTargetBg);
+}
 body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .horizontal-tab-nav-item.is-active:hover,
 .vertical-tab-nav-item.is-active:hover,
@@ -1756,7 +1775,6 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .nav-folder-title {
   font-weight: var(--font-medium);
 }
-
 
 /* UI Checkboxes */
 .checkbox-container {
