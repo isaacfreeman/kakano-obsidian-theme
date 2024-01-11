@@ -42,6 +42,7 @@ Kakano starts with a user-selected base color, and generates lighter and darker 
 
 - With core plugins, the base color will be your accent color.
 - If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, it provides a separate Kakano base color setting, so you can have one color for your overall theme, and keep the accent color for links and tags.
+- With [Style Settings](https://github.com/mgmeyers/obsidian-style-settings), there's also an option to change the level of contrast in background gradients. Set it to zero for a completely flat background color, or stronger for more dynamic range.
 
 ### Light mode, dark mode, and mobile
 ![Light and dark from the same base color](light_and_dark.png)
