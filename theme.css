@@ -15,12 +15,33 @@ name: Kakano
 id: kakano-style
 settings:
   -
+    id: heading-color-settings
+    title: Color settings
+    type: heading
+    level: 1
+    collapsed: false
+  -
     id: base
     title: Base color
     description: 'Base color, from which the Kakano theme will generate background gradients.'
     type: variable-color
     format: hsl-split
     default: '#2176B0'
+  -
+    id: theme-value-gradientContrast
+    title: 'Background gradient contrast'
+    description: 'Degree of contrast for background gradients. Set to zero for a flat background color.'
+    type: variable-number-slider
+    default: 0.2
+    min: 0
+    max: 1
+    step: 0.1
+  -
+    id: heading-layout-settings
+    title: Layout settings
+    type: heading
+    level: 1
+    collapsed: false
   -
     id: setting-properties-position
     title: 'Properties position'
@@ -126,6 +147,8 @@ body {
   --theme-gradient-bottomToTop: linear-gradient(0deg, var(--theme-color-gradientBottom) 0%, var(--theme-color-gradientTop) 100%);
 
   /* New variables for this theme */
+  /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
+  --theme-value-gradientContrast: 0.2;
   --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
 }
 body,
@@ -202,8 +225,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
-  --theme-color-gradientBottom: var(--theme-color-baseSomewhatLightened);
-  --theme-color-gradientTop: var(--theme-color-baseLightened);
   --theme-color-graphLine: var(--theme-color-baseVeryDarkened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-hotkey: var(--theme-color-base);
@@ -235,6 +256,16 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
+
+  /*
+  Gradient from contrast setting
+
+  At 0 contrast, this sets both ends of the gradient to base color plus 50% white
+  At 0.2 (default), it matches --theme-color-baseLightened and --theme-color-baseSomewhatLightened
+  At 1, the top is white, bottom is base color
+  */
+  --theme-color-gradientTop: color-mix(in srgb, var(--theme-color-base), white calc(100% * (0.5 + 0.5 * var(--theme-value-gradientContrast))));
+  --theme-color-gradientBottom: color-mix(in srgb, var(--theme-color-base), white calc(100% * (0.5 - 0.5 * var(--theme-value-gradientContrast))));
 }
 .theme-light,
 .theme-light .metadata-property:not([data-property-key="tags"]),
@@ -315,8 +346,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
-  --theme-color-gradientBottom: var(--theme-color-baseVeryDarkened);
-  --theme-color-gradientTop: var(--theme-color-baseDarkened);
   --theme-color-graphLine: var(--theme-color-baseVeryLightened);
   --theme-color-graphViewBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-hotkey: var(--theme-color-base);
@@ -348,6 +377,16 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
+
+  /*
+  Gradient from contrast setting
+
+  At 0 contrast, this sets both ends of the gradient to base color plus 70% black
+  At 0.2 (default), it matches --theme-color-baseDarkened and --theme-color-baseVeryDarkened
+  At 1, the top is base color, bottom pure black
+  */
+  --theme-color-gradientTop: color-mix(in srgb, var(--theme-color-base), black calc(100% * (0.7 - 0.5 * var(--theme-value-gradientContrast))));
+  --theme-color-gradientBottom: color-mix(in srgb, var(--theme-color-base), black calc(100% * (0.7 + 0.5 * var(--theme-value-gradientContrast))));
 }
 .theme-dark,
 .theme-dark .metadata-property:not([data-property-key="tags"]),
