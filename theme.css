@@ -761,9 +761,6 @@ li[data-task=">"]>p>input:checked:after {
   border-top-left-radius: var(--radius-xl);
   border-bottom-left-radius: var(--radius-xl);
 }
-.is-phone .prompt-input-cta:empty {
-  display: none;
-}
 .is-phone .modal-container {
   padding: 0.5rem;
 }
@@ -1452,6 +1449,11 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
     opacity: 1;
   }
 }
+.prompt-input-container,
+.is-phone .prompt-input-container {
+  border-bottom: none;
+  background: var(--background-secondary);
+}
 .prompt {
   background-color: var(--background-prompt);
 }
@@ -1468,7 +1470,6 @@ input.prompt-input[type=text]:focus {
 input[type='text'].prompt-input::placeholder {
   color: var(--theme-color-base);
 }
-
 .prompt-instructions {
   background: var(--background-secondary);
   border-top: 0;
@@ -2456,6 +2457,7 @@ audio::-webkit-media-controls-panel {
 }
 
 /********** Core Plugin: Note composer **********/
+
 /*   No special styles: uses shared .prompt */
 
 /********** Core Plugin: Outgoing links **********/
