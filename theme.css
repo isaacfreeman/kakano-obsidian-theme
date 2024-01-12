@@ -983,7 +983,9 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 
 /* close buttons that use a text cross instead of an SVG */
 .document-search-close-button,
-.modal-close-button {
+.modal-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
   padding: var(--size-2-1);
   width: 1.5rem;
   height: 1.5rem;
@@ -993,6 +995,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   --icon-stroke: var(--icon-s-stroke-width);
   text-align: center;
   justify-content: center;
+  line-height: 20px;
 }
 .document-search-close-button:before,
 .modal-close-button:before {
@@ -1629,17 +1632,23 @@ input.document-replace-input.mod-no-match {
 button:not(.clickable-icon),
 button:not(.clickable-icon).mod-cta,
 .sync-history-load-more-button,
-.empty-state-action {
+.empty-state-action,
+.is-mobile .document-search .document-search-button,
+.is-mobile .document-replace .document-search-button {
   background: var(--theme-color-controlBg);
   border: none;
   border-radius: var(--button-radius);
   box-shadow: var(--theme-shadow-control);
   color: var(--theme-color-controlText);
-  padding: 0 var(--size-4-2);
+  padding: 0 0.5em;
+  height: var(--input-height);
 }
 button:not(.clickable-icon):hover,
 button:not(.clickable-icon).mod-cta:hover,
-.sync-history-load-more-button:hover,.empty-state-action:hover {
+.sync-history-load-more-button:hover,
+.empty-state-action:hover,
+.is-mobile .document-search .document-search-button:hover,
+.is-mobile .document-replace .document-search-button:hover {
   border: none;
   background: var(--theme-color-controlBgHover);
   color: var(--theme-color-controlTextHover);
@@ -1647,7 +1656,9 @@ button:not(.clickable-icon).mod-cta:hover,
 button:not(.clickable-icon):focus,
 button:not(.clickable-icon).mod-cta:focus,
 .sync-history-load-more-button:focus ,
-.empty-state-action:focus {
+.empty-state-action:focus,
+.is-mobile .document-search .document-search-button:focus,
+.is-mobile .document-replace .document-search-button:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
 }
 
@@ -2115,15 +2126,26 @@ input[type=checkbox]:checked:after {
 
 /* Document search */
 .document-search-container,
-.mod-active .document-search-container {
+.mod-active .document-search-container,
+.is-mobile .document-search-container {
   background: var(--background-secondary);
   border-radius: var(--radius-l);
   box-shadow: var(--shadow-s);
   margin: 0 auto;
+  padding: 0.5em;
+}
+.document-search,
+.document-replace {
+  padding: 0;
 }
 .document-search-button {
   border: none;
   color: var(--color-text-interactive);
+}
+.document-search-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
+  top: calc(50% - 0.5em);
 }
 
 /* Debug modal */
