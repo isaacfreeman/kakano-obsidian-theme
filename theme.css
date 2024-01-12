@@ -1619,6 +1619,11 @@ input[type='text']::placeholder,
 textarea::placeholder {
   color: var(--theme-color-inputPlaceholder);
 }
+/* No matches state */
+input.document-search-input.mod-no-match,
+input.document-replace-input.mod-no-match {
+  background-color: color-mix(in srgb, var(--background-input), var(--background-modifier-error) 50%);
+}
 
 /* Buttons - regular */
 button:not(.clickable-icon),
