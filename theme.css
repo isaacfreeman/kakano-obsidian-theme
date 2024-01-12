@@ -331,7 +331,6 @@ body .metadata-property[data-property-key="tags"] {
   --background-modifier-border-focus: var(--theme-color-baseSlightlyDarkened);
   --background-modifier-border: var(--theme-color-baseSlightlyDarkened);
   --background-modifier-hover: var(--theme-color-base);
-  --background-modifier-message: var(--theme-color-baseVeryLightened);
   --blockquote-border-color: var(--theme-color-baseVeryDarkened);
   --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: var(--theme-color-baseVeryLightened);
@@ -1835,6 +1834,14 @@ input[type=checkbox]:checked:after {
   height: 100%;
   top: 0;
   left: 0;
+}
+
+/********** Tooltips **********/
+
+.tooltip {
+  color: var(--theme-color-notice);
+  background-color: var(--theme-color-noticeBg);
+  padding: 0.5em 1em;
 }
 
 /********** Remote items **********/
