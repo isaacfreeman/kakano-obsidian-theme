@@ -954,13 +954,13 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .workspace-tab-header-inner-close-button,
 .slides-close-btn {
   background-color: transparent;
-  border-radius: 100%;
+  border-radius: 1.5rem;
   border: none;
   color: var(--color-text-interactive);
   /* Above .modal-title */
   z-index: 2;
   width: 1.5rem;
-  height: 1.5rem;
+  height: auto;
 }
 .workspace-tab-header-inner-close-button .svg-icon {
   stroke: var(--color-text-interactive);
