@@ -8,7 +8,34 @@ Principles:
 5. Buttons are lighter, content containers darker
 
 */
+/* Plugin compatibility */
 
+/* @plugins
+core:
+- audio-recorder
+- backlink
+- bookmarks
+- command-palette
+- daily-notes
+- file-explorer
+- file-recovery
+- global-search
+- graph
+- note-composer
+- outgoing-link
+- outline
+- page-preview
+- properties-view
+- random-note
+- slash-commands
+- starred
+- switcher
+- sync
+- tag-pane
+- templates
+- word-count
+- workspaces
+*/
 /* @settings
 
 name: Kakano
