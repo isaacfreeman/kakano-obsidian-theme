@@ -1641,7 +1641,8 @@ button:not(.clickable-icon).mod-cta,
   box-shadow: var(--theme-shadow-control);
   color: var(--theme-color-controlText);
   padding: 0 0.5em;
-  height: var(--input-height);
+  min-height: var(--input-height);
+  height: auto;
 }
 button:not(.clickable-icon):hover,
 button:not(.clickable-icon).mod-cta:hover,
