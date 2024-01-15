@@ -1640,7 +1640,7 @@ button:not(.clickable-icon).mod-cta,
   border-radius: var(--button-radius);
   box-shadow: var(--theme-shadow-control);
   color: var(--theme-color-controlText);
-  padding: 0 0.5em;
+  padding: 0.25em 0.5em;
   min-height: var(--input-height);
   height: auto;
 }
@@ -1661,6 +1661,11 @@ button:not(.clickable-icon).mod-cta:focus,
 .is-mobile .document-search .document-search-button:focus,
 .is-mobile .document-replace .document-search-button:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+}
+
+/* Buttons - regular but small */
+button.search-result-file-match-replace-button {
+  min-height: auto;
 }
 
 /* Buttons - lower visual weight */
@@ -2353,6 +2358,9 @@ audio::-webkit-media-controls-panel {
 }
 .backlink-pane .search-result-container {
   margin-left: 1em;
+}
+.search-result-file-match-replace-button {
+  bottom: 0.375em;
 }
 .embedded-backlinks .backlink-pane .search-result-file-matches {
   background: none;
