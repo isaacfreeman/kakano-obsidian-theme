@@ -124,7 +124,7 @@ body {
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
   --nav-item-children-margin-left: 1em;
   --nav-item-children-padding-left: 0.5em;
-  --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
+  --nav-item-padding: 0.375em 0.5em 0.375em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
   --nav-item-color-highlighted: var(--nav-item-hover);
   --p-spacing: 0;
@@ -1872,6 +1872,13 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .nav-folder-title {
   font-weight: var(--font-medium);
 }
+.nav-file-title,
+.nav-folder-title {
+  padding: 0;
+}
+.tree-item-inner {
+  padding: var(--nav-item-padding);
+}
 
 /* UI Checkboxes */
 .checkbox-container {
@@ -2448,7 +2455,6 @@ audio::-webkit-media-controls-panel {
 }
 .nav-file-title-content {
   flex-grow: 1;
-  padding: var(--nav-item-padding);
 }
 .nav-file-tag {
   background: transparent;
@@ -2819,4 +2825,5 @@ body {
 
 .recent-files-title {
   align-items: center;
+  padding-right: 0.375em;
 }
