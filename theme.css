@@ -881,6 +881,10 @@ li[data-task=">"]>p>input:checked:after {
   /* Bottom margin the same as height of .mobile-navbar, to avoid overlap */
   margin-bottom: calc(max(var(--size-4-2), var(--safe-area-inset-bottom)) + var(--size-4-2) + var(--size-2-2) * 4 + var(--icon-size));
 }
+.is-phone.mod-toolbar-open .mod-root .workspace-tab-container {
+  /* ...except when the toolbar is open. Using this as a proxy for detecting that the on-screen keyboard is present. */
+  margin-bottom: 0;
+}
 
 .is-phone .modal.mod-sidebar-layout .modal-content > * {
   padding: 1em calc(1em + var(--safe-area-inset-right)) 1em calc(1em + var(--safe-area-inset-left));
