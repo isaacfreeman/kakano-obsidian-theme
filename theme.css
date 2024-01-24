@@ -198,7 +198,9 @@ body {
   /* Other new variables for this theme */
   --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
   --color-theme-dragTarget: var(--theme-color-baseTransparent);
-  --color-theme-dragTargetBg: var(--theme-color-baseVeryTransparent);}
+  --color-theme-dragTargetBg: var(--theme-color-baseVeryTransparent);
+  --theme-lineHeight-tight: 1.3rem;
+}
 body,
 body .metadata-property:not([data-property-key="tags"]),
 body .metadata-property[data-property-key="tags"] {
@@ -1790,7 +1792,7 @@ select:focus,
   gap: 0;
   margin: 0;
   padding: 0.25em 0.5em;
-  line-height: var(--line-height-tight);
+  line-height: var(--theme-lineHeight-tight);
   display: flex;
 }
 .metadata-properties-heading:hover,
