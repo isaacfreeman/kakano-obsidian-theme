@@ -2048,9 +2048,9 @@ input[type=checkbox]:checked:after {
 }
 .mod-community-modal .community-modal-controls .setting-item:first-child {
   /* Filter control */
-  max-width: var(--modal-community-sidebar-width);
+  max-width: 60%;
   margin-bottom: 0.5em;
-  padding-left: 1em;
+  padding-left: 2em;
   float: right;
 }
 .mod-community-modal .community-modal-controls .setting-item:first-child .setting-item-control {
