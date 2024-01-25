@@ -2046,7 +2046,7 @@ input[type=checkbox]:checked:after {
   padding: 0;
   margin-bottom: 0.5em;
 }
-.mod-community-modal .community-modal-controls .setting-item:first-child {
+.mod-community-modal:not(:has(.community-modal-details)) .community-modal-controls .setting-item:first-child {
   /* Filter control */
   max-width: 60%;
   margin-bottom: 0.5em;
