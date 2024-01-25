@@ -761,14 +761,20 @@ li[data-task=">"]>p>input:checked:after {
 .is-phone .workspace-leaf.mod-active .view-header {
   background: transparent;
 }
+.is-phone .view-header {
+  padding: 0.5em 0 0 0;
+  border-bottom: none;
+  flex-wrap: wrap;
+  background: transparent;
+}
 .is-phone .view-header-title-container {
   background-color: var(--background-primary);
   border-top-left-radius: var(--tab-radius);
   border-top-right-radius: var(--tab-radius);
-}
-.is-phone .view-header {
-  padding-bottom: 0;
-  border-bottom: none;
+  order: 1;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 0.5em;
 }
 .is-phone .mod-root .workspace-tabs .workspace-tab-container {
   border-radius: 0;
