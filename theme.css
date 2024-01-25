@@ -1805,7 +1805,7 @@ select:focus,
 /* Collapsible controls */
 .metadata-properties-heading,
 .embedded-backlinks .backlink-pane .tree-item-self,
-.graph-controls .graph-control-section,
+.graph-controls .graph-control-section .tree-item-self,
 .mod-collapsible,
 .search-result-file-title {
   align-items: flex-start;
@@ -1821,7 +1821,7 @@ select:focus,
 }
 .metadata-properties-heading:hover,
 .embedded-backlinks .backlink-pane .tree-item-self:hover,
-.graph-controls .graph-control-section:hover,
+.graph-controls .graph-control-section .tree-item-self:hover,
 .mod-collapsible:hover,
 .search-result-file-title:hover {
   color: var(--nav-item-color-hover);
@@ -1852,7 +1852,7 @@ select:focus,
 }
 .metadata-properties-heading:hover .collapse-indicator svg.svg-icon,
 .embedded-backlinks .backlink-pane .tree-item-self:hover .collapse-icon svg.svg-icon,
-.graph-controls .graph-control-section:hover .collapse-icon svg.svg-icon,
+.graph-controls .graph-control-section .tree-item-self:hover .collapse-icon svg.svg-icon,
 .mod-collapsible:hover .collapse-icon svg.svg-icon,
 .search-result-file-title:hover .collapse-icon svg.svg-icon,
 .tree-item-self:hover .tree-item-icon.collapse-icon svg.svg-icon,
@@ -2528,6 +2528,9 @@ audio::-webkit-media-controls-panel {
 .graph-control-section {
   border: none;
   padding: 0.25rem;
+}
+.graph-control-section > .tree-item-self {
+  padding: var(--nav-item-padding);
 }
 .graph-controls .graph-controls-button {
   display: none;
