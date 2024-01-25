@@ -1,4 +1,5 @@
 /*
+
 Principles:
 1. Use the base colour to distinguish between different vaults.
 2. Separate content (white/black background) from controls (accent colour background)
@@ -6,10 +7,7 @@ Principles:
 4. Distinguish controls visually
 5. Buttons are lighter, content containers darker
 
-Notes:
-1. New variables introduced in this theme use a [triptych convention]( https://jwdallas.com/posts/namingcssvariables/) to distinguish them from Obsidian's own variables.
 */
-
 /* Plugin compatibility */
 
 /* @plugins
@@ -126,7 +124,7 @@ body {
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
   --nav-item-children-margin-left: 1em;
   --nav-item-children-padding-left: 0.5em;
-  --nav-item-padding: 0.25em 0.5em 0.25em 0.5em;
+  --nav-item-padding: 0.375em 0.5em 0.375em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
   --nav-item-color-highlighted: var(--nav-item-hover);
   --p-spacing: 0;
@@ -197,8 +195,8 @@ body {
 
   /* Other new variables for this theme */
   --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
-  --color-theme-dragTarget: var(--theme-color-baseTransparent);
-  --color-theme-dragTargetBg: var(--theme-color-baseVeryTransparent);
+  --theme-color-dragTarget: var(--theme-color-baseTransparent);
+  --theme-color-dragTargetBg: var(--theme-color-baseVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
 }
 body,
@@ -256,6 +254,13 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseLightened);
 
   /* New variables for this theme */
+  --background-switcher-active: var(--theme-color-base);
+  --theme-color-controlActive: var(--theme-color-control);
+  --theme-color-controlContentAreaHover: var(--theme-color-baseVeryLightened);
+  --theme-color-controlContentArea: var(--theme-color-base);
+  --theme-color-controlHover: var(--theme-color-baseLightened);
+  --theme-color-control: var(--theme-color-baseDarkened);
+  --theme-color-controlSetBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
@@ -263,16 +268,9 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBg: var(--theme-color-lightenTransparent);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: var(--theme-color-lightenSlightlyTransparent);
-  --theme-color-control: var(--theme-color-baseDarkened);
-  --theme-color-controlActive: var(--theme-color-control);
   --theme-color-controlBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
-  --theme-color-controlContentArea: var(--theme-color-base);
-  --theme-color-controlContentAreaHover: var(--theme-color-baseVeryLightened);
-  --theme-color-controlHover: var(--theme-color-baseLightened);
-  --theme-color-controlSetBg: var(--theme-color-baseVeryLightened);
-  --theme-color-controlSwitcherActive: var(--theme-color-base);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryLightened);
@@ -352,10 +350,10 @@ body .metadata-property[data-property-key="tags"] {
   --nav-item-color-hover: black;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2), 0 0.875rem 1.7rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15), 0 2rem 6rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
-  --tab-background-active: var(--background-primary);
-  --tab-background-inactive: var(--theme-color-baseVeryDarkened);
   --tag-color: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1.2));
   --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+  --tab-background-active: var(--background-primary);
+  --tab-background-inactive: var(--theme-color-baseVeryDarkened);
   --text-normal: var(--theme-color-baseLightened);
   --text-faint: var(--theme-color-baseSlightlyLightened);
   --background-prompt: var(--theme-color-baseVeryDarkened);
@@ -375,6 +373,13 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseDarkened);
 
   /* New variables for this theme */
+  --background-switcher-active: var(--theme-color-base);
+  --theme-color-controlActive: var(--theme-color-control);
+  --theme-color-controlContentAreaHover: var(--theme-color-baseVeryDarkened);
+  --theme-color-controlContentArea: var(--theme-color-baseLightened);
+  --theme-color-controlHover: var(--theme-color-baseDarkened);
+  --theme-color-control: var(--theme-color-baseLightened);
+  --theme-color-controlSetBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
@@ -382,16 +387,9 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-contentItemBg: rgba(0, 0, 0, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgba(0, 0, 0, 0.1);
-  --theme-color-control: var(--theme-color-baseLightened);
-  --theme-color-controlActive: var(--theme-color-control);
   --theme-color-controlBg: var(--theme-color-baseSlightlyDarkened);
   --theme-color-controlBgHover: var(--theme-color-base);
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryDarkened);
-  --theme-color-controlContentArea: var(--theme-color-baseLightened);
-  --theme-color-controlContentAreaHover: var(--theme-color-baseVeryDarkened);
-  --theme-color-controlHover: var(--theme-color-baseDarkened);
-  --theme-color-controlSetBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-controlSwitcherActive: var(--theme-color-base);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryDarkened);
@@ -416,6 +414,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-tagBgSidebar: hsla(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1), 0.4);
   --theme-color-tagSidebar: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1.3));
+
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
@@ -1194,7 +1193,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 /* Drag */
 .workspace-drop-overlay:before {
   animation: 0.5s 1 alternate fadein;
-  background-color: var(--color-theme-dragTarget);
+  background-color: var(--theme-color-dragTarget);
   border-radius: var(--radius-m);
   opacity: 1;
 }
@@ -1330,7 +1329,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .mod-right-split .workspace-tab-header.has-active-menu,
 .mod-left-split .workspace-tab-header.is-active,
 .mod-right-split .workspace-tab-header.is-active {
-  background: var(--theme-color-controlSwitcherActive);
+  background: var(--background-switcher-active);
 }
 .mod-left-split .workspace-tab-header-spacer,
 .mod-right-split .workspace-tab-header-spacer {
@@ -1340,14 +1339,6 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .mod-right-split .workspace-tab-header-inner {
   border-radius: 0;
 }
-
-/* Sidebar tabs */
-/* TODO: merge and standardise with root tabs. */
-/* Principle: User content tabs (markdown etc.) are styled secodnary. Generated tabs are primary */
-.mod-right-split .workspace-leaf-content[data-type="markdown"] {
-  background: yellow;
-}
-
 
 /* Sidebar toggle buttons */
 .sidebar-toggle-button.mod-right {
@@ -1651,7 +1642,7 @@ button:not(.clickable-icon).mod-cta,
   border-radius: var(--button-radius);
   box-shadow: var(--theme-shadow-control);
   color: var(--theme-color-controlText);
-  padding: 0 0.5em;
+  padding: 0.25em 0.5em;
   min-height: var(--input-height);
   height: auto;
 }
@@ -1672,6 +1663,11 @@ button:not(.clickable-icon).mod-cta:focus,
 .is-mobile .document-search .document-search-button:focus,
 .is-mobile .document-replace .document-search-button:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+}
+
+/* Buttons - regular but small */
+button.search-result-file-match-replace-button {
+  min-height: auto;
 }
 
 /* Buttons - lower visual weight */
@@ -1781,7 +1777,7 @@ select:focus,
 /* Collapsible controls */
 .metadata-properties-heading,
 .embedded-backlinks .backlink-pane .tree-item-self,
-.graph-controls .mod-collapsible,
+.graph-controls .graph-control-section,
 .mod-collapsible,
 .search-result-file-title {
   align-items: flex-start;
@@ -1797,7 +1793,7 @@ select:focus,
 }
 .metadata-properties-heading:hover,
 .embedded-backlinks .backlink-pane .tree-item-self:hover,
-.graph-controls .mod-collapsible:hover,
+.graph-controls .graph-control-section:hover,
 .mod-collapsible:hover,
 .search-result-file-title:hover {
   color: var(--nav-item-color-hover);
@@ -1806,7 +1802,7 @@ select:focus,
 }
 .metadata-properties-heading .collapse-indicator,
 .embedded-backlinks .backlink-pane .tree-item-self .collapse-icon,
-.graph-controls .mod-collapsible .collapse-icon,
+.graph-controls .graph-control-section .collapse-icon,
 .tree-item-self .tree-item-icon.collapse-icon {
   color: var(--theme-color-control);
   display: flex;
@@ -1819,9 +1815,16 @@ select:focus,
   align-items: center;
   justify-content: flex-start;
 }
+.metadata-properties-heading .metadata-properties-title,
+.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner,
+.graph-controls .graph-control-section .tree-item-inner {
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+  padding: 0;
+}
 .metadata-properties-heading:hover .collapse-indicator svg.svg-icon,
 .embedded-backlinks .backlink-pane .tree-item-self:hover .collapse-icon svg.svg-icon,
-.graph-controls .mod-collapsible:hover .collapse-icon svg.svg-icon,
+.graph-controls .graph-control-section:hover .collapse-icon svg.svg-icon,
 .mod-collapsible:hover .collapse-icon svg.svg-icon,
 .search-result-file-title:hover .collapse-icon svg.svg-icon,
 .tree-item-self:hover .tree-item-icon.collapse-icon svg.svg-icon,
@@ -1836,7 +1839,7 @@ select:focus,
 }
 .metadata-properties-heading .collapse-indicator svg,
 .embedded-backlinks .backlink-pane .tree-item-self .tree-item-icon svg,
-.graph-controls .mod-collapsible .collapse-icon svg {
+.graph-controls .graph-control-section .collapse-icon svg {
   color: var(--theme-color-control);
 }
 .metadata-content,
@@ -1864,8 +1867,8 @@ body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
 .nav-folder.is-being-dragged-over {
   animation: 0.5s 1 alternate fadein;
   border-radius: var(--radius-s);
-  border: solid 0.125rem var(--color-theme-dragTarget);
-  background-color: var(--color-theme-dragTargetBg);
+  border: solid 0.125rem var(--theme-color-dragTarget);
+  background-color: var(--theme-color-dragTargetBg);
 }
 body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 .horizontal-tab-nav-item.is-active:hover,
@@ -1877,6 +1880,13 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 .nav-folder-title {
   font-weight: var(--font-medium);
+}
+.nav-file-title,
+.nav-folder-title {
+  padding: 0;
+}
+.tree-item-inner {
+  padding: var(--nav-item-padding);
 }
 
 /* UI Checkboxes */
@@ -2288,10 +2298,6 @@ input[type=checkbox]:checked:after {
 .setting-properties-position-below .mod-root .is-live-preview .metadata-container:has(~ .embedded-backlinks[style*="display: none"]) {
   padding-bottom: 0.5em;
 }
-.metadata-properties-heading .metadata-properties-title {
-  font-size: var(--font-ui-smaller);
-  font-weight: var(--font-medium);
-}
 .view-content .metadata-properties-heading .collapse-indicator svg.svg-icon,
 .view-content .metadata-properties-heading .is-collapsed .collapse-indicator svg.svg-icon {
   color: var(--theme-color-control);
@@ -2365,6 +2371,9 @@ audio::-webkit-media-controls-panel {
 .backlink-pane .search-result-container {
   margin-left: 1em;
 }
+.search-result-file-match-replace-button {
+  bottom: 0.375em;
+}
 .embedded-backlinks .backlink-pane .search-result-file-matches {
   background: none;
   box-shadow: none;
@@ -2378,10 +2387,6 @@ audio::-webkit-media-controls-panel {
 }
 .embedded-backlinks .backlink-pane {
   padding: 0;
-}
-.embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner {
-  font-size: var(--font-ui-smaller);
-  font-weight: var(--font-medium);
 }
 .embedded-backlinks .backlink-pane .tree-item-self .tree-item-flair-outer {
   /* Normally this would be positioned ot the right, but for embedded backlinks this overlaps with the controls */
@@ -2451,7 +2456,6 @@ audio::-webkit-media-controls-panel {
 }
 .nav-file-title-content {
   flex-grow: 1;
-  padding: var(--nav-item-padding);
 }
 .nav-file-tag {
   background: transparent;
@@ -2822,4 +2826,5 @@ body {
 
 .recent-files-title {
   align-items: center;
+  padding-right: 0.375em;
 }
