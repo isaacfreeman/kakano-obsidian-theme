@@ -164,4 +164,4 @@ _Kakano_ means "colour" in the Te Reo Māori – the Māori language of New Zeal
 
 ## Credits
 
-- [WinnerWind](https://github.com/WinnerWind) suggested the Mobile horizontal spacing setting.
+- [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting.
