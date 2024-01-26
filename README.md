@@ -15,10 +15,13 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
     - [Alternate checkboxes](#alternate-checkboxes)
     - [Supports core plugins](#supports-core-plugins)
     - [Settings](#settings)
+      - [Color settings](#color-settings)
+      - [Layout settings](#layout-settings)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
   - [Roadmap](#roadmap)
   - [About](#about)
+  - [Credits](#credits)
 
 ## Getting started
 
@@ -81,8 +84,16 @@ Kakano styles all the core Obsidian plugins.[^1]
 
 ### Settings
 If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, Kakano offers the following settings.
+#### Color settings
 - **Base color**
   Sets a base color that will be used by Kakano independently of the accent color. This allows you to use one color for Kakano, and a separate color for accents in your notes.
+- **Background gradient contrast**
+  Adjusts the background gradient from a flat color to a strong difference between top and bottom.
+- **Dark mode note background**
+  THe background for note sin dark mode can be either full black (nice on OLED screens) or near-black (easier on the eye).
+#### Layout settings
+- **Mobile horizontal spacing**
+  On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
 - **Properties position**
   In Live Preview mode, properties can be positioned before (default) or after the main note content. If you rarely use properties, you may prefer to make them less prominent.
   _This setting only works for Live Preview mode. Reading mode doesn't provide suitable HTML structure to support it, and Source Mode makes properties editable within the main content area.
@@ -150,3 +161,7 @@ _Kakano_ means "colour" in the Te Reo Māori – the Māori language of New Zeal
 - _Mangu_ – Black
 - _Mā_ – White
 - _Kiwikiwi_ – Grey
+
+## Credits
+
+- [WinnerWind](https://github.com/WinnerWind) suggested the Mobile horizontal spacing setting.

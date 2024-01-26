@@ -84,6 +84,15 @@ settings:
     level: 1
     collapsed: false
   -
+    id: theme-setting-mobileHorizontalPadding
+    title: 'Mobile horizontal spacing'
+    description: "Width of space to the left and right of the note content. Set to zero if you'd like the note to extend to the full width, 0.5 or 1 if you'd like to see your background gradient."
+    type: variable-number-slider
+    default: 0.5
+    min: 0
+    max: 1
+    step: 0.5
+  -
     id: setting-properties-position
     title: 'Properties position'
     description: 'Place properties before or after your main note content. Note that this only applies to Live Preview mode'
@@ -198,6 +207,7 @@ body {
   --theme-color-dragTarget: var(--theme-color-baseTransparent);
   --theme-color-dragTargetBg: var(--theme-color-baseVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
+  --theme-padding-mobileHorizontalPadding: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
@@ -739,7 +749,7 @@ li[data-task=">"]>p>input:checked:after {
 
 /* Mobile workspace */
 .is-mobile .workspace > .mod-root {
-    padding: 0 0.5rem 0.5rem 0.5rem;
+    padding: 0 var(--theme-padding-mobileHorizontalPadding) 0.5rem var(--theme-padding-mobileHorizontalPadding);
 }
 .is-mobile .mod-root .workspace-tabs {
     padding: 0;
@@ -772,8 +782,8 @@ body.is-phone .view-header-nav-buttons {
 }
 .is-phone .view-header-title-container {
   background-color: var(--background-primary);
-  border-top-left-radius: var(--tab-radius);
-  border-top-right-radius: var(--tab-radius);
+  border-top-left-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
+  border-top-right-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
   order: 1;
   width: 100%;
   flex-shrink: 0;
@@ -783,7 +793,7 @@ body.is-phone .view-header-nav-buttons {
   border-radius: 0;
 }
 .is-phone .view-content {
-  border-radius: var(--tab-radius);
+  border-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
 }
 .is-phone .mod-root .workspace-tab-container {
   /* Bottom margin the same as height of .mobile-navbar, to avoid overlap */
