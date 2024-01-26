@@ -777,9 +777,6 @@ li[data-task=">"]>p>input:checked:after {
   flex-wrap: wrap;
   background: transparent;
 }
-body.is-phone .view-header-nav-buttons {
-  display: flex;
-}
 .is-phone .view-header-title-container {
   background-color: var(--background-primary);
   border-top-left-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
