@@ -19,6 +19,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
       - [Layout settings](#layout-settings)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
+    - [Community Plugins supported](#community-plugins-supported)
   - [Roadmap](#roadmap)
   - [About](#about)
   - [Credits](#credits)
@@ -128,6 +129,9 @@ Kakano has specific styling for the following plugins:
 - Word count
 - Workspaces
 
+### Community Plugins supported
+- Style Settings
+
 ## Roadmap
 
 Kakano is a one-person hobby. I'm having a great time exploring what Obsidian can do, and how far CSS has come in recent years. I want to sweat the details and apply good usability practices, but it's also something I'm doing for fun. Sometimes I'll change things on a whim, or focus on obscure areas of the UI because they present interesting challenges.
@@ -150,17 +154,7 @@ I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explo
 - [Mastodon](https://cloudisland.nz/@isaacfreeman)
 - [Email](mailto:isaac@freeman.org.nz)
 
-_Kakano_ means "colour" in the Te Reo Māori – the Māori language of New Zealand. Some words for specific colours are:
-
-- _Whero_ – Red
-- _Karaka_ – Orange
-- _Kōwhai_ – Yellow
-- _Kākāriki_ – Green
-- _Kahurangi_ – Blue
-- _Waiporoporo_ – Purple
-- _Mangu_ – Black
-- _Mā_ – White
-- _Kiwikiwi_ – Grey
+_Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zealand.
 
 ## Credits
 
