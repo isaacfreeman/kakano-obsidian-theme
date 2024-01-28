@@ -119,6 +119,20 @@ settings:
     max: 1
     step: 0.1
   -
+    id: theme-setting-lightModeNoteBg
+    title: 'Light mode note background'
+    description: 'In light mode, note backgrounds can be full white (default) or near white with a slight tint of the base color.'
+    type: class-select
+    allowEmpty: false
+    default: theme-setting-lightModeNoteBgFullWhite
+    options:
+      -
+        label: 'Near white'
+        value: theme-setting-lightModeNoteBgNearWhite
+      -
+        label: 'Full white'
+        value: theme-setting-lightModeNoteBgFullWhite
+  -
     id: theme-value-darkModeNoteBg
     title: 'Dark mode note background'
     description: 'In dark mode, note backgrounds can be near black (default) or full black. Near black is a bit easier on the eyes. Full black will save a little energy on OLED screens which will switch back pixels completely off. And some people just like the way it looks.'
@@ -451,6 +465,9 @@ body .metadata-property[data-property-key="tags"] {
   --pill-color-remove: var(--theme-color-baseVeryLightened);
   --pill-color-remove-hover: var(--theme-color-baseVeryLightened);
   --pill-background-remove-hover: var(--theme-color-baseSlightlyLightened);
+}
+.theme-light.theme-setting-lightModeNoteBgNearWhite  {
+  --background-primary: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.97));
 }
 
 .theme-dark {
