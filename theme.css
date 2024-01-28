@@ -1958,7 +1958,6 @@ select:focus,
 .graph-controls .graph-control-section .tree-item-self,
 .mod-collapsible,
 .search-result-file-title {
-  align-items: flex-start;
   border-radius: var(--radius-s);
   color: var(--text-faint);
   font-size: var(--nav-item-size);
