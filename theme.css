@@ -200,7 +200,7 @@ body {
   --modal-border-color: black;
   --modal-border-width: 0;
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
-  --nav-item-children-margin-left: 1em;
+  --nav-item-children-margin-left: 0.75em;
   --nav-item-children-padding-left: 0.5em;
   --nav-item-padding: 0.375em 0.5em 0.375em 0.5em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
