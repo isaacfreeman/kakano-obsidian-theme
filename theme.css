@@ -38,22 +38,77 @@ core:
 */
 /* @settings
 
-name: Kakano
+name: Kakano Theme
 id: kakano-style
 settings:
   -
-    id: heading-color-settings
-    title: Color settings
+    id: heading-baseColor
+    title: Base color
     type: heading
     level: 1
     collapsed: false
   -
+    id: infoText-baseColor
+    description: "The Kakano theme uses a base color for each vault, and generates different shades and gradients from it. You can either select from one of the preset colors, or specify an exact color."
+    type: info-text
+    markdown: true
+  -
+    id: theme-setting-predefinedBaseColor
+    title: 'Preset base color'
+    description: 'If you just want a quick color, choose one of these.'
+    type: class-select
+    allowEmpty: true
+    default: theme-setting-baseColorPreset-kahurangi
+    options:
+      -
+        label: 'Use accent color'
+        value: theme-setting-baseColorPreset-accent
+      -
+        label: 'Whero – Red'
+        value: theme-setting-baseColorPreset-whero
+      -
+        label: 'Karaka – Orange'
+        value: theme-setting-baseColorPreset-karaka
+      -
+        label: 'Kōwhai – Yellow'
+        value: theme-setting-baseColorPreset-koowhai
+      -
+        label: 'Kākāriki – Green'
+        value: theme-setting-baseColorPreset-kaakaariki
+      -
+        label: 'Kārikiōrangi – Cyan'
+        value: theme-setting-baseColorPreset-kaarikioorangi
+      -
+        label: 'Kahurangi – Blue'
+        value: theme-setting-baseColorPreset-kahurangi
+      -
+        label: 'Waiporoporo – Purple'
+        value: theme-setting-baseColorPreset-waiporoporo
+      -
+        label: 'Māwhero – Pink'
+        value: theme-setting-baseColorPreset-maawhero
+      -
+        label: 'Mangu – Black'
+        value: theme-setting-baseColorPreset-mangu
+      -
+        label: 'Mā – White'
+        value: theme-setting-baseColorPreset-maa
+      -
+        label: 'Kiwikiwi – Grey'
+        value: theme-setting-baseColorPreset-kiwikiwi
+  -
     id: base
-    title: Base color
-    description: 'Base color, from which the Kakano theme will generate background gradients.'
+    title: Exact base color
+    description: 'Set an exact base color. Make sure the **Preset base color** is empty, and click Save to apply.'
     type: variable-color
     format: hsl-split
     default: '#2176B0'
+  -
+    id: heading-otherColorSettings
+    title: Other color settings
+    type: heading
+    level: 1
+    collapsed: true
   -
     id: theme-value-gradientContrast
     title: 'Background gradient contrast'
@@ -78,11 +133,11 @@ settings:
         label: 'Full black (OLED screen will switch pixels off)'
         value: theme-value-darkModeNoteBgFullBlack
   -
-    id: heading-layout-settings
+    id: heading-layoutSettings
     title: Layout settings
     type: heading
     level: 1
-    collapsed: false
+    collapsed: true
   -
     id: theme-setting-mobileHorizontalPadding
     title: 'Mobile horizontal spacing'
@@ -161,7 +216,7 @@ body {
   --base-s: var(--accent-s);
   --base-l: var(--accent-l);
 
-  /* The base color */
+  /* The base color, derived from either the accent or the Style Settings base color. Note that this may be overridden by one of the prest colours below. */
   --theme-color-base: hsl(var(--base-h), var(--base-s), var(--base-l));
 
   /*  Base colour variants */
@@ -208,6 +263,68 @@ body {
   --theme-color-dragTargetBg: var(--theme-color-baseVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
   --theme-padding-mobileHorizontalPadding: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
+}
+
+/* Preset base colours, if users don't want to set an exact colour.  */
+body.css-settings-manager.theme-setting-baseColorPreset-accent {
+  --base-h: var(--accent-h);
+  --base-s: var(--accent-s);
+  --base-l: var(--accent-l);
+}
+body.css-settings-manager.theme-setting-baseColorPreset-whero {
+  --base-h: 0;
+  --base-s: 61%;
+  --base-l: 43%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-karaka{
+  --base-h: 30;
+  --base-s: 70%;
+  --base-l: 50%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-koowhai {
+  --base-h: 52;
+  --base-s: 60%;
+  --base-l: 45%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kaakaariki {
+  --base-h: 92;
+  --base-s: 60%;
+  --base-l: 39%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kaarikioorangi {
+  --base-h: 180;
+  --base-s: 57%;
+  --base-l: 47%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kahurangi {
+  --base-h: 215;
+  --base-s: 67%;
+  --base-l: 45%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-waiporoporo {
+  --base-h: 275;
+  --base-s: 67%;
+  --base-l: 45%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-maawhero {
+  --base-h: 335;
+  --base-s: 60%;
+  --base-l: 60%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-mangu {
+  --base-h: 240;
+  --base-s: 10%;
+  --base-l: 2%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-maa {
+  --base-h: 0;
+  --base-s: 0%;
+  --base-l: 90%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
+  --base-h: 40;
+  --base-s: 2%;
+  --base-l: 50%;
 }
 body,
 body .metadata-property:not([data-property-key="tags"]),
