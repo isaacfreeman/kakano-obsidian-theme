@@ -99,7 +99,7 @@ settings:
   -
     id: base
     title: Exact base color
-    description: 'Set an exact base color. Make sure the **Preset base color** is empty, and click Save to apply.'
+    description: 'Set an exact base color. Make sure "Preset base color" is empty, and click Save to apply.'
     type: variable-color
     format: hsl-split
     default: '#2176B0'
@@ -2984,6 +2984,18 @@ body {
 .modal-style-settings .modal-content {
   padding-bottom: 1em;
   margin-bottom: -1em;
+}
+.style-settings-heading {
+  border-bottom: none;
+  margin-top: 1.5em;
+}
+.style-settings-heading[data-level="0"] {
+  margin-bottom: 0;
+}
+
+.setting-item + div > .style-settings-heading[data-level="0"],
+.setting-item + .style-settings-heading[data-level="0"] {
+  margin-top: 1.5em;
 }
 
 /********** Community Plugin: Recent Files **********/
