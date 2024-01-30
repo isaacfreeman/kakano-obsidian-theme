@@ -877,6 +877,7 @@ li[data-task=">"]>p>input:checked:after {
 
 .is-mobile {
   --file-margins: 0;
+  --view-header-height: auto;
 }
 .is-phone {
   /* I'm pretty sure this isn't used on mobile */
@@ -927,7 +928,10 @@ li[data-task=">"]>p>input:checked:after {
   border-radius: 0;
 }
 .is-phone .view-content {
-  border-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
+  border-bottom-right-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
 }
 .is-phone .mod-root .workspace-tab-container {
   /* Bottom margin the same as height of .mobile-navbar, to avoid overlap */
@@ -1314,15 +1318,15 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 .is-mobile .notice-container {
   padding: 0.5em 0.5em 2em 0.5em;
-  top: 0;
+  top: var(--safe-area-inset-top);
   left: auto;
-  right: 0;
+  right: var(--safe-area-inset-right);
 }
 .is-phone .notice-container {
   padding: 0.5em 0.5em 2em 0.5em;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: var(--safe-area-inset-top);
+  left: var(--safe-area-inset-left);
+  right: var(--safe-area-inset-right);
   max-width: 100%;
   margin: 0 auto;
 }
@@ -1333,11 +1337,14 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--theme-color-notice);
   box-shadow: var(--shadow-s);
   padding: 1em 1.5em;
+}
+.notice {
   margin: 0 0 1rem 0;
 }
 .is-phone .notice {
   text-align: center;
   max-width: none;
+  margin: 0rem 0.5rem 1rem 0.5rem;
 }
 
 /********* Workspace *********/
@@ -1667,6 +1674,12 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 .prompt {
   background-color: var(--background-prompt);
+}
+.is-phone .prompt {
+  --prompt-top: calc(var(--safe-area-inset-top) + var(--header-height) + 1em);
+  box-shadow: var(--shadow-l);
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 input.prompt-input[type='text'] {
   background: var(--background-secondary);
@@ -2379,6 +2392,14 @@ input[type=checkbox]:checked:after {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+.is-phone .markdown-source-view .cm-contentContainer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.markdown-reading-view .mod-footer {
+  margin-top: 1em;
+}
+
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
   margin: 0 auto;
@@ -2388,8 +2409,10 @@ input[type=checkbox]:checked:after {
   width: 100%;
 }
 .markdown-rendered .mod-header {
-  background: pink;
   margin-bottom: 3rem;
+}
+.is-phone .markdown-rendered .mod-header {
+  margin-bottom: 0;
 }
 /* Override inline styles */
 .cm-content {
@@ -2410,10 +2433,14 @@ input[type=checkbox]:checked:after {
   order: 1;
 }
 .setting-properties-position-below .mod-root .is-live-preview .metadata-container {
+  margin-top: 1em;
   order: 3;
 }
 .setting-properties-position-below .mod-root .is-live-preview .embedded-backlinks {
   padding: 0 2rem 0.5rem 2rem;
+}
+body:not(.setting-properties-position-below) .mod-root .is-live-preview .embedded-backlinks {
+  margin-top: 1em;
 }
 .cm-contentContainer {
   order: 2;
