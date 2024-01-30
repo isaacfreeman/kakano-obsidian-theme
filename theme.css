@@ -910,7 +910,8 @@ li[data-task=">"]>p>input:checked:after {
   background: transparent;
 }
 .is-phone .view-header {
-  padding: 0.5em 0 0 0;
+  padding: 0;
+  gap: 0;
   border-bottom: none;
   flex-wrap: wrap;
   background: transparent;
@@ -1261,8 +1262,13 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   height: auto;
   justify-content: center;
   opacity: var(--icon-opacity);
-  padding: var(--size-2-2) var(--size-2-3);
+  padding: 0.5rem;
   transition: opacity 0.15s ease-in-out;
+}
+.is-mobile .clickable-icon {
+  padding: 0.5rem;
+  min-height: calc(44px - 1rem);
+  min-width: calc(44px - 1rem);
 }
 .markdown-source-view.mod-cm6 .code-block-flair:hover,
 .clickable-icon:hover,
