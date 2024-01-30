@@ -35,6 +35,9 @@ core:
 - templates
 - word-count
 - workspaces
+community:
+- obsidian-style-settings
+- recent-files-obsidian
 */
 /* @settings
 
@@ -2988,6 +2991,13 @@ body {
     padding: 0;
 }
 
+/********** Community Plugin: Recent Files **********/
+
+.recent-files-title {
+  align-items: center;
+  padding-right: 0.375em;
+}
+
 /********** Community Plugin: Style Settings **********/
 
 .modal-style-settings {
@@ -3012,11 +3022,4 @@ body {
 .setting-item + div > .style-settings-heading[data-level="0"],
 .setting-item + .style-settings-heading[data-level="0"] {
   margin-top: 1.5em;
-}
-
-/********** Community Plugin: Recent Files **********/
-
-.recent-files-title {
-  align-items: center;
-  padding-right: 0.375em;
 }
