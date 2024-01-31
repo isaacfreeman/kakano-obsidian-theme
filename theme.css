@@ -1,11 +1,16 @@
 /*
 
+# Kakano Theme for Obsidian
+
 Principles:
-1. Use the base colour to distinguish between different vaults.
-2. Separate content (white/black background) from controls (accent colour background)
-3. Use spacing for grouping rather than lines
-4. Distinguish controls visually
-5. Buttons are lighter, content containers darker
+- **Strong color**
+  Users should be able to easily select a color for each vault and have the theme generate shades and gradients automatically.
+- **Help new users**
+  Obsidian can be intimidating for new users. I think a good way to help with this is to clarify which parts of the window are user content (white background, strong contrast) and which are navigation and other controls (colored background, lower contrast).
+- **Standardise controls**
+  Obsidian’s exuberant plugin scene is fantastic, but it also means that there’s a lot of inconsistency in the design of controls and modals – even between core plugins. I’ve tried to find ways to make similar controls have similar appearance. Likewise, I’ve aimed to follow conventions from the underlying OS, such as having close controls on the left on macOS.
+- **Be opinionated enough**
+  I’d like Kakano to provide a great user experience by default without the user having to make any choices beyond their base color. It has settings, but I want each one to be there because different users genuinely have different needs, not just because I failed to make a decision.
 
 */
 /* Plugin compatibility */
@@ -911,7 +916,8 @@ li[data-task=">"]>p>input:checked:after {
 }
 .is-phone .view-header {
   padding: 0;
-  gap: 0;
+  column-gap: 1rem;
+  row-gap: 0;
   border-bottom: none;
   flex-wrap: wrap;
   background: transparent;
@@ -1267,9 +1273,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   transition: opacity 0.15s ease-in-out;
 }
 .is-mobile .clickable-icon {
-  padding: 0.5rem;
-  min-height: calc(44px - 1rem);
-  min-width: calc(44px - 1rem);
+  min-height: 44px;
+  min-width: 44px;
 }
 .markdown-source-view.mod-cm6 .code-block-flair:hover,
 .clickable-icon:hover,
