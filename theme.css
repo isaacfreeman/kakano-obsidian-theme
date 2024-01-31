@@ -970,10 +970,12 @@ li[data-task=">"]>p>input:checked:after {
 
 /* Menus */
 .is-phone .menu {
-  margin: 0 0.5rem;
+  box-shadow: var(--shadow-l);
+  margin: 0 1rem;
   padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
-  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 1rem);
+  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2rem);
 }
+
 .mod-tappable,
 .workspace-drawer-active-tab-back-icon,
 .workspace-drawer-active-tab-icon {
