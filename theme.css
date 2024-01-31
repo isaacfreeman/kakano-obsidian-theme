@@ -203,9 +203,9 @@ body {
   --modal-border-color: black;
   --modal-border-width: 0;
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
-  --nav-item-children-margin-left: 0.75em;
-  --nav-item-children-padding-left: 0.5em;
-  --nav-item-padding: 0.375em 0.5em 0.375em 0.5em;
+  --nav-item-children-margin-left: calc(1em - var(--nav-indentation-guide-width) / 2);
+  --nav-item-children-padding-left: calc(1em - var(--nav-indentation-guide-width) / 2);
+  --nav-item-padding: 0.375em 0.5em 0.375em 0;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
   --nav-item-color-highlighted: var(--nav-item-hover);
   --p-spacing: 0;
@@ -1259,10 +1259,11 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   color: var(--theme-color-control);
   cursor: var(--cursor);
   display: flex;
-  height: auto;
+  height: 2em;
+  width: 2em;
   justify-content: center;
   opacity: var(--icon-opacity);
-  padding: 0.5rem;
+  padding: 0.25rem;
   transition: opacity 0.15s ease-in-out;
 }
 .is-mobile .clickable-icon {
@@ -1653,13 +1654,20 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 
 .tree-item-self {
   gap: 0.5em;
+  justify-content: flex-start;
+  /* Setting padding-left to zero here, as it's sometimes overridden e.g. in file list */
+  padding: 0.25em 0.5em 0.25em 0;
 }
-.tree-item-icon,
 .tree-item-self .tree-item-icon {
   /* Icons that represent an object have the same colour as the related text */
   color: inherit;
   margin: 0;
   position: relative;
+}
+/* These are set the same so we can use consistent em unites for spacing */
+.tree-item-self,
+.tree-item-children {
+  font-size: var(--nav-item-size);
 }
 
 /********* Prompt *********/
@@ -1984,9 +1992,9 @@ select:focus,
   color: var(--text-faint);
   font-size: var(--nav-item-size);
   font-weight: var(--font-medium);
-  gap: 0;
+  gap: 0.5em;
   margin: 0;
-  padding: 0.25em 0.5em;
+  padding: 0.25em 0.5em 0.25em 0;
   line-height: var(--theme-lineHeight-tight);
   display: flex;
 }
@@ -1999,6 +2007,10 @@ select:focus,
   background-color: var(--nav-item-background-hover);
   font-weight: var(--font-medium);
 }
+.metadata-properties-heading:before {
+  /* Override absolute positioning from app, so we're consistent with other collapsibles */
+  position: static;
+}
 .metadata-properties-heading .collapse-indicator,
 .embedded-backlinks .backlink-pane .tree-item-self .collapse-icon,
 .graph-controls .graph-control-section .collapse-icon,
@@ -2009,17 +2021,16 @@ select:focus,
   opacity: var(--icon-opacity);
   padding: 0;
   position: relative;
-  width: var(--size-4-4);
+  width: 1em;
   margin: 0;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .metadata-properties-heading .metadata-properties-title,
 .embedded-backlinks .backlink-pane .tree-item-self .tree-item-inner,
 .graph-controls .graph-control-section .tree-item-inner {
   font-size: var(--font-ui-smaller);
   font-weight: var(--font-medium);
-  padding: 0;
 }
 .metadata-properties-heading:hover .collapse-indicator svg.svg-icon,
 .embedded-backlinks .backlink-pane .tree-item-self:hover .collapse-icon svg.svg-icon,
@@ -2041,11 +2052,18 @@ select:focus,
 .graph-controls .graph-control-section .collapse-icon svg {
   color: var(--theme-color-control);
 }
-.metadata-content,
-.embedded-backlinks .backlink-pane .search-result-container,
+.mod-root .metadata-content,
+.backlink-pane .search-result-container,
+.backlink-pane .search-result-file-matches,
+.outgoing-link-pane .search-result-container,
+.outgoing-link-pane .search-result-file-matches,
 .graph-control-section .tree-item-children {
   margin: 0 1em 1em 1em;
   font-size: var(--font-ui-small);
+  padding-left: var(--nav-item-children-padding-left);
+  padding: 0 0 0 var(--nav-item-children-padding-left);
+  margin: 0 0 0 var(--nav-item-children-margin-left);
+  border-left: var(--nav-indentation-guide-width) solid var(--nav-indentation-guide-color);
 }
 
 /********* Item lists *********/
@@ -2086,6 +2104,9 @@ body:not(.is-grabbing) .tree-item.nav-file .tree-item-self.is-active:hover,
 }
 .tree-item-inner {
   padding: var(--nav-item-padding);
+}
+.nav-file-title:before {
+  content: none;
 }
 
 /* UI Checkboxes */
@@ -2574,9 +2595,11 @@ audio::-webkit-media-controls-panel {
 
 /********** Core Plugin: Backlinks **********/
 
-.backlink-pane > .tree-item-self {
+.backlink-pane > .tree-item-self,
+.outgoing-link-pane > .tree-item-self {
   color: var(--theme-color-control);
   width: inherit;
+  padding: 0.25em 0.5em 0.25em 0;
 }
 .backlink-pane .search-result:not(.is-collapsed) .search-result-file-title {
   color: var(--theme-color-control);
@@ -2625,6 +2648,9 @@ audio::-webkit-media-controls-panel {
     width: calc(100% - 150px);
     margin: 0 0 0 0;
 }
+.embedded-backlinks .backlink-pane > .tree-item-self {
+  width: inherit;
+}
 
 /********** Core Plugin: Bookmarks **********/
 
@@ -2664,7 +2690,6 @@ audio::-webkit-media-controls-panel {
 
 .nav-files-container .nav-file-title {
   justify-content: space-between;
-  gap: 0;
   padding: 0;
 }
 .nav-file-title-content {
@@ -2716,6 +2741,9 @@ audio::-webkit-media-controls-panel {
 }
 .graph-control-section > .tree-item-self {
   padding: var(--nav-item-padding);
+}
+.graph-control-section:last-child .tree-item-children {
+  padding-bottom: 0;
 }
 .graph-controls .graph-controls-button {
   display: none;
