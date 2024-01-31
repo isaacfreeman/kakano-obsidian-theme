@@ -6,6 +6,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
 
 - [Kakano](#kakano)
   - [Getting started](#getting-started)
+  - [Principles](#principles)
   - [Features](#features)
     - [Choose a base color](#choose-a-base-color)
     - [Light mode, dark mode, and mobile](#light-mode-dark-mode-and-mobile)
@@ -23,6 +24,8 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
   - [Roadmap](#roadmap)
   - [About](#about)
   - [Credits](#credits)
+  - [License](#license)
+  - [Disclaimer](#disclaimer)
 
 ## Getting started
 
@@ -34,7 +37,19 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
    - If you're not using Style Settings, navigate to `Appearance` in the Obsidian settings, and use the `Accent color` control.
    - If you're using Style Settings, navigate to `Style Settings` in the Obsidian settings and open the `Kakano` section. Use the `Base color` control.
 
+## Principles
+
+- **Strong color**
+  Users should be able to easily select a color for each vault and have the theme generate shades and gradients automatically.
+- **Help new users**
+  Obsidian can be intimidating for new users. I think a good way to help with this is to clarify which parts of the window are user content (white background, strong contrast) and which are navigation and other controls (colored background, lower contrast).
+- **Standardise controls**
+  Obsidian’s exuberant plugin scene is fantastic, but it also means that there’s a lot of inconsistency in the design of controls and modals – even between core plugins. I’ve tried to find ways to make similar controls have similar appearance. Likewise, I’ve aimed to follow conventions from the underlying OS, such as having close controls on the left on macOS.
+- **Be opinionated enough**
+  I’d like Kakano to provide a great user experience by default without the user having to make any choices beyond their base color. It has settings, but I want each one to be there because different users genuinely have different needs, not just because I failed to make a decision.
+
 ## Features
+
 ### Choose a base color
 ![Use accent color to set a base color for the whole theme.](base_color_from_accent.png)
 ![Use Style Settings plugin for separate base and accent colors.](base_color_from_style_settings.png)
@@ -130,6 +145,7 @@ Kakano has specific styling for the following plugins:
 - Workspaces
 
 ### Community Plugins supported
+- Recent Files
 - Style Settings
 
 ## Roadmap
@@ -159,3 +175,15 @@ _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zeala
 ## Credits
 
 - [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting.
+
+## License
+
+Kakano is licensed under the MIT License which allows you to modify and redistribute the code, however you must preserve the copyright and license notice in your CSS file. This includes any code you may extract as standalone snippets.
+
+## Disclaimer
+
+Kakano theme is provided as is, as a one-person hobby project I work on in my spare time. I use it on macOS and iOS, and it's not tested on other platforms. I'm happy to receive bug reports, and will endeavour to fix problems to the extent that time and resources permit, but I can't promise that it will work for everybody all the time.
+
+There are great themes for Obsidian that provide detailed settings for many aspects of the user interface, but I'm taking a different path here and trying to minimise the number of choices users need to make. I enjoy and appreciate feedback and suggestions from users, but I may decide that some good ideas aren't Kakano ideas.
+
+Some of the choices I've made in Kakano may not be compatible with future updates to Obsidian, nor with custom CSS snippets. I'm aiming to keep it up to date, but again, no promises.
