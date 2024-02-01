@@ -1660,6 +1660,16 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   top: 0.25em;
   right: 0.25em;
 }
+.cm-s-obsidian span.cm-blockid {
+  background: transparent;
+  border-radius: 0.25em;
+  border: solid 1px var(--theme-color-baseSlightlyLightened);
+  color: var(--theme-color-baseSlightlyLightened);
+  line-height: 1.25em;
+  padding: 0 0.25em;
+  margin-top: 0;
+  vertical-align: baseline;
+}
 
 /********** Content references (search results, incoming/outgoing links, etc.) **********/
 
