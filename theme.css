@@ -196,7 +196,12 @@ body {
   --checkbox-border-color: var(--interactive-accent);
   --checkbox-color: var(--interactive-accent);
   --divider-width: 0;
-  --file-line-width: 40rem;
+  --embed-background: var(--theme-color-baseVeryVeryTransparent);
+  --embed-border-bottom: none;
+  --embed-border-left: none;
+  --embed-border-right: none;
+  --embed-border-top: none;
+  --embed-padding: 1em;  --file-line-width: 40rem;
   --file-margins: 0;
   --heading-spacing: 0.67em;
   --inline-title-size: var(--font-ui-medium);
@@ -210,9 +215,9 @@ body {
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
   --nav-item-children-margin-left: calc(1em - var(--nav-indentation-guide-width) / 2);
   --nav-item-children-padding-left: calc(1em - var(--nav-indentation-guide-width) / 2);
+  --nav-item-color-highlighted: var(--nav-item-hover);
   --nav-item-padding: 0.375em 0.5em 0.375em 0;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
-  --nav-item-color-highlighted: var(--nav-item-hover);
   --p-spacing: 0;
   --pill-focus-left-adjust: 0;
   --pill-focus-width: 100%;
@@ -1260,7 +1265,10 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
 .side-dock-actions .side-dock-ribbon-action.clickable-icon,
-.metadata-property-icon {
+.metadata-property-icon,
+.markdown-embed-link,
+.file-embed-link,
+.markdown-source-view.mod-cm6 .edit-block-button {
   align-items: center;
   background-color: transparent;
   border-radius: var(--clickable-icon-radius);
@@ -1281,7 +1289,10 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .markdown-source-view.mod-cm6 .code-block-flair:hover,
 .clickable-icon:hover,
 .side-dock-actions .side-dock-ribbon-action.clickable-icon:hover,
-.metadata-property-icon:hover {
+.metadata-property-icon:hover,
+.markdown-embed-link:hover,
+.file-embed-link:hover,
+.markdown-source-view.mod-cm6 .edit-block-button:hover {
   color: var(--theme-color-controlHover);
   background-color: var(--background-modifier-hover);
 }
@@ -1618,7 +1629,14 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   padding: 0.25em 0.5em;
 }
 
-/********* Content references (search results, incoming/outgoing links, etc.) *********/
+/********** Blocks **********/
+
+.markdown-source-view.mod-cm6 .edit-block-button {
+  top: 0.25em;
+  right: 0.25em;
+}
+
+/********** Content references (search results, incoming/outgoing links, etc.) **********/
 
 .search-result-file-matches {
   background: none;
@@ -2584,21 +2602,129 @@ input.metadata-property-key-input {
   display: none;
 }
 
-/********** Core Plugin: Audio Recorder **********/
+/********** Embeds **********/
+/* Default appearance for embeds */
+/* I'm treating images as a special case, because they don't have any controls and a colored surround would often be distracting. */
+.internal-embed:not(.image-embed),
+.internal-query {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: 0.5em;
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  margin: 0;
+}
+.markdown-embed .embed-title {
+  font-size: var(--font-ui-small);
+  font-weight: var(--nav-item-weight-hover);
+  color: var(--background-modifier-hover);
+  height: 2.5em;
+  padding: 0 0.5em 0 0;
+  align-items: center;
+  display: none;
+}
+.markdown-embed:has(.markdown-embed-link:hover) .embed-title {
+  display: flex;
+  position: absolute;
+  top: 0.25em;
+  right: 2.25rem;
+}
+.markdown-embed .markdown-embed-content {
+    height: fit-content;
+    max-height: var(--embed-max-height);
+    overflow: auto;
+}
+.markdown-embed-link,
+.file-embed-link {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
 
+/* Audio embed */
+.markdown-source-view.mod-cm6 .cm-content > .media-embed:has(> audio) {
+  display: flex;
+}
 audio::-webkit-media-controls-enclosure {
   border: none;
   background: transparent;
   padding: 0;
   border-radius: 0;
   max-height: none;
+  line-height: 0;
 }
 audio::-webkit-media-controls-panel {
-  background: var(--theme-color-controlSetBg);
+  background: transparent;
   border: none;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
+
+/* Markdown embed e.g. embedded note */
+.markdown-embed {
+  padding: var(--embed-padding);
+}
+.markdown-embed .markdown-rendered .mod-header {
+  margin-bottom: 0;
+}
+
+/* PDF embed */
+.pdf-toolbar {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 0.25em 2.25em 0.25em 0.25em;
+}
+.pdf-container {
+  background-color: var(--pdf-background);
+  margin: 0 0.25em 0.25em 0.25em;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+}
+.markdown-source-view.mod-cm6 .pdf-embed .edit-block-button {
+  background: transparent;
+  top: 0.25em;
+}
+
+/* Query embed */
+.internal-query .search-result-container {
+  padding: 0 1em 1em 1em;
+  max-height: 800px;
+  overflow: auto;
+  border: none;
+  background-color: var(--background-secondary);
+  background-color: transparent;
+  border-radius: 0;
+}
+.internal-query .internal-query-header {
+    padding: 0.5em 0 0.5em 1em;
+    color: var(--text-normal);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget):has(> .internal-query):hover {
+    box-shadow: none;
+  }
+}
+
+/* Iframe embed */
+.markdown-source-view iframe,
+.markdown-reading-view iframe {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: 0.5em;
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  height: 20em;
+  width: 100%;
+}
+
+/********** Core Plugin: Audio Recorder **********/
+
+/* No special styles for Audio Recorder, but see Embeds for the resulting embedded audio */
 
 /********** Core Plugin: Backlinks **********/
 
@@ -2812,6 +2938,9 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
 .popover.hover-popover {
   padding: 0.5rem;
 }
+.popover.hover-popover > .markdown-embed {
+  background-color: var(--background-primary);
+}
 
 /********** Core Plugin: Publish **********/
 
@@ -2849,6 +2978,10 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+.search-results-children > div:first-child:not(.search-result) {
+  /* I'm not sure what this div is intended for, but its presence creates an extra flex gap at the top of .search-results-children */
+  display: none;
 }
 .search-results-info {
   border-bottom: none;
