@@ -183,6 +183,23 @@ settings:
       -
         label: 'Below main note content'
         value: 'setting-properties-position-below'
+  -
+    id: theme-setting-embeddedNoteTitleVisibility
+    title: 'Embedded note titles'
+    description: "When a note is embedded in another note, show or hide the source note's title."
+    type: class-select
+    allowEmpty: false
+    default: theme-setting-embeddedNoteTitleVisibilityHover
+    options:
+      -
+        label: 'Always hidden'
+        value: theme-setting-embeddedNoteTitleVisibilityHide
+      -
+        label: 'Visible on hover'
+        value: theme-setting-embeddedNoteTitleVisibilityHover
+      -
+        label: 'Always visible'
+        value: theme-setting-embeddedNoteTitleVisibilityShow
 */
 
 /********* Variables *********/
@@ -2689,7 +2706,7 @@ input.metadata-property-key-input {
   background-color: var(--embed-background);
   border-bottom: var(--embed-border-bottom);
   border-left: var(--embed-border-left);
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   border-right: var(--embed-border-right);
   border-top: var(--embed-border-top);
   margin: 0;
@@ -2698,17 +2715,28 @@ input.metadata-property-key-input {
   font-size: var(--font-ui-small);
   font-weight: var(--nav-item-weight-hover);
   color: var(--background-modifier-hover);
-  height: 2.5em;
-  padding: 0 0.5em 0 0;
+  margin: 0 2rem 0 0;
   align-items: center;
   display: none;
 }
+.theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
+  display: none;
+}
+.theme-setting-embeddedNoteTitleVisibilityShow .internal-embed:has(.embed-title:not(:empty)) {
+  padding-top: 0.5rem;
+}
+.theme-setting-embeddedNoteTitleVisibilityShow .embed-title {
+  display: flex;
+}
 @media (hover: hover) {
-  .markdown-embed:has(.markdown-embed-link:hover) .embed-title {
+  .theme-setting-embeddedNoteTitleVisibilityHover .internal-embed:has(.embed-title:not(:empty)) {
+    padding-top: 1.5rem;
+  }
+  .theme-setting-embeddedNoteTitleVisibilityHover .internal-embed:has(.embed-title:not(:empty)):hover .embed-title {
     display: flex;
     position: absolute;
-    top: 0.25em;
-    right: 2.25rem;
+    top: 0.5rem;
+    left: 1rem;
   }
 }
 .markdown-embed .markdown-embed-content {
