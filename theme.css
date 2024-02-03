@@ -2946,6 +2946,12 @@ audio::-webkit-media-controls-panel {
   color: var(--theme-color-navFileTagActive);
   border-color: var(--theme-color-navFileTagActiveBorder);
 }
+@media (hover: hover) {
+  /* No hover effect for vault title, as clicking doesn't do anything */
+  .nav-folder.mod-root > .nav-folder-title:hover {
+    color: inherit;
+  }
+}
 
 /********** Core Plugin: File Recovery **********/
 
