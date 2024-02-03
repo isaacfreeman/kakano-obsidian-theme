@@ -175,6 +175,7 @@ _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zeala
 ## Credits
 
 - [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting.
+- [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes.
 
 ## License
 
