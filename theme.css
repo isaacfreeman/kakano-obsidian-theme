@@ -1498,6 +1498,9 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 
 /* Main area */
+.is-mobile .mod-root .workspace-tab-header-container {
+  min-height: 44px;
+}
 .mod-root .workspace-tab-header-container-inner {
   /* Define spacing on tabs to fit with radius */
   padding: 0.5em calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
@@ -1590,12 +1593,28 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 
 /* Sidebar toggle buttons */
+.sidebar-toggle-button {
+  /* padding: 0; */
+}
+body.is-tablet .sidebar-toggle-button {
+  padding: 0;
+  height: auto;
+}
 .sidebar-toggle-button.mod-right {
   position: absolute;
   top: 0;
   right: 0;
   width: var(--ribbon-width);
   justify-content: center;
+}
+.mod-root .sidebar-toggle-button.mod-right {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--header-height);
+}
+.is-mobile .sidebar-toggle-button.mod-right {
+  width: auto;
 }
 .sidebar-toggle-button.mod-left .clickable-icon,
 .sidebar-toggle-button.mod-right .clickable-icon {
@@ -1608,18 +1627,25 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   }
 }
 
+.workspace-tab-header-new-tab,
+.workspace-tab-header-tab-list {
+  padding: 0;
+}
+.workspace-tab-header-tab-list .clickable-icon,
+.workspace-tab-header-new-tab .clickable-icon {
+  color: var(--theme-color-control);
+}
 .workspace-tab-header-tab-list {
   /* Tab list control makes space for sidebar control when sidebar is closed */
   margin-right: calc(var(--icon-size) * 2);
 }
-
 .is-right-sidedock-open .workspace-tab-header-tab-list {
   margin-right: 0;
 }
-
 .mod-right-split .workspace-tab-header-container {
   padding-right: 2.5rem;
 }
+
 
 /* Status bar */
 .status-bar {
