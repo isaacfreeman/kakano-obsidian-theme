@@ -1593,14 +1593,12 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 
 /* Sidebar toggle buttons */
-.sidebar-toggle-button {
-  /* padding: 0; */
-}
 body.is-tablet .sidebar-toggle-button {
   padding: 0;
   height: auto;
 }
-.sidebar-toggle-button.mod-right {
+.sidebar-toggle-button.mod-right,
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right {
   position: absolute;
   top: 0;
   right: 0;
@@ -1625,6 +1623,14 @@ body.is-tablet .sidebar-toggle-button {
   .sidebar-toggle-button.mod-right .clickable-icon:hover {
     color: var(--theme-color-controlHover);
   }
+}
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .mod-left-split:not(.is-sidedock-collapsed) .sidebar-toggle-button.mod-left {
+  position: absolute;
+  right: 0.5rem;
+}
+
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right {
+  background-color: transparent;
 }
 
 .workspace-tab-header-new-tab,
