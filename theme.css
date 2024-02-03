@@ -233,7 +233,7 @@ body {
   --nav-item-children-margin-left: calc(1em - var(--nav-indentation-guide-width) / 2);
   --nav-item-children-padding-left: calc(1em - var(--nav-indentation-guide-width) / 2);
   --nav-item-color-highlighted: var(--nav-item-hover);
-  --nav-item-padding: 0.375em 0.5em 0.375em 0;
+  --nav-item-padding: 0.375em 0.75em 0.375em 0.75em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
   --p-spacing: 0;
   --pill-focus-left-adjust: 0;
@@ -2831,6 +2831,35 @@ audio::-webkit-media-controls-panel {
   width: 100%;
 }
 
+/********** File lists **********/
+
+/* Styles used by both Files and Recent Files */
+
+.nav-file-title {
+  justify-content: space-between;
+  padding: 0;
+}
+.nav-file-title-content,
+.nav-folder-title-content {
+  flex-grow: 1;
+  padding: var(--nav-item-padding);
+}
+.nav-file-tag {
+  background: transparent;
+  border: solid 1px var(--nav-file-tag-border-color);
+  color: var(--theme-color-navFileTag);
+}
+.nav-file-title.is-active .nav-file-tag {
+  color: var(--theme-color-navFileTagActive);
+  border-color: var(--theme-color-navFileTagActiveBorder);
+}
+@media (hover: hover) {
+  /* No hover effect for vault title, as clicking doesn't do anything */
+  .nav-folder.mod-root > .nav-folder-title:hover {
+    color: inherit;
+  }
+}
+
 /********** Core Plugin: Audio Recorder **********/
 
 /* No special styles for Audio Recorder, but see Embeds for the resulting embedded audio */
@@ -2930,27 +2959,9 @@ audio::-webkit-media-controls-panel {
 
 /********** Core Plugin: Files **********/
 
-.nav-files-container .nav-file-title {
-  justify-content: space-between;
-  padding: 0;
-}
-.nav-file-title-content {
-  flex-grow: 1;
-}
-.nav-file-tag {
-  background: transparent;
-  border: solid 1px var(--nav-file-tag-border-color);
-  color: var(--theme-color-navFileTag);
-}
-.nav-file-title.is-active .nav-file-tag {
-  color: var(--theme-color-navFileTagActive);
-  border-color: var(--theme-color-navFileTagActiveBorder);
-}
-@media (hover: hover) {
-  /* No hover effect for vault title, as clicking doesn't do anything */
-  .nav-folder.mod-root > .nav-folder-title:hover {
-    color: inherit;
-  }
+.workspace-leaf-content[data-type="file-explorer"] .nav-file-title-content,
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder-title-content {
+  padding-left: 0;
 }
 
 /********** Core Plugin: File Recovery **********/
