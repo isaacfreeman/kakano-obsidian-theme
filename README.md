@@ -37,6 +37,12 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
    - If you're not using Style Settings, navigate to `Appearance` in the Obsidian settings, and use the `Accent color` control.
    - If you're using Style Settings, navigate to `Style Settings` in the Obsidian settings and open the `Kakano` section. Use the `Base color` control.
 
+> [!info]
+> I use Kakano with Obsidian settings that defer to OS standards:
+> - Obsidian settings -> `Appearance` -> `Native menus`
+> - Obsidian settings -> `Appearance` -> `Window frame style` -> `Native frame`
+> I've aimed to also have it look good with other settings, but I've given more attention to this OS-native configuration.
+
 ## Principles
 
 - **Strong color**
