@@ -13,7 +13,8 @@ Principles:
   I’d like Kakano to provide a great user experience by default without the user having to make any choices beyond their base color. It has settings, but I want each one to be there because different users genuinely have different needs, not just because I failed to make a decision.
 
 */
-/* Plugin compatibility */
+
+/* #region Plugin compatibility */
 
 /* @plugins
 core:
@@ -44,6 +45,10 @@ community:
 - obsidian-style-settings
 - recent-files-obsidian
 */
+
+/* #endregion */
+/* #region Style Settings plugin config */
+
 /* @settings
 
 name: Kakano Theme
@@ -202,7 +207,9 @@ settings:
         value: theme-setting-embeddedNoteTitleVisibilityShow
 */
 
-/********* Variables *********/
+/* #endregion */
+/* #region Custom properties */
+/********* Custom properties *********/
 
 body {
   --background-input: var(--theme-color-baseVeryVeryTransparent);
@@ -625,8 +632,8 @@ body .metadata-property[data-property-key="tags"] {
   /* There's no equivalent of this for light mode. */
   --background-primary: black;
 }
-
-/********* Markdown Typography *********/
+/* #endregion */
+/* #region Markdown Typography */
 
 body {
   --blockquote-border-thickness: 0.25em;
@@ -778,7 +785,142 @@ body {
   vertical-align: middle;
 }
 
-/***** Markdown Checkboxes *****/
+
+/********** Embeds **********/
+/* Default appearance for embeds */
+/* I'm treating images as a special case, because they don't have any controls and a colored surround would often be distracting. */
+.internal-embed:not(.image-embed),
+.internal-query {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: 0.5rem;
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  margin: 0;
+}
+.markdown-embed .embed-title {
+  font-size: var(--font-ui-small);
+  font-weight: var(--nav-item-weight-hover);
+  color: var(--background-modifier-hover);
+  margin: 0 2rem 0 0;
+  align-items: center;
+  display: none;
+}
+.theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
+  display: none;
+}
+.theme-setting-embeddedNoteTitleVisibilityShow .internal-embed:has(.embed-title:not(:empty)) {
+  padding-top: 0.5rem;
+}
+.theme-setting-embeddedNoteTitleVisibilityShow .embed-title {
+  display: flex;
+}
+@media (hover: hover) {
+  .theme-setting-embeddedNoteTitleVisibilityHover .internal-embed:has(.embed-title:not(:empty)) {
+    padding-top: 1.5rem;
+  }
+  .theme-setting-embeddedNoteTitleVisibilityHover .internal-embed:has(.embed-title:not(:empty)):hover .embed-title {
+    display: flex;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+  }
+}
+.markdown-embed .markdown-embed-content {
+    height: fit-content;
+    max-height: var(--embed-max-height);
+    overflow: auto;
+}
+.markdown-embed-link,
+.file-embed-link {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
+
+/* Audio embed */
+.markdown-source-view.mod-cm6 .cm-content > .media-embed:has(> audio) {
+  display: flex;
+}
+audio::-webkit-media-controls-enclosure {
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  max-height: none;
+  line-height: 0;
+}
+audio::-webkit-media-controls-panel {
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+/* Markdown embed e.g. embedded note */
+.markdown-embed {
+  padding: var(--embed-padding);
+}
+.markdown-embed .markdown-rendered .mod-header {
+  margin-bottom: 0;
+}
+
+/* PDF embed */
+.pdf-toolbar {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 0.25em 2.25em 0.25em 0.25em;
+}
+.pdf-container {
+  background-color: var(--pdf-background);
+  margin: 0 0.25em 0.25em 0.25em;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+}
+.markdown-source-view.mod-cm6 .pdf-embed .edit-block-button {
+  background: transparent;
+  top: 0.25em;
+}
+
+/* Query embed */
+.internal-query .search-result-container {
+  padding: 0 1em 1em 1em;
+  max-height: 800px;
+  overflow: auto;
+  border: none;
+  background-color: var(--background-secondary);
+  background-color: transparent;
+  border-radius: 0;
+}
+.internal-query .internal-query-header {
+    padding: 0.5em 0 0.5em 1em;
+    color: var(--text-normal);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget):has(> .internal-query):hover {
+    box-shadow: none;
+  }
+}
+
+/* Iframe embed */
+.markdown-source-view iframe,
+.markdown-reading-view iframe {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: 0.5em;
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  height: 20em;
+  width: 100%;
+}
+
+/* #endregion */
+/* #region Markdown Checkboxes */
 
 /* Alternate checkboxes idea borrowed from Minimal theme */
 .markdown-source-view.mod-cm6 .task-list-item-checkbox {
@@ -905,6 +1047,8 @@ li[data-task=">"]>p>input:checked:after {
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="9,4.5 18,12 9,19.5 7.25,17.5 14,12 7.25,6.5"></polyline></g></g></svg>');
 }
+
+/* #endregion */
 
 /********* Mobile *********/
 
@@ -1325,88 +1469,6 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   }
 }
 
-/********* Lightweight Buttons *********/
-
-.markdown-source-view.mod-cm6 .code-block-flair,
-.clickable-icon,
-.side-dock-actions .side-dock-ribbon-action.clickable-icon,
-.setting-item-control .clickable-icon,
-.mod-community-modal .modal-sidebar button.clickable-icon,
-.metadata-property-icon,
-.markdown-embed-link,
-.file-embed-link,
-.markdown-source-view.mod-cm6 .edit-block-button {
-  align-items: center;
-  background-color: transparent;
-  border-radius: var(--clickable-icon-radius);
-  color: var(--theme-color-control);
-  cursor: var(--cursor);
-  display: flex;
-  height: 2em;
-  width: 2em;
-  justify-content: center;
-  opacity: var(--icon-opacity);
-  padding: 0.25rem;
-  transition: opacity 0.15s ease-in-out;
-}
-.is-mobile .clickable-icon {
-  min-height: 44px;
-  min-width: 44px;
-}
-@media (hover: hover) {
-  .markdown-source-view.mod-cm6 .code-block-flair:hover,
-  .clickable-icon:hover,
-  .side-dock-actions .side-dock-ribbon-action.clickable-icon:hover,
-  .metadata-property-icon:hover,
-  .markdown-embed-link:hover,
-  .file-embed-link:hover,
-  .markdown-source-view.mod-cm6 .edit-block-button:hover {
-    color: var(--theme-color-controlHover);
-    background-color: var(--background-modifier-hover);
-  }
-}
-.clickable-icon.is-active {
-  opacity: var(--icon-opacity-hover);
-  color: var(--theme-color-controlActive);
-  background-color: var(--theme-color-interactiveActive);
-}
-@media (hover: hover) {
-  .clickable-icon.is-active:hover {
-    background-color: var(--background-modifier-hover);
-    color: var(--theme-color-controlHover);
-  }
-}
-
-/********** Lightweight form controls **********/
-/* Form controls that are rendered as text until they have focus */
-
-.metadata-property .metadata-property-key input,
-.metadata-property .metadata-property-value {
-  border: none;
-  border-radius: var(--input-radius);
-  box-shadow: none;
-  display: flex;
-  background: transparent;
-  height: 100%;
-  padding: 0 0.5em;
-}
-.metadata-property .metadata-property-value input {
-  box-shadow: none;
-}
-@media (hover: hover) {
-  .metadata-property .metadata-property-key input:hover,
-  .metadata-property .metadata-property-value:hover {
-    background: var(--background-input);
-  }
-}
-.metadata-property .metadata-property-key input:focus,
-.metadata-property .metadata-property-value:focus-within {
-  border: none;
-  background: var(--background-input);
-  box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
-  color: var(--text-normal);
-}
-
 /********* Notices *********/
 
 .notice-container {
@@ -1445,7 +1507,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   margin: 0rem 0.5rem 1rem 0.5rem;
 }
 
-/********* Workspace *********/
+/* #region Workspace */
 
 .workspace {
   background-color: var(--background-secondary);
@@ -1741,6 +1803,7 @@ body.is-tablet .sidebar-toggle-button {
 .status-bar-item.plugin-editor-status, .status-bar-item.plugin-sync {
   padding: 0.25em 0.5em;
 }
+/* #endregion */
 
 /********** Blocks **********/
 
@@ -1820,49 +1883,6 @@ body.is-tablet .sidebar-toggle-button {
   font-size: var(--nav-item-size);
 }
 
-/********* Prompt *********/
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-.prompt-input-container,
-.is-phone .prompt-input-container {
-  border-bottom: none;
-  background: var(--background-secondary);
-}
-.prompt {
-  background-color: var(--background-prompt);
-}
-.is-phone .prompt {
-  --prompt-top: calc(var(--safe-area-inset-top) + var(--header-height) + 1em);
-  box-shadow: var(--shadow-l);
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-}
-input.prompt-input[type='text'] {
-  background: var(--background-secondary);
-  border-bottom: none;
-  box-shadow: none;
-}
-input.prompt-input[type=text]:focus {
-  background: var(--background-secondary);
-  border-bottom: none;
-  box-shadow: none;
-}
-input[type='text'].prompt-input::placeholder {
-  color: var(--theme-color-base);
-}
-.prompt-instructions {
-  background: var(--background-secondary);
-  border-top: 0;
-}
-
 /********* Suggestions (Search, File Recovery, Slash commands) *********/
 
 .suggestion-container,
@@ -1916,7 +1936,89 @@ input[type='text'].prompt-input::placeholder {
   color: var(--theme-color-control);
 }
 
-/********* Standardised Controls *********/
+/* #region Standardised Controls */
+
+/********* Lightweight Buttons *********/
+
+.markdown-source-view.mod-cm6 .code-block-flair,
+.clickable-icon,
+.side-dock-actions .side-dock-ribbon-action.clickable-icon,
+.setting-item-control .clickable-icon,
+.mod-community-modal .modal-sidebar button.clickable-icon,
+.metadata-property-icon,
+.markdown-embed-link,
+.file-embed-link,
+.markdown-source-view.mod-cm6 .edit-block-button {
+  align-items: center;
+  background-color: transparent;
+  border-radius: var(--clickable-icon-radius);
+  color: var(--theme-color-control);
+  cursor: var(--cursor);
+  display: flex;
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  opacity: var(--icon-opacity);
+  padding: 0.25rem;
+  transition: opacity 0.15s ease-in-out;
+}
+.is-mobile .clickable-icon {
+  min-height: 44px;
+  min-width: 44px;
+}
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .code-block-flair:hover,
+  .clickable-icon:hover,
+  .side-dock-actions .side-dock-ribbon-action.clickable-icon:hover,
+  .metadata-property-icon:hover,
+  .markdown-embed-link:hover,
+  .file-embed-link:hover,
+  .markdown-source-view.mod-cm6 .edit-block-button:hover {
+    color: var(--theme-color-controlHover);
+    background-color: var(--background-modifier-hover);
+  }
+}
+.clickable-icon.is-active {
+  opacity: var(--icon-opacity-hover);
+  color: var(--theme-color-controlActive);
+  background-color: var(--theme-color-interactiveActive);
+}
+@media (hover: hover) {
+  .clickable-icon.is-active:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--theme-color-controlHover);
+  }
+}
+
+/********** Lightweight form controls **********/
+/* Form controls that are rendered as text until they have focus */
+
+.metadata-property .metadata-property-key input,
+.metadata-property .metadata-property-value {
+  border: none;
+  border-radius: var(--input-radius);
+  box-shadow: none;
+  display: flex;
+  background: transparent;
+  height: 100%;
+  padding: 0 0.5em;
+}
+.metadata-property .metadata-property-value input {
+  box-shadow: none;
+}
+@media (hover: hover) {
+  .metadata-property .metadata-property-key input:hover,
+  .metadata-property .metadata-property-value:hover {
+    background: var(--background-input);
+  }
+}
+.metadata-property .metadata-property-key input:focus,
+.metadata-property .metadata-property-value:focus-within {
+  border: none;
+  background: var(--background-input);
+  box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
+  color: var(--text-normal);
+}
 
 /* Text fields */
 .search-input-container input[type='search'],
@@ -2234,6 +2336,23 @@ select:focus,
   border-left: var(--nav-indentation-guide-width) solid var(--nav-indentation-guide-color);
 }
 
+/* UI Checkboxes */
+.checkbox-container {
+  background-color: var(--background-input);
+}
+.checkbox-container.is-enabled {
+    background-color: var(--interactive-accent);
+}
+input[type=checkbox]:checked:after {
+  /* Scale check mark with container in slides */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* #endregion */
+
 /********* Item lists *********/
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
@@ -2279,21 +2398,6 @@ select:focus,
 }
 .nav-file-title:before {
   content: none;
-}
-
-/* UI Checkboxes */
-.checkbox-container {
-  background-color: var(--background-input);
-}
-.checkbox-container.is-enabled {
-    background-color: var(--interactive-accent);
-}
-input[type=checkbox]:checked:after {
-  /* Scale check mark with container in slides */
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
 }
 
 /********** Tooltips **********/
@@ -2349,6 +2453,51 @@ input[type=checkbox]:checked:after {
 .is-phone .community-modal-search-results {
   padding: 0;
   gap: 1em;
+}
+
+/* #region Modals */
+
+/********* Prompts *********/
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.prompt-input-container,
+.is-phone .prompt-input-container {
+  border-bottom: none;
+  background: var(--background-secondary);
+}
+.prompt {
+  background-color: var(--background-prompt);
+}
+.is-phone .prompt {
+  --prompt-top: calc(var(--safe-area-inset-top) + var(--header-height) + 1em);
+  box-shadow: var(--shadow-l);
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+input.prompt-input[type='text'] {
+  background: var(--background-secondary);
+  border-bottom: none;
+  box-shadow: none;
+}
+input.prompt-input[type=text]:focus {
+  background: var(--background-secondary);
+  border-bottom: none;
+  box-shadow: none;
+}
+input[type='text'].prompt-input::placeholder {
+  color: var(--theme-color-base);
+}
+.prompt-instructions {
+  background: var(--background-secondary);
+  border-top: 0;
 }
 
 /********** Modals **********/
@@ -2592,6 +2741,8 @@ input[type=checkbox]:checked:after {
   border-radius: 0;
 }
 
+/* #endregion */
+
 /********* Content area *********/
 
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
@@ -2769,139 +2920,6 @@ input.metadata-property-key-input {
   display: none;
 }
 
-/********** Embeds **********/
-/* Default appearance for embeds */
-/* I'm treating images as a special case, because they don't have any controls and a colored surround would often be distracting. */
-.internal-embed:not(.image-embed),
-.internal-query {
-  background-color: var(--embed-background);
-  border-bottom: var(--embed-border-bottom);
-  border-left: var(--embed-border-left);
-  border-radius: 0.5rem;
-  border-right: var(--embed-border-right);
-  border-top: var(--embed-border-top);
-  margin: 0;
-}
-.markdown-embed .embed-title {
-  font-size: var(--font-ui-small);
-  font-weight: var(--nav-item-weight-hover);
-  color: var(--background-modifier-hover);
-  margin: 0 2rem 0 0;
-  align-items: center;
-  display: none;
-}
-.theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
-  display: none;
-}
-.theme-setting-embeddedNoteTitleVisibilityShow .internal-embed:has(.embed-title:not(:empty)) {
-  padding-top: 0.5rem;
-}
-.theme-setting-embeddedNoteTitleVisibilityShow .embed-title {
-  display: flex;
-}
-@media (hover: hover) {
-  .theme-setting-embeddedNoteTitleVisibilityHover .internal-embed:has(.embed-title:not(:empty)) {
-    padding-top: 1.5rem;
-  }
-  .theme-setting-embeddedNoteTitleVisibilityHover .internal-embed:has(.embed-title:not(:empty)):hover .embed-title {
-    display: flex;
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
-  }
-}
-.markdown-embed .markdown-embed-content {
-    height: fit-content;
-    max-height: var(--embed-max-height);
-    overflow: auto;
-}
-.markdown-embed-link,
-.file-embed-link {
-  position: absolute;
-  top: 0.25em;
-  right: 0.25em;
-}
-
-/* Audio embed */
-.markdown-source-view.mod-cm6 .cm-content > .media-embed:has(> audio) {
-  display: flex;
-}
-audio::-webkit-media-controls-enclosure {
-  border: none;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  max-height: none;
-  line-height: 0;
-}
-audio::-webkit-media-controls-panel {
-  background: transparent;
-  border: none;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-}
-
-/* Markdown embed e.g. embedded note */
-.markdown-embed {
-  padding: var(--embed-padding);
-}
-.markdown-embed .markdown-rendered .mod-header {
-  margin-bottom: 0;
-}
-
-/* PDF embed */
-.pdf-toolbar {
-  background-color: transparent;
-  border-bottom: none;
-  padding: 0.25em 2.25em 0.25em 0.25em;
-}
-.pdf-container {
-  background-color: var(--pdf-background);
-  margin: 0 0.25em 0.25em 0.25em;
-  border-bottom-left-radius: 0.3em;
-  border-bottom-right-radius: 0.3em;
-}
-.markdown-source-view.mod-cm6 .pdf-embed .edit-block-button {
-  background: transparent;
-  top: 0.25em;
-}
-
-/* Query embed */
-.internal-query .search-result-container {
-  padding: 0 1em 1em 1em;
-  max-height: 800px;
-  overflow: auto;
-  border: none;
-  background-color: var(--background-secondary);
-  background-color: transparent;
-  border-radius: 0;
-}
-.internal-query .internal-query-header {
-    padding: 0.5em 0 0.5em 1em;
-    color: var(--text-normal);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-@media (hover: hover) {
-  .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget):has(> .internal-query):hover {
-    box-shadow: none;
-  }
-}
-
-/* Iframe embed */
-.markdown-source-view iframe,
-.markdown-reading-view iframe {
-  background-color: var(--embed-background);
-  border-bottom: var(--embed-border-bottom);
-  border-left: var(--embed-border-left);
-  border-radius: 0.5em;
-  border-right: var(--embed-border-right);
-  border-top: var(--embed-border-top);
-  height: 20em;
-  width: 100%;
-}
-
 /********** File lists **********/
 
 /* Styles used by both Files and Recent Files */
@@ -2930,6 +2948,8 @@ audio::-webkit-media-controls-panel {
     color: inherit;
   }
 }
+
+/* #region Core plugins */
 
 /********** Core Plugin: Audio Recorder **********/
 
@@ -3333,6 +3353,8 @@ body {
 .tag-pane-tag:hover {
   cursor: var(--cursor-link);
 }
+/* #endregion */
+/* #region Community plugins */
 
 /********** Community Plugin: Excalidraw **********/
 
@@ -3421,3 +3443,5 @@ body {
 .setting-item + .style-settings-heading[data-level="0"] {
   margin-top: 1.5em;
 }
+
+/* #endregion */
