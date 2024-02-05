@@ -377,7 +377,10 @@ body .metadata-property[data-property-key="tags"] {
   --pill-padding-y: 0.125em;
 }
 
-.theme-light {
+.theme-light,
+.theme-light .theme-dark {
+  /* Using `.theme-light .theme-dark` here because the Minimal Theme Settings plugin inserts `.theme-dark` into the DOM for the ribbon and left sidebar for `Light mode background contrast -> High contrast` even when the Minimal Theme isn't active. As lots of people will have Minimal Theme Settings enabled while using Kakano, I override it here. */
+
   /* Built-in variables */
   --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyLightened);
   --background-modifier-active-hover: var(--theme-color-baseLightened);
@@ -500,7 +503,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-primary: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.97));
 }
 
-.theme-dark {
+.theme-dark,
+.theme-dark .theme-light {
   /* Built-in variables */
   --background-modifier-active-hover-alt: var(--theme-color-baseSlightlyDarkened);
   --background-modifier-active-hover: var(--theme-color-baseDarkened);
