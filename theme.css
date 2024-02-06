@@ -42,6 +42,8 @@ core:
 - word-count
 - workspaces
 community:
+- calendar
+- dataview
 - obsidian-style-settings
 - recent-files-obsidian
 */
@@ -314,6 +316,7 @@ body {
   --theme-color-dragTargetBg: var(--theme-color-baseVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
   --theme-padding-mobileHorizontalPadding: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
+  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryTransparent);
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -435,6 +438,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseLightened);
 
   /* New variables for this theme */
+  --theme-color-calendarBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
@@ -475,7 +479,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryLightened);
   --theme-color-switcherBgActive: var(--theme-color-base);
-  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-tagBgSidebar: hsla(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1), 0.4);
   --theme-color-tagSidebar: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*0.4));
   --theme-color-textMeta: var(--theme-color-base);
@@ -558,6 +561,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseDarkened);
 
   /* New variables for this theme */
+  --theme-color-calendarBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
@@ -596,7 +600,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryDarkened);
   --theme-color-switcherBgActive: var(--theme-color-base);
-  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-tagBgSidebar: hsla(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1), 0.4);
   --theme-color-tagSidebar: hsl(var(--accent-h), calc(var(--accent-s)*1.5), calc(var(--accent-l)*1.3));
   --theme-color-textMeta: var(--theme-color-base);
@@ -745,6 +748,14 @@ body {
     padding-top: 0;
 }
 
+/* Markdown formatting shown while editing e.g. ### for headings */
+.cm-formatting.cm-formatting-header {
+  color: var(--theme-color-textMeta);
+  font-size: 0.8rem !important;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
 .markdown-source-view .HyperMD-quote,
 .callout {
   font-weight: 300;
@@ -773,18 +784,9 @@ body {
 /***** Tables *****/
 
 .markdown-rendered th,
-.markdown-rendered thead tr > th:nth-child(2n+2) {
+.markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n+2) {
   background: var(--theme-color-tableHeaderBg);
 }
-
-/* Markdown formatting shown while editing e.g. ### for headings */
-.cm-formatting.cm-formatting-header {
-  color: var(--theme-color-textMeta);
-  font-size: 0.8rem !important;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
 
 /********** Embeds **********/
 /* Default appearance for embeds */
@@ -3355,6 +3357,168 @@ body {
 }
 /* #endregion */
 /* #region Community plugins */
+
+/********** Community Plugin: Calendar **********/
+
+.container:has(> .calendar) {
+  margin: 0;
+  padding: 0 !important;
+}
+.container:has(> .calendar) .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end !important;
+  margin: 0 !important;
+  padding: 1em 0.5em 0.5em 0.5em !important;
+}
+.container:has(> .calendar) .nav .title {
+  cursor: default;
+  line-height: 1;
+  padding: 0;
+}
+.container:has(> .calendar) .nav .right-nav {
+  margin: 0;
+  padding: 0;
+}
+.mod-right-split .container:has(> .calendar) {
+  background-color: var(--theme-color-calendarBg);
+  border-radius: 0.5em;
+  padding: 0.5em !important;
+}
+.container > .calendar thead th {
+  background: transparent;
+  border: none;
+  text-transform: none;
+  font-size: var(--font-ui-small);
+  font-weight: normal;
+}
+.container > .calendar tbody td {
+  border: none;
+  padding: 0;
+  vertical-align: top;
+}
+.container > .calendar tbody td:not(:has(.adjacent-month)) .day {
+  background-color: var(--theme-color-lightenTransparent);
+  border-radius: 0.5em;
+  margin: 1px;
+}
+@media(hover: hover) {
+  .container > .calendar tbody td .day:hover {
+    background: transparent;
+  }
+  .container > .calendar tbody td:not(:has(.adjacent-month)) .day:hover {
+    background-color: var(--theme-color-lightenTransparent);
+  }
+}
+
+/********** Community Plugin: Dataview **********/
+/* Styled to match embeds */
+.block-language-dataview {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: 0.5rem;
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  margin: 0;
+}
+@media (hover: hover) {
+  /* Undo hover effect styles from app. There doesn't seem to be any clickable behaviour. */
+  .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget):hover {
+    box-shadow: none;
+    border-radius: inherit;
+    cursor: inherit;
+    overflow: visible;
+  }
+}
+
+/* List query */
+.dataview.list-view-ul {
+  padding: 1em 1em 1em 2em;
+}
+
+/* Table query */
+.block-language-dataview:has(.dataview.table-view-table .dataview.table-view-table ) {
+  border-radius: 0;
+}
+.dataview.table-view-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.dataview.table-view-table th {
+  font-size: var(--table-header-size);
+  font-weight: var(--table-header-weight);
+  color: var(--table-header-color);
+  font-family: var(--table-header-font);
+  text-align: left;
+  line-height: var(--line-height-tight);
+}
+.dataview.table-view-table thead th:first-of-type {
+  border-top-left-radius: 0.5rem;
+}
+.dataview.table-view-table thead th:last-of-type {
+  border-top-right-radius: 0.5rem;
+  /* Make room for edit-block button */
+  padding-right: 2.5rem;
+}
+.dataview.table-view-table tbody tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 0.5rem;
+}
+.dataview.table-view-table tbody tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 0.5rem;
+}
+.dataview.table-view-table tbody td,
+.dataview.table-view-table tbody th {
+  border-top: none;
+  border-left: none;
+}
+.dataview.table-view-table tbody td:first-child,
+.dataview.table-view-table tbody th:first-child {
+  border-left: solid var(--table-header-border-width) var(--table-header-border-color);
+}
+.dataview.table-view-table th,
+.dataview.table-view-table td {
+  border: solid var(--table-header-border-width) var(--table-header-border-color);
+}
+
+/* Task query */
+.dataview-container:has(.contains-task-list) {
+  padding: 1em;
+}
+.dataview-container .contains-task-list {
+  padding-inline-start: 0;
+}
+@media(hover: hover) {
+  /* Style as a link */
+  .dataview.task-list-item:hover,
+  .dataview.task-list-basic-item:hover {
+    box-shadow: none;
+    background-color: transparent;
+    cursor: var(--cursor-link);
+    text-decoration-line: var(--link-decoration);
+    color: var(--link-color);
+  }
+}
+
+/* Calendar query */
+/* Most styles shared with Calendar plugin */
+.block-language-dataview:has(.calendar) {
+  padding: 1em;
+}
+
+/* Empty queries */
+div.dataview-error-box,
+.block-language-dataview .dataview.dataview-error {
+  align-items: center;
+  border: 0.25rem dashed var(--background-secondary);
+  display: flex;
+  justify-content: center;
+  min-height: 5em;
+  width: 100%;
+}
+.block-language-dataview .dataview.dataview-error {
+  background-color: transparent;
+}
 
 /********** Community Plugin: Excalidraw **********/
 
