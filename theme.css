@@ -294,16 +294,6 @@ body {
   --theme-color-darkenTransparent: rgba(0,0,0, 0.5);
   --theme-color-darkenSlightlyTransparent: rgba(0,0,0, 0.25);
 
-  /* Hues */
-  --color-red: hsl(356, var(--base-s), var(--base-l));
-  --color-orange: hsl(27, var(--base-s), var(--base-l));
-  --color-yellow: hsl(44, var(--base-s), var(--base-l));
-  --color-green: hsl(124, var(--base-s), var(--base-l));
-  --color-cyan: hsl(179, var(--base-s), var(--base-l));
-  --color-blue: hsl(219, var(--base-s), var(--base-l));
-  --color-purple: hsl(253, var(--base-s), var(--base-l));
-  --color-pink: hsl(331, var(--base-s), var(--base-l));
-
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(0deg, var(--theme-color-gradientTop) 0%, var(--theme-color-gradientBottom) 100%);
   --theme-gradient-bottomToTop: linear-gradient(0deg, var(--theme-color-gradientBottom) 0%, var(--theme-color-gradientTop) 100%);
@@ -385,6 +375,19 @@ body .metadata-property:not([data-property-key="tags"]),
 body .metadata-property[data-property-key="tags"] {
   --pill-padding-x: 1em;
   --pill-padding-y: 0.125em;
+}
+
+/* Hues derived from base color */
+.theme-light,
+.theme-dark {
+  --color-red: hsl(356, var(--base-s), var(--base-l));
+  --color-orange: hsl(27, var(--base-s), var(--base-l));
+  --color-yellow: hsl(44, var(--base-s), var(--base-l));
+  --color-green: hsl(124, var(--base-s), var(--base-l));
+  --color-cyan: hsl(179, var(--base-s), var(--base-l));
+  --color-blue: hsl(219, var(--base-s), var(--base-l));
+  --color-purple: hsl(253, var(--base-s), var(--base-l));
+  --color-pink: hsl(331, var(--base-s), var(--base-l));
 }
 
 .theme-light,
@@ -931,6 +934,49 @@ audio::-webkit-media-controls-panel {
     text-decoration: underline;
   }
 }
+
+/********** Diagrams **********/
+.mermaid {
+  --theme-color-mermaidBorder: black;
+  text-align: center;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle,
+.mermaid svg[aria-roledescription="pie"] .legend rect {
+  stroke: var(--theme-color-mermaidBorder) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(1),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(1) rect {
+  fill: var(--color-red) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(2),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(2) rect {
+  fill: var(--color-cyan) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(3),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(3) rect {
+  fill: var(--color-orange) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(4),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(4) rect {
+  fill: var(--color-blue) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(5),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(5) rect {
+  fill: var(--color-yellow) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(6),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(6) rect {
+  fill: var(--color-purple) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(7),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(7) rect {
+  fill: var(--color-green) !important;
+}
+.mermaid svg[aria-roledescription="pie"] .pieCircle:nth-of-type(8),
+.mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(8) rect {
+  fill: var(--color-pink) !important;
+}
+
 
 /* #endregion */
 /* #region Markdown Checkboxes */
