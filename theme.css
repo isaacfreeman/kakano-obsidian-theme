@@ -921,6 +921,17 @@ audio::-webkit-media-controls-panel {
   width: 100%;
 }
 
+/********** Callouts **********/
+.callout.is-collapsible .callout-title {
+  cursor: pointer;
+}
+
+@media(hover: hover) {
+  .callout.is-collapsible .callout-title:hover {
+    text-decoration: underline;
+  }
+}
+
 /* #endregion */
 /* #region Markdown Checkboxes */
 
