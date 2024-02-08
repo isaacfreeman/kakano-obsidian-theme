@@ -388,6 +388,12 @@ body .metadata-property[data-property-key="tags"] {
   --color-blue: hsl(219, var(--base-s), var(--base-l));
   --color-purple: hsl(253, var(--base-s), var(--base-l));
   --color-pink: hsl(331, var(--base-s), var(--base-l));
+
+  --theme-color-redDarkened: hsl(356, calc(var(--base-s) * 1.5), calc(var(--base-l) * 0.5));
+  --theme-color-redLightened: hsl(356, calc(var(--base-s) * 1.5), calc(var(--base-l) * 1.5));
+
+  --theme-color-redVeryTransparent: hsla(356, var(--base-s), var(--base-l), 0.25);
+  --theme-color-redSlightlyTransparent: hsla(356, var(--base-s), var(--base-l), 0.75);
 }
 
 .theme-light,
@@ -441,6 +447,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseLightened);
 
   /* New variables for this theme */
+  --theme-color-audioRecordingActive: var(--theme-color-redDarkened);
   --theme-color-calendarBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
@@ -564,6 +571,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseDarkened);
 
   /* New variables for this theme */
+  --theme-color-audioRecordingActive: var(--theme-color-redLightened);
   --theme-color-calendarBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
@@ -1706,6 +1714,15 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   margin: 0;
 }
 
+.side-dock-actions .side-dock-ribbon-action.clickable-icon {
+  color: var(--theme-color-control);
+  height: 2em;
+  width: 2em;
+}
+.side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active {
+  color: var(--theme-color-controlActive);
+}
+
 /* Pane styling */
 .pane-empty {
   color: var(--empty-pane-color);
@@ -2001,9 +2018,7 @@ body.is-tablet .sidebar-toggle-button {
 
 .markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
-.side-dock-actions .side-dock-ribbon-action.clickable-icon,
 .setting-item-control .clickable-icon,
-.mod-community-modal .modal-sidebar button.clickable-icon,
 .metadata-property-icon,
 .markdown-embed-link,
 .file-embed-link,
@@ -2021,6 +2036,7 @@ body.is-tablet .sidebar-toggle-button {
   padding: 0.25rem;
   transition: opacity 0.15s ease-in-out;
 }
+
 .is-mobile .clickable-icon {
   min-height: 44px;
   min-width: 44px;
@@ -3011,8 +3027,32 @@ input.metadata-property-key-input {
 /* #region Core plugins */
 
 /********** Core Plugin: Audio Recorder **********/
+/* See also Embeds for the resulting embedded audio */
 
-/* No special styles for Audio Recorder, but see Embeds for the resulting embedded audio */
+.side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active:has(svg.svg-icon.lucide-mic) {
+  animation: pulse-animation 2s infinite;
+  animation-timing-function: ease-in-out;
+}
+.side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active:before {
+  content: 'REC';
+  font-size: 0.8em;
+  color: var(--theme-color-audioRecordingActive);
+}
+.side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active svg {
+  display: none;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0em var(--theme-color-redVeryTransparent);
+  }
+  50% {
+    box-shadow: 0 0 0 0.25em var(--theme-color-redSlightlyTransparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0em var(--theme-color-);
+  }
+}
 
 /********** Core Plugin: Backlinks **********/
 
