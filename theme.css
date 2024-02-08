@@ -477,6 +477,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-log: var(--theme-color-baseVeryDarkened);
   --theme-color-logBg: var(--theme-color-baseSlightlyLightened);
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
+  --theme-color-menuBg: var(--theme-color-baseVeryLightened);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
@@ -598,6 +599,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-menuBg: var(--theme-color-baseVeryDarkened);
   --theme-color-modalContentBg: var(--theme-color-baseDarkened);
   --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
@@ -1345,7 +1347,7 @@ li[data-task=">"]>p>input:checked:after {
 /********** Menus **********/
 /* Rendered on mobile, or if native menus are disabled */
 .menu {
-  background-color: var(--theme-color-baseVeryLightened);
+  background-color: var(--theme-color-menuBg);
   border: 0;
   box-shadow: var(--shadow-l);
   border-radius: var(--radius-l);
