@@ -3176,8 +3176,8 @@ input.metadata-property-key-input {
 
 /********** Core Plugin: Files **********/
 
-.workspace-leaf-content[data-type="file-explorer"] .nav-file-title-content,
-.workspace-leaf-content[data-type="file-explorer"] .nav-folder-title-content {
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder .nav-folder .nav-file-title-content,
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder .nav-folder .nav-folder-title-content {
   padding-left: 0;
 }
 
