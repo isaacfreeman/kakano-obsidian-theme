@@ -3270,6 +3270,21 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   font-weight: inherit;
   text-decoration-line: var(--link-decoration-hover);
 }
+.external-link {
+  -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="none" stroke-width="1"><path d="M6.125,3.938L1.313,3.938L1.313,12.688L10.063,12.688L10.063,7.875M7.875,1.75L12.25,1.75L12.25,6.125M12.25,1.75L6.125,7.875"/></svg>');
+  -webkit-mask-position: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100%;
+  background-color: var(--link-external-color);
+  background-image: none;
+  content: "";
+  display: inline-block;
+  height: var(--font-text-size);
+  margin-left: 0.25em;
+  margin-top: -0.25em;
+  vertical-align: middle;
+  width: var(--font-text-size);
+}
 
 /********** Core Plugin: Page preview **********/
 
