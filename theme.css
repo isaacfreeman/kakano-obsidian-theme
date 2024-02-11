@@ -448,6 +448,7 @@ body .metadata-property[data-property-key="tags"] {
 
   /* New variables for this theme */
   --theme-color-audioRecordingActive: var(--theme-color-redDarkened);
+  --theme-color-blockId: var(--theme-color-baseSlightlyLightened);
   --theme-color-calendarBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
@@ -573,6 +574,7 @@ body .metadata-property[data-property-key="tags"] {
 
   /* New variables for this theme */
   --theme-color-audioRecordingActive: var(--theme-color-redLightened);
+  --theme-color-blockId: var(--theme-color-baseSlightlyDarkened);
   --theme-color-calendarBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
@@ -1913,12 +1915,11 @@ body.is-tablet .sidebar-toggle-button {
   top: 0.25em;
   right: 0.25em;
 }
-/* TODO: check these colors in dark mode */
-.cm-s-obsidian span.cm-blockid {
+.markdown-source-view.is-live-preview span.cm-blockid {
   background: transparent;
   border-radius: 0.25em;
-  border: solid 1px var(--theme-color-baseSlightlyLightened);
-  color: var(--theme-color-baseSlightlyLightened);
+  border: solid 1px var(--theme-color-blockId);
+  color: var(--theme-color-blockId);
   line-height: 1.25em;
   padding: 0 0.25em;
   margin-top: 0;
