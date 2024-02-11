@@ -651,7 +651,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-primary: black;
 }
 /* #endregion */
-/* #region Markdown Typography */
+
+/* #region Markdown Typography - Reading and Live Preview modes */
 
 body {
   --blockquote-border-thickness: 0.25em;
@@ -988,8 +989,11 @@ audio::-webkit-media-controls-panel {
 .mermaid svg[aria-roledescription="pie"] .legend:nth-of-type(8) rect {
   fill: var(--color-pink) !important;
 }
-
-
+/* #endregion */
+/* #region Markdown Typography - Source mode */
+.markdown-source-view:not(.is-live-preview) .cm-scroller {
+  font-family: var(--font-monospace);
+}
 /* #endregion */
 /* #region Markdown Checkboxes */
 
