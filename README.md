@@ -18,6 +18,7 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
     - [Settings](#settings)
       - [Color settings](#color-settings)
       - [Layout settings](#layout-settings)
+      - [Typographic settings](#typographic-settings)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
     - [Community Plugins supported](#community-plugins-supported)
@@ -119,6 +120,13 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
 - **Properties position**
   In Live Preview mode, properties can be positioned before (default) or after the main note content. If you rarely use properties, you may prefer to make them less prominent.
   _This setting only works for Live Preview mode. Reading mode doesn't provide suitable HTML structure to support it, and Source Mode makes properties editable within the main content area.
+- **Embedded note titles**
+  WHen a note is embedded in another note, the title can be shown, hidden, or shown only on hover.
+#### Typographic settings
+- **Heading scale factor - desktop/mobile**
+  The scale factor for headings can be adjusted, from 1.067 (largest H1 headings are 1.38 times the size of body text) to 1.618 (H1 headings are 11 times the size of body text)
+- **Heading scale factor - phone**
+  There's an independent scale factor for smaller phone screens, where space is at a premium.
 
 ## Plugin support
 Kakano has specific styling for the following plugins:
