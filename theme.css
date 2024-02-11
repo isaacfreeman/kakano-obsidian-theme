@@ -207,6 +207,76 @@ settings:
       -
         label: 'Always visible'
         value: theme-setting-embeddedNoteTitleVisibilityShow
+  -
+    id: heading-typographySettings
+    title: Typography settings
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: theme-setting-headingScaleFactor
+    title: 'Heading scale factor – desktop/tablet'
+    description: 'Scale factor for heading sizes. Larger numbers will increase the difference between different heading sizes, smaller numbers will decrease the difference.'
+    type: class-select
+    allowEmpty: false
+    default: theme-setting-headingScaleFactor1point2
+    options:
+      -
+        label: '1.067 - Minor Second'
+        value: theme-setting-headingScaleFactor1point067
+      -
+        label: '1.125 - Major Second'
+        value: theme-setting-headingScaleFactor1point125
+      -
+        label: '1.200 - Minor Third'
+        value: theme-setting-headingScaleFactor1point2
+      -
+        label: '1.250 - Major Third'
+        value: theme-setting-headingScaleFactor1point25
+      -
+        label: '1.333 - Perfect Fourth'
+        value: theme-setting-headingScaleFactor1point333
+      -
+        label: '1.414 - Augmented Fourth'
+        value: theme-setting-headingScaleFactor1point414
+      -
+        label: '1.500 - Perfect Fifth'
+        value: theme-setting-headingScaleFactor1point5
+      -
+        label: '1.618 - Golden Ratio'
+        value: theme-setting-headingScaleFactor1point618
+  -
+    id: theme-setting-headingScaleFactorPhone
+    title: 'Heading scale factor – phone'
+    description: "Scale factor for heading sizes on smaller phone screens. With space at a premium, you'll usually want this to be smaller than the desktop scale factor"
+    type: class-select
+    allowEmpty: false
+    default: theme-setting-headingScaleFactorPhone1point125
+    options:
+      -
+        label: '1.067 - Minor Second'
+        value: theme-setting-headingScaleFactorPhone1point067
+      -
+        label: '1.125 - Major Second'
+        value: theme-setting-headingScaleFactorPhone1point125
+      -
+        label: '1.200 - Minor Third'
+        value: theme-setting-headingScaleFactorPhone1point2
+      -
+        label: '1.250 - Major Third'
+        value: theme-setting-headingScaleFactorPhone1point25
+      -
+        label: '1.333 - Perfect Fourth'
+        value: theme-setting-headingScaleFactorPhone1point333
+      -
+        label: '1.414 - Augmented Fourth'
+        value: theme-setting-headingScaleFactorPhone1point414
+      -
+        label: '1.500 - Perfect Fifth'
+        value: theme-setting-headingScaleFactorPhone1point5
+      -
+        label: '1.618 - Golden Ratio'
+        value: theme-setting-headingScaleFactorPhone1point618
 */
 
 /* #endregion */
@@ -655,6 +725,7 @@ body .metadata-property[data-property-key="tags"] {
 /* #region Markdown Typography - Reading and Live Preview modes */
 
 body {
+  --theme-value-headingScaleFactor: 1.2;
   --blockquote-border-thickness: 0.25em;
   /* Use the system font by default for both text and interface, unless user has chosen something else.  */
   --font-default: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -662,19 +733,18 @@ body {
   --font-text-theme: var(--font-default);
   --font-interface-theme: var(--font-default);
   --font-monospace-theme: var(--font-monospace-default);
-  --font-text-size: 16px;
-  --h1-size: 2.25em;
-  --h2-size: 1.5em;
-  --h3-size: 1.25em;
-  --h4-size: 1em;
-  --h5-size: 1em;
-  --h6-size: 1em;
-  --h1-weight: 200;
-  --h2-weight: 300;
-  --h3-weight: 400;
-  --h4-weight: 500;
-  --h5-weight: 400;
-  --h6-weight: 300;
+  --h1-size: calc(var(--theme-value-headingScaleFactor) * var(--h2-size));
+  --h2-size: calc(var(--theme-value-headingScaleFactor) * var(--h3-size));
+  --h3-size: calc(var(--theme-value-headingScaleFactor) * var(--h4-size));
+  --h4-size: calc(var(--theme-value-headingScaleFactor) * var(--h5-size));
+  --h5-size: calc(var(--theme-value-headingScaleFactor) * var(--h6-size));
+  --h6-size: var(--font-text-size);
+  --h1-weight: 100;
+  --h2-weight: 200;
+  --h3-weight: 300;
+  --h4-weight: 400;
+  --h5-weight: 500;
+  --h6-weight: 500;
   --line-height-normal: 1.6;
   --h1-line-height: var(--line-height-normal);
   --h2-line-height: var(--line-height-normal);
@@ -686,24 +756,63 @@ body {
   /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
   hanging-punctuation: first allow-end last;
 }
+.theme-setting-headingScaleFactor1point067 {
+  --theme-value-headingScaleFactor: 1.067;
+}
+.theme-setting-headingScaleFactor1point125 {
+  --theme-value-headingScaleFactor: 1.125;
+}
+.theme-setting-headingScaleFactor1point2 {
+  --theme-value-headingScaleFactor: 1.2;
+}
+.theme-setting-headingScaleFactor1point25 {
+  --theme-value-headingScaleFactor: 1.25;
+}
+.theme-setting-headingScaleFactor1point333 {
+  --theme-value-headingScaleFactor: 1.333;
+}
+.theme-setting-headingScaleFactor1point414 {
+  --theme-value-headingScaleFactor: 1.414;
+}
+.theme-setting-headingScaleFactor1point5 {
+  --theme-value-headingScaleFactor: 1.5;
+}
+.theme-setting-headingScaleFactor1point618 {
+  --theme-value-headingScaleFactor: 1.618;
+}
 /* More compact typography to fit more on small screens */
 .is-phone {
-  --h1-size: 2em;
-  --h2-size: 1.25em;
-  --h3-size: 1.125em;
-  --h4-size: 1em;
-  --h5-size: 1em;
-  --h6-size: 1em;
-  --h1-weight: 200;
-  --h2-weight: 400;
-  --h3-weight: 500;
-  --h4-weight: 600;
-  --h5-weight: 500;
-  --h6-weight: 400;
-  --h1-line-height: 1.125;
-  --h2-line-height: 1.25;
-  --h3-line-height: 1.25;
-  --line-height-normal: 1.6;
+  --theme-value-headingScaleFactorPhone: 1.2;
+  --h1-size: calc(var(--theme-value-headingScaleFactorPhone) * var(--h2-size));
+  --h2-size: calc(var(--theme-value-headingScaleFactorPhone) * var(--h3-size));
+  --h3-size: calc(var(--theme-value-headingScaleFactorPhone) * var(--h4-size));
+  --h4-size: calc(var(--theme-value-headingScaleFactorPhone) * var(--h5-size));
+  --h5-size: calc(var(--theme-value-headingScaleFactorPhone) * var(--h6-size));
+  --line-height-normal: 1.5;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point067 {
+  --theme-value-headingScaleFactorPhone: 1.067;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point125 {
+  --theme-value-headingScaleFactorPhone: 1.125;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point2 {
+  --theme-value-headingScaleFactorPhone: 1.2;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point25 {
+  --theme-value-headingScaleFactorPhone: 1.25;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point333 {
+  --theme-value-headingScaleFactorPhone: 1.333;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point414 {
+  --theme-value-headingScaleFactorPhone: 1.414;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point5 {
+  --theme-value-headingScaleFactorPhone: 1.5;
+}
+.is-phone.theme-setting-headingScaleFactorPhone1point618 {
+  --theme-value-headingScaleFactorPhone: 1.618;
 }
 
 .markdown-rendered div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1,h2,h3,h4,h5,h6) {
