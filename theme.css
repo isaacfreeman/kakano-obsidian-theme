@@ -549,6 +549,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-logBg: var(--theme-color-baseSlightlyLightened);
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
   --theme-color-menuBg: var(--theme-color-baseVeryLightened);
+  --theme-color-mobileToolbarBg: var(--theme-color-baseVeryLightened);
+  --theme-color-mobileToolbarFade: var(--theme-color-baseLightened);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
@@ -672,6 +674,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseSlightlyDarkened);
   --theme-color-menuBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-mobileToolbarBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-mobileToolbarFade: var(--theme-color-baseDarkened);
   --theme-color-modalContentBg: var(--theme-color-baseDarkened);
   --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
@@ -1257,8 +1261,7 @@ li[data-task=">"]>p>input:checked:after {
 }
 
 /* #endregion */
-
-/********* Mobile *********/
+/* #region Mobile-specific */
 
 .is-mobile {
   --file-margins: 0;
@@ -1482,6 +1485,21 @@ li[data-task=">"]>p>input:checked:after {
   padding: var(--size-4-5) max(var(--size-4-5), var(--safe-area-inset-right)) 100px max(var(--size-4-5), var(--safe-area-inset-left));
   border-radius: var(--radius-m);
 }
+
+/********** Mobile toolbar **********/
+.mobile-toolbar {
+  background-color: var(--theme-color-mobileToolbarBg);
+}
+.mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
+width: 1em;
+background: linear-gradient(to right, var(--theme-color-mobileToolbarFade), transparent);
+}
+.mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
+width: 1em;
+background: linear-gradient(to right, transparent, var(--theme-color-mobileToolbarFade));
+}
+
+/* #endregion */
 
 /********** Menus **********/
 /* Rendered on mobile, or if native menus are disabled */
