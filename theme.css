@@ -2560,7 +2560,6 @@ select:focus,
 .backlink-pane .search-result-container,
 .backlink-pane .search-result-file-matches,
 .outgoing-link-pane .search-result-container,
-.outgoing-link-pane .search-result-file-matches,
 .graph-control-section .tree-item-children {
   margin: 0 1em 1em 1em;
   font-size: var(--font-ui-small);
@@ -3220,6 +3219,10 @@ input.metadata-property-key-input {
   color: var(--theme-color-control);
   width: inherit;
   padding: 0.25em 0.5em 0.25em 0;
+}
+.backlink-pane .tree-item-self .tree-item-inner,
+.outgoing-link-pane .tree-item-self .tree-item-inner {
+  padding-left: 0;
 }
 .backlink-pane .search-result:not(.is-collapsed) .search-result-file-title {
   color: var(--theme-color-control);
