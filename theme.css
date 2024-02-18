@@ -191,6 +191,20 @@ settings:
         label: 'Below main note content'
         value: 'setting-properties-position-below'
   -
+    id: theme-setting-stickyEmbeddedLinks
+    title: 'Embedded links scroll position'
+    description: 'Embedded links can be placed at the below your content (so you scroll to the bottom to see them), or pinned so they stay visible as you scroll'
+    type: class-select
+    allowEmpty: false
+    default: 'theme-setting-stickyEmbeddedLinks-off'
+    options:
+      -
+        label: 'Place below content (scroll down to view)'
+        value: 'theme-setting-stickyEmbeddedLinks-off'
+      -
+        label: 'Pin (stay visible while content scrolls)'
+        value: 'theme-setting-stickyEmbeddedLinks-on'
+  -
     id: theme-setting-embeddedNoteTitleVisibility
     title: 'Embedded note titles'
     description: "When a note is embedded in another note, show or hide the source note's title."
@@ -3273,6 +3287,35 @@ input.metadata-property-key-input {
 }
 .embedded-backlinks .backlink-pane > .tree-item-self {
   width: inherit;
+}
+
+/* stick backlinks in document to bottom */
+.theme-setting-stickyEmbeddedLinks-on .cm-sizer > .embedded-backlinks,
+.theme-setting-stickyEmbeddedLinks-on .mod-footer:has(> .embedded-backlinks) {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  overflow-y: visible;
+
+  & > .backlink-pane,
+  & > .embedded-backlinks > .backlink-pane {
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+.theme-setting-stickyEmbeddedLinks-on .markdown-source-view.mod-cm6 .cm-scroller {
+  overflow-y: scroll;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 100%;
+}
+.theme-setting-stickyEmbeddedLinks-on .setting-properties-position-below .mod-root .is-live-preview .metadata-container {
+  position: sticky;
+  bottom: 0;
+  overflow-y: visible;
 }
 
 /********** Core Plugin: Bookmarks **********/
