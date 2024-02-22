@@ -1583,7 +1583,7 @@ li[data-task=">"]>p>input:checked:after {
 
 /* Mobile modals */
 .is-phone .modal-container {
-  padding: 0.5rem;
+  padding: max(calc(2 * var(--theme-padding-mobileHorizontalPadding)), 0.5rem);
 }
 .is-phone .modal .modal-title {
   margin-left: 2rem;
@@ -2836,8 +2836,6 @@ input[type=checkbox]:checked:after {
 .is-phone .prompt {
   --prompt-top: calc(var(--safe-area-inset-top) + var(--header-height) + 1em);
   box-shadow: var(--shadow-l);
-  margin-left: 0.5em;
-  margin-right: 0.5em;
 }
 input.prompt-input[type='text'] {
   background: var(--background-secondary);
