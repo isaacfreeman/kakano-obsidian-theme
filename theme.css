@@ -1027,6 +1027,14 @@ body {
 .markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n+2) {
   background: var(--theme-color-tableHeaderBg);
 }
+.is-mobile .cm-table-widget .markdown-rendered table:not(.calendar) thead tr > th:last-child {
+  /* Make room for the edit button to not overlap. */
+  padding-right: 2em;
+}
+.is-mobile .cm-table-widget .edit-block-button {
+  top: 0;
+  right: 0;
+}
 
 /********** Embeds **********/
 /* Default appearance for embeds */
