@@ -1644,7 +1644,7 @@ background: linear-gradient(to right, transparent, var(--theme-color-mobileToolb
 }
 .is-phone .menu {
   padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
-  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2rem);
+  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 * var(--theme-padding-mobileHorizontalPadding) - max(2 * var(--theme-padding-mobileHorizontalPadding), 1rem));
 }
 .menu-item,
 .menu-item-icon {
