@@ -3063,7 +3063,7 @@ input[type='text'].prompt-input::placeholder {
 .document-search-container,
 .mod-active .document-search-container,
 .is-mobile .document-search-container {
-  background: var(--background-secondary);
+  background: var(--theme-color-controlSetBg);
   border-radius: var(--radius-l);
   box-shadow: var(--shadow-s);
   margin: 0 auto;
