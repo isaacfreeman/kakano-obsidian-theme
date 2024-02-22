@@ -306,6 +306,7 @@ settings:
 */
 
 /* #endregion */
+
 /* #region Custom properties */
 /********* Custom properties *********/
 
@@ -749,6 +750,17 @@ body .metadata-property[data-property-key="tags"] {
   /* Override note background when specified by style settings. */
   /* There's no equivalent of this for light mode. */
   --background-primary: black;
+}
+/* #endregion */
+/* #region Keyframe animations */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 /* #endregion */
 
@@ -2813,15 +2825,6 @@ input[type=checkbox]:checked:after {
 
 /********* Prompts *********/
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
 .prompt-input-container,
 .is-phone .prompt-input-container {
   border-bottom: none;
@@ -3174,12 +3177,13 @@ body:not(.setting-properties-position-below) .mod-root .is-live-preview .embedde
 /* Consistent styles for inline metadata sections */
 .mod-root .metadata-container,
 .mod-root .embedded-backlinks {
+  animation: 0.5s 1 alternate fadein;
   background: var(--metadata-property-background);
+  border-radius: 0;
   border: 0;
   font-family: var(--font-interface);
-  padding: 0.5rem 2rem;
   margin: 0;
-  border-radius: 0;
+  padding: 0.5rem 2rem;
   transform: none;
   width: 100%;
 }
