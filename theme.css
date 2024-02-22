@@ -191,20 +191,6 @@ settings:
         label: 'Below main note content'
         value: 'setting-properties-position-below'
   -
-    id: theme-setting-stickyEmbeddedLinks
-    title: 'Embedded links scroll position'
-    description: 'Embedded links can be placed at the below your content (so you scroll to the bottom to see them), or pinned so they stay visible as you scroll'
-    type: class-select
-    allowEmpty: false
-    default: 'theme-setting-stickyEmbeddedLinks-off'
-    options:
-      -
-        label: 'Place below content (scroll down to view)'
-        value: 'theme-setting-stickyEmbeddedLinks-off'
-      -
-        label: 'Pin (stay visible while content scrolls)'
-        value: 'theme-setting-stickyEmbeddedLinks-on'
-  -
     id: theme-setting-embeddedNoteTitleVisibility
     title: 'Embedded note titles'
     description: "When a note is embedded in another note, show or hide the source note's title."
@@ -291,6 +277,32 @@ settings:
       -
         label: '1.618 - Golden Ratio'
         value: theme-setting-headingScaleFactorPhone1point618
+  -
+    id: heading-experimentalSettings
+    title: Experimental settings
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: info-experimentalSettings
+    title: These settings may be unfinished or unstable!
+    description: "This section contains settings for Kakano features that you may find useful, but which aren't as finished as I'd like. They may also be features I don't use personally, so I'm less likely to notice if they have rough edges. If there's something here that you use, feel free to drop me some feedback in the [Github issues queue](https://github.com/isaacfreeman/kakano-obsidian-theme/issues), and I'll aim to improve features that I know have active users."
+    type: info-text
+    markdown: true
+  -
+    id: theme-setting-stickyEmbeddedLinks
+    title: 'Embedded links scroll position'
+    description: 'Embedded links can be placed at the below your content (so you scroll to the bottom to see them), or pinned so they stay visible as you scroll.'
+    type: class-select
+    allowEmpty: false
+    default: 'theme-setting-stickyEmbeddedLinks-off'
+    options:
+      -
+        label: 'Place below content (scroll down to view)'
+        value: 'theme-setting-stickyEmbeddedLinks-off'
+      -
+        label: 'Pin (stay visible while content scrolls)'
+        value: 'theme-setting-stickyEmbeddedLinks-on'
 */
 
 /* #endregion */
