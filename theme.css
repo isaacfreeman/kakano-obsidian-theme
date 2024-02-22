@@ -764,6 +764,8 @@ body {
   --h5-weight: 500;
   --h6-weight: 500;
   --line-height-normal: 1.6;
+  --link-decoration-thickness: 1px;
+  --link-unresolved-decoration-style: dashed;
   --h1-line-height: var(--line-height-normal);
   --h2-line-height: var(--line-height-normal);
   --h3-line-height: var(--line-height-normal);
@@ -908,7 +910,6 @@ body {
   /* Matched to --callout-padding */
   padding: 0 1.5em;
 }
-
 .markdown-source-view .code-block-flair {
   top: 0.5em;
   right: 0.5em;
@@ -922,6 +923,90 @@ body {
   border-top: var(--hr-thickness) solid;
   border-color: var(--hr-color);
   margin: 2em 0 !important;
+}
+
+/***** Links *****/
+.markdown-source-view.is-live-preview .is-unresolved .cm-link,
+.markdown-reading-view h1 a {
+  --text-decoration-color: var(--link-color);
+  --text-decoration-style: dashed;
+}
+.markdown-source-view .cm-link .cm-underline,
+.markdown-source-view .cm-hmd-internal-link .cm-underline,
+.markdown-reading-view h1 a,
+.markdown-reading-view h2 a,
+.markdown-reading-view h3 a,
+.markdown-reading-view h4 a,
+.markdown-reading-view h5 a,
+.markdown-reading-view h6 a {
+  text-underline-offset: 0.125em;
+}
+@media (hover: hover) {
+  .markdown-source-view.is-live-preview span.cm-link:hover,
+  .markdown-source-view.is-live-preview span.cm-hmd-internal-link:hover:has(.cm-underline) {
+    /* Don't add double underline */
+    text-decoration: none;
+  }
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-1 .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-1 .cm-hmd-internal-link,
+.markdown-reading-view h1 a {
+  --link-decoration-thickness: max(calc(var(--h1-weight) / 400 * 1px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-2 .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-2 .cm-hmd-internal-link,
+.markdown-reading-view h2 a {
+  --link-decoration-thickness: max(calc(var(--h2-weight) / 400 * 1px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-3 .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-3 .cm-hmd-internal-link,
+.markdown-reading-view h3 a {
+  --link-decoration-thickness: max(calc(var(--h3-weight) / 400 * 1px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-hmd-internal-link,
+.markdown-reading-view h4 a {
+  --link-decoration-thickness: max(calc(var(--h4-weight) / 400 * 1px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-5 .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-5 .cm-hmd-internal-link,
+.markdown-reading-view h5 a {
+  --link-decoration-thickness: max(calc(var(--h5-weight) / 400 * 1px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-6 .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-6 .cm-hmd-internal-link,
+.markdown-reading-view h6 a {
+  --link-decoration-thickness: max(calc(var(--h6-weight) / 400 * 1px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-1 .is-unresolved .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-1 .cm-hmd-internal-link .is-unresolved,
+.markdown-reading-view h1 a.is-unresolved {
+  --link-decoration-thickness: max(calc(var(--h1-weight) / 200 * 2px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-2 .is-unresolved .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-2 .cm-hmd-internal-link .is-unresolved,
+.markdown-reading-view h2 a.is-unresolved {
+  --link-decoration-thickness: max(calc(var(--h2-weight) / 400 * 2px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-3 .is-unresolved .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-3 .cm-hmd-internal-link .is-unresolved,
+.markdown-reading-view h3 a.is-unresolved {
+  --link-decoration-thickness: max(calc(var(--h3-weight) / 400 * 2px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .is-unresolved .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-hmd-internal-link .is-unresolved,
+.markdown-reading-view h4 a.is-unresolved {
+  --link-decoration-thickness: max(calc(var(--h4-weight) / 400 * 2px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-5 .is-unresolved .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-5 .cm-hmd-internal-link .is-unresolved,
+.markdown-reading-view h5 a.is-unresolved {
+  --link-decoration-thickness: max(calc(var(--h5-weight) / 400 * 2px), 1px);
+}
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-6 .is-unresolved .cm-link,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-6 .cm-hmd-internal-link .is-unresolved,
+.markdown-reading-view h6 a.is-unresolved {
+  --link-decoration-thickness: max(calc(var(--h6-weight) / 400 * 2px), 1px);
 }
 
 /***** Tables *****/
@@ -3437,6 +3522,7 @@ input.metadata-property-key-input {
   text-decoration-line: var(--link-decoration);
   text-decoration-thickness: var(--link-decoration-thickness);
   color: var(--link-color);
+  text-underline-offset: 0.125em;
 }
 .tree-item-self.is-clickable.outgoing-link-item .tree-item-inner-subtext {
     color: inherit;
