@@ -398,12 +398,13 @@ body {
   --theme-value-gradientContrast: 0.2;
 
   /* Other new variables for this theme */
-  --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
   --theme-color-dragTarget: var(--theme-color-baseTransparent);
   --theme-color-dragTargetBg: var(--theme-color-baseVeryTransparent);
+  --theme-color-graphViewBg: transparent;
+  --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
+  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
   --theme-padding-mobileHorizontalPadding: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
-  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryTransparent);
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -567,7 +568,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryLightened);
   --theme-color-graphLine: var(--theme-color-baseVeryDarkened);
-  --theme-color-graphViewBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
@@ -596,8 +596,13 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-textSelected: var(--theme-color-baseVeryLightened);
   --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
-  --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
-  --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
+  --theme-shadow-control: 0 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.75), 0.5);
+  --theme-shadow-graph: 0 0 0.75rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.8),
+                        0 0 3.5rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.6),
+                        0 0 6rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 1);
+  --theme-shadow-input: 0 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2),
+                        0 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15),
+                        0 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
 
   /*
   Gradient from contrast setting
@@ -695,7 +700,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryDarkened);
   --theme-color-graphLine: var(--theme-color-baseVeryLightened);
-  --theme-color-graphViewBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
@@ -1922,6 +1926,10 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 .workspace-tab-header-container-inner {
   gap: 0.25em;
+}
+.mod-left-split .workspace-tab-header-container-inner,
+.mod-right-split .workspace-tab-header-container-inner {
+  margin: 0.25em 0;
 }
 
 /* Stacked tabs */
@@ -3528,18 +3536,16 @@ input.metadata-property-key-input {
 }
 .workspace-leaf-content[data-type="graph"] .view-content:before,
 .workspace-leaf-content[data-type="graph"] .view-content:after  {
-  width: 100%;
   background: transparent;
-  height: 1px;
+  box-shadow: var(--theme-shadow-graph);
   content: '';
   display: block;
-  box-shadow: 0 0 0.5rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.8),
-              0 0 1.7rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.6),
-              0 0 6rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 1);
-  position: absolute;
+  height: 1px;
   left: 0;
-  right: 0;
   pointer-events: none;
+  position: absolute;
+  right: 0;
+  width: 100%;
 }
 .workspace-leaf-content[data-type="graph"] .view-content:before {
   top: -1px;
