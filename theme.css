@@ -1031,7 +1031,7 @@ body {
   /* Make room for the edit button to not overlap. */
   padding-right: 2em;
 }
-.is-mobile .cm-table-widget .edit-block-button {
+.is-mobile .markdown-source-view .cm-table-widget .edit-block-button {
   top: 0;
   right: 0;
 }
