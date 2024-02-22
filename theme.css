@@ -566,7 +566,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryLightened);
   --theme-color-graphLine: var(--theme-color-baseVeryDarkened);
-  --theme-color-graphViewBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-graphViewBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
@@ -694,7 +694,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryDarkened);
   --theme-color-graphLine: var(--theme-color-baseVeryLightened);
-  --theme-color-graphViewBg: var(--theme-color-baseVeryVeryDarkened);
+  --theme-color-graphViewBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
@@ -3519,15 +3519,33 @@ input.metadata-property-key-input {
 .graph-controls .tree-item-self .tree-item-icon {
   margin: 0;
 }
-.mod-root .workspace-leaf-content[data-type="graph"] .view-content {
-  background-color: var(--theme-color-graphViewBg);
-  margin-top: 6px;
+.workspace-leaf-content[data-type="graph"] .view-content {
+  overflow: hidden;
   border-radius: var(--tab-radius);
+  background-color: var(--theme-color-graphViewBg);
 }
-.mod-left-split .workspace-leaf-content[data-type="graph"] .view-content,
-.mod-right-split .workspace-leaf-content[data-type="graph"] .view-content {
+.workspace-leaf-content[data-type="graph"] .view-content:before,
+.workspace-leaf-content[data-type="graph"] .view-content:after  {
+  width: 100%;
   background: transparent;
+  height: 1px;
+  content: '';
+  display: block;
+  box-shadow: 0 0 0.5rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.8),
+              0 0 1.7rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.6),
+              0 0 6rem hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 1);
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
 }
+.workspace-leaf-content[data-type="graph"] .view-content:before {
+  top: -1px;
+}
+.workspace-leaf-content[data-type="graph"] .view-content:after {
+  bottom: -1px;
+}
+
 .graph-view.color-arrow,
 .graph-view.color-line {
   color: var(--theme-color-graphLine);
