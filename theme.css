@@ -45,6 +45,7 @@ community:
 - calendar
 - dataview
 - obsidian-style-settings
+- oz-clear-unused-images
 - recent-files-obsidian
 */
 
@@ -335,7 +336,7 @@ body {
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
-  --modal-width: 60rem;
+  --modal-width: 65rem;
   --modal-height: 85vh;
   --modal-max-width: calc(100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em);
   --modal-max-height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom) - 2em);
@@ -2962,7 +2963,7 @@ body:not(.is-phone) .modal.mod-settings.mod-sidebar-layout,
 body:not(.is-phone) .modal.mod-community-modal,
 body:not(.is-phone) .modal.mod-sync-history {
   resize: both;
-  width: 60rem;
+  width: var(--modal-width);
   min-width: 36rem;
   min-height: 20rem;
   border-bottom-right-radius: 0.25rem;
@@ -3898,8 +3899,14 @@ body {
     background-color: var(--theme-color-lightenTransparent);
   }
 }
+/*   #region Community Plugin: Clear Unused Images */
 
-/********** Community Plugin: Dataview **********/
+.modal:has(.unused-images-logs) {
+  padding-bottom: 1em;
+}
+
+/*   #endregion */
+/*   #region Community Plugin: Dataview */
 /* Styled to match embeds */
 .block-language-dataview {
   background-color: var(--embed-background);
@@ -4007,9 +4014,8 @@ div.dataview-error-box,
 .block-language-dataview .dataview.dataview-error {
   background-color: transparent;
 }
-
-/********** Community Plugin: Excalidraw **********/
-
+/*   #endregion */
+/*   #region Community Plugin: Excalidraw */
 .excalidraw-view .excalidraw .Island,
 .excalidraw-view .excalidraw .mobile-misc-tools-container  {
   background: var(--theme-color-controlSetBg);
@@ -4062,14 +4068,13 @@ div.dataview-error-box,
     box-shadow: none;
     padding: 0;
 }
-
-/********** Community Plugin: Recent Files **********/
-
+/*   #endregion */
+/*   #region Community Plugin: Recent Files */
 .recent-files-title {
   align-items: center;
   padding-right: 0.375em;
 }
-
+/*   #endregion */
 /*   #region Community Plugin: Style Settings */
 /* Settings modal */
 .style-settings-heading {
