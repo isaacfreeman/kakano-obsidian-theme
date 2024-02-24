@@ -335,7 +335,7 @@ body {
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
-  --modal-width: 90vw;
+  --modal-width: 60rem;
   --modal-height: 85vh;
   --modal-max-width: calc(100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em);
   --modal-max-height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom) - 2em);
@@ -1400,6 +1400,7 @@ li[data-task=">"]>p>input:checked:after {
 }
 
 /* #endregion */
+
 /* #region Mobile-specific */
 
 .is-mobile {
@@ -1640,7 +1641,7 @@ background: linear-gradient(to right, transparent, var(--theme-color-mobileToolb
 
 /* #endregion */
 
-/********** Menus **********/
+/* #region Menus */
 /* Rendered on mobile, or if native menus are disabled */
 .menu {
   background-color: var(--theme-color-menuBg);
@@ -1680,8 +1681,8 @@ background: linear-gradient(to right, transparent, var(--theme-color-mobileToolb
     color: var(--nav-item-color-hover);
   }
 }
-
-/********* Messages *********/
+/* #endregion */
+/* #region Messages */
 
 .mod-warning,
 p.mod-warning,
@@ -1716,8 +1717,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   margin-bottom: 0;
   display: block;
 }
-
-/********* Close buttons *********/
+/* #endregion */
+/* #region Close buttons */
 
 .mod-close,
 .modal-close-button,
@@ -1805,8 +1806,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   order: 1;
   margin: 0;
 }
-
-/********** Navigation buttons **********/
+/* #endregion */
+/* #region Navigation buttons */
 /* Styled similarly to close button */
 
 .modal-setting-back-button-icon,
@@ -1833,8 +1834,8 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
     width: 80%
   }
 }
-
-/********* Notices *********/
+/* #endregion */
+/* #region Notices */
 
 .notice-container {
   padding: 0;
@@ -1871,7 +1872,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   max-width: none;
   margin: 0rem 0.5rem 1rem 0.5rem;
 }
-
+/* #endregion */
 /* #region Workspace */
 
 .workspace {
@@ -2315,9 +2316,7 @@ body.is-tablet .sidebar-toggle-button {
 }
 
 /* #region Standardised Controls */
-
-/********* Lightweight Buttons *********/
-
+/*   #region Lightweight Buttons */
 .markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
 .setting-item-control .clickable-icon,
@@ -2368,8 +2367,8 @@ body.is-tablet .sidebar-toggle-button {
     color: var(--theme-color-controlHover);
   }
 }
-
-/********** Lightweight form controls **********/
+/* #endregion */
+/*   #region Lightweight form controls */
 /* Form controls that are rendered as text until they have focus */
 
 .metadata-property .metadata-property-key input,
@@ -2398,8 +2397,8 @@ body.is-tablet .sidebar-toggle-button {
   box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
   color: var(--text-normal);
 }
-
-/* Text fields */
+/* #endregion */
+/*   #region Text fields */
 .search-input-container input[type='search'],
 input.document-search-input,
 input[type='email'],
@@ -2469,14 +2468,19 @@ input.document-search-input.mod-no-match,
 input.document-replace-input.mod-no-match {
   background-color: color-mix(in srgb, var(--background-input), var(--background-modifier-error) 50%);
 }
-
-/* Buttons - regular */
+/* #endregion */
+/*   #region Buttons - regular */
 button:not(.clickable-icon),
 button:not(.clickable-icon).mod-cta,
 .sync-history-load-more-button,
 .empty-state-action,
 .is-mobile .document-search .document-search-button,
-.is-mobile .document-replace .document-search-button {
+.is-mobile .document-replace .document-search-button,
+.style-settings-import-label,
+.style-settings-copy,
+.style-settings-download,
+.style-settings-import,
+.style-settings-export {
   background: var(--theme-color-controlBg);
   border: none;
   border-radius: var(--button-radius);
@@ -2485,6 +2489,7 @@ button:not(.clickable-icon).mod-cta,
   padding: 0.25em 0.5em;
   min-height: var(--input-height);
   height: auto;
+  text-decoration: none;
 }
 @media (hover: hover) {
   button:not(.clickable-icon):hover,
@@ -2492,10 +2497,16 @@ button:not(.clickable-icon).mod-cta,
   .sync-history-load-more-button:hover,
   .empty-state-action:hover,
   .is-mobile .document-search .document-search-button:hover,
-  .is-mobile .document-replace .document-search-button:hover {
+  .is-mobile .document-replace .document-search-button:hover,
+  .style-settings-import-label:hover,
+  .style-settings-copy:hover,
+  .style-settings-download:hover,
+  .style-settings-import:hover,
+  .style-settings-export:hover {
     border: none;
     background: var(--theme-color-controlBgHover);
     color: var(--theme-color-controlTextHover);
+    text-decoration: none;
   }
 }
 button:not(.clickable-icon):focus,
@@ -2503,7 +2514,12 @@ button:not(.clickable-icon).mod-cta:focus,
 .sync-history-load-more-button:focus ,
 .empty-state-action:focus,
 .is-mobile .document-search .document-search-button:focus,
-.is-mobile .document-replace .document-search-button:focus {
+.is-mobile .document-replace .document-search-button:focus,
+.style-settings-import-label:focus,
+.style-settings-copy:focus,
+.style-settings-download:focus,
+.style-settings-import:focus,
+.style-settings-export:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
 }
 
@@ -2511,8 +2527,8 @@ button:not(.clickable-icon).mod-cta:focus,
 button.search-result-file-match-replace-button {
   min-height: auto;
 }
-
-/* Buttons - lower visual weight */
+/* #endregion */
+/*   #region Buttons - lower visual weight */
 .search-result-file-match-destination-file {
   border: none;
   box-shadow: var(--theme-shadow-control);
@@ -2534,8 +2550,8 @@ button.search-result-file-match-replace-button {
     color: var(--theme-color-controlTextHover);
   }
 }
-
-/* Selects – regular */
+/* #endregion */
+/*   #region Selects – regular */
 select,
 .setting-item-control select {
   border: none;
@@ -2555,8 +2571,8 @@ select:focus,
     box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
     outline: none;
 }
-
-/* Selects – lightweight */
+/* #endregion */
+/*   #region Selects – lightweight */
 .search-results-info .dropdown {
   border: none;
   box-shadow: var(--theme-shadow-control);
@@ -2573,8 +2589,8 @@ select:focus,
     box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
     outline: none;
 }
-
-/* Multi-select pill */
+/* #endregion */
+/*   #region Multi-select pill */
 .multi-select-container,
 .metadata-property .multi-select-container {
   padding: 0.25em;
@@ -2591,8 +2607,8 @@ select:focus,
     background: var(--pill-background-remove-hover);
   }
 }
-
-/* Toolbars */
+/* #endregion */
+/*   #region Toolbars */
 .canvas-controls,
 .graph-controls,
 .graph-controls.is-close,
@@ -2626,8 +2642,8 @@ select:focus,
     background-color: var(--background-modifier-hover);
   }
 }
-
-/* Collapsible controls */
+/* #endregion */
+/*   #region Collapsible controls */
 .metadata-properties-heading,
 .embedded-backlinks .backlink-pane .tree-item-self,
 .graph-controls .graph-control-section .tree-item-self,
@@ -2713,8 +2729,8 @@ select:focus,
   margin: 0 0 0 var(--nav-item-children-margin-left);
   border-left: var(--nav-indentation-guide-width) solid var(--nav-indentation-guide-color);
 }
-
-/* UI Checkboxes */
+/* #endregion */
+/*   #region Obsidian UI Checkboxes */
 .checkbox-container {
   background-color: var(--background-input);
 }
@@ -2728,7 +2744,9 @@ input[type=checkbox]:checked:after {
   top: 0;
   left: 0;
 }
-
+.checkbox-container.mod-small {
+}
+/* #endregion */
 /* #endregion */
 
 /********* Item lists *********/
@@ -2944,6 +2962,7 @@ body:not(.is-phone) .modal.mod-settings.mod-sidebar-layout,
 body:not(.is-phone) .modal.mod-community-modal,
 body:not(.is-phone) .modal.mod-sync-history {
   resize: both;
+  width: 60rem;
   min-width: 36rem;
   min-height: 20rem;
   border-bottom-right-radius: 0.25rem;
@@ -4051,19 +4070,8 @@ div.dataview-error-box,
   padding-right: 0.375em;
 }
 
-/********** Community Plugin: Style Settings **********/
-
-.modal-style-settings {
-  /* Show shadow below buttons */
-  overflow: visible;
-}
-.modal-style-settings textarea {
-  margin-top: var(--input-border-width);
-}
-.modal-style-settings .modal-content {
-  padding-bottom: 1em;
-  margin-bottom: -1em;
-}
+/*   #region Community Plugin: Style Settings */
+/* Settings modal */
 .style-settings-heading {
   border-bottom: none;
   margin-top: 1.5em;
@@ -4071,10 +4079,31 @@ div.dataview-error-box,
 .style-settings-heading[data-level="0"] {
   margin-bottom: 0;
 }
-
 .setting-item + div > .style-settings-heading[data-level="0"],
 .setting-item + .style-settings-heading[data-level="0"] {
   margin-top: 1.5em;
 }
 
+/* Import/export modals */
+.modal-style-settings {
+  /* Show shadow below buttons */
+  overflow: visible;
+
+  & .modal-content {
+    padding: 1em 1em 1em 1em;
+    margin-bottom: 0;
+  }
+  & .setting-item {
+    margin-bottom: 1em;
+    align-items: baseline;
+  }
+  & .setting-item:first-child {
+    margin-left: 1.5em;
+  }
+  & textarea {
+    margin-top: var(--input-border-width);
+    margin-bottom: var(--input-border-width);
+  }
+}
+/*   #endregion */
 /* #endregion */
