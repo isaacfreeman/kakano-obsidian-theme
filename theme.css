@@ -335,6 +335,10 @@ body {
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
+  --modal-width: 90vw;
+  --modal-height: 85vh;
+  --modal-max-width: calc(100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em);
+  --modal-max-height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom) - 2em);
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
   --nav-item-children-margin-left: calc(1em - var(--nav-indentation-guide-width) / 2);
   --nav-item-children-padding-left: calc(1em - var(--nav-indentation-guide-width) / 2);
@@ -404,7 +408,7 @@ body {
   --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
-  --theme-padding-mobileHorizontalPadding: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
+  --theme-spacing-mobileHorizontalSpacing: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -1410,7 +1414,7 @@ li[data-task=">"]>p>input:checked:after {
 
 /* Mobile workspace */
 .is-mobile .workspace > .mod-root {
-    padding: 0 var(--theme-padding-mobileHorizontalPadding) 0.5rem var(--theme-padding-mobileHorizontalPadding);
+    padding: 0 var(--theme-spacing-mobileHorizontalSpacing) 0.5rem var(--theme-spacing-mobileHorizontalSpacing);
 }
 .is-mobile .mod-root .workspace-tabs {
     padding: 0;
@@ -1587,7 +1591,7 @@ li[data-task=">"]>p>input:checked:after {
 
 /* Mobile modals */
 .is-phone .modal-container {
-  padding: max(calc(2 * var(--theme-padding-mobileHorizontalPadding)), 0.5rem);
+  padding: max(calc(2 * var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
 }
 .is-phone .modal .modal-title {
   margin-left: 2rem;
@@ -1648,7 +1652,7 @@ background: linear-gradient(to right, transparent, var(--theme-color-mobileToolb
 }
 .is-phone .menu {
   padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
-  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 * var(--theme-padding-mobileHorizontalPadding) - max(2 * var(--theme-padding-mobileHorizontalPadding), 1rem));
+  width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 * var(--theme-spacing-mobileHorizontalSpacing) - max(2 * var(--theme-spacing-mobileHorizontalSpacing), 1rem));
 }
 .menu-item,
 .menu-item-icon {
@@ -2920,7 +2924,6 @@ input[type='text'].prompt-input::placeholder {
 }
 
 /* Modals with sidebar layout */
-
 .mod-sidebar-layout .modal-content {
   padding: 0;
   margin: 0;
@@ -2936,6 +2939,17 @@ input[type='text'].prompt-input::placeholder {
   box-shadow: var(--shadow-s);
   z-index: 1;
 }
+/***** Resizeable modals *****/
+body:not(.is-phone) .modal.mod-settings.mod-sidebar-layout,
+body:not(.is-phone) .modal.mod-community-modal,
+body:not(.is-phone) .modal.mod-sync-history {
+  resize: both;
+  min-width: 36rem;
+  min-height: 20rem;
+  border-bottom-right-radius: 0.25rem;
+  box-shadow: var(--shadow-l);
+}
+
 
 /* Help modal */
 .modal.mod-canvas-help .modal-content {
