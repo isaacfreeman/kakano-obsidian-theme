@@ -13,12 +13,14 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
     - [Standardised controls](#standardised-controls)
     - [Properties below content](#properties-below-content)
     - [Follows OS standards by default](#follows-os-standards-by-default)
-    - [Alternate checkboxes](#alternate-checkboxes)
+    - [Selected alternate checkboxes](#selected-alternate-checkboxes)
     - [Supports core plugins](#supports-core-plugins)
-    - [Settings](#settings)
-      - [Color settings](#color-settings)
-      - [Layout settings](#layout-settings)
-      - [Typographic settings](#typographic-settings)
+    - [And so much more](#and-so-much-more)
+  - [Settings](#settings)
+    - [Color settings](#color-settings)
+    - [Layout settings](#layout-settings)
+    - [Typographic settings](#typographic-settings)
+    - [Experimental settings](#experimental-settings)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
     - [Community Plugins supported](#community-plugins-supported)
@@ -91,13 +93,15 @@ Some people pay a lot of attention to propertioes on their notes, others use the
 - On macOS, close buttons appear at the left of tabs and modals, as standard.
 - Kakano uses system fonts by default to be consistent with other apps. It respects user font choices if you prefer something else.
 
-### Alternate checkboxes
+### Selected alternate checkboxes
 ![Supports alternate checkboxes](alternate_checkboxes.png)
-Supports some common alternate checkboxes:
+Kakano doesn't try to support a huge range of specialised alternate checkbox marks, but focuses on the ones that are most useful in practice:
 `- [/]` for "partially done"
 `- [<]` for "scheduling"
 `- [-]` for "cancelled"
 `- [>]` for "forwarded"
+`- [!]` for "important"
+`- [?]` for "question"
 
 ### Supports core plugins
 ![Supports core plugins](plugin_support.png)
@@ -105,16 +109,21 @@ Kakano styles all the core Obsidian plugins.[^1]
 
 [^1]: OK, almost all of them. I have a couple left to finish.
 
-### Settings
+### And so much more
+Kakano includes a lot of little details. Some notable examples are:
+- Large modals are resizeable. If you change settings that affect the user itnerface, you can often resize the setting smodal to see the effects without closing it.
+- When audio recording is active, the ribbon icon changes to a `REC` indicator with a pulsing red outline.
+
+## Settings
 If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, Kakano offers the following settings.
-#### Color settings
+### Color settings
 - **Base color**
-  Sets a base color that will be used by Kakano independently of the accent color. This allows you to use one color for Kakano, and a separate color for accents in your notes.
+  Sets a base color that will be used by Kakano independently of the accent color. This allows you to use one color for Kakano, and a separate color for accents in your notes. You can select from one of the preset options, or specify your own exact color.
 - **Background gradient contrast**
   Adjusts the background gradient from a flat color to a strong difference between top and bottom.
-- **Dark mode note background**
-  THe background for note sin dark mode can be either full black (nice on OLED screens) or near-black (easier on the eye).
-#### Layout settings
+- **Note backgrounds (light and dark modes)**
+  The background for note sin dark mode can be either full black (nice on OLED screens) or near-black (easier on the eye).
+### Layout settings
 - **Mobile horizontal spacing**
   On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
 - **Properties position**
@@ -122,11 +131,13 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
   _This setting only works for Live Preview mode. Reading mode doesn't provide suitable HTML structure to support it, and Source Mode makes properties editable within the main content area.
 - **Embedded note titles**
   WHen a note is embedded in another note, the title can be shown, hidden, or shown only on hover.
-#### Typographic settings
-- **Heading scale factor - desktop/mobile**
-  The scale factor for headings can be adjusted, from 1.067 (largest H1 headings are 1.38 times the size of body text) to 1.618 (H1 headings are 11 times the size of body text)
-- **Heading scale factor - phone**
-  There's an independent scale factor for smaller phone screens, where space is at a premium.
+### Typographic settings
+- **Heading scale factors**
+  Rather than specify a size for every heading level independently, Kakano provides eight scale factor options that adjust the relative sizes of all heading levels together. If you like dramatic headings, the highest scale factor provides H1 headings 11 times the size of the body text, with other headings sized harmoniously in between. If you want to conserve space, the lowest setting makes H1 headings just 1.38 times the size of body text: the headings are still differentiated by size, but the ratio is smaller.
+  There's a separate scale factor for phones, where space is at a premium.
+### Experimental settings
+- ** Embedded links scroll position
+  Embedded links can be pinned to stay on screen as a note scrolls.
 
 ## Plugin support
 Kakano has specific styling for the following plugins:
@@ -187,18 +198,16 @@ I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explo
 _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zealand.
 
 ## Credits
-
 - [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting.
 - [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes, and the ability to pin embdded backlinks.
+- The[MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
 
 ## License
-
 Kakano is licensed under the MIT License which allows you to modify and redistribute the code, however you must preserve the copyright and license notice in your CSS file. This includes any code you may extract as standalone snippets.
 
 ## Disclaimer
+Kakano theme is provided as is, as a one-person hobby project I work on in my spare time. I use it on macOS and iOS, and it's not tested on other platforms. I always appreciate bug reports and suggestions, and I'll endeavour to fix problems as I hear of them, and as time permits.
 
-Kakano theme is provided as is, as a one-person hobby project I work on in my spare time. I use it on macOS and iOS, and it's not tested on other platforms. I'm happy to receive bug reports, and will endeavour to fix problems to the extent that time and resources permit, but I can't promise that it will work for everybody all the time.
+There are great themes for Obsidian that provide detailed settings for many aspects of the user interface, but the path I'm taking here is to reduce the number of choices users need to make. I enjoy and appreciate feedback and suggestions from users, but I may decide that some good ideas aren't Kakano ideas.
 
-There are great themes for Obsidian that provide detailed settings for many aspects of the user interface, but I'm taking a different path here and trying to minimise the number of choices users need to make. I enjoy and appreciate feedback and suggestions from users, but I may decide that some good ideas aren't Kakano ideas.
-
-Some of the choices I've made in Kakano may not be compatible with future updates to Obsidian, nor with custom CSS snippets. I'm aiming to keep it up to date, but again, no promises.
+Some of the choices I've made in Kakano may not be compatible with future updates to Obsidian, nor with custom CSS snippets. I'm aiming to keep it up to date but again, no promises.
