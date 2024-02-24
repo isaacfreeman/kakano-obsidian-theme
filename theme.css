@@ -44,6 +44,7 @@ core:
 community:
 - calendar
 - dataview
+- obsidian-kanban
 - obsidian-style-settings
 - oz-clear-unused-images
 - recent-files-obsidian
@@ -577,6 +578,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseSlightlyLightened);
+  --theme-color-kanbanLaneBg: var(--theme-color-baseVeryLightened);
   --theme-color-log: var(--theme-color-baseVeryDarkened);
   --theme-color-logBg: var(--theme-color-baseSlightlyLightened);
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
@@ -709,6 +711,9 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-kanbanLaneBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-log: var(--theme-color-baseVeryLightened);
+  --theme-color-logBg: var(--theme-color-baseSlightlyDarkened);
   --theme-color-menuBg: var(--theme-color-baseVeryDarkened);
   --theme-color-mobileToolbarBg: var(--theme-color-baseVeryDarkened);
   --theme-color-mobileToolbarFade: var(--theme-color-baseDarkened);
@@ -1725,7 +1730,9 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 .modal-close-button,
 .document-search-close-button,
 .workspace-tab-header-inner-close-button,
-.slides-close-btn {
+.slides-close-btn,
+.clickable-icon.kanban-plugin__search-cancel-button,
+.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"] {
   background-color: transparent;
   border-radius: 1.5rem;
   border: none;
@@ -1747,7 +1754,9 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
   .mod-sync-history .modal-close-button:hover,
   .mod-settings .modal-close-button:hover,
   .workspace-tab-header-inner-close-button:hover,
-  .slides-close-btn:hover {
+  .slides-close-btn:hover,
+  .clickable-icon.kanban-plugin__search-cancel-button:hover,
+  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover {
     color: var(--theme-color-control);
     background-color: var(--theme-color-navigationButtonBgHover);
   }
@@ -2263,22 +2272,47 @@ body.is-tablet .sidebar-toggle-button {
   font-size: var(--nav-item-size);
 }
 
-/********* Suggestions (Search, File Recovery, Slash commands) *********/
-
+/* #region Suggestions (Search, File Recovery, Slash commands) */
 .suggestion-container,
-.suggestion-container.mod-search-suggestion  {
-  display: block;
+.suggestion-container.mod-search-suggestion,
+.kanban-plugin__autocomplete  {
+  display: flex;
   background-color: var(--theme-color-suggestionBg);
   border: none;
+  border-radius: 0.5em;
+  box-shadow: var(--shadow-s);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+.suggestion,
 .suggestion-container.mod-search-suggestion .suggestion {
   background: transparent;
+  padding: 0;
 }
 .suggestion-title.list-item-part {
   color: var(--text-normal);
 }
 .suggestion-aux {
   gap: 0.25em;
+}
+.suggestion-item,
+.kanban-plugin__autocomplete-item,
+.kanban-plugin__autocomplete-item-active {
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+}
+@media (hover: hover) {
+  .suggestion-item:hover,
+  .kanban-plugin__autocomplete-item:hover,
+  .kanban-plugin__autocomplete-item-active:hover {
+    background: var(--nav-item-background-hover);
+  }
+}
+.kanban-plugin__autocomplete-item-active {
+  background: inherit;
+  color: inherit;
 }
 .suggestion-item.is-selected {
   background-color: var(--nav-item-background-hover);
@@ -2287,8 +2321,8 @@ body.is-tablet .sidebar-toggle-button {
 .suggestion-item.is-selected .suggestion-flair {
   color: var(--nav-item-color-active);
 }
-
-/********* Hotkeys *********/
+/* #endregion */
+/* #region Hotkeys */
 
 .suggestion-hotkey,
 .setting-hotkey {
@@ -2305,9 +2339,8 @@ body.is-tablet .sidebar-toggle-button {
   border: solid 1px var(--background-modifier-error);
   color: var(--background-modifier-error);
 }
-
-/********* Action lists *********/
-
+/* #endregion */
+/* #region Action lists */
 .vertical-tab-header-group-title {
   color: var(--text-normal);
 }
@@ -2315,7 +2348,7 @@ body.is-tablet .sidebar-toggle-button {
 .vertical-tab-nav-item {
   color: var(--theme-color-control);
 }
-
+/* #endregion */
 /* #region Standardised Controls */
 /*   #region Lightweight Buttons */
 .markdown-source-view.mod-cm6 .code-block-flair,
@@ -2905,8 +2938,7 @@ input[type='text'].prompt-input::placeholder {
 }
 .modal-bg,
 .modal,
-.prompt,
-.document-search-container {
+.prompt {
   animation: 0.5s 1 alternate fadein;
 }
 .modal-content {
@@ -3100,30 +3132,6 @@ body:not(.is-phone) .modal.mod-sync-history {
 /* Font settings modal */
 .setting-font-list + .setting-item {
   border: none;
-}
-
-/* Document search */
-.document-search-container,
-.mod-active .document-search-container,
-.is-mobile .document-search-container {
-  background: var(--theme-color-controlSetBg);
-  border-radius: var(--radius-l);
-  box-shadow: var(--shadow-s);
-  margin: 0 auto;
-  padding: 0.5em;
-}
-.document-search,
-.document-replace {
-  padding: 0;
-}
-.document-search-button {
-  border: none;
-  color: var(--theme-color-control);
-}
-.document-search-close-button,
-.is-mobile .document-search .document-search-close-button,
-.is-mobile .document-replace .document-search-close-button {
-  top: calc(50% - 0.5em);
 }
 
 /* Debug modal */
@@ -3346,6 +3354,37 @@ input.metadata-property-key-input {
     color: inherit;
   }
 }
+
+/* #region Document search */
+.document-search-container,
+.mod-active .document-search-container,
+.is-mobile .document-search-container,
+.kanban-plugin__search-wrapper {
+  animation: 0.5s 1 alternate fadein;
+  background: var(--theme-color-controlSetBg);
+  border: none;
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-s);
+  gap: 0.5em;
+  margin: 0 auto;
+  padding: 0.5em;
+  width: auto;
+}
+.document-search,
+.document-replace {
+  gap: 0.5em;
+  padding: 0;
+}
+.document-search-button {
+  border: none;
+  color: var(--theme-color-control);
+}
+.document-search-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
+  top: calc(50% - 0.5em);
+}
+/* #endregion */
 
 /* #region Core plugins */
 
@@ -3847,8 +3886,7 @@ body {
 /* #endregion */
 /* #region Community plugins */
 
-/********** Community Plugin: Calendar **********/
-
+/*   #region Community Plugin: Calendar */
 .container:has(> .calendar) {
   margin: 0;
   padding: 0 !important;
@@ -3899,6 +3937,7 @@ body {
     background-color: var(--theme-color-lightenTransparent);
   }
 }
+/*   #endregion */
 /*   #region Community Plugin: Clear Unused Images */
 
 .modal:has(.unused-images-logs) {
@@ -4068,6 +4107,85 @@ div.dataview-error-box,
     box-shadow: none;
     padding: 0;
 }
+/*   #endregion */
+/*   #region Community Plugin: Kanban */
+.kanban-plugin__lane {
+  background-color: var(--theme-color-kanbanLaneBg);
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: var(--shadow-s);
+}
+.kanban-plugin__lane-header-wrapper {
+  border-bottom: none;
+  gap: 0.5em;
+  padding: 0.5em;
+}
+.kanban-plugin__lane-grip {
+  margin-right: 0;
+  color: var(--theme-color-control);
+}
+.kanban-plugin__lane-setting-wrapper>div {
+  padding: 0.5em 1em;
+}
+.kanban-plugin__lane-setting-wrapper>div:last-child {
+  border: none;
+  margin-bottom: 0;
+}
+.kanban-plugin__grow-wrap>textarea {
+  /* Style as regular text field */
+  background: var(--background-input);
+  border-radius: var(--input-radius);
+  border: none;
+  box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
+  font-size: var(--font-ui-small);
+  line-height: normal;
+  padding: var(--size-4-1) var(--size-4-2);
+}
+.kanban-plugin__grow-wrap>textarea:focus {
+  box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
+}
+.kanban-plugin__item-button-wrapper {
+  border-top: none;
+}
+.kanban-plugin__lane-items {
+  gap: 0.5em;
+  margin: 0;
+  padding: 0 0.5em;
+}
+.kanban-plugin__lane-items>.kanban-plugin__item-wrapper {
+  margin: 0;
+}
+.kanban-plugin__item {
+  border: none;
+  box-shadow: var(--shadow-s);
+
+  &.is-search-hit {
+    box-shadow: inherit;
+  }
+}
+.kanban-plugin__item-title-wrapper:not(:only-child)  {
+  border-bottom: none;
+}
+.kanban-plugin__item-form {
+  border: none;
+}
+.kanban-plugin__item-form .kanban-plugin__item-input-wrapper {
+    padding: var(--input-border-width);
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+    min-height: var(--input-height);
+}
+
+/* Autocomplete menu when [[ is entered */
+.kanban-plugin__autocomplete {
+    font-size: inherit;
+    min-width: 20ch;
+    max-width: 40ch;
+    max-height: 12rem;
+}
+
+/* TODO: dropdown list that appears when [[ starts a link */
 /*   #endregion */
 /*   #region Community Plugin: Recent Files */
 .recent-files-title {
