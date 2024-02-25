@@ -46,6 +46,7 @@ community:
 - dataview
 - obsidian-kanban
 - obsidian-style-settings
+- obsidian-tasks-plugin
 - oz-clear-unused-images
 - recent-files-obsidian
 */
@@ -411,6 +412,7 @@ body {
   --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryTransparent);
   --theme-lineHeight-tight: 1.3rem;
   --theme-spacing-mobileHorizontalSpacing: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
+  --theme-length-checkboxBorderWidth: 1px;
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -573,6 +575,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryLightened);
   --theme-color-controlContentArea: var(--theme-color-base);
   --theme-color-controlContentAreaHover: var(--theme-color-baseVeryLightened);
+  --theme-color-controlUIHover: var(--theme-color-baseLightened);
   --theme-color-controlHover: var(--theme-color-baseLightened);
   --theme-color-controlSetBg: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
@@ -715,6 +718,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlBgLowWeight: var(--theme-color-baseVeryDarkened);
   --theme-color-controlContentArea: var(--theme-color-baseLightened);
   --theme-color-controlContentAreaHover: var(--theme-color-baseVeryDarkened);
+  --theme-color-controlUIHover: var(--theme-color-baseDarkened);
   --theme-color-controlHover: var(--theme-color-baseDarkened);
   --theme-color-controlSetBg: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
@@ -2211,8 +2215,7 @@ body.is-tablet .sidebar-toggle-button {
   padding: 0.25em 0.5em;
 }
 /* #endregion */
-
-/********** Blocks **********/
+/* #region Blocks */
 
 .markdown-source-view.mod-cm6 .edit-block-button {
   top: 0.25em;
@@ -2228,8 +2231,8 @@ body.is-tablet .sidebar-toggle-button {
   margin-top: 0;
   vertical-align: baseline;
 }
-
-/********** Content references (search results, incoming/outgoing links, etc.) **********/
+/* #endregion */
+/* #region Content references (search results, incoming/outgoing links, etc.) */
 
 .search-result-file-matches {
   background: none;
@@ -2269,8 +2272,8 @@ body.is-tablet .sidebar-toggle-button {
 .search-result:not(.is-collapsed) .search-result-file-title {
   color: var(--theme-color-control);
 }
-
-/********* Trees *********/
+/* #endregion */
+/* #region Trees */
 
 .tree-item-self {
   gap: 0.5em;
@@ -2289,7 +2292,7 @@ body.is-tablet .sidebar-toggle-button {
 .tree-item-children {
   font-size: var(--nav-item-size);
 }
-
+/* #endregion */
 /* #region Suggestions (Search, File Recovery, Slash commands) */
 .suggestion-container,
 .suggestion-container.mod-search-suggestion,
@@ -2376,7 +2379,8 @@ body.is-tablet .sidebar-toggle-button {
 .metadata-property-icon,
 .markdown-embed-link,
 .file-embed-link,
-.markdown-source-view.mod-cm6 .edit-block-button {
+.markdown-source-view.mod-cm6 .edit-block-button,
+.tasks-edit {
   align-items: center;
   background-color: transparent;
   border-radius: var(--clickable-icon-radius);
@@ -2403,7 +2407,8 @@ body.is-tablet .sidebar-toggle-button {
   .metadata-property-icon:hover,
   .markdown-embed-link:hover,
   .file-embed-link:hover,
-  .markdown-source-view.mod-cm6 .edit-block-button:hover {
+  .markdown-source-view.mod-cm6 .edit-block-button:hover,
+  .tasks-edit:hover {
     color: var(--theme-color-controlHover);
     background-color: var(--background-modifier-hover);
   }
@@ -2789,6 +2794,9 @@ select:focus,
 .checkbox-container.is-enabled {
     background-color: var(--interactive-accent);
 }
+input[type=checkbox] {
+  border: var(--theme-length-checkboxBorderWidth) solid var(--checkbox-border-color);
+}
 input[type=checkbox]:checked:after {
   /* Scale check mark with container in slides */
   width: 100%;
@@ -2796,9 +2804,51 @@ input[type=checkbox]:checked:after {
   top: 0;
   left: 0;
 }
-.checkbox-container.mod-small {
+@media (hover: hover) {
+  input[type="checkbox"]:hover {
+    background-color: var(--theme-color-controlUIHover);
+  }
 }
 /* #endregion */
+/*   #region Obsidian UI Radio buttons */
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--background-input);
+  border-radius: 50%;
+  border: var(--theme-length-checkboxBorderWidth) solid var(--checkbox-border-color);
+  box-sizing: border-box;
+  color: var(--checkbox-border-color);
+  display: inline-grid;
+  font: inherit;
+  height: 1.15em;
+  margin: 0;
+  place-content: center;
+  transform: translateY(calc(-0.5 * var(--theme-length-checkboxBorderWidth)));
+  width: 1.15em;
+}
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: CanvasText;
+  /* Use box-shadow as background-color doesn't print well */
+  box-shadow: inset 1em 1em var(--checkbox-color);
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+input[type="radio"]:focus {
+  border: var(--theme-length-checkboxBorderWidth) solid var(--background-modifier-border-focus);
+}
+@media (hover: hover) {
+  input[type="radio"]:hover {
+    background-color: var(--theme-color-controlUIHover);
+  }
+}
 /* #endregion */
 
 /********* Item lists *********/
@@ -4225,6 +4275,31 @@ div.dataview-error-box,
   margin: 0;
   padding: 0.5em;
 }
+.tasks-edit {
+  display: inline-flex;
+}
+.tasks-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.tasks-modal-section + .tasks-modal-section {
+  margin: 0;
+}
+.tasks-modal-priorities {
+  row-gap: 1em;
+  column-gap: 0.5em;
+}
+.tasks-modal-dates {
+  row-gap: 0.5em;
+  column-gap: 0.5em;
+}
+.tasks-modal-priorities label {
+  grid-row-end: 3;
+  margin: 0;
+  padding: 0 0.25em;
+}
+
 /*   #endregion */
 /*   #region Community Plugin: Style Settings */
 /* Settings modal */
