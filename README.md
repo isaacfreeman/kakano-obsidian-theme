@@ -170,8 +170,12 @@ Kakano has specific styling for the following plugins:
 - Workspaces
 
 ### Community Plugins supported
-- Recent Files
-- Style Settings
+- Recent files
+- Style settings
+- Calendar
+- Dataview
+- Kanban
+- Clear unused images
 
 ## Roadmap
 
