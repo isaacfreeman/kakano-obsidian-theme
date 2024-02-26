@@ -618,9 +618,9 @@ body .metadata-property[data-property-key="tags"] {
   --theme-shadow-input: 0 1px 2px hsla(var(--base-h), calc(var(--base-s) * 1.5), calc(var(--base-l)*0.5), 0.2),
                         0 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.5), 0.15),
                         0 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.05);
-  --theme-shadow-draggingItem: 0 0.0625rem 0.125rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.2),
-                               0 0.25rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15),
-                               0 1rem 2rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.25);
+  --theme-shadow-smallHigher: 0 0.0625rem 0.125rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.2),
+                              0 0.25rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.15),
+                              0 1rem 2rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.5), 0.25);
 
 
   /*
@@ -756,9 +756,9 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-warningBg: var(--theme-color-baseVeryVeryLightened);
   --theme-shadow-control: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.1), calc(var(--base-l)*0.75), 0.1);
   --theme-shadow-input: 0px 1px 2px hsla(var(--base-h), calc(var(--base-s) * 0.5), calc(var(--base-l)*0.1), 0.5), 0px 3.4px 6.7px hsla(var(--base-h), calc(var(--base-s) * 1), calc(var(--base-l)*0.1), 0.25), 0px 15px 30px hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15);
-  --theme-shadow-draggingItem: 0 0.0625rem 0.125rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2),
-                               0 0.25rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15),
-                               0 1rem 2rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
+  --theme-shadow-smallHigher: 0 0.0625rem 0.125rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.2),
+                              0 0.25rem 0.5rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.15),
+                              0 1rem 2rem hsla(var(--base-h), calc(var(--base-s) * 0.75), calc(var(--base-l)*0.1), 0.25);
 
 
   /*
@@ -2849,9 +2849,9 @@ input[type="radio"]:focus {
     background-color: var(--theme-color-controlUIHover);
   }
 }
+/*   #endregion */
 /* #endregion */
-
-/********* Item lists *********/
+/* #region Item lists */
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
   .horizontal-tab-nav-item:hover,
@@ -2897,16 +2897,16 @@ input[type="radio"]:focus {
 .nav-file-title:before {
   content: none;
 }
-
-/********** Tooltips **********/
+/* #endregion */
+/* #region Tooltips */
 
 .tooltip {
   color: var(--theme-color-notice);
   background-color: var(--theme-color-noticeBg);
   padding: 0.5em 1em;
 }
-
-/********** Remote items **********/
+/* #endregion */
+/* #region Remote items */
 
 .community-modal-search-results-wrapper,
 .vault-list,
@@ -2952,7 +2952,7 @@ input[type="radio"]:focus {
   padding: 0;
   gap: 1em;
 }
-
+/* #endregion */
 /* #region Modals */
 
 /********* Prompts *********/
@@ -3215,8 +3215,7 @@ body:not(.is-phone) .modal.mod-sync-history {
 }
 
 /* #endregion */
-
-/********* Content area *********/
+/* #region Content area */
 
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
   padding: 1em 2em 3em 2em;
@@ -3336,8 +3335,8 @@ body:not(.setting-properties-position-below) .mod-root .is-live-preview .embedde
     cursor: auto;
   }
 }
-
-/********* Properties *********/
+/* #endregion */
+/* #region Properties */
 .workspace > .workspace-split:not(.mod-root) .metadata-container {
   --metadata-divider-width: inherit;
 }
@@ -3393,8 +3392,8 @@ input.metadata-property-key-input {
 .metadata-property-icon:before {
   display: none;
 }
-
-/********** File lists **********/
+/* #endregion */
+/* #region File lists */
 
 /* Styles used by both Files and Recent Files */
 
@@ -3422,7 +3421,7 @@ input.metadata-property-key-input {
     color: inherit;
   }
 }
-
+/* #endregion */
 /* #region Document search */
 .document-search-container,
 .mod-active .document-search-container,
@@ -4177,6 +4176,12 @@ div.dataview-error-box,
 }
 /*   #endregion */
 /*   #region Community Plugin: Kanban */
+.kanban-plugin {
+  gap: 0.5rem;
+}
+.kanban-plugin__board>div {
+  padding-top: 0;
+}
 .kanban-plugin__lane {
   background-color: var(--theme-color-kanbanLaneBg);
   border: none;
@@ -4255,6 +4260,35 @@ div.dataview-error-box,
     min-width: 20ch;
     max-width: 40ch;
     max-height: 12rem;
+}
+
+.kanban-plugin__lane-form-wrapper {
+  background: var(--theme-color-controlSetBg);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 1rem;;
+  box-shadow: var(--theme-shadow-smallHigher);
+  border-radius: 0.5rem;
+  top: 0.5em;
+  right: 0.5em;
+  width: auto;
+
+  & .kanban-plugin__lane-input-wrapper {
+    padding: 0;
+  }
+
+  & .kanban-plugin__checkbox-wrapper {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  & .kanban-plugin__lane-input-actions {
+    padding: 0;
+    justify-content: flex-end;
+  }
 }
 
 /*   #endregion */
