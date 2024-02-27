@@ -576,10 +576,11 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlContentArea: var(--theme-color-base);
   --theme-color-controlContentAreaHover: var(--theme-color-baseVeryLightened);
   --theme-color-controlUIHover: var(--theme-color-baseLightened);
-  --theme-color-controlHover: var(--theme-color-baseLightened);
+  --theme-color-controlHover: var(--theme-color-baseVeryVeryLightened);
   --theme-color-controlSetBg: var(--theme-color-baseVeryLightened);
   --theme-color-controlText: var(--theme-color-baseDarkened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
+  --theme-color-controlLightweightActive: var(--theme-color-baseVeryVeryLightened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryLightened);
   --theme-color-graphLine: var(--theme-color-baseVeryDarkened);
   --theme-color-hotkey: var(--theme-color-base);
@@ -719,10 +720,11 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlContentArea: var(--theme-color-baseLightened);
   --theme-color-controlContentAreaHover: var(--theme-color-baseVeryDarkened);
   --theme-color-controlUIHover: var(--theme-color-baseDarkened);
-  --theme-color-controlHover: var(--theme-color-baseDarkened);
+  --theme-color-controlHover: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-controlSetBg: var(--theme-color-baseVeryDarkened);
   --theme-color-controlText: var(--theme-color-baseLightened);
   --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
+  --theme-color-controlLightweightActive: var(--theme-color-baseVeryVeryLightened);
   --theme-color-emptyStateBg: var(--theme-color-baseVeryDarkened);
   --theme-color-graphLine: var(--theme-color-baseVeryLightened);
   --theme-color-hotkey: var(--theme-color-base);
@@ -1683,6 +1685,9 @@ background: linear-gradient(to right, transparent, var(--theme-color-mobileToolb
   padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
   width: calc(100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 * var(--theme-spacing-mobileHorizontalSpacing) - max(2 * var(--theme-spacing-mobileHorizontalSpacing), 1rem));
 }
+.menu-item {
+  height: 2em;
+}
 .menu-item,
 .menu-item-icon {
   color: var(--nav-item-color);
@@ -1868,7 +1873,7 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 /* #endregion */
 /* #region Notices */
-
+/* Note that Excalidraw .HintView uses a smaller version, which could be generalised */
 .notice-container {
   padding: 0;
   right: 1rem;
@@ -2350,6 +2355,10 @@ body.is-tablet .sidebar-toggle-button {
   background: transparent;
   border: solid 1px var(--theme-color-hotkey);
   color: var(--theme-color-hotkey);
+  font-size: var(--font-ui-smaller);
+  font-family: var(--font-interface);
+  padding: 2px 6px;
+  border-radius: var(--radius-s);
 }
 .suggestion-item.is-selected .suggestion-hotkey {
   border-color: var(--theme-color-textSelected);
@@ -2371,7 +2380,8 @@ body.is-tablet .sidebar-toggle-button {
 }
 /* #endregion */
 /* #region Standardised Controls */
-/*   #region Lightweight Buttons */
+/* #region   Buttons */
+/* #region     Lightweight buttons */
 .markdown-source-view.mod-cm6 .code-block-flair,
 .clickable-icon,
 .setting-item-control .clickable-icon,
@@ -2384,15 +2394,19 @@ body.is-tablet .sidebar-toggle-button {
   align-items: center;
   background-color: transparent;
   border-radius: var(--clickable-icon-radius);
+  border: none;
+  box-shadow: none;
   color: var(--theme-color-control);
   cursor: var(--cursor);
   display: flex;
   height: 2em;
-  width: 2em;
   justify-content: center;
+  min-height: var(--input-height);
   opacity: var(--icon-opacity);
   padding: 0.25rem;
+  text-decoration: none;
   transition: opacity 0.15s ease-in-out;
+  width: 2em;
 }
 
 .is-mobile .clickable-icon {
@@ -2415,7 +2429,7 @@ body.is-tablet .sidebar-toggle-button {
 }
 .clickable-icon.is-active {
   opacity: var(--icon-opacity-hover);
-  color: var(--theme-color-controlActive);
+  color: var(--theme-color-controlLightweightActive);
   background-color: var(--theme-color-interactiveActive);
 }
 @media (hover: hover) {
@@ -2425,7 +2439,90 @@ body.is-tablet .sidebar-toggle-button {
   }
 }
 /* #endregion */
-/*   #region Lightweight form controls */
+/* #region     Regular buttons */
+button:not(.clickable-icon):not(.dropdown-menu-item),
+button:not(.clickable-icon).mod-cta,
+.sync-history-load-more-button,
+.empty-state-action,
+.is-mobile .document-search .document-search-button,
+.is-mobile .document-replace .document-search-button,
+.style-settings-import-label,
+.style-settings-copy,
+.style-settings-download,
+.style-settings-import,
+.style-settings-export {
+  background-color: var(--theme-color-controlBg);
+  border: none;
+  border-radius: var(--button-radius);
+  box-shadow: var(--theme-shadow-control);
+  color: var(--theme-color-controlText);
+  padding: 0.25em 0.5em;
+  min-height: var(--input-height);
+  height: auto;
+  text-decoration: none;
+}
+@media (hover: hover) {
+  button:not(.clickable-icon):not(.dropdown-menu-item):hover,
+  button:not(.clickable-icon).mod-cta:hover,
+  .sync-history-load-more-button:hover,
+  .empty-state-action:hover,
+  .is-mobile .document-search .document-search-button:hover,
+  .is-mobile .document-replace .document-search-button:hover,
+  .style-settings-import-label:hover,
+  .style-settings-copy:hover,
+  .style-settings-download:hover,
+  .style-settings-import:hover,
+  .style-settings-export:hover {
+    border: none;
+    background: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlTextHover);
+    text-decoration: none;
+  }
+}
+button:not(.clickable-icon):not(.dropdown-menu-item):focus,
+button:not(.clickable-icon).mod-cta:focus,
+.sync-history-load-more-button:focus ,
+.empty-state-action:focus,
+.is-mobile .document-search .document-search-button:focus,
+.is-mobile .document-replace .document-search-button:focus,
+.style-settings-import-label:focus,
+.style-settings-copy:focus,
+.style-settings-download:focus,
+.style-settings-import:focus,
+.style-settings-export:focus {
+  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+}
+
+/* Buttons - regular but small */
+button.search-result-file-match-replace-button {
+  min-height: auto;
+}
+/* #endregion */
+/* #region     Lighter Regular buttons */
+.search-result-file-match-destination-file {
+  border: none;
+  box-shadow: var(--theme-shadow-control);
+  background-color: var(--theme-color-controlBgLowWeight);
+}
+@media (hover: hover) {
+  .search-result-file-match:hover .search-result-file-match-destination-file:hover {
+    border: none;
+    background: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlTextHover);
+  }
+}
+  .search-result-file-match-destination-file:focus {
+    box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+    outline: none;
+}
+@media (hover: hover) {
+  .search-result-file-match:hover .search-result-file-match-destination-file:hover .search-result-file-match-destination-file-icon {
+    color: var(--theme-color-controlTextHover);
+  }
+}
+/* #endregion */
+/* #endregion */
+/* #region   Lightweight form controls */
 /* Form controls that are rendered as text until they have focus */
 
 .metadata-property .metadata-property-key input,
@@ -2455,7 +2552,7 @@ body.is-tablet .sidebar-toggle-button {
   color: var(--text-normal);
 }
 /* #endregion */
-/*   #region Text fields */
+/* #region   Text fields */
 .search-input-container input[type='search'],
 input.document-search-input,
 input[type='email'],
@@ -2526,89 +2623,7 @@ input.document-replace-input.mod-no-match {
   background-color: color-mix(in srgb, var(--background-input), var(--background-modifier-error) 50%);
 }
 /* #endregion */
-/*   #region Buttons - regular */
-button:not(.clickable-icon),
-button:not(.clickable-icon).mod-cta,
-.sync-history-load-more-button,
-.empty-state-action,
-.is-mobile .document-search .document-search-button,
-.is-mobile .document-replace .document-search-button,
-.style-settings-import-label,
-.style-settings-copy,
-.style-settings-download,
-.style-settings-import,
-.style-settings-export {
-  background: var(--theme-color-controlBg);
-  border: none;
-  border-radius: var(--button-radius);
-  box-shadow: var(--theme-shadow-control);
-  color: var(--theme-color-controlText);
-  padding: 0.25em 0.5em;
-  min-height: var(--input-height);
-  height: auto;
-  text-decoration: none;
-}
-@media (hover: hover) {
-  button:not(.clickable-icon):hover,
-  button:not(.clickable-icon).mod-cta:hover,
-  .sync-history-load-more-button:hover,
-  .empty-state-action:hover,
-  .is-mobile .document-search .document-search-button:hover,
-  .is-mobile .document-replace .document-search-button:hover,
-  .style-settings-import-label:hover,
-  .style-settings-copy:hover,
-  .style-settings-download:hover,
-  .style-settings-import:hover,
-  .style-settings-export:hover {
-    border: none;
-    background: var(--theme-color-controlBgHover);
-    color: var(--theme-color-controlTextHover);
-    text-decoration: none;
-  }
-}
-button:not(.clickable-icon):focus,
-button:not(.clickable-icon).mod-cta:focus,
-.sync-history-load-more-button:focus ,
-.empty-state-action:focus,
-.is-mobile .document-search .document-search-button:focus,
-.is-mobile .document-replace .document-search-button:focus,
-.style-settings-import-label:focus,
-.style-settings-copy:focus,
-.style-settings-download:focus,
-.style-settings-import:focus,
-.style-settings-export:focus {
-  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
-}
-
-/* Buttons - regular but small */
-button.search-result-file-match-replace-button {
-  min-height: auto;
-}
-/* #endregion */
-/*   #region Buttons - lower visual weight */
-.search-result-file-match-destination-file {
-  border: none;
-  box-shadow: var(--theme-shadow-control);
-  background-color: var(--theme-color-controlBgLowWeight);
-}
-@media (hover: hover) {
-  .search-result-file-match:hover .search-result-file-match-destination-file:hover {
-    border: none;
-    background: var(--theme-color-controlBgHover);
-    color: var(--theme-color-controlTextHover);
-  }
-}
-  .search-result-file-match-destination-file:focus {
-    box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
-    outline: none;
-}
-@media (hover: hover) {
-  .search-result-file-match:hover .search-result-file-match-destination-file:hover .search-result-file-match-destination-file-icon {
-    color: var(--theme-color-controlTextHover);
-  }
-}
-/* #endregion */
-/*   #region Selects – regular */
+/* #region   Selects – regular */
 select,
 .setting-item-control select {
   border: none;
@@ -2629,7 +2644,7 @@ select:focus,
     outline: none;
 }
 /* #endregion */
-/*   #region Selects – lightweight */
+/* #region   Selects – lightweight */
 .search-results-info .dropdown {
   border: none;
   box-shadow: var(--theme-shadow-control);
@@ -2647,7 +2662,7 @@ select:focus,
     outline: none;
 }
 /* #endregion */
-/*   #region Multi-select pill */
+/* #region   Multi-select pill */
 .multi-select-container,
 .metadata-property .multi-select-container {
   padding: 0.25em;
@@ -2665,7 +2680,7 @@ select:focus,
   }
 }
 /* #endregion */
-/*   #region Toolbars */
+/* #region   Toolbars */
 .canvas-controls,
 .graph-controls,
 .graph-controls.is-close,
@@ -2691,6 +2706,18 @@ select:focus,
   background-color: transparent;
   border: none;
 }
+/* Active state */
+.canvas-control-item.has-active-menu {
+  opacity: var(--icon-opacity-hover);
+  color: var(--theme-color-controlLightweightActive);
+  background-color: var(--theme-color-interactiveActive);
+}
+@media (hover: hover) {
+  .canvas-control-item.has-active-menu:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--theme-color-controlHover);
+  }
+}
 @media (hover: hover) {
   .canvas-control-item:hover,
   .graph-controls-button:not(.mod-close):hover,
@@ -2700,7 +2727,7 @@ select:focus,
   }
 }
 /* #endregion */
-/*   #region Collapsible controls */
+/* #region   Collapsible controls */
 .metadata-properties-heading,
 .embedded-backlinks .backlink-pane .tree-item-self,
 .graph-controls .graph-control-section .tree-item-self,
@@ -2787,7 +2814,7 @@ select:focus,
   border-left: var(--nav-indentation-guide-width) solid var(--nav-indentation-guide-color);
 }
 /* #endregion */
-/*   #region Obsidian UI Checkboxes */
+/* #region   Obsidian UI Checkboxes */
 .checkbox-container {
   background-color: var(--background-input);
 }
@@ -2810,7 +2837,7 @@ input[type=checkbox]:checked:after {
   }
 }
 /* #endregion */
-/*   #region Obsidian UI Radio buttons */
+/* #region   Obsidian UI Radio buttons */
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
@@ -3952,8 +3979,7 @@ body {
 }
 /* #endregion */
 /* #region Community plugins */
-
-/*   #region Community Plugin: Calendar */
+/* #region   Community Plugin: Calendar */
 .container:has(> .calendar) {
   margin: 0;
   padding: 0 !important;
@@ -4005,14 +4031,14 @@ body {
   }
 }
 /*   #endregion */
-/*   #region Community Plugin: Clear Unused Images */
+/* #region   Community Plugin: Clear Unused Images */
 
 .modal:has(.unused-images-logs) {
   padding-bottom: 1em;
 }
 
 /*   #endregion */
-/*   #region Community Plugin: Dataview */
+/* #region   Community Plugin: Dataview */
 /* Styled to match embeds */
 .block-language-dataview {
   background-color: var(--embed-background);
@@ -4121,42 +4147,198 @@ div.dataview-error-box,
   background-color: transparent;
 }
 /*   #endregion */
-/*   #region Community Plugin: Excalidraw */
-.excalidraw-view .excalidraw .Island,
-.excalidraw-view .excalidraw .mobile-misc-tools-container  {
-  background: var(--theme-color-controlSetBg);
-  border: none;
-  padding: 0.25rem;
-  gap: 0;
-  box-shadow: var(--theme-shadow-input);
-  border-radius: 0.5rem;
+/* #region   Community Plugin: Excalidraw */
+.workspace-leaf-content[data-type="excalidraw"] {
+  & .view-header {
+    padding-bottom: 0;
+  }
+  & .excalidraw-view {
+    /* I don't know why the default styles have 1px padding left and right. */
+    padding: 0;
+  }
 }
+
+.excalidraw-view {
+  & .excalidraw {
+    & .App-bottom-bar {
+      gap: 0.5rem;
+    }
+
+    /* Control sets */
+    & .Island,
+    & .mobile-misc-tools-container  {
+      background: var(--theme-color-controlSetBg);
+      border: none;
+      padding: 0.25rem;
+      gap: 0;
+      box-shadow: var(--theme-shadow-input);
+      border-radius: 0.5rem;
+    }
+    & .mobile-misc-tools-container  {
+      gap: 0.5rem;
+    }
+
+    /* Layout structures inside control sets */
+    & .Stack,
+    & .App-toolbar-content {
+      gap: 0.5em;
+      padding: 0;
+    }
+    /* I think these are supposed to be spacers, but I don't think we need them. */
+    & .App-toolbar-content>.ToolIcon__icon:empty {
+      display: none;
+    }
+
+    /* Menus */
+    & .dropdown-menu--mobile {
+      width: auto;
+    }
+    & .dropdown-menu .dropdown-menu-container {
+      background-color: var(--theme-color-menuBg);
+      border: 0;
+      box-shadow: var(--shadow-l);
+      border-radius: var(--radius-l);
+      margin: 0 1rem;
+      padding: 0.5em;
+
+      & > button {
+        border: none;
+        border-color: var(--nav-item-color);
+        color: var(--nav-item-color);
+        background-color: var(--nav-item-background);
+        box-shadow: none;
+      }
+
+      /* Match other hotkeys */
+      & .dropdown-menu-item__shortcut {
+        background: transparent;
+        border: solid 1px var(--theme-color-hotkey);
+        color: var(--theme-color-hotkey);
+        font-size: var(--font-ui-smaller);
+        font-family: var(--font-interface);
+        padding: 2px 6px;
+        border-radius: var(--radius-s);
+      }
+    }
+  }
+}
+@media(hover: hover) {
+  .excalidraw-view {
+    & .excalidraw {
+      & .dropdown-menu .dropdown-menu-container {
+        & > button:hover {
+          border-color: var(--nav-item-color-hover);
+          color: var(--nav-item-color-hover);
+          background-color: var(--nav-item-background-hover) !important;
+          font-weight: var(--nav-item-weight-hover);
+          --icon-fill-color: var(--nav-item-color-hover);
+        }
+
+        & .dropdown-menu-item__shortcut {
+          color: inherit;
+          border-color: inherit;
+        }
+      }
+    }
+  }
+}
+
+/* Patch weird use of .is-mobile that clashes with Obsidian's use */
+body:not(.is-mobile) .mobile-misc-tools-container .ToolIcon.is-mobile {
+  --input-height: 30px;
+}
+
+/* Buttons – duplicated from lightweight buttons above */
+.excalidraw-view .excalidraw .ToolIcon,
+.excalidraw-view .excalidraw .dropdown-menu-button,
+.excalidraw-view .excalidraw .sidebar-trigger__label-element {
+  align-items: center;
+  background-color: transparent;
+  border-radius: var(--clickable-icon-radius);
+  border: none;
+  box-shadow: none;
+  color: var(--theme-color-control);
+  cursor: var(--cursor);
+  display: flex;
+  height: 2em;
+  justify-content: center;
+  min-height: var(--input-height);
+  opacity: var(--icon-opacity);
+  padding: 0.25rem;
+  text-decoration: none;
+  transition: opacity 0.15s ease-in-out;
+  width: 2em;
+  --icon-fill-color: var(--theme-color-control);
+}
+.is-mobile .excalidraw-view .excalidraw .ToolIcon,
+.is-mobile .excalidraw-view .excalidraw .dropdown-menu-button {
+  min-height: 44px;
+  min-width: 44px;
+}
+.excalidraw-view .excalidraw .dropdown-menu-button:focus {
+  box-shadow: none;
+}
+@media (hover: hover) {
+  .excalidraw-view .excalidraw .Island .ToolIcon:hover,
+  .excalidraw-view .excalidraw .dropdown-menu-button:hover,
+  .excalidraw-view .excalidraw .sidebar-trigger__label-element:hover,
+  .excalidraw-view .excalidraw .mobile-misc-tools-container .ToolIcon:hover,
+  .excalidraw-view .excalidraw .reset-zoom-button:hover {
+    color: var(--theme-color-controlHover);
+    --icon-fill-color: var(--theme-color-controlHover);
+    background-color: var(--background-modifier-hover);
+  }
+}
+/* Active state */
+.excalidraw-view .excalidraw .ToolIcon:has(.ToolIcon_type_radio:checked),
+.excalidraw-view .excalidraw .dropdown-menu-button:has(~.dropdown-menu) {
+  opacity: var(--icon-opacity-hover);
+  color: var(--theme-color-controlLightweightActive);
+  background-color: var(--theme-color-interactiveActive);
+  --icon-fill-color: var(--theme-color-controlLightweightActive);
+}
+.excalidraw-view .excalidraw .ToolIcon.fillable:has(.ToolIcon_type_radio:checked) .ToolIcon__icon,
+.excalidraw-view .excalidraw .ToolIcon.fillable:has(.ToolIcon_type_radio:checked) .ToolIcon__keybinding,
+.excalidraw .ToolIcon .ToolIcon_type_checkbox:checked+.ToolIcon__icon,
+.excalidraw .ToolIcon .ToolIcon_type_radio:checked+.ToolIcon__icon {
+  color: inherit;
+  --icon-fill-color: inherit;
+}
+
+@media (hover: hover) {
+  .excalidraw-view .excalidraw .ToolIcon:hover,
+  .excalidraw-view .excalidraw .dropdown-menu-button:hover {
+    color: var(--theme-color-controlHover);
+    background-color: var(--background-modifier-hover);
+  }
+  .excalidraw-view .excalidraw .ToolIcon:has(.ToolIcon_type_radio:checked):hover,
+  .excalidraw-view .excalidraw .dropdown-menu-button:focus:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--theme-color-controlHover);
+  }
+}
+.excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_checkbox:checked+.ToolIcon__icon,
+.excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_radio:checked+.ToolIcon__icon {
+  background-color: transparent;
+}
+
+/* Icons inside buttons */
 .excalidraw-view .excalidraw .Island .ToolIcon__icon,
+.excalidraw-view .excalidraw .Island .ToolIcon__keybinding,
 .excalidraw-view .excalidraw .mobile-misc-tools-container .ToolIcon__icon {
   --icon-size: var(--icon-s);
   --icon-stroke: var(--icon-s-stroke-width);
   border-radius: var(--clickable-icon-radius);
-  color: var(--theme-color-control);
+  color: inherit;
   opacity: var(--icon-opacity);
   background-color: transparent;
   border: none;
 }
-.excalidraw-view .excalidraw .Island .ToolIcon__icon:hover,
-.excalidraw-view .excalidraw .mobile-misc-tools-container .ToolIcon__icon:hover {
-  color: var(--theme-color-controlHover);
-  background-color: var(--background-modifier-hover);
-  --icon-fill-color: var(--theme-color-controlHover);
+.excalidraw-view .excalidraw .sidebar-trigger {
+  box-shadow: none;
+  background: transparent;
 }
-/* Active state */
-.excalidraw-view .excalidraw .ToolIcon.fillable .ToolIcon_type_radio:checked+.ToolIcon__icon,
-.excalidraw-view .excalidraw .ToolIcon.fillable .ToolIcon_type_checkbox:checked+.ToolIcon__icon,
-.excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_radio:checked+.ToolIcon__icon,
-.excalidraw-view .excalidraw .ToolIcon .ToolIcon_type_checkbox:checked+.ToolIcon__icon {
-  opacity: var(--icon-opacity-hover);
-  color: var(--theme-color-controlActive);
-  background-color: var(--theme-color-interactiveActive);
-  --icon-fill-color: var(--theme-color-controlActive);
-}
+
 .excalidraw-view .excalidraw .App-toolbar__divider {
     width: 1rem;
     height: 1.5rem;
@@ -4167,6 +4349,7 @@ div.dataview-error-box,
 .excalidraw-view .excalidraw .ToolIcon {
   cursor: default;
 }
+
 .excalidraw-view .excalidraw .zoom-actions,
 .excalidraw-view .excalidraw .zoom-actions .Stack {
     background-color: transparent;
@@ -4174,8 +4357,32 @@ div.dataview-error-box,
     box-shadow: none;
     padding: 0;
 }
+.excalidraw-view .excalidraw .zoom-button {
+  background: transparent !important; /* Ugh. */
+  border-radius: var(--clickable-icon-radius) !important;
+  font-size: inherit !important;
+}
+@media (hover: hover) {
+  .excalidraw-view .excalidraw .zoom-button:hover {
+    background-color: var(--background-modifier-hover) !important; /* Ugh. */
+  }
+}
+
+/* Match style of small notice */
+.excalidraw .HintViewer {
+  border-radius: 1em;
+  background-color: var(--background-modifier-message);
+  color: var(--theme-color-notice);
+  box-shadow: var(--shadow-s);
+  padding: 0.5em 0.75em;
+  width: auto;
+
+  & span {
+    padding: 0;
+  }
+}
 /*   #endregion */
-/*   #region Community Plugin: Kanban */
+/* #region   Community Plugin: Kanban */
 .kanban-plugin {
   gap: 0.5rem;
 }
@@ -4292,13 +4499,13 @@ div.dataview-error-box,
 }
 
 /*   #endregion */
-/*   #region Community Plugin: Recent Files */
+/* #region   Community Plugin: Recent Files */
 .recent-files-title {
   align-items: center;
   padding-right: 0.375em;
 }
 /*   #endregion */
-/*   #region Community Plugin: Tasks */
+/* #region   Community Plugin: Tasks */
 .block-language-tasks {
   background-color: var(--embed-background);
   border-bottom: var(--embed-border-bottom);
@@ -4335,7 +4542,7 @@ div.dataview-error-box,
 }
 
 /*   #endregion */
-/*   #region Community Plugin: Style Settings */
+/* #region   Community Plugin: Style Settings */
 /* Settings modal */
 .style-settings-heading {
   border-bottom: none;
