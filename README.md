@@ -184,9 +184,10 @@ Kakano is a one-person hobby. I'm having a great time exploring what Obsidian ca
 There are, however, some key areas I want to improve:
 
 1. Support for all the core plugins. I still need to work on Publish, as I don't use it personally.
-1. Dark mode. At the moment it's mostly just an inverse of light mode, but I'd like to give it specific attention.
-1. Mobile.
-1. Support for the most popular community themes.
+2. Support for the most popular community plugins. Currently I'm aiming at the ones with over 500K downloads.
+3. Dark mode. At the moment it's mostly just an inverse of light mode, but I'd like to give it specific attention.
+4. Mobile.
+5. Support widely-used features from other themes. I'd like to be easy to switch to and from Kakano.
 
 ## About
 I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explore usability and design.

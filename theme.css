@@ -306,6 +306,11 @@ settings:
       -
         label: 'Pin (stay visible while content scrolls)'
         value: 'theme-setting-stickyEmbeddedLinks-on'
+  -
+    id: theme-setting-mobileCardsUI
+    title: 'Mobile cards UI'
+    description: "Scale the main workspace down when there's a modal in the foreground, creating a 3D cards effect. Currently unfinished, but you can see it when you open a prompt."
+    type: class-toggle
 */
 
 /* #endregion */
@@ -1656,7 +1661,21 @@ li[data-task=">"]>p>input:checked:after {
   border-radius: var(--radius-m);
 }
 
-/********** Mobile toolbar **********/
+/* #region   Mobile scaling */
+/* Scale background elements smaller than foreground */
+body.is-phone.theme-setting-mobileCardsUI:has(.modal-container) .workspace > .mod-root .mod-active {
+  transition: transform 0.5s ease-in-out;
+  transform: scale(0.95) translateY(-1.5rem);
+}
+body.is-phone.theme-setting-mobileCardsUI:not(:has(.modal-container:focus-within)) .workspace > .mod-root .mod-active{
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1) translateY(0);
+}
+.is-phone .modal-container {
+  padding: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+}
+/* #endregion */
+/* #region   Mobile toolbar */
 .mobile-toolbar {
   background-color: var(--theme-color-mobileToolbarBg);
 }
@@ -1668,7 +1687,7 @@ background: linear-gradient(to right, var(--theme-color-mobileToolbarFade), tran
 width: 1em;
 background: linear-gradient(to right, transparent, var(--theme-color-mobileToolbarFade));
 }
-
+/* #endregion */
 /* #endregion */
 
 /* #region Menus */
@@ -3035,6 +3054,7 @@ input[type='text'].prompt-input::placeholder {
 .modal,
 .prompt {
   animation: 0.5s 1 alternate fadein;
+  animation-timing-function: ease-in-out;
 }
 .modal-content {
   margin: 0 0;
