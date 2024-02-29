@@ -1629,6 +1629,12 @@ li[data-task=">"]>p>input:checked:after {
 .is-phone .modal-container {
   padding: max(calc(2 * var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
 }
+.is-phone .mod-confirmation .modal {
+  left: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+  right: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+  width: min(calc(100vw - 2*var(--theme-spacing-mobileHorizontalSpacing), calc(100vw - 1rem)))
+}
+
 .is-phone .modal .modal-title {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -1660,6 +1666,21 @@ li[data-task=">"]>p>input:checked:after {
   padding: var(--size-4-5) max(var(--size-4-5), var(--safe-area-inset-right)) 100px max(var(--size-4-5), var(--safe-area-inset-left));
   border-radius: var(--radius-m);
 }
+.is-phone {
+  & .modal .modal-nav-action {
+    top: 0.5rem;
+  }
+}
+.is-phone .modal .modal-nav-action.mod-cta {
+  color: var(--theme-color-controlText);
+  right: 1rem;
+}
+.is-phone .modal .modal-nav-action.mod-secondary {
+  left: 1rem;
+}
+.is-phone .mod-confirmation .modal .modal-title {
+  border-bottom: none;
+}
 
 /* #region   Mobile scaling */
 /* Scale background elements smaller than foreground */
@@ -1671,8 +1692,21 @@ body.is-phone.theme-setting-mobileCardsUI:not(:has(.modal-container:focus-within
   transition: transform 0.5s ease-in-out;
   transform: scale(1) translateY(0);
 }
-.is-phone .modal-container {
+body.is-phone.theme-setting-mobileCardsUI:has(.modal-container) .workspace > .mod-root .mod-active .view-header-title-container {
+  border-top-left-radius: var(--tab-radius);
+  border-top-right-radius: var(--tab-radius);
+}
+body.is-phone.theme-setting-mobileCardsUI:has(.modal-container) .workspace > .mod-root .mod-active .view-content {
+  border-bottom-left-radius: var(--tab-radius);
+  border-bottom-right-radius: var(--tab-radius);
+}
+.is-phone.is-phone.theme-setting-mobileCardsUI .modal-container {
   padding: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+}
+.is-phone.theme-setting-mobileCardsUI .mod-confirmation .modal {
+  left: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+  right: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+  width: min(calc(100vw - 2*var(--theme-spacing-mobileHorizontalSpacing), calc(100vw - 1rem)))
 }
 /* #endregion */
 /* #region   Mobile toolbar */
