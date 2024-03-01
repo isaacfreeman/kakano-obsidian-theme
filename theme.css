@@ -334,6 +334,7 @@ body {
   --embed-border-top: none;
   --embed-padding: 1em;  --file-line-width: 40rem;
   --file-margins: 0;
+  --font-ui-smaller: 0.8rem;
   --heading-spacing: 0.67em;
   --inline-title-size: var(--font-ui-medium);
   --inline-title-weight: bold;
@@ -807,7 +808,8 @@ body .metadata-property[data-property-key="tags"] {
 }
 /* #endregion */
 
-/* #region Markdown Typography - Reading and Live Preview modes */
+/* #region Markdown Typography */
+/* #region   Reading and Live Preview modes */
 
 body {
   --theme-value-headingScaleFactor: 1.2;
@@ -963,7 +965,7 @@ body {
 /* Markdown formatting shown while editing e.g. ### for headings */
 .cm-formatting.cm-formatting-header {
   color: var(--theme-color-textMeta);
-  font-size: 0.8rem !important;
+  font-size: var(--font-ui-smaller) !important;
   font-weight: normal;
   vertical-align: middle;
 }
@@ -1277,10 +1279,18 @@ audio::-webkit-media-controls-panel {
   fill: var(--color-pink) !important;
 }
 /* #endregion */
-/* #region Markdown Typography - Source mode */
+/* #region   Source and Live Preview modes */
+.markdown-source-view {
+  &.mod-cm6 .cm-gutters {
+    color: var(--theme-color-textMeta) !important;
+  }
+}
+/* #endregion */
+/* #region   Source mode */
 .markdown-source-view:not(.is-live-preview) .cm-scroller {
   font-family: var(--font-monospace);
 }
+/* #endregion */
 /* #endregion */
 /* #region Markdown Checkboxes */
 
