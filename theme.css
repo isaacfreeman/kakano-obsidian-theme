@@ -1668,8 +1668,11 @@ li[data-task=">"]>p>input:checked:after {
     border: none;
     transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 }
-.is-phone .modal.mod-settings .modal-title {
+.is-phone .modal.mod-sidebar-layout .modal-title {
   border-bottom: none;
+}
+.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-title {
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 .is-phone .modal.mod-settings .vertical-tab-content {
   background-color: var(--theme-color-settingsGroupBg);
@@ -1690,6 +1693,24 @@ li[data-task=">"]>p>input:checked:after {
 }
 .is-phone .mod-confirmation .modal .modal-title {
   border-bottom: none;
+}
+.is-phone.theme-setting-mobileCardsUI .modal.mod-lg .modal-close-button,
+.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-close-button {
+ top: 0.5rem;
+}
+.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-setting-back-button {
+  top: 0.5rem;
+  left: 1.5rem;
+  padding: 0;
+}
+.is-phone.theme-setting-mobileCardsUI .mod-community-modal .community-modal-controls {
+  padding: 1em;
+}
+.is-phone.theme-setting-mobileCardsUI .community-modal-search-summary {
+  padding: 0;
+}
+.is-phone.theme-setting-mobileCardsUI .modal.mod-community-modal .modal-content .modal-sidebar {
+  padding: 0;
 }
 
 /* #region   Mobile scaling */
