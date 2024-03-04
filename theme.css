@@ -3421,6 +3421,10 @@ body:not(.setting-properties-position-below) .mod-root .is-live-preview .embedde
   transform: none;
   width: 100%;
 }
+body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
+  width: calc(100% + 4rem);
+  margin: 0 2rem;
+}
 
 /* Tab content header */
 .view-header {
