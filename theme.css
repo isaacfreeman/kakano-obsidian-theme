@@ -1703,16 +1703,15 @@ li[data-task=">"]>p>input:checked:after {
   left: 1.5rem;
   padding: 0;
 }
-.is-phone.theme-setting-mobileCardsUI .mod-community-modal .community-modal-controls {
-  padding: 1em;
-}
 .is-phone.theme-setting-mobileCardsUI .community-modal-search-summary {
   padding: 0;
 }
-.is-phone.theme-setting-mobileCardsUI .modal.mod-community-modal .modal-content .modal-sidebar {
+.is-phone .modal.mod-community-modal .modal-content .modal-sidebar {
   padding: 0;
 }
-
+.is-phone .mod-community-modal .community-modal-controls {
+  padding: 1em;
+}
 /* #region   Mobile scaling */
 /* Scale background elements smaller than foreground */
 body.is-phone.theme-setting-mobileCardsUI:has(.modal-container) .workspace > .mod-root .mod-active,
@@ -3789,30 +3788,34 @@ input.metadata-property-key-input {
 .graph-controls .tree-item-self .tree-item-icon {
   margin: 0;
 }
-.workspace-leaf-content[data-type="graph"] .view-content {
-  overflow: hidden;
-  border-radius: var(--tab-radius);
-  background-color: var(--theme-color-graphViewBg);
+.workspace-leaf-content[data-type="graph"],
+.workspace-leaf-content[data-type="localgraph"] {
+  & .view-content {
+    overflow: hidden;
+    border-radius: var(--tab-radius);
+    background-color: var(--theme-color-graphViewBg);
+  }
+  & .view-content:before,
+  & .view-content:after  {
+    background: transparent;
+    box-shadow: var(--theme-shadow-graph);
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+  & .view-content:before {
+    top: -1px;
+  }
+  & .view-content:after {
+    bottom: -1px;
+  }
 }
-.workspace-leaf-content[data-type="graph"] .view-content:before,
-.workspace-leaf-content[data-type="graph"] .view-content:after  {
-  background: transparent;
-  box-shadow: var(--theme-shadow-graph);
-  content: '';
-  display: block;
-  height: 1px;
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  width: 100%;
-}
-.workspace-leaf-content[data-type="graph"] .view-content:before {
-  top: -1px;
-}
-.workspace-leaf-content[data-type="graph"] .view-content:after {
-  bottom: -1px;
-}
+
 
 .graph-view.color-arrow,
 .graph-view.color-line {
