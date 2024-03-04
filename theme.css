@@ -333,7 +333,7 @@ body {
   --embed-border-right: none;
   --embed-border-top: none;
   --embed-padding: 1em;  --file-line-width: 40rem;
-  --file-margins: 0;
+  --file-margins: 0 2em;
   --font-ui-smaller: 0.8rem;
   --heading-spacing: 0.67em;
   --inline-title-size: var(--font-ui-medium);
@@ -696,7 +696,7 @@ body .metadata-property[data-property-key="tags"] {
   --table-border-color: var(--theme-color-baseDarkened);
   --table-header-border-color: var(--theme-color-baseDarkened);
 
-  --metadata-property-background: var(--theme-color-baseVeryVeryDarkened);
+  --metadata-property-background: var(--theme-color-baseVeryDarkened);
   --metadata-property-background-hover: var(--theme-color-baseVeryDarkened);
   --metadata-label-background-active: var(--theme-color-baseVeryVeryDarkened);
   --metadata-input-background-active: var(--theme-color-baseVeryVeryDarkened);
@@ -3318,7 +3318,6 @@ body:not(.is-phone) .modal.mod-sync-history {
 /* #region Content area */
 
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
-  padding: 1em 2em 3em 2em;
   padding: 0;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
@@ -3329,15 +3328,15 @@ body:not(.is-phone) .modal.mod-sync-history {
   width: 100%;
 }
 .markdown-source-view .cm-contentContainer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 3rem 2rem;
+
 }
 .is-phone .markdown-source-view .cm-contentContainer {
   padding-top: 0;
   padding-bottom: 0;
 }
 .markdown-reading-view .mod-footer {
-  margin-top: 1em;
+  margin: 1em -2rem 0 -2rem;
 }
 
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer .cm-contentContainer,
