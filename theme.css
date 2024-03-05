@@ -316,8 +316,7 @@ settings:
 /* #endregion */
 
 /* #region Custom properties */
-/********* Custom properties *********/
-
+/* #region   General */
 body {
   --background-input: var(--theme-color-baseVeryVeryTransparent);
   --background-modifier-message: var(--theme-color-noticeBg);
@@ -339,15 +338,16 @@ body {
   --inline-title-size: var(--font-ui-medium);
   --inline-title-weight: bold;
   --input-border-width: 2px;
+  --list-marker-color-collapsed: var(--list-marker-color);
   --metadata-divider-width: 0;
   --metadata-gap: 0.5em;
   --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
-  --modal-width: 65rem;
   --modal-height: 85vh;
-  --modal-max-width: calc(100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em);
   --modal-max-height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom) - 2em);
+  --modal-max-width: calc(100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em);
+  --modal-width: 65rem;
   --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
   --nav-item-children-margin-left: calc(1em - var(--nav-indentation-guide-width) / 2);
   --nav-item-children-padding-left: calc(1em - var(--nav-indentation-guide-width) / 2);
@@ -419,6 +419,7 @@ body {
   --theme-lineHeight-tight: 1.3rem;
   --theme-spacing-mobileHorizontalSpacing: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
   --theme-length-checkboxBorderWidth: 1px;
+  --theme-length-collapseIndicatorSize: 1.5rem;
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -507,7 +508,8 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-redVeryTransparent: hsla(356, var(--base-s), var(--base-l), 0.25);
   --theme-color-redSlightlyTransparent: hsla(356, var(--base-s), var(--base-l), 0.75);
 }
-
+/* #endregion */
+/* #region   Light mode */
 .theme-light,
 .theme-light .theme-dark {
   /* Using `.theme-light .theme-dark` here because the Minimal Theme Settings plugin inserts `.theme-dark` into the DOM for the ribbon and left sidebar for `Light mode background contrast -> High contrast` even when the Minimal Theme isn't active. As lots of people will have Minimal Theme Settings enabled while using Kakano, I override it here. */
@@ -519,6 +521,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-modifier-border: var(--theme-color-baseSlightlyLightened);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseVeryLightened);
+  --collapse-icon-color: var(--theme-color-base);
+  --collapse-icon-color-collapsed: var(--theme-color-base);
   --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: white;
   --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
@@ -654,7 +658,8 @@ body .metadata-property[data-property-key="tags"] {
 .theme-light.theme-setting-lightModeNoteBgNearWhite  {
   --background-primary: color-mix(in srgb, var(--theme-color-base), white calc(100% * 0.97));
 }
-
+/* #endregion */
+/* #region   Dark mode */
 .theme-dark,
 .theme-dark .theme-light {
   /* Built-in variables */
@@ -664,6 +669,8 @@ body .metadata-property[data-property-key="tags"] {
   --background-modifier-border: var(--theme-color-baseSlightlyDarkened);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseVeryDarkened);
+  --collapse-icon-color: var(--theme-color-base);
+  --collapse-icon-color-collapsed: var(--theme-color-base);
   --empty-pane-color: var(--theme-color-baseDarkened);
   --icon-color-focused: var(--theme-color-baseVeryLightened);
   --icon-color-hover: hsl(var(--base-h), calc(var(--base-s) * 0.2), calc(var(--base-l)*1.5));
@@ -795,6 +802,7 @@ body .metadata-property[data-property-key="tags"] {
   /* There's no equivalent of this for light mode. */
   --background-primary: black;
 }
+/* #endregion */
 /* #endregion */
 /* #region Keyframe animations */
 @keyframes fadein {
@@ -993,6 +1001,79 @@ body {
   border-color: var(--hr-color);
   margin: 2em 0 !important;
 }
+
+/* #region     Lists */
+li.is-collapsed .list-bullet:after,
+.is-collapsed ~ .cm-formatting-list .list-bullet:after {
+  box-shadow: none;
+}
+@media (hover: hover) {
+  li.is-collapsed .list-collapse-indicator:hover ~ .list-bullet:after,
+  li.is-collapsed .cm-fold-indicator:hover ~ .list-bullet:after,
+  .list-collapse-indicator:hover.is-collapsed ~ .list-bullet:after,
+  .cm-fold-indicator:hover.is-collapsed ~ .list-bullet:after,
+  li.is-collapsed .list-collapse-indicator:hover ~ .cm-formatting-list .list-bullet:after,
+  li.is-collapsed .cm-fold-indicator:hover ~ .cm-formatting-list .list-bullet:after,
+  .list-collapse-indicator:hover.is-collapsed ~ .cm-formatting-list .list-bullet:after,
+  .cm-fold-indicator:hover.is-collapsed ~ .cm-formatting-list .list-bullet:after {
+      background-color: var(--list-marker-color-collapsed);
+      box-shadow: none;
+  }
+
+  .list-collapse-indicator:hover ~ .list-bullet:after,
+  .cm-fold-indicator:hover ~ .list-bullet:after,
+  .list-collapse-indicator:hover ~ .cm-formatting-list .list-bullet:after,
+  .cm-fold-indicator:hover ~ .cm-formatting-list .list-bullet:after {
+    box-shadow: none
+  }
+}
+/* #endregion */
+/* #region     Collapse indicators */
+/* Appearance consistent with navigation controls */
+.collapse-indicator,
+.list-collapse-indicator {
+  background-color: transparent;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: var(--theme-length-collapseIndicatorSize);
+  height: var(--theme-length-collapseIndicatorSize);
+  border: none;
+  color: var(--theme-color-control);
+  flex-wrap: wrap;
+}
+@media (hover: hover) {
+  .collapse-indicator:hover,
+  .cm-fold-indicator:hover .collapse-indicator,
+  .list-collapse-indicator:hover {
+    color: var(--theme-color-control);
+    background-color: var(--theme-color-navigationButtonBgHover);
+  }
+}
+.markdown-source-view.mod-cm6 .cm-fold-indicator .collapse-indicator {
+  height: var(--theme-length-collapseIndicatorSize);
+  top: 50%;
+  margin-top: calc(-0.5 * var(--theme-length-collapseIndicatorSize));
+  padding: 0;
+}
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-list-line:not(.cm-active):not(.HyperMD-task-line) .cm-fold-indicator .collapse-indicator {
+  margin-right: 1.75rem;
+  padding-right: 0;
+  transform: translateX(1.75rem);
+}
+.markdown-preview-view h2 {
+  position: relative;
+}
+.markdown-preview-view .heading-collapse-indicator {
+  top: calc(var(--heading-spacing) + 0.5em * var(--h2-line-height));
+  margin-top: calc(-0.5 * var(--theme-length-collapseIndicatorSize));
+  margin-left: -2rem;
+}
+.markdown-rendered .list-collapse-indicator {
+  padding-inline-end: 0;
+}
+/* #endregion */
 
 /***** Links *****/
 .markdown-source-view.is-live-preview .is-unresolved .cm-link,
@@ -3423,7 +3504,7 @@ body:not(.setting-properties-position-below) .mod-root .is-live-preview .embedde
 }
 body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   width: calc(100% + 4rem);
-  margin: 0 2rem;
+  margin: 0 -2rem;
 }
 
 /* Tab content header */
