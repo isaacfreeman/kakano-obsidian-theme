@@ -603,7 +603,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
   --theme-color-menuBg: var(--theme-color-baseVeryLightened);
   --theme-color-mobileToolbarBg: var(--theme-color-baseVeryLightened);
-  --theme-color-mobileToolbarFade: var(--theme-color-baseLightened);
+  --theme-color-mobileToolbarMoreIndicator: var(--theme-color-baseLightened);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
@@ -749,7 +749,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-logBg: var(--theme-color-baseSlightlyDarkened);
   --theme-color-menuBg: var(--theme-color-baseVeryDarkened);
   --theme-color-mobileToolbarBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-mobileToolbarFade: var(--theme-color-baseDarkened);
+  --theme-color-mobileToolbarMoreIndicator: var(--theme-color-baseDarkened);
   --theme-color-modalContentBg: var(--theme-color-baseDarkened);
   --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
@@ -1841,7 +1841,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container) .workspace > .mo
   width: 0.5em;
   margin-top: -0.5em;
   line-height: 1em;
-  color: var(--theme-color-mobileToolbarFade);
+  color: var(--theme-color-mobileToolbarMoreIndicator);
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
   content: "<";
@@ -3332,14 +3332,6 @@ body:not(.is-phone) .modal.mod-sync-history {
 .community-item.is-selected {
   background: var(--theme-color-communityItemBgSelected)
 }
-@media (hover: hover) {
-  .community-item.is-selected:hover {
-    background: var(--theme-color-communityItemBgSelected)
-  }
-}
-.community-item.mod-active {
-  background: var(--theme-color-communityItemBgActive)
-}
 .community-item.is-selected .flair.mod-pop,
 .community-item.mod-active .flair.mod-pop{
   display: none;
@@ -3355,16 +3347,10 @@ body:not(.is-phone) .modal.mod-sync-history {
 .community-item.is-selected .community-item-repo,
 .community-item.is-selected .community-item-downloads,
 .community-item.is-selected .community-item-updated {
-  color: var(--text-normal);
+  color: var(--text-on-accent);
 }
-@media (hover: hover) {
-  .community-item.is-selected:hover,
-  .community-item.is-selected:hover .community-item-author,
-  .community-item.is-selected:hover .community-item-repo,
-  .community-item.is-selected:hover .community-item-downloads,
-  .community-item.is-selected:hover .community-item-updated {
-    color: var(--text-normal);
-  }
+.community-item.mod-active {
+  background: var(--theme-color-communityItemBgActive)
 }
 .community-item.mod-active .community-item-author,
 .community-item.mod-active .community-item-repo,
@@ -3374,6 +3360,26 @@ body:not(.is-phone) .modal.mod-sync-history {
     opacity: 0.8;
 }
 @media (hover: hover) {
+  .community-item:hover {
+    color: var(--text-on-accent);
+  }
+  .community-item:hover .community-item-author,
+  .community-item:hover .community-item-repo,
+  .community-item:hover .community-item-downloads,
+  .community-item:hover .community-item-updated {
+    color: var(--text-on-accent);
+    opacity: 0.8;
+  }
+  .community-item.is-selected:hover {
+    background: var(--theme-color-communityItemBgSelected)
+  }
+  .community-item.is-selected:hover,
+  .community-item.is-selected:hover .community-item-author,
+  .community-item.is-selected:hover .community-item-repo,
+  .community-item.is-selected:hover .community-item-downloads,
+  .community-item.is-selected:hover .community-item-updated {
+    color: var(--text-on-accent);
+  }
   .community-item.mod-active:hover .community-item-author,
   .community-item.mod-active:hover .community-item-repo,
   .community-item.mod-active:hover .community-item-downloads,
