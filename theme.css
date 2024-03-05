@@ -1833,13 +1833,21 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container) .workspace > .mo
 .mobile-toolbar {
   background-color: var(--theme-color-mobileToolbarBg);
 }
+.mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before,
+.mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
+  background:  var(--theme-color-mobileToolbarBg);
+  top: 50%;
+  height: 1em;
+  width: 0.5em;
+  margin-top: -0.5em;
+  line-height: 1em;
+  color: var(--theme-color-mobileToolbarFade);
+}
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
-width: 1em;
-background: linear-gradient(to right, var(--theme-color-mobileToolbarFade), transparent);
+  content: "<";
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
-width: 1em;
-background: linear-gradient(to right, transparent, var(--theme-color-mobileToolbarFade));
+  content: ">";
 }
 /* #endregion */
 /* #endregion */
