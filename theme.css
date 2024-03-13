@@ -4070,10 +4070,11 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0 1em;
+  gap: 0.5em;
   margin: 0;
 }
 .search-results-result-count {
+  width: auto;
 }
 .search-results-info .dropdown {
   max-width: 12em;
