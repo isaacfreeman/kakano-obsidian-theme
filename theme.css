@@ -2916,7 +2916,7 @@ select:focus,
   gap: 0;
   box-shadow: var(--theme-shadow-input);
   border-radius: 0.5rem;
-  width: auto;
+  width: fit-content;
 }
 .canvas-control-item,
 .graph-controls-button,
