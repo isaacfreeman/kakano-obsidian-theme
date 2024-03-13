@@ -1610,9 +1610,16 @@ li[data-task=">"]>p>input:checked:after {
 
 /* Drawers */
 .workspace-drawer {
-  top: 0.5rem;
-  bottom: 0.5rem;
   background: none;
+  bottom: 0.5rem;
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-top: var(--safe-area-inset-top);
+  top: 0.5rem;
+
+  &.theme-dark {
+    /* Override weirdness in app theme */
+    background: none;
+  }
 }
 .workspace-drawer-inner {
   background-color: var(--background-secondary);
