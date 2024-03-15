@@ -425,6 +425,7 @@ body {
   --theme-spacing-mobileHorizontalSpacing: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
   --theme-length-checkboxBorderWidth: 1px;
   --theme-length-collapseIndicatorSize: 1.5rem;
+  --theme-length-controlSetSpacing: 0.5rem;
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -3868,12 +3869,19 @@ input.metadata-property-key-input {
   top: calc(100% - 0.5em);
   box-shadow: none;
 }
-.canvas-card-menu .canvas-card-menu-button.mod-draggable:hover svg {
+.canvas-card-menu {
+  bottom: var(--theme-length-controlSetSpacing);
+
+  .canvas-card-menu-button.mod-draggable:hover svg {
     transform: translateY(0);
     filter: none;
+  }
 }
 .canvas-controls {
   gap: 0.5em;
+  right: var(--theme-length-controlSetSpacing);
+  top: var(--theme-length-controlSetSpacing);
+
 }
 .canvas-control-group {
   background: transparent;
@@ -3923,8 +3931,8 @@ input.metadata-property-key-input {
 
 .graph-controls {
   min-width: 12rem; /* Make room for controls */
-  top: 1rem;
-  right: 1rem;
+  top: var(--theme-length-controlSetSpacing);
+  right: var(--theme-length-controlSetSpacing);
 }
 .graph-control-section {
   border: none;
@@ -4418,8 +4426,15 @@ div.dataview-error-box,
 
 .excalidraw-view {
   & .excalidraw {
-    & .App-bottom-bar {
+    .FixedSideContainer_side_top {
+      top: var(--theme-length-controlSetSpacing) !important;
+      right: var(--theme-length-controlSetSpacing) !important;
+      bottom: var(--theme-length-controlSetSpacing) !important;
+      left: var(--theme-length-controlSetSpacing) !important;
+    }
+    .App-bottom-bar {
       gap: 0.5rem;
+      margin: var(--theme-length-controlSetSpacing) !important;
     }
 
     /* Control sets */
@@ -4434,6 +4449,8 @@ div.dataview-error-box,
     }
     & .mobile-misc-tools-container  {
       gap: 0.5rem;
+      right: 0;
+      top: 0;
     }
 
     /* Layout structures inside control sets */
@@ -4928,9 +4945,23 @@ body:not(.is-mobile) .mobile-misc-tools-container .ToolIcon.is-mobile {
     top: calc((var(--input-height) - var(--search-icon-size)) / 2 + var(--input-border-width));
   }
 }
+.map-view-main {
+  .leaflet-control-container {
+    .leaflet-top {
+      top: var(--theme-length-controlSetSpacing);
+    }
+    .leaflet-right {
+      right: var(--theme-length-controlSetSpacing);
+    }
+    .leaflet-bottom {
+      bottom: var(--theme-length-controlSetSpacing);
+    }
+    .leaflet-left {
+      left: var(--theme-length-controlSetSpacing);
+    }
+  }
+}
 .map-view-main .leaflet-control-container .leaflet-top.leaflet-right {
-  top: 1rem;
-  right: 1rem;
   background: var(--theme-color-controlSetBg);
   border: none;
   padding: 0.25rem;
