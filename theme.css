@@ -2022,33 +2022,38 @@ p.mod-warning:has(+ p.mod-warning,.setting-message),
 }
 
 /* Tab close button on left, macOS standard */
-.mod-macos .workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
-  position: static;
-  order: 0;
-}
-.mod-macos .workspace .mod-root .workspace-tab-header-inner-icon,
-.mod-macos .workspace .mod-root .workspace-tab-header-inner-title {
-  order: 1;
-}
-.mod-macos .modal-close-button {
-  left: var(--size-2-3);
-  right: auto;
-}
-.mod-macos .mod-community-modal .modal-sidebar .setting-item:first-child {
-  margin-left: auto;
-}
-.mod-macos .modal-sidebar .community-modal-controls {
-  padding-left: var(--size-4-5);
-}
-.mod-macos .multi-select-pill {
-  padding-left: 0.25em;
-}
-.mod-macos .multi-select-pill .multi-select-pill-remove-button {
-  order: 0;
-}
-.mod-macos .multi-select-pill .multi-select-pill-content {
-  order: 1;
-  margin: 0;
+.mod-macos {
+  .workspace .mod-root {
+    .workspace-tab-header .workspace-tab-header-inner-close-button {
+      position: static;
+      order: 0;
+    }
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title {
+      order: 1;
+    }
+  }
+  .modal-close-button {
+    left: var(--size-2-3);
+    right: auto;
+  }
+  .mod-community-modal .modal-sidebar .setting-item:first-child {
+    margin-left: auto;
+  }
+  .modal-sidebar .community-modal-controls {
+    padding-left: var(--size-4-5);
+  }
+  .multi-select-pill {
+    padding-left: 0.25em;
+
+    .multi-select-pill-remove-button {
+      order: 0;
+    }
+    .multi-select-pill-content {
+      order: 1;
+      margin: 0;
+    }
+  }
 }
 /* #endregion */
 /* #region Navigation buttons */
@@ -3348,21 +3353,32 @@ body:not(.is-phone) .modal.mod-sync-history {
 }
 
 /* Community modal */
-.mod-community-modal .modal-sidebar {
-  padding: 0;
-}
-.mod-community-modal .community-modal-controls {
-  background: var(--theme-color-settingsBg);
-  padding: 2.5em 1em 1em 0;
-  box-shadow: var(--shadow-s);
-  z-index: 1;
-}
-.mod-community-modal .modal-close-button {
-  z-index: 2;
-}
-.mod-community-modal .community-modal-controls .setting-item {
-  padding: 0;
-  margin-bottom: 0.5em;
+.mod-community-modal {
+  .modal-sidebar {
+    padding: 0;
+  }
+  .community-modal-controls {
+    background: var(--theme-color-settingsBg);
+    padding: 2.5em 1.5em 1em 1.5em;
+    box-shadow: var(--shadow-s);
+    z-index: 1;
+  }
+  .modal-close-button {
+    z-index: 2;
+  }
+  .community-modal-controls .setting-item {
+    padding: 0;
+    margin-bottom: 0.5em;
+  }
+  .modal-sidebar .setting-item-name {
+    padding-left: 0;
+  }
+  .community-modal-controls .setting-item:first-child .setting-item-control {
+    margin: 0;
+  }
+  .modal-content:has(.community-modal-details) .community-modal-controls .setting-item:first-child {
+    float: none;
+  }
 }
 .mod-community-modal:not(:has(.community-modal-details)) .community-modal-controls .setting-item:first-child {
   /* Filter control */
@@ -3370,12 +3386,6 @@ body:not(.is-phone) .modal.mod-sync-history {
   margin-bottom: 0.5em;
   padding-left: 2em;
   float: right;
-}
-.mod-community-modal .community-modal-controls .setting-item:first-child .setting-item-control {
-  margin: 0;
-}
-.mod-community-modal .modal-content:has(.community-modal-details) .community-modal-controls .setting-item:first-child {
-  float: none;
 }
 .community-modal-search-summary {
   margin: 0;
