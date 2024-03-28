@@ -2949,67 +2949,24 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 
 /* #region   Window frame styles */
 body.mod-macos {
-  /* "Native frame" style (my preferred) */
-  &:not(.is-frameless) {
-    &.is-tablet .sidebar-toggle-button {
-      padding: 0;
-      height: auto;
-    }
-    .mod-root .sidebar-toggle-button.mod-right {
-      padding: 0;
-      display: flex;
-      align-items: center;
-      min-height: var(--header-height);
-    }
-    &.is-mobile .sidebar-toggle-button.mod-right {
-      width: auto;
-    }
-    .sidebar-toggle-button.mod-right {
-      position: absolute;
-    }
-    .workspace:not(.is-right-sidedock-open) {
-      .sidebar-toggle-button.mod-right {
-        width: var(--ribbon-width);
-        top: -0.5rem;
-        right: -1em;
-        padding-top: 0.5em;
-      }
-    }
-    .workspace.is-right-sidedock-open {
-      .sidebar-toggle-button.mod-right {
-        width: var(--ribbon-width);
-        top: -0.5em;
-        right: 0;
-      }
-    }
-    .sidebar-toggle-button.mod-left .clickable-icon,
-    .sidebar-toggle-button.mod-right .clickable-icon {
-      color: var(--theme-color-control);
-    }
-    @media (hover: hover) {
-      .sidebar-toggle-button.mod-left .clickable-icon:hover,
-      .sidebar-toggle-button.mod-right .clickable-icon:hover {
-        color: var(--theme-color-controlHover);
-      }
-    }
+  position: relative;
+
+  .sidebar-toggle-button.mod-right,
+  .sidebar-toggle-button.mod-left {
+    position: absolute;
   }
 
-  /* "Obsidian frame" style */
-  &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
-    position: relative;
-
-    .sidebar-toggle-button.mod-right,
-    .sidebar-toggle-button.mod-left {
-      position: absolute;
-    }
-
+  /* TODO: refactor to extract common elements */
+  /* TODO: tablet size */
+  /* TODO: mobile size */
+  /* "Native frame" style (my preferred) */
+  &:not(.is-frameless) {
     .sidebar-toggle-button.mod-right {
       padding-right: 0;
       right: var(--frame-right-space);
     }
 
     &:not(.is-fullscreen) {
-      /* Make space for sidebar toggle button */
       .workspace.is-left-sidedock-open {
         .sidebar-toggle-button.mod-left {
           top: 0;
@@ -3039,6 +2996,111 @@ body.mod-macos {
           right: 0;
         }
       }
+
+      &.is-tablet .workspace {
+        .sidebar-toggle-button.mod-left {
+          top: 0;
+          left: 0;
+          padding: 0;
+          height: auto;
+          width: auto;
+        }
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: 0;
+          right: 0;
+          padding: 0;
+          height: auto;
+          width: auto;
+        }
+      }
+    }
+    &.is-fullscreen {
+      .workspace-ribbon .sidebar-toggle-button.mod-left {
+        left: 0;
+      }
+      .workspace:not(.is-right-sidedock-open) {
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: -0.5em;
+          right: -1em;
+        }
+      }
+      .workspace.is-right-sidedock-open {
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: -0.5em;
+          right: 0;
+        }
+      }
+    }
+
+    /* TODO: anythign to restore from commented code below? */
+    /* &.is-tablet .sidebar-toggle-button {
+      padding: 0;
+      height: auto;
+    }
+    &.is-mobile .sidebar-toggle-button.mod-right {
+      width: auto;
+    }
+    */
+  }
+
+  /* "Obsidian frame" style */
+  &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
+    .sidebar-toggle-button.mod-right {
+      padding-right: 0;
+      right: var(--frame-right-space);
+    }
+
+    &:not(.is-fullscreen) {
+      .workspace.is-left-sidedock-open {
+        .sidebar-toggle-button.mod-left {
+          top: 0;
+          left: 0;
+        }
+      }
+      .workspace:not(.is-left-sidedock-open) {
+        .sidebar-toggle-button.mod-left {
+          top: 0;
+          left: 0;
+        }
+        .mod-root .workspace-tab-header-container {
+          padding-left: calc(var(--icon-size) + 1rem);
+        }
+      }
+      .workspace:not(.is-right-sidedock-open) {
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: -0.5em;
+          right: -1em;
+        }
+      }
+      .workspace.is-right-sidedock-open {
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: -0.5em;
+          right: 0;
+        }
+      }
+
+      &.is-tablet .workspace {
+        .sidebar-toggle-button.mod-left {
+          top: 0;
+          left: 0;
+          padding: 0;
+          height: auto;
+          width: auto;
+        }
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: 0;
+          right: 0;
+          padding: 0;
+          height: auto;
+          width: auto;
+        }
+      }
     }
 
     &.is-fullscreen {
@@ -3065,20 +3127,12 @@ body.mod-macos {
   /* "Hidden (default)" style. This is the default appearance! */
   /* In this window style we need to make sure buttons don't overlap the window controls. */
   &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
-    position: relative;
-
-    .sidebar-toggle-button.mod-right,
-    .sidebar-toggle-button.mod-left {
-      position: absolute;
-    }
-
     .sidebar-toggle-button.mod-right {
       padding-right: 0;
       right: var(--frame-right-space);
     }
 
     &:not(.is-fullscreen) {
-      /* Make room for sidebar toggle button */
       .workspace-ribbon.mod-left {
         margin-top: calc(var(--header-height) + 2.5em);
         padding-top: 0;
@@ -3118,6 +3172,24 @@ body.mod-macos {
           width: var(--ribbon-width);
           top: -0.5em;
           right: 0;
+        }
+      }
+
+      &.is-tablet .workspace {
+        .sidebar-toggle-button.mod-left {
+          top: 0;
+          left: 0;
+          padding: 0;
+          height: auto;
+          width: auto;
+        }
+        .sidebar-toggle-button.mod-right {
+          width: var(--ribbon-width);
+          top: 0.5em;
+          right: 0;
+          padding: 0;
+          height: auto;
+          width: auto;
         }
       }
     }
