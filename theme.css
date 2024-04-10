@@ -2405,17 +2405,19 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   background-repeat: no-repeat;
   height: var(--mobile-toolbar-height);
   line-height: 1em;
-  margin: 0 0.25rem;
+  margin: 0;
   top: 0;
   width: 0.5rem;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
   background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
   content: "";
+  left: 0;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
   background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
   content: "";
+  right: var(--toolbar-option-width);
 }
 /* #endregion */
 /* #endregion */
