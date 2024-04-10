@@ -2407,7 +2407,8 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   line-height: 1em;
   margin: 0;
   top: 0;
-  width: 0.5rem;
+  width: 1rem;
+  z-index: 1;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
   background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
