@@ -775,6 +775,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-audioRecordingActive: var(--theme-color-redDarkened);
   --theme-color-blockId: var(--theme-color-baseSlightlyLightened);
   --theme-color-calendarBg: var(--theme-color-baseVeryLightened);
+  --theme-color-calendarDayBg: var(--theme-color-lightenTransparent);
   --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
@@ -1064,6 +1065,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-audioRecordingActive: var(--theme-color-redLightened);
   --theme-color-blockId: var(--theme-color-baseSlightlyDarkened);
   --theme-color-calendarBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-calendarDayBg: var(--theme-color-darkenTransparent);
   --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
@@ -2408,11 +2410,11 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   width: 0.5rem;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
-  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.5)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
+  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
   content: "";
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
-  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.5)" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
+  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
   content: "";
 }
 /* #endregion */
@@ -5108,7 +5110,7 @@ body {
   vertical-align: top;
 }
 .container > .calendar tbody td:not(:has(.adjacent-month)) .day {
-  background-color: var(--theme-color-lightenTransparent);
+  background-color: var(--theme-color-calendarDayBg);
   border-radius: 0.5em;
   margin: 1px;
 }
@@ -5117,7 +5119,7 @@ body {
     background: transparent;
   }
   .container > .calendar tbody td:not(:has(.adjacent-month)) .day:hover {
-    background-color: var(--theme-color-lightenTransparent);
+    background-color: var(--theme-color-calendarDayBg);
   }
 }
 /*   #endregion */
