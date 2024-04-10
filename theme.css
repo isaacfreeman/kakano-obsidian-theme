@@ -2398,27 +2398,22 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before,
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
-  background: var(--theme-color-mobileToolbarBg);
-  top: 0;
+  background-color: var(--theme-color-mobileToolbarBg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
   height: var(--mobile-toolbar-height);
-  width: 0.5rem;
-  margin: 0 0.25rem;
   line-height: 1em;
-  background-color: var(--theme-color-mobileToolbarMoreIndicator);
+  margin: 0 0.25rem;
+  top: 0;
+  width: 0.5rem;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
+  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.5)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
   content: "";
-  -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
-  -webkit-mask-position: 50% 50%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100%;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
+  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.5)" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
   content: "";
-  -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
-  -webkit-mask-position: 50% 50%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100%;
 }
 /* #endregion */
 /* #endregion */
