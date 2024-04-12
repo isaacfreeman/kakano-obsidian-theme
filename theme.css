@@ -3622,10 +3622,16 @@ input.document-replace-input.mod-no-match {
 /* #region   Selects – regular */
 select,
 .setting-item-control select .dropdown {
+  -webkit-appearance: none;
   appearance: none;
   border: none;
   box-shadow: var(--theme-shadow-control);
   background-color: var(--theme-color-controlBg);
+  color: var(--theme-color-controlText);
+
+  & > option {
+    color: var(--theme-color-controlText);
+  }
 }
 @media (hover: hover) {
   select:hover,
