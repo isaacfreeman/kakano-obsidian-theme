@@ -1034,7 +1034,7 @@ body .metadata-property[data-property-key="tags"] {
   );
   --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
   --tab-background-active: var(--background-primary);
-  --tab-background-inactive: var(--theme-color-baseVeryDarkened);
+  --tab-background-inactive: var(--theme-color-baseVeryVeryDarkened);
   --text-normal: var(--theme-color-baseLightened);
   --text-faint: var(--theme-color-baseSlightlyLightened);
   --background-prompt: var(--theme-color-baseVeryDarkened);
