@@ -2700,7 +2700,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   background: transparent;
   background: var(--theme-gradient-topToBottom);
   padding-bottom: 1.5rem;
-  padding: 0 0.5em 2em 0.5em;
+  padding: 0 0.5em var(--theme-length-statusBarHeight) 0.5em;
 
   .workspace-tabs.mod-top {
     padding-top: 0.5rem;
