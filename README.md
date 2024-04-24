@@ -136,8 +136,12 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
   Rather than specify a size for every heading level independently, Kakano provides eight scale factor options that adjust the relative sizes of all heading levels together. If you like dramatic headings, the highest scale factor provides H1 headings 11 times the size of the body text, with other headings sized harmoniously in between. If you want to conserve space, the lowest setting makes H1 headings just 1.38 times the size of body text: the headings are still differentiated by size, but the ratio is smaller.
   There's a separate scale factor for phones, where space is at a premium.
 ### Experimental settings
-- ** Embedded links scroll position
+- **Embedded links scroll position**
   Embedded links can be pinned to stay on screen as a note scrolls.
+- **Mobile cards UI**
+  Work in progress to provide a 3D effect on mobile, with prompts and modals appearing to push the main content back when they appear in front. I'm not sure yet whether the HTML structure of Obsidian will allow me to apply this consistently, but it looks cool in the places I've tried it.
+- **Full width status bar**
+  Kakano moves the status bad below the main content, which looks fine provided you don't have too many items there. If it gets too wide it overlaps with the sidebars, so this setting makes space for it use the full width of the window.
 
 ## Plugin support
 Kakano has specific styling for the following plugins:
