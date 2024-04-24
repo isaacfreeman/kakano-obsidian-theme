@@ -3184,12 +3184,6 @@ body.mod-macos {
 .mod-linux {
   /* TODO */
 }
-
-/* TODO: move this */
-.workspace-tab-header-tab-list .clickable-icon,
-.workspace-tab-header-new-tab .clickable-icon {
-  color: var(--theme-color-control);
-}
 /* #endregion */
 /* #endregion */
 /* #region Blocks */
@@ -3383,6 +3377,8 @@ body.mod-macos {
 .file-embed-link,
 .markdown-source-view.mod-cm6 .edit-block-button,
 .tasks-edit,
+.workspace-tab-header-tab-list .clickable-icon,
+.workspace-tab-header-new-tab .clickable-icon,
 .map-view-main
   .mv-icon-button
   .map-view-main
