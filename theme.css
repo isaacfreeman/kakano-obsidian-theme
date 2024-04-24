@@ -312,6 +312,11 @@ settings:
     title: 'Mobile cards UI'
     description: "Scale the main workspace down when there's a modal in the foreground, creating a 3D cards effect. Currently unfinished, but you can see it when you open a prompt."
     type: class-toggle
+  -
+    id: theme-setting-fullWidthStatusBar
+    title: 'Full width status bar'
+    description: "If you have many items in your status bar, you may find that it overflows onto the sidebars. This setting will push the main app workspace up so the status bar can use the full window width."
+    type: class-toggle
 */
 
 /* #endregion */
@@ -518,6 +523,7 @@ body {
   --theme-length-checkboxBorderWidth: 1px;
   --theme-length-collapseIndicatorSize: 1.5rem;
   --theme-length-controlSetSpacing: 0.5rem;
+  --theme-length-statusBarHeight: 2rem;
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -2676,6 +2682,13 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 /* #endregion */
 /* #region Workspace */
 
+.app-container {
+  background-color: var(--background-secondary);
+  background: var(--theme-gradient-bottomToTop);
+}
+.theme-setting-fullWidthStatusBar .horizontal-main-container {
+  margin-bottom: var(--theme-length-statusBarHeight);
+}
 .workspace {
   background-color: var(--background-secondary);
   background: var(--theme-gradient-bottomToTop);
@@ -2908,12 +2921,16 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   border-top-left-radius: var(--radius-m);
   border-top-right-radius: var(--radius-m);
   gap: 0.5rem;
-  padding: 0 0.5rem 0.25em 0;
+  padding: 0 0.5rem 0.25em 0.5rem;
   right: auto;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  height: 2em;
+  height: var(--theme-length-statusBarHeight);
+  justify-content: space-between;
+}
+.theme-setting-fullWidthStatusBar .status-bar {
+  width: 100%;
 }
 .status-bar-item {
   line-height: 1rem;
