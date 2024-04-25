@@ -3271,16 +3271,21 @@ body.mod-macos {
   display: flex;
   background-color: var(--theme-color-suggestionBg);
   border: none;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   box-shadow: var(--shadow-s);
   list-style: none;
-  padding: 0.5em;
+  padding: 0.5rem;
   margin: 0;
 }
 .suggestion,
 .suggestion-container.mod-search-suggestion .suggestion {
   background: transparent;
   padding: 0;
+}
+.suggestion-container .prompt-instructions {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  margin: 0 -0.5rem -0.5rem -0.5rem;
 }
 .suggestion-title.list-item-part {
   color: var(--text-normal);
