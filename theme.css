@@ -3192,6 +3192,16 @@ body.mod-macos {
   top: 0.25em;
   right: 0.25em;
 }
+body:not(.is-mobile) {
+  .cm-content .cm-embed-block[contenteditable="false"]:has(.edit-block-button) {
+    contain: layout !important;
+  }
+  .cm-content .cm-embed-block .edit-block-button {
+    top: 0;
+    right: calc(-1 * (2em + 0.25em));
+  }
+}
+
 .markdown-source-view.is-live-preview span.cm-blockid {
   background: transparent;
   border-radius: 0.25em;
