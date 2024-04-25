@@ -1413,7 +1413,7 @@ body {
   font-weight: 300;
 }
 
-.markdown-source-view .cm-line.HyperMD-codeblock {
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   /* Matched to --callout-padding */
   padding: 0 1.5em;
 }
@@ -1517,8 +1517,7 @@ li.is-collapsed .list-bullet:after,
   padding-inline-end: 0;
 }
 /* #endregion */
-
-/***** Links *****/
+/* #region     Links */
 .markdown-source-view.is-live-preview .is-unresolved .cm-link,
 .markdown-reading-view h1 a {
   --text-decoration-color: var(--link-color);
@@ -1650,9 +1649,8 @@ li.is-collapsed .list-bullet:after,
 .markdown-reading-view h6 a.is-unresolved {
   --link-decoration-thickness: max(calc(var(--h6-weight) / 400 * 2px), 1px);
 }
-
-/***** Tables *****/
-
+/* #endregion */
+/* #region     Tables */
 .markdown-rendered th,
 .markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n + 2) {
   background: var(--theme-color-tableHeaderBg);
@@ -1671,8 +1669,8 @@ li.is-collapsed .list-bullet:after,
   top: 0;
   right: 0;
 }
-
-/********** Embeds **********/
+/* #endregion */
+/* #region     Embeds */
 /* Default appearance for embeds */
 /* I'm treating images as a special case, because they don't have any controls and a colored surround would often be distracting. */
 .internal-embed:not(.image-embed),
@@ -1722,11 +1720,21 @@ li.is-collapsed .list-bullet:after,
   max-height: var(--embed-max-height);
   overflow: auto;
 }
-.markdown-embed-link,
+.markdown-source-view.mod-cm6
+  .cm-content
+  > .markdown-embed[contenteditable="false"]:has(.markdown-embed-link) {
+  contain: layout !important;
+}
+.markdown-embed-link {
+  position: absolute;
+  top: 0;
+  right: auto;
+  left: calc(100% + 0.25em);
+}
 .file-embed-link {
   position: absolute;
-  top: 0.25em;
-  right: 0.25em;
+  top: 0;
+  right: 0;
 }
 
 /* Audio embed */
@@ -1809,8 +1817,8 @@ audio::-webkit-media-controls-panel {
   height: 20em;
   width: 100%;
 }
-
-/********** Callouts **********/
+/* #endregion */
+/* #region     Blocks and Callouts */
 .callout.is-collapsible .callout-title {
   cursor: pointer;
 }
@@ -1821,6 +1829,41 @@ audio::-webkit-media-controls-panel {
   }
 }
 
+.markdown-source-view.mod-cm6 .edit-block-button,
+.markdown-source-view .code-block-flair {
+  top: 0.25em;
+  right: 0.25em;
+}
+.markdown-source-view.mod-cm6 .code-block-flair {
+  width: auto;
+  min-width: 2em;
+}
+body:not(.is-mobile) {
+  .cm-content .cm-embed-block[contenteditable="false"]:has(.edit-block-button) {
+    contain: layout !important;
+  }
+  /* Move edit controls to the sidebar outside the block */
+  .cm-content .cm-embed-block .edit-block-button,
+  .markdown-source-view.mod-cm6 .code-block-flair {
+    top: 0;
+    right: auto;
+    left: calc(100% + 0.25em);
+  }
+}
+
+.markdown-source-view.is-live-preview span.cm-blockid {
+  background: transparent;
+  border-radius: 0.25em;
+  border: solid 1px var(--theme-color-blockId);
+  color: var(--theme-color-blockId);
+  line-height: 1.25em;
+  padding: 0 0.25em;
+  margin-top: 0;
+  vertical-align: baseline;
+}
+/* #endregion */
+/* #region     Block edit controls */
+/* #endregion */
 /********** Diagrams **********/
 .mermaid {
   --theme-color-mermaidBorder: black;
@@ -3186,33 +3229,6 @@ body.mod-macos {
 }
 /* #endregion */
 /* #endregion */
-/* #region Blocks */
-
-.markdown-source-view.mod-cm6 .edit-block-button {
-  top: 0.25em;
-  right: 0.25em;
-}
-body:not(.is-mobile) {
-  .cm-content .cm-embed-block[contenteditable="false"]:has(.edit-block-button) {
-    contain: layout !important;
-  }
-  .cm-content .cm-embed-block .edit-block-button {
-    top: 0;
-    right: calc(-1 * (2em + 0.25em));
-  }
-}
-
-.markdown-source-view.is-live-preview span.cm-blockid {
-  background: transparent;
-  border-radius: 0.25em;
-  border: solid 1px var(--theme-color-blockId);
-  color: var(--theme-color-blockId);
-  line-height: 1.25em;
-  padding: 0 0.25em;
-  margin-top: 0;
-  vertical-align: baseline;
-}
-/* #endregion */
 /* #region Content references (search results, incoming/outgoing links, etc.) */
 
 .search-result-file-matches {
@@ -3415,7 +3431,8 @@ body:not(.is-mobile) {
   padding: 0.25rem;
   text-decoration: none;
   transition: opacity 0.15s ease-in-out;
-  width: 2em;
+  min-width: 2em;
+  width: auto;
 }
 
 .is-mobile .clickable-icon {
