@@ -3208,6 +3208,16 @@ body.mod-macos {
 
   /* "Hidden (default)" option. This is the default appearance! */
   &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
+    .titlebar-button.mod-logo {
+      /* This is hidden by default. I'm not sure why, as it provides access to the main menu. */
+      display: flex;
+    }
+    /* Override default appearance for .mod-close, as this one simulates a system control. */
+    .titlebar-button.mod-close {
+      border-radius: 0;
+      width: auto;
+    }
+
     /* TODO */
     /* TODO: what if it's a popout-window? */
     .mod-right-split .mod-top .workspace-tab-header-container {
