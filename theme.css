@@ -3203,7 +3203,11 @@ body.mod-macos {
   /* TODO: style sidebar toggle buttons, accounting for window control positions */
   /* "Obsidian frame" option */
   &.is-frameless:not(.is-hidden-frameless) {
-    /* TODO */
+    /* Override default appearance for .mod-close, as this one simulates a system control. */
+    .titlebar-button.mod-close {
+      border-radius: 0;
+      width: auto;
+    }
   }
 
   /* "Hidden (default)" option. This is the default appearance! */
