@@ -331,6 +331,7 @@ body {
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
   --checkbox-color: var(--interactive-accent);
+  --code-normal: var(--text-normal);
   --divider-width: 0;
   --embed-background: var(--theme-color-baseVeryVeryTransparent);
   --embed-border-bottom: none;
@@ -820,7 +821,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-modalContentBg: var(--theme-color-baseLightened);
   --theme-color-menuBg: var(--theme-color-baseVeryLightened);
   --theme-color-mobileToolbarBg: var(--theme-color-baseVeryLightened);
-  --theme-color-mobileToolbarMoreIndicator: var(--theme-color-baseLightened);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
@@ -1109,7 +1109,6 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-logBg: var(--theme-color-baseSlightlyDarkened);
   --theme-color-menuBg: var(--theme-color-baseVeryDarkened);
   --theme-color-mobileToolbarBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-mobileToolbarMoreIndicator: var(--theme-color-baseDarkened);
   --theme-color-modalContentBg: var(--theme-color-baseDarkened);
   --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
@@ -1417,10 +1416,6 @@ body {
   /* Matched to --callout-padding */
   padding: 0 1.5em;
 }
-.markdown-source-view .code-block-flair {
-  top: 0.5em;
-  right: 0.5em;
-}
 
 .markdown-source-view.mod-cm6 hr,
 .markdown-rendered hr {
@@ -1651,6 +1646,7 @@ li.is-collapsed .list-bullet:after,
 }
 /* #endregion */
 /* #region     Tables */
+
 .markdown-rendered th,
 .markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n + 2) {
   background: var(--theme-color-tableHeaderBg);
@@ -1862,8 +1858,7 @@ body:not(.is-mobile) {
   vertical-align: baseline;
 }
 /* #endregion */
-/* #region     Block edit controls */
-/* #endregion */
+
 /********** Diagrams **********/
 .mermaid {
   --theme-color-mermaidBorder: black;
@@ -2733,8 +2728,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   margin-bottom: var(--theme-length-statusBarHeight);
 }
 .workspace {
-  background-color: var(--background-secondary);
-  background: var(--theme-gradient-bottomToTop);
+  background: transparent;
 }
 .workspace-tabs .workspace-leaf {
   background: transparent;
@@ -2789,6 +2783,9 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
     color: var(--icon-color-focused);
     opacity: var(--icon-opacity);
   }
+}
+.workspace-tab-header-container {
+  padding: 0;
 }
 .workspace-tab-header-container-inner {
   gap: 0.25em;
@@ -2963,7 +2960,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   border: none;
   border-top-left-radius: var(--radius-m);
   border-top-right-radius: var(--radius-m);
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 0 0.5rem 0.25em 0.5rem;
   right: auto;
   left: 50%;
@@ -3048,10 +3045,7 @@ body.mod-macos {
   .workspace-tab-header-tab-list {
     padding: 0;
   }
-  .workspace-tab-header-tab-list {
-    /* Tab list control makes space for sidebar control when sidebar is closed */
-    margin-right: calc(var(--icon-size) * 2);
-  }
+
   &.is-right-sidedock-open .workspace-tab-header-tab-list {
     margin-right: 0;
   }
@@ -3130,6 +3124,11 @@ body.mod-macos {
   /* In this window style we need to make sure buttons don't overlap the window controls. */
   &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
     &:not(.is-fullscreen) {
+      .workspace
+        .workspace-tabs.mod-top-right-space
+        .workspace-tab-header-container {
+        padding-right: var(--icon-size);
+      }
       .workspace-ribbon.mod-left {
         /* Make room for sidebar toggle to appear at top of ribbon */
         margin-top: calc(var(--header-height) + 2.5em);
@@ -3222,25 +3221,57 @@ body.mod-macos {
       width: auto;
     }
 
-    /* TODO */
-    /* TODO: what if it's a popout-window? */
-    .mod-right-split .mod-top .workspace-tab-header-container {
-      position: relative;
-      /* TODO: replace 30px with width of .sidebar-toggle-button */
-      padding-right: calc(var(--frame-right-space) + 30px);
-
-      .sidebar-toggle-button.mod-right {
+    &:not(.is-fullscreen) {
+      .sidebar-toggle-button.mod-left {
         position: absolute;
-        right: var(--frame-right-space);
+      }
+
+      .workspace-ribbon.mod-left {
+        /* Make room for sidebar toggle to appear at top of ribbon */
+        margin-top: 2.5em;
+        padding-top: 0;
+      }
+      .mod-right-split .mod-top .workspace-tab-header-container {
+        position: relative;
+        /* TODO: replace 30px with width of .sidebar-toggle-button */
+        padding-right: calc(var(--frame-right-space) + 30px);
+
+        .sidebar-toggle-button.mod-right {
+          position: absolute;
+          right: var(--frame-right-space);
+        }
+      }
+
+      .workspace.is-left-sidedock-open {
+        .mod-left-split .workspace-tabs {
+          overflow: visible;
+        }
+        .sidebar-toggle-button.mod-left {
+          left: calc(-1 * var(--ribbon-width) + 0.5em);
+          top: 0;
+          padding: 0;
+        }
+      }
+      .workspace:not(.is-left-sidedock-open) {
+        .mod-root .workspace-tabs.mod-top {
+          overflow: visible;
+        }
+        .sidebar-toggle-button.mod-left {
+          left: calc(-1 * var(--ribbon-width) - 0.5em);
+          top: 0;
+          padding: 0;
+        }
+        .mod-root .workspace-tab-header-container {
+          padding-left: calc(var(--icon-size) + 1rem);
+        }
       }
     }
-
-    /* TODO: left sidebar */
   }
 }
 .mod-linux {
   /* TODO */
 }
+
 /* #endregion */
 /* #endregion */
 /* #region Content references (search results, incoming/outgoing links, etc.) */
@@ -4781,15 +4812,11 @@ input.metadata-property-key-input {
 /* #endregion */
 /* #region   Core Plugin: Files */
 
-.workspace-leaf-content[data-type="file-explorer"]
-  .nav-folder
-  .nav-folder
-  .nav-file-title-content,
-.workspace-leaf-content[data-type="file-explorer"]
-  .nav-folder
-  .nav-folder
-  .nav-folder-title-content {
-  padding-left: 0;
+.workspace-leaf-content[data-type="file-explorer"] {
+  .nav-folder .nav-folder .nav-file-title-content,
+  .nav-folder .nav-folder .nav-folder-title-content {
+    padding-left: 0;
+  }
 }
 /* #endregion */
 /* #region   Core Plugin: File Recovery */
