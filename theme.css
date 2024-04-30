@@ -3098,6 +3098,11 @@ body.mod-macos {
           padding-left: calc(var(--icon-size) + 1rem);
         }
       }
+      .workspace:not(.is-right-sidedock-open) {
+        .workspace-tab-header-container {
+          padding-right: 2em;
+        }
+      }
     }
   }
 
@@ -3110,6 +3115,12 @@ body.mod-macos {
         .mod-root .workspace-tab-header-container {
           padding-left: calc(var(--icon-size) + 1rem);
         }
+      }
+    }
+
+    .workspace:not(.is-right-sidedock-open) {
+      .workspace-tab-header-container {
+        padding-right: 1.5em;
       }
     }
 
@@ -3131,43 +3142,33 @@ body.mod-macos {
       }
       .workspace-ribbon.mod-left {
         /* Make room for sidebar toggle to appear at top of ribbon */
-        margin-top: calc(var(--header-height) + 2.5em);
         padding-top: 0;
       }
       .workspace.is-left-sidedock-open {
+        .sidebar-toggle-button.mod-left {
+          left: var(--frame-left-space);
+          padding: 0;
+        }
         .mod-left-split .workspace-tabs {
           overflow: visible;
         }
-        .sidebar-toggle-button.mod-left {
-          left: calc(-1 * var(--ribbon-width) + 0.5em);
-          top: var(--header-height);
-          padding: 0;
-        }
       }
       .workspace:not(.is-left-sidedock-open) {
+        .mod-root .workspace-tab-header-container {
+          padding-left: calc(var(--frame-left-space) + 0.5rem);
+        }
+
         .mod-root .workspace-tabs.mod-top {
           overflow: visible;
         }
         .sidebar-toggle-button.mod-left {
-          left: calc(-1 * var(--ribbon-width) - 0.5em);
-          top: var(--header-height);
+          left: calc(var(--frame-left-space) - 1.5em);
           padding: 0;
         }
-        .mod-root .workspace-tab-header-container {
-          padding-left: calc(var(--icon-size) + 1rem);
-        }
       }
-      .workspace:not(.is-right-sidedock-open) {
-        .sidebar-toggle-button.mod-right {
-          top: 0;
-          right: -0.25em;
-        }
-      }
-      .workspace.is-right-sidedock-open {
-        .sidebar-toggle-button.mod-right {
-          top: 0;
-          right: -0.25em;
-        }
+      .sidebar-toggle-button.mod-right {
+        top: 0;
+        right: -0.25em;
       }
 
       &.is-tablet .workspace {

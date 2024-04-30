@@ -207,7 +207,7 @@ I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explo
 _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zealand.
 
 ## Credits
-- [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting.
+- [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting, and assisted with debugging for Windows.
 - [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes, and the ability to pin embdded backlinks.
 - The[MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
 
