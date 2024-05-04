@@ -3214,29 +3214,28 @@ body.mod-macos {
 
   /* "Hidden (default)" option. This is the default appearance! */
   &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
-    .titlebar-button.mod-logo {
-      /* This is hidden by default. I'm not sure why, as it provides access to the main menu. */
-      display: flex;
-    }
     /* Override default appearance for .mod-close, as this one simulates a system control. */
     .titlebar-button.mod-close {
       border-radius: 0;
       width: auto;
     }
 
-    &:not(.is-fullscreen) {
+    .titlebar-button.mod-logo {
+      /* This is hidden by default. I'm not sure why, as it provides access to the main menu. */
+      display: flex;
+    }
+
+    /* &:not(.is-fullscreen) {
       .sidebar-toggle-button.mod-left {
         position: absolute;
       }
 
       .workspace-ribbon.mod-left {
-        /* Make room for sidebar toggle to appear at top of ribbon */
         margin-top: 2.5em;
         padding-top: 0;
       }
       .mod-right-split .mod-top .workspace-tab-header-container {
         position: relative;
-        /* TODO: replace 30px with width of .sidebar-toggle-button */
         padding-right: calc(var(--frame-right-space) + 30px);
 
         .sidebar-toggle-button.mod-right {
@@ -3277,7 +3276,7 @@ body.mod-macos {
           padding: 0;
         }
       }
-    }
+    } */
   }
 }
 .mod-linux {
