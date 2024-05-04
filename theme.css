@@ -3225,6 +3225,14 @@ body.mod-macos {
       display: flex;
     }
 
+    .workspace-ribbon.side-dock-ribbon.mod-left {
+      margin-top: calc(var(--header-height) + 2em);
+    }
+
+    .sidebar-toggle-button.mod-left {
+      top: 2em;
+    }
+
     /* &:not(.is-fullscreen) {
       .sidebar-toggle-button.mod-left {
         position: absolute;
