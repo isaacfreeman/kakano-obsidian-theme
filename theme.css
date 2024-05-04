@@ -3200,6 +3200,8 @@ body.mod-macos {
   }
 }
 .mod-windows {
+  position: relative;
+
   /* TODO: style sidebar toggle buttons, accounting for window control positions */
   /* "Obsidian frame" option */
   &.is-frameless:not(.is-hidden-frameless) {
@@ -3248,8 +3250,8 @@ body.mod-macos {
           overflow: visible;
         }
         .sidebar-toggle-button.mod-left {
-          left: calc(-1 * var(--ribbon-width) + 0.5em);
-          top: 0;
+          left: var(--ribbon-width);
+          top: 0.5em;
           padding: 0;
         }
       }
@@ -3258,12 +3260,21 @@ body.mod-macos {
           overflow: visible;
         }
         .sidebar-toggle-button.mod-left {
-          left: calc(-1 * var(--ribbon-width) - 0.5em);
-          top: 0;
+          left: var(--ribbon-width);
+          top: 0.5em;
           padding: 0;
         }
         .mod-root .workspace-tab-header-container {
           padding-left: calc(var(--icon-size) + 1rem);
+        }
+      }
+      .workspace:not(.is-right-sidedock-open) {
+      }
+      .workspace:not(.is-right-sidedock-open) {
+        .sidebar-toggle-button.mod-right {
+          left: var(--frame-right-space);
+          top: -0.5em;
+          padding: 0;
         }
       }
     }
