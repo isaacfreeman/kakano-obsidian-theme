@@ -3013,95 +3013,60 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 body.mod-macos {
   position: relative;
 
-  .sidebar-toggle-button.mod-right,
-  .sidebar-toggle-button.mod-left {
-    position: absolute;
-  }
-
-  .sidebar-toggle-button.mod-right {
-    padding-right: 0;
-    right: var(--frame-right-space);
-    width: var(--ribbon-width);
-  }
-  &:not(.is-fullscreen) {
-    .sidebar-toggle-button.mod-left {
-      top: 0;
-      left: 0;
-    }
-    .workspace:not(.is-right-sidedock-open) {
-      .sidebar-toggle-button.mod-right {
-        top: -0.5em;
-        right: -1em;
-      }
-    }
-    .workspace.is-right-sidedock-open {
-      .sidebar-toggle-button.mod-right {
-        top: -0.5em;
-        right: 0;
-      }
-    }
-  }
   .workspace-tab-header-new-tab,
   .workspace-tab-header-tab-list {
     padding: 0;
   }
 
-  &.is-right-sidedock-open .workspace-tab-header-tab-list {
-    margin-right: 0;
-  }
-  .mod-right-split .workspace-tab-header-container {
-    padding-right: 2.5rem;
-  }
-
-  &.is-fullscreen {
-    .workspace-ribbon .sidebar-toggle-button.mod-left {
-      left: 0;
-    }
-    .workspace:not(.is-right-sidedock-open) {
-      .sidebar-toggle-button.mod-right {
-        width: var(--ribbon-width);
-        top: -0.5em;
-        right: -1em;
-      }
-    }
-    .workspace.is-right-sidedock-open {
-      .sidebar-toggle-button.mod-right {
-        width: var(--ribbon-width);
-        top: -0.5em;
-        right: 0;
-      }
-    }
-  }
-  &.is-tablet .workspace {
-    .sidebar-toggle-button.mod-left {
-      top: 0;
-      left: 0;
-      padding: 0;
-      height: auto;
-      width: auto;
-    }
-    .sidebar-toggle-button.mod-right {
-      width: var(--ribbon-width);
-      top: 0;
-      right: 0;
-      padding: 0;
-      height: auto;
-      width: auto;
-    }
-  }
-
   /* "Native frame" style (my preferred) */
   &:not(.is-frameless) {
-    &:not(.is-fullscreen) {
-      .workspace:not(.is-left-sidedock-open) {
-        .mod-root .workspace-tab-header-container {
-          padding-left: calc(var(--icon-size) + 1rem);
+    &:not(.is-tablet) {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+        position: absolute;
+      }
+
+      &:not(.is-fullscreen) {
+        .workspace.is-left-sidedock-open {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-left-sidedock-open) {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: -0.5em;
+          }
+          .workspace-tab-header-container {
+            padding-right: 1.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: 0.5em;
+          }
         }
       }
-      .workspace:not(.is-right-sidedock-open) {
-        .workspace-tab-header-container {
-          padding-right: 2em;
-        }
+    }
+    &.is-tablet {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+      }
+      .sidebar-toggle-button.mod-left {
+        top: 0;
+        left: 0;
+      }
+      .sidebar-toggle-button.mod-right {
+        top: 0;
+        right: 0;
       }
     }
   }
@@ -3110,23 +3075,83 @@ body.mod-macos {
   &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
     --titlebar-height: 40px;
 
-    &:not(.is-fullscreen) {
-      .workspace:not(.is-left-sidedock-open) {
-        .mod-root .workspace-tab-header-container {
-          padding-left: calc(var(--icon-size) + 1rem);
+    &:not(.is-tablet) {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+        position: absolute;
+      }
+
+      &:not(.is-fullscreen) {
+        .workspace.is-left-sidedock-open {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-left-sidedock-open) {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: -0.5em;
+          }
+          .workspace-tab-header-container {
+            padding-right: 1.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: 0.5em;
+          }
+        }
+      }
+      &.is-fullscreen {
+        .workspace.is-left-sidedock-open {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-left-sidedock-open) {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: 0.5em;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: -0.5em;
+          }
+          .mod-root .workspace-tab-header-container {
+            padding-right: 1.5em;
+          }
+        }
+        .workspace-ribbon .sidebar-toggle-button.mod-left {
+          left: 0;
         }
       }
     }
-
-    .workspace:not(.is-right-sidedock-open) {
-      .workspace-tab-header-container {
-        padding-right: 1.5em;
+    &.is-tablet {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
       }
-    }
-
-    &.is-fullscreen {
-      .workspace-ribbon .sidebar-toggle-button.mod-left {
+      .sidebar-toggle-button.mod-left {
+        top: 0;
         left: 0;
+      }
+      .sidebar-toggle-button.mod-right {
+        top: 0;
+        right: 0;
       }
     }
   }
@@ -3134,67 +3159,66 @@ body.mod-macos {
   /* "Hidden (default)" style. This is the default appearance! */
   /* In this window style we need to make sure buttons don't overlap the window controls. */
   &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
-    &:not(.is-fullscreen) {
-      .workspace
-        .workspace-tabs.mod-top-right-space
-        .workspace-tab-header-container {
-        padding-right: var(--icon-size);
-      }
-      .workspace-ribbon.mod-left {
-        /* Make room for sidebar toggle to appear at top of ribbon */
-        padding-top: 0;
-      }
-      .workspace.is-left-sidedock-open {
-        .sidebar-toggle-button.mod-left {
-          left: var(--frame-left-space);
-          padding: 0;
-        }
-        .mod-left-split .workspace-tabs {
-          overflow: visible;
-        }
-      }
-      .workspace:not(.is-left-sidedock-open) {
-        .mod-root .workspace-tab-header-container {
-          padding-left: calc(var(--frame-left-space) + 0.5rem);
-        }
-
-        .mod-root .workspace-tabs.mod-top {
-          overflow: visible;
-        }
-        .sidebar-toggle-button.mod-left {
-          left: calc(var(--frame-left-space) - 1.5em);
-          padding: 0;
-        }
-      }
-      .sidebar-toggle-button.mod-right {
-        top: 0;
-        right: -0.25em;
-      }
-
-      &.is-tablet .workspace {
-        .sidebar-toggle-button.mod-left {
-          top: 0;
-          left: 0;
-        }
+    &:not(.is-tablet) {
+      &:not(.is-fullscreen) {
+        .sidebar-toggle-button.mod-left,
         .sidebar-toggle-button.mod-right {
-          top: 0.5em;
-          right: 0;
+          padding: 0;
+          position: absolute;
+        }
+
+        .workspace:not(.is-left-sidedock-open) {
+          .mod-root .workspace-tab-header-container {
+            padding-left: calc(var(--frame-left-space) + 0.5em);
+          }
+
+          .sidebar-toggle-button.mod-left {
+            left: calc(var(--frame-left-space) - 1.5em);
+            top: -0.25em;
+            padding: 0;
+          }
+        }
+        .workspace.is-left-sidedock-open {
+          .mod-left-split .workspace-tab-header-container {
+            padding-left: calc(var(--frame-left-space) + 1.5em);
+          }
+
+          .sidebar-toggle-button.mod-left {
+            left: calc(var(--frame-left-space) - 0.5em);
+            top: -0.25em;
+            padding: 0;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: -0.25em;
+            right: -0.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: -0.25em;
+            right: 0.5em;
+          }
         }
       }
     }
-
-    &.is-fullscreen {
-      .workspace:not(.is-right-sidedock-open) {
-        .sidebar-toggle-button.mod-right {
-          top: 0;
-          right: -0.25em;
-        }
+    &.is-tablet {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
       }
-      .workspace.is-right-sidedock-open {
-        .sidebar-toggle-button.mod-right {
-          top: 0;
-          right: -0.25em;
-        }
+      .sidebar-toggle-button.mod-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .sidebar-toggle-button.mod-right {
+        top: 0.5em;
+        right: 0;
+      }
+      .mod-root .workspace-tab-header-container {
+        padding-left: calc(var(--frame-left-space) + 1em);
       }
     }
   }
