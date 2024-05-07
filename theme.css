@@ -2066,7 +2066,7 @@ li[data-task=">"] > p > input:checked:after {
 
 /* #endregion */
 
-/* #region Mobile-specific */
+/* #region Mobile */
 
 .is-mobile {
   --file-margins: 0;
@@ -2467,257 +2467,6 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 /* #endregion */
 /* #endregion */
 
-/* #region Menus */
-/* Rendered on mobile, or if native menus are disabled */
-.menu {
-  background-color: var(--theme-color-menuBg);
-  border: 0;
-  box-shadow: var(--shadow-l);
-  border-radius: var(--radius-l);
-  margin: 0 1rem;
-  padding: 0.5em;
-}
-.is-phone .menu {
-  padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
-  width: calc(
-    100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 *
-      var(--theme-spacing-mobileHorizontalSpacing) -
-      max(2 * var(--theme-spacing-mobileHorizontalSpacing), 1rem)
-  );
-}
-.menu-item {
-  height: 2em;
-}
-.menu-item,
-.menu-item-icon {
-  color: var(--nav-item-color);
-  background-color: var(--nav-item-background);
-}
-.menu-item.selected:not(.is-label):not(.is-disabled) {
-  background-color: var(--nav-item-background);
-  border-radius: var(--radius-s);
-  box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
-}
-.menu-item.selected:not(.is-label):not(.is-disabled):hover {
-  background-color: var(--nav-item-background-hover);
-}
-.menu-separator {
-  margin: 0.75em 0.5em;
-}
-@media (hover: hover) {
-  .menu-item:hover {
-    color: var(--nav-item-color-hover);
-    background-color: var(--nav-item-background-hover);
-    font-weight: var(--nav-item-weight-hover);
-  }
-  .menu-item:hover .menu-item-icon {
-    color: var(--nav-item-color-hover);
-  }
-}
-/* #endregion */
-/* #region Messages */
-
-.mod-warning,
-p.mod-warning,
-.setting-message {
-  border-radius: var(--clickable-icon-radius);
-  font-size: var(--font-ui-small);
-  background: var(--theme-color-warningBg);
-  padding: 0.5em 1em;
-}
-.mod-warning:not(button) {
-  display: inline-block;
-  margin: 0.5em 0;
-  border: solid var(--text-error) 0.125em;
-}
-/* Collapse adjacent messages */
-p.mod-warning ~ p.mod-warning,
-p.setting-message ~ p.setting-message {
-  margin-bottom: 0;
-  padding-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  display: block;
-  border-top: none;
-}
-p.mod-warning:has(+ p.mod-warning, .setting-message),
-.setting-message:has(+ p.mod-warning, .setting-message) {
-  border-top-left-radius: var(--clickable-icon-radius);
-  border-top-right-radius: var(--clickable-icon-radius);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: none;
-  margin-bottom: 0;
-  display: block;
-}
-/* #endregion */
-/* #region Close buttons */
-
-.mod-close,
-.modal-close-button,
-.document-search-close-button,
-.workspace-tab-header-inner-close-button,
-.slides-close-btn,
-.clickable-icon.kanban-plugin__search-cancel-button,
-.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"] {
-  background-color: transparent;
-  border-radius: 1.5rem;
-  border: none;
-  color: var(--theme-color-control);
-  /* Above .modal-title */
-  z-index: 2;
-  width: 1.5rem;
-  height: auto;
-}
-.workspace-tab-header-inner-close-button .svg-icon {
-  stroke: var(--theme-color-control);
-}
-@media (hover: hover) {
-  .mod-close:hover,
-  .modal-close-button:hover,
-  .document-search-close-button:hover,
-  .workspace-tab-header-inner-close-button:hover,
-  .workspace-tab-header.is-active
-    .workspace-tab-header-inner-close-button:hover,
-  .mod-sync-history .modal-close-button:hover,
-  .mod-settings .modal-close-button:hover,
-  .workspace-tab-header-inner-close-button:hover,
-  .slides-close-btn:hover,
-  .clickable-icon.kanban-plugin__search-cancel-button:hover,
-  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover {
-    color: var(--theme-color-control);
-    background-color: var(--theme-color-navigationButtonBgHover);
-  }
-  .workspace-tab-header:hover
-    .workspace-tab-header-inner-close-button
-    .svg-icon {
-    stroke: var(--theme-color-controlHover);
-  }
-}
-
-/* close buttons that use a text cross instead of an SVG */
-.document-search-close-button,
-.modal-close-button,
-.is-mobile .document-search .document-search-close-button,
-.is-mobile .document-replace .document-search-close-button {
-  padding: var(--size-2-1);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-content: center;
-  --icon-size: var(--icon-s);
-  --icon-stroke: var(--icon-s-stroke-width);
-  text-align: center;
-  justify-content: center;
-  line-height: 20px;
-}
-.document-search-close-button:before,
-.modal-close-button:before {
-  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
-  margin-top: -1px;
-}
-
-/* Tab close button on left, macOS standard */
-.mod-macos {
-  .workspace .mod-root {
-    .workspace-tab-header .workspace-tab-header-inner-close-button {
-      position: static;
-      order: 0;
-    }
-    .workspace-tab-header-inner-icon,
-    .workspace-tab-header-inner-title {
-      order: 1;
-    }
-  }
-  .modal-close-button {
-    left: var(--size-2-3);
-    right: auto;
-  }
-  .mod-community-modal .modal-sidebar .setting-item:first-child {
-    margin-left: auto;
-  }
-  .modal-sidebar .community-modal-controls {
-    padding-left: var(--size-4-5);
-  }
-  .multi-select-pill {
-    padding-left: 0.25em;
-
-    .multi-select-pill-remove-button {
-      order: 0;
-    }
-    .multi-select-pill-content {
-      order: 1;
-      margin: 0;
-    }
-  }
-}
-/* #endregion */
-/* #region Navigation buttons */
-/* Styled similarly to close button */
-
-.modal-setting-back-button-icon,
-.mod-root .workspace-tab-header-status-icon {
-  color: var(--theme-color-control);
-  border: none;
-  border-radius: 100%;
-  background-color: transparent;
-  /* Above .modal-title */
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-@media (hover: hover) {
-  .modal-setting-back-button-icon:hover,
-  .mod-root .workspace-tab-header-status-icon:hover {
-    color: var(--theme-color-control);
-    background-color: var(--theme-color-navigationButtonBgHover);
-  }
-  .mod-root .workspace-tab-header-status-icon .svg-icon {
-    width: 80%;
-  }
-}
-/* #endregion */
-/* #region Notices */
-/* Note that Excalidraw .HintView uses a smaller version, which could be generalised */
-.notice-container {
-  padding: 0;
-  right: 1rem;
-  top: 1rem;
-}
-.is-mobile .notice-container {
-  padding: 0.5em 0.5em 2em 0.5em;
-  top: var(--safe-area-inset-top);
-  left: auto;
-  right: var(--safe-area-inset-right);
-}
-.is-phone .notice-container {
-  padding: 0.5em 0.5em 2em 0.5em;
-  top: var(--safe-area-inset-top);
-  left: var(--safe-area-inset-left);
-  right: var(--safe-area-inset-right);
-  max-width: 100%;
-  margin: 0 auto;
-}
-.notice,
-.is-phone .notice {
-  border-radius: 1em;
-  background-color: var(--background-modifier-message);
-  color: var(--theme-color-notice);
-  box-shadow: var(--shadow-s);
-  padding: 1em 1.5em;
-}
-.notice {
-  margin: 0 0 1rem 0;
-}
-.is-phone .notice {
-  text-align: center;
-  max-width: none;
-  margin: 0rem 0.5rem 1rem 0.5rem;
-}
-/* #endregion */
 /* #region Workspace */
 
 .app-container {
@@ -2757,6 +2506,9 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   color: var(--tab-text-color-active);
   background-color: var(--tab-background-active);
   box-shadow: var(--theme-shadow-input);
+}
+.nav-header {
+  padding: 0.5rem;
 }
 
 /* Drag */
@@ -3316,6 +3068,258 @@ body.mod-macos {
 }
 
 /* #endregion */
+/* #endregion */
+
+/* #region Menus */
+/* Rendered on mobile, or if native menus are disabled */
+.menu {
+  background-color: var(--theme-color-menuBg);
+  border: 0;
+  box-shadow: var(--shadow-l);
+  border-radius: var(--radius-l);
+  margin: 0 1rem;
+  padding: 0.5em;
+}
+.is-phone .menu {
+  padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
+  width: calc(
+    100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 *
+      var(--theme-spacing-mobileHorizontalSpacing) -
+      max(2 * var(--theme-spacing-mobileHorizontalSpacing), 1rem)
+  );
+}
+.menu-item {
+  height: 2em;
+}
+.menu-item,
+.menu-item-icon {
+  color: var(--nav-item-color);
+  background-color: var(--nav-item-background);
+}
+.menu-item.selected:not(.is-label):not(.is-disabled) {
+  background-color: var(--nav-item-background);
+  border-radius: var(--radius-s);
+  box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
+}
+.menu-item.selected:not(.is-label):not(.is-disabled):hover {
+  background-color: var(--nav-item-background-hover);
+}
+.menu-separator {
+  margin: 0.75em 0.5em;
+}
+@media (hover: hover) {
+  .menu-item:hover {
+    color: var(--nav-item-color-hover);
+    background-color: var(--nav-item-background-hover);
+    font-weight: var(--nav-item-weight-hover);
+  }
+  .menu-item:hover .menu-item-icon {
+    color: var(--nav-item-color-hover);
+  }
+}
+/* #endregion */
+/* #region Messages */
+
+.mod-warning,
+p.mod-warning,
+.setting-message {
+  border-radius: var(--clickable-icon-radius);
+  font-size: var(--font-ui-small);
+  background: var(--theme-color-warningBg);
+  padding: 0.5em 1em;
+}
+.mod-warning:not(button) {
+  display: inline-block;
+  margin: 0.5em 0;
+  border: solid var(--text-error) 0.125em;
+}
+/* Collapse adjacent messages */
+p.mod-warning ~ p.mod-warning,
+p.setting-message ~ p.setting-message {
+  margin-bottom: 0;
+  padding-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  display: block;
+  border-top: none;
+}
+p.mod-warning:has(+ p.mod-warning, .setting-message),
+.setting-message:has(+ p.mod-warning, .setting-message) {
+  border-top-left-radius: var(--clickable-icon-radius);
+  border-top-right-radius: var(--clickable-icon-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  display: block;
+}
+/* #endregion */
+/* #region Close buttons */
+
+.mod-close,
+.modal-close-button,
+.document-search-close-button,
+.workspace-tab-header-inner-close-button,
+.slides-close-btn,
+.clickable-icon.kanban-plugin__search-cancel-button,
+.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"] {
+  background-color: transparent;
+  border-radius: 1.5rem;
+  border: none;
+  color: var(--theme-color-control);
+  /* Above .modal-title */
+  z-index: 2;
+  width: 1.5rem;
+  height: auto;
+}
+.workspace-tab-header-inner-close-button .svg-icon {
+  stroke: var(--theme-color-control);
+}
+@media (hover: hover) {
+  .mod-close:hover,
+  .modal-close-button:hover,
+  .document-search-close-button:hover,
+  .workspace-tab-header-inner-close-button:hover,
+  .workspace-tab-header.is-active
+    .workspace-tab-header-inner-close-button:hover,
+  .mod-sync-history .modal-close-button:hover,
+  .mod-settings .modal-close-button:hover,
+  .workspace-tab-header-inner-close-button:hover,
+  .slides-close-btn:hover,
+  .clickable-icon.kanban-plugin__search-cancel-button:hover,
+  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover {
+    color: var(--theme-color-control);
+    background-color: var(--theme-color-navigationButtonBgHover);
+  }
+  .workspace-tab-header:hover
+    .workspace-tab-header-inner-close-button
+    .svg-icon {
+    stroke: var(--theme-color-controlHover);
+  }
+}
+
+/* close buttons that use a text cross instead of an SVG */
+.document-search-close-button,
+.modal-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
+  padding: var(--size-2-1);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-content: center;
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  text-align: center;
+  justify-content: center;
+  line-height: 20px;
+}
+.document-search-close-button:before,
+.modal-close-button:before {
+  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
+  margin-top: -1px;
+}
+
+/* Tab close button on left, macOS standard */
+.mod-macos {
+  .workspace .mod-root {
+    .workspace-tab-header .workspace-tab-header-inner-close-button {
+      position: static;
+      order: 0;
+    }
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title {
+      order: 1;
+    }
+  }
+  .modal-close-button {
+    left: var(--size-2-3);
+    right: auto;
+  }
+  .mod-community-modal .modal-sidebar .setting-item:first-child {
+    margin-left: auto;
+  }
+  .modal-sidebar .community-modal-controls {
+    padding-left: var(--size-4-5);
+  }
+  .multi-select-pill {
+    padding-left: 0.25em;
+
+    .multi-select-pill-remove-button {
+      order: 0;
+    }
+    .multi-select-pill-content {
+      order: 1;
+      margin: 0;
+    }
+  }
+}
+/* #endregion */
+/* #region Navigation buttons */
+/* Styled similarly to close button */
+
+.modal-setting-back-button-icon,
+.mod-root .workspace-tab-header-status-icon {
+  color: var(--theme-color-control);
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
+  /* Above .modal-title */
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+@media (hover: hover) {
+  .modal-setting-back-button-icon:hover,
+  .mod-root .workspace-tab-header-status-icon:hover {
+    color: var(--theme-color-control);
+    background-color: var(--theme-color-navigationButtonBgHover);
+  }
+  .mod-root .workspace-tab-header-status-icon .svg-icon {
+    width: 80%;
+  }
+}
+/* #endregion */
+/* #region Notices */
+/* Note that Excalidraw .HintView uses a smaller version, which could be generalised */
+.notice-container {
+  padding: 0;
+  right: 1rem;
+  top: 1rem;
+}
+.is-mobile .notice-container {
+  padding: 0.5em 0.5em 2em 0.5em;
+  top: var(--safe-area-inset-top);
+  left: auto;
+  right: var(--safe-area-inset-right);
+}
+.is-phone .notice-container {
+  padding: 0.5em 0.5em 2em 0.5em;
+  top: var(--safe-area-inset-top);
+  left: var(--safe-area-inset-left);
+  right: var(--safe-area-inset-right);
+  max-width: 100%;
+  margin: 0 auto;
+}
+.notice,
+.is-phone .notice {
+  border-radius: 1em;
+  background-color: var(--background-modifier-message);
+  color: var(--theme-color-notice);
+  box-shadow: var(--shadow-s);
+  padding: 1em 1.5em;
+}
+.notice {
+  margin: 0 0 1rem 0;
+}
+.is-phone .notice {
+  text-align: center;
+  max-width: none;
+  margin: 0rem 0.5rem 1rem 0.5rem;
+}
 /* #endregion */
 /* #region Content references (search results, incoming/outgoing links, etc.) */
 
@@ -5027,7 +5031,7 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
 /* #region   Core Plugin: Search */
 
 .workspace-leaf-content[data-type="search"] {
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 }
 .search-row,
 .search-info-container,
