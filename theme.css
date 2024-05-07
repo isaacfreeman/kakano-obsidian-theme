@@ -2552,7 +2552,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     margin-top: 0.5em;
   }
   .workspace-tab-header-container-inner {
-    margin: 0.5em 0 0 0;
+    margin: 0 0 0 0;
   }
 }
 
@@ -2601,7 +2601,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 }
 .mod-root .workspace-tab-header-container-inner {
   /* Define spacing on tabs to fit with radius */
-  padding: 0.5em calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
+  padding: 0 calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
 }
 .workspace .mod-root .workspace-tab-header {
   padding: 0;
@@ -2768,6 +2768,7 @@ body.mod-macos {
   .workspace-tab-header-new-tab,
   .workspace-tab-header-tab-list {
     padding: 0;
+    margin: 0;
   }
 
   /* "Native frame" style (my preferred) */
@@ -4951,6 +4952,10 @@ input.metadata-property-key-input {
   & .view-content:after {
     bottom: -1px;
   }
+}
+.mod-sidedock .workspace-leaf-content[data-type="graph"],
+.mod-sidedock .workspace-leaf-content[data-type="localgraph"] {
+  margin: 0.5rem 0;
 }
 .graph-view.color-arrow,
 .graph-view.color-line {
