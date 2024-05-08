@@ -122,7 +122,9 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
 - **Background gradient contrast**
   Adjusts the background gradient from a flat color to a strong difference between top and bottom.
 - **Note backgrounds (light and dark modes)**
-  The background for note sin dark mode can be either full black (nice on OLED screens) or near-black (easier on the eye).
+  The background for notes in dark mode can be either full black (nice on OLED screens) or near-black (easier on the eye).
+- **Distinguish non-editable tabs**
+  Use a different color for inactive tabs when they're not directly editable by the user (e.g. tabs with graphs, maps, calendar)
 ### Layout settings
 - **Mobile horizontal spacing**
   On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
