@@ -166,6 +166,12 @@ settings:
         label: 'Full black (OLED screen will switch pixels off)'
         value: theme-value-darkModeNoteBgFullBlack
   -
+    id: theme-setting-distinguishNonContentTabs
+    title: "Distinguish Tabs that aren't user content"
+    description: "Most tabs have content created by you (e.g. notes, canvases, kanban charts) but some aren't directly editable (e.g. graphs, calendars, maps). When this setting is on, the non-editable tabs are shaded differently when inactive."
+    default: true
+    type: class-toggle
+  -
     id: heading-layoutSettings
     title: Layout settings
     type: heading
@@ -833,6 +839,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryVeryLightened);
   --theme-color-switcherBgActive: var(--theme-color-base);
+  --theme-color-tabNavBg: var(--theme-color-baseLightened);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
     calc(var(--accent-s) * 1.5),
@@ -1122,6 +1129,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
   --theme-color-suggestionBg: var(--theme-color-baseVeryVeryDarkened);
   --theme-color-switcherBgActive: var(--theme-color-base);
+  --theme-color-tabNavBg: var(--theme-color-baseDarkened);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
     calc(var(--accent-s) * 1.5),
@@ -2468,7 +2476,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 /* #endregion */
 
 /* #region Workspace */
-
+/* #region   Overall workspace */
 .app-container {
   background-color: var(--background-secondary);
   background: var(--theme-gradient-bottomToTop);
@@ -2477,9 +2485,6 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   margin-bottom: var(--theme-length-statusBarHeight);
 }
 .workspace {
-  background: transparent;
-}
-.workspace-tabs .workspace-leaf {
   background: transparent;
 }
 .workspace-split.mod-root {
@@ -2492,39 +2497,37 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     padding-top: 0.5rem;
   }
 }
+.nav-header {
+  padding: 0.5rem;
+}
+/* #endregion */
+/* #region   Tabs */
+.workspace-tabs .workspace-leaf {
+  background: transparent;
+}
 .sidebar-toggle-button,
 .workspace-tabs.mod-top,
 .is-focused .sidebar-toggle-button,
 .is-focused .workspace-tabs.mod-top {
   --tab-container-background: transparent;
 }
+.workspace-tab-header-container {
+  padding: 0;
+}
+.workspace-tab-header-container-inner {
+  gap: 0.25em;
+}
 .workspace-tab-header {
   color: var(--theme-color-textTabInactive);
   background-color: var(--tab-background-inactive);
-}
-.workspace-tab-header.is-active {
-  color: var(--tab-text-color-active);
-  background-color: var(--tab-background-active);
-  box-shadow: var(--theme-shadow-input);
-}
-.nav-header {
-  padding: 0.5rem;
-}
-
-/* Drag */
-.workspace-drop-overlay:before {
-  animation: 0.5s 1 alternate fadein;
-  background-color: var(--theme-color-dragTarget);
-  border-radius: var(--radius-m);
-  opacity: 1;
-}
-.workspace-fake-target-overlay {
-  background: transparent;
-}
-
-/* Tabs */
-.workspace-tab-header {
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+
+  &.is-active {
+    color: var(--tab-text-color-active);
+    background-color: var(--tab-background-active);
+    box-shadow: var(--theme-shadow-input);
+    color: red;
+  }
 }
 @media (hover: hover) {
   .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
@@ -2536,66 +2539,15 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     opacity: var(--icon-opacity);
   }
 }
-.workspace-tab-header-container {
-  padding: 0;
-}
-.workspace-tab-header-container-inner {
-  gap: 0.25em;
-}
-
-.mod-left-split,
-.mod-right-split {
-  .workspace-tab-header-container {
-    margin-top: 0;
-  }
-  .workspace-tabs.mod-top > .workspace-tab-header-container {
-    margin-top: 0.5em;
-  }
-  .workspace-tab-header-container-inner {
-    margin: 0 0 0 0;
+/* Tabs with Obsidian navigation or data (as opposed to user content) have a different inactive color */
+.theme-setting-distinguishNonContentTabs {
+  .workspace-tab-header[data-type="calendar"]:not(.is-active),
+  .workspace-tab-header[data-type="graph"]:not(.is-active),
+  .workspace-tab-header[data-type="localgraph"]:not(.is-active),
+  .workspace-tab-header[data-type="map"]:not(.is-active) {
+    background-color: var(--theme-color-tabNavBg);
   }
 }
-
-/* Stacked tabs */
-.workspace
-  .mod-root
-  .workspace-tabs.mod-stacked
-  .workspace-tab-container
-  .workspace-tab-header {
-  background-color: var(--tab-background-inactive);
-  box-shadow: var(--theme-shadow-input);
-}
-.workspace
-  .mod-root
-  .workspace-tabs.mod-stacked
-  .workspace-tab-container
-  .workspace-tab-header.is-active {
-  background-color: var(--background-primary);
-}
-
-/* Empty state */
-.empty-state-container {
-  background: var(--theme-color-emptyStateBg);
-  border-radius: var(--radius-m);
-  max-height: none;
-  max-width: none;
-  padding: 1em 1.5em 1.5em 1.5em;
-}
-.empty-state-action-list,
-.is-mobile .empty-state-action-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  margin-top: 0;
-}
-.empty-state-action-list .empty-state-action {
-  padding: 0 1.5em;
-}
-.empty-state-action-list .empty-state-action.mod-close {
-  display: none;
-}
-
-/* Main area */
 .is-mobile .mod-root .workspace-tab-header-container {
   min-height: 44px;
 }
@@ -2626,39 +2578,40 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   border-radius: var(--tab-radius);
   box-shadow: var(--theme-shadow-input);
 }
-
-/* Ribbon styling */
-
-.workspace-ribbon {
-  padding-left: 0;
+/* #region     Empty state */
+.empty-state-container {
+  background: var(--theme-color-emptyStateBg);
+  border-radius: var(--radius-m);
+  max-height: none;
+  max-width: none;
+  padding: 1em 1.5em 1.5em 1.5em;
 }
-
-.side-dock-actions {
-  border-top-right-radius: var(--radius-m);
-  border-bottom-right-radius: var(--radius-m);
-  padding: var(--size-2-3);
-  background: var(--ribbon-background);
+.empty-state-action-list,
+.is-mobile .empty-state-action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: 0;
 }
-
-.side-dock-actions .side-dock-ribbon-action {
-  margin: 0;
+.empty-state-action-list .empty-state-action {
+  padding: 0 1.5em;
 }
-
-.side-dock-actions .side-dock-ribbon-action.clickable-icon {
-  color: var(--theme-color-control);
-  height: 2em;
-  width: 2em;
+.empty-state-action-list .empty-state-action.mod-close {
+  display: none;
 }
-.side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active {
-  color: var(--theme-color-controlActive);
+/* #endregion */
+/* #region     Sidebars */
+.mod-sidedock {
+  .workspace-tab-header-container {
+    margin-top: 0;
+  }
+  .workspace-tabs.mod-top > .workspace-tab-header-container {
+    margin-top: 0.5em;
+  }
+  .workspace-tab-header-container-inner {
+    margin: 0 0 0 0;
+  }
 }
-
-/* Pane styling */
-.pane-empty {
-  color: var(--empty-pane-color);
-}
-
-/* Sidebars, left and right */
 .mod-left-split .workspace-tab-header-container,
 .mod-right-split .workspace-tab-header-container {
   justify-content: center;
@@ -2707,7 +2660,47 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 .mod-right-split .workspace-tab-header-inner {
   border-radius: 0;
 }
-/* Status bar */
+/* #endregion */
+/* #endregion */
+/* #region   Stacked tabs */
+.workspace
+  .mod-root
+  .workspace-tabs.mod-stacked
+  .workspace-tab-container
+  .workspace-tab-header {
+  background-color: var(--tab-background-inactive);
+  box-shadow: var(--theme-shadow-input);
+}
+.workspace
+  .mod-root
+  .workspace-tabs.mod-stacked
+  .workspace-tab-container
+  .workspace-tab-header.is-active {
+  background-color: var(--background-primary);
+} /* #endregion */
+/* #region   Ribbon styling */
+.workspace-ribbon {
+  padding-left: 0;
+}
+.side-dock-actions {
+  border-top-right-radius: var(--radius-m);
+  border-bottom-right-radius: var(--radius-m);
+  padding: var(--size-2-3);
+  background: var(--ribbon-background);
+}
+.side-dock-actions .side-dock-ribbon-action {
+  margin: 0;
+}
+.side-dock-actions .side-dock-ribbon-action.clickable-icon {
+  color: var(--theme-color-control);
+  height: 2em;
+  width: 2em;
+}
+.side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active {
+  color: var(--theme-color-controlActive);
+}
+/* #endregion */
+/* #region   Status bar */
 .status-bar {
   border: none;
   border-top-left-radius: var(--radius-m);
@@ -2760,7 +2753,12 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 .status-bar-item.plugin-sync {
   padding: 0.25em 0.5em;
 }
-
+/* #endregion */
+/* #region   Panes */
+.pane-empty {
+  color: var(--empty-pane-color);
+}
+/* #endregion */
 /* #region   Window frame styles */
 body.mod-macos {
   position: relative;
@@ -3071,6 +3069,17 @@ body.mod-macos {
 /* #endregion */
 /* #endregion */
 
+/* #region Dragging */
+.workspace-drop-overlay:before {
+  animation: 0.5s 1 alternate fadein;
+  background-color: var(--theme-color-dragTarget);
+  border-radius: var(--radius-m);
+  opacity: 1;
+}
+.workspace-fake-target-overlay {
+  background: transparent;
+}
+/* #endregion */
 /* #region Menus */
 /* Rendered on mobile, or if native menus are disabled */
 .menu {
@@ -5770,6 +5779,9 @@ body:not(.is-mobile) .mobile-misc-tools-container .ToolIcon.is-mobile {
 
 /*   #endregion */
 /* #region   Community Plugin: Map View */
+.mod-sidedock .workspace-leaf-content[data-type="map"] {
+  margin: 0.5rem 0;
+}
 .map-view-main {
   overflow: hidden;
   border-radius: var(--tab-radius);
