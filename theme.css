@@ -167,7 +167,7 @@ settings:
         value: theme-value-darkModeNoteBgFullBlack
   -
     id: theme-setting-distinguishNonContentTabs
-    title: "Distinguish Tabs that aren't user content"
+    title: "Distinguish non-editable tabs"
     description: "Most tabs have content created by you (e.g. notes, canvases, kanban charts) but some aren't directly editable (e.g. graphs, calendars, maps). When this setting is on, the non-editable tabs are shaded differently when inactive."
     default: true
     type: class-toggle
@@ -455,7 +455,7 @@ body {
   --theme-color-baseDarkened: color-mix(
     in srgb,
     var(--theme-color-base),
-    black calc(100% * 0.6)
+    black calc(100% * 0.7)
   );
   --theme-color-baseVeryDarkened: color-mix(
     in srgb,
@@ -2526,7 +2526,6 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     color: var(--tab-text-color-active);
     background-color: var(--tab-background-active);
     box-shadow: var(--theme-shadow-input);
-    color: red;
   }
 }
 @media (hover: hover) {
