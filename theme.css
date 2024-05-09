@@ -4907,10 +4907,45 @@ input.metadata-property-key-input {
 /* #region   Core Plugin: Graph view */
 
 .graph-controls {
-  min-width: 12rem; /* Make room for controls */
+  min-width: 12em; /* Make room for controls */
   top: var(--theme-length-controlSetSpacing);
   right: var(--theme-length-controlSetSpacing);
 }
+/* Smaller in sidebar */
+.mod-sidedock {
+  .graph-controls {
+    font-size: 0.75rem;
+
+    .graph-controls-button.mod-close,
+    .graph-controls-button.mod-reset {
+      top: 0.25rem;
+    }
+    .graph-controls-button.mod-close {
+      right: 0.25rem;
+      height: var(--input-height);
+      width: var(--input-height);
+    }
+    .graph-controls-button.mod-reset {
+      right: 2.25rem;
+    }
+
+    .graph-control-section .tree-item-inner {
+      font-size: 0.75rem;
+      padding: 0;
+    }
+    .graph-control-section-header,
+    .setting-item-name,
+    .search-input-container input[type="search"],
+    button {
+      font-size: 0.75rem;
+    }
+    .search-input-container input[type="search"],
+    .mod-cta {
+      width: 10em;
+    }
+  }
+}
+
 .graph-control-section {
   border: none;
   padding: 0;
