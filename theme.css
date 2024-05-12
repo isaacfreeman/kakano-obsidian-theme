@@ -349,13 +349,6 @@ body {
   --file-margins: 0 2em;
   --font-ui-smaller: 0.8rem;
   --heading-spacing: 0.67em;
-  --inline-title-size: 1.5rem;
-  --inline-title-weight: 100;
-  --inline-title-line-height: var(--line-height-normal);
-  --inline-title-style: normal;
-  --inline-title-variant: normal;
-  --inline-title-font: inherit;
-  --inline-title-color: inherit;
   --input-border-width: 2px;
   --list-marker-color-collapsed: var(--list-marker-color);
   --metadata-divider-width: 0;
@@ -1243,7 +1236,7 @@ body .metadata-property[data-property-key="tags"] {
 }
 /* #endregion */
 
-/* #region Markdown Typography */
+/* #region Typography */
 /* #region   Reading and Live Preview modes */
 
 body {
@@ -1263,12 +1256,22 @@ body {
   --h4-size: calc(var(--theme-value-headingScaleFactor) * var(--h5-size));
   --h5-size: calc(var(--theme-value-headingScaleFactor) * var(--h6-size));
   --h6-size: var(--font-text-size);
+  /* Heading weights increase inversely with size, to maintain distinction from body text */
   --h1-weight: 100;
   --h2-weight: 200;
   --h3-weight: 300;
   --h4-weight: 400;
   --h5-weight: 500;
   --h6-weight: 500;
+  /* Inline title isn't huge, but has Greater weight */
+  --inline-title-size: var(--h3-size);
+  --inline-title-weight: var(--h4-weight);
+  --inline-title-line-height: var(--line-height-normal);
+  --inline-title-style: normal;
+  --inline-title-variant: normal;
+  --inline-title-font: inherit;
+  --inline-title-color: inherit;
+
   --line-height-normal: 1.6;
   --link-decoration-thickness: 1px;
   --link-unresolved-decoration-style: dashed;
@@ -4437,7 +4440,7 @@ body:not(.is-phone) .modal.mod-sync-history {
   width: 100%;
 }
 .markdown-source-view .cm-contentContainer {
-  padding: 3rem 2rem;
+  padding: 1rem 2rem;
 }
 .is-phone .markdown-source-view .cm-contentContainer {
   padding-top: 0;
@@ -4542,7 +4545,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   width: 100%;
   margin: 0 auto;
   max-width: var(--file-line-width);
-  padding: 0.5em 2rem;
+  padding: 0 2rem;
   text-align: center;
 }
 .view-header-title-container {
