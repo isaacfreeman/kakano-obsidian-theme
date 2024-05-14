@@ -2541,7 +2541,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     opacity: var(--icon-opacity);
   }
 }
-/* Tabs with Obsidian navigation or data (as opposed to user content) have a different inactive color */
+/* Tabs with Obsidian navigation or data (as opposed to user content) can have a different inactive color */
 .theme-setting-distinguishNonContentTabs {
   .workspace-tab-header[data-type="calendar"]:not(.is-active),
   .workspace-tab-header[data-type="graph"]:not(.is-active),
@@ -2579,6 +2579,24 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   background-color: var(--background-primary);
   border-radius: var(--tab-radius);
   box-shadow: var(--theme-shadow-input);
+}
+/* Show icons for markdown tabs, unless they get too narrow. */
+.workspace .mod-root {
+  .workspace-tab-header-inner {
+    container-type: size;
+    container-name: root-tab;
+  }
+  .workspace-tab-header[data-type="markdown"] .workspace-tab-header-inner-icon,
+  .workspace-tab-header[data-type="empty"] .workspace-tab-header-inner-icon {
+    display: none;
+  }
+  @container root-tab (min-width: 5em) {
+    .workspace-tab-header[data-type="markdown"]
+      .workspace-tab-header-inner-icon,
+    .workspace-tab-header[data-type="empty"] .workspace-tab-header-inner-icon {
+      display: flex;
+    }
+  }
 }
 /* #region     Empty state */
 .empty-state-container {
