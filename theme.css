@@ -189,7 +189,7 @@ settings:
   -
     id: setting-properties-position
     title: 'Properties position'
-    description: 'Place properties before or after your main note content. Note that this only applies to Live Preview mode'
+    description: 'Place properties before or after your main note content. Note that this only applies to Live Preview mode.'
     type: class-select
     allowEmpty: false
     default: 'setting-properties-position-above'
@@ -287,6 +287,17 @@ settings:
       -
         label: '1.618 - Golden Ratio'
         value: theme-setting-headingScaleFactorPhone1point618
+  -
+    id: heading-editorSettings
+    title: Editor settings
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: theme-setting-highlightActiveLine
+    title: 'Highlight active line'
+    description: "Show a background color behind the active line while editing."
+    type: class-toggle
   -
     id: heading-experimentalSettings
     title: Experimental settings
@@ -778,6 +789,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseLightened);
 
   /* New variables for this theme */
+  --theme-color-activeLineHighlight: var(--theme-color-baseVeryVeryTransparent);
   --theme-color-audioRecordingActive: var(--theme-color-redDarkened);
   --theme-color-blockId: var(--theme-color-baseSlightlyLightened);
   --theme-color-calendarBg: var(--theme-color-baseVeryLightened);
@@ -1068,6 +1080,7 @@ body .metadata-property[data-property-key="tags"] {
   --background-secondary: var(--theme-color-baseDarkened);
 
   /* New variables for this theme */
+  --theme-color-activeLineHighlight: var(--theme-color-baseVeryVeryTransparent);
   --theme-color-audioRecordingActive: var(--theme-color-redLightened);
   --theme-color-blockId: var(--theme-color-baseSlightlyDarkened);
   --theme-color-calendarBg: var(--theme-color-baseVeryDarkened);
@@ -1913,9 +1926,17 @@ body:not(.is-mobile) {
 }
 /* #endregion */
 /* #region   Source and Live Preview modes */
-.markdown-source-view {
-  &.mod-cm6 .cm-gutters {
+.markdown-source-view.mod-cm6 {
+  .cm-gutters {
     color: var(--theme-color-textMeta) !important;
+  }
+}
+body.theme-setting-highlightActiveLine {
+  .markdown-source-view.mod-cm6 {
+    .cm-active:not(.HyperMD-codeblock) {
+      background-color: var(--theme-color-activeLineHighlight);
+      border-radius: 0.125em;
+    }
   }
 }
 /* #endregion */
