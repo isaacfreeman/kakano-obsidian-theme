@@ -341,7 +341,7 @@ settings:
 /* #region Custom properties */
 /* #region   General */
 body {
-  --background-input: var(--theme-color-baseVeryVeryTransparent);
+  --background-input: var(--theme-color-baseTransparent12);
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
   --callout-padding: 0.75em 1.5em;
@@ -350,7 +350,7 @@ body {
   --checkbox-color: var(--interactive-accent);
   --code-normal: var(--text-normal);
   --divider-width: 0;
-  --embed-background: var(--theme-color-baseVeryVeryTransparent);
+  --embed-background: var(--theme-color-baseTransparent12);
   --embed-border-bottom: none;
   --embed-border-left: none;
   --embed-border-right: none;
@@ -375,7 +375,7 @@ body {
     100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em
   );
   --modal-width: 65rem;
-  --nav-item-background-hover: var(--theme-color-baseSlightlyTransparent);
+  --nav-item-background-hover: var(--theme-color-baseTransparent75);
   --nav-item-children-margin-left: calc(
     1em - var(--nav-indentation-guide-width) / 2
   );
@@ -393,7 +393,7 @@ body {
   --ribbon-background-collapsed: transparent;
   --ribbon-background: transparent;
   --ribbon-width: 3em;
-  --slider-track-background: var(--theme-color-baseTransparent);
+  --slider-track-background: var(--theme-color-baseTransparent50);
   --status-bar-background: var(--theme-color-gradientTOp);
   --status-bar-text-color: var(--text-normal);
   --tab-container-background: transparent;
@@ -405,6 +405,24 @@ body {
   --titlebar-background-focused: transparent;
   --titlebar-background: transparent;
 
+  /* Other new variables for this theme */
+  --theme-color-dragTarget: var(--theme-color-baseTransparent50);
+  --theme-color-dragTargetBg: var(--theme-color-baseTransparent25);
+  --theme-color-graphViewBg: transparent;
+  --theme-color-tabBgInactiveHover: var(--theme-color-baseTransparent75);
+  --theme-color-tableHeaderBg: var(--theme-color-baseTransparent12);
+  --theme-lineHeight-tight: 1.3rem;
+  --theme-spacing-mobileHorizontalSpacing: calc(
+    var(--theme-setting-mobileHorizontalPadding) * 1rem
+  );
+  --theme-length-checkboxBorderWidth: 1px;
+  --theme-length-collapseIndicatorSize: 1.5rem;
+  --theme-length-controlSetSpacing: 0.5rem;
+  --theme-length-statusBarHeight: 2rem;
+}
+/* #endregion */
+/* #region   Colors */
+body {
   /* Base all theme colours off these */
   /* The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
   --base-h: var(--accent-h);
@@ -415,97 +433,97 @@ body {
   --theme-color-base: hsl(var(--base-h), var(--base-s), var(--base-l));
 
   /*  Base colour variants */
-  --theme-color-baseVeryVeryVeryLightened: color-mix(
+  --theme-color-baseLightened95: color-mix(
     in srgb,
     var(--theme-color-base),
     white calc(100% * 0.95)
   );
-  --theme-color-baseVeryVeryLightened: color-mix(
+  --theme-color-baseLightened85: color-mix(
     in srgb,
     var(--theme-color-base),
     white calc(100% * 0.85)
   );
-  --theme-color-baseVeryLightened: color-mix(
+  --theme-color-baseLightened80: color-mix(
     in srgb,
     var(--theme-color-base),
     white calc(100% * 0.8)
   );
-  --theme-color-baseLightened: color-mix(
+  --theme-color-baseLightened60: color-mix(
     in srgb,
     var(--theme-color-base),
     white calc(100% * 0.6)
   );
-  --theme-color-baseSomewhatLightened: color-mix(
+  --theme-color-baseLightened40: color-mix(
     in srgb,
     var(--theme-color-base),
     white calc(100% * 0.4)
   );
-  --theme-color-baseSlightlyLightened: color-mix(
+  --theme-color-baseLightened25: color-mix(
     in srgb,
     var(--theme-color-base),
     white calc(100% * 0.25)
   );
 
-  --theme-color-baseSlightlyDarkened: color-mix(
+  --theme-color-baseDarkened25: color-mix(
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.25)
   );
-  --theme-color-baseSomewhatDarkened: color-mix(
+  --theme-color-baseDarkened40: color-mix(
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.4)
   );
-  --theme-color-baseDarkened: color-mix(
+  --theme-color-baseDarkened70: color-mix(
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.7)
   );
-  --theme-color-baseVeryDarkened: color-mix(
+  --theme-color-baseDarkened80: color-mix(
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.8)
   );
-  --theme-color-baseVeryVeryDarkened: color-mix(
+  --theme-color-baseDarkened85: color-mix(
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.85)
   );
-  --theme-color-baseVeryVeryVeryDarkened: color-mix(
+  --theme-color-baseDarkened90: color-mix(
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.9)
   );
 
   /* Base color with transparency */
-  --theme-color-baseTransparent: hsla(
+  --theme-color-baseTransparent50: hsla(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.5
   );
-  --theme-color-baseSlightlyTransparent: hsla(
+  --theme-color-baseTransparent75: hsla(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.75
   );
-  --theme-color-baseVeryTransparent: hsla(
+  --theme-color-baseTransparent25: hsla(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.25
   );
-  --theme-color-baseVeryVeryTransparent: hsla(
+  --theme-color-baseTransparent12: hsla(
     var(--base-h),
     var(--base-s),
     var(--base-l),
-    0.125
+    0.12
   );
-  --theme-color-lightenTransparent: rgba(255, 255, 255, 0.5);
-  --theme-color-lightenSlightlyTransparent: rgba(255, 255, 255, 0.25);
-  --theme-color-darkenTransparent: rgba(0, 0, 0, 0.5);
-  --theme-color-darkenSlightlyTransparent: rgba(0, 0, 0, 0.25);
+  --theme-color-lightenTransparent50: rgba(255, 255, 255, 0.5);
+  --theme-color-lightenTransparent25: rgba(255, 255, 255, 0.25);
+  --theme-color-darkenTransparent50: rgba(0, 0, 0, 0.5);
+  --theme-color-darkenTransparent25: rgba(0, 0, 0, 0.25);
 
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(
@@ -520,21 +538,6 @@ body {
   );
   /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
   --theme-value-gradientContrast: 0.2;
-
-  /* Other new variables for this theme */
-  --theme-color-dragTarget: var(--theme-color-baseTransparent);
-  --theme-color-dragTargetBg: var(--theme-color-baseVeryTransparent);
-  --theme-color-graphViewBg: transparent;
-  --theme-color-tabBgInactiveHover: var(--theme-color-baseSlightlyTransparent);
-  --theme-color-tableHeaderBg: var(--theme-color-baseVeryVeryTransparent);
-  --theme-lineHeight-tight: 1.3rem;
-  --theme-spacing-mobileHorizontalSpacing: calc(
-    var(--theme-setting-mobileHorizontalPadding) * 1rem
-  );
-  --theme-length-checkboxBorderWidth: 1px;
-  --theme-length-collapseIndicatorSize: 1.5rem;
-  --theme-length-controlSetSpacing: 0.5rem;
-  --theme-length-statusBarHeight: 2rem;
 }
 
 /* Preset base colours, if users don't want to set an exact colour.  */
@@ -684,17 +687,15 @@ body .metadata-property[data-property-key="tags"] {
   /* Using `.theme-light .theme-dark` here because the Minimal Theme Settings plugin inserts `.theme-dark` into the DOM for the ribbon and left sidebar for `Light mode background contrast -> High contrast` even when the Minimal Theme isn't active. As lots of people will have Minimal Theme Settings enabled while using Kakano, I override it here. */
 
   /* Built-in variables */
-  --background-modifier-active-hover-alt: var(
-    --theme-color-baseSlightlyLightened
-  );
-  --background-modifier-active-hover: var(--theme-color-baseLightened);
+  --background-modifier-active-hover-alt: var(--theme-color-baseLightened25);
+  --background-modifier-active-hover: var(--theme-color-baseLightened60);
   --background-modifier-border-focus: var(--theme-color-base);
-  --background-modifier-border: var(--theme-color-baseSlightlyLightened);
+  --background-modifier-border: var(--theme-color-baseLightened25);
   --background-modifier-hover: var(--theme-color-base);
-  --blockquote-border-color: var(--theme-color-baseVeryLightened);
+  --blockquote-border-color: var(--theme-color-baseLightened80);
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
-  --empty-pane-color: var(--theme-color-baseDarkened);
+  --empty-pane-color: var(--theme-color-baseDarkened70);
   --icon-color-focused: white;
   --icon-color-hover: hsl(
     var(--base-h),
@@ -703,16 +704,14 @@ body .metadata-property[data-property-key="tags"] {
   );
   --icon-color-hover: white;
   --icon-color: var(--theme-color-base);
-  --modal-background: var(--theme-color-baseVeryLightened);
-  --nav-collapse-icon-color-collapsed: var(
-    --theme-color-baseSlightlyTransparent
-  );
-  --nav-collapse-icon-color: var(--theme-color-baseSlightlyTransparent);
-  --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
+  --modal-background: var(--theme-color-baseLightened80);
+  --nav-collapse-icon-color-collapsed: var(--theme-color-baseTransparent75);
+  --nav-collapse-icon-color: var(--theme-color-baseTransparent75);
+  --nav-indentation-guide-color: var(--theme-color-baseTransparent25);
   --nav-item-background-active: var(--theme-color-base);
-  --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
-  --nav-item-color-active: var(--theme-color-baseVeryLightened);
-  --nav-item-color: var(--theme-color-baseVeryDarkened);
+  --nav-item-background-selected: var(--theme-color-baseTransparent25);
+  --nav-item-color-active: var(--theme-color-baseLightened80);
+  --nav-item-color: var(--theme-color-baseDarkened80);
   --nav-item-color-hover: white;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem
@@ -759,92 +758,82 @@ body .metadata-property[data-property-key="tags"] {
       );
   --status-bar-text-color: black;
   --tab-background-active: var(--background-primary);
-  --tab-background-inactive: var(--theme-color-baseVeryLightened);
+  --tab-background-inactive: var(--theme-color-baseLightened80);
   --tag-color: hsl(
     var(--accent-h),
     calc(var(--accent-s)),
     calc(var(--accent-l) * 0.8)
   );
   --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
-  --text-normal: var(--theme-color-baseVeryVeryVeryDarkened);
-  --text-faint: var(--theme-color-baseDarkened);
-  --background-prompt: var(--theme-color-baseVeryVeryVeryLightened);
+  --text-normal: var(--theme-color-baseDarkened90);
+  --text-faint: var(--theme-color-baseDarkened70);
+  --background-prompt: var(--theme-color-baseLightened95);
   --interactive-accent: var(--theme-color-base);
   --interactive-accent-hover: var(--theme-color-base);
-  --table-border-color: var(--theme-color-baseLightened);
-  --table-header-border-color: var(--theme-color-baseLightened);
+  --table-border-color: var(--theme-color-baseLightened60);
+  --table-header-border-color: var(--theme-color-baseLightened60);
 
-  --metadata-property-background: var(--theme-color-baseVeryVeryVeryLightened);
-  --metadata-property-background-hover: var(--theme-color-baseVeryLightened);
-  --metadata-label-background-active: var(
-    --theme-color-baseVeryVeryVeryLightened
-  );
-  --metadata-input-background-active: var(
-    --theme-color-baseVeryVeryVeryLightened
-  );
+  --metadata-property-background: var(--theme-color-baseLightened95);
+  --metadata-property-background-hover: var(--theme-color-baseLightened80);
+  --metadata-label-background-active: var(--theme-color-baseLightened95);
+  --metadata-input-background-active: var(--theme-color-baseLightened95);
 
   /* Background for content area */
   --background-primary: white;
   /* Background for controls area */
-  --background-secondary: var(--theme-color-baseLightened);
+  --background-secondary: var(--theme-color-baseLightened60);
 
   /* New variables for this theme */
-  --theme-color-activeLineHighlight: var(--theme-color-baseVeryVeryTransparent);
+  --theme-color-activeLineHighlight: var(--theme-color-baseTransparent12);
   --theme-color-audioRecordingActive: var(--theme-color-redDarkened);
-  --theme-color-blockId: var(--theme-color-baseSlightlyLightened);
-  --theme-color-calendarBg: var(--theme-color-baseVeryLightened);
-  --theme-color-calendarDayBg: var(--theme-color-lightenTransparent);
-  --theme-color-communityItemBg: var(--theme-color-baseVeryLightened);
+  --theme-color-blockId: var(--theme-color-baseLightened25);
+  --theme-color-calendarBg: var(--theme-color-baseLightened80);
+  --theme-color-calendarDayBg: var(--theme-color-lightenTransparent50);
+  --theme-color-communityItemBg: var(--theme-color-baseLightened80);
   --theme-color-communityItemBgActive: var(--theme-color-base);
-  --theme-color-communityItemBgHover: var(--theme-color-baseLightened);
-  --theme-color-communityItemBgSelected: var(
-    --theme-color-baseSlightlyLightened
-  );
-  --theme-color-contentItemBg: var(--theme-color-lightenTransparent);
+  --theme-color-communityItemBgHover: var(--theme-color-baseLightened60);
+  --theme-color-communityItemBgSelected: var(--theme-color-baseLightened25);
+  --theme-color-contentItemBg: var(--theme-color-lightenTransparent50);
   --theme-color-contentItemBgActive: var(--theme-color-base);
-  --theme-color-contentItemBgHover: var(
-    --theme-color-lightenSlightlyTransparent
-  );
-  --theme-color-control: var(--theme-color-baseDarkened);
+  --theme-color-contentItemBgHover: var(--theme-color-lightenTransparent25);
+  --theme-color-control: var(--theme-color-baseDarkened70);
   --theme-color-controlActive: var(--theme-color-control);
-  --theme-color-controlBg: var(--theme-color-baseVeryVeryVeryLightened);
+  --theme-color-controlBg: var(--theme-color-baseLightened95);
   --theme-color-controlBgHover: var(--theme-color-base);
-  --theme-color-controlBgLowWeight: var(--theme-color-lightenTransparent);
+  --theme-color-controlBgLowWeight: var(--theme-color-lightenTransparent50);
   --theme-color-controlContentArea: var(--theme-color-base);
-  --theme-color-controlContentAreaHover: var(--theme-color-baseVeryLightened);
-  --theme-color-controlUIHover: var(--theme-color-baseLightened);
-  --theme-color-controlHover: var(--theme-color-baseVeryVeryVeryLightened);
-  --theme-color-controlSetBg: var(--theme-color-baseVeryLightened);
-  --theme-color-controlText: var(--theme-color-baseDarkened);
-  --theme-color-controlTextHover: var(--theme-color-baseVeryLightened);
-  --theme-color-controlLightweightActive: var(
-    --theme-color-baseVeryVeryVeryLightened
-  );
-  --theme-color-emptyStateBg: var(--theme-color-baseVeryLightened);
-  --theme-color-graphLine: var(--theme-color-baseVeryDarkened);
+  --theme-color-controlContentAreaHover: var(--theme-color-baseLightened80);
+  --theme-color-controlUIHover: var(--theme-color-baseLightened60);
+  --theme-color-controlHover: var(--theme-color-baseLightened95);
+  --theme-color-controlSetBg: var(--theme-color-baseLightened80);
+  --theme-color-controlText: var(--theme-color-baseDarkened70);
+  --theme-color-controlTextHover: var(--theme-color-baseLightened80);
+  --theme-color-controlLightweightActive: var(--theme-color-baseLightened95);
+  --theme-color-emptyStateBg: var(--theme-color-baseLightened80);
+  --theme-color-graphLine: var(--theme-color-baseDarkened80);
   --theme-color-hotkey: var(--theme-color-base);
-  --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
+  --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
-  --theme-color-interactiveActive: var(--theme-color-baseSlightlyLightened);
-  --theme-color-kanbanLaneBg: var(--theme-color-baseVeryLightened);
-  --theme-color-log: var(--theme-color-baseVeryDarkened);
-  --theme-color-logBg: var(--theme-color-baseSlightlyLightened);
-  --theme-color-modalContentBg: var(--theme-color-baseLightened);
-  --theme-color-menuBg: var(--theme-color-baseVeryLightened);
-  --theme-color-mobileToolbarBg: var(--theme-color-baseVeryLightened);
+  --theme-color-interactiveActive: var(--theme-color-baseLightened25);
+  --theme-color-kanbanLaneBg: var(--theme-color-baseLightened80);
+  --theme-color-log: var(--theme-color-baseDarkened80);
+  --theme-color-logBg: var(--theme-color-baseLightened25);
+  --theme-color-modalContentBg: var(--theme-color-baseLightened60);
+  --theme-color-menuBg: var(--theme-color-baseLightened80);
+  --theme-color-mobileToolbarBg: var(--theme-color-baseLightened80);
   --theme-color-navFileTag: var(--theme-color-base);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
   --theme-color-navFileTagBorder: var(--theme-color-base);
-  --theme-color-navigationButtonBgHover: var(--theme-color-baseVeryTransparent);
-  --theme-color-notice: var(--theme-color-baseVeryVeryVeryLightened);
-  --theme-color-noticeBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-settingsBg: var(--theme-color-baseVeryLightened);
-  --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryVeryLightened);
-  --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent);
-  --theme-color-suggestionBg: var(--theme-color-baseVeryVeryLightened);
+  --theme-color-navigationButtonBgHover: var(--theme-color-baseTransparent25);
+  --theme-color-notice: var(--theme-color-baseLightened95);
+  --theme-color-noticeBg: var(--theme-color-baseDarkened80);
+  --theme-color-settingsBg: var(--theme-color-baseLightened80);
+  --theme-color-settingsBgStripe: var(--theme-color-baseLightened95);
+  --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent50);
+  --theme-color-suggestionBg: var(--theme-color-baseLightened85);
   --theme-color-switcherBgActive: var(--theme-color-base);
-  --theme-color-tabNavBg: var(--theme-color-baseLightened);
+  --theme-color-tabNavBg: var(--theme-color-baseLightened60);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
     calc(var(--accent-s) * 1.5),
@@ -857,9 +846,9 @@ body .metadata-property[data-property-key="tags"] {
     calc(var(--accent-l) * 0.4)
   );
   --theme-color-textMeta: var(--theme-color-base);
-  --theme-color-textSelected: var(--theme-color-baseVeryLightened);
-  --theme-color-textTabInactive: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-warningBg: var(--theme-color-baseVeryVeryVeryLightened);
+  --theme-color-textSelected: var(--theme-color-baseLightened80);
+  --theme-color-textTabInactive: var(--theme-color-baseDarkened25);
+  --theme-color-warningBg: var(--theme-color-baseLightened95);
   --theme-shadow-control: 0 1px 2px
     hsla(
       var(--base-h),
@@ -935,7 +924,7 @@ body .metadata-property[data-property-key="tags"] {
   Gradient from contrast setting
 
   At 0 contrast, this sets both ends of the gradient to base color plus 50% white
-  At 0.2 (default), it matches --theme-color-baseLightened and --theme-color-baseSomewhatLightened
+  At 0.2 (default), it matches --theme-color-baseLightened60 and --theme-color-baseLightened40
   At 1, the top is white, bottom is base color
   */
   --theme-color-gradientTop: color-mix(
@@ -952,13 +941,13 @@ body .metadata-property[data-property-key="tags"] {
 .theme-light,
 .theme-light .metadata-property:not([data-property-key="tags"]),
 .theme-light .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--theme-color-baseSlightlyTransparent);
+  --pill-background: var(--theme-color-baseTransparent75);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: white;
   --pill-color-hover: white;
-  --pill-color-remove: var(--theme-color-baseVeryLightened);
-  --pill-color-remove-hover: var(--theme-color-baseVeryLightened);
-  --pill-background-remove-hover: var(--theme-color-baseSlightlyLightened);
+  --pill-color-remove: var(--theme-color-baseLightened80);
+  --pill-color-remove-hover: var(--theme-color-baseLightened80);
+  --pill-background-remove-hover: var(--theme-color-baseLightened25);
 }
 .theme-light.theme-setting-lightModeNoteBgNearWhite {
   --background-primary: color-mix(
@@ -972,35 +961,31 @@ body .metadata-property[data-property-key="tags"] {
 .theme-dark,
 .theme-dark .theme-light {
   /* Built-in variables */
-  --background-modifier-active-hover-alt: var(
-    --theme-color-baseSlightlyDarkened
-  );
-  --background-modifier-active-hover: var(--theme-color-baseDarkened);
-  --background-modifier-border-focus: var(--theme-color-baseSlightlyDarkened);
-  --background-modifier-border: var(--theme-color-baseSlightlyDarkened);
+  --background-modifier-active-hover-alt: var(--theme-color-baseDarkened25);
+  --background-modifier-active-hover: var(--theme-color-baseDarkened70);
+  --background-modifier-border-focus: var(--theme-color-baseDarkened25);
+  --background-modifier-border: var(--theme-color-baseDarkened25);
   --background-modifier-hover: var(--theme-color-base);
-  --blockquote-border-color: var(--theme-color-baseVeryDarkened);
+  --blockquote-border-color: var(--theme-color-baseDarkened80);
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
-  --empty-pane-color: var(--theme-color-baseDarkened);
-  --icon-color-focused: var(--theme-color-baseVeryLightened);
+  --empty-pane-color: var(--theme-color-baseDarkened70);
+  --icon-color-focused: var(--theme-color-baseLightened80);
   --icon-color-hover: hsl(
     var(--base-h),
     calc(var(--base-s) * 0.2),
     calc(var(--base-l) * 1.5)
   );
-  --icon-color-hover: var(--theme-color-baseVeryLightened);
+  --icon-color-hover: var(--theme-color-baseLightened80);
   --icon-color: var(--theme-color-base);
-  --modal-background: var(--theme-color-baseVeryDarkened);
-  --nav-collapse-icon-color-collapsed: var(
-    --theme-color-baseSlightlyTransparent
-  );
-  --nav-collapse-icon-color: var(--theme-color-baseSlightlyTransparent);
-  --nav-indentation-guide-color: var(--theme-color-baseVeryTransparent);
+  --modal-background: var(--theme-color-baseDarkened80);
+  --nav-collapse-icon-color-collapsed: var(--theme-color-baseTransparent75);
+  --nav-collapse-icon-color: var(--theme-color-baseTransparent75);
+  --nav-indentation-guide-color: var(--theme-color-baseTransparent25);
   --nav-item-background-active: var(--theme-color-base);
-  --nav-item-background-selected: var(--theme-color-baseVeryTransparent);
-  --nav-item-color-active: var(--theme-color-baseVeryDarkened);
-  --nav-item-color: var(--theme-color-baseLightened);
+  --nav-item-background-selected: var(--theme-color-baseTransparent25);
+  --nav-item-color-active: var(--theme-color-baseDarkened80);
+  --nav-item-color: var(--theme-color-baseLightened60);
   --nav-item-color-hover: black;
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem
@@ -1052,22 +1037,18 @@ body .metadata-property[data-property-key="tags"] {
   );
   --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
   --tab-background-active: var(--background-primary);
-  --tab-background-inactive: var(--theme-color-baseVeryVeryDarkened);
-  --text-normal: var(--theme-color-baseLightened);
-  --text-faint: var(--theme-color-baseSlightlyLightened);
-  --background-prompt: var(--theme-color-baseVeryDarkened);
+  --tab-background-inactive: var(--theme-color-baseDarkened85);
+  --text-normal: var(--theme-color-baseLightened60);
+  --text-faint: var(--theme-color-baseLightened25);
+  --background-prompt: var(--theme-color-baseDarkened80);
   --interactive-accent: var(--theme-color-base);
-  --table-border-color: var(--theme-color-baseDarkened);
-  --table-header-border-color: var(--theme-color-baseDarkened);
+  --table-border-color: var(--theme-color-baseDarkened70);
+  --table-header-border-color: var(--theme-color-baseDarkened70);
 
-  --metadata-property-background: var(--theme-color-baseVeryDarkened);
-  --metadata-property-background-hover: var(--theme-color-baseVeryDarkened);
-  --metadata-label-background-active: var(
-    --theme-color-baseVeryVeryVeryDarkened
-  );
-  --metadata-input-background-active: var(
-    --theme-color-baseVeryVeryVeryDarkened
-  );
+  --metadata-property-background: var(--theme-color-baseDarkened80);
+  --metadata-property-background-hover: var(--theme-color-baseDarkened80);
+  --metadata-label-background-active: var(--theme-color-baseDarkened90);
+  --metadata-input-background-active: var(--theme-color-baseDarkened90);
 
   /* Background for content area */
   /* This may be overridden below by the theme-value-darkModeNoteBg style setting. */
@@ -1077,65 +1058,59 @@ body .metadata-property[data-property-key="tags"] {
     black calc(100% * 0.95)
   );
   /* Background for controls area */
-  --background-secondary: var(--theme-color-baseDarkened);
+  --background-secondary: var(--theme-color-baseDarkened70);
 
   /* New variables for this theme */
-  --theme-color-activeLineHighlight: var(--theme-color-baseVeryVeryTransparent);
+  --theme-color-activeLineHighlight: var(--theme-color-baseTransparent12);
   --theme-color-audioRecordingActive: var(--theme-color-redLightened);
-  --theme-color-blockId: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-calendarBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-calendarDayBg: var(--theme-color-darkenTransparent);
-  --theme-color-communityItemBg: var(--theme-color-baseVeryDarkened);
+  --theme-color-blockId: var(--theme-color-baseDarkened25);
+  --theme-color-calendarBg: var(--theme-color-baseDarkened80);
+  --theme-color-calendarDayBg: var(--theme-color-darkenTransparent50);
+  --theme-color-communityItemBg: var(--theme-color-baseDarkened80);
   --theme-color-communityItemBgActive: var(--theme-color-base);
-  --theme-color-communityItemBgHover: var(--theme-color-baseDarkened);
-  --theme-color-communityItemBgSelected: var(
-    --theme-color-baseSlightlyDarkened
-  );
+  --theme-color-communityItemBgHover: var(--theme-color-baseDarkened70);
+  --theme-color-communityItemBgSelected: var(--theme-color-baseDarkened25);
   --theme-color-contentItemBg: rgba(0, 0, 0, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgba(0, 0, 0, 0.1);
-  --theme-color-control: var(--theme-color-baseLightened);
+  --theme-color-control: var(--theme-color-baseLightened60);
   --theme-color-controlActive: var(--theme-color-control);
-  --theme-color-controlBg: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-controlBg: var(--theme-color-baseDarkened25);
   --theme-color-controlBgHover: var(--theme-color-base);
-  --theme-color-controlBgLowWeight: var(
-    --theme-color-darkenSlightlyTransparent
-  );
-  --theme-color-controlContentArea: var(--theme-color-baseLightened);
-  --theme-color-controlContentAreaHover: var(--theme-color-baseVeryDarkened);
-  --theme-color-controlUIHover: var(--theme-color-baseDarkened);
-  --theme-color-controlHover: var(--theme-color-baseVeryVeryVeryDarkened);
-  --theme-color-controlSetBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-controlText: var(--theme-color-baseLightened);
-  --theme-color-controlTextHover: var(--theme-color-baseVeryDarkened);
-  --theme-color-controlLightweightActive: var(
-    --theme-color-baseVeryVeryVeryLightened
-  );
-  --theme-color-emptyStateBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-graphLine: var(--theme-color-baseVeryLightened);
+  --theme-color-controlBgLowWeight: var(--theme-color-darkenTransparent25);
+  --theme-color-controlContentArea: var(--theme-color-baseLightened60);
+  --theme-color-controlContentAreaHover: var(--theme-color-baseDarkened80);
+  --theme-color-controlUIHover: var(--theme-color-baseDarkened70);
+  --theme-color-controlHover: var(--theme-color-baseDarkened90);
+  --theme-color-controlSetBg: var(--theme-color-baseDarkened80);
+  --theme-color-controlText: var(--theme-color-baseLightened60);
+  --theme-color-controlTextHover: var(--theme-color-baseDarkened80);
+  --theme-color-controlLightweightActive: var(--theme-color-baseLightened95);
+  --theme-color-emptyStateBg: var(--theme-color-baseDarkened80);
+  --theme-color-graphLine: var(--theme-color-baseLightened80);
   --theme-color-hotkey: var(--theme-color-base);
-  --theme-color-inputBorder: var(--theme-color-baseSlightlyLightened);
+  --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
-  --theme-color-interactiveActive: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-kanbanLaneBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-log: var(--theme-color-baseVeryLightened);
-  --theme-color-logBg: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-menuBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-mobileToolbarBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-modalContentBg: var(--theme-color-baseDarkened);
-  --theme-color-navFileTag: var(--theme-color-baseSlightlyDarkened);
+  --theme-color-interactiveActive: var(--theme-color-baseDarkened25);
+  --theme-color-kanbanLaneBg: var(--theme-color-baseDarkened80);
+  --theme-color-log: var(--theme-color-baseLightened80);
+  --theme-color-logBg: var(--theme-color-baseDarkened25);
+  --theme-color-menuBg: var(--theme-color-baseDarkened80);
+  --theme-color-mobileToolbarBg: var(--theme-color-baseDarkened80);
+  --theme-color-modalContentBg: var(--theme-color-baseDarkened70);
+  --theme-color-navFileTag: var(--theme-color-baseDarkened25);
   --theme-color-navFileTagActive: var(--nav-item-color-active);
   --theme-color-navFileTagActiveBorder: var(--nav-item-color-active);
-  --theme-color-navFileTagBorder: var(--theme-color-baseSlightlyDarkened);
-  --theme-color-navigationButtonBgHover: var(--theme-color-baseVeryTransparent);
-  --theme-color-notice: var(--theme-color-baseVeryVeryVeryDarkened);
-  --theme-color-noticeBg: var(--theme-color-baseVeryVeryVeryLightened);
-  --theme-color-settingsBg: var(--theme-color-baseVeryDarkened);
-  --theme-color-settingsBgStripe: var(--theme-color-baseVeryVeryVeryDarkened);
-  --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent);
-  --theme-color-suggestionBg: var(--theme-color-baseVeryVeryDarkened);
+  --theme-color-navFileTagBorder: var(--theme-color-baseDarkened25);
+  --theme-color-navigationButtonBgHover: var(--theme-color-baseTransparent25);
+  --theme-color-notice: var(--theme-color-baseDarkened90);
+  --theme-color-noticeBg: var(--theme-color-baseLightened95);
+  --theme-color-settingsBg: var(--theme-color-baseDarkened80);
+  --theme-color-settingsBgStripe: var(--theme-color-baseDarkened90);
+  --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent50);
+  --theme-color-suggestionBg: var(--theme-color-baseDarkened85);
   --theme-color-switcherBgActive: var(--theme-color-base);
-  --theme-color-tabNavBg: var(--theme-color-baseDarkened);
+  --theme-color-tabNavBg: var(--theme-color-baseDarkened70);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
     calc(var(--accent-s) * 1.5),
@@ -1148,9 +1123,9 @@ body .metadata-property[data-property-key="tags"] {
     calc(var(--accent-l) * 1.3)
   );
   --theme-color-textMeta: var(--theme-color-base);
-  --theme-color-textSelected: var(--theme-color-baseVeryDarkened);
-  --theme-color-textTabInactive: var(--theme-color-baseSlightlyLightened);
-  --theme-color-warningBg: var(--theme-color-baseVeryVeryVeryLightened);
+  --theme-color-textSelected: var(--theme-color-baseDarkened80);
+  --theme-color-textTabInactive: var(--theme-color-baseLightened25);
+  --theme-color-warningBg: var(--theme-color-baseLightened95);
   --theme-shadow-control: 0px 1px 2px
     hsla(
       var(--base-h),
@@ -1205,7 +1180,7 @@ body .metadata-property[data-property-key="tags"] {
   Gradient from contrast setting
 
   At 0 contrast, this sets both ends of the gradient to base color plus 70% black
-  At 0.2 (default), it matches --theme-color-baseDarkened and --theme-color-baseVeryDarkened
+  At 0.2 (default), it matches --theme-color-baseDarkened70 and --theme-color-baseDarkened80
   At 1, the top is base color, bottom pure black
   */
   --theme-color-gradientTop: color-mix(
@@ -1222,13 +1197,13 @@ body .metadata-property[data-property-key="tags"] {
 .theme-dark,
 .theme-dark .metadata-property:not([data-property-key="tags"]),
 .theme-dark .metadata-property[data-property-key="tags"] {
-  --pill-background: var(--theme-color-baseSlightlyTransparent);
+  --pill-background: var(--theme-color-baseTransparent75);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: black;
   --pill-color-hover: black;
-  --pill-color-remove: var(--theme-color-baseVeryDarkened);
-  --pill-color-remove-hover: var(--theme-color-baseVeryDarkened);
-  --pill-background-remove-hover: var(--theme-color-baseSlightlyDarkened);
+  --pill-color-remove: var(--theme-color-baseDarkened80);
+  --pill-color-remove-hover: var(--theme-color-baseDarkened80);
+  --pill-background-remove-hover: var(--theme-color-baseDarkened25);
 }
 .theme-dark.theme-value-darkModeNoteBgFullBlack {
   /* Override note background when specified by style settings. */
