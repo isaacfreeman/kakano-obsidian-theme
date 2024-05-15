@@ -448,6 +448,11 @@ body {
     var(--theme-color-base),
     white calc(100% * 0.8)
   );
+  --theme-color-baseLightened70: color-mix(
+    in srgb,
+    var(--theme-color-base),
+    white calc(100% * 0.7)
+  );
   --theme-color-baseLightened60: color-mix(
     in srgb,
     var(--theme-color-base),
@@ -473,6 +478,11 @@ body {
     in srgb,
     var(--theme-color-base),
     black calc(100% * 0.4)
+  );
+  --theme-color-baseDarkened60: color-mix(
+    in srgb,
+    var(--theme-color-base),
+    black calc(100% * 0.6)
   );
   --theme-color-baseDarkened70: color-mix(
     in srgb,
@@ -833,7 +843,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent50);
   --theme-color-suggestionBg: var(--theme-color-baseLightened85);
   --theme-color-switcherBgActive: var(--theme-color-base);
-  --theme-color-tabNavBg: var(--theme-color-baseLightened60);
+  --theme-color-tabNavBg: var(--theme-color-baseLightened70);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
     calc(var(--accent-s) * 1.5),
