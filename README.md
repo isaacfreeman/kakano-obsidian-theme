@@ -4,7 +4,11 @@
 
 Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient background derived from a user-selected base color.
 
-[![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg)](https://www.buymeacoffee.com/isaacfreeman)
+<div align="center">
+  <a href="https://www.buymeacoffee.com/isaacfreeman">
+    <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee!&emoji=&slug=isaacfreeman&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
+  </a>
+ </div>
 
 
 - [Kakano](#kakano)
