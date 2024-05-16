@@ -156,6 +156,8 @@ If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plu
   Work in progress to provide a 3D effect on mobile, with prompts and modals appearing to push the main content back when they appear in front. I'm not sure yet whether the HTML structure of Obsidian will allow me to apply this consistently, but it looks cool in the places I've tried it.
 - **Full width status bar**
   Kakano moves the status bad below the main content, which looks fine provided you don't have too many items there. If it gets too wide it overlaps with the sidebars, so this setting makes space for it use the full width of the window.
+- **Use a custom gradient for the background**
+  Kakano normally provides a smooth gradient background using the same hue as the base color. This setting overrides that so you can have a gradient with different hues top and bottom.
 
 ## Plugin support
 Kakano has specific styling for the following plugins:
