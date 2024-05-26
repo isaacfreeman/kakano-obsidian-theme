@@ -384,6 +384,7 @@ body {
   --file-line-width: 40rem;
   --file-margins: 0 2em;
   --font-ui-smaller: 0.8rem;
+  --header-height: calc(var(--icon-size) + 1rem);
   --heading-spacing: 0.67em;
   --input-border-width: 2px;
   --list-marker-color-collapsed: var(--list-marker-color);
@@ -2589,6 +2590,9 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     box-shadow: var(--theme-shadow-input);
   }
 }
+.workspace-tab-header-inner {
+  padding: 0.5rem;
+}
 @media (hover: hover) {
   .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
     color: var(--icon-color-focused);
@@ -2630,7 +2634,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     padding: 0;
   }
   .workspace-tab-header.is-active .workspace-tab-header-inner {
-    padding-left: 0.25em;
+    padding-left: 0.25rem;
   }
   .workspace-tab-header-inner::after {
     /* Not sure what this is for */
@@ -2640,7 +2644,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
     container-name: root-tab;
     container-type: size;
-    padding: 0.25em 0.5em 0.25em 0.5em;
+    padding: 0.5rem;
   }
   /* Show icons for markdown tabs, unless they get too narrow. */
   .workspace-tab-header[data-type="markdown"] .workspace-tab-header-inner-icon,
