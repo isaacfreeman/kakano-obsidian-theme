@@ -846,7 +846,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlTextHover: var(--theme-color-baseLightened80);
   --theme-color-controlLightweightActive: var(--theme-color-baseLightened95);
   --theme-color-emptyStateBg: var(--theme-color-baseLightened80);
-  --theme-color-graphLine: var(--theme-color-baseDarkened80);
+  --theme-color-graphLine: black; /* Canvas doesn't support color-mix */
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
@@ -1135,7 +1135,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-controlTextHover: var(--theme-color-baseDarkened80);
   --theme-color-controlLightweightActive: var(--theme-color-baseLightened95);
   --theme-color-emptyStateBg: var(--theme-color-baseDarkened80);
-  --theme-color-graphLine: var(--theme-color-baseLightened80);
+  --theme-color-graphLine: white; /* Canvas doesn't support color-mix */
   --theme-color-hotkey: var(--theme-color-base);
   --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
@@ -5088,7 +5088,29 @@ input.metadata-property-key-input {
 .graph-view.color-arrow,
 .graph-view.color-line {
   color: var(--theme-color-graphLine);
+  opacity: 0.25;
 }
+.graph-view.color-fill {
+  color: var(--theme-color-graphLine);
+  opacity: 0.5;
+}
+.graph-view.color-fill-tag {
+}
+.graph-view.color-fill-attachment {
+}
+.graph-view.color-circle {
+}
+.graph-view.color-text {
+  color: var(--theme-color-graphLine);
+  opacity: 0.5;
+}
+.graph-view.color-fill-highlight {
+}
+.graph-view.color-line-highlight {
+}
+.graph-view.color-fill-unresolved {
+}
+
 /* #endregion */
 /* #region   Core Plugin: Note composer */
 
