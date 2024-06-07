@@ -1892,6 +1892,7 @@ audio::-webkit-media-controls-panel {
 .markdown-source-view.mod-cm6 .code-block-flair {
   width: auto;
   min-width: 2em;
+  text-wrap: nowrap;
 }
 body:not(.is-mobile) {
   .cm-content .cm-embed-block[contenteditable="false"]:has(.edit-block-button) {
