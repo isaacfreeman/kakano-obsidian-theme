@@ -2763,9 +2763,10 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   .workspace-tab-header.is-active {
   background-color: var(--background-primary);
 } /* #endregion */
-/* #region   Ribbon styling */
+/* #region   Ribbon */
 .workspace-ribbon {
   padding-left: 0;
+  margin-bottom: 2.5rem;
 }
 .side-dock-actions {
   border-top-right-radius: var(--radius-m);
@@ -2783,6 +2784,20 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 }
 .side-dock-actions .side-dock-ribbon-action.clickable-icon.is-active {
   color: var(--theme-color-controlActive);
+}
+/* #endregion */
+/* #region   Sidedock Vault Profile */
+body:not(.is-mobile)
+  .workspace-split.mod-left-split
+  .workspace-sidedock-vault-profile {
+  background-color: transparent;
+  padding: 0 0.5rem 0.25em 0.5rem;
+}
+body.show-ribbon:not(.is-mobile)
+  .workspace-split.mod-left-split
+  .workspace-sidedock-vault-profile {
+  margin-left: calc(-1 * var(--ribbon-width));
+  width: calc(100% + var(--ribbon-width));
 }
 /* #endregion */
 /* #region   Status bar */
