@@ -2152,7 +2152,7 @@ li[data-task=">"] > p > input:checked:after {
   padding: 0 var(--theme-spacing-mobileHorizontalSpacing) 0.5rem
     var(--theme-spacing-mobileHorizontalSpacing);
 }
-.is-mobile .mod-root .workspace-tabs {
+.is-mobile .workspace-split.mod-root .workspace-tabs {
   padding: 0;
 }
 .is-mobile .view-actions {
@@ -2162,8 +2162,9 @@ li[data-task=">"] > p > input:checked:after {
   height: auto;
   padding-left: 0;
 }
-.is-phone .mod-root .workspace-tabs .workspace-tab-container {
+.is-phone .workspace .mod-root .workspace-tabs .workspace-tab-container {
   background: transparent;
+  border-radius: 0;
 }
 .is-phone
   .workspace-fake-target-overlay:not(.is-in-sidebar)
@@ -2198,10 +2199,7 @@ li[data-task=">"] > p > input:checked:after {
   flex-shrink: 0;
   padding: 0.5em;
 }
-.is-phone .mod-root .workspace-tabs .workspace-tab-container {
-  border-radius: 0;
-}
-.is-phone .view-content {
+.is-phone .workspace-split.mod-root .view-content {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(
@@ -2213,19 +2211,23 @@ li[data-task=">"] > p > input:checked:after {
       0.5
   );
 }
-.is-phone .mod-root .workspace-tab-container {
+.is-phone .workspace-split.mod-root .workspace-tabs .workspace-tab-container {
+  box-shadow: none;
   /* Bottom margin the same as height of .mobile-navbar, to avoid overlap */
   margin-bottom: calc(
     max(var(--size-4-2), var(--safe-area-inset-bottom)) + var(--size-4-2) +
       var(--size-2-2) * 4 + var(--icon-size)
   );
 }
-.is-phone.mod-toolbar-open .mod-root .workspace-tab-container {
+.is-phone.mod-toolbar-open .mod-root .workspace-tabs .workspace-tab-container {
   /* ...except when the toolbar is open. Using this as a proxy for detecting that the on-screen keyboard is present. */
   margin-bottom: 0;
 }
+.mobile-navbar {
+  background-color: transparent;
+}
 
-/* Drawers */
+/* #region   Drawers */
 .workspace-drawer {
   background: none;
   bottom: 0.5rem;
@@ -2323,13 +2325,8 @@ li[data-task=">"] > p > input:checked:after {
     background-color: var(--background-modifier-hover);
   }
 }
-
-/* Mobile navbar */
-.mobile-navbar {
-  background-color: transparent;
-}
-
-/* Pull action */
+/* #endregion */
+/* #region   Pull action */
 .pull-action.mod-activated {
   background-color: var(--interactive-accent);
   color: var(--text-on-accent);
@@ -2353,8 +2350,8 @@ li[data-task=">"] > p > input:checked:after {
   font-size: 90%;
   transition: background-color ease-in-out 150ms;
 }
-
-/* Mobile modals */
+/* #endregion */
+/* #region   Mobile modals */
 .is-phone .modal-container {
   padding: max(calc(2 * var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
 }
@@ -2442,6 +2439,7 @@ li[data-task=">"] > p > input:checked:after {
 .is-phone .mod-community-modal .community-modal-controls {
   padding: 1em;
 }
+/* #endregion */
 /* #region   Mobile scaling */
 /* Scale background elements smaller than foreground */
 body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
