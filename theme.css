@@ -2138,6 +2138,7 @@ li[data-task=">"] > p > input:checked:after {
 
 .is-mobile {
   --file-margins: 0;
+  --mobile-sidebar-background: transparent;
   --view-header-height: auto;
 }
 .is-phone {
@@ -3911,7 +3912,8 @@ input.document-replace-input.mod-no-match {
 /* #endregion */
 /* #region   Selects – regular */
 select,
-.setting-item-control select .dropdown {
+.setting-item-control select .dropdown,
+.workspace-drawer-active-tab-header {
   -webkit-appearance: none;
   appearance: none;
   border: none;
