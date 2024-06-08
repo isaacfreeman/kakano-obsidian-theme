@@ -3449,11 +3449,12 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 }
 .is-phone .notice-container {
   padding: 0.5em 0.5em 2em 0.5em;
-  top: var(--safe-area-inset-top);
+  top: auto;
   left: var(--safe-area-inset-left);
   right: var(--safe-area-inset-right);
   max-width: 100%;
   margin: 0 auto;
+  bottom: max(3rem, var(--safe-area-inset-bottom));
 }
 .notice,
 .is-phone .notice {
@@ -3469,6 +3470,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 .is-phone .notice {
   text-align: center;
   max-width: none;
+  width: auto;
   margin: 0rem 0.5rem 1rem 0.5rem;
 }
 /* #endregion */
