@@ -4677,8 +4677,8 @@ body:not(.setting-properties-position-below)
 }
 
 /* Consistent styles for inline metadata sections */
-.mod-root .metadata-container,
-.mod-root .embedded-backlinks {
+.metadata-container,
+.embedded-backlinks {
   animation: 0.5s 1 alternate fadein;
   background: var(--metadata-property-background);
   border-radius: 0;
