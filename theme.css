@@ -419,6 +419,9 @@ body {
   --ribbon-background-collapsed: transparent;
   --ribbon-background: transparent;
   --ribbon-width: 3em;
+  --sidebar-markdown-font-size: calc(
+    var(--font-text-size) * var(--theme-value-sidebarFontScalingFactor)
+  );
   --slider-track-background: var(--theme-color-baseTransparent50);
   --status-bar-background: var(--theme-color-gradientTop);
   --status-bar-text-color: var(--text-normal);
@@ -445,6 +448,7 @@ body {
   --theme-length-collapseIndicatorSize: 1.5rem;
   --theme-length-controlSetSpacing: 0.5rem;
   --theme-length-statusBarHeight: 2rem;
+  --theme-value-sidebarFontScalingFactor: 0.8;
 }
 /* #endregion */
 /* #region   Colors */
@@ -1390,6 +1394,17 @@ body {
 }
 .is-phone.theme-setting-headingScaleFactorPhone1point618 {
   --theme-value-headingScaleFactorPhone: 1.618;
+}
+/* Smaller font size for markdown documents in sidebar */
+.mod-sidedock {
+  --h1-size: calc(var(--theme-value-headingScaleFactor) * var(--h2-size));
+  --h2-size: calc(var(--theme-value-headingScaleFactor) * var(--h3-size));
+  --h3-size: calc(var(--theme-value-headingScaleFactor) * var(--h4-size));
+  --h4-size: calc(var(--theme-value-headingScaleFactor) * var(--h5-size));
+  --h5-size: calc(var(--theme-value-headingScaleFactor) * var(--h6-size));
+  --h6-size: calc(
+    var(--theme-value-sidebarFontScalingFactor) * var(--font-text-size)
+  );
 }
 
 .markdown-rendered
