@@ -2723,7 +2723,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
     padding: 0 1rem;
 
     .view-content {
-      background-color: white;
+      background-color: var(--tab-background-active);
       border-radius: var(--tab-radius);
     }
   }
@@ -3516,11 +3516,13 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 /* #endregion */
 /* #region Trees */
 
-.tree-item-self {
+.tree-item-self,
+.tree-item-self.mod-collapsible {
   gap: 0.5em;
   justify-content: flex-start;
   /* Setting padding-left to zero here, as it's sometimes overridden e.g. in file list */
   padding: 0.25em 0.5em 0.25em 0;
+  padding: 0;
 }
 .tree-item-self .tree-item-icon {
   /* Icons that represent an object have the same colour as the related text */
@@ -4053,6 +4055,9 @@ select:focus,
     font-weight: var(--font-medium);
   }
 }
+.mod-collapsible > .tree-item-inner {
+  padding-inline-start: 0;
+}
 .metadata-properties-heading:before {
   /* Override absolute positioning from app, so we're consistent with other collapsibles */
   position: static;
@@ -4453,7 +4458,7 @@ body:not(.is-phone) .modal.mod-sync-history {
   max-width: 60%;
   margin-bottom: 0.5em;
   padding-left: 2em;
-  float: right;
+  float: inline-end;
 }
 .community-modal-search-summary {
   margin: 0;
@@ -5527,7 +5532,7 @@ body {
   font-weight: var(--table-header-weight);
   color: var(--table-header-color);
   font-family: var(--table-header-font);
-  text-align: left;
+  text-align: start;
   line-height: var(--line-height-tight);
 }
 .dataview.table-view-table thead th:first-of-type {
