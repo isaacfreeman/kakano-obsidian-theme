@@ -1806,7 +1806,6 @@ li.is-collapsed .list-bullet:after,
   top: 0;
   right: 0;
 }
-
 /* Audio embed */
 .markdown-source-view.mod-cm6 .cm-content > .media-embed:has(> audio) {
   display: flex;
@@ -3485,7 +3484,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   text-align: center;
   max-width: none;
   width: auto;
-  margin: 0rem 0.5rem 1rem 0.5rem;
+  margin: 0 0.5rem 1rem 0.5rem;
 }
 /* #endregion */
 /* #region Content references (search results, incoming/outgoing links, etc.) */
@@ -4677,7 +4676,7 @@ body:not(.setting-properties-position-below)
 }
 
 /* Consistent styles for inline metadata sections */
-.metadata-container,
+.mod-root .metadata-container,
 .embedded-backlinks {
   animation: 0.5s 1 alternate fadein;
   background: var(--metadata-property-background);
