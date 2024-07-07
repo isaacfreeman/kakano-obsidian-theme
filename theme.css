@@ -459,7 +459,7 @@ body {
   --base-s: var(--accent-s);
   --base-l: var(--accent-l);
 
-  /* The base color, derived from either the accent or the Style Settings base color. Note that this may be overridden by one of the prest colours below. */
+  /* The base color, derived from either the accent or the Style Settings base color. Note that this may be overridden by one of the preset colours below. */
   --theme-color-base: hsl(var(--base-h), var(--base-s), var(--base-l));
 
   /*  Base colour variants */
@@ -733,6 +733,11 @@ body .metadata-property[data-property-key="tags"] {
   --background-modifier-border: var(--theme-color-baseLightened25);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseLightened80);
+  --caret-color: hsl(
+    var(--accent-h),
+    calc(var(--accent-s)),
+    calc(var(--accent-l) * 0.8)
+  );
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
   --empty-pane-color: var(--theme-color-baseDarkened70);
@@ -1019,6 +1024,11 @@ body.theme-light.theme-setting-customGradient {
   --background-modifier-border: var(--theme-color-baseDarkened25);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseDarkened80);
+  --caret-color: hsl(
+    var(--accent-h),
+    calc(var(--accent-s)),
+    calc(var(--accent-l) * 0.8)
+  );
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
   --empty-pane-color: var(--theme-color-baseDarkened70);
