@@ -4633,7 +4633,10 @@ body:not(.is-phone) .modal.mod-sync-history {
   padding-bottom: 0;
 }
 .markdown-reading-view .mod-footer {
-  margin: 1em -2rem 0 -2rem;
+  margin: 1em 0 0 0;
+}
+.markdown-reading-view .markdown-rendered {
+  padding: 0;
 }
 
 .markdown-source-view.mod-cm6.is-readable-line-width
@@ -4716,7 +4719,7 @@ body:not(.setting-properties-position-below)
 }
 body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   width: calc(100% + 4rem);
-  margin: 0 -2rem;
+  margin: 0;
 }
 
 /* Tab content header */
