@@ -411,7 +411,7 @@ body {
   --nav-item-color-highlighted: var(--nav-item-hover);
   --nav-item-padding: 0.375em 0.75em 0.375em 0.75em;
   --nav-item-parent-padding: 0.25em 0 0.25em 0;
-  --p-spacing: 0;
+  --p-spacing: 1em;
   --pill-focus-left-adjust: 0;
   --pill-focus-width: 100%;
   --prompt-border-color: transparent;
