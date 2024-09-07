@@ -390,7 +390,6 @@ body {
   --list-marker-color-collapsed: var(--list-marker-color);
   --metadata-divider-width: 0;
   --metadata-gap: 0.5em;
-  --metadata-property-background-hover: var(--nav-item-background-hover);
   --modal-border-color: black;
   --modal-border-width: 0;
   --modal-height: 85vh;
@@ -536,17 +535,17 @@ body {
   );
 
   /* Base color with transparency */
-  --theme-color-baseTransparent50: hsla(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.5
-  );
   --theme-color-baseTransparent75: hsla(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.75
+  );
+  --theme-color-baseTransparent50: hsla(
+    var(--base-h),
+    var(--base-s),
+    var(--base-l),
+    0.5
   );
   --theme-color-baseTransparent25: hsla(
     var(--base-h),
@@ -820,7 +819,7 @@ body .metadata-property[data-property-key="tags"] {
   --table-header-border-color: var(--theme-color-baseLightened60);
 
   --metadata-property-background: var(--theme-color-baseLightened95);
-  --metadata-property-background-hover: var(--theme-color-baseLightened80);
+  --metadata-property-background-hover: var(--theme-color-baseTransparent12);
   --metadata-label-background-active: var(--theme-color-baseLightened95);
   --metadata-input-background-active: var(--theme-color-baseLightened95);
 
@@ -1110,7 +1109,7 @@ body.theme-light.theme-setting-customGradient {
   --table-header-border-color: var(--theme-color-baseDarkened70);
 
   --metadata-property-background: var(--theme-color-baseDarkened80);
-  --metadata-property-background-hover: var(--theme-color-baseDarkened80);
+  --metadata-property-background-hover: var(--theme-color-baseTransparent12);
   --metadata-label-background-active: var(--theme-color-baseDarkened90);
   --metadata-input-background-active: var(--theme-color-baseDarkened90);
 
@@ -4817,10 +4816,16 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   display: flex;
   gap: 0.5em;
   padding: var(--input-border-width);
+
+  .metadata-property-key {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.5em;
+  }
 }
 .metadata-property:focus-within {
-  background: var(--nav-item-background-hover);
-  border-color: var(--nav-item-background-hover);
+  background: var(--metadata-property-background-hover);
+  border-color: var(--metadata-property-background-hover);
   box-shadow: none;
 }
 @media (hover: hover) {
@@ -4828,15 +4833,11 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
     box-shadow: none;
   }
 }
-.metadata-property .metadata-property-key {
-  align-items: center;
-  display: flex;
-  gap: 0.5em;
-}
 .metadata-property .metadata-property-key:focus-within {
   background: transparent;
 }
-input.metadata-property-key-input {
+.metadata-property input.metadata-property-key-input {
+  height: var(--input-height);
   color: var(--theme-color-control);
 }
 .metadata-property .multi-select-input {
