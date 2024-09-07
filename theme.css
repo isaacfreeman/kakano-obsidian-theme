@@ -1027,7 +1027,7 @@ body.theme-light.theme-setting-customGradient {
   --caret-color: hsl(
     var(--accent-h),
     calc(var(--accent-s)),
-    calc(var(--accent-l) * 0.8)
+    calc(var(--accent-l) * 1.2)
   );
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
