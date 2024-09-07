@@ -4462,6 +4462,9 @@ input[type="text"].prompt-input::placeholder {
   box-shadow: var(--shadow-s);
   z-index: 1;
 }
+.modal-setting-nav-bar {
+  margin-left: 0.5rem;
+}
 /***** Resizeable modals *****/
 body:not(.is-phone) .modal.mod-settings.mod-sidebar-layout,
 body:not(.is-phone) .modal.mod-community-modal,
