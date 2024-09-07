@@ -2007,6 +2007,25 @@ body.theme-setting-highlightActiveLine {
   font-family: var(--font-monospace);
 }
 /* #endregion */
+/* #region   Live Preview mode */
+/* #region     Footnotes */
+.cm-s-obsidian span.cm-footref.cm-inline-footnote.cm-formatting-inline-footnote,
+.cm-s-obsidian span.cm-footref.cm-hmd-barelink.cm-formatting,
+.cm-s-obsidian span.cm-formatting-image,
+.cm-s-obsidian span.cm-formatting-link-string,
+.cm-s-obsidian span.cm-formatting-link {
+  color: var(--link-color);
+}
+.cm-s-obsidian span.cm-footref.cm-hmd-barelink,
+.cm-s-obsidian span.cm-blockid {
+  color: var(--link-color);
+}
+.cm-s-obsidian .cm-line.HyperMD-footnote span.cm-hmd-footnote,
+.cm-s-obsidian .cm-line.HyperMD-footnote span.cm-hmd-footnote .cm-underline {
+  color: var(--link-color);
+}
+/* #endregion */
+/* #endregion */
 /* #endregion */
 /* #region Markdown Checkboxes */
 
