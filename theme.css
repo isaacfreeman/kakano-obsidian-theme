@@ -4093,7 +4093,8 @@ select:focus,
 .embedded-backlinks .backlink-pane .tree-item-self,
 .graph-controls .graph-control-section .tree-item-self,
 .mod-collapsible,
-.search-result-file-title {
+.search-result-file-title,
+.setting-item-heading {
   border-radius: var(--radius-s);
   color: var(--text-faint);
   font-size: var(--nav-item-size);
@@ -4109,7 +4110,8 @@ select:focus,
   .embedded-backlinks .backlink-pane .tree-item-self:hover,
   .graph-controls .graph-control-section .tree-item-self:hover,
   .mod-collapsible:hover,
-  .search-result-file-title:hover {
+  .search-result-file-title:hover,
+  .setting-item-heading:hover {
     color: var(--nav-item-color-hover);
     background-color: var(--nav-item-background-hover);
     font-weight: var(--font-medium);
@@ -6470,6 +6472,38 @@ body:not(.is-mobile) .mobile-misc-tools-container .ToolIcon.is-mobile {
     margin-top: var(--input-border-width);
     margin-bottom: var(--input-border-width);
   }
+}
+
+.setting-item-heading {
+  padding: 0 0.5em;
+
+  .style-settings-collapse-indicator,
+  .setting-item-name,
+  .extra-setting-button {
+    color: inherit;
+  }
+}
+@media (hover: hover) {
+  .setting-item-heading:hover {
+  }
+}
+.style-settings-collapse-indicator > svg {
+  width: 10px;
+  height: 10px;
+}
+.style-settings-heading[data-level="0"] + .style-settings-container,
+.style-settings-heading[data-level="1"] + .style-settings-container,
+.style-settings-heading[data-level="2"] + .style-settings-container,
+.style-settings-heading[data-level="3"] + .style-settings-container,
+.style-settings-heading[data-level="4"] + .style-settings-container,
+.style-settings-heading[data-level="5"] + .style-settings-container,
+.style-settings-heading[data-level="6"] + .style-settings-container {
+  padding-left: calc(0.5em + 10px + 0.5em);
+}
+.style-settings-heading[data-level="0"]
+  + .style-settings-container
+  .style-settings-collapse-indicator {
+  margin-left: 0;
 }
 
 .setting-item.setting-item-heading.style-settings-heading[data-id="kakano-style"]
