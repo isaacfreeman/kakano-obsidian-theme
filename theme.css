@@ -329,6 +329,15 @@ settings:
         label: '1.618 - Golden Ratio'
         value: theme-setting-headingScaleFactorPhone1point618
   -
+    id: theme-setting-lineWidth
+    title: 'Line width'
+    description: 'Maximum line width in characters. 50-75 characters is often recommended for readability in languages with Latin scripts. 15-35 characters may be better for Chinese, Japanese and Korean characters.'
+    type: variable-number-slider
+    default: 60
+    min: 10
+    max: 120
+    step: 5
+  -
     id: heading-editorSettings
     title: Editor
     type: heading
@@ -381,7 +390,7 @@ body {
   --embed-border-right: none;
   --embed-border-top: none;
   --embed-padding: 1em;
-  --file-line-width: 40rem;
+  --file-line-width: calc(1ch * var(--theme-setting-lineWidth));
   --file-margins: 0 2em;
   --font-ui-smaller: 0.8rem;
   --header-height: calc(var(--icon-size) + 1rem);
@@ -440,6 +449,7 @@ body {
   --theme-color-tabBgInactiveHover: var(--theme-color-baseTransparent75);
   --theme-color-tableHeaderBg: var(--theme-color-baseTransparent12);
   --theme-lineHeight-tight: 1.3rem;
+  --theme-setting-lineWidth: 60;
   --theme-spacing-mobileHorizontalSpacing: calc(
     var(--theme-setting-mobileHorizontalPadding) * 1rem
   );
