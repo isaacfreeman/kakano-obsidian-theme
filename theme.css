@@ -2822,6 +2822,9 @@ body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
     .workspace-tab-header-container {
     padding: 0;
   }
+  .workspace-tabs.mod-top {
+    padding-top: 0.375rem;
+  }
 
   &:not(.is-tablet) {
     /* This element also seems to be a handle for window dragging */
@@ -2853,7 +2856,20 @@ body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
         top: 0.375rem;
         right: calc(0.25rem + var(--frame-right-space));
       }
+
       /* TODO: flash of button moving left during animation – can I prevent this? */
+      /*       button is moved in DOM - can I hide one or the other based on is-left-sidedock-open? */
+      .workspace.is-left-sidedock-open {
+        .mod-root .sidebar-toggle-button.mod-left {
+          display: none;
+        }
+      }
+      .workspace:not(.is-left-sidedock-open) {
+        .mod-sidedock .sidebar-toggle-button.mod-left {
+          display: none;
+        }
+      }
+
       .workspace:not(.is-left-sidedock-open) {
         .mod-root .workspace-tab-header-container {
           padding-left: calc(var(--frame-left-space) + 0.75rem);
@@ -2866,7 +2882,6 @@ body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
       }
     }
     &.is-fullscreen {
-      /* TODO: :before element prevents click */
       .sidebar-toggle-button.mod-left {
         top: 0.25rem;
         left: 0.25rem;
@@ -5676,7 +5691,126 @@ body {
   padding-bottom: 1em;
 }
 
-/*   #endregion */
+/* #endregion */
+/* #region   Community Plugin: Columns */
+/* Callout format – this also works without the plugin */
+
+:root {
+  --obsidian-columns-gap: 1em;
+  --obsidian-columns-padding: 0 0;
+  --obsidian-columns-min-width: 10em;
+  --obsidian-columns-def-span: 1;
+}
+div[data-callout|="col"].callout {
+  background-color: var(--background-primary); /* Override callout bg */
+  padding: 0;
+  border-style: none;
+
+  > div.callout-title {
+    display: none;
+  }
+
+  > div.callout-content {
+    > div[data-callout^="col-md"].callout {
+      flex-grow: var(--obsidian-columns-custom-span);
+      flex-basis: calc(
+        var(--obsidian-columns-min-width) * var(--obsidian-columns-custom-span)
+      );
+      width: calc(
+        var(--obsidian-columns-min-width) * var(--obsidian-columns-custom-span)
+      );
+
+      background-color: var(--background-primary); /* Override callout bg */
+      padding: 0;
+      border-style: none;
+    }
+    > div[data-callout|="col-md"].callout {
+      margin-block-start: 0;
+    }
+
+    > div[data-callout="-0.5"].callout {
+      --obsidian-columns-custom-span: 0.5;
+    }
+    > div[data-callout$="-1"].callout,
+    > div[data-callout="col-md"].callout {
+      --obsidian-columns-custom-span: 1;
+    }
+    > div[data-callout$="-1.5"].callout {
+      --obsidian-columns-custom-span: 1.5;
+    }
+    > div[data-callout$="-2"].callout {
+      --obsidian-columns-custom-span: 2;
+    }
+    > div[data-callout$="-2.5"].callout {
+      --obsidian-columns-custom-span: 2.5;
+    }
+    > div[data-callout$="-3"].callout {
+      --obsidian-columns-custom-span: 3;
+    }
+    > div[data-callout$="-3.5"].callout {
+      --obsidian-columns-custom-span: 3.5;
+    }
+    > div[data-callout$="-4"].callout {
+      --obsidian-columns-custom-span: 4;
+    }
+    > div[data-callout$="-4.5"].callout {
+      --obsidian-columns-custom-span: 4.5;
+    }
+    > div[data-callout$="-5"].callout {
+      --obsidian-columns-custom-span: 5;
+    }
+    > div[data-callout$="-5.5"].callout {
+      --obsidian-columns-custom-span: 5.5;
+    }
+    > div[data-callout$="-6"].callout {
+      --obsidian-columns-custom-span: 6;
+    }
+    > div[data-callout$="-6.5"].callout {
+      --obsidian-columns-custom-span: 6.5;
+    }
+    > div[data-callout$="-7"].callout {
+      --obsidian-columns-custom-span: 7;
+    }
+    > div[data-callout$="-7.5"].callout {
+      --obsidian-columns-custom-span: 7.5;
+    }
+    > div[data-callout$="-8"].callout {
+      --obsidian-columns-custom-span: 8;
+    }
+    > div[data-callout$="-8.5"].callout {
+      --obsidian-columns-custom-span: 8.5;
+    }
+    > div[data-callout$="-9"].callout {
+      --obsidian-columns-custom-span: 9;
+    }
+    > div[data-callout$="-9.5"].callout {
+      --obsidian-columns-custom-span: 9.5;
+    }
+    > div[data-callout$="-10"].callout {
+      --obsidian-columns-custom-span: 10;
+    }
+  }
+}
+.columnParent,
+div[data-callout="col"].callout > div.callout-content {
+  display: flex !important;
+  padding: var(--obsidian-columns-padding);
+  flex-wrap: wrap;
+  gap: var(--obsidian-columns-gap);
+  white-space: normal;
+}
+.columnChild,
+div[data-callout="col"].callout > div.callout-content > * {
+  flex-grow: var(--obsidian-columns-def-span);
+  flex-basis: calc(
+    var(--obsidian-columns-min-width) * var(--obsidian-columns-def-span)
+  );
+  width: calc(
+    var(--obsidian-columns-min-width) * var(--obsidian-columns-def-span)
+  );
+}
+
+/* #endregion */
 /* #region   Community Plugin: Dataview */
 /* Styled to match embeds */
 .block-language-dataview {
