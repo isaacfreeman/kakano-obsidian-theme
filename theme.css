@@ -2441,7 +2441,34 @@ li[data-task=">"] > p > input:checked:after {
   --theme-length-closeButtonWidth: 2rem;
 }
 .is-phone .modal-container {
-  padding: max(calc(2 * var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
+  padding-top: max(
+    calc(
+      var(--safe-area-inset-top) + 2 *
+        var(--theme-spacing-mobileHorizontalSpacing)
+    ),
+    calc(var(--safe-area-inset-top) + 0.5rem)
+  );
+  padding-right: max(
+    calc(
+      var(--safe-area-inset-right) + 2 *
+        var(--theme-spacing-mobileHorizontalSpacing)
+    ),
+    calc(var(--safe-area-inset-right) + 0.5rem)
+  );
+  padding-bottom: max(
+    calc(
+      var(--safe-area-inset-bottom) + 2 *
+        var(--theme-spacing-mobileHorizontalSpacing)
+    ),
+    calc(var(--safe-area-inset-bottom) + 0.5rem)
+  );
+  padding-left: max(
+    calc(
+      var(--safe-area-inset-left) + 2 *
+        var(--theme-spacing-mobileHorizontalSpacing)
+    ),
+    calc(var(--safe-area-inset-left) + 0.5rem)
+  );
 }
 .is-phone .mod-confirmation .modal {
   left: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
@@ -4514,10 +4541,14 @@ input[type="text"].prompt-input::placeholder {
   border-top: 0;
 }
 
-/********** Modals **********/
-
 /* Default modal */
 
+.modal-container {
+  padding-top: var(--safe-area-inset-top);
+  padding-right: var(--safe-area-inset-right);
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-left: var(--safe-area-inset-left);
+}
 .modal {
   padding: 0;
   overflow: hidden;
