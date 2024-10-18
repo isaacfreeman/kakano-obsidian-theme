@@ -212,9 +212,6 @@ There are, however, some key areas I want to improve:
 ## About
 I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explore usability and design.
 
-> [!tip]
-> I'm currently looking for work, so let me know if you're looking for a developer in Ruby on Rails or similar web technologies.
-
 - [Personal site](https://isaac.freeman.org.nz)
 - [Github profile](https://github.com/isaacfreeman)
 - [Mastodon](https://cloudisland.nz/@isaacfreeman)
