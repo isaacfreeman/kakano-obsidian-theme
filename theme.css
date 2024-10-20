@@ -4853,9 +4853,14 @@ body:not(.is-phone) .modal.mod-sync-history {
   > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
   margin: 0 auto;
   max-width: var(--file-line-width);
+  width: 100%;
+}
+.markdown-source-view.mod-cm6 .cm-sizer .cm-contentContainer,
+.markdown-preview-view
+  .markdown-preview-sizer
+  > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
   padding-left: 2rem;
   padding-right: 2rem;
-  width: 100%;
 }
 .markdown-rendered .mod-header {
   margin-bottom: 3rem;
