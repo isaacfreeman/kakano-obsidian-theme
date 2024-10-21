@@ -224,6 +224,8 @@ _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zeala
 - [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes, and the ability to pin embdded backlinks.
 - The [MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
 - The [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) theme by [Anubis](https://github.com/AnubisNekhet) provided the idea of adding icons to sections in Style Settings.
+- [incantatem1](https://github.com/incantatem1) suggested a separate line length for Reading View.
+- [Damian Korcz](https://github.com/damiankorcz) started the [Alternative Checkboxes Reference Set project](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set).
 
 ## License
 Kakano is licensed under the MIT License which allows you to modify and redistribute the code, however you must preserve the copyright and license notice in your CSS file. This includes any code you may extract as standalone snippets.
