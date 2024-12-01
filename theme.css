@@ -869,9 +869,9 @@ body .metadata-property[data-property-key="tags"] {
   --tag-color: hsl(
     var(--accent-h),
     calc(var(--accent-s)),
-    calc(var(--accent-l) * 0.8)
+    calc(var(--accent-l) * 0.9)
   );
-  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
   --text-normal: var(--theme-color-baseDarkened90);
   --text-faint: var(--theme-color-baseDarkened70);
   --background-prompt: var(--theme-color-baseLightened95);
@@ -911,6 +911,7 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-controlContentArea: var(--theme-color-base);
   --theme-color-controlContentAreaHover: var(--theme-color-baseLightened80);
   --theme-color-controlUIHover: var(--theme-color-baseLightened60);
+  --theme-color-controlUISelected: var(--theme-color-baseLightened80);
   --theme-color-controlHover: var(--theme-color-baseLightened95);
   --theme-color-controlSetBg: var(--theme-color-baseLightened80);
   --theme-color-controlText: var(--theme-color-baseDarkened70);
@@ -943,13 +944,13 @@ body .metadata-property[data-property-key="tags"] {
   --theme-color-tabNavBg: var(--theme-color-baseLightened70);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
-    calc(var(--accent-s) * 1.5),
+    calc(var(--accent-s) * 1.2),
     calc(var(--accent-l) * 1),
-    0.4
+    0.15
   );
   --theme-color-tagSidebar: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.5),
+    calc(var(--accent-s) * 1),
     calc(var(--accent-l) * 0.4)
   );
   --theme-color-textMeta: var(--theme-color-base);
@@ -1157,10 +1158,10 @@ body.theme-light.theme-setting-customGradient {
       );
   --tag-color: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.5),
-    calc(var(--accent-l) * 1.2)
+    calc(var(--accent-s) * 1.2),
+    calc(var(--accent-l))
   );
-  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseDarkened85);
   --text-normal: var(--theme-color-baseLightened60);
@@ -1206,6 +1207,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-controlContentArea: var(--theme-color-baseLightened60);
   --theme-color-controlContentAreaHover: var(--theme-color-baseDarkened80);
   --theme-color-controlUIHover: var(--theme-color-baseDarkened70);
+  --theme-color-controlUISelected: var(--theme-color-baseDarkened70);
   --theme-color-controlHover: var(--theme-color-baseDarkened90);
   --theme-color-controlSetBg: var(--theme-color-baseDarkened80);
   --theme-color-controlText: var(--theme-color-baseLightened60);
@@ -1238,14 +1240,14 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-tabNavBg: var(--theme-color-baseDarkened70);
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
-    calc(var(--accent-s) * 1.5),
-    calc(var(--accent-l) * 1),
-    0.4
+    calc(var(--accent-s)),
+    calc(var(--accent-l)),
+    0.15
   );
   --theme-color-tagSidebar: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.5),
-    calc(var(--accent-l) * 1.3)
+    calc(var(--accent-s) * 1.2),
+    calc(var(--accent-l) * 1)
   );
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseDarkened80);
@@ -3883,10 +3885,15 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 .suggestion-item.is-selected {
   background-color: var(--nav-item-background-hover);
   color: var(--nav-item-color-hover);
+
+  .suggestion-flair {
+    color: var(--nav-item-color-active);
+  }
 }
-.suggestion-item.is-selected .suggestion-flair {
-  color: var(--nav-item-color-active);
+.suggestion-item.mod-complex.is-selected .suggestion-action {
+  color: var(--theme-color-controlUISelected);
 }
+
 /* #endregion */
 /* #region Hotkeys */
 
