@@ -5338,6 +5338,9 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   .nav-folder .nav-folder .nav-folder-title-content {
     padding-left: 0;
   }
+  .nav-folder-title-content {
+    font-weight: var(--font-bold);
+  }
 }
 .mod-sidedock {
   .workspace-leaf-content {
