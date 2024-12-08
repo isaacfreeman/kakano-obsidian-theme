@@ -703,12 +703,6 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --base-s: 2%;
   --base-l: 50%;
 }
-body,
-body .metadata-property:not([data-property-key="tags"]),
-body .metadata-property[data-property-key="tags"] {
-  --pill-padding-x: 1em;
-  --pill-padding-y: 0.125em;
-}
 
 /* Hues derived from base color */
 .theme-light,
@@ -1060,8 +1054,7 @@ body.theme-light.theme-setting-customGradient {
   );
 }
 .theme-light,
-.theme-light .metadata-property:not([data-property-key="tags"]),
-.theme-light .metadata-property[data-property-key="tags"] {
+.theme-light .metadata-property:not([data-property-key="tags"]) {
   --pill-background: var(--theme-color-baseTransparent75);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: white;
@@ -1335,8 +1328,7 @@ body.theme-dark.theme-setting-customGradient {
   );
 }
 .theme-dark,
-.theme-dark .metadata-property:not([data-property-key="tags"]),
-.theme-dark .metadata-property[data-property-key="tags"] {
+.theme-dark .metadata-property:not([data-property-key="tags"]) {
   --pill-background: var(--theme-color-baseTransparent75);
   --pill-background-hover: var(--theme-color-base);
   --pill-color: black;
@@ -4535,6 +4527,31 @@ input[type="radio"]:focus {
   content: none;
 }
 /* #endregion */
+/* #region Pills (including tags) */
+body,
+body .metadata-property:not([data-property-key="tags"]),
+body .metadata-property[data-property-key="tags"] {
+  --pill-padding-x: 1em;
+  --pill-padding-y: 0.25em;
+  --tag-padding-x: 1em;
+  --tag-padding-y: 0.25em;
+}
+body .metadata-property[data-property-key="tags"] .multi-select-pill {
+  background-color: var(--theme-color-tagBgSidebar);
+  border-radius: var(--tag-radius);
+  border: var(--tag-border-width) solid var(--tag-border-color);
+  color: var(--theme-color-tagSidebar);
+  font-weight: var(--tag-weight);
+  padding: var(--tag-padding-y) var(--tag-padding-x);
+  vertical-align: baseline;
+  line-height: var(--line-height-tight);
+}
+.metadata-property:not([data-property-key="tags"]) .multi-select-pill {
+  line-height: var(--line-height-tight);
+  padding: var(--pill-padding-y) var(--pill-padding-x);
+}
+
+/* endregion */
 /* #region Tooltips */
 
 .tooltip {
