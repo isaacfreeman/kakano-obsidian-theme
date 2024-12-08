@@ -50,6 +50,7 @@ community:
 - obsidian-tasks-plugin
 - oz-clear-unused-images
 - recent-files-obsidian
+- table-editor-obsidian
 */
 
 /* #endregion */
@@ -2134,7 +2135,6 @@ body.theme-setting-highlightActiveLine {
     background-color: var(--theme-color-controlContentAreaHover);
   }
 }
-/* TODO: why doesn't this nesting work? */
 body.theme-setting-enableBuiltInAlternativeCheckboxes {
   /* Alternate incomplete states */
   & input.task-list-item-checkbox[data-task="/"]:checked,
@@ -4269,7 +4269,8 @@ select:focus,
 .graph-controls:not(.is-close),
 .canvas-card-menu,
 .canvas-menu,
-.canvas-submenu {
+.canvas-submenu,
+.advanced-tables-buttons {
   background: var(--theme-color-controlSetBg);
   border: none;
   padding: 0.25rem;
@@ -4280,7 +4281,10 @@ select:focus,
 }
 .canvas-control-item,
 .graph-controls-button,
-.canvas-card-menu .canvas-card-menu-button {
+.canvas-card-menu .canvas-card-menu-button,
+[data-type="advanced-tables-toolbar"]
+  .nav-buttons-container
+  .nav-action-button {
   --icon-size: var(--icon-s);
   --icon-stroke: var(--icon-s-stroke-width);
   border-radius: var(--clickable-icon-radius);
@@ -4289,6 +4293,7 @@ select:focus,
   background-color: transparent;
   border: none;
 }
+
 /* Active state */
 .canvas-control-item.has-active-menu {
   opacity: var(--icon-opacity-hover);
@@ -4302,7 +4307,10 @@ select:focus,
   }
   .canvas-control-item:hover,
   .graph-controls-button:not(.mod-close):hover,
-  .canvas-card-menu .canvas-card-menu-button:hover {
+  .canvas-card-menu .canvas-card-menu-button:hover,
+  [data-type="advanced-tables-toolbar"]
+    .nav-buttons-container
+    .nav-action-button:hover {
     color: var(--theme-color-controlHover);
     background-color: var(--background-modifier-hover);
   }
@@ -5768,6 +5776,40 @@ body {
 /* #endregion */
 /* #endregion */
 /* #region Community plugins */
+/* #region   Community Plugin: Advanced Tables */
+/* a.k.a. table-editor-obsidian */
+.workspace-leaf-content[data-type="advanced-tables-toolbar"] .view-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+[data-type="advanced-tables-toolbar"]
+  .nav-buttons-container
+  .nav-action-button
+  > svg {
+  fill: currentColor;
+  --text-muted: currentColor; /* For some reason the CSV button specifies text-muted as stroke color */
+}
+.advanced-tables-buttons > div > .title {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-ui-small);
+  color: var(--text-normal);
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  padding-top: 0.5em;
+}
+.advanced-tables-row-label {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-ui-small);
+  color: var(--text-normal);
+}
+[data-type="advanced-tables-toolbar"]
+  .nav-buttons-container
+  .nav-action-button {
+  margin-right: 0.25em;
+}
+/* #endregion */
 /* #region   Community Plugin: Calendar */
 .container:has(> .calendar) {
   margin: 0;
@@ -5819,7 +5861,7 @@ body {
     background-color: var(--theme-color-calendarDayBg);
   }
 }
-/*   #endregion */
+/* #endregion */
 /* #region   Community Plugin: Clear Unused Images */
 
 .modal:has(.unused-images-logs) {

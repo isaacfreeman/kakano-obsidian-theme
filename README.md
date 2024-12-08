@@ -190,12 +190,13 @@ Kakano has specific styling for the following plugins:
 - Workspaces
 
 ### Community Plugins supported
-- Recent files
-- Style settings
+- Advanced Tables
 - Calendar
+- Clear unused images
 - Dataview
 - Kanban
-- Clear unused images
+- Recent files
+- Style settings
 
 ## Roadmap
 
