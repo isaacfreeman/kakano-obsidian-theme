@@ -4550,8 +4550,7 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill {
   line-height: var(--line-height-tight);
   padding: var(--pill-padding-y) var(--pill-padding-x);
 }
-
-/* endregion */
+/* #endregion */
 /* #region Tooltips */
 
 .tooltip {
@@ -4673,6 +4672,10 @@ input[type="text"].prompt-input::placeholder {
   /* Allow space for input borders */
   padding: var(--input-border-width) 2em;
   overflow: auto;
+}
+.modal-header:has(.modal-title:empty) {
+  /* The built-in styles always apply a bottom margin */
+  margin-bottom: 0;
 }
 .modal-content p {
   margin: 0 0 0.5em 0;
@@ -5834,22 +5837,24 @@ body {
 .container:has(> .calendar) {
   margin: 0;
   padding: 0 !important;
-}
-.container:has(> .calendar) .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end !important;
-  margin: 0 !important;
-  padding: 1em 0.5em 0.5em 0.5em !important;
-}
-.container:has(> .calendar) .nav .title {
-  cursor: default;
-  line-height: 1;
-  padding: 0;
-}
-.container:has(> .calendar) .nav .right-nav {
-  margin: 0;
-  padding: 0;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end !important;
+    margin: 0 !important;
+    padding: 1em 0.5em 0.5em 0.5em !important;
+
+    .title {
+      cursor: default;
+      line-height: 1;
+      padding: 0;
+    }
+    .right-nav {
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 .mod-right-split .container:has(> .calendar) {
   background-color: var(--theme-color-calendarBg);
@@ -5868,17 +5873,29 @@ body {
   padding: 0;
   vertical-align: top;
 }
-.container > .calendar tbody td:not(:has(.adjacent-month)) .day {
-  background-color: var(--theme-color-calendarDayBg);
-  border-radius: 0.5em;
-  margin: 1px;
+.container > .calendar tbody td:not(:has(.adjacent-month)) {
+  .day {
+    background-color: var(--theme-color-calendarDayBg);
+    border-radius: 0.5em;
+    margin: 1px;
+  }
+  .day.today {
+    background-color: var(--theme-color-tabNavBg);
+    color: var(--text-normal);
+    font-weight: bold;
+  }
+  .day.active {
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+  }
 }
 @media (hover: hover) {
   .container > .calendar tbody td .day:hover {
     background: transparent;
   }
   .container > .calendar tbody td:not(:has(.adjacent-month)) .day:hover {
-    background-color: var(--theme-color-calendarDayBg);
+    background-color: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlHover);
   }
 }
 /* #endregion */
