@@ -866,7 +866,12 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     calc(var(--accent-s)),
     calc(var(--accent-l) * 0.9)
   );
-  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
+  --tag-background: hsl(
+    var(--accent-h),
+    var(--accent-s),
+    var(--accent-l),
+    0.15
+  );
   --text-normal: var(--theme-color-baseDarkened90);
   --text-faint: var(--theme-color-baseDarkened70);
   --background-prompt: var(--theme-color-baseLightened95);
@@ -937,16 +942,38 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-suggestionBg: var(--theme-color-baseLightened85);
   --theme-color-switcherBgActive: var(--theme-color-base);
   --theme-color-tabNavBg: var(--theme-color-baseLightened70);
+  --theme-color-tagHover: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.02),
+    calc(var(--accent-l) * 1.035)
+  );
+  --theme-color-tagBgHover: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.02),
+    calc(var(--accent-l) * 1.035),
+    0.1
+  );
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
     calc(var(--accent-s) * 1.2),
     calc(var(--accent-l) * 1),
     0.15
   );
+  --theme-color-tagBgSidebarHover: hsla(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.22),
+    calc(var(--accent-l) * 1.15),
+    0.15
+  );
   --theme-color-tagSidebar: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1),
     calc(var(--accent-l) * 0.4)
+  );
+  --theme-color-tagSidebarHover: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.02),
+    calc(var(--accent-l) * 0.46)
   );
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseLightened80);
@@ -1155,7 +1182,7 @@ body.theme-light.theme-setting-customGradient {
     calc(var(--accent-s) * 1.2),
     calc(var(--accent-l))
   );
-  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.1);
+  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseDarkened85);
   --text-normal: var(--theme-color-baseLightened60);
@@ -1232,10 +1259,27 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-suggestionBg: var(--theme-color-baseDarkened85);
   --theme-color-switcherBgActive: var(--theme-color-base);
   --theme-color-tabNavBg: var(--theme-color-baseDarkened70);
+  --theme-color-tagHover: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.05),
+    calc(var(--accent-l) * 1.29)
+  );
+  --theme-color-tagBgHover: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.05),
+    calc(var(--accent-l) * 1.161),
+    0.1
+  );
   --theme-color-tagBgSidebar: hsla(
     var(--accent-h),
-    calc(var(--accent-s)),
-    calc(var(--accent-l)),
+    calc(var(--accent-s) * 1.2),
+    calc(var(--accent-l) * 1),
+    0.15
+  );
+  --theme-color-tagBgSidebarHover: hsla(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.02),
+    calc(var(--accent-l) * 1.15),
     0.15
   );
   --theme-color-tagSidebar: hsl(
@@ -1243,6 +1287,12 @@ body.theme-light.theme-setting-customGradient {
     calc(var(--accent-s) * 1.2),
     calc(var(--accent-l) * 1)
   );
+  --theme-color-tagSidebarHover: hsl(
+    var(--accent-h),
+    calc(var(--accent-s) * 1.224),
+    calc(var(--accent-l) * 1.15)
+  );
+
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseDarkened80);
   --theme-color-textTabInactive: var(--theme-color-baseLightened25);
@@ -3588,10 +3638,13 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   width: var(--theme-length-closeButtonWidth);
   height: var(--theme-length-closeButtonWidth);
   display: flex;
+  flex-shrink: 0;
   align-content: center;
-}
-.workspace-tab-header-inner-close-button .svg-icon {
-  stroke: var(--theme-color-control);
+  justify-content: center;
+
+  .svg-icon {
+    stroke: var(--theme-color-control);
+  }
 }
 @media (hover: hover) {
   .mod-close:hover,
@@ -3605,14 +3658,14 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   .workspace-tab-header-inner-close-button:hover,
   .slides-close-btn:hover,
   .clickable-icon.kanban-plugin__search-cancel-button:hover,
-  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover {
-    color: var(--theme-color-control);
+  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
+  .multi-select-pill-remove-button:hover {
+    color: var(--theme-color-controlHover);
     background-color: var(--theme-color-navigationButtonBgHover);
-  }
-  .workspace-tab-header:hover
-    .workspace-tab-header-inner-close-button
+
     .svg-icon {
-    stroke: var(--theme-color-controlHover);
+      stroke: var(--theme-color-controlHover);
+    }
   }
 }
 
@@ -4537,19 +4590,50 @@ body .metadata-property[data-property-key="tags"] {
   --tag-padding-y: 0.25em;
 }
 body .metadata-property[data-property-key="tags"] .multi-select-pill {
-  background-color: var(--theme-color-tagBgSidebar);
   border-radius: var(--tag-radius);
   border: var(--tag-border-width) solid var(--tag-border-color);
-  color: var(--theme-color-tagSidebar);
   font-weight: var(--tag-weight);
   padding: var(--tag-padding-y) var(--tag-padding-x);
   vertical-align: baseline;
   line-height: var(--line-height-tight);
 }
+body
+  .metadata-property[data-property-key="tags"]
+  .multi-select-pill-content:before {
+  content: "#";
+  display: inline;
+}
+
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill {
   line-height: var(--line-height-tight);
   padding: var(--pill-padding-y) var(--pill-padding-x);
 }
+@media (hover: hover) {
+  .cm-hashtag:hover,
+  .cm-hashtag-begin:hover + .cm-hashtag-end,
+  .cm-hashtag-begin:has(+ .cm-hashtag-end:hover) {
+    background-color: var(--theme-color-tagBgHover);
+    color: var(--theme-color-tagHover);
+    text-decoration: underline;
+    text-decoration-color: var(--theme-color-tagHover);
+  }
+}
+
+/* Tags in sidebar or metadata have adjusted colours because they sit on a different background */
+body .metadata-property[data-property-key="tags"] .multi-select-pill,
+.tag-pane-tag > .tree-item-inner {
+  background-color: var(--theme-color-tagBgSidebar);
+  color: var(--theme-color-tagSidebar);
+}
+@media (hover: hover) {
+  body .metadata-property[data-property-key="tags"] .multi-select-pill:hover,
+  .tag-pane-tag > .tree-item-inner:hover {
+    background-color: var(--theme-color-tagBgSidebarHover);
+    color: var(--theme-color-tagSidebarHover);
+    text-decoration: underline;
+  }
+}
+
 /* #endregion */
 /* #region Tooltips */
 
@@ -5775,13 +5859,16 @@ body {
 }
 /* #endregion */
 /* #region   Core Plugin: Tags view */
-
+@media (hover: hover) {
+  /* Don't use heavy bacground for hovering over rows */
+  body:not(.is-grabbing) .tag-container .tree-item-self.is-clickable:hover {
+    background: inherit;
+  }
+}
 .tag-pane-tag > .tree-item-inner {
   /* Tags in sidebar styled the same as in notes, but ligher/darker to sit on colored background */
-  background-color: var(--theme-color-tagBgSidebar);
   border-radius: var(--tag-radius);
   border: var(--tag-border-width) solid var(--tag-border-color);
-  color: var(--theme-color-tagSidebar);
   font-weight: var(--tag-weight);
   padding: var(--tag-padding-y) var(--tag-padding-x);
   vertical-align: baseline;
@@ -5793,8 +5880,13 @@ body {
 .tag-pane-tag > .tree-item-inner > .tree-item-inner-text {
   display: inline;
 }
-.tag-pane-tag:hover {
-  cursor: var(--cursor-link);
+@media (hover: hover) {
+  .tag-pane-tag > .tree-item-inner:hover,
+  .cm-hashtag:hover,
+  .cm-hashtag-begin:hover + .cm-hashtag-end,
+  .cm-hashtag-begin:has(+ .cm-hashtag-end:hover) {
+    cursor: var(--cursor-link);
+  }
 }
 /* #endregion */
 /* #endregion */
