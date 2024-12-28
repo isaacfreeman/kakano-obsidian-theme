@@ -172,7 +172,7 @@ settings:
   -
     id: theme-setting-fullWidthStatusBar
     title: 'Full width status bar'
-    description: "EXPERIMENTAL If you have many items in your status bar, you may find that it overflows onto the sidebars. This setting will push the main app workspace up so the status bar can use the full window width."
+    description: "If you have many items in your status bar, you may find that it overflows onto the sidebars. This setting will push the main app workspace up so the status bar can use the full window width."
     type: class-toggle
   -
     id: heading-notes
@@ -330,6 +330,12 @@ settings:
         label: '1.618 - Golden Ratio'
         value: theme-setting-headingScaleFactorPhone1point618
   -
+    id: theme-setting-differentiateBulletLevels
+    title: 'Style nested bullet levels differently'
+    description: "Show different bullets for different levels of nesting."
+    type: class-toggle
+    default: true
+  -
     id: heading-lineWidthSettings
     title: Line length
     type: heading
@@ -411,7 +417,7 @@ settings:
   -
     id: theme-setting-enableBuiltInAlternativeCheckboxes
     title: 'Enable built-in alternative checkboxes'
-    description: "Kakano provides styles for some common alternative checkbox states. Different themes have built-in support for different sets of alternative checkboxes, so some users may prefer to use their own CSS snippets that work across multiple themes. If you'd like to do this, you can disable Kakano's built-in alternative checkboxes to ensure that they don't clas with the snippet."
+    description: "Kakano provides styles for some common alternative checkbox states. Different themes have built-in support for different sets of alternative checkboxes, so some users may prefer to use their own CSS snippets that work across multiple themes. If you'd like to do this, you can disable Kakano's built-in alternative checkboxes to ensure that they don't clash with the snippet."
     type: class-toggle
     default: true
   -
@@ -448,6 +454,10 @@ body {
   --header-height: calc(var(--icon-size) + 1rem);
   --heading-spacing: 0.67em;
   --input-border-width: 2px;
+  --list-marker-color: var(--text-normal);
+  --list-bullet-radius: 50%;
+  --list-bullet-size: 0.25em;
+  --list-bullet-transform: none;
   --list-marker-color-collapsed: var(--list-marker-color);
   --metadata-divider-width: 0;
   --metadata-gap: 0.5em;
@@ -1836,6 +1846,7 @@ li.is-collapsed .list-bullet:after,
 .markdown-reading-view h6 a.is-unresolved {
   --link-decoration-thickness: max(calc(var(--h6-weight) / 400 * 2px), 1px);
 }
+
 /* #endregion */
 /* #region     Tables */
 
@@ -2144,6 +2155,49 @@ body.theme-setting-highlightActiveLine {
 }
 /* #endregion */
 /* #region   Live Preview mode */
+/* #region     Lists */
+.list-bullet:after {
+  border: solid 1px var(--list-marker-color);
+}
+body.theme-setting-differentiateBulletLevels {
+  .markdown-source-view.mod-cm6 .HyperMD-list-line-1 .list-bullet:after,
+  .markdown-preview-view .el-ul > ul > li > .list-bullet:after {
+    background-color: var(--list-marker-color);
+  }
+  .markdown-source-view.mod-cm6 .HyperMD-list-line-2 .list-bullet:after,
+  .markdown-preview-view .el-ul > ul > li > ul > li > .list-bullet:after {
+    background-color: transparent;
+  }
+  .markdown-source-view.mod-cm6 .HyperMD-list-line-3 .list-bullet:after,
+  .markdown-preview-view
+    .el-ul
+    > ul
+    > li
+    > ul
+    > li
+    > ul
+    > li
+    > .list-bullet:after {
+    border-radius: 0;
+    background-color: var(--list-marker-color);
+  }
+  .markdown-source-view.mod-cm6 .HyperMD-list-line-4 .list-bullet:after,
+  .markdown-preview-view
+    .el-ul
+    > ul
+    > li
+    > ul
+    > li
+    > ul
+    > li
+    > ul
+    > li
+    > .list-bullet:after {
+    border-radius: 0;
+    background-color: transparent;
+  }
+}
+/* #endregion */
 /* #region     Footnotes */
 .cm-s-obsidian span.cm-footref.cm-inline-footnote.cm-formatting-inline-footnote,
 .cm-s-obsidian span.cm-footref.cm-hmd-barelink.cm-formatting,
@@ -5362,6 +5416,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 }
 
 /* stick backlinks in document to bottom */
+/* TODO: this doesn't seem to be working */
 .theme-setting-stickyEmbeddedLinks-on .cm-sizer > .embedded-backlinks,
 .theme-setting-stickyEmbeddedLinks-on .mod-footer:has(> .embedded-backlinks) {
   position: sticky;

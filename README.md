@@ -24,11 +24,13 @@ Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient backg
     - [Supports core plugins](#supports-core-plugins)
     - [And so much more](#and-so-much-more)
   - [Settings](#settings)
-    - [Color settings](#color-settings)
-    - [Layout settings](#layout-settings)
+    - [Base color](#base-color)
+    - [Background](#background)
+    - [Notes](#notes)
     - [Typography settings](#typography-settings)
-    - [Editor settings](#editor-settings)
-    - [Experimental settings](#experimental-settings)
+    - [Editing settings](#editing-settings)
+    - [Mobile settings](#mobile-settings)
+    - [Compatibility](#compatibility)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
     - [Community Plugins supported](#community-plugins-supported)
@@ -124,40 +126,53 @@ Kakano includes a lot of little details. Some notable examples are:
 
 ## Settings
 If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, Kakano offers the following settings.
-### Color settings
-- **Base color**
-  Sets a base color that will be used by Kakano independently of the accent color. This allows you to use one color for Kakano, and a separate color for accents in your notes. You can select from one of the preset options, or specify your own exact color.
+### Base color
+Sets a base color that will be used by Kakano independently of the accent color. This allows you to use one color for Kakano, and a separate color for accents in your notes.
+- **Preset Base color**
+  Select from one of the preset base color options
+- **Exact base color**
+  Use a color requester to select an exact color. This is good if you want to match your organisation's branding, or you just know the precise color you want.
+### Background
 - **Background gradient contrast**
   Adjusts the background gradient from a flat color to a strong difference between top and bottom.
+- **Custom Gradient**
+  Kakano normally provides a smooth gradient background using the same hue as the base color. This setting overrides that so you can have a gradient with different hues top and bottom.
+- **Full width status bar**
+  Kakano moves the status bad below the main content, which looks fine provided you don't have too many items there. If it gets too wide it overlaps with the sidebars, so this setting makes space for it use the full width of the window.
+### Notes
 - **Note backgrounds (light and dark modes)**
   The background for notes in dark mode can be either full black (nice on OLED screens) or near-black (easier on the eye).
 - **Distinguish non-editable tabs**
   Use a different color for inactive tabs when they're not directly editable by the user (e.g. tabs with graphs, maps, calendar)
-### Layout settings
-- **Mobile horizontal spacing**
-  On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
 - **Properties position**
   In Live Preview mode, properties can be positioned before (default) or after the main note content. If you rarely use properties, you may prefer to make them less prominent.
   _This setting only works for Live Preview mode. Reading mode doesn't provide suitable HTML structure to support it, and Source Mode makes properties editable within the main content area.
 - **Embedded note titles**
   WHen a note is embedded in another note, the title can be shown, hidden, or shown only on hover.
+- **Embedded links scroll position**
+  EXPERIMENTAL Embedded links can be pinned to stay on screen as a note scrolls.
 ### Typography settings
 - **Heading scale factors**
   Rather than specify a size for every heading level independently, Kakano provides eight scale factor options that adjust the relative sizes of all heading levels together. If you like dramatic headings, the highest scale factor provides H1 headings 11 times the size of the body text, with other headings sized harmoniously in between. If you want to conserve space, the lowest setting makes H1 headings just 1.38 times the size of body text: the headings are still differentiated by size, but the ratio is smaller.
   There's a separate scale factor for phones, where space is at a premium.
-### Editor settings
+- **Style nested bullet levels differently**
+  Show different bullets for different levels of nesting.
+- **Line length**
+  Specify the line length in characters when Obsidian's Readable Line Length setting is enabled.
+  Separate settings for editing and reading views.
+### Editing settings
 - **Highlight active line**
   Show a background color behind the active line while editing.
-
-### Experimental settings
-- **Embedded links scroll position**
-  Embedded links can be pinned to stay on screen as a note scrolls.
+- **Line number sin code blocks**
+  Toggle whether code blocks should show line numbers
+### Mobile settings
+- **Mobile horizontal spacing**
+  On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
 - **Mobile cards UI**
-  Work in progress to provide a 3D effect on mobile, with prompts and modals appearing to push the main content back when they appear in front. I'm not sure yet whether the HTML structure of Obsidian will allow me to apply this consistently, but it looks cool in the places I've tried it.
-- **Full width status bar**
-  Kakano moves the status bad below the main content, which looks fine provided you don't have too many items there. If it gets too wide it overlaps with the sidebars, so this setting makes space for it use the full width of the window.
-- **Use a custom gradient for the background**
-  Kakano normally provides a smooth gradient background using the same hue as the base color. This setting overrides that so you can have a gradient with different hues top and bottom.
+  EXPERIMENTAL Work in progress to provide a 3D effect on mobile, with prompts and modals appearing to push the main content back when they appear in front. I'm not sure yet whether the HTML structure of Obsidian will allow me to apply this consistently, but it looks cool in the places I've tried it.
+### Compatibility
+- **Enable built-in alternative checkboxes**
+  Kakano has built-in styles for alternative checkboxes, but some users may prefer to use their own CSS snippets that work across multiple themes. This setting can disable the built-in alternative checkboxes to ensure that they don't clash with the snippet.
 
 ## Plugin support
 Kakano has specific styling for the following plugins:
