@@ -44,6 +44,8 @@ core:
 community:
 - calendar
 - dataview
+- obsidian-columns
+- obsidian-jira-issue
 - obsidian-kanban
 - obsidian-map-view
 - obsidian-style-settings
@@ -172,7 +174,7 @@ settings:
   -
     id: theme-setting-fullWidthStatusBar
     title: 'Full width status bar'
-    description: "If you have many items in your status bar, you may find that it overflows onto the sidebars. This setting will push the main app workspace up so the status bar can use the full window width."
+    description: "EXPERIMENTAL If you have many items in your status bar, you may find that it overflows onto the sidebars. This setting will push the main app workspace up so the status bar can use the full window width."
     type: class-toggle
   -
     id: heading-notes
@@ -332,7 +334,7 @@ settings:
   -
     id: theme-setting-differentiateBulletLevels
     title: 'Style nested bullet levels differently'
-    description: "Show different bullets for different levels of nesting."
+    description: "Show different bullets for different levels of nesting"
     type: class-toggle
     default: true
   -
@@ -417,7 +419,7 @@ settings:
   -
     id: theme-setting-enableBuiltInAlternativeCheckboxes
     title: 'Enable built-in alternative checkboxes'
-    description: "Kakano provides styles for some common alternative checkbox states. Different themes have built-in support for different sets of alternative checkboxes, so some users may prefer to use their own CSS snippets that work across multiple themes. If you'd like to do this, you can disable Kakano's built-in alternative checkboxes to ensure that they don't clash with the snippet."
+    description: "Kakano provides styles for some common alternative checkbox states. Different themes have built-in support for different sets of alternative checkboxes, so some users may prefer to use their own CSS snippets that work across multiple themes. If you'd like to do this, you can disable Kakano's built-in alternative checkboxes to ensure that they don't clas with the snippet."
     type: class-toggle
     default: true
   -
@@ -426,6 +428,22 @@ settings:
     > The [Alternative Checkboxes Reference Set project](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set) is working on standardising alternative checkboxes."
     type: info-text
     markdown: true
+  -
+    id: heading-communityPlugins
+    title: Community Plugins
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: infoText-communityPlugins
+    description: "By default, Kakano changes the appearance of many community plugins to provide a more consistent appearance. If you prefer the standard appearance for a plugin you can disable Kakano's changes."
+    type: info-text
+    markdown: true
+  -
+    id: theme-setting-overrideJiraIssue
+    title: 'Jira Issue'
+    type: class-toggle
+    default: true
 */
 
 /* #endregion */
@@ -442,7 +460,6 @@ body {
   --checkbox-color: var(--interactive-accent);
   --code-normal: var(--text-normal);
   --divider-width: 0;
-  --embed-background: var(--theme-color-baseTransparent12);
   --embed-border-bottom: none;
   --embed-border-left: none;
   --embed-border-right: none;
@@ -736,6 +753,76 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     calc(var(--base-s) * 1.5),
     calc(var(--base-l) * 1.5)
   );
+  --theme-color-orangeDarkened: hsl(
+    27,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-orangeLightened: hsl(
+    27,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 1.5)
+  );
+  --theme-color-yellowDarkened: hsl(
+    57,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-yellowLightened: hsl(
+    57,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 1.5)
+  );
+  --theme-color-greenDarkened: hsl(
+    124,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-greenLightened: hsl(
+    124,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 1.5)
+  );
+  --theme-color-cyanDarkened: hsl(
+    179,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-cyanLightened: hsl(
+    179,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 1.5)
+  );
+  --theme-color-blueDarkened: hsl(
+    219,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-blueLightened: hsl(
+    219,
+    calc(var(--base-s) * 1.75),
+    calc(var(--base-l) * 1.75)
+  );
+  --theme-color-purpleDarkened: hsl(
+    253,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-purpleLightened: hsl(
+    253,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 1.5)
+  );
+  --theme-color-pinkDarkened: hsl(
+    331,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 0.5)
+  );
+  --theme-color-pinkLightened: hsl(
+    331,
+    calc(var(--base-s) * 1.5),
+    calc(var(--base-l) * 1.5)
+  );
 
   --theme-color-redVeryTransparent: hsla(
     356,
@@ -806,6 +893,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   );
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
+  --embed-background: var(--theme-color-baseTransparent12);
   --empty-pane-color: var(--theme-color-baseDarkened70);
   --icon-color-focused: white;
   --icon-color-hover: hsl(
@@ -933,6 +1021,15 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseLightened25);
+  --theme-color-jiraIssueInfoBg: var(--theme-color-blueLightened);
+  --theme-color-jiraIssueWarningBg: var(--theme-color-yellowLightened);
+  --theme-color-jiraIssueSuccessBg: var(--theme-color-greenLightened);
+  --theme-color-jiraIssueDarkBg: var(--theme-color-baseDarkened90);
+  --theme-color-jiraIssueDark: var(--theme-color-baseLightened95);
+  --theme-color-jiraIssueDangerBg: var(--theme-color-redVeryTransparent);
+  --theme-color-jiraIssueDanger: white;
+  --theme-color-jiraIssueDeleteBg: var(--color-red);
+  --theme-color-jiraIssueTableStripe: var(--theme-color-lightenTransparent50);
   --theme-color-kanbanLaneBg: var(--theme-color-baseLightened80);
   --theme-color-log: var(--theme-color-baseDarkened80);
   --theme-color-logBg: var(--theme-color-baseLightened25);
@@ -1125,6 +1222,7 @@ body.theme-light.theme-setting-customGradient {
   );
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
+  --embed-background: var(--theme-color-baseTransparent25);
   --empty-pane-color: var(--theme-color-baseDarkened70);
   --icon-color-focused: var(--theme-color-baseLightened80);
   --icon-color-hover: hsl(
@@ -1250,6 +1348,15 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseDarkened25);
+  --theme-color-jiraIssueInfoBg: var(--theme-color-blueDarkened);
+  --theme-color-jiraIssueWarningBg: var(--theme-color-yellowDarkened);
+  --theme-color-jiraIssueSuccessBg: var(--theme-color-greenDarkened);
+  --theme-color-jiraIssueDarkBg: var(--theme-color-baseDarkened90);
+  --theme-color-jiraIssueDark: var(--theme-color-baseLightened95);
+  --theme-color-jiraIssueDangerBg: var(--theme-color-redVeryTransparent);
+  --theme-color-jiraIssueDanger: white;
+  --theme-color-jiraIssueDeleteBg: var(--color-red);
+  --theme-color-jiraIssueTableStripe: var(--theme-color-darkenTransparent50);
   --theme-color-kanbanLaneBg: var(--theme-color-baseDarkened80);
   --theme-color-log: var(--theme-color-baseLightened80);
   --theme-color-logBg: var(--theme-color-baseDarkened25);
@@ -5416,7 +5523,6 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 }
 
 /* stick backlinks in document to bottom */
-/* TODO: this doesn't seem to be working */
 .theme-setting-stickyEmbeddedLinks-on .cm-sizer > .embedded-backlinks,
 .theme-setting-stickyEmbeddedLinks-on .mod-footer:has(> .embedded-backlinks) {
   position: sticky;
@@ -6545,6 +6651,218 @@ body:not(.is-mobile) .mobile-misc-tools-container .ToolIcon.is-mobile {
   }
 }
 /*   #endregion */
+/* #region   Community Plugin: Jira Issue */
+/* TODO: search */
+/* TODO: search wizard modal */
+body.theme-setting-overrideJiraIssue {
+  .jira-issue-container {
+    margin: 0 0 0.5em 0;
+  }
+  .jira-issue-container a {
+    text-decoration-line: var(--link-decoration);
+    text-decoration-thickness: var(--link-decoration-thickness);
+  }
+  @media (hover: hover) {
+    .jira-issue-container a:hover {
+      color: var(--link-color-hover);
+      text-decoration-line: var(--link-decoration-hover);
+    }
+  }
+  .jira-issue-container .ji-tags {
+    background-color: var(--embed-background);
+    border-bottom: var(--embed-border-bottom);
+    border-left: var(--embed-border-left);
+    border-radius: 0.5rem;
+    border-right: var(--embed-border-right);
+    border-top: var(--embed-border-top);
+    overflow: hidden;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    gap: 0.5em;
+    padding: 0;
+
+    .ji-tag,
+    .ji-tag.is-link {
+      background-color: transparent;
+      color: inherit;
+      margin: 0;
+    }
+    .ji-tag.is-link {
+      color: var(--link-color);
+      font-weight: var(--link-weight);
+      text-decoration-line: var(--link-decoration);
+      text-decoration-thickness: var(--link-decoration-thickness);
+      cursor: var(--cursor-link);
+      transition: opacity 0.15s ease-in-out;
+    }
+    .ji-tag {
+      padding: 0.25em;
+    }
+    .ji-tag.is-info,
+    .ji-tag.is-warning,
+    .ji-tag.is-success,
+    .ji-tag.is-dark {
+      border-radius: var(--tag-radius);
+      border: var(--tag-border-width) solid var(--tag-border-color);
+      font-weight: var(--tag-weight);
+      padding: var(--tag-padding-y) var(--tag-padding-x);
+      vertical-align: baseline;
+      line-height: var(--line-height-tight);
+      margin: 0.5em 0.5em 0.5em 0;
+    }
+    .ji-tag.is-info {
+      background-color: var(--theme-color-jiraIssueInfoBg);
+    }
+    .ji-tag.is-warning {
+      background-color: var(--theme-color-jiraIssueWarningBg);
+    }
+    .ji-tag.is-success {
+      background-color: var(--theme-color-jiraIssueSuccessBg);
+    }
+    .ji-tag.is-dark {
+      background-color: var(--theme-color-jiraIssueDarkBg);
+      color: var(--theme-color-jiraIssueDark);
+    }
+  }
+
+  .ji-inline-issue.jira-issue-container .ji-tag.ji-band,
+  .jira-issue-container .ji-tags .ji-tag.ji-band,
+  .jira-issue-container .ji-tags.has-addons .ji-tag.ji-band {
+    width: 1em;
+    height: 1em;
+    margin: 0 0 0 0.5em;
+    border-radius: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 0;
+  }
+  .jira-issue-container {
+    .ji-tags:has(.ji-tag.is-danger) {
+      background-color: var(--theme-color-jiraIssueDangerBg);
+      .ji-tag.is-danger {
+        color: inherit;
+        flex-grow: 1;
+
+        &:last-child {
+          flex-grow: 0;
+          color: var(--theme-color-jiraIssueDanger);
+          background-color: var(--color-red);
+          border-radius: var(--tag-radius);
+          border: var(--tag-border-width) solid var(--tag-border-color);
+          font-weight: var(--tag-weight);
+          padding: var(--tag-padding-y) var(--tag-padding-x);
+          vertical-align: baseline;
+          line-height: var(--line-height-tight);
+          margin: 0.5em 0.5em 0.5em 0;
+        }
+      }
+      .ji-tag.is-danger.is-delete {
+        background-color: var(--theme-color-jiraIssueDeleteBg);
+        width: 1em;
+        height: 1em;
+        margin: 0 0 0 0.5em;
+        border-radius: 1em;
+        border-top-right-radius: 1em;
+        flex-shrink: 0;
+        flex-grow: 0;
+        padding: 0;
+        color: var(--theme-color-jiraIssueDanger);
+      }
+    }
+  }
+  .block-language-jira-search {
+    background-color: var(--embed-background);
+    border-bottom: var(--embed-border-bottom);
+    border-left: var(--embed-border-left);
+    border-radius: 0.5rem;
+    border-right: var(--embed-border-right);
+    border-top: var(--embed-border-top);
+    overflow-x: auto;
+
+    .jira-issue-container .table {
+      color: inherit;
+      background-color: transparent;
+    }
+    .jira-issue-container .table td {
+      border-top: none;
+      border-bottom: none;
+      font-size: small;
+      padding: 0.5em;
+      border-color: var(--table-border-color);
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+    .jira-issue-container .table th {
+      background: transparent;
+      border-top: none;
+      border-bottom: none;
+      padding: 0.5em;
+      color: var(--text-normal);
+      border-color: var(--table-border-color);
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+    .jira-issue-container
+      .table.is-striped
+      tbody
+      tr:not(.is-selected):nth-child(odd),
+    .jira-issue-container
+      .table.is-striped
+      tbody
+      tr:not(.is-selected):nth-child(odd):hover {
+      background-color: var(--theme-color-jiraIssueTableStripe);
+    }
+    .jira-issue-container
+      .table.is-striped
+      tbody
+      tr:not(.is-selected):nth-child(even),
+    .jira-issue-container
+      .table.is-striped
+      tbody
+      tr:not(.is-selected):nth-child(even):hover {
+      background-color: transparent;
+    }
+    .jira-issue-container .search-footer {
+      margin-top: 0.5em;
+      padding: 0 0.5em 0 1em;
+      font-size: small;
+      align-items: center;
+
+      > div {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+      }
+    }
+  }
+  .block-language-jira-count {
+    .jira-issue-container .ji-tags {
+      width: auto;
+      padding-right: 0.5em;
+
+      .ji-tag,
+      .ji-tag.is-link {
+        text-decoration: none;
+        color: var(--text-normal);
+        cursor: default;
+      }
+    }
+  }
+}
+/* #endregion */
 /* #region   Community Plugin: Kanban */
 .kanban-plugin {
   gap: 0.5rem;

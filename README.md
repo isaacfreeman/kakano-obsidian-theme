@@ -208,10 +208,15 @@ Kakano has specific styling for the following plugins:
 - Advanced Tables
 - Calendar
 - Clear unused images
+- Columns
 - Dataview
+- Jira Issue
 - Kanban
+- Map View
 - Recent files
 - Style settings
+- Table Editor
+- Tasks
 
 ## Roadmap
 
