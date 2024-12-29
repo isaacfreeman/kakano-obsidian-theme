@@ -1024,8 +1024,8 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-jiraIssueInfoBg: var(--theme-color-blueLightened);
   --theme-color-jiraIssueWarningBg: var(--theme-color-yellowLightened);
   --theme-color-jiraIssueSuccessBg: var(--theme-color-greenLightened);
-  --theme-color-jiraIssueDarkBg: var(--theme-color-baseDarkened90);
-  --theme-color-jiraIssueDark: var(--theme-color-baseLightened95);
+  --theme-color-jiraIssueStatusBg: var(--theme-color-baseDarkened90);
+  --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
   --theme-color-jiraIssueDangerBg: var(--theme-color-redVeryTransparent);
   --theme-color-jiraIssueDanger: white;
   --theme-color-jiraIssueDeleteBg: var(--color-red);
@@ -1351,8 +1351,8 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-jiraIssueInfoBg: var(--theme-color-blueDarkened);
   --theme-color-jiraIssueWarningBg: var(--theme-color-yellowDarkened);
   --theme-color-jiraIssueSuccessBg: var(--theme-color-greenDarkened);
-  --theme-color-jiraIssueDarkBg: var(--theme-color-baseDarkened90);
-  --theme-color-jiraIssueDark: var(--theme-color-baseLightened95);
+  --theme-color-jiraIssueStatusBg: var(--theme-color-baseDarkened90);
+  --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
   --theme-color-jiraIssueDangerBg: var(--theme-color-redVeryTransparent);
   --theme-color-jiraIssueDanger: white;
   --theme-color-jiraIssueDeleteBg: var(--color-red);
@@ -6699,10 +6699,7 @@ body.theme-setting-overrideJiraIssue {
     .ji-tag {
       padding: 0.25em;
     }
-    .ji-tag.is-info,
-    .ji-tag.is-warning,
-    .ji-tag.is-success,
-    .ji-tag.is-dark {
+    .ji-tag:last-child {
       border-radius: var(--tag-radius);
       border: var(--tag-border-width) solid var(--tag-border-color);
       font-weight: var(--tag-weight);
@@ -6710,19 +6707,20 @@ body.theme-setting-overrideJiraIssue {
       vertical-align: baseline;
       line-height: var(--line-height-tight);
       margin: 0.5em 0.5em 0.5em 0;
+      background-color: var(--theme-color-jiraIssueStatusBg);
+      color: var(--theme-color-jiraIssueStatus);
     }
     .ji-tag.is-info {
       background-color: var(--theme-color-jiraIssueInfoBg);
+      color: var(--text-normal);
     }
     .ji-tag.is-warning {
       background-color: var(--theme-color-jiraIssueWarningBg);
+      color: var(--text-normal);
     }
     .ji-tag.is-success {
       background-color: var(--theme-color-jiraIssueSuccessBg);
-    }
-    .ji-tag.is-dark {
-      background-color: var(--theme-color-jiraIssueDarkBg);
-      color: var(--theme-color-jiraIssueDark);
+      color: var(--text-normal);
     }
   }
 
