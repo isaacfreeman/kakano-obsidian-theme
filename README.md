@@ -213,6 +213,7 @@ Kakano has specific styling for the following plugins:
 - Jira Issue
 - Kanban
 - Map View
+- Natural Language Dates
 - Recent files
 - Style settings
 - Table Editor

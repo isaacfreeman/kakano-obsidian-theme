@@ -44,6 +44,7 @@ core:
 community:
 - calendar
 - dataview
+- nldates-obsidian
 - obsidian-columns
 - obsidian-jira-issue
 - obsidian-kanban
@@ -1043,6 +1044,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-navigationButtonBgHover: var(--theme-color-baseTransparent25);
   --theme-color-notice: var(--theme-color-baseLightened95);
   --theme-color-noticeBg: var(--theme-color-baseDarkened80);
+  --theme-color-promptInstructions: var(--theme-color-baseDarkened40);
   --theme-color-settingsBg: var(--theme-color-baseLightened80);
   --theme-color-settingsBgStripe: var(--theme-color-baseLightened95);
   --theme-color-settingsGroupBg: var(--theme-color-lightenTransparent50);
@@ -1370,6 +1372,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-navigationButtonBgHover: var(--theme-color-baseTransparent25);
   --theme-color-notice: var(--theme-color-baseDarkened90);
   --theme-color-noticeBg: var(--theme-color-baseLightened95);
+  --theme-color-promptInstructions: var(--theme-color-baseLightened40);
   --theme-color-settingsBg: var(--theme-color-baseDarkened80);
   --theme-color-settingsBgStripe: var(--theme-color-baseDarkened90);
   --theme-color-settingsGroupBg: var(--theme-color-darkenTransparent50);
@@ -4042,7 +4045,9 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 .suggestion-container .prompt-instructions {
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  margin: 0 -0.5rem -0.5rem -0.5rem;
+  margin: 0.5rem -0.5rem -0.5rem -0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--theme-color-promptInstructions);
 }
 .suggestion-title.list-item-part {
   color: var(--text-normal);
@@ -6652,7 +6657,6 @@ body:not(.is-mobile) .mobile-misc-tools-container .ToolIcon.is-mobile {
 }
 /*   #endregion */
 /* #region   Community Plugin: Jira Issue */
-/* TODO: search */
 /* TODO: search wizard modal */
 body.theme-setting-overrideJiraIssue {
   .jira-issue-container {
