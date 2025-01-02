@@ -6860,6 +6860,11 @@ body.theme-setting-overrideJiraIssue {
         text-decoration: none;
         color: var(--text-normal);
         cursor: default;
+        background-color: transparent;
+
+        &:last-child {
+          font-weight: bold;
+        }
       }
     }
   }
