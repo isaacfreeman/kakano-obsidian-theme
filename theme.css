@@ -589,6 +589,7 @@ body {
   --theme-color-graphViewBg: transparent;
   --theme-color-tabBgInactiveHover: var(--theme-color-baseTransparent75);
   --theme-color-tableHeaderBg: var(--theme-color-baseTransparent12);
+  --theme-color-cardBg: var(--background-primary);
   --theme-lineHeight-tight: 1.3rem;
   --theme-setting-lineWidth: 60;
   --theme-spacing-mobileHorizontalSpacing: calc(
@@ -600,6 +601,13 @@ body {
   --theme-length-statusBarHeight: 2rem;
   --theme-length-closeButtonWidth: 1.5rem;
   --theme-value-sidebarFontScalingFactor: 0.8;
+
+  --theme-length-cardMinWidth: 8em;
+  --theme-length-cardMaxWidth: 1fr;
+  --theme-grid-cardSet: repeat(
+    auto-fit,
+    minmax(var(--theme-length-cardMinWidth), var(--theme-length-cardMaxWidth))
+  );
 }
 /* #endregion */
 /* #region   Colors */
@@ -727,6 +735,22 @@ body {
     var(--theme-color-gradientBottom) 0%,
     var(--theme-color-gradientTop) 100%
   );
+  --theme-gradient-topToBottomTransparent50: linear-gradient(
+    0deg,
+    var(--theme-color-gradientTopTransparent50) 0%,
+    var(--theme-color-gradientBottomTransparent50) 100%
+  );
+  --theme-color-gradientTopTransparent50: color-mix(
+    in srgb,
+    var(--theme-color-baseTransparent50),
+    white calc(100% * (0.7))
+  );
+  --theme-color-gradientBottomTransparent50: color-mix(
+    in srgb,
+    var(--theme-color-baseTransparent50),
+    white calc(100% * (0.3))
+  );
+
   /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
   --theme-value-gradientContrast: 0.2;
 }
@@ -1149,6 +1173,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-textSelected: var(--theme-color-baseLightened80);
   --theme-color-textTabInactive: var(--theme-color-baseDarkened25);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
+  --theme-gradient-cardSet: var(--theme-gradient-topToBottomTransparent50);
   --theme-shadow-control: 0 1px 2px
     hsla(
       var(--base-h),
@@ -1478,6 +1503,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-textSelected: var(--theme-color-baseDarkened80);
   --theme-color-textTabInactive: var(--theme-color-baseLightened25);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
+  --theme-gradient-cardSet: var(--theme-gradient-topToBottomTransparent50);
   --theme-shadow-control: 0px 1px 2px
     hsla(
       var(--base-h),
@@ -6425,6 +6451,77 @@ body.theme-setting-overrideDataview {
       var(--table-header-border-color);
   }
 
+  /* Table query with card layout (idea borrowed from Minimal) */
+  /* TODO: use (but rename) these variables borrowed from Minimal*/
+  /* TODO: mobile size for grid */
+  --cards-mobile-width: 120px;
+  --cards-image-height: 400px;
+  --cards-image-fit: contain;
+  --cards-aspect-ratio: auto;
+
+  .cards .block-language-dataview:has(.dataview.table-view-table) {
+    background: var(--theme-gradient-cardSet);
+  }
+  .cards table.dataview {
+    --table-width: 100%;
+    --table-edge-cell-padding-first: 0;
+    --table-edge-cell-padding-last: 0;
+    --table-cell-padding: 0;
+    line-height: 1.3;
+    --table-min-width: none;
+    margin: 0;
+  }
+  .cards table.dataview thead {
+    user-select: none;
+    width: 180px;
+    display: block;
+    /* TODO: review appearance of thead – Minmal makes it a popup that presumably works with Sortable */
+    display: none;
+    float: right;
+    position: relative;
+    text-align: right;
+    height: 24px;
+    padding-bottom: 0;
+  }
+  .cards table.dataview tbody {
+    clear: both;
+    padding: 1.5em;
+    display: grid;
+    grid-template-columns: var(--theme-grid-cardSet);
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+  }
+  .cards table.dataview > tbody > tr {
+    background-color: var(--theme-color-cardBg);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: box-shadow 0.15s linear;
+    max-width: var(--theme-length-cardMaxWidth);
+    height: auto;
+    border-radius: var(--radius-m);
+    border: none;
+    box-shadow: var(--shadow-s);
+  }
+  .cards table.dataview.table-view-table > tbody > tr > td,
+  .cards
+    table.dataview.table-view-table
+    > tbody
+    > tr:last-of-type
+    > td:first-of-type,
+  .cards
+    table.dataview.table-view-table
+    > tbody
+    > tr:last-of-type
+    > td:last-of-type {
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    padding: 0.5em 0.75em 0.5em 0.75em;
+  }
+
   /* Task query */
   .dataview-container:has(.contains-task-list) {
     padding: 1em;
@@ -6729,25 +6826,7 @@ body.theme-setting-overrideExcalidraw {
 /*   #endregion */
 /* #region   Community Plugin: Folder Note */
 body.theme-setting-overrideFolderNote {
-  /* TODO: align design with Kanban */
-  /* TODO: move gradient up to top, check dark theme */
-
-  --theme-gradient-topToBottomTransparent50: linear-gradient(
-    0deg,
-    var(--theme-color-gradientTopTransparent50) 0%,
-    var(--theme-color-gradientBottomTransparent50) 100%
-  );
-  --theme-color-gradientTopTransparent50: color-mix(
-    in srgb,
-    var(--theme-color-baseTransparent50),
-    white calc(100% * (0.7))
-  );
-  --theme-color-gradientBottomTransparent50: color-mix(
-    in srgb,
-    var(--theme-color-baseTransparent50),
-    white calc(100% * (0.3))
-  );
-
+  /* TODO: remove unnecessary hover effect */
   .block-language-ccard {
     /* Styled as embed, but with gradient background to give more contrast for cards */
     border-bottom: var(--embed-border-bottom);
@@ -6757,18 +6836,19 @@ body.theme-setting-overrideFolderNote {
     border-top: var(--embed-border-top);
     margin: 0;
     padding: 1em;
-    background: var(--theme-gradient-topToBottomTransparent50);
+    background: var(--theme-gradient-cardSet);
     border: 0;
     padding: 1.5em;
     gap: 1.5em;
 
     .cute-card-band {
       margin-top: 0;
+      grid-template-columns: var(--theme-grid-cardSet);
       grid-gap: 1em;
     }
 
     .cute-card-view {
-      background-color: var(--background-primary);
+      background-color: var(--theme-color-cardBg);
       border-radius: var(--radius-m);
       border: none;
       box-shadow: var(--shadow-s);
@@ -7038,12 +7118,8 @@ body.theme-setting-overrideJiraIssue {
 body.theme-setting-overrideKanban {
   .kanban-plugin {
     gap: 0.5rem;
-    background: var(--theme-gradient-topToBottomTransparent50);
+    background: var(--theme-gradient-cardSet);
   }
-
-  /* .kanban-plugin__board > div {
-    padding-top: 0;
-  } */
   .kanban-plugin__lane {
     background-color: var(--theme-color-kanbanLaneBg);
     border: none;
