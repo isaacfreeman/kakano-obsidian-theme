@@ -44,6 +44,7 @@ core:
 community:
 - calendar
 - dataview
+- folder-note-plugin
 - nldates-obsidian
 - obsidian-columns
 - obsidian-jira-issue
@@ -468,6 +469,11 @@ settings:
   -
     id: theme-setting-overrideExcalidraw
     title: 'Excalidraw'
+    type: class-toggle
+    default: true
+  -
+    id: theme-setting-overrideFolderNote
+    title: 'Folder Note'
     type: class-toggle
     default: true
   -
@@ -3743,8 +3749,8 @@ body.show-ribbon:not(.is-mobile)
 }
 /* #endregion */
 /* #endregion */
-
-/* #region Dragging */
+/* #region Shared UI Elements */
+/* #region   Dragging */
 .workspace-drop-overlay:before {
   animation: 0.5s 1 alternate fadein;
   background-color: var(--theme-color-dragTarget);
@@ -3755,7 +3761,7 @@ body.show-ribbon:not(.is-mobile)
   background: transparent;
 }
 /* #endregion */
-/* #region Menus */
+/* #region   Menus */
 /* Rendered on mobile, or if native menus are disabled */
 .menu {
   background-color: var(--theme-color-menuBg);
@@ -3803,7 +3809,7 @@ body.show-ribbon:not(.is-mobile)
   }
 }
 /* #endregion */
-/* #region Messages */
+/* #region   Messages */
 
 .mod-warning,
 p.mod-warning,
@@ -3839,7 +3845,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   display: block;
 }
 /* #endregion */
-/* #region Close buttons */
+/* #region   Close buttons */
 
 .mod-close,
 .modal-close-button,
@@ -3948,7 +3954,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   }
 }
 /* #endregion */
-/* #region Navigation buttons */
+/* #region   Navigation buttons */
 /* Styled similarly to close button */
 
 .modal-setting-back-button-icon,
@@ -3976,7 +3982,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   }
 }
 /* #endregion */
-/* #region Notices */
+/* #region   Notices */
 /* Note that Excalidraw .HintView uses a smaller version, which could be generalised */
 .notice-container {
   padding: 0;
@@ -4016,7 +4022,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   margin: 0 0.5rem 1rem 0.5rem;
 }
 /* #endregion */
-/* #region Content references (search results, incoming/outgoing links, etc.) */
+/* #region   Content references (search results, incoming/outgoing links, etc.) */
 
 .search-result-file-matches {
   background: none;
@@ -4057,7 +4063,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   color: var(--theme-color-control);
 }
 /* #endregion */
-/* #region Trees */
+/* #region   Trees */
 
 .tree-item-self,
 .tree-item-self.mod-collapsible {
@@ -4079,7 +4085,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   font-size: var(--nav-item-size);
 }
 /* #endregion */
-/* #region Suggestions (Search, File Recovery, Slash commands) */
+/* #region   Suggestions (Search, File Recovery, Slash commands) */
 .suggestion-container,
 .suggestion-container.mod-search-suggestion,
 .kanban-plugin__autocomplete {
@@ -4161,7 +4167,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 }
 
 /* #endregion */
-/* #region Hotkeys */
+/* #region   Hotkeys */
 
 .suggestion-hotkey,
 .setting-hotkey {
@@ -4183,7 +4189,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   color: var(--background-modifier-error);
 }
 /* #endregion */
-/* #region Action lists */
+/* #region   Action lists */
 .vertical-tab-header-group-title {
   color: var(--text-normal);
 }
@@ -4192,7 +4198,6 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   color: var(--theme-color-control);
 }
 /* #endregion */
-/* #region Standardised Controls */
 /* #region   Buttons */
 /* #region     Clickable icon buttons */
 .markdown-source-view.mod-cm6 .code-block-flair,
@@ -4753,8 +4758,7 @@ input[type="radio"]:focus {
   }
 }
 /*   #endregion */
-/* #endregion */
-/* #region Item lists */
+/* #region   Item lists */
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
   .horizontal-tab-nav-item:hover,
@@ -4801,7 +4805,7 @@ input[type="radio"]:focus {
   content: none;
 }
 /* #endregion */
-/* #region Pills (including tags) */
+/* #region   Pills (including tags) */
 body,
 body .metadata-property:not([data-property-key="tags"]),
 body .metadata-property[data-property-key="tags"] {
@@ -4856,7 +4860,7 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
 }
 
 /* #endregion */
-/* #region Tooltips */
+/* #region   Tooltips */
 
 .tooltip {
   color: var(--theme-color-notice);
@@ -4864,7 +4868,7 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
   padding: 0.5em 1em;
 }
 /* #endregion */
-/* #region Remote items */
+/* #region   Remote items */
 
 .community-modal-search-results-wrapper,
 .vault-list,
@@ -4911,7 +4915,7 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
   gap: 1em;
 }
 /* #endregion */
-/* #region Modals */
+/* #region   Modals */
 
 /********* Prompts *********/
 
@@ -5199,7 +5203,7 @@ body:not(.is-phone) .modal.mod-sync-history {
 }
 
 /* #endregion */
-/* #region Content area */
+/* #region   Content area */
 
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
   padding: 0;
@@ -5354,7 +5358,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   }
 }
 /* #endregion */
-/* #region Properties */
+/* #region   Properties */
 .workspace > .workspace-split:not(.mod-root) .metadata-container {
   --metadata-divider-width: inherit;
 }
@@ -5423,7 +5427,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   display: none;
 }
 /* #endregion */
-/* #region File lists */
+/* #region   File lists */
 
 /* Styles used by both Files and Recent Files */
 
@@ -5452,7 +5456,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   }
 }
 /* #endregion */
-/* #region Document search */
+/* #region   Document search */
 .document-search-container,
 .mod-active .document-search-container,
 .is-mobile .document-search-container,
@@ -5481,6 +5485,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 .is-mobile .document-replace .document-search-close-button {
   top: calc(50% - 0.5em);
 }
+/* #endregion */
 /* #endregion */
 
 /* #region Core plugins */
@@ -6722,6 +6727,100 @@ body.theme-setting-overrideExcalidraw {
   }
 }
 /*   #endregion */
+/* #region   Community Plugin: Folder Note */
+body.theme-setting-overrideFolderNote {
+  /* TODO: align design with Kanban */
+  /* TODO: move gradient up to top, check dark theme */
+
+  --theme-gradient-topToBottomTransparent50: linear-gradient(
+    0deg,
+    var(--theme-color-gradientTopTransparent50) 0%,
+    var(--theme-color-gradientBottomTransparent50) 100%
+  );
+  --theme-color-gradientTopTransparent50: color-mix(
+    in srgb,
+    var(--theme-color-baseTransparent50),
+    white calc(100% * (0.7))
+  );
+  --theme-color-gradientBottomTransparent50: color-mix(
+    in srgb,
+    var(--theme-color-baseTransparent50),
+    white calc(100% * (0.3))
+  );
+
+  .block-language-ccard {
+    /* Styled as embed, but with gradient background to give more contrast for cards */
+    border-bottom: var(--embed-border-bottom);
+    border-left: var(--embed-border-left);
+    border-radius: 0.5rem;
+    border-right: var(--embed-border-right);
+    border-top: var(--embed-border-top);
+    margin: 0;
+    padding: 1em;
+    background: var(--theme-gradient-topToBottomTransparent50);
+    border: 0;
+    padding: 1.5em;
+    gap: 1.5em;
+
+    .cute-card-band {
+      margin-top: 0;
+      grid-gap: 1em;
+    }
+
+    .cute-card-view {
+      background-color: var(--background-primary);
+      border-radius: var(--radius-m);
+      border: none;
+      box-shadow: var(--shadow-s);
+      cursor: var(--cursor);
+      padding: 0;
+      position: relative;
+
+      & article {
+        padding: 0.25em 0.75em 0.5em 0.75em;
+      }
+      & h1 {
+        color: inherit;
+        padding: 0;
+        font-weight: var(--inline-title-weight);
+        line-height: var(--inline-title-line-height);
+        font-style: var(--inline-title-style);
+        font-variant: var(--inline-title-variant);
+        font-family: var(--inline-title-font);
+        margin-bottom: var(--inline-title-margin-bottom);
+        letter-spacing: -0.015em;
+        color: var(--inline-title-color);
+        white-space: pre-wrap;
+      }
+      & p,
+      & span {
+        color: var(--text-muted);
+        font-weight: normal;
+        margin-block-end: 0;
+        margin-block-start: 0;
+        font-size: 0.8rem;
+      }
+
+      .thumb-color {
+        padding: 0;
+        border-radius: 0.55em 0.5em 0 0;
+        font-size: 1rem;
+        font-weight: normal;
+        text-transform: none;
+        /* TODO: these colours should be consistent with tabs at the top */
+        background-color: var(--tab-background-inactive);
+        color: var(--theme-color-textTabInactive);
+      }
+      .thumb-color-folder {
+        font-weight: bold;
+      }
+    }
+    .is-phone .cute-card-view {
+      border-radius: var(--radius-m);
+    }
+  }
+}
+/* #endregion */
 /* #region   Community Plugin: Jira Issue */
 body.theme-setting-overrideJiraIssue {
   .jira-issue-container {
@@ -6939,10 +7038,12 @@ body.theme-setting-overrideJiraIssue {
 body.theme-setting-overrideKanban {
   .kanban-plugin {
     gap: 0.5rem;
+    background: var(--theme-gradient-topToBottomTransparent50);
   }
-  .kanban-plugin__board > div {
+
+  /* .kanban-plugin__board > div {
     padding-top: 0;
-  }
+  } */
   .kanban-plugin__lane {
     background-color: var(--theme-color-kanbanLaneBg);
     border: none;
@@ -6984,7 +7085,7 @@ body.theme-setting-overrideKanban {
   .kanban-plugin__lane-items {
     gap: 0.5em;
     margin: 0;
-    padding: 0 0.5em;
+    padding: 0.5em 0.5em 0 0.5em;
   }
   .kanban-plugin__lane-items > .kanban-plugin__item-wrapper {
     margin: 0;
@@ -6995,6 +7096,53 @@ body.theme-setting-overrideKanban {
 
     &.is-search-hit {
       box-shadow: inherit;
+    }
+  }
+  .kanban-plugin__item:has(.markdown-source-view) {
+    border: var(--input-border-width) solid
+      var(--background-modifier-border-focus);
+    background-color: var(--background-input);
+
+    .kanban-plugin__item-content-wrapper {
+      background: transparent;
+    }
+    .kanban-plugin__item-title-wrapper {
+      background: transparent;
+    }
+    .cm-contentContainer {
+      padding: 0;
+    }
+    .kanban-plugin__item-postfix-button {
+      /* Style as search input clear button */
+      border-radius: 50%;
+      background-color: var(--search-clear-button-color);
+      color: var(--background-secondary);
+      cursor: var(--cursor);
+      line-height: 0;
+      height: var(--search-clear-button-size);
+      width: var(--search-clear-button-size);
+      min-height: var(--search-clear-button-size);
+      min-width: var(--search-clear-button-size);
+      margin: auto;
+      padding: 0 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: color 0.15s ease-in-out;
+
+      .kanban-plugin__icon svg {
+        height: calc(0.8 * var(--search-clear-button-size));
+        width: calc(0.8 * var(--search-clear-button-size));
+        display: block;
+        color: inherit;
+      }
+    }
+    @media (hover: hover) {
+      .kanban-plugin__item-postfix-button:hover {
+        background-color: var(--text-normal);
+        transition: color 0.15s ease-in-out;
+      }
     }
   }
   .kanban-plugin__drag-container

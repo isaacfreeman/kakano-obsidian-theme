@@ -210,6 +210,7 @@ Kakano has specific styling for the following plugins:
 - Clear unused images
 - Columns
 - Dataview
+- Folder Note
 - Jira Issue
 - Kanban
 - Map View
