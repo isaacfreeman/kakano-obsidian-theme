@@ -707,6 +707,12 @@ body {
     var(--base-l),
     0.5
   );
+  --theme-color-baseTransparent35: hsla(
+    var(--base-h),
+    var(--base-s),
+    var(--base-l),
+    0.35
+  );
   --theme-color-baseTransparent25: hsla(
     var(--base-h),
     var(--base-s),
@@ -735,20 +741,10 @@ body {
     var(--theme-color-gradientBottom) 0%,
     var(--theme-color-gradientTop) 100%
   );
-  --theme-gradient-topToBottomTransparent50: linear-gradient(
+  --theme-gradient-cardSet: linear-gradient(
     0deg,
-    var(--theme-color-gradientTopTransparent50) 0%,
-    var(--theme-color-gradientBottomTransparent50) 100%
-  );
-  --theme-color-gradientTopTransparent50: color-mix(
-    in srgb,
-    var(--theme-color-baseTransparent50),
-    white calc(100% * (0.7))
-  );
-  --theme-color-gradientBottomTransparent50: color-mix(
-    in srgb,
-    var(--theme-color-baseTransparent50),
-    white calc(100% * (0.3))
+    var(--theme-color-gradientCardsetBottom) 0%,
+    var(--theme-color-gradientCardsetTop) 100%
   );
 
   /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
@@ -972,11 +968,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --background-modifier-border: var(--theme-color-baseLightened25);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseLightened80);
-  --caret-color: hsl(
-    var(--accent-h),
-    calc(var(--accent-s)),
-    calc(var(--accent-l) * 0.8)
-  );
+  --caret-color: hsl(var(--accent-h), 150%, 50%);
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
   --embed-background: var(--theme-color-baseTransparent12);
@@ -1173,7 +1165,8 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-textSelected: var(--theme-color-baseLightened80);
   --theme-color-textTabInactive: var(--theme-color-baseDarkened25);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
-  --theme-gradient-cardSet: var(--theme-gradient-topToBottomTransparent50);
+  --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent35);
+  --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent12);
   --theme-shadow-control: 0 1px 2px
     hsla(
       var(--base-h),
@@ -1303,11 +1296,7 @@ body.theme-light.theme-setting-customGradient {
   --background-modifier-border: var(--theme-color-baseDarkened25);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseDarkened80);
-  --caret-color: hsl(
-    var(--accent-h),
-    calc(var(--accent-s)),
-    calc(var(--accent-l) * 1.2)
-  );
+  --caret-color: hsl(var(--accent-h), 150%, 80%);
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
   --embed-background: var(--theme-color-baseTransparent25);
@@ -1503,7 +1492,8 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-textSelected: var(--theme-color-baseDarkened80);
   --theme-color-textTabInactive: var(--theme-color-baseLightened25);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
-  --theme-gradient-cardSet: var(--theme-gradient-topToBottomTransparent50);
+  --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent12);
+  --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent25);
   --theme-shadow-control: 0px 1px 2px
     hsla(
       var(--base-h),
