@@ -1041,6 +1041,12 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --status-bar-text-color: black;
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseLightened80);
+  --tab-text-color: var(--theme-color-baseTransparent50);
+  --tab-text-color-active: var(--theme-color-baseTransparent50);
+  --tab-text-color-focused: var(--theme-color-baseDarkened25);
+  --tab-text-color-focused-active: var(--theme-color-baseDarkened25);
+  --tab-text-color-focused-highlighted: var(--text-accent);
+  --tab-text-color-focused-active-current: var(--text-normal);
   --tag-color: hsl(
     var(--accent-h),
     calc(var(--accent-s)),
@@ -1167,7 +1173,6 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   );
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseLightened80);
-  --theme-color-textTabInactive: var(--theme-color-baseDarkened25);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
   --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent35);
   --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent12);
@@ -1374,6 +1379,12 @@ body.theme-light.theme-setting-customGradient {
   --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseDarkened85);
+  --tab-text-color: var(--theme-color-baseTransparent50);
+  --tab-text-color-active: var(--theme-color-baseTransparent50);
+  --tab-text-color-focused: var(--theme-color-baseLightened25);
+  --tab-text-color-focused-active: var(--theme-color-baseLightened25);
+  --tab-text-color-focused-highlighted: var(--text-accent);
+  --tab-text-color-focused-active-current: var(--text-normal);
   --text-normal: var(--theme-color-baseLightened60);
   --text-faint: var(--theme-color-baseLightened25);
   --background-prompt: var(--theme-color-baseDarkened80);
@@ -1494,7 +1505,6 @@ body.theme-light.theme-setting-customGradient {
 
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseDarkened80);
-  --theme-color-textTabInactive: var(--theme-color-baseLightened25);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
   --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent12);
   --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent25);
@@ -3458,7 +3468,6 @@ body.mod-windows {
   gap: 0.25em;
 }
 .workspace-tab-header {
-  color: var(--theme-color-textTabInactive);
   background-color: var(--tab-background-inactive);
   border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
 
@@ -3650,7 +3659,7 @@ body.mod-windows {
 .mod-sidedock {
   .workspace-tab-header[data-type="markdown"] {
     background-color: var(--tab-background-inactive);
-    color: var(--theme-color-textTabInactive);
+    color: var(--tab-text-color-active);
   }
   .workspace-tab-header[data-type="markdown"].is-active {
     background-color: var(--tab-background-active);
@@ -6866,7 +6875,6 @@ body.theme-setting-overrideExcalidraw {
 /*   #endregion */
 /* #region   Community Plugin: Folder Note */
 body.theme-setting-overrideFolderNote {
-  /* TODO: remove unnecessary hover effect */
   .block-language-ccard {
     /* Styled as embed, but with gradient background to give more contrast for cards */
     border-bottom: var(--embed-border-bottom);
@@ -6887,7 +6895,8 @@ body.theme-setting-overrideFolderNote {
       grid-gap: 1em;
     }
 
-    .cute-card-view {
+    .cute-card-view,
+    .is-phone .cute-card-view {
       background-color: var(--theme-color-cardBg);
       border-radius: var(--radius-m);
       border: none;
@@ -6927,16 +6936,16 @@ body.theme-setting-overrideFolderNote {
         font-size: 1rem;
         font-weight: normal;
         text-transform: none;
-        /* TODO: these colours should be consistent with tabs at the top */
         background-color: var(--tab-background-inactive);
-        color: var(--theme-color-textTabInactive);
+        color: var(--tab-text-color-focused);
       }
       .thumb-color-folder {
         font-weight: bold;
       }
     }
-    .is-phone .cute-card-view {
-      border-radius: var(--radius-m);
+    .cute-card-view:hover {
+      top: 0;
+      box-shadow: var(--shadow-s);
     }
   }
 }
