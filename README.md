@@ -1,6 +1,6 @@
 # Kakano
 
-![Minimal theme with a smooth gradient background based on your accent color. Image shows six screenshots with differently-colored backgrounds.](/hero.png)
+![Obsidian theme with a smooth gradient background derived from a user-selected base color. Image shows six screenshots with differently-colored backgrounds.](/hero.png)
 
 Kakano is an [Obsidian](https://obsidian.md/) theme with a smooth gradient background derived from a user-selected base color.
 
@@ -243,12 +243,13 @@ I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explo
 _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zealand.
 
 ## Credits
-- [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting, and assisted with debugging for Windows.
-- [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes, and the ability to pin embdded backlinks.
-- The [MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
-- The [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) theme by [Anubis](https://github.com/AnubisNekhet) provided the idea of adding icons to sections in Style Settings.
-- [incantatem1](https://github.com/incantatem1) suggested a separate line length for Reading View.
 - [Damian Korcz](https://github.com/damiankorcz) started the [Alternative Checkboxes Reference Set project](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set).
+- [incantatem1](https://github.com/incantatem1) suggested a separate line length for Reading View.
+- [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes, and the ability to pin embdded backlinks.
+- [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting, and assisted with debugging for Windows.
+- The [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) theme by [Anubis](https://github.com/AnubisNekhet) provided the idea of adding icons to sections in Style Settings.
+- The [MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
+- The [Minimal](https://github.com/kepano/obsidian-minimal) theme by [Kepano](https://github.com/kepano) provided the idea of a card layout for the Dataview Plugin. I've also used a consistent card layout appearance for the Folder Note plugin.
 
 ## License
 Kakano is licensed under the MIT License which allows you to modify and redistribute the code, however you must preserve the copyright and license notice in your CSS file. This includes any code you may extract as standalone snippets.
