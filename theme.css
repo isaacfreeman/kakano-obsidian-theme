@@ -270,6 +270,25 @@ settings:
     level: 1
     collapsed: true
   -
+    id: theme-setting-differentiateBulletLevels
+    title: 'Style nested bullet levels differently'
+    description: "Show different bullets for different levels of nesting"
+    type: class-toggle
+    default: true
+  -
+    id: heading-HeadingSettings
+    title: Headings
+    type: heading
+    level: 2
+    collapsed: false
+  -
+    id: theme-setting-headingFont
+    title: Heading font
+    description: Font used for headings. Leave empty to use the same font as body text, as defined by `Text font` in `Appearance`.
+    type: variable-text
+    default: ""
+    quotes: true
+  -
     id: theme-setting-headingScaleFactor
     title: 'Heading scale factor – desktop/tablet'
     description: 'Scale factor for heading sizes. Larger numbers will increase the difference between different heading sizes, smaller numbers will decrease the difference.'
@@ -333,12 +352,6 @@ settings:
       -
         label: '1.618 - Golden Ratio'
         value: theme-setting-headingScaleFactorPhone1point618
-  -
-    id: theme-setting-differentiateBulletLevels
-    title: 'Style nested bullet levels differently'
-    description: "Show different bullets for different levels of nesting"
-    type: class-toggle
-    default: true
   -
     id: heading-lineWidthSettings
     title: Line length
@@ -1696,6 +1709,7 @@ body {
   /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
   hanging-punctuation: first allow-end last;
 }
+
 .theme-setting-headingScaleFactor1point067 {
   --theme-value-headingScaleFactor: 1.067;
 }
@@ -1771,6 +1785,17 @@ body {
   + div
   > :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 0;
+}
+
+.markdown-source-view .cm-line.HyperMD-header,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
+  font-family: var(--theme-setting-headingFont), var(--font-text-theme);
 }
 
 /* Space before headings... */
