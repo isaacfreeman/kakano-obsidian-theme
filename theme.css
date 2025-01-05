@@ -6562,18 +6562,22 @@ body.theme-setting-overrideDataview {
     padding: 1em;
   }
 
-  /* Empty queries */
-  div.dataview-error-box,
-  .block-language-dataview .dataview.dataview-error {
+  /* Empty and error queries */
+  & div.dataview-error-box,
+  .dataview.dataview-error {
     align-items: center;
     border: 0.25rem dashed var(--background-secondary);
     display: flex;
     justify-content: center;
     min-height: 5em;
     width: 100%;
-  }
-  .block-language-dataview .dataview.dataview-error {
     background-color: transparent;
+  }
+  .dataview-error-message,
+  .dataview-error {
+    color: var(--text-muted);
+    text-align: center;
+    font-family: var(--font-text);
   }
 }
 /*   #endregion */
