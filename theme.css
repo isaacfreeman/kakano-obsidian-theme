@@ -6427,6 +6427,8 @@ body.theme-setting-overrideDataview {
   .dataview.table-view-table {
     border-collapse: separate;
     border-spacing: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
   .dataview.table-view-table th {
     font-size: var(--table-header-size);
