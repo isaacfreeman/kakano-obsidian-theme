@@ -2302,7 +2302,16 @@ body:not(.is-mobile) {
   .markdown-source-view.mod-cm6 .code-block-flair {
     top: 0;
     right: auto;
-    left: calc(100% + 0.25em);
+    left: 100%;
+  }
+  .markdown-source-view.mod-cm6.is-readable-line-width
+    .cm-content
+    .cm-embed-block
+    .edit-block-button,
+  .markdown-source-view.mod-cm6.is-readable-line-width
+    .markdown-source-view.mod-cm6
+    .code-block-flair {
+    left: calc(100% + 0.5em);
   }
 }
 
