@@ -729,10 +729,18 @@ body {
     var(--base-l),
     0.12
   );
+  --theme-color-baseTransparent06: hsla(
+    var(--base-h),
+    var(--base-s),
+    var(--base-l),
+    0.06
+  );
   --theme-color-lightenTransparent50: rgba(255, 255, 255, 0.5);
   --theme-color-lightenTransparent25: rgba(255, 255, 255, 0.25);
+  --theme-color-lightenTransparent25: rgba(255, 255, 255, 0.12);
   --theme-color-darkenTransparent50: rgba(0, 0, 0, 0.5);
   --theme-color-darkenTransparent25: rgba(0, 0, 0, 0.25);
+  --theme-color-darkenTransparent12: rgba(0, 0, 0, 0.12);
 
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(
@@ -749,6 +757,11 @@ body {
     0deg,
     var(--theme-color-gradientCardsetBottom) 0%,
     var(--theme-color-gradientCardsetTop) 100%
+  );
+  --theme-gradient-cardSetGenerated: linear-gradient(
+    0deg,
+    var(--theme-color-gradientCardsetGeneratedBottom) 0%,
+    var(--theme-color-gradientCardsetGeneratedTop) 100%
   );
 
   /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
@@ -1174,8 +1187,14 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseLightened80);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
-  --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent35);
-  --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent12);
+  --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent12);
+  --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent06);
+  --theme-color-gradientCardsetGeneratedTop: var(
+    --theme-color-baseTransparent35
+  );
+  --theme-color-gradientCardsetGeneratedBottom: var(
+    --theme-color-baseTransparent12
+  );
   --theme-shadow-control: 0 1px 2px
     hsla(
       var(--base-h),
@@ -1506,8 +1525,14 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-textMeta: var(--theme-color-base);
   --theme-color-textSelected: var(--theme-color-baseDarkened80);
   --theme-color-warningBg: var(--theme-color-baseLightened95);
-  --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent12);
-  --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent25);
+  --theme-color-gradientCardsetTop: var(--theme-color-baseTransparent06);
+  --theme-color-gradientCardsetBottom: var(--theme-color-baseTransparent12);
+  --theme-color-gradientCardsetGeneratedTop: var(
+    --theme-color-baseTransparent12
+  );
+  --theme-color-gradientCardsetGeneratedBottom: var(
+    --theme-color-baseTransparent25
+  );
   --theme-shadow-control: 0px 1px 2px
     hsla(
       var(--base-h),
@@ -2442,8 +2467,7 @@ summary.excalidraw-setting-h1 {
   }
 }
 /* #endregion */
-/* #endregion */
-/* #region Markdown Checkboxes */
+/* #region   Markdown Checkboxes */
 .markdown-source-view.mod-cm6 .task-list-item-checkbox {
   border-radius: 0.33em;
   border-color: var(--theme-color-controlContentArea);
@@ -2457,6 +2481,9 @@ summary.excalidraw-setting-h1 {
     background-color: var(--theme-color-controlContentAreaHover);
   }
 }
+/* #endregion */
+/* #endregion */
+/* #region Alternative Checkboxes */
 body.theme-setting-enableBuiltInAlternativeCheckboxes {
   /* Alternate incomplete states */
   & input.task-list-item-checkbox[data-task="/"]:checked,
@@ -5542,6 +5569,58 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 /* #endregion */
 /* #endregion */
 
+/* #region Helper Classes */
+/* #region   List Cards */
+.list-cards.markdown-preview-view .el-ul {
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: 0.5rem;
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  margin: 0;
+  padding: 1em;
+  background: var(--theme-gradient-cardSet);
+  border: 0;
+  padding: 1.5em;
+  gap: 1.5em;
+}
+.list-cards.markdown-preview-view .el-ul > ul {
+  display: grid;
+  padding: 0;
+  line-height: var(--line-height-tight);
+  grid-template-columns: var(--theme-grid-cardSet);
+  grid-gap: 1em;
+  margin-block-start: 0;
+  --list-indent: 1em;
+}
+.list-cards.markdown-preview-view .el-ul > ul > li {
+  overflow: hidden;
+  margin-inline-start: 0;
+  background-color: var(--theme-color-cardBg);
+  border-radius: var(--radius-m);
+  border: none;
+  box-shadow: var(--shadow-s);
+  cursor: var(--cursor);
+  padding: 0 0.75em 0 0.75em;
+  position: relative;
+}
+.list-cards.markdown-preview-view .el-ul > ul > li > img {
+  margin-inline-start: -0.75em;
+  margin-inline-end: -0.75em;
+  width: calc(100% + 2 * 0.75em);
+  max-width: calc(100% + 2 * 0.75em);
+  display: block;
+}
+.list-cards.markdown-preview-view .el-ul > ul > li > .list-bullet,
+.list-cards.markdown-preview-view .el-ul > ul > li > .list-collapse-indicator,
+.list-cards.markdown-preview-view.markdown-rendered.show-indentation-guide
+  .el-ul
+  > ul::before {
+  display: none;
+}
+/* #endregion */
+/* #endregion */
+
 /* #region Core plugins */
 /* #region   Core Plugin: Audio Recorder */
 /* See also Embeds for the resulting embedded audio */
@@ -6485,7 +6564,7 @@ body.theme-setting-overrideDataview {
   /* Table query with card layout (idea borrowed from Minimal) */
 
   .cards .block-language-dataview:has(.dataview.table-view-table) {
-    background: var(--theme-gradient-cardSet);
+    background: var(--theme-gradient-cardSetGenerated);
   }
   .cards table.dataview {
     --table-width: 100%;
@@ -6884,7 +6963,7 @@ body.theme-setting-overrideFolderNote {
     border-top: var(--embed-border-top);
     margin: 0;
     padding: 1em;
-    background: var(--theme-gradient-cardSet);
+    background: var(--theme-gradient-cardSetGenerated);
     border: 0;
     padding: 1.5em;
     gap: 1.5em;
@@ -7167,7 +7246,7 @@ body.theme-setting-overrideJiraIssue {
 body.theme-setting-overrideKanban {
   .kanban-plugin {
     gap: 0.5rem;
-    background: var(--theme-gradient-cardSet);
+    background: var(--theme-gradient-cardSetGenerated);
   }
   .kanban-plugin__lane {
     background-color: var(--theme-color-kanbanLaneBg);
