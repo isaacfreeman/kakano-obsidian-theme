@@ -3159,6 +3159,9 @@ body {
 .nav-header {
   padding: 0.5rem;
 }
+.view-content {
+  position: relative;
+}
 /* #endregion */
 
 /* #region   macOS window frame styles */
@@ -3614,6 +3617,10 @@ body.mod-windows {
   }
 }
 /* #region     Empty state */
+.empty-state {
+  justify-content: flex-start;
+  padding-top: 3em;
+}
 .empty-state-container {
   background: var(--theme-color-emptyStateBg);
   border-radius: var(--radius-m);
