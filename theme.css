@@ -4525,10 +4525,12 @@ input[type="number"],
 input[type="password"],
 input[type="search"],
 input[type="text"],
-textarea {
+textarea,
+.tree-item-self.is-active.is-being-renamed {
   box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
   border: none;
   background: var(--background-input);
+  color: var(--text-normal);
 }
 
 .search-input-container input[type="search"]:active,
@@ -4554,9 +4556,12 @@ input[type="text"]:focus-visible,
 input[type="text"]:focus,
 textarea:active,
 textarea:focus-visible,
-textarea:focus {
+textarea:focus,
+body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed {
+  background: var(--background-input);
   box-shadow: 0 0 0 var(--input-border-width)
     var(--background-modifier-border-focus);
+  color: var(--text-normal);
 }
 @media (hover: hover) {
   .search-input-container input[type="search"]:hover,
@@ -4566,9 +4571,12 @@ textarea:focus {
   input[type="password"]:hover,
   input[type="search"]:hover,
   input[type="text"]:hover,
-  textarea:hover {
+  textarea:hover,
+  body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed:hover {
+    background: var(--background-input);
     box-shadow: 0 0 0 var(--input-border-width)
       var(--background-modifier-border-focus);
+    color: var(--text-normal);
   }
 }
 textarea {
