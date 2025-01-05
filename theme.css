@@ -1789,6 +1789,7 @@ body {
 
 .markdown-source-view .cm-line.HyperMD-header,
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header,
+.markdown-source-view.is-live-preview .HyperMD-list-line .cm-header,
 .markdown-rendered h1,
 .markdown-rendered h2,
 .markdown-rendered h3,
