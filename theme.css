@@ -2403,6 +2403,31 @@ body.theme-setting-differentiateBulletLevels {
 }
 /* #endregion */
 /* #endregion */
+/* #region   Obsidian UI */
+body {
+  --font-ui-smaller: 11px;
+  --font-ui-small: 13px;
+  --font-ui-medium: 15px;
+  --font-ui-large: 20px;
+  --line-height-normal: 1.5;
+  --line-height-tight: 1.3;
+}
+/* Standard size for settings headings */
+.modal.mod-settings .setting-item-heading,
+.modal.mod-settings h2,
+.modal.mod-settings h3,
+.modal.mod-settings h4,
+summary.excalidraw-setting-h1 {
+  padding: 0;
+  margin: 1em 0 0.5rem 0;
+  font-size: var(--font-ui-large);
+  font-weight: var(--font-semibold);
+
+  .setting-item-name {
+    font-size: inherit;
+  }
+}
+/* #endregion */
 /* #endregion */
 /* #region Markdown Checkboxes */
 .markdown-source-view.mod-cm6 .task-list-item-checkbox {
@@ -4613,7 +4638,7 @@ select:focus,
 .graph-controls .graph-control-section .tree-item-self,
 .mod-collapsible,
 .search-result-file-title,
-.setting-item-heading {
+.style-settings-heading {
   border-radius: var(--radius-s);
   color: var(--text-faint);
   font-size: var(--nav-item-size);
@@ -4630,7 +4655,7 @@ select:focus,
   .graph-controls .graph-control-section .tree-item-self:hover,
   .mod-collapsible:hover,
   .search-result-file-title:hover,
-  .setting-item-heading:hover {
+  .style-settings-heading:hover {
     color: var(--nav-item-color-hover);
     background-color: var(--nav-item-background-hover);
     font-weight: var(--font-medium);
