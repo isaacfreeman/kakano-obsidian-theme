@@ -538,6 +538,7 @@ body {
   --list-bullet-size: 0.25em;
   --list-bullet-transform: none;
   --list-marker-color-collapsed: var(--list-marker-color);
+  --list-indent: 1.5em;
   --metadata-divider-width: 0;
   --metadata-gap: 0.5em;
   --modal-border-color: black;
@@ -608,6 +609,9 @@ body {
     auto-fit,
     minmax(var(--theme-length-cardMinWidth), var(--theme-length-cardMaxWidth))
   );
+  --theme-length-cardImageHeight: 25em;
+  --theme-cardImageFit: contain;
+  --theme-cardAspectRatio: auto;
 }
 /* #endregion */
 /* #region   Colors */
@@ -6429,6 +6433,7 @@ body.theme-setting-overrideDataview {
     border-spacing: 0;
     margin-block-start: 0;
     margin-block-end: 0;
+    --list-indent: 1em;
   }
   .dataview.table-view-table th {
     font-size: var(--table-header-size);
@@ -6469,12 +6474,6 @@ body.theme-setting-overrideDataview {
   }
 
   /* Table query with card layout (idea borrowed from Minimal) */
-  /* TODO: use (but rename) these variables borrowed from Minimal*/
-  /* TODO: mobile size for grid */
-  --cards-mobile-width: 120px;
-  --cards-image-height: 400px;
-  --cards-image-fit: contain;
-  --cards-aspect-ratio: auto;
 
   .cards .block-language-dataview:has(.dataview.table-view-table) {
     background: var(--theme-gradient-cardSet);
@@ -6508,6 +6507,9 @@ body.theme-setting-overrideDataview {
     grid-column-gap: 1em;
     grid-row-gap: 1em;
   }
+  .cards table.dataview tbody:empty {
+    padding: 0;
+  }
   .cards table.dataview > tbody > tr {
     background-color: var(--theme-color-cardBg);
     display: flex;
@@ -6537,6 +6539,23 @@ body.theme-setting-overrideDataview {
     padding: 0;
     border-radius: 0;
     padding: 0.5em 0.75em 0.5em 0.75em;
+  }
+  .cards table.dataview.table-view-table > tbody > tr > td:has(img) {
+    padding: 0;
+  }
+  .cards table.dataview tbody > tr > td img {
+    aspect-ratio: var(--theme-cardAspectRatio);
+    width: 100%;
+    object-fit: var(--theme-cardImageFit);
+    max-height: var(--theme-length-cardImageHeight);
+    display: inline-block;
+    background-color: var(--theme-color-baseTransparent12);
+    vertical-align: bottom;
+    margin: 0;
+    text-align: center;
+  }
+  .cards table.dataview tbody > tr > td button {
+    width: 100%;
   }
 
   /* Task query */
@@ -6568,7 +6587,7 @@ body.theme-setting-overrideDataview {
   & div.dataview-error-box,
   .dataview.dataview-error {
     align-items: center;
-    border: 0.25rem dashed var(--background-secondary);
+    border: 0.25rem dashed var(--theme-color-base);
     display: flex;
     justify-content: center;
     min-height: 5em;
