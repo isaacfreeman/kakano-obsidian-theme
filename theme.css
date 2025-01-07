@@ -5756,6 +5756,19 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   top: 0;
   right: 0;
 }
+.embedded-backlinks .nav-header {
+  container-type: inline-size;
+  container-name: embedded-links-nav-header;
+}
+.embedded-backlinks .nav-buttons-container {
+  /* On small screens, put .nav-buttons-container on its own row so it doesn't overlap the links */
+  position: relative;
+}
+@container embedded-links-nav-header (min-width: 20rem) {
+  .embedded-backlinks .nav-buttons-container {
+    position: absolute;
+  }
+}
 .embedded-backlinks .backlink-pane .search-result-file-title .tree-item-icon {
   position: relative;
   padding: 0;
