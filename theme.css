@@ -753,12 +753,12 @@ body {
     var(--base-l),
     0.06
   );
-  --theme-color-lightenTransparent50: rgba(255, 255, 255, 0.5);
-  --theme-color-lightenTransparent25: rgba(255, 255, 255, 0.25);
-  --theme-color-lightenTransparent25: rgba(255, 255, 255, 0.12);
-  --theme-color-darkenTransparent50: rgba(0, 0, 0, 0.5);
-  --theme-color-darkenTransparent25: rgba(0, 0, 0, 0.25);
-  --theme-color-darkenTransparent12: rgba(0, 0, 0, 0.12);
+  --theme-color-lightenTransparent50: rgb(255, 255, 255, 0.5);
+  --theme-color-lightenTransparent25: rgb(255, 255, 255, 0.25);
+  --theme-color-lightenTransparent25: rgb(255, 255, 255, 0.12);
+  --theme-color-darkenTransparent50: rgb(0, 0, 0, 0.5);
+  --theme-color-darkenTransparent25: rgb(0, 0, 0, 0.25);
+  --theme-color-darkenTransparent12: rgb(0, 0, 0, 0.12);
 
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(
@@ -1454,9 +1454,9 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened70);
   --theme-color-communityItemBgSelected: var(--theme-color-baseDarkened25);
-  --theme-color-contentItemBg: rgba(0, 0, 0, 0.2);
+  --theme-color-contentItemBg: rgb(0, 0, 0, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
-  --theme-color-contentItemBgHover: rgba(0, 0, 0, 0.1);
+  --theme-color-contentItemBgHover: rgb(0, 0, 0, 0.1);
   --theme-color-control: var(--theme-color-baseLightened60);
   --theme-color-controlActive: var(--theme-color-control);
   --theme-color-controlBg: var(--theme-color-baseDarkened25);
@@ -3118,12 +3118,12 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   z-index: 1;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-start):before {
-  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
+  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgb(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M7,1L1,16L7,31"/></svg>');
   content: "";
   left: 0;
 }
 .mobile-toolbar-options-container.mod-fade:not(.mod-at-end):after {
-  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgba(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
+  background-image: url('data:image/svg+xml; utf8, <svg width="8px" height="32px" viewBox="0 0 8 32" xmlns="http://www.w3.org/2000/svg" stroke="rgb(0,0,0,0.25)" fill="none" stroke-width="2"><path d="M1,1L7,16L1,31"/></svg>');
   content: "";
   right: var(--toolbar-option-width);
 }
