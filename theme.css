@@ -717,37 +717,37 @@ body {
   );
 
   /* Base color with transparency */
-  --theme-color-baseTransparent75: hsla(
+  --theme-color-baseTransparent75: hsl(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.75
   );
-  --theme-color-baseTransparent50: hsla(
+  --theme-color-baseTransparent50: hsl(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.5
   );
-  --theme-color-baseTransparent35: hsla(
+  --theme-color-baseTransparent35: hsl(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.35
   );
-  --theme-color-baseTransparent25: hsla(
+  --theme-color-baseTransparent25: hsl(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.25
   );
-  --theme-color-baseTransparent12: hsla(
+  --theme-color-baseTransparent12: hsl(
     var(--base-h),
     var(--base-s),
     var(--base-l),
     0.12
   );
-  --theme-color-baseTransparent06: hsla(
+  --theme-color-baseTransparent06: hsl(
     var(--base-h),
     var(--base-s),
     var(--base-l),
@@ -941,49 +941,49 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     calc(var(--base-l) * 1.5)
   );
 
-  --theme-color-redVeryTransparent: hsla(
+  --theme-color-redVeryTransparent: hsl(
     356,
     var(--base-s),
     var(--base-l),
     0.25
   );
-  --theme-color-redSlightlyTransparent: hsla(
+  --theme-color-redSlightlyTransparent: hsl(
     356,
     var(--base-s),
     var(--base-l),
     0.75
   );
-  --theme-color-orangeVeryTransparent: hsla(
+  --theme-color-orangeVeryTransparent: hsl(
     27,
     var(--base-s),
     var(--base-l),
     0.25
   );
-  --theme-color-orangeSlightlyTransparent: hsla(
+  --theme-color-orangeSlightlyTransparent: hsl(
     27,
     var(--base-s),
     var(--base-l),
     0.75
   );
-  --theme-color-yellowVeryTransparent: hsla(
+  --theme-color-yellowVeryTransparent: hsl(
     57,
     var(--base-s),
     var(--base-l),
     0.25
   );
-  --theme-color-yellowSlightlyTransparent: hsla(
+  --theme-color-yellowSlightlyTransparent: hsl(
     57,
     var(--base-s),
     var(--base-l),
     0.75
   );
-  --theme-color-greenVeryTransparent: hsla(
+  --theme-color-greenVeryTransparent: hsl(
     124,
     var(--base-s),
     var(--base-l),
     0.25
   );
-  --theme-color-greenSlightlyTransparent: hsla(
+  --theme-color-greenSlightlyTransparent: hsl(
     124,
     var(--base-s),
     var(--base-l),
@@ -1028,42 +1028,42 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --search-clear-button-color: var(--theme-color-base);
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.2
       ),
     0 0.875rem 1.7rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.15
       ),
     0 2rem 6rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.25
       );
   --shadow-s: 0 0.0625rem 0.125rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.1
       ),
     0 0.25rem 0.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.075
       ),
     0 1rem 2rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
@@ -1180,13 +1180,13 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     calc(var(--accent-l) * 1.035),
     0.1
   );
-  --theme-color-tagBgSidebar: hsla(
+  --theme-color-tagBgSidebar: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.2),
     calc(var(--accent-l) * 1),
     0.15
   );
-  --theme-color-tagBgSidebarHover: hsla(
+  --theme-color-tagBgSidebarHover: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.22),
     calc(var(--accent-l) * 1.15),
@@ -1214,70 +1214,70 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     --theme-color-baseTransparent12
   );
   --theme-shadow-control: 0 1px 2px
-    hsla(
+    hsl(
       var(--base-h),
       calc(var(--base-s) * 1.5),
       calc(var(--base-l) * 0.75),
       0.5
     );
   --theme-shadow-graph: 0 0 0.75rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 1.5),
         calc(var(--base-l) * 0.5),
         0.8
       ),
     0 0 3.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 1.5),
         calc(var(--base-l) * 0.5),
         0.6
       ),
     0 0 6rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 1.5),
         calc(var(--base-l) * 0.5),
         1
       );
   --theme-shadow-input: 0 1px 2px
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 1.5),
         calc(var(--base-l) * 0.5),
         0.2
       ),
     0 3.4px 6.7px
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 1),
         calc(var(--base-l) * 0.5),
         0.15
       ),
     0 15px 30px
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.05
       );
   --theme-shadow-smallHigher: 0 0.0625rem 0.125rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.2
       ),
     0 0.25rem 0.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.15
       ),
     0 1rem 2rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
@@ -1367,42 +1367,42 @@ body.theme-light.theme-setting-customGradient {
   --search-clear-button-color: var(--theme-color-base);
   --search-icon-color: var(--theme-color-base);
   --shadow-l: 0 0.125rem 0.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.2
       ),
     0 0.875rem 1.7rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.15
       ),
     0 2rem 6rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.25
       );
   --shadow-s: 0 0.0625rem 0.125rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.1
       ),
     0 0.25rem 0.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.075
       ),
     0 1rem 2rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
@@ -1517,13 +1517,13 @@ body.theme-light.theme-setting-customGradient {
     calc(var(--accent-l) * 1.161),
     0.1
   );
-  --theme-color-tagBgSidebar: hsla(
+  --theme-color-tagBgSidebar: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.2),
     calc(var(--accent-l) * 1),
     0.15
   );
-  --theme-color-tagBgSidebarHover: hsla(
+  --theme-color-tagBgSidebarHover: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.02),
     calc(var(--accent-l) * 1.15),
@@ -1552,49 +1552,49 @@ body.theme-light.theme-setting-customGradient {
     --theme-color-baseTransparent25
   );
   --theme-shadow-control: 0px 1px 2px
-    hsla(
+    hsl(
       var(--base-h),
       calc(var(--base-s) * 0.1),
       calc(var(--base-l) * 0.75),
       0.1
     );
   --theme-shadow-input: 0px 1px 2px
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.5),
         calc(var(--base-l) * 0.1),
         0.5
       ),
     0px 3.4px 6.7px
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 1),
         calc(var(--base-l) * 0.1),
         0.25
       ),
     0px 15px 30px
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.15
       );
   --theme-shadow-smallHigher: 0 0.0625rem 0.125rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.2
       ),
     0 0.25rem 0.5rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
         0.15
       ),
     0 1rem 2rem
-      hsla(
+      hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.1),
