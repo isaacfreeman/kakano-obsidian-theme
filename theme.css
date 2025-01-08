@@ -773,15 +773,19 @@ body {
   );
   --theme-gradient-cardSet: linear-gradient(
     0deg,
-    var(--theme-color-gradientCardsetBottom) 0%,
-    var(--theme-color-gradientCardsetTop) 100%
+    var(--theme-color-gradientCardSetBottom) 0%,
+    var(--theme-color-gradientCardSetTop) 100%
   );
   --theme-gradient-cardSetGenerated: linear-gradient(
     0deg,
-    var(--theme-color-gradientCardsetGeneratedBottom) 0%,
-    var(--theme-color-gradientCardsetGeneratedTop) 100%
+    var(--theme-color-gradientCardSetGeneratedBottom) 0%,
+    var(--theme-color-gradientCardSetGeneratedTop) 100%
   );
-
+  --theme-gradient-DarkenedTopToBottom: linear-gradient(
+    0deg,
+    var(--theme-color-gradientDarkenedTop) 0%,
+    var(--theme-color-gradientDarkenedBottom) 100%
+  );
   /* 0 for flat colour with no gradient. 1 for extreme gradient. Default to 0.2, */
   --theme-value-gradientContrast: 0.2;
 }
@@ -1069,6 +1073,14 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
         calc(var(--base-l) * 0.5),
         0.125
       );
+  --shadow-s-bottom: 0 -0.0625rem 0.125rem hsl(var(--base-h), calc(var(--base-s) *
+            0.75), calc(var(--base-l) * 0.5), 0.1),
+    0 -0.25rem 0.5rem hsl(var(--base-h), calc(var(--base-s) * 0.75), calc(var(
+              --base-l
+            ) * 0.5), 0.075),
+    0 -1rem 2rem hsl(var(--base-h), calc(var(--base-s) * 0.75), calc(var(
+              --base-l
+            ) * 0.5), 0.125);
   --status-bar-text-color: black;
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseLightened80);
@@ -1300,6 +1312,16 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     in srgb,
     var(--theme-color-base),
     white calc(100% * (0.5 - 0.5 * var(--theme-value-gradientContrast)))
+  );
+  --theme-color-gradientDarkenedTop: color-mix(
+    in srgb,
+    var(--theme-color-base),
+    white calc(100% * (0.5 - 0.25 * var(--theme-value-gradientContrast)))
+  );
+  --theme-color-gradientDarkenedBottom: color-mix(
+    in srgb,
+    var(--theme-color-base),
+    white calc(100% * (0.5 - 1.25 * var(--theme-value-gradientContrast)))
   );
 }
 body.theme-light.theme-setting-customGradient {
@@ -3128,6 +3150,30 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   right: var(--toolbar-option-width);
 }
 /* #endregion */
+/* #region   Mobile tab switcher */
+.mobile-tab-switcher-scroll {
+  background: var(--theme-gradient-DarkenedTopToBottom);
+}
+.mobile-tab-switcher-menubar {
+  border-top: 0;
+  background: var(--theme-color-settingsBg);
+  box-shadow: var(--shadow-s-bottom);
+
+  z-index: 1;
+}
+.mobile-tab .mobile-tab-preview {
+  position: relative;
+  height: 12rem;
+  background-color: var(--tab-background-inactive);
+  border-radius: var(--tab-switcher-preview-radius);
+}
+.mobile-tab.is-active .mobile-tab-preview {
+  background-color: var(--background-primary);
+}
+.mobile-tab-preview-empty {
+  background-color: transparent;
+}
+/* #endregion */
 /* #endregion */
 /* #region Workspace */
 /* #region   Overall workspace */
@@ -3982,7 +4028,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 .workspace-tab-header-inner-close-button,
 .slides-close-btn,
 .clickable-icon.kanban-plugin__search-cancel-button,
-.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"] {
+.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
+.mobile-tab .close-button {
   background-color: transparent;
   border-radius: 100%;
   border: none;
@@ -4013,7 +4060,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   .slides-close-btn:hover,
   .clickable-icon.kanban-plugin__search-cancel-button:hover,
   .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
-  .multi-select-pill-remove-button:hover {
+  .multi-select-pill-remove-button:hover,
+  .mobile-tab .close-button:hover {
     color: var(--theme-color-controlHover);
     background-color: var(--theme-color-navigationButtonBgHover);
 
@@ -4087,7 +4135,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 /* Styled similarly to close button */
 
 .modal-setting-back-button-icon,
-.mod-root .workspace-tab-header-status-icon {
+.mod-root .workspace-tab-header-status-icon,
+.mobile-tab .mobile-tab-pin {
   color: var(--theme-color-control);
   border: none;
   border-radius: 100%;
@@ -4099,12 +4148,25 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   align-content: center;
   width: 1.5rem;
   height: 1.5rem;
+
+  .svg-icon {
+    stroke: var(--theme-color-control);
+  }
+}
+.mobile-tab .mobile-tab-pin {
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
 }
 @media (hover: hover) {
   .modal-setting-back-button-icon:hover,
-  .mod-root .workspace-tab-header-status-icon:hover {
+  .mod-root .workspace-tab-header-status-icon:hover,
+  .mobile-tab .mobile-tab-pin:hover {
     color: var(--theme-color-control);
     background-color: var(--theme-color-navigationButtonBgHover);
+
+    .svg-icon {
+      stroke: var(--theme-color-controlHover);
+    }
   }
   .mod-root .workspace-tab-header-status-icon .svg-icon {
     width: 80%;
@@ -5011,6 +5073,7 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
 .vault-list,
 .sync-file-tree-container {
   background: var(--theme-gradient-topToBottom);
+  background: var(--theme-gradient-DarkenedTopToBottom);
   border: 0;
   padding: 1.5em;
   gap: 1.5em;
