@@ -529,7 +529,7 @@ body {
   --background-input: var(--theme-color-baseTransparent12);
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
-  --callout-padding: 0.75em 1.5em;
+  --callout-padding: var(--theme-padding-block);
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
   --checkbox-color: var(--interactive-accent);
@@ -630,6 +630,11 @@ body {
   --theme-length-cardImageHeight: 25em;
   --theme-cardImageFit: contain;
   --theme-cardAspectRatio: auto;
+
+  --theme-padding-block: var(--theme-padding-blockVertical)
+    var(--theme-padding-blockHorizontal); /* Used for callouts, embeds etc. */
+  --theme-padding-blockHorizontal: 1.5em;
+  --theme-padding-blockVertical: 0.75em;
 }
 /* #endregion */
 /* #region   Colors */
@@ -2133,6 +2138,13 @@ li.is-collapsed .list-bullet:after,
 .markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n + 2) {
   background: var(--theme-color-tableHeaderBg);
 }
+.cm-html-embed td,
+.markdown-rendered td,
+.cm-html-embed th,
+.markdown-rendered th {
+  padding: 0.375em 0.75em;
+}
+
 .is-mobile
   .cm-table-widget
   .markdown-rendered
@@ -2296,10 +2308,31 @@ audio::-webkit-media-controls-panel {
 }
 /* #endregion */
 /* #region     Blocks and Callouts */
+.callout {
+  /* Embeds and dataviews would normally have a background colour, but we skip it inside a callout because it can look messy. */
+  --embed-background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+.callout .callout-title {
+  margin-left: -0.5em;
+}
 .callout.is-collapsible .callout-title {
   cursor: pointer;
 }
+.callout .callout-content {
+  margin-top: 0;
+  padding-top: 0;
 
+  & p:first-child {
+    margin-top: 0;
+  }
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+}
 @media (hover: hover) {
   .callout.is-collapsible .callout-title:hover {
     text-decoration: underline;
@@ -6639,7 +6672,12 @@ body.theme-setting-overrideDataview {
 
   /* List query */
   .dataview.list-view-ul {
-    padding: 1em 1em 1em 2em;
+    padding: var(--theme-padding-block);
+    margin: 0;
+
+    & li {
+      margin: 0 0 0 0.5em;
+    }
   }
 
   /* Table query */
@@ -6677,20 +6715,20 @@ body.theme-setting-overrideDataview {
   .dataview.table-view-table tbody tr:last-of-type td:last-of-type {
     border-bottom-right-radius: 0.5rem;
   }
-  .dataview.table-view-table tbody td,
-  .dataview.table-view-table tbody th {
-    border-top: none;
-    border-left: none;
-  }
-  .dataview.table-view-table tbody td:first-child,
-  .dataview.table-view-table tbody th:first-child {
-    border-left: solid var(--table-header-border-width)
-      var(--table-header-border-color);
-  }
-  .dataview.table-view-table th,
-  .dataview.table-view-table td {
+  .dataview.table-view-table > thead > tr > th,
+  .dataview.table-view-table > tbody > tr > td {
     border: solid var(--table-header-border-width)
       var(--table-header-border-color);
+    border-left-width: 0;
+    border-top-width: 0;
+  }
+  .dataview.table-view-table > tbody > tr > td:first-child,
+  .dataview.table-view-table > thead > tr > th:first-child {
+    border-left-width: var(--table-header-border-width);
+  }
+  .dataview.table-view-table > thead:first-child > tr:first-child th,
+  .dataview.table-view-table > tbody:first-child > tr:first-child td {
+    border-top-width: var(--table-header-border-width);
   }
 
   /* Table query with card layout (idea borrowed from Minimal) */
@@ -6780,10 +6818,11 @@ body.theme-setting-overrideDataview {
 
   /* Task query */
   .dataview-container:has(.contains-task-list) {
-    padding: 1em;
+    padding: var(--theme-padding-block);
   }
   .dataview-container .contains-task-list {
     padding-inline-start: 0;
+    margin: 0;
   }
   @media (hover: hover) {
     /* Style as a link */
@@ -6796,11 +6835,10 @@ body.theme-setting-overrideDataview {
       color: var(--link-color);
     }
   }
-
   /* Calendar query */
   /* Most styles shared with Calendar plugin */
   .block-language-dataview:has(.calendar) {
-    padding: 1em;
+    padding: var(--theme-padding-block);
   }
 
   /* Empty and error queries */
@@ -6819,6 +6857,23 @@ body.theme-setting-overrideDataview {
     color: var(--text-muted);
     text-align: center;
     font-family: var(--font-text);
+  }
+
+  /* Callouts with dataviews */
+  .callout .dataview.dataview-container {
+    padding-top: 0;
+  }
+  .callout:has(.dataview.list-view-ul) .callout-content,
+  .callout:has(.dataview-container > .contains-task-list) .callout-content,
+  .callout:has(.block-language-dataview > .container > table.calendar)
+    .callout-content {
+    margin: 0 -1.5em;
+  }
+  .callout:has(.dataview.table-view-table) .callout-content {
+    margin: 0 -0.75em;
+  }
+  .cards .callout:has(.dataview.table-view-table) .callout-content {
+    margin: 0 -1.5em;
   }
 }
 /*   #endregion */
