@@ -635,6 +635,30 @@ body {
     var(--theme-padding-blockHorizontal); /* Used for callouts, embeds etc. */
   --theme-padding-blockHorizontal: 1.5em;
   --theme-padding-blockVertical: 0.75em;
+
+  --shadow-l: 0 0 0.2rem
+      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
+    0 0.2rem 0.4rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0.4rem 1.2rem
+      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
+    0 1.2rem 2rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 2rem 4rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
+  --shadow-s: 0 0 0.05rem
+      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
+    0 0.05rem 0.1rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0.1rem 0.3rem
+      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
+    0 0.3rem 0.5rem
+      color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 0.5rem 1rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
+  --theme-shadow-indent: 0 0 0.2rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0 0.4rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 0 1.2rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
+    0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 16%, transparent),
+    0 0 4rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);
 }
 /* #endregion */
 /* #region   Colors */
@@ -1036,56 +1060,6 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --nav-item-color-hover: white;
   --search-clear-button-color: var(--theme-color-base);
   --search-icon-color: var(--theme-color-base);
-  --shadow-l: 0 0.125rem 0.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.2
-      ),
-    0 0.875rem 1.7rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.15
-      ),
-    0 2rem 6rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.25
-      );
-  --shadow-s: 0 0.0625rem 0.125rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.1
-      ),
-    0 0.25rem 0.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.075
-      ),
-    0 1rem 2rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.125
-      );
-  --shadow-s-bottom: 0 -0.0625rem 0.125rem hsl(var(--base-h), calc(var(--base-s) *
-            0.75), calc(var(--base-l) * 0.5), 0.1),
-    0 -0.25rem 0.5rem hsl(var(--base-h), calc(var(--base-s) * 0.75), calc(var(
-              --base-l
-            ) * 0.5), 0.075),
-    0 -1rem 2rem hsl(var(--base-h), calc(var(--base-s) * 0.75), calc(var(
-              --base-l
-            ) * 0.5), 0.125);
   --status-bar-text-color: black;
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseLightened80);
@@ -1230,6 +1204,12 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-gradientCardsetGeneratedBottom: var(
     --theme-color-baseTransparent12
   );
+  --theme-color-shadow: hsl(
+    var(--base-h),
+    calc(var(--base-s) * 0.75),
+    calc(var(--base-l) * 0.75)
+  );
+
   --theme-shadow-control: 0 1px 2px
     hsl(
       var(--base-h),
@@ -1237,27 +1217,6 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
       calc(var(--base-l) * 0.75),
       0.5
     );
-  --theme-shadow-graph: 0 0 0.75rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 1.5),
-        calc(var(--base-l) * 0.5),
-        0.8
-      ),
-    0 0 3.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 1.5),
-        calc(var(--base-l) * 0.5),
-        0.6
-      ),
-    0 0 6rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 1.5),
-        calc(var(--base-l) * 0.5),
-        1
-      );
   --theme-shadow-input: 0 1px 2px
       hsl(
         var(--base-h),
@@ -1278,27 +1237,6 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
         calc(var(--base-s) * 0.75),
         calc(var(--base-l) * 0.5),
         0.05
-      );
-  --theme-shadow-smallHigher: 0 0.0625rem 0.125rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.2
-      ),
-    0 0.25rem 0.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.15
-      ),
-    0 1rem 2rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
-        0.25
       );
 
   /*
@@ -1393,48 +1331,6 @@ body.theme-light.theme-setting-customGradient {
   --nav-item-color-hover: black;
   --search-clear-button-color: var(--theme-color-base);
   --search-icon-color: var(--theme-color-base);
-  --shadow-l: 0 0.125rem 0.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.2
-      ),
-    0 0.875rem 1.7rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.15
-      ),
-    0 2rem 6rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.25
-      );
-  --shadow-s: 0 0.0625rem 0.125rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.1
-      ),
-    0 0.25rem 0.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.075
-      ),
-    0 1rem 2rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.125
-      );
   --tag-color: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.2),
@@ -1578,6 +1474,11 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-gradientCardsetGeneratedBottom: var(
     --theme-color-baseTransparent25
   );
+  --theme-color-shadow: hsl(
+    var(--base-h),
+    calc(var(--base-s) * 0.75),
+    calc(var(--base-l) * 0.1)
+  );
   --theme-shadow-control: 0px 1px 2px
     hsl(
       var(--base-h),
@@ -1606,28 +1507,6 @@ body.theme-light.theme-setting-customGradient {
         calc(var(--base-l) * 0.1),
         0.15
       );
-  --theme-shadow-smallHigher: 0 0.0625rem 0.125rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.2
-      ),
-    0 0.25rem 0.5rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.15
-      ),
-    0 1rem 2rem
-      hsl(
-        var(--base-h),
-        calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.1),
-        0.25
-      );
-
   /*
   Gradient from contrast setting
 
@@ -3190,7 +3069,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 .mobile-tab-switcher-menubar {
   border-top: 0;
   background: var(--theme-color-settingsBg);
-  box-shadow: var(--shadow-s-bottom);
+  box-shadow: var(--theme-shadow-indent);
 
   z-index: 1;
 }
@@ -6091,21 +5970,21 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   & .view-content:before,
   & .view-content:after {
     background: transparent;
-    box-shadow: var(--theme-shadow-graph);
+    box-shadow: var(--theme-shadow-indent);
     content: "";
     display: block;
-    height: 1px;
+    height: 1rem;
     left: 0;
     pointer-events: none;
     position: absolute;
     right: 0;
-    width: 100%;
+    width: 120%;
   }
   & .view-content:before {
-    top: -1px;
+    top: -1rem;
   }
   & .view-content:after {
-    bottom: -1px;
+    bottom: -1rem;
   }
 }
 .mod-sidedock .workspace-leaf-content[data-type="graph"],
@@ -7571,7 +7450,7 @@ body.theme-setting-overrideKanban {
     flex-direction: column;
     padding: 0.5rem;
     gap: 1rem;
-    box-shadow: var(--theme-shadow-smallHigher);
+    box-shadow: var(--shadow-s);
     border-radius: var(--radius-m);
     top: 0.5em;
     right: 0.5em;
@@ -7608,16 +7487,22 @@ body.theme-setting-overrideMapView {
   .map-view-main:after {
     /* Match graph view */
     background: transparent;
-    box-shadow: var(--theme-shadow-graph);
+    box-shadow: var(--theme-shadow-indent);
     content: "";
     display: block;
-    height: 1px;
+    height: 1rem;
     left: 0;
     pointer-events: none;
     position: absolute;
     right: 0;
-    width: 100%;
+    width: 120%;
     z-index: 2;
+  }
+  .map-view-main:before {
+    top: -1rem;
+  }
+  .map-view-main:after {
+    bottom: -1rem;
   }
   .map-view-graph-controls {
     background: var(--theme-color-controlSetBg);
