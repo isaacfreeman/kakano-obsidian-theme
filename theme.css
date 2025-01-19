@@ -662,6 +662,7 @@ body {
 }
 /* #endregion */
 /* #region   Colors */
+/* #region     Base color */
 body {
   /* Base all theme colours off these */
   /* The base HSL variables will be overridden by Style Settings if installed, otherwise they'll use the accent colour. */
@@ -671,7 +672,72 @@ body {
 
   /* The base color, derived from either the accent or the Style Settings base color. Note that this may be overridden by one of the preset colours below. */
   --theme-color-base: hsl(var(--base-h), var(--base-s), var(--base-l));
+}
+/* #endregion */
+/* #region     Preset base colours, if users don't want to set an exact colour.  */
+body.css-settings-manager.theme-setting-baseColorPreset-accent {
+  --base-h: var(--accent-h);
+  --base-s: var(--accent-s);
+  --base-l: var(--accent-l);
+}
+body.css-settings-manager.theme-setting-baseColorPreset-whero {
+  --base-h: 0;
+  --base-s: 61%;
+  --base-l: 43%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-karaka {
+  --base-h: 30;
+  --base-s: 70%;
+  --base-l: 50%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-koowhai {
+  --base-h: 52;
+  --base-s: 60%;
+  --base-l: 45%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kaakaariki {
+  --base-h: 92;
+  --base-s: 60%;
+  --base-l: 39%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kaarikioorangi {
+  --base-h: 180;
+  --base-s: 57%;
+  --base-l: 47%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kahurangi {
+  --base-h: 215;
+  --base-s: 67%;
+  --base-l: 45%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-waiporoporo {
+  --base-h: 275;
+  --base-s: 67%;
+  --base-l: 45%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-maawhero {
+  --base-h: 335;
+  --base-s: 60%;
+  --base-l: 60%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-mangu {
+  --base-h: 240;
+  --base-s: 10%;
+  --base-l: 2%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-maa {
+  --base-h: 0;
+  --base-s: 0%;
+  --base-l: 90%;
+}
+body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
+  --base-h: 40;
+  --base-s: 2%;
+  --base-l: 50%;
+}
+/* #endregion */
 
+body {
   /*  Base colour variants */
   --theme-color-baseLightened95: color-mix(
     in srgb,
@@ -747,47 +813,29 @@ body {
 
   /* Base color with transparency */
   --theme-color-baseTransparent75: hsl(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.75
+    from var(--theme-color-base) h s l / 0.75
   );
   --theme-color-baseTransparent50: hsl(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.5
+    from var(--theme-color-base) h s l / 0.5
   );
   --theme-color-baseTransparent35: hsl(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.35
+    from var(--theme-color-base) h s l / 0.35
   );
   --theme-color-baseTransparent25: hsl(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.25
+    from var(--theme-color-base) h s l / 0.25
   );
   --theme-color-baseTransparent12: hsl(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.12
+    from var(--theme-color-base) h s l / 0.12
   );
   --theme-color-baseTransparent06: hsl(
-    var(--base-h),
-    var(--base-s),
-    var(--base-l),
-    0.06
+    from var(--theme-color-base) h s l / 0.06
   );
-  --theme-color-lightenTransparent50: rgb(255, 255, 255, 0.5);
-  --theme-color-lightenTransparent25: rgb(255, 255, 255, 0.25);
-  --theme-color-lightenTransparent25: rgb(255, 255, 255, 0.12);
-  --theme-color-darkenTransparent50: rgb(0, 0, 0, 0.5);
-  --theme-color-darkenTransparent25: rgb(0, 0, 0, 0.25);
-  --theme-color-darkenTransparent12: rgb(0, 0, 0, 0.12);
+  --theme-color-lightenTransparent50: hsl(from white h s l / 0.5);
+  --theme-color-lightenTransparent25: hsl(from white h s l / 0.25);
+  --theme-color-lightenTransparent12: hsl(from white h s l / 0.12);
+  --theme-color-darkenTransparent50: hsl(from black h s l / 0.5);
+  --theme-color-darkenTransparent25: hsl(from black h s l / 0.25);
+  --theme-color-darkenTransparent12: hsl(from black h s l / 0.12);
 
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(
@@ -819,209 +867,75 @@ body {
   --theme-value-gradientContrast: 0.2;
 }
 
-/* Preset base colours, if users don't want to set an exact colour.  */
-body.css-settings-manager.theme-setting-baseColorPreset-accent {
-  --base-h: var(--accent-h);
-  --base-s: var(--accent-s);
-  --base-l: var(--accent-l);
-}
-body.css-settings-manager.theme-setting-baseColorPreset-whero {
-  --base-h: 0;
-  --base-s: 61%;
-  --base-l: 43%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-karaka {
-  --base-h: 30;
-  --base-s: 70%;
-  --base-l: 50%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-koowhai {
-  --base-h: 52;
-  --base-s: 60%;
-  --base-l: 45%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-kaakaariki {
-  --base-h: 92;
-  --base-s: 60%;
-  --base-l: 39%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-kaarikioorangi {
-  --base-h: 180;
-  --base-s: 57%;
-  --base-l: 47%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-kahurangi {
-  --base-h: 215;
-  --base-s: 67%;
-  --base-l: 45%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-waiporoporo {
-  --base-h: 275;
-  --base-s: 67%;
-  --base-l: 45%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-maawhero {
-  --base-h: 335;
-  --base-s: 60%;
-  --base-l: 60%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-mangu {
-  --base-h: 240;
-  --base-s: 10%;
-  --base-l: 2%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-maa {
-  --base-h: 0;
-  --base-s: 0%;
-  --base-l: 90%;
-}
-body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
-  --base-h: 40;
-  --base-s: 2%;
-  --base-l: 50%;
-}
-
 /* Hues derived from base color */
 .theme-light,
 .theme-dark {
-  --color-red: hsl(356, var(--base-s), var(--base-l));
-  --color-orange: hsl(27, var(--base-s), var(--base-l));
-  --color-yellow: hsl(57, var(--base-s), var(--base-l));
-  --color-green: hsl(124, var(--base-s), var(--base-l));
-  --color-cyan: hsl(179, var(--base-s), var(--base-l));
-  --color-blue: hsl(219, var(--base-s), var(--base-l));
-  --color-purple: hsl(253, var(--base-s), var(--base-l));
-  --color-pink: hsl(331, var(--base-s), var(--base-l));
+  --color-red: hsl(from var(--theme-color-base) 356 s l);
+  --color-orange: hsl(from var(--theme-color-base) 27 s l);
+  --color-yellow: hsl(from var(--theme-color-base) 57 s l);
+  --color-green: hsl(from var(--theme-color-base) 124 s l);
+  --color-cyan: hsl(from var(--theme-color-base) 179 s l);
+  --color-blue: hsl(from var(--theme-color-base) 219 s l);
+  --color-purple: hsl(from var(--theme-color-base) 253 s l);
+  --color-pink: hsl(from var(--theme-color-base) 331 s l);
 
   --theme-color-redDarkened: hsl(
-    356,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-red) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-redLightened: hsl(
-    356,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-red) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-orangeDarkened: hsl(
-    27,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-orange) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-orangeLightened: hsl(
-    27,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-orange) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-yellowDarkened: hsl(
-    57,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-yellow) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-yellowLightened: hsl(
-    57,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-yellow) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-greenDarkened: hsl(
-    124,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-green) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-greenLightened: hsl(
-    124,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-green) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-cyanDarkened: hsl(
-    179,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-cyan) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-cyanLightened: hsl(
-    179,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-cyan) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-blueDarkened: hsl(
-    219,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-blue) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-blueLightened: hsl(
-    219,
-    calc(var(--base-s) * 1.75),
-    calc(var(--base-l) * 1.75)
+    from var(--color-blue) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-purpleDarkened: hsl(
-    253,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-purple) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-purpleLightened: hsl(
-    253,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-purple) h calc(s * 1.5) calc(l * 1.5)
   );
   --theme-color-pinkDarkened: hsl(
-    331,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.5)
+    from var(--color-pink) h calc(s * 1.5) calc(l * 0.5)
   );
   --theme-color-pinkLightened: hsl(
-    331,
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 1.5)
+    from var(--color-pink) h calc(s * 1.5) calc(l * 1.5)
   );
 
-  --theme-color-redVeryTransparent: hsl(
-    356,
-    var(--base-s),
-    var(--base-l),
-    0.25
-  );
-  --theme-color-redSlightlyTransparent: hsl(
-    356,
-    var(--base-s),
-    var(--base-l),
-    0.75
-  );
-  --theme-color-orangeVeryTransparent: hsl(
-    27,
-    var(--base-s),
-    var(--base-l),
-    0.25
-  );
-  --theme-color-orangeSlightlyTransparent: hsl(
-    27,
-    var(--base-s),
-    var(--base-l),
-    0.75
-  );
-  --theme-color-yellowVeryTransparent: hsl(
-    57,
-    var(--base-s),
-    var(--base-l),
-    0.25
-  );
-  --theme-color-yellowSlightlyTransparent: hsl(
-    57,
-    var(--base-s),
-    var(--base-l),
-    0.75
-  );
-  --theme-color-greenVeryTransparent: hsl(
-    124,
-    var(--base-s),
-    var(--base-l),
-    0.25
-  );
-  --theme-color-greenSlightlyTransparent: hsl(
-    124,
-    var(--base-s),
-    var(--base-l),
-    0.75
-  );
+  --theme-color-redTransparent25: hsl(from var(--color-red) h s l / 0.25);
+  --theme-color-redTransparent75: hsl(from var(--color-red) h s l / 0.75);
+  --theme-color-orangeTransparent25: hsl(from var(--color-orange) h s l / 0.25);
+  --theme-color-orangeTransparent75: hsl(from var(--color-orange) h s l / 0.75);
+  --theme-color-yellowTransparent25: hsl(from var(--color-yellow) h s l / 0.25);
+  --theme-color-yellowTransparent75: hsl(from var(--color-yellow) h s l / 0.75);
+  --theme-color-greenTransparent25: hsl(from var(--color-green) h s l / 0.25);
+  --theme-color-greenTransparent75: hsl(from var(--color-green) h s l / 0.75);
 }
 /* #endregion */
 /* #region   Light mode */
@@ -1136,7 +1050,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --theme-color-jiraIssueSuccessBg: var(--theme-color-greenLightened);
   --theme-color-jiraIssueStatusBg: var(--theme-color-baseDarkened90);
   --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
-  --theme-color-jiraIssueDangerBg: var(--theme-color-redVeryTransparent);
+  --theme-color-jiraIssueDangerBg: var(--theme-color-redTransparent25);
   --theme-color-jiraIssueDanger: white;
   --theme-color-jiraIssueDeleteBg: var(--color-red);
   --theme-color-jiraIssueTableStripe: var(--theme-color-lightenTransparent50);
@@ -1210,6 +1124,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
     calc(var(--base-l) * 0.75)
   );
 
+  /* TODO: standardise these */
   --theme-shadow-control: 0 1px 2px
     hsl(
       var(--base-h),
@@ -1405,7 +1320,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-jiraIssueSuccessBg: var(--theme-color-greenDarkened);
   --theme-color-jiraIssueStatusBg: var(--theme-color-baseDarkened90);
   --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
-  --theme-color-jiraIssueDangerBg: var(--theme-color-redVeryTransparent);
+  --theme-color-jiraIssueDangerBg: var(--theme-color-redTransparent25);
   --theme-color-jiraIssueDanger: white;
   --theme-color-jiraIssueDeleteBg: var(--color-red);
   --theme-color-jiraIssueTableStripe: var(--theme-color-darkenTransparent50);
@@ -5674,10 +5589,10 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 
 @keyframes pulse-animation {
   0% {
-    box-shadow: 0 0 0 0em var(--theme-color-redVeryTransparent);
+    box-shadow: 0 0 0 0em var(--theme-color-redTransparent25);
   }
   50% {
-    box-shadow: 0 0 0 0.25em var(--theme-color-redSlightlyTransparent);
+    box-shadow: 0 0 0 0.25em var(--theme-color-redTransparent75);
   }
   100% {
     box-shadow: 0 0 0 0em var(--theme-color-);
@@ -7456,17 +7371,17 @@ body.theme-setting-overrideKanban {
     right: 0.5em;
     width: auto;
 
-    & .kanban-plugin__lane-input-wrapper {
+    .kanban-plugin__lane-input-wrapper {
       padding: 0;
     }
 
-    & .kanban-plugin__checkbox-wrapper {
+    .kanban-plugin__checkbox-wrapper {
       border: none;
       margin: 0;
       padding: 0;
     }
 
-    & .kanban-plugin__lane-input-actions {
+    .kanban-plugin__lane-input-actions {
       padding: 0;
       justify-content: flex-end;
     }
@@ -7557,15 +7472,15 @@ body.theme-setting-overrideMapView {
   .map-view-main {
     .marker-cluster-small,
     .marker-cluster-small div {
-      background-color: var(--theme-color-greenVeryTransparent);
+      background-color: var(--theme-color-greenTransparent25);
     }
     .marker-cluster-medium,
     .marker-cluster-medium div {
-      background-color: var(--theme-color-yellowVeryTransparent);
+      background-color: var(--theme-color-yellowTransparent25);
     }
     .marker-cluster-large,
     .marker-cluster-large div {
-      background-color: var(--theme-color-orangeVeryTransparent);
+      background-color: var(--theme-color-orangeTransparent25);
     }
   }
 
