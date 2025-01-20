@@ -1025,7 +1025,6 @@ body {
   --theme-color-contentItemBg: var(--theme-color-lightenTransparent50);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: var(--theme-color-lightenTransparent25);
-  --theme-color-control: var(--theme-color-baseDarkened70);
   --theme-color-controlActive: var(--theme-color-control);
   --theme-color-controlBg: var(--theme-color-baseLightened95);
   --theme-color-controlBgHover: var(--theme-color-base);
@@ -1045,15 +1044,6 @@ body {
   --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseLightened25);
-  --theme-color-jiraIssueInfoBg: var(--theme-color-blueLightened);
-  --theme-color-jiraIssueWarningBg: var(--theme-color-yellowLightened);
-  --theme-color-jiraIssueSuccessBg: var(--theme-color-greenLightened);
-  --theme-color-jiraIssueStatusBg: var(--theme-color-baseDarkened90);
-  --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
-  --theme-color-jiraIssueDangerBg: var(--theme-color-redTransparent25);
-  --theme-color-jiraIssueDanger: white;
-  --theme-color-jiraIssueDeleteBg: var(--color-red);
-  --theme-color-jiraIssueTableStripe: var(--theme-color-lightenTransparent50);
   --theme-color-kanbanLaneBg: var(--theme-color-baseLightened80);
   --theme-color-log: var(--theme-color-baseDarkened80);
   --theme-color-logBg: var(--theme-color-baseLightened25);
@@ -1295,7 +1285,6 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-contentItemBg: rgb(0, 0, 0, 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgb(0, 0, 0, 0.1);
-  --theme-color-control: var(--theme-color-baseLightened60);
   --theme-color-controlActive: var(--theme-color-control);
   --theme-color-controlBg: var(--theme-color-baseDarkened25);
   --theme-color-controlBgHover: var(--theme-color-base);
@@ -1315,15 +1304,6 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-inputBorder: var(--theme-color-baseLightened25);
   --theme-color-inputPlaceholder: var(--theme-color-base);
   --theme-color-interactiveActive: var(--theme-color-baseDarkened25);
-  --theme-color-jiraIssueInfoBg: var(--theme-color-blueDarkened);
-  --theme-color-jiraIssueWarningBg: var(--theme-color-yellowDarkened);
-  --theme-color-jiraIssueSuccessBg: var(--theme-color-greenDarkened);
-  --theme-color-jiraIssueStatusBg: var(--theme-color-baseDarkened90);
-  --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
-  --theme-color-jiraIssueDangerBg: var(--theme-color-redTransparent25);
-  --theme-color-jiraIssueDanger: white;
-  --theme-color-jiraIssueDeleteBg: var(--color-red);
-  --theme-color-jiraIssueTableStripe: var(--theme-color-darkenTransparent50);
   --theme-color-kanbanLaneBg: var(--theme-color-baseDarkened80);
   --theme-color-log: var(--theme-color-baseLightened80);
   --theme-color-logBg: var(--theme-color-baseDarkened25);
@@ -1466,6 +1446,38 @@ body.theme-dark.theme-setting-customGradient {
   /* Override note background when specified by style settings. */
   /* There's no equivalent of this for light mode. */
   --background-primary: black;
+}
+/* #endregion */
+/* #region   Light/dark modes */
+body {
+  --theme-color-control: light-dark(
+    var(--theme-color-baseDarkened70),
+    var(--theme-color-baseLightened60)
+  );
+  --theme-color-jiraIssueInfoBg: light-dark(
+    var(--theme-color-blueLightened),
+    var(--theme-color-blueDarkened)
+  );
+  --theme-color-jiraIssueWarningBg: light-dark(
+    var(--theme-color-yellowLightened),
+    var(--theme-color-yellowDarkened)
+  );
+  --theme-color-jiraIssueSuccessBg: light-dark(
+    var(--theme-color-greenLightened),
+    var(--theme-color-greenDarkened)
+  );
+  --theme-color-jiraIssueStatusBg: light-dark(
+    var(--theme-color-baseDarkened90),
+    var(--theme-color-baseDarkened90)
+  );
+  --theme-color-jiraIssueDeleteBg: var(--color-red);
+  --theme-color-jiraIssueStatus: var(--theme-color-baseLightened95);
+  --theme-color-jiraIssueDangerBg: var(--theme-color-redTransparent25);
+  --theme-color-jiraIssueDanger: white;
+  --theme-color-jiraIssueTableStripe: light-dark(
+    var(--theme-color-lightenTransparent50),
+    var(--theme-color-darkenTransparent50)
+  );
 }
 /* #endregion */
 /* #endregion */
@@ -7026,17 +7038,14 @@ body.theme-setting-overrideJiraIssue {
     }
   }
   .jira-issue-container .ji-tags {
-    background-color: var(--embed-background);
-    border-bottom: var(--embed-border-bottom);
-    border-left: var(--embed-border-left);
-    border-radius: var(--radius-m);
-    border-right: var(--embed-border-right);
-    border-top: var(--embed-border-top);
+    /* background-color: var(--embed-background); */
+    border: solid 1px var(--embed-background);
+    border-radius: var(--radius-s);
     overflow: hidden;
     width: 100%;
     align-items: center;
     display: flex;
-    gap: 0.5em;
+    gap: 0.25em;
     padding: 0;
 
     .ji-tag,
@@ -7057,15 +7066,17 @@ body.theme-setting-overrideJiraIssue {
       padding: 0.25em;
     }
     .ji-tag:last-child {
-      border-radius: var(--tag-radius);
+      border-radius: var(--radius-s);
       border: var(--tag-border-width) solid var(--tag-border-color);
       font-weight: var(--tag-weight);
-      padding: var(--tag-padding-y) var(--tag-padding-x);
+      padding: 0.25em 0.5em;
       vertical-align: baseline;
       line-height: var(--line-height-tight);
-      margin: 0.5em 0.5em 0.5em 0;
+      margin: 0.25em 0.5em;
       background-color: var(--theme-color-jiraIssueStatusBg);
       color: var(--theme-color-jiraIssueStatus);
+      text-transform: uppercase;
+      font-weight: 700;
     }
     .ji-tag.is-info {
       background-color: var(--theme-color-jiraIssueInfoBg);
@@ -7094,7 +7105,7 @@ body.theme-setting-overrideJiraIssue {
   }
   .jira-issue-container {
     .ji-tags:has(.ji-tag.is-danger) {
-      background-color: var(--theme-color-jiraIssueDangerBg);
+      border: solid 1px var(--theme-color-jiraIssueDangerBg);
       .ji-tag.is-danger {
         color: inherit;
         flex-grow: 1;
@@ -7103,10 +7114,10 @@ body.theme-setting-overrideJiraIssue {
           flex-grow: 0;
           color: var(--theme-color-jiraIssueDanger);
           background-color: var(--color-red);
-          border-radius: var(--tag-radius);
+          border-radius: var(--radius-s);
           border: var(--tag-border-width) solid var(--tag-border-color);
           font-weight: var(--tag-weight);
-          padding: var(--tag-padding-y) var(--tag-padding-x);
+          padding: 0.25em 0.5em;
           vertical-align: baseline;
           line-height: var(--line-height-tight);
           margin: 0.5em 0.5em 0.5em 0;
