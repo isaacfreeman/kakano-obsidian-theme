@@ -533,6 +533,10 @@ body {
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
   --checkbox-color: var(--interactive-accent);
+  --code-background: light-dark(
+    var(--theme-color-darkenTransparent06),
+    var(--theme-color-lightenTransparent06)
+  );
   --code-normal: var(--text-normal);
   --divider-width: 0;
   --embed-border-bottom: none;
@@ -836,9 +840,11 @@ body {
   --theme-color-lightenTransparent50: hsl(from white h s l / 0.5);
   --theme-color-lightenTransparent25: hsl(from white h s l / 0.25);
   --theme-color-lightenTransparent12: hsl(from white h s l / 0.12);
+  --theme-color-lightenTransparent06: hsl(from white h s l / 0.06);
   --theme-color-darkenTransparent50: hsl(from black h s l / 0.5);
-  --theme-color-darkenTransparent25: hsl(from black h s l / 0.25);
+  --theme-color-darkenTransparent06: hsl(from black h s l / 0.25);
   --theme-color-darkenTransparent12: hsl(from black h s l / 0.12);
+  --theme-color-darkenTransparent06: hsl(from black h s l / 0.06);
 
   /* Gradients */
   --theme-gradient-topToBottom: linear-gradient(
@@ -1720,6 +1726,10 @@ body {
   border-top: var(--hr-thickness) solid;
   border-color: var(--hr-color);
   margin: 2em 0 !important;
+}
+.cm-s-obsidian .cm-inline-code:not(.cm-formatting),
+.markdown-rendered code {
+  padding: 0.25em 0.5em;
 }
 
 /* #region     Lists */
