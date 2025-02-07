@@ -537,6 +537,10 @@ body {
     var(--theme-color-darkenTransparent06),
     var(--theme-color-lightenTransparent06)
   );
+  --code-comment: light-dark(
+    var(--theme-color-darkenTransparent50),
+    var(--theme-color-lightenTransparent50)
+  );
   --code-normal: var(--text-normal);
   --divider-width: 0;
   --embed-border-bottom: none;
