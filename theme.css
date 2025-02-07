@@ -2299,6 +2299,9 @@ body.theme-setting-highlightActiveLine {
 }
 /* #endregion */
 /* #region   Live Preview mode */
+.cm-line:has(.cm-hmd-frontmatter .is-invalid) {
+  background-color: rgba(var(--callout-error), 0.1);
+}
 /* #region     Lists */
 .list-bullet:after {
   border: solid 1px var(--list-marker-color);
@@ -2359,6 +2362,13 @@ body.theme-setting-differentiateBulletLevels {
   color: var(--link-color);
 }
 /* #endregion */
+/* #endregion */
+/* #region   Reading view */
+.metadata-error-container {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
 /* #endregion */
 /* #region   Obsidian UI */
 body {
@@ -3069,7 +3079,6 @@ body {
 
 /* #region   macOS window frame styles */
 body.mod-macos {
-  /* TODO: can these be standardised across OSes? */
   .workspace-tab-header-new-tab,
   .workspace-tab-header-tab-list {
     padding: 0;
@@ -3262,9 +3271,6 @@ body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
         top: 0.375rem;
         right: calc(0.25rem + var(--frame-right-space));
       }
-
-      /* TODO: flash of button moving left during animation – can I prevent this? */
-      /*       button is moved in DOM - can I hide one or the other based on is-left-sidedock-open? */
       .workspace.is-left-sidedock-open {
         .mod-root .sidebar-toggle-button.mod-left {
           display: none;
@@ -3328,7 +3334,6 @@ body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
 /* #region   Windows window frame styles */
 /* #region     "Obsidian frame" style */
 body.mod-windows {
-  /* TODO: style sidebar toggle buttons, accounting for window control positions */
   &.is-frameless:not(.is-hidden-frameless) {
     /* Override default appearance for .mod-close, as this one simulates a system control. */
     .titlebar-button.mod-close {
@@ -3339,8 +3344,6 @@ body.mod-windows {
 }
 /* #endregion */
 /* #region     "Hidden (default)" style. This is the default appearance! */
-/* TODO: take styles from macOS, adjust for window controls */
-/* TODO: consolidate shared styles between OSes */
 body.mod-windows {
   &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
     /* Override default appearance for .mod-close, as this one simulates a system control. */
@@ -4382,7 +4385,8 @@ button.search-result-file-match-replace-button {
 }
 /* #endregion */
 /* #region     Lightweight buttons */
-.search-result-file-match-destination-file {
+.search-result-file-match-destination-file,
+.text-icon-button {
   border: none;
   box-shadow: var(--theme-shadow-control);
   background-color: var(--theme-color-controlBgLowWeight);
@@ -4392,13 +4396,15 @@ button.search-result-file-match-replace-button {
   min-height: 0;
   padding: 0.25em 0.5em;
 }
-.search-result-file-match-destination-file:focus {
+.search-result-file-match-destination-file:focus,
+.text-icon-button:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
   outline: none;
 }
 @media (hover: hover) {
   .search-result-file-match:hover
-    .search-result-file-match-destination-file:hover {
+    .search-result-file-match-destination-file:hover,
+  .text-icon-button:hover {
     border: none;
     background: var(--theme-color-controlBgHover);
     color: var(--theme-color-controlTextHover);
@@ -5371,7 +5377,7 @@ body:not(.setting-properties-position-below)
 .mod-root .metadata-container,
 .embedded-backlinks {
   animation: 0.5s 1 alternate fadein;
-  background: var(--metadata-property-background);
+  background-color: var(--metadata-property-background);
   border-radius: 0;
   border: 0;
   font-family: var(--font-interface);
@@ -5379,6 +5385,10 @@ body:not(.setting-properties-position-below)
   padding: 0.5rem 2rem;
   transform: none;
   width: 100%;
+
+  &.mod-error {
+    background-color: rgba(var(--callout-error), 0.1);
+  }
 }
 body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   width: calc(100% + 4rem);
