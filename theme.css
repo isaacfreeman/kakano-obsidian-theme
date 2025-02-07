@@ -3462,6 +3462,7 @@ body.mod-windows {
 /* Tabs with Obsidian navigation or data (as opposed to user content) can have a different inactive color */
 .theme-setting-distinguishNonContentTabs {
   .workspace-tab-header[data-type="calendar"]:not(.is-active),
+  .workspace-tab-header[data-type="webviewer"]:not(.is-active),
   .workspace-tab-header[data-type="graph"]:not(.is-active),
   .workspace-tab-header[data-type="localgraph"]:not(.is-active),
   .workspace-tab-header[data-type="map"]:not(.is-active) {
@@ -3634,7 +3635,8 @@ body.mod-windows {
     background-color: var(--tab-background-inactive);
     color: var(--tab-text-color-active);
   }
-  .workspace-tab-header[data-type="markdown"].is-active {
+  .workspace-tab-header[data-type="markdown"].is-active,
+  .workspace-tab-header[data-type="webviewer"].is-active {
     background-color: var(--tab-background-active);
     color: var(--tab-text-color-active);
     border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
@@ -3643,8 +3645,13 @@ body.mod-windows {
       color: var(--icon-color);
     }
   }
-  .workspace-leaf-content[data-type="markdown"] {
+  .workspace-leaf-content[data-type="markdown"],
+  .workspace-leaf-content[data-type="webviewer"] {
     padding: 0 1rem;
+
+    .view-header {
+      border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+    }
 
     .view-content {
       background-color: var(--tab-background-active);
