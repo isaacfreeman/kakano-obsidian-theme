@@ -543,6 +543,7 @@ body {
   );
   --code-normal: var(--text-normal);
   --divider-width: 0;
+  --embed-background: var(--theme-color-baseTransparent12);
   --embed-border-bottom: none;
   --embed-border-left: none;
   --embed-border-right: none;
@@ -554,6 +555,7 @@ body {
   --header-height: calc(var(--icon-size) + 1rem);
   --heading-spacing: 0.67em;
   --input-border-width: 2px;
+  --input-radius: 5px;
   --list-marker-color: var(--text-normal);
   --list-bullet-radius: 50%;
   --list-bullet-size: 0.25em;
@@ -966,7 +968,6 @@ body {
   --caret-color: hsl(var(--accent-h), 150%, 50%);
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
-  --embed-background: var(--theme-color-baseTransparent12);
   --empty-pane-color: var(--theme-color-baseDarkened70);
   --icon-color-focused: white;
   --icon-color-hover: hsl(
@@ -1228,7 +1229,6 @@ body.theme-light.theme-setting-customGradient {
   --caret-color: hsl(var(--accent-h), 150%, 80%);
   --collapse-icon-color: var(--theme-color-base);
   --collapse-icon-color-collapsed: var(--theme-color-base);
-  --embed-background: var(--theme-color-baseTransparent25);
   --empty-pane-color: var(--theme-color-baseDarkened70);
   --icon-color-focused: var(--theme-color-baseLightened80);
   --icon-color-hover: hsl(
@@ -7102,7 +7102,6 @@ body.theme-setting-overrideJiraIssue {
     }
   }
   .jira-issue-container .ji-tags {
-    /* background-color: var(--embed-background); */
     border: solid 1px var(--embed-background);
     border-radius: var(--radius-s);
     overflow: hidden;
