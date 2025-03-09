@@ -610,6 +610,7 @@ body {
   --tab-switcher-preview-background-shadow: var(--shadow-l);
   --tab-switcher-preview-shadow: none;
   --tab-switcher-preview-shadow-active: none;
+  --text-on-accent: var(--theme-color-baseLightened95);
   --text-muted: color-mix(in srgb, var(--text-normal), transparent 60%);
   --titlebar-background-focused: transparent;
   --titlebar-background: transparent;
@@ -620,6 +621,10 @@ body {
   --theme-color-graphViewBg: transparent;
   --theme-color-tabBgInactiveHover: var(--theme-color-baseTransparent75);
   --theme-color-tableHeaderBg: var(--theme-color-baseTransparent12);
+  --theme-color-dataviewEmptyBorder: light-dark(
+    var(--theme-color-baseLightened40),
+    var(--theme-color-baseDarkened40)
+  );
   --theme-color-cardBg: var(--background-primary);
   --theme-lineHeight-tight: 1.3rem;
   --theme-setting-lineWidth: 60;
@@ -5184,16 +5189,31 @@ body:not(.is-phone) .modal.mod-sync-history {
     display: none;
   }
 }
-.community-item.is-selected,
-.community-item.is-selected .community-item-author,
-.community-item.is-selected .community-item-repo,
-.community-item.is-selected .community-item-downloads,
-.community-item.is-selected .community-item-updated {
+.community-item-name,
+.community-item-author,
+.community-item-repo,
+.community-item-downloads,
+.community-item-updated,
+.community-modal-info-downloads-text,
+.community-modal-info-author,
+.community-modal-info-repo {
+  color: var(--text-normal);
+}
+.community-item.is-selected {
   color: var(--text-on-accent);
+
+  .community-item-name,
+  .community-item-author,
+  .community-item-repo,
+  .community-item-downloads,
+  .community-item-updated {
+    color: var(--text-on-accent);
+  }
 }
 .community-item.mod-active {
   background: var(--theme-color-communityItemBgActive);
 }
+.community-item.mod-active .community-item-name,
 .community-item.mod-active .community-item-author,
 .community-item.mod-active .community-item-repo,
 .community-item.mod-active .community-item-downloads,
@@ -5205,6 +5225,7 @@ body:not(.is-phone) .modal.mod-sync-history {
   .community-item:hover {
     color: var(--text-on-accent);
   }
+  .community-item:hover .community-item-name,
   .community-item:hover .community-item-author,
   .community-item:hover .community-item-repo,
   .community-item:hover .community-item-downloads,
@@ -5216,12 +5237,14 @@ body:not(.is-phone) .modal.mod-sync-history {
     background: var(--theme-color-communityItemBgSelected);
   }
   .community-item.is-selected:hover,
+  .community-item.is-selected:hover .community-item-name,
   .community-item.is-selected:hover .community-item-author,
   .community-item.is-selected:hover .community-item-repo,
   .community-item.is-selected:hover .community-item-downloads,
   .community-item.is-selected:hover .community-item-updated {
     color: var(--text-on-accent);
   }
+  .community-item.mod-active:hover .community-item-name,
   .community-item.mod-active:hover .community-item-author,
   .community-item.mod-active:hover .community-item-repo,
   .community-item.mod-active:hover .community-item-downloads,
@@ -6328,6 +6351,9 @@ body.theme-setting-overrideAdvancedTables {
 /* #endregion */
 /* #region   Community Plugin: Calendar */
 body.theme-setting-overrideCalendar {
+  /* TODO: border-radius m on top-left of first day for current month, bottom-right for last day */
+  /* TODO: calendar in main tabs coloured more like sidebar */
+
   .container:has(> .calendar) {
     margin: 0;
     padding: 0 !important;
@@ -6355,6 +6381,10 @@ body.theme-setting-overrideCalendar {
     border-radius: var(--radius-m);
     padding: 0.5em !important;
   }
+  .container > .calendar {
+    table-layout: fixed;
+    width: 100%;
+  }
   .container > .calendar thead th {
     background: transparent;
     border: none;
@@ -6363,6 +6393,8 @@ body.theme-setting-overrideCalendar {
     font-weight: normal;
   }
   .container > .calendar tbody td {
+    display: table-cell;
+    max-width: 0;
     border: none;
     padding: 0;
     vertical-align: top;
@@ -6370,9 +6402,10 @@ body.theme-setting-overrideCalendar {
   .container > .calendar tbody td:not(:has(.adjacent-month)) {
     .day {
       background-color: var(--theme-color-calendarDayBg);
-      border-radius: var(--radius-m);
-      margin: 1px;
+      border-radius: 0;
+      margin: 0;
     }
+
     .day.today {
       background-color: var(--theme-color-tabNavBg);
       color: var(--text-normal);
@@ -6720,7 +6753,7 @@ body.theme-setting-overrideDataview {
   & div.dataview-error-box,
   .dataview.dataview-error {
     align-items: center;
-    border: 0.25rem dashed var(--theme-color-base);
+    border: 0.25rem dashed var(--theme-color-dataviewEmptyBorder);
     display: flex;
     justify-content: center;
     min-height: 5em;
