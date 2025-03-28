@@ -621,7 +621,7 @@ body {
   --theme-color-graphViewBg: transparent;
   --theme-color-tabBgInactiveHover: var(--theme-color-baseTransparent75);
   --theme-color-tableHeaderBg: var(--theme-color-baseTransparent12);
-  --theme-color-dataviewEmptyBorder: light-dark(
+  --theme-color-dataviewEmpty: light-dark(
     var(--theme-color-baseLightened40),
     var(--theme-color-baseDarkened40)
   );
@@ -6774,7 +6774,7 @@ body.theme-setting-overrideDataview {
   & div.dataview-error-box,
   .dataview.dataview-error {
     align-items: center;
-    border: 0.25rem dashed var(--theme-color-dataviewEmptyBorder);
+    border: 0.25rem dashed var(--theme-color-dataviewEmpty);
     display: flex;
     justify-content: center;
     min-height: 5em;
@@ -6783,9 +6783,9 @@ body.theme-setting-overrideDataview {
   }
   .dataview-error-message,
   .dataview-error {
-    color: var(--text-muted);
+    color: var(--theme-color-dataviewEmpty);
     text-align: center;
-    font-family: var(--font-text);
+    font-family: var(--font-interface);
   }
 
   /* Callouts with dataviews */
