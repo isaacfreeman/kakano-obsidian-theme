@@ -848,10 +848,12 @@ body {
   --theme-color-baseTransparent06: hsl(
     from var(--theme-color-base) h s l / 0.06
   );
+  --theme-color-lightenTransparent75: hsl(from white h s l / 0.75);
   --theme-color-lightenTransparent50: hsl(from white h s l / 0.5);
   --theme-color-lightenTransparent25: hsl(from white h s l / 0.25);
   --theme-color-lightenTransparent12: hsl(from white h s l / 0.12);
   --theme-color-lightenTransparent06: hsl(from white h s l / 0.06);
+  --theme-color-darkenTransparent75: hsl(from black h s l / 0.75);
   --theme-color-darkenTransparent50: hsl(from black h s l / 0.5);
   --theme-color-darkenTransparent06: hsl(from black h s l / 0.25);
   --theme-color-darkenTransparent12: hsl(from black h s l / 0.12);
@@ -1036,7 +1038,7 @@ body {
   --theme-color-audioRecordingActive: var(--theme-color-redDarkened);
   --theme-color-blockId: var(--theme-color-baseLightened25);
   --theme-color-calendarBg: var(--theme-color-baseLightened80);
-  --theme-color-calendarDayBg: var(--theme-color-lightenTransparent50);
+  --theme-color-calendarDayBg: var(--theme-color-lightenTransparent75);
   --theme-color-communityItemBg: var(--theme-color-baseLightened80);
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseLightened60);
@@ -6355,6 +6357,7 @@ body.theme-setting-overrideCalendar {
   /* TODO: calendar in main tabs coloured more like sidebar */
 
   .container:has(> .calendar) {
+    background-color: var(--theme-color-calendarBg);
     margin: 0;
     padding: 0 !important;
 
@@ -6371,15 +6374,28 @@ body.theme-setting-overrideCalendar {
         padding: 0;
       }
       .right-nav {
+        align-items: center;
         margin: 0;
         padding: 0;
       }
+      .arrow svg,
+      .reset-button {
+        color: var(--icon-color);
+      }
     }
   }
-  .mod-right-split .container:has(> .calendar) {
-    background-color: var(--theme-color-calendarBg);
+  .calendar .day {
+    padding: 0.5em 1em;
+    min-height: 10em;
+  }
+  .mod-sidedock .container:has(> .calendar) {
     border-radius: var(--radius-m);
-    padding: 0.5em !important;
+    overflow: hidden;
+
+    .calendar .day {
+      padding: 0.25em 0.5em;
+      min-height: 0;
+    }
   }
   .container > .calendar {
     table-layout: fixed;
@@ -6399,6 +6415,8 @@ body.theme-setting-overrideCalendar {
     padding: 0;
     vertical-align: top;
   }
+
+  /* Days for current month */
   .container > .calendar tbody td:not(:has(.adjacent-month)) {
     .day {
       background-color: var(--theme-color-calendarDayBg);
@@ -6424,6 +6442,9 @@ body.theme-setting-overrideCalendar {
       background-color: var(--theme-color-controlBgHover);
       color: var(--theme-color-controlHover);
     }
+  }
+  .calendar .day {
+    text-align: left;
   }
 }
 /* #endregion */
