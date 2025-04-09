@@ -611,7 +611,7 @@ body {
   --tab-switcher-preview-shadow: none;
   --tab-switcher-preview-shadow-active: none;
   --text-on-accent: var(--theme-color-baseLightened95);
-  --text-muted: color-mix(in srgb, var(--text-normal), transparent 60%);
+  --text-muted: color-mix(in srgb, var(--text-normal), transparent 30%);
   --titlebar-background-focused: transparent;
   --titlebar-background: transparent;
 
@@ -1135,7 +1135,6 @@ body {
     calc(var(--base-l) * 0.75)
   );
 
-  /* TODO: standardise these */
   --theme-shadow-control: 0 1px 2px
     hsl(
       var(--base-h),
@@ -3430,7 +3429,6 @@ body.mod-windows {
 /* #endregion */
 /* #region   Linux window frame styles */
 .mod-linux {
-  /* TODO */
 }
 /* #endregion */
 
@@ -6100,6 +6098,7 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
 .search-params,
 .search-results-info {
   margin: 0 0 0.5rem 0;
+  padding: 0;
 }
 
 .search-params .setting-item {
@@ -6353,8 +6352,15 @@ body.theme-setting-overrideAdvancedTables {
 /* #endregion */
 /* #region   Community Plugin: Calendar */
 body.theme-setting-overrideCalendar {
-  /* TODO: border-radius m on top-left of first day for current month, bottom-right for last day */
-  /* TODO: calendar in main tabs coloured more like sidebar */
+  .workspace-leaf-content[data-type="calendar"] {
+    .container {
+      border-radius: 1rem;
+    }
+    .container > .calendar {
+      width: 100%;
+      margin: 0;
+    }
+  }
 
   .container:has(> .calendar) {
     background-color: var(--theme-color-calendarBg);
@@ -6388,18 +6394,9 @@ body.theme-setting-overrideCalendar {
     padding: 0.5em 1em;
     min-height: 10em;
   }
-  .mod-sidedock .container:has(> .calendar) {
-    border-radius: var(--radius-m);
-    overflow: hidden;
-
-    .calendar .day {
-      padding: 0.25em 0.5em;
-      min-height: 0;
-    }
-  }
   .container > .calendar {
     table-layout: fixed;
-    width: 100%;
+    margin: 1rem;
   }
   .container > .calendar thead th {
     background: transparent;
@@ -6407,6 +6404,9 @@ body.theme-setting-overrideCalendar {
     text-transform: none;
     font-size: var(--font-ui-small);
     font-weight: normal;
+    color: var(--theme-color-control);
+    text-align: left;
+    padding: 0.25em 1em;
   }
   .container > .calendar tbody td {
     display: table-cell;
@@ -6417,7 +6417,7 @@ body.theme-setting-overrideCalendar {
   }
 
   /* Days for current month */
-  .container > .calendar tbody td:not(:has(.adjacent-month)) {
+  .container > .calendar tbody td {
     .day {
       background-color: var(--theme-color-calendarDayBg);
       border-radius: 0;
@@ -6428,10 +6428,21 @@ body.theme-setting-overrideCalendar {
       background-color: var(--theme-color-tabNavBg);
       color: var(--text-normal);
       font-weight: bold;
+      border-radius: 0.5em;
     }
     .day.active {
       background-color: var(--background-primary);
       color: var(--text-normal);
+    }
+  }
+  .container > .calendar tbody td:has(.day.today) {
+    background-color: var(--theme-color-calendarDayBg);
+  }
+  .container > .calendar tbody td:has(.adjacent-month) {
+    background-color: transparent;
+
+    .day {
+      background-color: transparent;
     }
   }
   @media (hover: hover) {
@@ -6445,6 +6456,31 @@ body.theme-setting-overrideCalendar {
   }
   .calendar .day {
     text-align: left;
+  }
+
+  .mod-sidedock .workspace-leaf-content[data-type="calendar"] {
+    .container {
+      border-radius: var(--radius-m);
+      overflow: hidden;
+
+      .calendar .day {
+        padding: 0.25em 0.25em;
+        min-height: 3em;
+      }
+
+    }
+    .container > .calendar {
+      table-layout: fixed;
+      width: 100%;
+      margin: 0.0;
+    }
+    .container > .calendar thead th {
+      padding: 0.25em;
+    }
+    .container > .calendar tbody td .day.today {
+      border-radius: 0.25em;
+    }
+
   }
 }
 /* #endregion */
@@ -6678,7 +6714,6 @@ body.theme-setting-overrideDataview {
     user-select: none;
     width: 180px;
     display: block;
-    /* TODO: review appearance of thead – Minmal makes it a popup that presumably works with Sortable */
     display: none;
     float: right;
     position: relative;
