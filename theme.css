@@ -3251,7 +3251,7 @@ body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
     /* This element also seems to be a handle for window dragging */
     .mod-sidedock .workspace-tabs.mod-top .workspace-tab-header-container {
       margin-top: 0;
-      height: calc(2 * var(--header-height) + 0.5rem);
+      height: calc(2 * var(--header-height));
       align-items: flex-end;
     }
     .mod-sidedock .workspace-tab-header-container-inner {
@@ -3556,6 +3556,13 @@ body.mod-windows {
 /* #endregion */
 /* #region     Sidebars */
 .mod-sidedock {
+  padding-bottom: 1em;
+  background: yellow;
+
+  &:has(.workspace-sidedock-vault-profile) {
+    padding-bottom: 0;
+  }
+
   .workspace-tabs {
     gap: 0;
   }
@@ -5310,6 +5317,9 @@ body:not(.is-phone) .modal.mod-sync-history {
 .markdown-source-view .cm-contentContainer {
   padding: 1rem 2rem;
 }
+.mod-sidedock .markdown-source-view .cm-contentContainer {
+  padding: 0 0;
+}
 .is-phone .markdown-source-view .cm-contentContainer {
   padding-top: 0;
   padding-bottom: 0;
@@ -5336,7 +5346,7 @@ body:not(.is-phone) .modal.mod-sync-history {
   > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
   max-width: calc(1ch * var(--theme-setting-lineWidthReadingView));
 }
-.markdown-source-view.mod-cm6 .cm-sizer .cm-contentContainer,
+.mod-root .markdown-source-view.mod-cm6 .cm-sizer .cm-contentContainer,
 .markdown-preview-view
   .markdown-preview-sizer
   > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
@@ -6495,12 +6505,11 @@ body.theme-setting-overrideClearUnusedImages {
 body.theme-setting-overrideColumns {
   /* Callout format – this also works without the plugin */
 
-  :root {
-    --obsidian-columns-gap: 1em;
-    --obsidian-columns-padding: 0 0;
-    --obsidian-columns-min-width: 10em;
-    --obsidian-columns-def-span: 1;
-  }
+  --obsidian-columns-gap: 1em;
+  --obsidian-columns-padding: 0 0;
+  --obsidian-columns-min-width: 10em;
+  --obsidian-columns-def-span: 1;
+
   div[data-callout|="col"].callout {
     background-color: var(--background-primary); /* Override callout bg */
     padding: 0;
@@ -8070,4 +8079,13 @@ body.theme-setting-overrideTasks {
   }
 }
 /*   #endregion */
+/* #endregion */
+
+/* #region Dev stuff */
+
+/* Show border of content area clearly */
+/* .cm-contentContainer > .cm-content {
+  background-color: rgba(255, 0, 0, 0.1);
+} */
+
 /* #endregion */
