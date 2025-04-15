@@ -1497,6 +1497,7 @@ body {
     var(--theme-color-lightenTransparent50),
     var(--theme-color-darkenTransparent50)
   );
+  --theme-color-lineNumbers: light-dark(var(--theme-color-baseLightened60), var(--theme-color-baseDarkened60));
 }
 /* #endregion */
 /* #endregion */
@@ -2284,11 +2285,6 @@ body.theme-setting-codeBlockLineNumbers {
   }
 }
 /* #endregion */
-.markdown-source-view.mod-cm6 {
-  .cm-gutters {
-    color: var(--theme-color-textMeta) !important;
-  }
-}
 body.theme-setting-highlightActiveLine {
   .markdown-source-view.mod-cm6 {
     .cm-active:not(.HyperMD-codeblock) {
@@ -2297,7 +2293,25 @@ body.theme-setting-highlightActiveLine {
     }
   }
 }
+/* #region     Line numbers */
+.markdown-source-view.mod-cm6 .cm-gutters {
+  color: var(--theme-color-lineNumbers) !important;
+}
 
+body:not(.is-mobile) {
+  .markdown-source-view {
+    .cm-gutters {
+      margin-inline-end: 0;
+    }
+    .cm-editor .cm-gutter {
+      margin-left: -3.5em;
+    }
+    .cm-editor .cm-lineNumbers .cm-gutterElement {
+      min-width: 2em;
+    }
+  }
+}
+/* #endregion */
 /* #endregion */
 /* #region   Source mode */
 .markdown-source-view:not(.is-live-preview) .cm-scroller {
