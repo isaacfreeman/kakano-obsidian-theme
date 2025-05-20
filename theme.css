@@ -3084,6 +3084,14 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 /* #endregion */
 /* #region Workspace */
 /* #region   Overall workspace */
+* {
+  scrollbar-color: var(--theme-color-baseTransparent25) transparent;
+}
+@media (hover: hover) {
+  *:hover {
+    scrollbar-color: var(--theme-color-baseTransparent50) transparent;
+  }
+}
 body {
   position: relative;
 }
