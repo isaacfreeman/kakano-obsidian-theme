@@ -4760,7 +4760,6 @@ select:focus,
   opacity: var(--icon-opacity);
   padding: 0;
   position: relative;
-  width: 1em;
   margin: 0;
   align-items: center;
   justify-content: center;
