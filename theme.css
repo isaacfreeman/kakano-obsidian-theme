@@ -3600,7 +3600,6 @@ body.mod-windows {
 /* #region     Sidebars */
 .mod-sidedock {
   padding-bottom: 1em;
-  background: yellow;
 
   &:has(.workspace-sidedock-vault-profile) {
     padding-bottom: 0;
