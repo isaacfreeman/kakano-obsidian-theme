@@ -526,7 +526,7 @@ settings:
 /* #region Custom properties */
 /* #region   General */
 body {
-  --background-input: var(--theme-color-baseTransparent12);
+  --background-input: light-dark(var(--theme-color-baseTransparent25), var(--theme-color-darkenTransparent06));
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
   --callout-padding: var(--theme-padding-block);
@@ -855,7 +855,7 @@ body {
   --theme-color-lightenTransparent06: hsl(from white h s l / 0.06);
   --theme-color-darkenTransparent75: hsl(from black h s l / 0.75);
   --theme-color-darkenTransparent50: hsl(from black h s l / 0.5);
-  --theme-color-darkenTransparent06: hsl(from black h s l / 0.25);
+  --theme-color-darkenTransparent25: hsl(from black h s l / 0.25);
   --theme-color-darkenTransparent12: hsl(from black h s l / 0.12);
   --theme-color-darkenTransparent06: hsl(from black h s l / 0.06);
 /* #endregion */
@@ -5901,6 +5901,9 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
     overflow: visible;
   }
 }
+.bases-view {
+  background-color: var(--background-primary);
+}
 /* #endregion */
 /* #region   Core Plugin: Bookmarks */
 
@@ -6423,13 +6426,22 @@ body {
   .view-content:after {
     bottom: -1rem;
   }
+
+  .webviewer-content {
+    border-top: none;
+    overflow: hidden;
+  }
+  .reader-mode-content {
+    overflow: hidden;
+    .markdown-preview-view {
+      padding: 2rem;
+    }
+  }
+  .webviewer-address {
+    margin: var(--input-border-width);
+  }
 }
-.webviewer-address {
-  margin: var(--input-border-width);
-}
-.reader-mode-content {
-  padding: 2rem;
-}
+
 /* #endregion */
 /* #endregion */
 /* #region Community plugins */
@@ -6481,6 +6493,7 @@ body.theme-setting-overrideCalendar {
     }
     .container {
       border-radius: 1rem;
+      overflow: hidden;
     }
     .container > .calendar {
       width: 100%;
@@ -6554,7 +6567,6 @@ body.theme-setting-overrideCalendar {
       background-color: var(--theme-color-tabNavBg);
       color: var(--text-normal);
       font-weight: bold;
-      border-radius: 0.5em;
     }
     .day.active {
       background-color: var(--background-primary);
