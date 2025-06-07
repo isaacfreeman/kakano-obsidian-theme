@@ -2032,6 +2032,19 @@ li.is-collapsed .list-bullet:after,
   align-items: center;
   display: none;
 }
+/* TODO: move embeds for plugins to theit plugin's section */
+body {
+  --bases-embed-border: none;
+  --bases-embed-border-radius: 0;
+}
+.bases-embed {
+  padding: 0.5em 0 0.5em 0;
+
+  .bases-view,
+  .bases-thead {
+    background-color: transparent;
+  }
+}
 .theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
   display: none;
 }
@@ -2206,6 +2219,7 @@ body:not(.is-mobile) {
   }
   /* Move edit controls to the sidebar outside the block */
   .cm-content .cm-embed-block .edit-block-button,
+  .cm-content .bases-embed .edit-block-button,
   .markdown-source-view.mod-cm6 .code-block-flair {
     top: 0;
     right: auto;
@@ -2214,6 +2228,10 @@ body:not(.is-mobile) {
   .markdown-source-view.mod-cm6.is-readable-line-width
     .cm-content
     .cm-embed-block
+    .edit-block-button,
+    .markdown-source-view.mod-cm6.is-readable-line-width
+    .cm-content
+    .bases-embed
     .edit-block-button,
   .markdown-source-view.mod-cm6.is-readable-line-width
     .markdown-source-view.mod-cm6
@@ -2325,7 +2343,7 @@ body:not(.is-mobile) {
       margin-inline-end: 0;
     }
     .cm-editor .cm-gutter {
-      margin-left: -3.5em;
+      margin-left: -3em;
     }
     .cm-editor .cm-lineNumbers .cm-gutterElement {
       min-width: 2em;
@@ -3530,7 +3548,6 @@ body.mod-windows {
         box-shadow: inset 0 0 0 var(--tab-outline-width) var(--tab-outline-color), 0 0 0 calc(var(--tab-curve)* 4) var(--theme-color-tabNavBg);
       }
   }
-  .workspace-tab-header[data-type="bases"].is-active,
   .workspace-tab-header[data-type="calendar"].is-active,
   .workspace-tab-header[data-type="graph"].is-active,
   .workspace-tab-header[data-type="localgraph"].is-active,
@@ -3750,13 +3767,16 @@ body.mod-windows {
   }
   .workspace-tab-header[data-type="markdown"].is-active,
   .workspace-tab-header[data-type="webviewer"].is-active {
-    background-color: var(--tab-background-active);
     color: var(--tab-text-color-active);
     border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
 
     .workspace-tab-header-inner-icon {
       color: var(--icon-color);
     }
+  }
+  .workspace-tab-header[data-type="markdown"].is-active {
+    background-color: var(--tab-background-active);
+
   }
   .workspace-leaf-content[data-type="markdown"],
   .workspace-leaf-content[data-type="webviewer"] {
@@ -4770,6 +4790,12 @@ select:focus,
 .graph-controls .setting-item {
   padding: 0.5em 0;
   margin: 0;
+}
+/* #endregion */
+/* #region   Query Toolbars */
+/* THe only one of these I know is for Bases, but presumably they're intended to be standard */
+.query-toolbar-menu .query-toolbar-section:not(:last-child) {
+  border-bottom: none;
 }
 /* #endregion */
 /* #region   Collapsible controls */
@@ -5894,9 +5920,15 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 }
 /* #endregion */
 /* #region   Core Plugin: Bases */
-.bases-header {
-  background-color: var(--theme-color-tabNavActiveBg);
+body {
+  --bases-header-height: auto;
+  --bases-table-header-background: var(--theme-color-tabNavActiveBg);
+  --bases-header-padding-start: 0.5em;
+  --bases-header-padding-end: 0.5em;
+}
 
+/* Stuff for bases everywhere */
+.bases-header {
   .query-toolbar .query-toolbar-item.mod-views {
     overflow: visible;
   }
@@ -5904,6 +5936,68 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 .bases-view {
   background-color: var(--background-primary);
 }
+.bases-thead {
+  box-shadow: var(--theme-shadow-indent);
+
+  .bases-td {
+    box-shadow: none;
+    border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+  }
+}
+.bases-tbody .bases-tr {
+  box-shadow: none;
+
+  &:nth-child(odd) {
+    background-color: var(--theme-color-baseTransparent06);
+  }
+}
+
+@media (hover: hover) {
+  .bases-thead .bases-td:hover {
+    --bases-table-header-color: white;
+
+    .bases-table-header-label,
+    .bases-table-header-sort {
+      color: var(--bases-table-header-color);
+    }
+
+    background-color: var(--bases-table-header-background-hover);
+  }
+}
+
+.bases-toolbar-menu-container .search-input-container {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Bases in the centre panel */
+.workspace-leaf-content[data-type="bases"] {
+  .view-header {
+    border-bottom: none;
+  }
+  .bases-header {
+    background-color: var(--theme-color-tabNavActiveBg);
+    border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 0.5em;
+  }
+}
+
+/* Bases in the sidebar */
+.mod-sidedock .workspace-leaf-content[data-type="bases"] {
+  --bases-table-header-background: transparent;
+
+  .bases-view {
+    background-color: transparent;
+  }
+  .bases-header {
+    background-color: transparent;
+  }
+  .bases-tbody {
+    background-color: var(--background-primary);
+  }
+}
+
 /* #endregion */
 /* #region   Core Plugin: Bookmarks */
 
