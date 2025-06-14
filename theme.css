@@ -2032,19 +2032,7 @@ li.is-collapsed .list-bullet:after,
   align-items: center;
   display: none;
 }
-/* TODO: move embeds for plugins to theit plugin's section */
-body {
-  --bases-embed-border: none;
-  --bases-embed-border-radius: 0;
-}
-.bases-embed {
-  padding: 0.5em 0 0.5em 0;
 
-  .bases-view,
-  .bases-thead {
-    background-color: transparent;
-  }
-}
 .theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
   display: none;
 }
@@ -3548,11 +3536,12 @@ body.mod-windows {
         box-shadow: inset 0 0 0 var(--tab-outline-width) var(--tab-outline-color), 0 0 0 calc(var(--tab-curve)* 4) var(--theme-color-tabNavBg);
       }
   }
-  .workspace-tab-header[data-type="calendar"].is-active,
-  .workspace-tab-header[data-type="graph"].is-active,
-  .workspace-tab-header[data-type="localgraph"].is-active,
-  .workspace-tab-header[data-type="map"].is-active,
-  .workspace-tab-header[data-type="webviewer"].is-active {
+  .workspace-split.mod-root .workspace-tab-header[data-type="bases"].is-active,
+  .workspace-split.mod-root .workspace-tab-header[data-type="calendar"].is-active,
+  .workspace-split.mod-root .workspace-tab-header[data-type="graph"].is-active,
+  .workspace-split.mod-root .workspace-tab-header[data-type="localgraph"].is-active,
+  .workspace-split.mod-root .workspace-tab-header[data-type="map"].is-active,
+  .workspace-split.mod-root .workspace-tab-header[data-type="webviewer"].is-active {
     background-color: var(--theme-color-tabNavActiveBg);
 
     &:before,
@@ -3561,28 +3550,30 @@ body.mod-windows {
       box-shadow: inset 0 0 0 var(--tab-outline-width) var(--tab-outline-color), 0 0 0 calc(var(--tab-curve)* 4) var(--theme-color-tabNavActiveBg);
     }
   }
-}
-.workspace-leaf-content[data-type="bases"],
-.workspace-leaf-content[data-type="calendar"],
-.workspace-leaf-content[data-type="graph"],
-.workspace-leaf-content[data-type="localgraph"],
-.workspace-leaf-content[data-type="map"],
-.workspace-leaf-content[data-type="webviewer"],
-.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="bases"],
-.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="calendar"],
-.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="graph"],
-.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="localgraph"],
-.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="map"],
-.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="webviewer"] {
-  .view-header {
-    background-color: var(--theme-color-tabNavActiveBg);
-    border-bottom: none;
 
-    .mod-fade:after {
-      display: none;
+  .workspace-leaf-content[data-type="bases"],
+  .workspace-leaf-content[data-type="calendar"],
+  .workspace-leaf-content[data-type="graph"],
+  .workspace-leaf-content[data-type="localgraph"],
+  .workspace-leaf-content[data-type="map"],
+  .workspace-leaf-content[data-type="webviewer"],
+  .is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="bases"],
+  .is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="calendar"],
+  .is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="graph"],
+  .is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="localgraph"],
+  .is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="map"],
+  .is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type="webviewer"] {
+    .view-header {
+      background-color: var(--theme-color-tabNavActiveBg);
+      border-bottom: none;
+
+      .mod-fade:after {
+        display: none;
+      }
     }
   }
 }
+
 /* #endregion */
 
 .workspace-leaf.mod-active .view-header-title {
@@ -5920,14 +5911,28 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 }
 /* #endregion */
 /* #region   Core Plugin: Bases */
-body {
+/* #region     All bases */
+.body,
+.workspace-leaf-content[data-type="bases"] {
   --bases-header-height: auto;
   --bases-table-header-background: var(--theme-color-tabNavActiveBg);
+  --bases-view-padding-bottom: 0;
+
+  .bases-header {
+    --bases-header-padding-start: 0.5em;
+    --bases-header-padding-end: 0.5em;
+  }
+}
+
+body {
   --bases-header-padding-start: 0.5em;
   --bases-header-padding-end: 0.5em;
 }
 
-/* Stuff for bases everywhere */
+.markdown-source-view.mod-cm6 .cm-content > .bases-embed[contenteditable=false] {
+  contain: layout !important;
+}
+
 .bases-header {
   .query-toolbar .query-toolbar-item.mod-views {
     overflow: visible;
@@ -5944,11 +5949,19 @@ body {
     border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
   }
 }
-.bases-tbody .bases-tr {
+.bases-tbody {
   box-shadow: none;
 
-  &:nth-child(odd) {
-    background-color: var(--theme-color-baseTransparent06);
+  .bases-tr {
+    box-shadow: none;
+
+    &:nth-child(odd) .bases-table-cell {
+      background-color: var(--theme-color-baseTransparent06);
+    }
+
+    .bases-table-cell[disabled="true"] {
+      background: var(--theme-color-tabNavActiveBg);
+    }
   }
 }
 
@@ -5969,8 +5982,8 @@ body {
   border-bottom: none;
   padding-bottom: 0;
 }
-
-/* Bases in the centre panel */
+/* #endregion */
+/* #region     Bases in the centre panel */
 .workspace-leaf-content[data-type="bases"] {
   .view-header {
     border-bottom: none;
@@ -5982,8 +5995,8 @@ body {
     padding-bottom: 0.5em;
   }
 }
-
-/* Bases in the sidebar */
+/* #endregion */
+/* #region     Bases in a sidebar panel */
 .mod-sidedock .workspace-leaf-content[data-type="bases"] {
   --bases-table-header-background: transparent;
 
@@ -5997,7 +6010,17 @@ body {
     background-color: var(--background-primary);
   }
 }
+/* #endregion */
+/* #region     Embedded bases */
+.bases-embed {
+  padding: 0.5em 0 0.5em 0;
 
+  .bases-view,
+  .bases-thead {
+    background-color: transparent;
+  }
+}
+/* #endregion */
 /* #endregion */
 /* #region   Core Plugin: Bookmarks */
 
