@@ -20,6 +20,7 @@ Principles:
 core:
 - audio-recorder
 - backlink
+- bases
 - bookmarks
 - command-palette
 - daily-notes
@@ -217,6 +218,12 @@ settings:
     title: "Distinguish non-editable tabs"
     description: "Most tabs have content created by you (e.g. notes, canvases, kanban charts) but some aren't directly editable (e.g. graphs, calendars, maps). When this setting is on, the non-editable tabs are shaded differently when inactive."
     default: true
+    type: class-toggle
+  -
+    id: theme-setting-wrapTabs
+    title: "Wrap Tabs"
+    description: "EXPERIMENTAL If there are more tabs than fit in a single row, allow them to wrap to multiple rows. THis is unfinished, and needs some visual improvement."
+    default: false
     type: class-toggle
   -
     id: setting-properties-position
@@ -3519,8 +3526,89 @@ body.mod-windows {
     opacity: var(--icon-opacity);
   }
 }
+.workspace-leaf.mod-active .view-header-title {
+  color: var(--tab-text-color-active);
+  display: block;
+}
+.is-focused .workspace-leaf.mod-active .view-header-title {
+  color: var(--tab-text-color-focused-active-current);
+}
+
+.is-mobile .mod-root .workspace-tab-header-container {
+  min-height: 44px;
+}
+
+.workspace .mod-root {
+  .workspace-tabs {
+    padding: 0 0.5em 0 0.5em;
+    border-radius: 0;
+  }
+  .workspace-tabs .workspace-tab-container {
+    background-color: var(--background-primary);
+    border-radius: var(--tab-radius);
+    box-shadow: var(--theme-shadow-input);
+  }
+  .workspace-tab-header-container-inner {
+    /* Define spacing on tabs to fit with radius */
+    padding: 0 calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
+  }
+  .workspace-tab-header {
+    padding: 0;
+  }
+  .workspace-tab-header-inner::after {
+    /* Not sure what this is for */
+    background: transparent;
+  }
+  .workspace-tab-header-inner {
+    border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+    container-name: root-tab;
+    container-type: size;
+    padding: 0.5rem;
+  }
+  /* Show icons for markdown tabs, unless they get too narrow. */
+  .workspace-tab-header[data-type="markdown"] .workspace-tab-header-inner-icon,
+  .workspace-tab-header[data-type="empty"] .workspace-tab-header-inner-icon {
+    display: none;
+  }
+  @container root-tab (min-width: 5em) {
+    .workspace-tab-header[data-type="markdown"]
+      .workspace-tab-header-inner-icon,
+    .workspace-tab-header[data-type="empty"] .workspace-tab-header-inner-icon {
+      display: flex;
+    }
+
+  }
+}
+/* #region     Wrap tabs setting */
+.theme-setting-wrapTabs {
+  .workspace-tab-header-container {
+    height: auto;
+  }
+  .workspace-tab-header-container-inner {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.25em 0.25em;
+  }
+  .workspace .mod-root .workspace-tab-header {
+    min-width: 8em;
+    height: calc(var(--icon-size) + 1rem);
+    flex-basis: content;
+    flex-grow: 0;
+    order: 0;
+    container-type: normal;
+    z-index: 1;
+
+    &.is-active {
+      order: 1;
+    }
+  }
+  .workspace .mod-root .workspace-tab-header-inner {
+    container-type: normal;
+  }
+}
+
 /* #endregion */
-/* #region   Tabs with Obsidian navigation or data (as opposed to user content) can have a different inactive color */
+/* #region     Tabs with Obsidian navigation or data (as opposed to user content) can have a different inactive color */
 .theme-setting-distinguishNonContentTabs {
   .workspace-tab-header[data-type="bases"],
   .workspace-tab-header[data-type="calendar"],
@@ -3575,62 +3663,8 @@ body.mod-windows {
 }
 
 /* #endregion */
+/* #endregion */
 
-.workspace-leaf.mod-active .view-header-title {
-  color: var(--tab-text-color-active);
-  display: block;
-}
-.is-focused .workspace-leaf.mod-active .view-header-title {
-  color: var(--tab-text-color-focused-active-current);
-}
-
-.is-mobile .mod-root .workspace-tab-header-container {
-  min-height: 44px;
-}
-
-.workspace .mod-root {
-  .workspace-tabs {
-    padding: 0 0.5em 0 0.5em;
-    border-radius: 0;
-  }
-  .workspace-tabs .workspace-tab-container {
-    background-color: var(--background-primary);
-    border-radius: var(--tab-radius);
-    box-shadow: var(--theme-shadow-input);
-  }
-  .workspace-tab-header-container-inner {
-    /* Define spacing on tabs to fit with radius */
-    padding: 0 calc(var(--tab-radius) * 2) 0 calc(var(--tab-radius) * 2);
-  }
-  .workspace-tab-header {
-    padding: 0;
-  }
-  .workspace-tab-header.is-active .workspace-tab-header-inner {
-    padding-left: 0.25rem;
-  }
-  .workspace-tab-header-inner::after {
-    /* Not sure what this is for */
-    background: transparent;
-  }
-  .workspace-tab-header-inner {
-    border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
-    container-name: root-tab;
-    container-type: size;
-    padding: 0.5rem;
-  }
-  /* Show icons for markdown tabs, unless they get too narrow. */
-  .workspace-tab-header[data-type="markdown"] .workspace-tab-header-inner-icon,
-  .workspace-tab-header[data-type="empty"] .workspace-tab-header-inner-icon {
-    display: none;
-  }
-  @container root-tab (min-width: 5em) {
-    .workspace-tab-header[data-type="markdown"]
-      .workspace-tab-header-inner-icon,
-    .workspace-tab-header[data-type="empty"] .workspace-tab-header-inner-icon {
-      display: flex;
-    }
-  }
-}
 /* #region     Empty state */
 .empty-state {
   justify-content: flex-start;
