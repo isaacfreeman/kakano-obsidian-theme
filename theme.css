@@ -222,7 +222,7 @@ settings:
   -
     id: theme-setting-wrapTabs
     title: "Wrap Tabs"
-    description: "EXPERIMENTAL If there are more tabs than fit in a single row, allow them to wrap to multiple rows. THis is unfinished, and needs some visual improvement."
+    description: "EXPERIMENTAL If there are more tabs than fit in a single row, allow them to wrap to multiple rows."
     default: false
     type: class-toggle
   -
@@ -660,30 +660,6 @@ body {
     var(--theme-padding-blockHorizontal); /* Used for callouts, embeds etc. */
   --theme-padding-blockHorizontal: 1.5em;
   --theme-padding-blockVertical: 0.75em;
-
-  --shadow-l: 0 0 0.2rem
-      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
-    0 0.2rem 0.4rem
-      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
-    0 0.4rem 1.2rem
-      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
-    0 1.2rem 2rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
-    0 2rem 4rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
-  --shadow-s: 0 0 0.05rem
-      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
-    0 0.05rem 0.1rem
-      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
-    0 0.1rem 0.3rem
-      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
-    0 0.3rem 0.5rem
-      color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
-    0 0.5rem 1rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
-  --theme-shadow-indent: 0 0 0.2rem
-      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
-    0 0 0.4rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
-    0 0 1.2rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
-    0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 16%, transparent),
-    0 0 4rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);
 }
 /* #endregion */
 /* #region   Colors */
@@ -1135,7 +1111,7 @@ body {
   );
   --theme-color-shadow: hsl(
     var(--base-h),
-    calc(var(--base-s) * 0.75),
+    calc(var(--base-s) * 1.5),
     calc(var(--base-l) * 0.75)
   );
 
@@ -1506,7 +1482,39 @@ body {
   --theme-color-tabNavActiveBg: light-dark(var(--theme-color-baseLightened70), var(--theme-color-baseDarkened70));
 }
 /* #endregion */
+/* #region   Shadows */
+body.theme-light,
+body.theme-dark {
+  --shadow-l: 0 0 0.2rem
+      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
+    0 0.2rem 0.4rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0.4rem 1.2rem
+      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
+    0 1.2rem 2rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 2rem 4rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
+  --shadow-s: 0 0 0.05rem
+      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
+    0 0.05rem 0.1rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0.1rem 0.3rem
+      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
+    0 0.3rem 0.5rem
+      color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 0.5rem 1rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
+  --theme-shadow-indent: 0 0 0.2rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0 0.4rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 0 1.2rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
+    0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 16%, transparent),
+    0 0 4rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);
+}
 /* #endregion */
+/* #endregion */
+
+
+
+
 /* #region Keyframe animations */
 @keyframes fadein {
   from {
@@ -2085,6 +2093,34 @@ li.is-collapsed .list-bullet:after,
   top: 0;
   right: 0;
 }
+/* #region       Positioning */
+/* TODO: default to centred, setting to disable */
+/* TODO: also centre tables */
+/* TODO: document this */
+.markdown-source-view.mod-cm6 .internal-embed[alt~=center] {
+  text-align: center;
+}
+/* TODO: unfortuantely, floats make live preview mode confused about how to assign line numbers. Could do just reading view? */
+/* .markdown-source-view.mod-cm6 .internal-embed[alt~=right],
+.markdown-reading-view .internal-embed[alt~=right] {
+  margin: 0 0 1em 1em !important;
+  float: right;
+}
+.markdown-source-view.mod-cm6 .internal-embed[alt~=left],
+.markdown-reading-view .internal-embed[alt~=left] {
+  margin: 0 1em 1em 0 !important;
+  float: left;
+} */
+.markdown-source-view.mod-cm6 .internal-embed[alt~=round] img,
+.markdown-reading-view .internal-embed[alt~=round] img {
+  border-radius: 0.5em;
+}
+.markdown-source-view.mod-cm6 .internal-embed[alt~=circle] img,
+.markdown-reading-view .internal-embed[alt~=circle] img {
+  /* TODO: variable for this */
+  border-radius: 9999px;
+}
+/* #endregion */
 /* Audio embed */
 .markdown-source-view.mod-cm6 .cm-content > .media-embed:has(> audio) {
   display: flex;
@@ -5951,6 +5987,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   --bases-header-height: auto;
   --bases-table-header-background: var(--theme-color-tabNavActiveBg);
   --bases-view-padding-bottom: 0;
+  --bases-cards-container-background: transparent;
 
   .bases-header {
     --bases-header-padding-start: 0.5em;
@@ -5963,6 +6000,11 @@ body {
   --bases-header-padding-end: 0.5em;
 }
 
+.workspace-leaf-content[data-type="bases"] {
+  .view-content {
+    background: var(--bases-table-header-background);
+  }
+}
 .markdown-source-view.mod-cm6 .cm-content > .bases-embed[contenteditable=false] {
   contain: layout !important;
 }
@@ -5971,9 +6013,6 @@ body {
   .query-toolbar .query-toolbar-item.mod-views {
     overflow: visible;
   }
-}
-.bases-view {
-  background-color: var(--background-primary);
 }
 .bases-thead {
   box-shadow: var(--theme-shadow-indent);
@@ -6015,6 +6054,21 @@ body {
 .bases-toolbar-menu-container .search-input-container {
   border-bottom: none;
   padding-bottom: 0;
+}
+/* #endregion */
+/* #region     Table View */
+.bases-view[data-view-type="table"] {
+  background-color: var(--background-primary);
+}
+
+/* #endregion */
+/* #region     Card View */
+.bases-cards-item {
+  background-color: var(--theme-color-cardBg);
+  border-radius: var(--radius-m);
+  border: none;
+  box-shadow: var(--shadow-s);
+  padding: 0;
 }
 /* #endregion */
 /* #region     Bases in the centre panel */
