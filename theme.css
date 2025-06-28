@@ -533,7 +533,7 @@ settings:
 /* #region Custom properties */
 /* #region   General */
 body {
-  --background-input: light-dark(var(--theme-color-baseTransparent25), var(--theme-color-darkenTransparent06));
+  --background-input: light-dark(var(--theme-color-baseTransparent12), var(--theme-color-darkenTransparent06));
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
   --callout-padding: var(--theme-padding-block);
@@ -5489,6 +5489,10 @@ body:not(.is-phone) .modal.mod-sync-history {
   border-top: none;
   padding: 0;
   margin-bottom: 1.5em;
+
+  .search-input-container {
+    padding: var(--input-border-width);
+  }
 }
 
 /* Font settings modal */
