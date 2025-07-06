@@ -1487,7 +1487,7 @@ body {
     var(--theme-color-darkenTransparent50)
   );
   --theme-color-lineNumbers: light-dark(var(--theme-color-baseLightened60), var(--theme-color-baseDarkened60));
-  --theme-color-navigationButtonBgHover: light-dark(var(--theme-color-baseLightened70), var(--theme-color-baseDarkened70));
+  --theme-color-navigationButtonBgHover: var(--theme-color-base);
   --theme-color-tabNavBg: light-dark(var(--theme-color-baseLightened60), var(--theme-color-baseDarkened60));
   --theme-color-tabNavActiveBg: light-dark(var(--theme-color-baseLightened70), var(--theme-color-baseDarkened70));
 }
@@ -1849,7 +1849,7 @@ li.is-collapsed .list-bullet:after,
   position: relative;
 }
 .markdown-preview-view .heading-collapse-indicator {
-  margin-left: -2rem;
+  margin-inline-start: -2rem;
   top: auto;
 }
 .markdown-preview-view h1 .heading-collapse-indicator {
@@ -2221,7 +2221,7 @@ audio::-webkit-media-controls-panel {
   gap: 0.75em;
 }
 .callout .callout-title {
-  margin-left: -0.5em;
+  margin-inline-start: -0.5em;
 }
 .callout.is-collapsible .callout-title {
   cursor: pointer;
@@ -2384,7 +2384,7 @@ body:not(.is-mobile) {
       margin-inline-end: 0;
     }
     .cm-editor .cm-gutter {
-      margin-left: -3em;
+      margin-inline-start: -3em;
     }
     .cm-editor .cm-lineNumbers .cm-gutterElement {
       min-width: 2em;
@@ -4199,7 +4199,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 
 .modal-setting-back-button-icon,
 .mod-root .workspace-tab-header-status-icon,
-.mobile-tab .mobile-tab-pin {
+.mobile-tab .mobile-tab-pin,
+.map-view-graph-controls .minimize-button.svelte-1sl5jax {
   color: var(--theme-color-control);
   border: none;
   border-radius: 100%;
@@ -4209,24 +4210,28 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
   width: 1.5rem;
   height: 1.5rem;
+  padding: 0;
+  cursor: default;
 
   .svg-icon {
     stroke: var(--theme-color-control);
   }
 }
-.mobile-tab .mobile-tab-pin {
+.mobile-tab .mobile-tab-pin,
+.map-view-graph-controls .minimize-button.svelte-1sl5jax {
   width: var(--theme-length-closeButtonWidth);
   height: var(--theme-length-closeButtonWidth);
 }
 @media (hover: hover) {
   .modal-setting-back-button-icon:hover,
   .mod-root .workspace-tab-header-status-icon:hover,
-  .mobile-tab .mobile-tab-pin:hover {
+  .mobile-tab .mobile-tab-pin:hover,
+  .map-view-graph-controls .minimize-button.svelte-1sl5jax:hover {
     color: var(--theme-color-control);
     background-color: var(--theme-color-navigationButtonBgHover);
-
     .svg-icon {
       stroke: var(--theme-color-controlHover);
     }
@@ -4873,6 +4878,7 @@ select:focus,
 .metadata-properties-heading,
 .embedded-backlinks .backlink-pane .tree-item-self,
 .graph-controls .graph-control-section .tree-item-self,
+body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .collapsible label,
 .mod-collapsible,
 .search-result-file-title,
 .style-settings-heading {
@@ -4885,11 +4891,13 @@ select:focus,
   padding: 0.25em 0.5em 0.25em 0;
   line-height: var(--theme-lineHeight-tight);
   display: flex;
+  align-items: center;
 }
 @media (hover: hover) {
   .metadata-properties-heading:hover,
   .embedded-backlinks .backlink-pane .tree-item-self:hover,
   .graph-controls .graph-control-section .tree-item-self:hover,
+  body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .collapsible label:hover,
   .mod-collapsible:hover,
   .search-result-file-title:hover,
   .style-settings-heading:hover {
@@ -4959,14 +4967,17 @@ select:focus,
 .backlink-pane .search-result-container,
 .backlink-pane .search-result-file-matches,
 .outgoing-link-pane .search-result-container,
-.graph-control-section .tree-item-children {
+.graph-control-section .tree-item-children,
+body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .collapsible .contents {
   margin: 0 1em 1em 1em;
   font-size: var(--font-ui-small);
-  padding-left: var(--nav-item-children-padding-left);
+  padding: 0;
+  margin: 0.5em 0;
+  /* padding-left: var(--nav-item-children-padding-left);
   padding: 0 0 0 var(--nav-item-children-padding-left);
   margin: 0 0 0 var(--nav-item-children-margin-left);
   border-left: var(--nav-indentation-guide-width) solid
-    var(--nav-indentation-guide-color);
+    var(--nav-indentation-guide-color); */
 }
 /* #endregion */
 /* #region   Obsidian UI Checkboxes */
@@ -7959,10 +7970,14 @@ body.theme-setting-overrideMapView {
     gap: 0;
     box-shadow: var(--theme-shadow-input);
     border-radius: var(--radius-m);
+    top: var(--theme-length-controlSetSpacing);
+    left: var(--theme-length-controlSetSpacing);
+    min-width: 7em;
 
     .graph-control-div {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
       justify-content: flex-start;
       padding: 0;
     }
@@ -8001,6 +8016,13 @@ body.theme-setting-overrideMapView {
         flex-basis: 100%;
       }
     }
+  }
+  .map-view-graph-controls.minimized {
+    min-width: 0;
+  }
+  .map-view-graph-controls.svelte-1sl5jax:not(.minimized):has(.top-right-controls:where(.svelte-1sl5jax)) {
+    /* Override styles that I think are inserted by Map View. Weird thing for a plugin to do. */
+    padding: 0.25rem;
   }
   .map-view-main {
     .marker-cluster-small,
