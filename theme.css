@@ -1122,35 +1122,35 @@ body {
   --theme-color-shadow: hsl(
     var(--base-h),
     calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.75)
+    calc(var(--base-l) * 0.25)
   );
 
   --theme-shadow-control: 0 1px 2px
     hsl(
       var(--base-h),
       calc(var(--base-s) * 1.5),
-      calc(var(--base-l) * 0.75),
+      calc(var(--base-l) * 0.25),
       0.5
     );
   --theme-shadow-input: 0 1px 2px
       hsl(
         var(--base-h),
         calc(var(--base-s) * 1.5),
-        calc(var(--base-l) * 0.5),
+        calc(var(--base-l) * 0.25),
         0.2
       ),
     0 3.4px 6.7px
       hsl(
         var(--base-h),
         calc(var(--base-s) * 1),
-        calc(var(--base-l) * 0.5),
+        calc(var(--base-l) * 0.25),
         0.15
       ),
     0 15px 30px
       hsl(
         var(--base-h),
         calc(var(--base-s) * 0.75),
-        calc(var(--base-l) * 0.5),
+        calc(var(--base-l) * 0.25),
         0.05
       );
 
@@ -1378,13 +1378,13 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-shadow: hsl(
     var(--base-h),
     calc(var(--base-s) * 0.75),
-    calc(var(--base-l) * 0.1)
+    calc(var(--base-l) * 0.01)
   );
   --theme-shadow-control: 0px 1px 2px
     hsl(
       var(--base-h),
       calc(var(--base-s) * 0.1),
-      calc(var(--base-l) * 0.75),
+      calc(var(--base-l) * 0.1),
       0.1
     );
   --theme-shadow-input: 0px 1px 2px
@@ -1494,7 +1494,10 @@ body {
 /* #endregion */
 /* #region   Shadows */
 body.theme-light,
-body.theme-dark {
+.theme-light .theme-dark,
+body.theme-dark,
+.theme-dark .theme-light {
+  --input-shadow: var(--theme-shadow-control);
   --shadow-l: 0 0 0.2rem
       color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
     0 0.2rem 0.4rem
