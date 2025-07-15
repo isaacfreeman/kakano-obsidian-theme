@@ -5114,6 +5114,7 @@ input[type="radio"]:focus {
 }
 .metadata-property-value .multi-select-pill,
 .bases-table-cell .multi-select-pill {
+  --pill-color: inherit;
   border-radius: var(--tag-radius);
   border: var(--tag-border-width) solid var(--tag-border-color);
   font-weight: var(--tag-weight);
