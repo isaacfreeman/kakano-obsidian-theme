@@ -413,6 +413,23 @@ settings:
     type: class-toggle
     default: true
   -
+    id: heading-layout
+    title: Layout
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: theme-setting-centerImages
+    title: 'Center images'
+    description: "Center images horizontally"
+    type: class-toggle
+    default: true
+  -
+    id: infoText-centerImages
+    description: "Images can also be centered individually e.g. `![[image_file_name.jpg|center]]`"
+    type: info-text
+    markdown: true
+  -
     id: heading-mobile
     title: Mobile
     type: heading
@@ -639,6 +656,7 @@ body {
   --theme-spacing-mobileHorizontalSpacing: calc(
     var(--theme-setting-mobileHorizontalPadding) * 1rem
   );
+  --theme-length-fullBorderRadius: 9999px;
   --theme-length-checkboxBorderWidth: 1px;
   --theme-length-closeButtonWidth: 1.5rem;
   --theme-length-collapseIndicatorSize: 1.5rem;
@@ -2107,32 +2125,39 @@ li.is-collapsed .list-bullet:after,
   top: 0;
   right: 0;
 }
-/* #region       Positioning */
-/* TODO: default to centred, setting to disable */
-/* TODO: also centre tables */
-/* TODO: document this */
-.markdown-source-view.mod-cm6 .internal-embed[alt~=center] {
+/* #region       Image positioning and styling */
+/* TODO: setting to disable these for use cases where the alt text is needed */
+/* Center images */
+.markdown-source-view.mod-cm6 .image-embed[alt~=center],
+.theme-setting-centerImages .markdown-source-view.mod-cm6 .image-embed {
   text-align: center;
 }
-/* TODO: unfortuantely, floats make live preview mode confused about how to assign line numbers. Could do just reading view? */
-/* .markdown-source-view.mod-cm6 .internal-embed[alt~=right],
-.markdown-reading-view .internal-embed[alt~=right] {
+.markdown-reading-view .image-embed[alt~=center],
+.theme-setting-centerImages .markdown-reading-view .image-embed {
+  display: block;
+  text-align: center;
+}
+/* Float images left/right */
+/* Unfortunately, floats make live preview mode confused about how to assign line numbers. Left/right floating only applies to reading view */
+/* .markdown-source-view.mod-cm6 .image-embed[alt~=right], */
+.markdown-reading-view .image-embed[alt~=right] {
   margin: 0 0 1em 1em !important;
   float: right;
 }
-.markdown-source-view.mod-cm6 .internal-embed[alt~=left],
-.markdown-reading-view .internal-embed[alt~=left] {
+/* .markdown-source-view.mod-cm6 .image-embed[alt~=left], */
+.markdown-reading-view .image-embed[alt~=left] {
   margin: 0 1em 1em 0 !important;
   float: left;
-} */
-.markdown-source-view.mod-cm6 .internal-embed[alt~=round] img,
-.markdown-reading-view .internal-embed[alt~=round] img {
+}
+
+/* Round corners of images */
+.markdown-source-view.mod-cm6 .image-embed[alt~=round] img,
+.markdown-reading-view .image-embed[alt~=round] img {
   border-radius: 0.5em;
 }
-.markdown-source-view.mod-cm6 .internal-embed[alt~=circle] img,
-.markdown-reading-view .internal-embed[alt~=circle] img {
-  /* TODO: variable for this */
-  border-radius: 9999px;
+.markdown-source-view.mod-cm6 .image-embed[alt~=circle] img,
+.markdown-reading-view .image-embed[alt~=circle] img {
+  border-radius: var(--theme-length-fullBorderRadius);
 }
 /* #endregion */
 /* Audio embed */

@@ -29,13 +29,14 @@ Bring some color to your desktop. Kakano lets you choose a base color, and gener
     - [Notes](#notes)
     - [Typography settings](#typography-settings)
     - [Editing settings](#editing-settings)
+    - [Layout](#layout)
     - [Mobile settings](#mobile-settings)
     - [Compatibility](#compatibility)
+  - [Image Modification](#image-modification)
   - [Helper Classes](#helper-classes)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
     - [Community Plugins supported](#community-plugins-supported)
-  - [Roadmap](#roadmap)
   - [About](#about)
   - [Credits](#credits)
   - [Feedback](#feedback)
@@ -123,8 +124,9 @@ Kakano styles all the core Obsidian plugins.[^1]
 
 ### And so much more
 Kakano includes a lot of little details. Some notable examples are:
-- Large modals are resizeable. If you change settings that affect the user itnerface, you can often resize the setting smodal to see the effects without closing it.
+- Large modals are resizeable. If you change settings that affect the user itnerface, you can often resize the settings modal to see the effects without closing it.
 - When audio recording is active, the ribbon icon changes to a `REC` indicator with a pulsing red outline.
+- Images can be centered by adding `center` to the alt text e.g. `![[image_file_name.jpg|center]]`. Note that there's also a setting to center all images, which is on by default.
 
 ## Settings
 If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, Kakano offers the following settings.
@@ -167,6 +169,9 @@ Sets a base color that will be used by Kakano independently of the accent color.
   Show a background color behind the active line while editing.
 - **Line numbers in code blocks**
   Toggle whether code blocks should show line numbers
+### Layout
+- **Center images**
+  Center images horizontally. On by default.
 ### Mobile settings
 - **Mobile horizontal spacing**
   On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
@@ -175,6 +180,22 @@ Sets a base color that will be used by Kakano independently of the accent color.
 ### Compatibility
 - **Enable built-in alternative checkboxes**
   Kakano has built-in styles for alternative checkboxes, but some users may prefer to use their own CSS snippets that work across multiple themes. This setting can disable the built-in alternative checkboxes to ensure that they don't clash with the snippet.
+
+## Image Modification
+Kakano detects keywords in alt text to adjust how images appear.
+
+e.g. `![[image_file_name.jpg|center rounded]]`
+
+| Alt text | Effect | Limitations |
+|---|---|---|
+| `center` | Center the image |  |
+| `left` | Float the image left | Reading View only |
+| `right` | Float the image left | Reading View only |
+| `rounded` | Round the corners of the image |  |
+| `circle` | Fully round corners – a square image will become a circle, rectangular image a pill shape |  |
+
+> [!info]
+> Obsidian's Live Preview mode doesn't render well with floated images, so Kakano doesn't support this.
 
 ## Helper Classes
 Kakano provides helper classes to modify how notesappear.
