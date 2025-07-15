@@ -4895,6 +4895,7 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
   line-height: var(--theme-lineHeight-tight);
   display: flex;
   align-items: center;
+  width: 100%;
 }
 @media (hover: hover) {
   .metadata-properties-heading:hover,
@@ -4976,6 +4977,7 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
   font-size: var(--font-ui-small);
   padding: 0;
   margin: 0.5em 0;
+  /* TODO: resolve this */
   /* padding-left: var(--nav-item-children-padding-left);
   padding: 0 0 0 var(--nav-item-children-padding-left);
   margin: 0 0 0 var(--nav-item-children-margin-left);
@@ -6251,6 +6253,17 @@ body {
   min-width: 12em; /* Make room for controls */
   top: var(--theme-length-controlSetSpacing);
   right: var(--theme-length-controlSetSpacing);
+
+  .graph-controls-button.mod-close,
+  .graph-controls-button.mod-reset {
+    top: 0.25rem;
+  }
+  .graph-controls-button.mod-close {
+    inset-inline-end: 0.25rem;
+  }
+  .graph-controls-button.mod-reset {
+    inset-inline-end: 2.25rem;
+  }
 }
 /* Smaller in sidebar */
 .mod-sidedock {
@@ -7983,6 +7996,14 @@ body.theme-setting-overrideMapView {
       flex-direction: column;
       justify-content: flex-start;
       padding: 0;
+
+      .collapsible {
+        padding: 0;
+
+        label {
+          padding-left: 0.5em;
+        }
+      }
     }
 
     & select,
@@ -8018,6 +8039,11 @@ body.theme-setting-overrideMapView {
         flex-shrink: 0;
         flex-basis: 100%;
       }
+    }
+    .top-right-controls.svelte-1sl5jax {
+      padding: 0;
+      top: 0.25em;
+      right: 0.25em;
     }
   }
   .map-view-graph-controls.minimized {
