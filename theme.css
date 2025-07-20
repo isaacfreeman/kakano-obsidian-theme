@@ -468,6 +468,12 @@ settings:
     type: info-text
     markdown: true
   -
+    id: theme-setting-enableImageAadjustmentWithAltText
+    title: 'Enable image adjustment with alt text'
+    description: "With this setting enabled, Kakano recognises keywords in alt text to position images left/right/center and round corners. None of these are crucial functionality, so if you need to use alt text for its real purpose of accessibility, you can disable this setting."
+    type: class-toggle
+    default: true
+  -
     id: heading-communityPlugins
     title: Community Plugins
     type: heading
@@ -2126,38 +2132,39 @@ li.is-collapsed .list-bullet:after,
   right: 0;
 }
 /* #region       Image positioning and styling */
-/* TODO: setting to disable these for use cases where the alt text is needed */
-/* Center images */
-.markdown-source-view.mod-cm6 .image-embed[alt~=center],
-.theme-setting-centerImages .markdown-source-view.mod-cm6 .image-embed {
-  text-align: center;
-}
-.markdown-reading-view .image-embed[alt~=center],
-.theme-setting-centerImages .markdown-reading-view .image-embed {
-  display: block;
-  text-align: center;
-}
-/* Float images left/right */
-/* Unfortunately, floats make live preview mode confused about how to assign line numbers. Left/right floating only applies to reading view */
-/* .markdown-source-view.mod-cm6 .image-embed[alt~=right], */
-.markdown-reading-view .image-embed[alt~=right] {
-  margin: 0 0 1em 1em !important;
-  float: right;
-}
-/* .markdown-source-view.mod-cm6 .image-embed[alt~=left], */
-.markdown-reading-view .image-embed[alt~=left] {
-  margin: 0 1em 1em 0 !important;
-  float: left;
-}
+.theme-setting-enableImageAadjustmentWithAltText {
+  /* Center images */
+  .markdown-source-view.mod-cm6 .image-embed[alt~=center],
+  .theme-setting-centerImages .markdown-source-view.mod-cm6 .image-embed {
+    text-align: center;
+  }
+  .markdown-reading-view .image-embed[alt~=center],
+  .theme-setting-centerImages .markdown-reading-view .image-embed {
+    display: block;
+    text-align: center;
+  }
+  /* Float images left/right */
+  /* Unfortunately, floats make live preview mode confused about how to assign line numbers. Left/right floating only applies to reading view */
+  /* .markdown-source-view.mod-cm6 .image-embed[alt~=right], */
+  .markdown-reading-view .image-embed[alt~=right] {
+    margin: 0 0 1em 1em !important;
+    float: right;
+  }
+  /* .markdown-source-view.mod-cm6 .image-embed[alt~=left], */
+  .markdown-reading-view .image-embed[alt~=left] {
+    margin: 0 1em 1em 0 !important;
+    float: left;
+  }
 
-/* Round corners of images */
-.markdown-source-view.mod-cm6 .image-embed[alt~=round] img,
-.markdown-reading-view .image-embed[alt~=round] img {
-  border-radius: 0.5em;
-}
-.markdown-source-view.mod-cm6 .image-embed[alt~=circle] img,
-.markdown-reading-view .image-embed[alt~=circle] img {
-  border-radius: var(--theme-length-fullBorderRadius);
+  /* Round corners of images */
+  .markdown-source-view.mod-cm6 .image-embed[alt~=round] img,
+  .markdown-reading-view .image-embed[alt~=round] img {
+    border-radius: 0.5em;
+  }
+  .markdown-source-view.mod-cm6 .image-embed[alt~=circle] img,
+  .markdown-reading-view .image-embed[alt~=circle] img {
+    border-radius: var(--theme-length-fullBorderRadius);
+  }
 }
 /* #endregion */
 /* Audio embed */

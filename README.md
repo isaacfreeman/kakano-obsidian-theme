@@ -32,7 +32,7 @@ Bring some color to your desktop. Kakano lets you choose a base color, and gener
     - [Layout](#layout)
     - [Mobile settings](#mobile-settings)
     - [Compatibility](#compatibility)
-  - [Image Modification](#image-modification)
+  - [Image Adjustment](#image-adjustment)
   - [Helper Classes](#helper-classes)
   - [Plugin support](#plugin-support)
     - [Core Plugins supported](#core-plugins-supported)
@@ -180,8 +180,10 @@ Sets a base color that will be used by Kakano independently of the accent color.
 ### Compatibility
 - **Enable built-in alternative checkboxes**
   Kakano has built-in styles for alternative checkboxes, but some users may prefer to use their own CSS snippets that work across multiple themes. This setting can disable the built-in alternative checkboxes to ensure that they don't clash with the snippet.
+- **Enable image adjustment with alt text**
+  With this setting enabled, Kakano recognises keywords in alt text to position images left/right/center and round corners. None of these are crucial functionality, so if you need to use alt text for its real purpose of accessibility, you can disable this setting.
 
-## Image Modification
+## Image Adjustment
 Kakano detects keywords in alt text to adjust how images appear.
 
 e.g. `![[image_file_name.jpg|center rounded]]`
