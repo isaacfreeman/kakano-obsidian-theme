@@ -5015,12 +5015,6 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
   font-size: var(--font-ui-small);
   padding: 0;
   margin: 0.5em 0;
-  /* TODO: resolve this */
-  /* padding-left: var(--nav-item-children-padding-left);
-  padding: 0 0 0 var(--nav-item-children-padding-left);
-  margin: 0 0 0 var(--nav-item-children-margin-left);
-  border-left: var(--nav-indentation-guide-width) solid
-    var(--nav-indentation-guide-color); */
 }
 /* #endregion */
 /* #region   Obsidian UI Checkboxes */
