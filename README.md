@@ -57,6 +57,7 @@ Bring some color to your desktop. Kakano lets you choose a base color, and gener
 > I use Kakano with Obsidian settings that defer to OS standards:
 > - Obsidian settings -> `Appearance` -> `Native menus`
 > - Obsidian settings -> `Appearance` -> `Window frame style` -> `Native frame`
+>
 > I've aimed to also have it look good with other settings, but I've given more attention to this OS-native configuration.
 
 ## Principles
@@ -64,7 +65,7 @@ Bring some color to your desktop. Kakano lets you choose a base color, and gener
 - **Strong color**
   When Obsidian is at the core of your workflow, you want to be able to quickly locate its window. Kakano's design begins with the ability to choose a base color for the background so Obsidian stands out visually from other windows. If you have different vaults for different areas of your life, you can give them a strong color distinction. Kakano generates shades and gradients of the base color automatically.
 - **Help new users**
-  Obsidian can be intimidating for new users. I think a good way to help with this is to clarify which parts of the window are your content (white background, strong contrast) and which are navigation and other controls (colored background, lower contrast). Making Obsidian easier for new users also reduces cognitive load and distraction for more experienced users.
+  Obsidian can be intimidating for new users. To simplify the user interface, Kakano provides a clear visual distinction between your content (white background, strong contrast) and other controls (colored background, lower contrast). Making Obsidian easier for new users also reduces cognitive load and distraction for more experienced users.
 - **Standardise controls**
   Obsidian’s exuberant plugin scene is fantastic, but it also means that there’s a lot of inconsistency in the design of controls and modals – even between core plugins. I’ve tried to find ways to make similar controls have similar appearance. Likewise, I’ve aimed to follow conventions from the underlying OS, such as having close controls on the left on macOS.
 - **Be opinionated enough**
@@ -129,6 +130,9 @@ Kakano includes a lot of little details. Some notable examples are:
 - Images can be centered by adding `center` to the alt text e.g. `![[image_file_name.jpg|center]]`. Note that there's also a setting to center all images, which is on by default.
 
 ## Settings
+
+![Configure with the Style Settings plugin](settings.png)
+
 If the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin is installed, Kakano offers the following settings.
 ### Base color
 Sets a base color that will be used by Kakano independently of the accent color. This allows you to use one color for Kakano, and a separate color for accents in your notes.
@@ -284,6 +288,7 @@ _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zeala
 - The [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) theme by [Anubis](https://github.com/AnubisNekhet) provided the idea of adding icons to sections in Style Settings.
 - The [MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
 - The [Minimal](https://github.com/kepano/obsidian-minimal) theme by [Kepano](https://github.com/kepano) provided the idea of a card layout for the Dataview Plugin. I've also used a consistent card layout appearance for the Folder Note plugin.
+
 
 ## Feedback
 Feedback is welcome! I'm interested in how different people use Kakano, and open to making adjustments to support different needs. If you think there's something missing or not working how you'd prefer, add an issue to the [Github repository](https://github.com/isaacfreeman/kakano-obsidian-theme/issues) and I'll think about how to incorporate your needs into the Kakano design.
