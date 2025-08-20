@@ -2705,6 +2705,9 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   --divider-width: 0;
   --metadata-divider-width: 0;
 }
+.is-phone .metadata-container {
+  --metadata-divider-width: 0;
+}
 
 /* Mobile workspace */
 .is-mobile .workspace > .mod-root {
