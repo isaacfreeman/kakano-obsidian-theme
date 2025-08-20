@@ -2708,10 +2708,11 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 
 /* Mobile workspace */
 .is-mobile .workspace > .mod-root {
-  padding: 0 var(--theme-spacing-mobileHorizontalSpacing) 0.5rem
-    var(--theme-spacing-mobileHorizontalSpacing);
+  padding: var(--safe-area-inset-top) calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-right)) 0.5rem
+    calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-left));
   background: transparent;
 }
+
 .is-mobile .workspace-split.mod-root .workspace-tabs {
   padding: 0;
 }
@@ -2725,6 +2726,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 .is-phone .workspace .mod-root .workspace-tabs .workspace-tab-container {
   background: transparent;
   border-radius: 0;
+  box-shadow: none;
 }
 .is-phone
   .workspace-fake-target-overlay:not(.is-in-sidebar)
