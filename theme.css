@@ -5615,6 +5615,7 @@ body:not(.is-phone) .modal.mod-sync-history {
 /* #endregion */
 /* #region   Content area */
 
+/* Allow metadata properties to go full width */
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
   padding: 0;
 }
@@ -5624,7 +5625,9 @@ body:not(.is-phone) .modal.mod-sync-history {
   margin-right: 0;
   max-width: none;
   width: 100%;
+  pointer-events: none; /* Make sure margin menu works */
 }
+
 .markdown-source-view .cm-contentContainer {
   padding: 1rem 2rem;
 }
