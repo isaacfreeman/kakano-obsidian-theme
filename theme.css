@@ -641,6 +641,7 @@ body {
   --tab-switcher-preview-background-shadow: var(--shadow-l);
   --tab-switcher-preview-shadow: none;
   --tab-switcher-preview-shadow-active: none;
+  --tab-text-color-focused-highlighted: var(--theme-color-base);
   --text-on-accent: var(--theme-color-baseLightened95);
   --text-muted: color-mix(in srgb, var(--text-normal), transparent 30%);
   --titlebar-background-focused: transparent;
@@ -1021,7 +1022,6 @@ body {
   --tab-text-color-active: var(--theme-color-baseTransparent50);
   --tab-text-color-focused: var(--theme-color-baseDarkened25);
   --tab-text-color-focused-active: var(--theme-color-baseDarkened25);
-  --tab-text-color-focused-highlighted: var(--text-accent);
   --tab-text-color-focused-active-current: var(--text-normal);
   --tag-color: hsl(
     var(--accent-h),
@@ -1283,7 +1283,6 @@ body.theme-light.theme-setting-customGradient {
   --tab-text-color-active: var(--theme-color-baseTransparent50);
   --tab-text-color-focused: var(--theme-color-baseLightened25);
   --tab-text-color-focused-active: var(--theme-color-baseLightened25);
-  --tab-text-color-focused-highlighted: var(--text-accent);
   --tab-text-color-focused-active-current: var(--text-normal);
   --text-normal: var(--theme-color-baseLightened60);
   --text-faint: var(--theme-color-baseLightened25);
@@ -5625,7 +5624,6 @@ body:not(.is-phone) .modal.mod-sync-history {
   margin-right: 0;
   max-width: none;
   width: 100%;
-  pointer-events: none; /* Make sure margin menu works */
 }
 
 .markdown-source-view .cm-contentContainer {
@@ -5747,6 +5745,9 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   height: auto; /* Don't use --header-height */
   justify-content: space-between;
   padding: 0.5em;
+}
+.view-header.is-highlighted:after {
+  background-color: var(--theme-color-baseTransparent50);
 }
 
 /* Inline title (i.e. filename) */
