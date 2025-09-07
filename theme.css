@@ -606,10 +606,10 @@ body {
   );
   --modal-width: 65rem;
   --nav-item-background-hover: var(--theme-color-baseTransparent75);
-  --nav-item-children-margin-left: calc(
-    1em - var(--nav-indentation-guide-width) / 2
+  --nav-item-children-margin-start: calc(
+    var(--size-4-4) / 2 - var(--nav-indentation-guide-width) / 2
   );
-  --nav-item-children-padding-left: calc(
+  --nav-item-children-padding-start: calc(
     1em - var(--nav-indentation-guide-width) / 2
   );
   --nav-item-color-highlighted: var(--nav-item-hover);
@@ -4391,11 +4391,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 
 .tree-item-self,
 .tree-item-self.mod-collapsible {
-  gap: 0.5em;
-  justify-content: flex-start;
-  /* Setting padding-left to zero here, as it's sometimes overridden e.g. in file list */
-  padding: 0.25em 0.5em 0.25em 0;
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .tree-item-self .tree-item-icon {
   /* Icons that represent an object have the same colour as the related text */
@@ -4749,6 +4746,14 @@ button.search-result-file-match-replace-button {
 }
 /* #endregion */
 /* #region   Text fields */
+
+/* This box shadow goes around the disclosure control, we want it to go just around the text. */
+.tree-item-self.is-being-renamed,
+body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed,
+body:not(.is-phone) .workspace-leaf.mod-active .tree-item-self.has-focus:focus-within {
+  box-shadow: none;
+}
+
 .search-input-container input[type="search"],
 input.document-search-input,
 input[type="email"],
@@ -4757,8 +4762,9 @@ input[type="password"],
 input[type="search"],
 input[type="text"],
 textarea,
-.tree-item-self.is-active.is-being-renamed {
+.tree-item-self.is-being-renamed > .tree-item-inner {
   box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
+  border-radius: var(--radius-s);
   border: none;
   background: var(--background-input);
   color: var(--text-normal);
@@ -4788,8 +4794,9 @@ input[type="text"]:focus,
 textarea:active,
 textarea:focus-visible,
 textarea:focus,
-body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed {
+body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed > .tree-item-inner {
   background: var(--background-input);
+  border-radius: var(--radius-s);
   box-shadow: 0 0 0 var(--input-border-width)
     var(--background-modifier-border-focus);
   color: var(--text-normal);
@@ -4803,8 +4810,9 @@ body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed {
   input[type="search"]:hover,
   input[type="text"]:hover,
   textarea:hover,
-  body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed:hover {
+  body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed:hover > .tree-item-inner {
     background: var(--background-input);
+    border-radius: var(--radius-s);
     box-shadow: 0 0 0 var(--input-border-width)
       var(--background-modifier-border-focus);
     color: var(--text-normal);
@@ -4977,7 +4985,6 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
   color: var(--text-faint);
   font-size: var(--nav-item-size);
   font-weight: var(--font-medium);
-  gap: 0.5em;
   margin: 0;
   padding: 0.25em 0.5em 0.25em 0;
   line-height: var(--theme-lineHeight-tight);
@@ -4997,9 +5004,6 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
     background-color: var(--nav-item-background-hover);
     font-weight: var(--font-medium);
   }
-}
-.mod-collapsible > .tree-item-inner {
-  padding-inline-start: 0;
 }
 .metadata-properties-heading:before {
   /* Override absolute positioning from app, so we're consistent with other collapsibles */
@@ -5134,6 +5138,7 @@ input[type="radio"]:focus {
 }
 /*   #endregion */
 /* #region   Item lists */
+
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
   .horizontal-tab-nav-item:hover,
@@ -5176,8 +5181,8 @@ input[type="radio"]:focus {
 .tree-item-inner {
   padding: var(--nav-item-padding);
 }
-.nav-file-title:before {
-  content: none;
+.nav-file {
+  padding-left: var(--size-4-4);
 }
 /* #endregion */
 /* #region   Pills (including tags) */
@@ -6301,10 +6306,7 @@ body {
 /* #region   Core Plugin: Files */
 
 .workspace-leaf-content[data-type="file-explorer"] {
-  .nav-folder .nav-folder .nav-file-title-content,
-  .nav-folder .nav-folder .nav-folder-title-content {
-    padding-left: 0;
-  }
+
   .nav-folder-title-content {
     font-weight: var(--font-bold);
   }
