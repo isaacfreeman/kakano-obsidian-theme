@@ -2072,8 +2072,7 @@ li.is-collapsed .list-bullet:after,
 /* #endregion */
 /* #region     Embeds */
 /* Default appearance for embeds */
-/* I'm treating images as a special case, because they don't have any controls and a colored surround would often be distracting. */
-.internal-embed:not(.image-embed),
+.internal-embed,
 .internal-query {
   background-color: var(--embed-background);
   border-bottom: var(--embed-border-bottom);
@@ -2083,6 +2082,14 @@ li.is-collapsed .list-bullet:after,
   border-top: var(--embed-border-top);
   margin: 0;
 }
+/* I'm treating images as a special case, because they don't have any controls and a colored surround would often be distracting. */
+.internal-embed.image-embed {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+}
+
 .markdown-embed .embed-title {
   font-size: var(--font-ui-small);
   font-weight: var(--nav-item-weight-hover);
@@ -2191,6 +2198,16 @@ li.is-collapsed .list-bullet:after,
 }
 /* #endregion */
 /* Audio embed */
+/* Not technically an embed, but when we've opened an audio file directly in fiule navigation we ant to see the same controls. */
+.video-container > audio {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: var(--radius-m);
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  margin: 0;
+}
 .markdown-source-view.mod-cm6 .cm-content > .media-embed:has(> audio) {
   display: flex;
 }
@@ -2207,6 +2224,19 @@ audio::-webkit-media-controls-panel {
   border: none;
   padding: 0.25rem;
   border-radius: var(--radius-m);
+}
+
+/* Video embed */
+/* Not technically an embed, but when we've opened an audio file directly in fiule navigation we ant to see the same controls. */
+.cm-html-embed > video,
+.markdown-reading-view video {
+  background-color: var(--embed-background);
+  border-bottom: var(--embed-border-bottom);
+  border-left: var(--embed-border-left);
+  border-radius: var(--radius-m);
+  border-right: var(--embed-border-right);
+  border-top: var(--embed-border-top);
+  margin: 0;
 }
 
 /* Markdown embed e.g. embedded note */
