@@ -1619,6 +1619,10 @@ body {
 
   /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
   hanging-punctuation: first allow-end last;
+
+  ::spelling-error {
+    text-decoration: wavy var(--color-red) underline from-font;
+  }
 }
 
 .theme-setting-headingScaleFactor1point067 {
@@ -4634,7 +4638,8 @@ button:not(.clickable-icon).mod-cta,
 .style-settings-copy,
 .style-settings-download,
 .style-settings-import,
-.style-settings-export {
+.style-settings-export,
+.popover.hover-popover > .file-embed.mod-empty {
   background-color: var(--theme-color-controlBg);
   border: none;
   border-radius: var(--button-radius);
@@ -4656,7 +4661,8 @@ button:not(.clickable-icon).mod-cta,
   .style-settings-copy:hover,
   .style-settings-download:hover,
   .style-settings-import:hover,
-  .style-settings-export:hover {
+  .style-settings-export:hover,
+.popover.hover-popover > .file-embed.mod-empty:hover {
     border: none;
     background: var(--theme-color-controlBgHover);
     color: var(--theme-color-controlTextHover);
@@ -4673,7 +4679,8 @@ button:not(.clickable-icon).mod-cta:focus,
 .style-settings-copy:focus,
 .style-settings-download:focus,
 .style-settings-import:focus,
-.style-settings-export:focus {
+.style-settings-export:focus,
+.popover.hover-popover > .file-embed.mod-empty:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
 }
 
@@ -6583,18 +6590,25 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   box-shadow: var(--shadow-l);
   padding: 0.5rem;
 }
-.popover.hover-popover {
+.popover.hover-popover{
   padding: 0.5rem;
 }
 .popover.hover-popover > .markdown-embed {
   background-color: var(--background-primary);
   padding: 0;
 
+  .markdown-embed-content {
+    height: 100%;
+  }
+
   .markdown-embed-link {
     top: 4px;
     right: auto;
     left: auto;
   }
+}
+.popover.hover-popover > .file-embed.mod-empty {
+  width: auto;
 }
 /* #endregion */
 /* #region   Core Plugin: Publish */
