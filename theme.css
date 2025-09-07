@@ -5158,6 +5158,10 @@ input[type="radio"]:focus {
 .nav-folder-title.is-active {
   background-color: var(--interactive-accent);
   color: var(--nav-item-color-active);
+
+  &.is-being-renamed {
+    background: transparent;
+  }
 }
 .nav-folder.is-being-dragged-over {
   animation: 0.5s 1 alternate fadein;
