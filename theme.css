@@ -2141,7 +2141,8 @@ li.is-collapsed .list-bullet:after,
 .theme-setting-enableImageAdjustmentWithAltText {
   /* Center images */
   .markdown-source-view.mod-cm6 .cm-content > img[alt~=center],
-  .markdown-source-view.mod-cm6 .cm-content .image-embed[alt~=center] img {
+  .markdown-source-view.mod-cm6 .cm-content .image-embed[alt~=center] img,
+  .markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img[alt~=center] {
     display: block;
     margin: 0 auto !important;
   }
@@ -2163,12 +2164,14 @@ li.is-collapsed .list-bullet:after,
   /* Round corners of images */
   .markdown-source-view.mod-cm6 .cm-content > img[alt~=round],
   .markdown-source-view.mod-cm6 .cm-content .image-embed[alt~=round] img,
+  .markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img[alt~=round],
   .markdown-preview-view img[alt~=round],
   .markdown-preview-view .image-embed[alt~=round] img {
     border-radius: 0.5em;
   }
   .markdown-source-view.mod-cm6 .cm-content > img[alt~=circle],
   .markdown-source-view.mod-cm6 .cm-content .image-embed[alt~=circle] img,
+  .markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img[alt~=circle],
   .markdown-preview-view img[alt~=circle],
   .markdown-preview-view .image-embed[alt~=circle] img {
     border-radius: var(--theme-length-fullBorderRadius);
@@ -2176,7 +2179,8 @@ li.is-collapsed .list-bullet:after,
 }
 .theme-setting-centerImages {
   .markdown-source-view.mod-cm6 .cm-content > img,
-  .markdown-source-view.mod-cm6 .cm-content .image-embed img {
+  .markdown-source-view.mod-cm6 .cm-content .image-embed img,
+  .markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img {
     display: block;
     margin: 0 auto !important;
   }
