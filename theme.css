@@ -1145,11 +1145,7 @@ body {
   --theme-color-gradientCardsetGeneratedBottom: var(
     --theme-color-baseTransparent12
   );
-  --theme-color-shadow: hsl(
-    var(--base-h),
-    calc(var(--base-s) * 1.5),
-    calc(var(--base-l) * 0.25)
-  );
+  --theme-color-shadow: var(--theme-color-baseDarkened25);
 
   --theme-shadow-control: 0 1px 2px
     hsl(
@@ -1400,11 +1396,8 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-gradientCardsetGeneratedBottom: var(
     --theme-color-baseTransparent25
   );
-  --theme-color-shadow: hsl(
-    var(--base-h),
-    calc(var(--base-s) * 0.75),
-    calc(var(--base-l) * 0.01)
-  );
+  --theme-color-shadow: var(--theme-color-baseDarkened90);
+
   --theme-shadow-control: 0px 1px 2px
     hsl(
       var(--base-h),
@@ -1552,7 +1545,12 @@ body.theme-dark,
     0 0 1.2rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
     0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 16%, transparent),
     0 0 4rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);
-}
+  --theme-shadow-indent-small: 0 0 0.05rem
+      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+    0 0 0.2rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
+    0 0 0.6rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
+    0 0 1rem color-mix(in srgb, var(--theme-color-shadow) 16%, transparent),
+    0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);}
 /* #endregion */
 /* #endregion */
 
@@ -4549,7 +4547,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 /* #region   Hotkeys */
 
 .suggestion-hotkey,
-.setting-hotkey {
+.setting-hotkey,
+.prompt-instruction-command {
   background: transparent;
   border: solid 1px var(--theme-color-hotkey);
   color: var(--theme-color-hotkey);
@@ -5367,6 +5366,7 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
 .is-phone .prompt-input-container {
   border-bottom: none;
   background: var(--background-secondary);
+  box-shadow: var(--theme-shadow-indent-small);
 }
 .prompt {
   background-color: var(--background-prompt);
@@ -5391,6 +5391,7 @@ input[type="text"].prompt-input::placeholder {
 .prompt-instructions {
   background: var(--background-secondary);
   border-top: 0;
+  box-shadow: var(--theme-shadow-indent-small);
 }
 
 /* Default modal */
