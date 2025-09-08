@@ -1859,8 +1859,11 @@ li.is-collapsed .list-bullet:after,
 @media (hover: hover) {
   .collapse-indicator:hover,
   .cm-fold-indicator:hover .collapse-indicator,
-  .list-collapse-indicator:hover {
-    color: var(--theme-color-control);
+  .list-collapse-indicator:hover,
+  .view-content .cm-fold-indicator:hover svg.svg-icon,
+  .view-content .list-collapse-indicator:hover svg.svg-icon,
+  .view-content .collapse-indicator:hover svg.svg-icon {
+    color: var(--theme-color-controlTextHover);
     background-color: var(--theme-color-navigationButtonBgHover);
   }
 }
