@@ -7004,6 +7004,11 @@ body {
   .webviewer-address {
     margin: var(--input-border-width);
   }
+  .search-in-page {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* #endregion */
