@@ -6475,6 +6475,13 @@ body {
   border: none;
   box-shadow: none;
 }
+@media (hover: hover) {
+  /* The normal hover colour doesn't work with these icons that have a fill colour */
+  .canvas-card-menu .canvas-card-menu-button:hover {
+    color: var(--theme-color-control);
+  }
+}
+
 /* #endregion */
 /* #region   Core Plugin: Command Palette */
 /*   No special styles: uses shared .prompt */
