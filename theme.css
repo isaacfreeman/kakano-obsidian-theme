@@ -644,6 +644,7 @@ body {
   --tab-switcher-preview-shadow: none;
   --tab-switcher-preview-shadow-active: none;
   --tab-text-color-focused-highlighted: var(--theme-color-base);
+  --tag-weight: 400;
   --text-on-accent: var(--theme-color-baseLightened95);
   --text-muted: color-mix(in srgb, var(--text-normal), transparent 30%);
   --titlebar-background-focused: transparent;
@@ -1483,6 +1484,7 @@ body {
     var(--theme-color-baseLightened60)
   );
   --theme-color-controlActive: var(--theme-color-base);
+  --theme-color-controlHasActiveMenu: light-dark(var(--theme-color-baseLightened80), var(--theme-color-baseDarkened80));
 
   --theme-color-jiraIssueInfoBg: light-dark(
     var(--theme-color-blueLightened),
@@ -4201,7 +4203,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 .clickable-icon.kanban-plugin__search-cancel-button,
 .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
 .mobile-tab .close-button,
-.bases-toolbar-menu-container-header .close-icon {
+.bases-toolbar-menu-container-header .close-icon,
+.clickable-icon.document-search-close-button {
   background-color: transparent;
   border-radius: 100%;
   border: none;
@@ -4237,7 +4240,8 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
   .multi-select-pill-remove-button:hover,
   .mobile-tab .close-button:hover,
-  .bases-toolbar-menu-container-header .close-icon:hover {
+  .bases-toolbar-menu-container-header .close-icon:hover,
+  .clickable-icon.document-search-close-button:hover {
     color: var(--theme-color-controlHover);
     background-color: var(--theme-color-navigationButtonBgHover);
 
@@ -4735,10 +4739,10 @@ button.search-result-file-match-replace-button {
   }
 }
 .text-icon-button.has-active-menu {
-  color: var(--theme-color-controlActive);
+  color: var(--theme-color-controlHasActiveMenu);
 
   .text-button-icon {
-    color: var(--theme-color-controlActive);
+    color: var(--theme-color-controlHasActiveMenu);
   }
 }
 @media (hover: hover) {
@@ -4820,7 +4824,8 @@ input[type="password"],
 input[type="search"],
 input[type="text"],
 textarea,
-.tree-item-self.is-being-renamed > .tree-item-inner {
+.tree-item-self.is-being-renamed > .tree-item-inner,
+.formula-editor-container {
   box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
   border-radius: var(--radius-s);
   border: none;
@@ -4962,23 +4967,12 @@ select:focus,
 
 }
 /* #endregion */
-/* #region   Multi-select pill */
+/* #region   Multi-select container */
 .multi-select-container,
 .metadata-property .multi-select-container {
   padding: 0.25em;
 }
-.multi-select-pill {
-  padding: var(--pill-padding-y) var(--pill-padding-x);
-}
-.multi-select-pill-remove-button {
-  margin: 0;
-  border-radius: 100%;
-}
-@media (hover: hover) {
-  .multi-select-pill-remove-button:hover {
-    background: var(--pill-background-remove-hover);
-  }
-}
+
 /* #endregion */
 /* #region   Toolbars */
 .canvas-controls,
@@ -5300,6 +5294,18 @@ input[type="radio"]:focus {
 }
 /* #endregion */
 /* #region   Pills (including tags) */
+.multi-select-pill {
+  padding: var(--pill-padding-y) var(--pill-padding-x);
+}
+.multi-select-pill-remove-button {
+  margin: 0;
+  border-radius: 100%;
+}
+@media (hover: hover) {
+  .multi-select-pill-remove-button:hover {
+    background: var(--pill-background-remove-hover);
+  }
+}
 .multi-select-pill,
 .metadata-property[data-property-key="tags"] .multi-select-pill {
   --pill-padding-x: 1em;
@@ -6013,6 +6019,8 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 .document-replace {
   gap: 0.5em;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 .document-search-button {
   border: none;
@@ -6301,6 +6309,12 @@ body {
       background: var(--theme-color-tabNavActiveBg);
     }
   }
+  .bases-td:focus-within .bases-table-cell {
+    box-shadow: 0 0 0 var(--input-border-width) var(--theme-color-base);
+    border-radius: var(--radius-s);
+    border: none;
+    background-color: var(--background-input);
+    color: var(--text-normal);  }
 }
 
 @media (hover: hover) {
@@ -6362,6 +6376,27 @@ body {
   .bases-sort-property-container:hover {
     background: transparent;
   }
+  .bases-toolbar-menu-container-header .back-button:hover {
+    background-color: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlHover);
+
+    .back-icon  {
+      color: var(--theme-color-controlHover);
+    }
+  }
+  .bases-toolbar-menu-item:hover {
+    background-color: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlHover);
+
+    .bases-toolbar-menu-item-info-icon,
+    .bases-toolbar-menu-item-icon {
+      color: var(--theme-color-controlHover);
+    }
+  }
+
+  .bases-toolbar-menu-form .input-row .help-icon {
+    color: var(--theme-color-controlHover);
+  }
 }
 .query-toolbar-menu.mod-filters {
   .menu-scroll {
@@ -6384,6 +6419,7 @@ body {
       }
     }
   }
+
 }
 /* #endregion */
 /* #region     Table View */
@@ -7007,6 +7043,7 @@ body {
   .search-in-page {
     position: absolute;
     left: 50%;
+    top: 0.5em;
     transform: translateX(-50%);
   }
 }
