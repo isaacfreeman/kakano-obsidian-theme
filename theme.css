@@ -1,3 +1,4 @@
+/* Compiled Kakano theme */
 /*
 
 # Kakano Theme for Obsidian
@@ -13,7 +14,6 @@ Principles:
   I’d like Kakano to provide a great user experience by default without the user having to make any choices beyond their base color. It has settings, but I want each one to be there because different users genuinely have different needs, not just because I failed to make a decision.
 
 */
-
 /* #region Plugin compatibility */
 
 /* @plugins
@@ -552,7 +552,6 @@ settings:
 */
 
 /* #endregion */
-
 /* #region Custom properties */
 /* #region   General */
 body {
@@ -1554,6 +1553,7 @@ body.theme-dark,
     0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);}
 /* #endregion */
 /* #endregion */
+/* #endregion */
 
 /* #region Keyframe animations */
 @keyframes fadein {
@@ -2493,6 +2493,10 @@ body:not(.is-mobile) {
 /* #region   Live Preview mode */
 .cm-line:has(.cm-hmd-frontmatter .is-invalid) {
   background-color: rgba(var(--callout-error), 0.1);
+}
+.ͼ1 .cm-lineWrapping,
+.markdown-reading-view {
+  text-wrap: pretty;
 }
 /* #region     Lists */
 .list-bullet:after {
