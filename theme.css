@@ -1554,7 +1554,6 @@ body.theme-dark,
 /* #endregion */
 /* #endregion */
 /* #endregion */
-
 /* #region Keyframe animations */
 @keyframes fadein {
   from {
@@ -1566,7 +1565,6 @@ body.theme-dark,
   }
 }
 /* #endregion */
-
 /* #region Typography */
 /* #region   Reading and Live Preview modes */
 
@@ -1794,7 +1792,7 @@ body {
   border: none;
   border-top: var(--hr-thickness) solid;
   border-color: var(--hr-color);
-  margin: 2em 0 !important;
+  margin: 2em 0;
 }
 .cm-s-obsidian .cm-inline-code:not(.cm-formatting),
 .markdown-rendered code {
@@ -2608,6 +2606,7 @@ summary.excalidraw-setting-h1 {
 }
 /* #endregion */
 /* #endregion */
+
 /* #region Alternative Checkboxes */
 body.theme-setting-enableBuiltInAlternativeCheckboxes {
   /* Alternate incomplete states */
@@ -3242,6 +3241,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
 }
 /* #endregion */
 /* #endregion */
+
 /* #region Workspace */
 /* #region   Overall workspace */
 * {
@@ -4101,6 +4101,7 @@ body.show-ribbon:not(.is-mobile)
 }
 /* #endregion */
 /* #endregion */
+
 /* #region Shared UI Elements */
 /* #region   Dragging */
 .workspace-drop-overlay:before {
@@ -8845,7 +8846,6 @@ body.theme-setting-overrideTasks {
 }
 /*   #endregion */
 /* #endregion */
-
 /* #region Dev stuff */
 
 /* Show border of content area clearly */
