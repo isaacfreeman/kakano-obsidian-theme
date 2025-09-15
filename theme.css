@@ -558,6 +558,8 @@ body {
   --background-input: light-dark(var(--theme-color-baseTransparent12), var(--theme-color-darkenTransparent06));
   --background-modifier-message: var(--theme-color-noticeBg);
   --background-secondary: transparent;
+  --bases-cards-shadow: var(--shadow-s);
+  --bases-cards-shadow-hover: var(--shadow-s);
   --callout-padding: var(--theme-padding-block);
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
@@ -660,8 +662,10 @@ body {
     var(--theme-color-baseLightened40),
     var(--theme-color-baseDarkened40)
   );
+  --theme-color-card: var(--nav-item-color);
   --theme-color-cardBg: var(--background-primary);
-  --theme-lineHeight-tight: 1.3rem;
+  --theme-color-cardHover: var(--nav-item-color-hover);
+  --theme-color-cardBgHover: var(--theme-color-base);
   --theme-setting-lineWidth: 60;
   --theme-spacing-mobileHorizontalSpacing: calc(
     var(--theme-setting-mobileHorizontalPadding) * 1rem
@@ -1474,6 +1478,7 @@ body.theme-dark.theme-setting-customGradient {
 /* #endregion */
 /* #region   Light/dark modes */
 body {
+  --bases-cards-cover-background: light-dark(var(--theme-color-darkenTransparent06), var(--theme-color-lightenTransparent06));
   --icon-color-active: light-dark(white, black);
 
   --theme-color-calendarBg: light-dark(var(--theme-color-baseLightened85), var(--theme-color-baseDarkened80));
@@ -6435,11 +6440,42 @@ body {
 /* #endregion */
 /* #region     Card View */
 .bases-cards-item {
+  color: var(--theme-color-card);
   background-color: var(--theme-color-cardBg);
   border-radius: var(--radius-m);
   border: none;
   box-shadow: var(--shadow-s);
-  padding: 0;
+  padding: 0 0 0.5em 0;
+
+  .mod-title {
+    padding: 0.5em 0;
+  }
+
+  .bases-cards-label,
+  .bases-cards-line,
+  .bases-cards-line:empty:before {
+    color: var(--theme-color-card);
+  }
+}
+.bases-cards-label {
+  color: var(--theme-color-card);
+}
+@media (hover: hover) {
+  .bases-cards-item:hover {
+    color: var(--theme-color-cardHover);
+    background-color: var(--theme-color-cardBgHover);
+
+    .bases-cards-label,
+    .bases-cards-line,
+    .bases-cards-line input,
+    .bases-cards-line:empty:before {
+      color: var(--theme-color-cardHover);
+    }
+
+    .bases-cards-cover {
+      mix-blend-mode: screen;
+    }
+  }
 }
 /* #endregion */
 /* #region     Bases in the centre panel */
