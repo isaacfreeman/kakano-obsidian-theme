@@ -26,6 +26,7 @@ core:
 - daily-notes
 - file-explorer
 - file-recovery
+- footnotes-view
 - global-search
 - graph
 - note-composer
@@ -1365,14 +1366,14 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-tagBgSidebar: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.2),
-    calc(var(--accent-l) * 1),
-    0.15
+    calc(var(--accent-l) * 0.25),
+    0.5
   );
   --theme-color-tagBgSidebarHover: hsl(
     var(--accent-h),
     calc(var(--accent-s) * 1.02),
-    calc(var(--accent-l) * 1.15),
-    0.15
+    calc(var(--accent-l) * 0.5),
+    0.5
   );
   --theme-color-tagSidebar: hsl(
     var(--accent-h),
@@ -6627,6 +6628,63 @@ body {
 }
 .sync-history-list-item-header:hover {
   background: transparent;
+}
+/* #endregion */
+/* #region   Core Plugin: Footnotes View */
+
+.footnotes-view {
+  .footnotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .footnote-list-item {
+      border: 0;
+      padding-inline-end: 1.75em;
+
+      &.is-editing > .footnote {
+        box-shadow: none;
+        background-color: transparent;
+
+        .footnote-content {
+          /* TODO: style as for editing properties */
+          border-radius: var(--metadata-property-radius);
+        }
+        .footnote-content:focus-within {
+          border: none;
+          background: var(--background-input);
+          box-shadow: 0 0 0 var(--input-border-width) var(--background-modifier-border-focus);
+          color: var(--text-normal);
+        }
+      }
+
+      .footnote {
+        padding: 0;
+
+        .footnote-id {
+          padding-top: 0.25rem;
+        }
+        .footnote-content {
+          padding: var(--input-padding);
+
+          .markdown-embed {
+            background: transparent;
+
+            .markdown-preview-view .markdown-preview-sizer > div {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (hover: hover) {
+  .footnotes-view .footnote-content:hover {
+    background-color: var(--metadata-property-background-hover);
+    box-shadow: var(--metadata-property-box-shadow-hover);
+    border-radius: var(--metadata-property-radius-hover);
+  }
 }
 /* #endregion */
 /* #region   Core Plugin: Graph view */
