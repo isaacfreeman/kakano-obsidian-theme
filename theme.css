@@ -1573,7 +1573,6 @@ body.theme-dark,
 /* #endregion */
 /* #region Typography */
 /* #region   Reading and Live Preview modes */
-
 body {
   --theme-value-headingScaleFactor: 1.2;
   --blockquote-border-thickness: 0.25em;
@@ -1695,6 +1694,14 @@ body {
   );
 }
 
+.HyperMD-header-1, .inline-title h1, .HyperMD-list-line .cm-header-1, .markdown-rendered h1,
+.HyperMD-header-2, .inline-title h2, .HyperMD-list-line .cm-header-2, .markdown-rendered h2,
+.HyperMD-header-3, .inline-title h3, .HyperMD-list-line .cm-header-3, .markdown-rendered h3,
+.HyperMD-header-4, .inline-title h4, .HyperMD-list-line .cm-header-4, .markdown-rendered h4,
+.HyperMD-header-5, .inline-title h5, .HyperMD-list-line .cm-header-5, .markdown-rendered h5,
+.HyperMD-header-6, .inline-title h6, .HyperMD-list-line .cm-header-6, .markdown-rendered h6 {
+  letter-spacing: 0;
+}
 .markdown-rendered
   div:has(> :is(p, pre, table, ul, ol))
   + div
