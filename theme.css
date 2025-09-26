@@ -5117,7 +5117,6 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
   color: var(--text-faint);
   font-size: var(--nav-item-size);
   font-weight: var(--font-medium);
-  margin: 0;
   padding: 0.25em 0.5em 0.25em 0;
   line-height: var(--theme-lineHeight-tight);
   display: flex;
@@ -6556,6 +6555,12 @@ body {
 }
 /* #endregion */
 /* #region   Core Plugin: Canvas */
+body {
+  --embed-border-start: none;
+  --embed-border-end: none;
+  --embed-border-top: none;
+  --embed-border-bottom: none;
+}
 
 .canvas-submenu {
   background: var(--theme-color-interactiveActive);
@@ -6586,7 +6591,23 @@ body {
     color: var(--theme-color-control);
   }
 }
-
+.canvas-node-content,
+.canvas-node-content.markdown-embed {
+  background-color: var(--background-primary);
+  border-top: var(--embed-border-top);
+  border-inline-end: var(--embed-border-end);
+  border-bottom: var(--embed-border-bottom);
+  border-inline-start: var(--embed-border-start);
+  border-radius: var(--radius-m);
+}
+.canvas-node-container {
+  border: 0.25rem solid var(--theme-color-baseTransparent50)
+}
+.canvas-node.is-selected .canvas-node-container,
+.canvas-node.is-focused .canvas-node-container {
+    border-color: var(--theme-color-base);
+    box-shadow: var(--shadow-stationary), 0 0 0 2px var(--themne-color-base);
+}
 /* #endregion */
 /* #region   Core Plugin: Command Palette */
 /*   No special styles: uses shared .prompt */
@@ -7102,10 +7123,25 @@ body {
 /* #endregion */
 /* #region   Core Plugin: Tags view */
 @media (hover: hover) {
-  /* Don't use heavy bacground for hovering over rows */
+  /* Don't use heavy background for hovering over rows */
   body:not(.is-grabbing) .tag-container .tree-item-self.is-clickable:hover {
     background: inherit;
   }
+}
+/* Align collapsible tags with non-collapsible */
+.tag-pane-tag {
+  .tree-item-inner {
+    margin-inline-start: 9px; /* This matches hard-coded styles */
+  }
+
+  &.mod-collapsible {
+    .tree-item-inner {
+      margin-inline-start: 0;
+    }
+  }
+}
+.tag-pane-tag {
+  padding-inline-end: 0;
 }
 .tag-pane-tag > .tree-item-inner {
   /* Tags in sidebar styled the same as in notes, but ligher/darker to sit on colored background */
@@ -7130,6 +7166,7 @@ body {
     cursor: var(--cursor-link);
   }
 }
+
 /* #endregion */
 /* #region   Core Plugin: Web viewer */
 .workspace-leaf-content[data-type="webviewer"] {
