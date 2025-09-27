@@ -7792,7 +7792,7 @@ body.theme-setting-overrideExcalidraw {
   }
 
   .excalidraw-view {
-    & .excalidraw {
+    .excalidraw {
       .FixedSideContainer_side_top {
         top: var(--theme-length-controlSetSpacing) !important;
         right: var(--theme-length-controlSetSpacing) !important;
@@ -7821,14 +7821,21 @@ body.theme-setting-overrideExcalidraw {
       }
 
       /* Layout structures inside control sets */
-      & .Stack,
-      & .App-toolbar-content {
+      .Stack,
+      .App-toolbar-content {
         gap: 0.5em;
         padding: 0;
       }
-      /* I think these are supposed to be spacers, but I don't think we need them. */
-      & .App-toolbar-content > .ToolIcon__icon:empty {
-        display: none;
+      .App-toolbar-content {
+        /* I think these are supposed to be spacers, but I don't think we need them. */
+        > .ToolIcon__icon:empty {
+          display: none;
+        }
+
+        /* COntainer div for undeo/redo, which for somer eason has no class */
+        > div:last-child {
+          display: flex;
+        }
       }
 
       /* Menus */
