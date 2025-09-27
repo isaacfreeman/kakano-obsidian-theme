@@ -3309,7 +3309,7 @@ body.mod-macos {
   }
 }
 
-/* #region     "Native frame" style (my preferred) */
+/* #region     "Native frame" style */
 body.mod-macos {
   &:not(.is-frameless) {
     &:not(.is-tablet) {
@@ -3317,6 +3317,11 @@ body.mod-macos {
       .sidebar-toggle-button.mod-right {
         padding: 0;
         position: absolute;
+      }
+      .mod-sidedock {
+        .workspace-tabs.mod-top-right-space .workspace-tab-header-container-inner {
+          margin-inline-end: 2.5em;
+        }
       }
 
       &:not(.is-fullscreen) {
@@ -3374,6 +3379,11 @@ body.mod-macos {
       .sidebar-toggle-button.mod-right {
         padding: 0;
         position: absolute;
+      }
+      .mod-sidedock {
+        .workspace-tabs.mod-top-right-space .workspace-tab-header-container-inner {
+          margin-inline-end: 2.5em;
+        }
       }
 
       &:not(.is-fullscreen) {
