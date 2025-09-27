@@ -3903,7 +3903,7 @@ body.mod-windows {
   }
   .workspace-leaf-content {
     .view-content {
-      padding: 0.5rem 1rem 2rem 1rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
     }
   }
 }
@@ -6292,6 +6292,7 @@ body {
 
 .bases-view {
   scrollbar-gutter: auto;
+  scrollbar-color: var(--theme-color-baseTransparent25) var(--bases-table-header-background);
 }
 
 .block-language-base {
@@ -6304,11 +6305,6 @@ body {
   margin: 0;
 }
 
-.workspace-leaf-content[data-type="bases"] {
-  .view-content {
-    background: var(--bases-table-header-background);
-  }
-}
 .markdown-source-view.mod-cm6 .cm-content > .bases-embed[contenteditable=false] {
   contain: layout !important;
 }
@@ -6320,6 +6316,7 @@ body {
 }
 .bases-thead {
   box-shadow: var(--theme-shadow-indent);
+  border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
 
   .bases-td {
     box-shadow: none;
@@ -6483,6 +6480,10 @@ body {
 
 /* #endregion */
 /* #region     Card View */
+.bases-cards-container {
+  padding-inline-start: var(--bases-header-padding-start);
+  padding-inline-end: var(--bases-header-padding-end);
+}
 .bases-cards-item {
   color: var(--theme-color-card);
   background-color: var(--theme-color-cardBg);
@@ -6537,8 +6538,6 @@ body {
 /* #endregion */
 /* #region     Bases in a sidebar panel */
 .mod-sidedock .workspace-leaf-content[data-type="bases"] {
-  --bases-table-header-background: transparent;
-
   .bases-view {
     background-color: transparent;
   }
@@ -6551,6 +6550,9 @@ body {
 }
 /* #endregion */
 /* #region     Embedded bases */
+.markdown-source-view.mod-cm6 .cm-content > .bases-embed, .markdown-source-view.mod-cm6 .cm-content > .cm-lang-base {
+  --bases-header-padding-end: inherit;
+}
 .bases-embed {
   padding: 0.5em 0 0.5em 0;
 
