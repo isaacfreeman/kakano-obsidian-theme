@@ -2688,7 +2688,8 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   /* Complete states */
   & .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"],
   & .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"],
-  & .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=">"] {
+  & .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task=">"],
+  .bases-tbody input[type=checkbox][data-indeterminate="true"]:not(:checked) {
     text-decoration: var(--checklist-done-decoration);
     color: var(--checklist-done-color);
   }
@@ -2703,7 +2704,8 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   & li[data-task=">"] > p > input:checked,
   & input.task-list-item-checkbox[data-task="-"]:checked,
   & li[data-task="-"] > input:checked,
-  & li[data-task="-"] > p > input:checked {
+  & li[data-task="-"] > p > input:checked,
+  .bases-tbody input[type=checkbox][data-indeterminate="true"]:not(:checked) {
     background-image: none;
     border-color: var(--theme-color-controlContentArea);
     position: relative;
@@ -2722,7 +2724,8 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   & li[data-task="-"] > p > input:checked:after,
   & input[data-task=">"]:checked:after,
   & li[data-task=">"] > input:checked:after,
-  & li[data-task=">"] > p > input:checked:after {
+  & li[data-task=">"] > p > input:checked:after,
+  .bases-tbody input[type=checkbox][data-indeterminate="true"]:not(:checked):after {
     content: "";
     top: -1px;
     left: -1px;
@@ -2742,7 +2745,8 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   }
   & input[data-task="-"]:checked:after,
   & li[data-task="-"] > input:checked:after,
-  & li[data-task="-"] > p > input:checked:after {
+  & li[data-task="-"] > p > input:checked:after,
+  .bases-tbody input[type=checkbox][data-indeterminate="true"]:not(:checked):after {
     -webkit-mask-position: 50% 50%;
     -webkit-mask-size: 100%;
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="4,10.5 20,10.5 20,13.5 4,13.5"></polyline></g></g></svg>');
@@ -6341,7 +6345,8 @@ body {
     border-radius: var(--radius-s);
     border: none;
     background-color: var(--background-input);
-    color: var(--text-normal);  }
+    color: var(--text-normal);
+  }
 }
 
 @media (hover: hover) {
@@ -6354,6 +6359,19 @@ body {
     }
 
     background-color: var(--bases-table-header-background-hover);
+  }
+}
+
+/* Checkboxes styled like markdown */
+.bases-tbody .metadata-input-checkbox {
+  border-radius: 0.33em;
+  border-radius: var(--checkbox-radius);
+  border-color: var(--theme-color-controlContentArea);
+}
+@media (hover: hover) {
+  .bases-tbody .metadata-input-checkbox:hover {
+    border-color: var(--theme-color-controlContentArea);
+    background-color: var(--theme-color-controlContentAreaHover);
   }
 }
 
@@ -6456,7 +6474,6 @@ body {
       }
     }
   }
-
 }
 /* #endregion */
 /* #region     Table View */
