@@ -7832,7 +7832,7 @@ body.theme-setting-overrideExcalidraw {
           display: none;
         }
 
-        /* COntainer div for undeo/redo, which for somer eason has no class */
+        /* Container div for undeo/redo, which for somer eason has no class */
         > div:last-child {
           display: flex;
         }
@@ -7867,6 +7867,44 @@ body.theme-setting-overrideExcalidraw {
           font-family: var(--font-interface);
           padding: 2px 6px;
           border-radius: var(--radius-s);
+        }
+      }
+
+      .popover {
+        margin: 0 1rem;
+      }
+      .context-menu {
+        background-color: var(--theme-color-menuBg);
+        border: 0;
+        box-shadow: var(--shadow-l);
+        border-radius: var(--radius-l);
+        padding: 0.5em;
+        margin: 0;
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+
+        & button {
+          border: none;
+          border-color: var(--nav-item-color);
+          color: var(--nav-item-color);
+          background-color: var(--nav-item-background);
+          box-shadow: none;
+        }
+
+        @media (hover: hover) {
+          & button:hover {
+            border-color: var(--nav-item-color-hover);
+            color: var(--nav-item-color-hover);
+            background-color: var(--nav-item-background-hover) !important;
+            font-weight: var(--nav-item-weight-hover);
+            --icon-fill-color: var(--nav-item-color-hover);
+          }
+        }
+
+        hr {
+          margin: 0.5em 0;
+          border-top: var(--border-width) solid var(--background-modifier-border);
         }
       }
     }
