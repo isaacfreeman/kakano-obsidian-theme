@@ -6332,6 +6332,7 @@ body {
 .bases-header {
   .query-toolbar .query-toolbar-item.mod-views {
     overflow: visible;
+    flex-wrap: wrap;
   }
 }
 .bases-thead {
@@ -6558,8 +6559,11 @@ body {
 /* #endregion */
 /* #region     Bases in a sidebar panel */
 .mod-sidedock .workspace-leaf-content[data-type="bases"] {
+  --bases-cards-group-padding: 0 0;
+
   .bases-view {
     background-color: transparent;
+    font-size: var(--font-ui-small);
   }
   .bases-header {
     background-color: transparent;
