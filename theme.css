@@ -2780,12 +2780,12 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 
 /* Mobile workspace */
 .is-mobile .workspace > .mod-root {
-  padding: var(--safe-area-inset-top) calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-right)) 0.5rem
+  padding: var(--safe-area-inset-top) calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-right)) 0
     calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-left));
   background: transparent;
 }
 
-.is-mobile .workspace-split.mod-root .workspace-tabs {
+.is-mobile .workspace-split.mod-root .workspace-tabs.mod-top {
   padding: 0;
 }
 .is-mobile .view-actions {
@@ -2847,6 +2847,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 }
 .mobile-navbar {
   background-color: transparent;
+  padding-top: 0;
 }
 
 /* #region   Drawers */
@@ -3364,6 +3365,13 @@ body.mod-macos {
       .sidebar-toggle-button.mod-right {
         top: 0;
         right: 0;
+      }
+    }
+  }
+  &.is-phone {
+    .workspace:not(.is-left-sidedock-open) {
+      .sidebar-toggle-button.mod-left {
+        top: 0;
       }
     }
   }
