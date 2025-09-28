@@ -3322,7 +3322,7 @@ body.mod-macos {
 /* #region     "Native frame" style */
 body.mod-macos {
   &:not(.is-frameless) {
-    &:not(.is-tablet) {
+    &:not(.is-mobile) {
       .sidebar-toggle-button.mod-left,
       .sidebar-toggle-button.mod-right {
         padding: 0;
@@ -3377,13 +3377,6 @@ body.mod-macos {
       }
     }
   }
-  &.is-phone {
-    .workspace:not(.is-left-sidedock-open) {
-      .sidebar-toggle-button.mod-left {
-        top: 0;
-      }
-    }
-  }
 }
 /* #endregion */
 /* #region     "Obsidian frame" style */
@@ -3391,7 +3384,7 @@ body.mod-macos {
   &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
     --titlebar-height: 40px;
 
-    &:not(.is-tablet) {
+    &:not(.is-mobile) {
       .sidebar-toggle-button.mod-left,
       .sidebar-toggle-button.mod-right {
         padding: 0;
