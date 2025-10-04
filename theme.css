@@ -696,6 +696,38 @@ body {
   --theme-padding-blockVertical: 0.75em;
 }
 /* #endregion */
+/* #region   Overrides for colour presets */
+/* Tweak some colours for presets, to improve contrast. Ideally I'd liek to do this for use-selected colours too, but the browser engine doesn't yet support contrast-color() */
+body.css-settings-manager.theme-setting-baseColorPreset-maa {
+  --text-on-accent: black;
+  --nav-item-color-active: black;
+  --icon-color: black;
+  --icon-color-focused: black;
+  --theme-color-controlLightweightActive: black;
+  --theme-color-controlActive: black;
+  --theme-color-controlHover: black;
+  --theme-color-controlTextHover: black;
+  --vault-profile-color-hover: black;
+  --nav-item-color-hover: black;
+  --interactive-accent: var(--theme-color-baseDarkened25);
+  --icon-color-focused: black;
+}
+body.css-settings-manager.theme-dark.theme-setting-baseColorPreset-maa {
+  --icon-color: white;
+}
+body.css-settings-manager.theme-dark.theme-setting-baseColorPreset-mangu {
+  --text-on-accent: white;
+  --nav-item-color-active: white;
+  --icon-color: white;
+  --icon-color-focused: white;
+  --theme-color-controlLightweightActive: white;
+  --theme-color-controlActive: white;
+  --theme-color-controlHover: white;
+  --vault-profile-color-hover: white;
+  --nav-item-color-hover: white;
+  --interactive-accent: var(--theme-color-baseLightened25);
+}
+/* #endregion */
 /* #region   Colors */
 /* #region     Base color */
 body {
@@ -757,13 +789,13 @@ body.css-settings-manager.theme-setting-baseColorPreset-maawhero {
 }
 body.css-settings-manager.theme-setting-baseColorPreset-mangu {
   --base-h: 240;
-  --base-s: 0%;
-  --base-l: 2%;
+  --base-s: 5%;
+  --base-l: 20%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-maa {
-  --base-h: 0;
+  --base-h: 50;
   --base-s: 0%;
-  --base-l: 90%;
+  --base-l: 95%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --base-h: 40;
