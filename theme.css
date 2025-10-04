@@ -717,28 +717,28 @@ body.css-settings-manager.theme-setting-baseColorPreset-accent {
 }
 body.css-settings-manager.theme-setting-baseColorPreset-whero {
   --base-h: 0;
-  --base-s: 61%;
-  --base-l: 43%;
+  --base-s: 65%;
+  --base-l: 50%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-karaka {
   --base-h: 30;
-  --base-s: 70%;
+  --base-s: 80%;
   --base-l: 50%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-koowhai {
   --base-h: 52;
-  --base-s: 60%;
+  --base-s: 70%;
   --base-l: 45%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-kaakaariki {
-  --base-h: 92;
-  --base-s: 60%;
+  --base-h: 90;
+  --base-s: 65%;
   --base-l: 39%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-kaarikioorangi {
-  --base-h: 180;
+  --base-h: 175;
   --base-s: 57%;
-  --base-l: 47%;
+  --base-l: 40%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-kahurangi {
   --base-h: 215;
@@ -747,8 +747,8 @@ body.css-settings-manager.theme-setting-baseColorPreset-kahurangi {
 }
 body.css-settings-manager.theme-setting-baseColorPreset-waiporoporo {
   --base-h: 275;
-  --base-s: 67%;
-  --base-l: 45%;
+  --base-s: 50%;
+  --base-l: 40%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-maawhero {
   --base-h: 335;
@@ -757,7 +757,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-maawhero {
 }
 body.css-settings-manager.theme-setting-baseColorPreset-mangu {
   --base-h: 240;
-  --base-s: 10%;
+  --base-s: 0%;
   --base-l: 2%;
 }
 body.css-settings-manager.theme-setting-baseColorPreset-maa {
@@ -767,7 +767,7 @@ body.css-settings-manager.theme-setting-baseColorPreset-maa {
 }
 body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
   --base-h: 40;
-  --base-s: 2%;
+  --base-s: 5%;
   --base-l: 50%;
 }
 /* #endregion */
