@@ -6082,6 +6082,24 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 .is-mobile .document-replace .document-search-close-button {
   top: calc(50% - 0.5em);
 }
+/* Close button on left for macOS */
+.mod-macos .document-search-container {
+  .document-search {
+    .document-search-close-button {
+      order: 0;
+    }
+    .document-search-input {
+      order: 1;
+    }
+    .document-search-buttons {
+      order: 2;
+    }
+  }
+  .document-replace {
+    padding-left: calc(var(--theme-length-closeButtonWidth) + 0.5em);
+  }
+}
+
 /* #endregion */
 /* #endregion */
 
