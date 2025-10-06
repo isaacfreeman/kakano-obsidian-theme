@@ -1305,10 +1305,10 @@ body.theme-light.theme-setting-customGradient {
   --search-icon-color: var(--theme-color-base);
   --tag-color: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.2),
-    calc(var(--accent-l))
+    calc(var(--accent-s) * 1.1),
+    calc(var(--accent-l) * 1.2)
   );
-  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+  --tag-background: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
   --tab-background-active: var(--background-primary);
   --tab-background-inactive: var(--theme-color-baseDarkened85);
   --tab-text-color: var(--theme-color-baseTransparent50);
@@ -1391,9 +1391,9 @@ body.theme-light.theme-setting-customGradient {
   );
   --theme-color-tagBgHover: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.05),
-    calc(var(--accent-l) * 1.161),
-    0.1
+    calc(var(--accent-s) * 1.2),
+    calc(var(--accent-l) * 0.8),
+    0.75
   );
   --theme-color-tagBgSidebar: hsl(
     var(--accent-h),
@@ -1403,19 +1403,19 @@ body.theme-light.theme-setting-customGradient {
   );
   --theme-color-tagBgSidebarHover: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.02),
-    calc(var(--accent-l) * 0.5),
+    calc(var(--accent-s) * 1.1),
+    calc(var(--accent-l) * 0.8),
     0.5
   );
   --theme-color-tagSidebar: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.2),
-    calc(var(--accent-l) * 1)
+    calc(var(--accent-s) * 1.1),
+    calc(var(--accent-l) * 1.2)
   );
   --theme-color-tagSidebarHover: hsl(
     var(--accent-h),
-    calc(var(--accent-s) * 1.224),
-    calc(var(--accent-l) * 1.15)
+    calc(var(--accent-s) * 1.4),
+    calc(var(--accent-l) * 1.3)
   );
 
   --theme-color-textMeta: var(--theme-color-base);
