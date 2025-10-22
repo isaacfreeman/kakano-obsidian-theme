@@ -1104,7 +1104,7 @@ body {
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: var(--theme-color-lightenTransparent25);
   --theme-color-controlBg: var(--theme-color-baseLightened95);
-  --theme-color-controlBgLowWeight: var(--theme-color-lightenTransparent50);
+  --theme-color-controlLowWeightBg: var(--theme-color-lightenTransparent50);
   --theme-color-controlContentArea: var(--theme-color-base);
   --theme-color-controlContentAreaHover: var(--theme-color-baseLightened80);
   --theme-color-controlUIHover: var(--theme-color-baseLightened60);
@@ -1351,7 +1351,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgb(0, 0, 0, 0.1);
   --theme-color-controlBg: var(--theme-color-baseDarkened25);
-  --theme-color-controlBgLowWeight: var(--theme-color-darkenTransparent25);
+  --theme-color-controlLowWeightBg: var(--theme-color-darkenTransparent25);
   --theme-color-controlContentArea: var(--theme-color-baseLightened60);
   --theme-color-controlContentAreaHover: var(--theme-color-baseDarkened80);
   --theme-color-controlUIHover: var(--theme-color-baseDarkened70);
@@ -4800,7 +4800,7 @@ button.search-result-file-match-replace-button {
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button {
   border: none;
   box-shadow: var(--theme-shadow-control);
-  background-color: var(--theme-color-controlBgLowWeight);
+  background-color: var(--theme-color-controlLowWeightBg);
   color: var(--theme-color-controlText);
   font-size: var(--font-ui-smaller);
   line-height: var(--line-height-tight);
@@ -5023,7 +5023,7 @@ select:focus,
 .search-results-info .dropdown {
   border: none;
   box-shadow: var(--theme-shadow-control);
-  background-color: var(--theme-color-controlBgLowWeight);
+  background-color: var(--theme-color-controlLowWeightBg);
 }
 @media (hover: hover) {
   .search-results-info .dropdown:hover {
@@ -6708,6 +6708,62 @@ body {
 /* #region   Core Plugin: Files */
 
 .workspace-leaf-content[data-type="file-explorer"] {
+  .nav-header {
+    .nav-buttons-container {
+      gap: 0.25em;
+      /* Insert an element to force a line break in the flexbox, separating the first two controls from the others. */
+      .nav-action-button:first-child,
+      .nav-action-button:nth-child(2) {
+        order: 0;
+      }
+      &:after {
+        order: 1;
+        content: "";
+        width: 100%
+      }
+      .nav-action-button {
+        order: 2;
+      }
+    }
+    /* Style first two controls as lightweight buttons */
+    .nav-action-button:first-child,
+    .nav-action-button:nth-child(2) {
+      border: none;
+      box-shadow: var(--theme-shadow-control);
+      background-color: var(--theme-color-controlLowWeightBg);
+      color: var(--theme-color-controlText);
+      font-size: var(--font-ui-smaller);
+      line-height: var(--line-height-tight);
+      min-height: 1.5rem;
+      padding: 0.25em 0.5em;
+      display: flex;
+      gap: 0.5em;
+
+      &:after {
+        content: attr(aria-label);
+      }
+    }
+
+    @media (hover: hover) {
+      .nav-action-button:first-child:hover,
+      .nav-action-button:nth-child(2):hover {
+        border: none;
+        background-color: var(--theme-color-controlBgHover);
+        color: var(--theme-color-controlTextHover);
+
+      }
+      .nav-action-button:first-child.is-active:hover,
+      .nav-action-button:nth-child(2).has-active-menu:hover {
+        border: none;
+        background-color: var(--theme-color-controlBgHover);
+        color: var(--theme-color-controlTextHover);
+
+        .text-button-icon {
+          color: var(--theme-color-controlTextHover);
+        }
+      }
+    }
+  }
 
   .nav-folder-title-content {
     font-weight: var(--font-bold);
@@ -6728,6 +6784,10 @@ body {
     }
   }
 }
+
+
+
+
 
 /* #endregion */
 /* #region   Core Plugin: File Recovery */
@@ -8904,7 +8964,7 @@ body.theme-setting-overrideMapView {
     & .map-view-graph-controls > .mv-map-control.mv-control-button {
       border: none;
       box-shadow: var(--theme-shadow-control);
-      background-color: var(--theme-color-controlBgLowWeight);
+      background-color: var(--theme-color-controlLowWeightBg);
       color: var(--theme-color-controlText);
       font-size: var(--font-ui-smaller);
       line-height: var(--line-height-tight);
