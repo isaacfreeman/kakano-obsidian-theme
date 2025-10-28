@@ -281,13 +281,14 @@ I'm Isaac Freeman, a software developer in Aotearoa/New Zealand. I love to explo
 _Kakano_ means "color" in the Te Reo Māori – the Māori language of New Zealand.
 
 ## Credits
-- [Damian Korcz](https://github.com/damiankorcz) started the [Alternative Checkboxes Reference Set project](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set).
+- [Damian Korcz](https://github.com/damiankorcz) started the [Alternative Checkboxes Reference Set project](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set). [Buy them a coffee](https://www.buymeacoffee.com/DamianKorcz)
 - [incantatem1](https://github.com/incantatem1) suggested a separate line length for Reading View.
 - [Ryan Johnson](linkedin.com/in/rydavjohnson) suggested the setting to hide titles for embedded notes, and the ability to pin embedded backlinks.
 - [WinnerWind](https://winnerwind.github.io) suggested the Mobile horizontal spacing setting, and assisted with debugging for Windows.
-- The [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) theme by [Anubis](https://github.com/AnubisNekhet) provided the idea of adding icons to sections in Style Settings.
+- The [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) theme by [Anubis](https://github.com/AnubisNekhet) provided the idea of adding icons to sections in Style Settings. [Buy them a coffee](https://buymeacoffee.com/anubisnekhet)
 - The [MagicUser](https://github.com/drbap/magicuser-theme-for-obsidian) theme by [Bernardo Pires](https://github.com/drbap) provided the idea of making selected modals resizeable.
-- The [Minimal](https://github.com/kepano/obsidian-minimal) theme by [Kepano](https://github.com/kepano) provided the idea of a card layout for the Dataview Plugin. I've also used a consistent card layout appearance for the Folder Note plugin.
+- The [Minimal](https://github.com/kepano/obsidian-minimal) theme by [Kepano](https://github.com/kepano) provided the idea of a card layout for the Dataview Plugin. I've also used a consistent card layout appearance for the Folder Note plugin. [Buy them a coffee](https://buymeacoffee.com/kepano)
+- The [Baseline](https://github.com/aaaaalexis/obsidian-baseline) theme by [Alexis C](https://github.com/aaaaalexis) provided the idea to make the `New note` and `New folder` buttons more prominent. [Buy them a coffee](https://buymeacoffee.com/sevenaxis)
 
 
 ## Feedback
