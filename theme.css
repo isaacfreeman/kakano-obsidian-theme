@@ -431,6 +431,12 @@ settings:
     type: info-text
     markdown: true
   -
+    id: theme-setting-wideTables
+    title: 'Wide tables'
+    description: "Allow wide tables to extend left and right beyond the margins for body text."
+    type: class-toggle
+    default: true
+  -
     id: heading-mobile
     title: Mobile
     type: heading
@@ -581,7 +587,10 @@ body {
   --embed-border-right: none;
   --embed-border-top: none;
   --embed-padding: 1em;
-  --file-line-width: calc(1ch * var(--theme-setting-lineWidth));
+
+  /* Using 0.625rem here as approximately 1ch. We can't use ch because we want line width to be constant across font sizes, so it's the same for headings and body text. */
+  --file-line-width: calc(0.625rem * var(--theme-setting-lineWidth));
+
   --file-margins: 0 2em;
   --flair-background: var(--theme-color-base);
   --flair-color: var(--text-on-accent);
@@ -2877,6 +2886,11 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
       0.5
   );
 }
+.is-phone .markdown-source-view .cm-contentContainer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .mobile-navbar {
   background-color: transparent;
   padding-top: 0;
@@ -5835,17 +5849,6 @@ body:not(.is-phone) .modal.mod-sync-history {
   max-width: none;
   width: 100%;
 }
-
-.markdown-source-view .cm-contentContainer {
-  padding: 1rem 2rem;
-}
-.mod-sidedock .markdown-source-view .cm-contentContainer {
-  padding: 0 0;
-}
-.is-phone .markdown-source-view .cm-contentContainer {
-  padding-top: 0;
-  padding-bottom: 0;
-}
 .markdown-reading-view .mod-footer {
   margin: 1em 0 0 0;
 }
@@ -5853,28 +5856,74 @@ body:not(.is-phone) .modal.mod-sync-history {
   padding: 0;
 }
 
-.markdown-source-view.mod-cm6.is-readable-line-width
-  .cm-sizer
-  .cm-contentContainer,
-.markdown-preview-view.is-readable-line-width
-  .markdown-preview-sizer
-  > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
-  margin: 0 auto;
-  max-width: var(--file-line-width);
+.markdown-source-view .cm-contentContainer {
+  padding: 1rem 2rem;
+}
+
+.mod-sidedock .markdown-source-view .cm-contentContainer {
+  padding: 0 0;
+}
+
+
+
+
+
+
+/* TODO: QA test for this new code */
+
+.markdown-source-view.is-live-preview.mod-cm6.is-readable-line-width .cm-content {
   width: 100%;
+  max-width: 100%;
+
+  > div {
+    /* TODO: need to redefine --file-line-width so it's based on root character width, not base don current font size */
+    margin: 0 auto !important;
+    max-width: var(--file-line-width);
+  }
 }
-.markdown-preview-view.is-readable-line-width
-  .markdown-preview-sizer
-  > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
-  max-width: calc(1ch * var(--theme-setting-lineWidthReadingView));
+.markdown-preview-view .markdown-preview-sizer {
+  > div {
+    margin: 0 auto !important;
+    max-width: var(--file-line-width);
+    padding: 0 2rem;
+
+  }
+  > div.mod-header,
+  > div.mod-footer {
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
 }
-.mod-root .markdown-source-view.mod-cm6 .cm-sizer .cm-contentContainer,
-.markdown-preview-view
-  .markdown-preview-sizer
-  > div:not(.mod-header):not(.mod-footer):not(.markdown-preview-pusher) {
-  padding-inline-start: 2rem;
-  padding-inline-end: 2rem;
+
+/* Allow tables to extend into the left and right margins */
+.theme-setting-wideTables {
+  .markdown-source-view.is-live-preview.mod-cm6.is-readable-line-width .cm-content {
+    > .cm-table-widget {
+      max-width: 100%;
+
+      > .table-wrapper {
+        margin: 0 auto;
+      }
+    }
+  }
+  .markdown-preview-view .markdown-preview-sizer {
+    > .el-table {
+      max-width: 100%;
+
+      > table {
+        margin: 0 auto;
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
 .markdown-rendered .mod-header {
   margin-bottom: 3rem;
 }
