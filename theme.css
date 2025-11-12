@@ -3972,6 +3972,12 @@ body.mod-windows {
       padding: 0.5rem 1rem 0.5rem 1rem;
     }
   }
+
+  /* TODO: try out this setting (will need to make scrolling work when there are lots of tabs in sidebar) */
+  /* .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--icon-color-focused);
+    display: block;
+  } */
 }
 .mod-left-split {
   .workspace-leaf-content {
@@ -5060,7 +5066,7 @@ select:focus,
     letter-spacing: 0.05em;
     margin-inline-start: 0;
     line-height: 1;
-    padding: 0.25em 0.5em;
+    padding: 0.375em 0.75em;
     text-transform: uppercase;
 
 }
@@ -5697,6 +5703,8 @@ body:not(.is-phone) .modal.mod-sync-history {
   display: flex;
   flex-direction: column;
   gap: var(--size-2-1);
+  padding: 0;
+  overflow: hidden;
 }
 .community-item.is-selected {
   background: var(--theme-color-communityItemBgSelected);
@@ -5716,17 +5724,26 @@ body:not(.is-phone) .modal.mod-sync-history {
 .community-item-repo,
 .community-item-downloads,
 .community-item-updated,
+.community-item-desc,
 .community-modal-info-downloads-text,
 .community-modal-info-author,
 .community-modal-info-repo {
   color: var(--text-normal);
+  padding: 0 1rem;
 }
 .community-item-name {
-  font-weight: var(--font-semibold)
+  font-weight: var(--font-semibold);
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 .community-item .flair {
   --flair-background: inherit;
   --flair-color: inherit;
+  float: right;
+  margin-right: -0.5rem;
+}
+.community-item-desc {
+  padding-bottom: 1rem;
 }
 .community-item-author,
 .community-item-repo,
