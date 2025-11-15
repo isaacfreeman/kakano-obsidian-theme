@@ -176,6 +176,8 @@ Sets a base color that will be used by Kakano independently of the accent color.
 ### Layout
 - **Center images**
   Center images horizontally. On by default.
+- **Wde tables**
+  Allow wide tables to extend left and right beyond the margins for body text. On by default.
 ### Mobile settings
 - **Mobile horizontal spacing**
   On mobile screens where space is at a premium, there's the option to show some of the background color on each side, or to have the note go to full width.
