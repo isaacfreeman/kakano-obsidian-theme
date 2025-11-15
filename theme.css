@@ -2200,6 +2200,13 @@ li.is-collapsed .list-bullet:after,
   right: 0;
 }
 /* #region       Image positioning and styling */
+
+/* We'll sometimes have images inside columns, so we'd like them to fit into the available space. */
+.markdown-source-view.mod-cm6 .cm-content > img,
+.markdown-source-view.mod-cm6 .cm-content .image-embed img,
+.markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img {
+  max-width: 100%;
+}
 .theme-setting-enableImageAdjustmentWithAltText {
   /* Center images */
   .markdown-source-view.mod-cm6 .cm-content > img[alt~=center],
