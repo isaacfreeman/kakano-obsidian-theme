@@ -3963,6 +3963,9 @@ body.mod-windows {
   }
   .workspace-tab-header-container-inner {
     margin: 0 0 0 0;
+
+    /* Override scrollbar color, because it forces the scrollbar to appear and we want it invisible here */
+    scrollbar-color: auto;
   }
   .workspace-tab-header-container-inner:has(
       .workspace-tab-header[data-type="markdown"].is-active:last-child
@@ -3980,11 +3983,17 @@ body.mod-windows {
     }
   }
 
-  /* TODO: try out this setting (will need to make scrolling work when there are lots of tabs in sidebar) */
-  /* .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  .workspace-tab-header.is-active .workspace-tab-header-inner-title {
     color: var(--icon-color-focused);
     display: block;
-  } */
+    text-overflow: ellipsis;
+  }
+}
+/* Override built-in style for .is-focused */
+.is-focused .mod-sidedock {
+  .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--icon-color-focused);
+  }
 }
 .mod-left-split {
   .workspace-leaf-content {
