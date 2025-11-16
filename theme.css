@@ -3362,274 +3362,6 @@ body {
   position: relative;
 }
 /* #endregion */
-
-/* #region   macOS window frame styles */
-body.mod-macos {
-  .workspace-tab-header-new-tab,
-  .workspace-tab-header-tab-list {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-/* #region     "Native frame" style */
-body.mod-macos {
-  &:not(.is-frameless) {
-    &:not(.is-mobile) {
-      .sidebar-toggle-button.mod-left,
-      .sidebar-toggle-button.mod-right {
-        padding: 0;
-        position: absolute;
-      }
-      .mod-sidedock {
-        .workspace-tabs.mod-top-right-space .workspace-tab-header-container-inner {
-          margin-inline-end: 2.5em;
-        }
-      }
-
-      &:not(.is-fullscreen) {
-        .workspace.is-left-sidedock-open {
-          .sidebar-toggle-button.mod-left {
-            top: 0.5em;
-          }
-        }
-        .workspace:not(.is-left-sidedock-open) {
-          .sidebar-toggle-button.mod-left {
-            top: 0.5em;
-          }
-        }
-        .workspace:not(.is-right-sidedock-open) {
-          .sidebar-toggle-button.mod-right {
-            top: 0;
-            right: -0.5em;
-          }
-          .workspace-tab-header-container {
-            padding-inline-end: 1.5em;
-          }
-        }
-        .workspace.is-right-sidedock-open {
-          .sidebar-toggle-button.mod-right {
-            top: 0;
-            right: 0.5em;
-          }
-        }
-      }
-    }
-    &.is-tablet {
-      .sidebar-toggle-button.mod-left,
-      .sidebar-toggle-button.mod-right {
-        padding: 0;
-      }
-      .sidebar-toggle-button.mod-left {
-        top: 0;
-        left: 0;
-      }
-      .sidebar-toggle-button.mod-right {
-        top: 0;
-        right: 0;
-      }
-    }
-  }
-}
-/* #endregion */
-/* #region     "Obsidian frame" style */
-body.mod-macos {
-  &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
-    --titlebar-height: 40px;
-
-    &:not(.is-mobile) {
-      .sidebar-toggle-button.mod-left,
-      .sidebar-toggle-button.mod-right {
-        padding: 0;
-        position: absolute;
-      }
-      .mod-sidedock {
-        .workspace-tabs.mod-top-right-space .workspace-tab-header-container-inner {
-          margin-inline-end: 2.5em;
-        }
-      }
-
-      &:not(.is-fullscreen) {
-        .workspace.is-left-sidedock-open {
-          .sidebar-toggle-button.mod-left {
-            top: 0.5em;
-          }
-        }
-        .workspace:not(.is-left-sidedock-open) {
-          .sidebar-toggle-button.mod-left {
-            top: 0.5em;
-          }
-        }
-        .workspace:not(.is-right-sidedock-open) {
-          .sidebar-toggle-button.mod-right {
-            top: 0;
-            right: -0.5em;
-          }
-          .workspace-tab-header-container {
-            padding-inline-end: 1.5em;
-          }
-        }
-        .workspace.is-right-sidedock-open {
-          .sidebar-toggle-button.mod-right {
-            top: 0;
-            right: 0.5em;
-          }
-        }
-      }
-      &.is-fullscreen {
-        .workspace.is-left-sidedock-open {
-          .sidebar-toggle-button.mod-left {
-            top: 0.5em;
-          }
-        }
-        .workspace:not(.is-left-sidedock-open) {
-          .sidebar-toggle-button.mod-left {
-            top: 0.5em;
-          }
-        }
-        .workspace.is-right-sidedock-open {
-          .sidebar-toggle-button.mod-right {
-            top: 0;
-            right: 0.5em;
-          }
-        }
-        .workspace:not(.is-right-sidedock-open) {
-          .sidebar-toggle-button.mod-right {
-            top: 0;
-            right: -0.5em;
-          }
-          .mod-root .workspace-tab-header-container {
-            padding-inline-end: 1.5em;
-          }
-        }
-        .workspace-ribbon .sidebar-toggle-button.mod-left {
-          left: 0;
-        }
-      }
-    }
-    &.is-tablet {
-      .sidebar-toggle-button.mod-left,
-      .sidebar-toggle-button.mod-right {
-        padding: 0;
-      }
-      .sidebar-toggle-button.mod-left {
-        top: 0;
-        left: 0;
-      }
-      .sidebar-toggle-button.mod-right {
-        top: 0;
-        right: 0;
-      }
-    }
-  }
-}
-/* #endregion */
-/* #region     "Hidden (default)" style. This is the default appearance! */
-/* In this window style we need to make sure buttons don't overlap the window controls. */
-body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
-  .workspace .workspace-tabs.mod-top-left-space .workspace-tab-header-container,
-  .workspace
-    .workspace-tabs.mod-top-right-space
-    .workspace-tab-header-container {
-    padding: 0;
-  }
-
-  /* This element also seems to be a handle for window dragging */
-  .mod-sidedock .workspace-tabs.mod-top .workspace-tab-header-container {
-    margin-top: 0;
-    height: calc(2 * var(--header-height) + 0.5rem);
-    align-items: flex-end;
-  }
-  .mod-sidedock .workspace-tab-header-container-inner {
-    height: var(--header-height);
-  }
-  .sidebar-toggle-button.mod-left,
-  .sidebar-toggle-button.mod-right {
-    padding: 0;
-    position: fixed;
-  }
-
-  &:not(.is-fullscreen) {
-    .workspace-ribbon.mod-left {
-      margin-top: 0;
-      padding-top: var(--header-height);
-    }
-
-    .sidebar-toggle-button.mod-left {
-      top: 0.25rem;
-      left: calc(var(--ribbon-width) + var(--frame-left-space));
-    }
-    .sidebar-toggle-button.mod-right {
-      top: 0.25rem;
-      right: calc(0.25rem + var(--frame-right-space));
-    }
-    .workspace.is-left-sidedock-open {
-      .mod-root .sidebar-toggle-button.mod-left {
-        display: none;
-      }
-    }
-    .workspace:not(.is-left-sidedock-open) {
-      .mod-sidedock .sidebar-toggle-button.mod-left {
-        display: none;
-      }
-    }
-
-    .workspace:not(.is-left-sidedock-open) {
-      .mod-root .workspace-tab-header-container {
-        padding-inline-start: calc(var(--frame-left-space) + 0.75rem);
-      }
-    }
-    .workspace:not(.is-right-sidedock-open) {
-      .mod-root .workspace-tab-header-container {
-        padding-inline-end: calc(var(--frame-right-space) + 1rem);
-      }
-    }
-  }
-  &.is-fullscreen {
-    .sidebar-toggle-button.mod-left {
-      top: 0.25rem;
-      left: 0.25rem;
-    }
-    .sidebar-toggle-button.mod-right {
-      top: 0.25rem;
-      right: 0.25rem;
-    }
-    .workspace:not(.is-right-sidedock-open) {
-      .mod-root .workspace-tab-header-container {
-        padding-inline-end: calc(var(--frame-right-space) + 1.5rem);
-      }
-    }
-  }
-
-  &.is-tablet {
-    .sidebar-toggle-button.mod-left,
-    .sidebar-toggle-button.mod-right {
-      padding: 0;
-    }
-    .sidebar-toggle-button.mod-left {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .sidebar-toggle-button.mod-right {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-    .workspace .mod-root .workspace-tabs .workspace-tab-header-container {
-      padding-inline-start: calc(var(--frame-left-space) + 2rem);
-      padding-inline-end: calc(var(--frame-right-space) + 3rem);
-    }
-  }
-  &.is-phone {
-    .sidebar-toggle-button.mod-left {
-      top: 0;
-      left: 0;
-    }
-  }
-}
-/* #endregion */
-/* #endregion */
 /* #region   Windows window frame styles */
 /* #region     "Obsidian frame" style */
 body.mod-windows {
@@ -3946,11 +3678,6 @@ body.mod-windows {
 
   .workspace-tabs {
     gap: 0;
-  }
-  .workspace-tab-header-container {
-    margin-top: 0;
-  }
-  .workspace-tabs  {
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
   }
@@ -3958,11 +3685,24 @@ body.mod-windows {
     padding-bottom: 0;
     margin-bottom: 0;
   }
+
+  .workspace-tab-header-container {
+    height: auto;
+    justify-content: center;
+    margin-top: 0;
+  }
   .workspace-tabs.mod-top > .workspace-tab-header-container {
     margin-top: 0.5em;
   }
+
   .workspace-tab-header-container-inner {
+    background: var(--tab-background-inactive);
+    border-radius: var(--radius-s);
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0;
     margin: 0 0 0 0;
+    overflow: hidden;
 
     /* Override scrollbar color, because it forces the scrollbar to appear and we want it invisible here */
     scrollbar-color: auto;
@@ -3977,83 +3717,15 @@ body.mod-windows {
     ) {
     border-bottom-left-radius: 0;
   }
-  .workspace-leaf-content {
-    .view-content {
-      padding: 0.5rem 1rem 0.5rem 1rem;
-    }
-  }
 
-  .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-    color: var(--icon-color-focused);
-    display: block;
-    text-overflow: ellipsis;
+  .workspace-tab-header {
+    background: var(--tab-background-inactive);
+    border-radius: 0;
   }
-}
-/* Override built-in style for .is-focused */
-.is-focused .mod-sidedock {
-  .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-    color: var(--icon-color-focused);
+  .workspace-tab-header.has-active-menu,
+  .workspace-tab-header.is-active {
+    background: var(--theme-color-switcherBgActive);
   }
-}
-.mod-left-split {
-  .workspace-leaf-content {
-    .view-content {
-      /* Reduce left padding as the sidebar also provides visual spacing */
-      padding-inline-start: 0.5rem;
-    }
-  }
-}
-
-.mod-left-split .workspace-tab-header-container,
-.mod-right-split .workspace-tab-header-container {
-  justify-content: center;
-}
-.mod-left-split .workspace-tab-header-container-inner,
-.mod-right-split .workspace-tab-header-container-inner {
-  background: var(--tab-background-inactive);
-}
-.mod-left-split .workspace-tab-header-container-inner,
-.mod-right-split .workspace-tab-header-container-inner {
-  border-radius: var(--radius-s);
-  gap: 0;
-  padding: 0;
-}
-.mod-left-split .workspace-tab-header,
-.mod-right-split .workspace-tab-header {
-  border-radius: 0;
-}
-.is-focused
-  .mod-active
-  .workspace-tab-header.is-active
-  .workspace-tab-header-inner-icon {
-  color: var(--text-normal);
-}
-.is-focused
-  .mod-left-split
-  .workspace-tab-header.is-active
-  .workspace-tab-header-inner-icon,
-.is-focused
-  .mod-right-split
-  .workspace-tab-header.is-active
-  .workspace-tab-header-inner-icon {
-  color: var(--icon-color-focused);
-}
-.mod-left-split .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tab-header.is-active,
-.mod-right-split .workspace-tab-header.is-active {
-  background: var(--theme-color-switcherBgActive);
-}
-.mod-left-split .workspace-tab-header-spacer,
-.mod-right-split .workspace-tab-header-spacer {
-  display: none;
-}
-.mod-left-split .workspace-tab-header-inner,
-.mod-right-split .workspace-tab-header-inner {
-  border-radius: 0;
-}
-/* Markdown tabs in sidebars */
-.mod-sidedock {
   .workspace-tab-header[data-type="markdown"] {
     background-color: var(--tab-background-inactive);
     color: var(--tab-text-color-active);
@@ -4071,6 +3743,30 @@ body.mod-windows {
     background-color: var(--tab-background-active);
 
   }
+
+  .workspace-tab-header-inner {
+    border-radius: 0;
+  }
+
+  .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    color: var(--icon-color-focused);
+    display: block;
+    text-overflow: ellipsis;
+    flex-basis: 25ch;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+
+  .workspace-tab-header-spacer {
+    display: none;
+  }
+
+
+  .workspace-leaf-content {
+    .view-content {
+      padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+  }
   .workspace-leaf-content[data-type="markdown"],
   .workspace-leaf-content[data-type="webviewer"] {
     padding: 0 1rem;
@@ -4085,12 +3781,38 @@ body.mod-windows {
     }
   }
 }
-.is-focused .mod-sidedock {
-  .workspace-tab-header[data-type="markdown"].is-active {
-    color: var(--tab-text-color-focused-active);
 
+/* Override built-in style for .is-focused */
+.is-focused {
+  .mod-sidedock {
+    .workspace-tab-header.is-active
     .workspace-tab-header-inner-icon {
-      color: var(--tab-text-color-focused-active-current);
+      color: var(--icon-color-focused);
+    }
+    .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+      color: var(--icon-color-focused);
+    }
+    .workspace-tab-header[data-type="markdown"].is-active {
+      color: var(--tab-text-color-focused-active);
+
+      .workspace-tab-header-inner-icon {
+        color: var(--tab-text-color-focused-active-current);
+      }
+    }
+  }
+
+  /* .mod-active
+  .workspace-tab-header.is-active
+  .workspace-tab-header-inner-icon {
+    color: var(--text-normal);
+  } */
+}
+
+.mod-left-split {
+  .workspace-leaf-content {
+    .view-content {
+      /* Reduce left padding as the sidebar also provides visual spacing */
+      padding-inline-start: 0.5rem;
     }
   }
 }
@@ -4213,6 +3935,391 @@ body.show-ribbon:not(.is-mobile)
   color: var(--empty-pane-color);
 }
 /* #endregion */
+/* #endregion */
+
+/* #region   macOS window frame styles */
+body.mod-macos {
+  .workspace-tab-header-new-tab,
+  .workspace-tab-header-tab-list {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+/* #region     "Native frame" style */
+body.mod-macos {
+  &:not(.is-frameless) {
+    &:not(.is-mobile) {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+        position: absolute;
+      }
+      .mod-sidedock {
+        .workspace-tabs.mod-top-right-space .workspace-tab-header-container-inner {
+          margin-inline-end: 2.5em;
+        }
+      }
+      .mod-left-split {
+        .workspace-tabs.mod-top > .workspace-tab-header-container {
+            padding-inline-end: 1rem;
+        }
+      }
+      .mod-right-split {
+        .workspace-tabs.mod-top > .workspace-tab-header-container {
+            padding-inline-start: 1rem;
+        }
+      }
+
+      &:not(.is-fullscreen) {
+        .workspace.is-left-sidedock-open {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-left-sidedock-open) {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: -0.5em;
+          }
+          .workspace-tab-header-container {
+            padding-inline-end: 1.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: 0.5em;
+          }
+        }
+      }
+    }
+    &.is-tablet {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+      }
+      .sidebar-toggle-button.mod-left {
+        top: 0;
+        left: 0;
+      }
+      .sidebar-toggle-button.mod-right {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+/* #endregion */
+/* #region     "Obsidian frame" style */
+body.mod-macos {
+  &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
+    --titlebar-height: 40px;
+
+    &:not(.is-mobile) {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+        position: absolute;
+      }
+      .mod-sidedock {
+        .workspace-tabs.mod-top-right-space .workspace-tab-header-container-inner {
+          margin-inline-end: 2.5em;
+        }
+      }
+      .mod-left-split {
+        .workspace-tabs.mod-top > .workspace-tab-header-container {
+            padding-inline-end: 1rem;
+        }
+      }
+      .mod-right-split {
+        .workspace-tabs.mod-top > .workspace-tab-header-container {
+            padding-inline-start: 1rem;
+        }
+      }
+
+      &:not(.is-fullscreen) {
+        .workspace.is-left-sidedock-open {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-left-sidedock-open) {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: -0.5em;
+          }
+          .workspace-tab-header-container {
+            padding-inline-end: 1.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: 0.5em;
+          }
+        }
+      }
+      &.is-fullscreen {
+        .workspace.is-left-sidedock-open {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace:not(.is-left-sidedock-open) {
+          .sidebar-toggle-button.mod-left {
+            top: 0.5em;
+          }
+        }
+        .workspace.is-right-sidedock-open {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: 0.5em;
+          }
+        }
+        .workspace:not(.is-right-sidedock-open) {
+          .sidebar-toggle-button.mod-right {
+            top: 0;
+            right: -0.5em;
+          }
+          .mod-root .workspace-tab-header-container {
+            padding-inline-end: 1.5em;
+          }
+        }
+        .workspace-ribbon .sidebar-toggle-button.mod-left {
+          left: 0;
+        }
+      }
+    }
+    &.is-tablet {
+      .sidebar-toggle-button.mod-left,
+      .sidebar-toggle-button.mod-right {
+        padding: 0;
+      }
+      .sidebar-toggle-button.mod-left {
+        top: 0;
+        left: 0;
+      }
+      .sidebar-toggle-button.mod-right {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+/* #endregion */
+/* #region     "Hidden (default)" style. This is the default appearance! */
+/* In this window style we need to make sure buttons don't overlap the window controls. */
+body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
+  .workspace .workspace-tabs.mod-top-left-space .workspace-tab-header-container,
+  .workspace
+    .workspace-tabs.mod-top-right-space
+    .workspace-tab-header-container {
+    padding: 0 1rem;
+  }
+
+  /* This element also seems to be a handle for window dragging */
+  .mod-sidedock .workspace-tabs.mod-top .workspace-tab-header-container {
+    margin-top: calc(var(--header-height) + 0.5rem);
+    height: auto;
+    align-items: flex-end;
+  }
+  .mod-sidedock .workspace-tab-header-container-inner {
+    height: auto;
+  }
+  .sidebar-toggle-button.mod-left,
+  .sidebar-toggle-button.mod-right {
+    padding: 0;
+    position: fixed;
+  }
+
+  &:not(.is-fullscreen) {
+    .workspace-ribbon.mod-left {
+      margin-top: 0;
+      padding-top: var(--header-height);
+    }
+
+    .sidebar-toggle-button.mod-left {
+      top: 0.25rem;
+      left: calc(var(--ribbon-width) + var(--frame-left-space));
+    }
+    .sidebar-toggle-button.mod-right {
+      top: 0.25rem;
+      right: calc(0.25rem + var(--frame-right-space));
+    }
+    .workspace.is-left-sidedock-open {
+      .mod-root .sidebar-toggle-button.mod-left {
+        display: none;
+      }
+    }
+    .workspace:not(.is-left-sidedock-open) {
+      .mod-sidedock .sidebar-toggle-button.mod-left {
+        display: none;
+      }
+    }
+
+    .workspace:not(.is-left-sidedock-open) {
+      .mod-root .workspace-tab-header-container {
+        padding-inline-start: calc(var(--frame-left-space) + 0.75rem);
+      }
+    }
+    .workspace:not(.is-right-sidedock-open) {
+      .mod-root .workspace-tab-header-container {
+        padding-inline-end: calc(var(--frame-right-space) + 1rem);
+      }
+    }
+  }
+  &.is-fullscreen {
+    .sidebar-toggle-button.mod-left {
+      top: 0.25rem;
+      left: 0.25rem;
+    }
+    .sidebar-toggle-button.mod-right {
+      top: 0.25rem;
+      right: 0.25rem;
+    }
+    .workspace:not(.is-right-sidedock-open) {
+      .mod-root .workspace-tab-header-container {
+        padding-inline-end: calc(var(--frame-right-space) + 1.5rem);
+      }
+    }
+  }
+
+  &.is-tablet {
+    .sidebar-toggle-button.mod-left,
+    .sidebar-toggle-button.mod-right {
+      padding: 0;
+    }
+    .sidebar-toggle-button.mod-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .sidebar-toggle-button.mod-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .workspace .mod-root .workspace-tabs .workspace-tab-header-container {
+      padding-inline-start: calc(var(--frame-left-space) + 2rem);
+      padding-inline-end: calc(var(--frame-right-space) + 3rem);
+    }
+  }
+  &.is-phone {
+    .sidebar-toggle-button.mod-left {
+      top: 0;
+      left: 0;
+    }
+  }
+}
+/* #endregion */
+/* #endregion */
+
+/* #region   Windows window frame styles */
+/* #region     "Obsidian frame" style */
+body.mod-windows {
+  &.is-frameless:not(.is-hidden-frameless) {
+    /* Override default appearance for .mod-close, as this one simulates a system control. */
+    .titlebar-button.mod-close {
+      border-radius: 0;
+      width: auto;
+    }
+  }
+}
+/* #endregion */
+/* #region     "Hidden (default)" style. This is the default appearance! */
+body.mod-windows {
+  &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
+    /* Override default appearance for .mod-close, as this one simulates a system control. */
+    .titlebar-button.mod-close {
+      border-radius: 0;
+      width: auto;
+    }
+
+    .titlebar-button.mod-logo {
+      /* This is hidden by default. I'm not sure why, as it provides access to the main menu. */
+      display: flex;
+    }
+
+    .workspace-ribbon.side-dock-ribbon.mod-left {
+      margin-top: calc(var(--header-height) + 2em);
+    }
+
+    .sidebar-toggle-button.mod-left {
+      top: 2em;
+    }
+
+    /* &:not(.is-fullscreen) {
+      .sidebar-toggle-button.mod-left {
+        position: absolute;
+      }
+
+      .workspace-ribbon.mod-left {
+        margin-top: 2.5em;
+        padding-top: 0;
+      }
+      .mod-right-split .mod-top .workspace-tab-header-container {
+        position: relative;
+        padding-inline-end: calc(var(--frame-right-space) + 30px);
+
+        .sidebar-toggle-button.mod-right {
+          position: absolute;
+          right: var(--frame-right-space);
+        }
+      }
+
+      .workspace.is-left-sidedock-open {
+        .mod-left-split .workspace-tabs {
+          overflow: visible;
+        }
+        .sidebar-toggle-button.mod-left {
+          left: var(--ribbon-width);
+          top: 0.5em;
+          padding: 0;
+        }
+      }
+      .workspace:not(.is-left-sidedock-open) {
+        .mod-root .workspace-tabs.mod-top {
+          overflow: visible;
+        }
+        .sidebar-toggle-button.mod-left {
+          left: var(--ribbon-width);
+          top: 0.5em;
+          padding: 0;
+        }
+        .mod-root .workspace-tab-header-container {
+          padding-inline-start: calc(var(--icon-size) + 1rem);
+        }
+      }
+      .workspace:not(.is-right-sidedock-open) {
+      }
+      .workspace:not(.is-right-sidedock-open) {
+        .sidebar-toggle-button.mod-right {
+          left: var(--frame-right-space);
+          top: -0.5em;
+          padding: 0;
+        }
+      }
+    } */
+  }
+}
+/* #endregion */
+/* #endregion */
+
+/* #region   Linux window frame styles */
+.mod-linux {
+}
 /* #endregion */
 
 /* #region Shared UI Elements */
@@ -7604,6 +7711,10 @@ body.theme-setting-overrideCalendar {
   }
 
   .mod-sidedock .workspace-leaf-content[data-type="calendar"] {
+    .view-content {
+      background: transparent;
+    }
+
     .container {
       border-radius: var(--radius-m);
       overflow: hidden;
