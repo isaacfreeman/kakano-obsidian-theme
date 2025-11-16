@@ -5141,6 +5141,8 @@ select,
   box-shadow: var(--theme-shadow-control);
   background-color: var(--theme-color-controlBg);
   color: var(--theme-color-controlText);
+  padding: 0;
+  margin: 0 0.5rem;
 
   & > option {
     color: var(--theme-color-controlText);
@@ -6956,6 +6958,21 @@ body {
 
   .nav-folder-title-content {
     font-weight: var(--font-bold);
+  }
+}
+/* Mobile */
+.workspace-drawer {
+  .workspace-leaf-content[data-type="file-explorer"] {
+    .nav-header {
+      .nav-action-button:first-child,
+      .nav-action-button:nth-child(2) {
+        min-height: 44px;
+        flex-shrink: 0;
+      }
+    }
+    .nav-buttons-container {
+      padding: 0;
+    }
   }
 }
 .mod-sidedock {
