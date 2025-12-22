@@ -640,6 +640,14 @@ body {
   --ribbon-background-collapsed: transparent;
   --ribbon-background: transparent;
   --ribbon-width: 3em;
+  --setting-group-heading-color: var(--text-normal);
+  --setting-group-heading-size: var(--font-ui-medium);
+  --setting-group-heading-weight: var(--font-semibold);
+  --setting-items-background: none;
+  --setting-items-padding: 0;
+  --setting-items-radius: 0;
+  --setting-items-border-width: 0;
+  --setting-items-border-color: var(--background-modifier-border);
   --sidebar-markdown-font-size: calc(
     var(--font-text-size) * var(--theme-value-sidebarFontScalingFactor)
   );
@@ -3947,7 +3955,6 @@ body.mod-macos {
   }
 }
 
-
 /* #region     "Native frame" style */
 body.mod-macos {
   &:not(.is-frameless) {
@@ -5955,9 +5962,21 @@ body:not(.is-phone) .modal.mod-sync-history {
   border-top: none;
   padding: 0;
   margin-bottom: 1.5em;
+}
+.setting-group {
+  .setting-item {
+    /* Also used when editing bookmarks */
+    border-top: none;
 
-  .search-input-container {
-    padding: var(--input-border-width);
+    .search-input-container {
+      padding: var(--input-border-width);
+    }
+  }
+  .setting-items {
+    margin-bottom: 4em;
+  }
+  .setting-group-search {
+    margin-bottom: 4em;
   }
 }
 
@@ -8419,6 +8438,10 @@ body.theme-setting-overrideExcalidraw {
       padding: 0;
     }
   }
+
+  .excalidraw-setting-hr {
+    border: none;
+  }
 }
 /*   #endregion */
 /* #region   Community Plugin: Folder Note */
@@ -8866,6 +8889,14 @@ body.theme-setting-overrideKanban {
       padding: 0;
       justify-content: flex-end;
     }
+  }
+  .kanban-plugin__draggable-setting-container>.kanban-plugin__placeholder,
+  .kanban-plugin__setting-item-wrapper {
+    border: none;
+  }
+  .kanban-plugin__setting-item {
+    background: none;
+    padding: 1em 0 0 0;
   }
 }
 /*   #endregion */
