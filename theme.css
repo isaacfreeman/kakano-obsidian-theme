@@ -637,6 +637,7 @@ body {
   --radius-m: 0.5rem;
   --radius-l: 0.75rem;
   --radius-xl: 1rem;
+  --raised-background: var(--theme-color-baseLightened80);
   --ribbon-background-collapsed: transparent;
   --ribbon-background: transparent;
   --ribbon-width: 3em;
@@ -2907,7 +2908,6 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 }
 
 .mobile-navbar {
-  background-color: transparent;
   padding-top: 0;
 }
 
@@ -3698,32 +3698,32 @@ body.mod-windows {
     height: auto;
     justify-content: center;
     margin-top: 0;
+
+    .workspace-tab-header-container-inner {
+      background: var(--tab-background-inactive);
+      border-radius: var(--radius-s);
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 0;
+      margin: 0 0 0 0;
+      overflow: hidden;
+
+      /* Override scrollbar color, because it forces the scrollbar to appear and we want it invisible here */
+      scrollbar-color: auto;
+    }
+    .workspace-tab-header-container-inner:has(
+        .workspace-tab-header[data-type="markdown"].is-active:last-child
+      ) {
+      border-bottom-right-radius: 0;
+    }
+    .workspace-tab-header-container-inner:has(
+        .workspace-tab-header[data-type="markdown"].is-active:first-child
+      ) {
+      border-bottom-left-radius: 0;
+    }
   }
   .workspace-tabs.mod-top > .workspace-tab-header-container {
     margin-top: 0.5em;
-  }
-
-  .workspace-tab-header-container-inner {
-    background: var(--tab-background-inactive);
-    border-radius: var(--radius-s);
-    flex-wrap: wrap;
-    gap: 0;
-    padding: 0;
-    margin: 0 0 0 0;
-    overflow: hidden;
-
-    /* Override scrollbar color, because it forces the scrollbar to appear and we want it invisible here */
-    scrollbar-color: auto;
-  }
-  .workspace-tab-header-container-inner:has(
-      .workspace-tab-header[data-type="markdown"].is-active:last-child
-    ) {
-    border-bottom-right-radius: 0;
-  }
-  .workspace-tab-header-container-inner:has(
-      .workspace-tab-header[data-type="markdown"].is-active:first-child
-    ) {
-    border-bottom-left-radius: 0;
   }
 
   .workspace-tab-header {
@@ -4352,14 +4352,7 @@ body.mod-windows {
   margin: 0 1rem;
   padding: 0.5em;
 }
-.is-phone .menu {
-  padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
-  width: calc(
-    100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 *
-      var(--theme-spacing-mobileHorizontalSpacing) -
-      max(2 * var(--theme-spacing-mobileHorizontalSpacing), 1rem)
-  );
-}
+
 .menu-item {
   height: 2em;
 }
@@ -4387,6 +4380,30 @@ body.mod-windows {
   }
   .menu-item:hover .menu-item-icon {
     color: var(--nav-item-color-hover);
+  }
+}
+.is-phone {
+  .menu {
+    padding: 0.5rem 0.5rem var(--safe-area-inset-bottom) 0.5rem;
+    width: calc(
+      100% - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2 *
+        var(--theme-spacing-mobileHorizontalSpacing) -
+        max(2 * var(--theme-spacing-mobileHorizontalSpacing), 1rem)
+    );
+  }
+  .menu .suggestion-group .suggestion-item:not(.is-label),
+  .menu-item:not(.is-label) {
+    background-color: transparent;
+    border-radius: var(--radius-s);
+    overflow: hidden;
+  }
+  .menu-group .menu-item:not(.is-label):after {
+    display: none;
+  }
+
+  .menu-group .menu-item:first-child,
+  .menu-group .menu-item:last-child {
+    border-radius: var(--radius-s);
   }
 }
 /* #endregion */
