@@ -571,6 +571,7 @@ body {
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
   --checkbox-color: var(--interactive-accent);
+  --clickable-icon-radius: 0.25rem;
   --code-background: light-dark(
     var(--theme-color-darkenTransparent06),
     var(--theme-color-lightenTransparent06)
@@ -2825,6 +2826,8 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   --file-margins: 0;
   --mobile-sidebar-background: transparent;
   --view-header-height: auto;
+  --input-radius: 5px;
+  --clickable-icon-radius: 0.25rem;
 }
 .is-phone {
   /* I'm pretty sure this isn't used on mobile */
@@ -2939,6 +2942,12 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 .workspace-drawer.mod-right .workspace-drawer-inner {
   border-top-left-radius: var(--radius-xl);
   border-bottom-left-radius: var(--radius-xl);
+}
+.workspace-drawer-ribbon {
+  border: none;
+}
+.workspace-drawer .nav-buttons-container .nav-action-button {
+  width: auto;
 }
 
 .mod-tappable,
@@ -3379,87 +3388,6 @@ body.mod-windows {
   }
 }
 /* #endregion */
-/* #region     "Hidden (default)" style. This is the default appearance! */
-body.mod-windows {
-  &.is-frameless.is-hidden-frameless:not(.is-popout-window) {
-    /* Override default appearance for .mod-close, as this one simulates a system control. */
-    .titlebar-button.mod-close {
-      border-radius: 0;
-      width: auto;
-    }
-
-    .titlebar-button.mod-logo {
-      /* This is hidden by default. I'm not sure why, as it provides access to the main menu. */
-      display: flex;
-    }
-
-    .workspace-ribbon.side-dock-ribbon.mod-left {
-      margin-top: calc(var(--header-height) + 2em);
-    }
-
-    .sidebar-toggle-button.mod-left {
-      top: 2em;
-    }
-
-    /* &:not(.is-fullscreen) {
-      .sidebar-toggle-button.mod-left {
-        position: absolute;
-      }
-
-      .workspace-ribbon.mod-left {
-        margin-top: 2.5em;
-        padding-top: 0;
-      }
-      .mod-right-split .mod-top .workspace-tab-header-container {
-        position: relative;
-        padding-inline-end: calc(var(--frame-right-space) + 30px);
-
-        .sidebar-toggle-button.mod-right {
-          position: absolute;
-          right: var(--frame-right-space);
-        }
-      }
-
-      .workspace.is-left-sidedock-open {
-        .mod-left-split .workspace-tabs {
-          overflow: visible;
-        }
-        .sidebar-toggle-button.mod-left {
-          left: var(--ribbon-width);
-          top: 0.5em;
-          padding: 0;
-        }
-      }
-      .workspace:not(.is-left-sidedock-open) {
-        .mod-root .workspace-tabs.mod-top {
-          overflow: visible;
-        }
-        .sidebar-toggle-button.mod-left {
-          left: var(--ribbon-width);
-          top: 0.5em;
-          padding: 0;
-        }
-        .mod-root .workspace-tab-header-container {
-          padding-inline-start: calc(var(--icon-size) + 1rem);
-        }
-      }
-      .workspace:not(.is-right-sidedock-open) {
-      }
-      .workspace:not(.is-right-sidedock-open) {
-        .sidebar-toggle-button.mod-right {
-          left: var(--frame-right-space);
-          top: -0.5em;
-          padding: 0;
-        }
-      }
-    } */
-  }
-}
-/* #endregion */
-/* #endregion */
-/* #region   Linux window frame styles */
-.mod-linux {
-}
 /* #endregion */
 /* #region   Tabs */
 .workspace-tabs .workspace-leaf {
@@ -3681,6 +3609,9 @@ body.mod-windows {
 /* #endregion */
 
 /* #region     Empty state */
+.workspace-leaf-content[data-type="empty"] .empty-state-title {
+  display: none;
+}
 .empty-state {
   justify-content: flex-start;
   padding-top: 3em;
@@ -3690,10 +3621,10 @@ body.mod-windows {
   border-radius: var(--radius-m);
   max-height: none;
   max-width: none;
-  padding: 1em 1.5em 1.5em 1.5em;
+  padding: 1.5em 1.5em 1.5em 1.5em;
+  margin: 1.5em;
 }
-.empty-state-action-list,
-.is-mobile .empty-state-action-list {
+.empty-state-action-list {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
@@ -3704,6 +3635,15 @@ body.mod-windows {
 }
 .empty-state-action-list .empty-state-action.mod-close {
   display: none;
+}
+.is-mobile {
+  .empty-state-action-list {
+    gap: 1em;
+    margin: 0;
+  }
+  .empty-state-action {
+    margin: 0;
+  }
 }
 /* #endregion */
 /* #region     Sidebars */
@@ -4057,7 +3997,7 @@ body.mod-macos {
 /* #endregion */
 /* #region     "Obsidian frame" style */
 body.mod-macos {
-  &.is-frameless:not(.is-hidden-frameless):not(.is-popout-window) {
+  &.is-frameless:not(.is-hidden-frameless) {
     --titlebar-height: 40px;
 
     &:not(.is-mobile) {
@@ -4159,7 +4099,7 @@ body.mod-macos {
 /* #endregion */
 /* #region     "Hidden (default)" style. This is the default appearance! */
 /* In this window style we need to make sure buttons don't overlap the window controls. */
-body.mod-macos.is-frameless.is-hidden-frameless:not(.is-popout-window) {
+body.mod-macos.is-frameless.is-hidden-frameless {
   .workspace .workspace-tabs.mod-top-left-space .workspace-tab-header-container,
   .workspace
     .workspace-tabs.mod-top-right-space
@@ -6970,9 +6910,27 @@ body {
     .nav-buttons-container {
       gap: 0.25em;
       /* Insert an element to force a line break in the flexbox, separating the first two controls from the others. */
-      .nav-action-button:first-child,
-      .nav-action-button:nth-child(2) {
+      .nav-action-button:has(.svg-icon.lucide-edit),
+      .nav-action-button:has(.svg-icon.lucide-folder-plus) {
         order: 0;
+      }
+      /* Style first two controls that will create items as lightweight buttons */
+      .nav-action-button:has(.svg-icon.lucide-edit),
+      .nav-action-button:has(.svg-icon.lucide-folder-plus) {
+        border: none;
+        box-shadow: var(--theme-shadow-control);
+        background-color: var(--theme-color-controlLowWeightBg);
+        color: var(--theme-color-controlText);
+        font-size: var(--font-ui-smaller);
+        line-height: var(--line-height-tight);
+        min-height: 1.5rem;
+        padding: 0.25em 0.5em;
+        display: flex;
+        gap: 0.5em;
+
+        &:after {
+          content: attr(aria-label);
+        }
       }
       &:after {
         order: 1;
@@ -6983,35 +6941,17 @@ body {
         order: 2;
       }
     }
-    /* Style first two controls as lightweight buttons */
-    .nav-action-button:first-child,
-    .nav-action-button:nth-child(2) {
-      border: none;
-      box-shadow: var(--theme-shadow-control);
-      background-color: var(--theme-color-controlLowWeightBg);
-      color: var(--theme-color-controlText);
-      font-size: var(--font-ui-smaller);
-      line-height: var(--line-height-tight);
-      min-height: 1.5rem;
-      padding: 0.25em 0.5em;
-      display: flex;
-      gap: 0.5em;
-
-      &:after {
-        content: attr(aria-label);
-      }
-    }
 
     @media (hover: hover) {
-      .nav-action-button:first-child:hover,
-      .nav-action-button:nth-child(2):hover {
+      .nav-action-button:has(.svg-icon.lucide-edit):hover,
+      .nav-action-button:has(.svg-icon.lucide-folder-plus):hover {
         border: none;
         background-color: var(--theme-color-controlBgHover);
         color: var(--theme-color-controlTextHover);
 
       }
-      .nav-action-button:first-child.is-active:hover,
-      .nav-action-button:nth-child(2).has-active-menu:hover {
+      .nav-action-button:has(.svg-icon.lucide-edit).is-active:hover,
+      .nav-action-button:has(.svg-icon.lucide-folder-plus).has-active-menu:hover {
         border: none;
         background-color: var(--theme-color-controlBgHover);
         color: var(--theme-color-controlTextHover);
@@ -7031,8 +6971,8 @@ body {
 .workspace-drawer {
   .workspace-leaf-content[data-type="file-explorer"] {
     .nav-header {
-      .nav-action-button:first-child,
-      .nav-action-button:nth-child(2) {
+      .nav-action-button:has(.svg-icon.lucide-edit),
+      .nav-action-button:has(.svg-icon.lucide-folder-plus) {
         min-height: 44px;
         flex-shrink: 0;
       }
