@@ -542,6 +542,11 @@ settings:
     type: class-toggle
     default: true
   -
+    id: theme-setting-overridePluginUpdateTracker
+    title: 'Plugin Update Tracker'
+    type: class-toggle
+    default: true
+  -
     id: theme-setting-overrideRecentFiles
     title: 'Recent Files'
     type: class-toggle
@@ -4794,8 +4799,10 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   color: var(--text-normal);
 }
 .horizontal-tab-nav-item,
-.vertical-tab-nav-item {
+.vertical-tab-nav-item,
+.vertical-tab-nav-item .vertical-tab-nav-item-icon svg {
   color: var(--theme-color-control);
+  color: red;
 }
 /* #endregion */
 /* #region   Buttons */
@@ -5179,16 +5186,15 @@ select:focus,
 /* #endregion */
 /* #region.  Flair */
 .flair {
-    background-color: var(--flair-background);
-    border-radius: var(--radius-s);
-    color: var(--flair-color);
-    font-size: var(--font-ui-smaller);
-    letter-spacing: 0.05em;
-    margin-inline-start: 0;
-    line-height: 1;
-    padding: 0.375em 0.75em;
-    text-transform: uppercase;
-
+  background-color: var(--flair-background);
+  border-radius: var(--radius-s);
+  color: var(--flair-color);
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.05em;
+  margin-inline-start: 0;
+  line-height: 1;
+  padding: 0.375em 0.75em;
+  text-transform: uppercase;
 }
 /* #endregion */
 /* #region   Multi-select container */
@@ -9433,6 +9439,33 @@ body.theme-setting-overrideTasks {
   }
 }
 /*   #endregion */
+
+body.theme-setting-overridePluginUpdateTracker {
+  .plugin-update-tracker-icon {
+    background-color: var(--theme-color-baseTransparent25);
+    border-radius: 9999px;
+    padding: 0.25rem;
+
+    .plugin-update-tracker-icon-chip {
+      color: var(--flair-color);
+      font-size: var(--font-ui-smaller);
+      letter-spacing: 0.05em;
+      margin-inline-start: 0.25em;
+      line-height: 1;
+      padding: 0.375em 0.75em;
+      text-transform: uppercase;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 9999px;
+    }
+    &.plugin-update-tracker-icon--updates-available .plugin-update-tracker-icon-chip {
+      background-color: var(--theme-color-orangeDarkened);
+    }
+    &.plugin-update-tracker-icon--no-updates-available .plugin-update-tracker-icon-chip {
+      background-color: var(--theme-color-greenDarkened);
+    }
+  }
+}
 /* #endregion */
 /* #region Dev stuff */
 
