@@ -586,6 +586,7 @@ body {
     var(--theme-color-lightenTransparent50)
   );
   --code-normal: var(--text-normal);
+
   --divider-width: 0;
   --embed-background: var(--theme-color-baseTransparent12);
   --embed-border-bottom: none;
@@ -1085,7 +1086,7 @@ body {
   --tab-text-color-active: var(--theme-color-baseTransparent50);
   --tab-text-color-focused: var(--theme-color-baseDarkened25);
   --tab-text-color-focused-active: var(--theme-color-baseDarkened25);
-  --tab-text-color-focused-active-current: var(--text-normal);
+  --tab-text-color-focused-active-current: var(--icon-color-focused);
   --tag-color: hsl(
     var(--accent-h),
     calc(var(--accent-s)),
@@ -3423,16 +3424,20 @@ body.mod-windows {
 .workspace-tab-header-inner {
   padding: 0.5rem;
 }
+
 @media (hover: hover) {
-  .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
-    color: var(--icon-color-focused);
-    background-color: var(--theme-color-tabBgInactiveHover);
-  }
-  .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
-    color: var(--icon-color-focused);
-    opacity: var(--icon-opacity);
+  .workspace-tab-header-container {
+    .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+      color: var(--icon-color-focused);
+      background-color: var(--theme-color-tabBgInactiveHover);
+    }
+    .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
+      color: var(--icon-color-focused);
+      opacity: var(--icon-opacity);
+    }
   }
 }
+
 .workspace-leaf.mod-active .view-header-title {
   color: var(--tab-text-color-active);
   display: block;
@@ -3685,6 +3690,10 @@ body.mod-windows {
 
       /* Override scrollbar color, because it forces the scrollbar to appear and we want it invisible here */
       scrollbar-color: auto;
+
+      .workspace-tab-header {
+        border-radius: 0;
+      }
     }
     .workspace-tab-header-container-inner:has(
         .workspace-tab-header[data-type="markdown"].is-active:last-child
@@ -3703,8 +3712,8 @@ body.mod-windows {
 
   .workspace-tab-header {
     background: var(--tab-background-inactive);
-    border-radius: 0;
   }
+
   .workspace-tab-header.has-active-menu,
   .workspace-tab-header.is-active {
     background: var(--theme-color-switcherBgActive);
@@ -4418,171 +4427,6 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   display: block;
 }
 /* #endregion */
-/* #region   Close buttons */
-
-.mod-close,
-.modal-close-button,
-.document-search-close-button,
-.workspace-tab-header-inner-close-button,
-.slides-close-btn,
-.clickable-icon.kanban-plugin__search-cancel-button,
-.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
-.mobile-tab .close-button,
-.bases-toolbar-menu-container-header .close-icon,
-.clickable-icon.document-search-close-button {
-  background-color: transparent;
-  border-radius: 100%;
-  border: none;
-  color: var(--theme-color-control);
-  /* Above .modal-title */
-  z-index: 2;
-  width: var(--theme-length-closeButtonWidth);
-  height: var(--theme-length-closeButtonWidth);
-  min-width: var(--theme-length-closeButtonWidth);
-  min-height: var(--theme-length-closeButtonWidth);
-  display: flex;
-  flex-shrink: 0;
-  align-content: center;
-  justify-content: center;
-  padding: 0.125em;
-
-  .svg-icon {
-    stroke: var(--theme-color-control);
-  }
-}
-@media (hover: hover) {
-  .mod-close:hover,
-  .modal-close-button:hover,
-  .document-search-close-button:hover,
-  .workspace-tab-header-inner-close-button:hover,
-  .workspace-tab-header.is-active
-    .workspace-tab-header-inner-close-button:hover,
-  .mod-sync-history .modal-close-button:hover,
-  .mod-settings .modal-close-button:hover,
-  .workspace-tab-header-inner-close-button:hover,
-  .slides-close-btn:hover,
-  .clickable-icon.kanban-plugin__search-cancel-button:hover,
-  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
-  .multi-select-pill-remove-button:hover,
-  .mobile-tab .close-button:hover,
-  .bases-toolbar-menu-container-header .close-icon:hover,
-  .clickable-icon.document-search-close-button:hover {
-    color: var(--theme-color-controlHover);
-    background-color: var(--theme-color-navigationButtonBgHover);
-
-    .svg-icon {
-      stroke: var(--theme-color-controlHover);
-    }
-  }
-}
-
-/* close buttons that use a text cross instead of an SVG */
-.document-search-close-button,
-.modal-close-button,
-.is-mobile .document-search .document-search-close-button,
-.is-mobile .document-replace .document-search-close-button {
-  padding: var(--size-2-1);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-content: center;
-  --icon-size: var(--icon-s);
-  --icon-stroke: var(--icon-s-stroke-width);
-  text-align: center;
-  justify-content: center;
-  line-height: var(--theme-length-closeButtonWidth);
-}
-.document-search-close-button:before,
-.modal-close-button:before {
-  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
-  margin-top: -3px;
-  line-height: var(--theme-length-closeButtonWidth);
-  width: var(--theme-length-closeButtonWidth);
-  height: var(--theme-length-closeButtonWidth);
-}
-
-/* Tab close button on left, macOS standard */
-.mod-macos {
-  .workspace .mod-root {
-    .workspace-tab-header .workspace-tab-header-inner-close-button {
-      position: static;
-      order: 0;
-    }
-    .workspace-tab-header-inner-icon,
-    .workspace-tab-header-inner-title {
-      order: 1;
-    }
-  }
-  .modal-close-button {
-    left: var(--size-2-3);
-    right: auto;
-  }
-  .mod-community-modal .modal-sidebar .setting-item:first-child {
-    margin-inline-start: auto;
-  }
-  .modal-sidebar .community-modal-controls {
-    padding-inline-start: var(--size-4-5);
-  }
-  .multi-select-pill {
-    padding-inline-start: 0.25em;
-
-    .multi-select-pill-remove-button {
-      order: 0;
-    }
-    .multi-select-pill-content {
-      order: 1;
-      margin: 0;
-    }
-  }
-}
-/* #endregion */
-/* #region   Navigation buttons */
-/* Styled similarly to close button */
-
-.modal-setting-back-button-icon,
-.mod-root .workspace-tab-header-status-icon,
-.mobile-tab .mobile-tab-pin,
-.map-view-graph-controls .minimize-button.svelte-1sl5jax {
-  color: var(--theme-color-control);
-  border: none;
-  border-radius: 100%;
-  background-color: transparent;
-  /* Above .modal-title */
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  cursor: default;
-
-  .svg-icon {
-    stroke: var(--theme-color-control);
-  }
-}
-.mobile-tab .mobile-tab-pin,
-.map-view-graph-controls .minimize-button.svelte-1sl5jax {
-  width: var(--theme-length-closeButtonWidth);
-  height: var(--theme-length-closeButtonWidth);
-}
-@media (hover: hover) {
-  .modal-setting-back-button-icon:hover,
-  .mod-root .workspace-tab-header-status-icon:hover,
-  .mobile-tab .mobile-tab-pin:hover,
-  .map-view-graph-controls .minimize-button.svelte-1sl5jax:hover {
-    color: var(--theme-color-control);
-    background-color: var(--theme-color-navigationButtonBgHover);
-    .svg-icon {
-      stroke: var(--theme-color-controlHover);
-    }
-  }
-  .mod-root .workspace-tab-header-status-icon .svg-icon {
-    width: 80%;
-  }
-}
-/* #endregion */
 /* #region   Notices */
 /* Note that Excalidraw .HintView uses a smaller version, which could be generalised */
 .notice-container {
@@ -4794,17 +4638,7 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   color: var(--background-modifier-error);
 }
 /* #endregion */
-/* #region   Action lists */
-.vertical-tab-header-group-title {
-  color: var(--text-normal);
-}
-.horizontal-tab-nav-item,
-.vertical-tab-nav-item,
-.vertical-tab-nav-item .vertical-tab-nav-item-icon svg {
-  color: var(--theme-color-control);
-  color: red;
-}
-/* #endregion */
+
 /* #region   Buttons */
 /* #region     Clickable icon buttons */
 .markdown-source-view.mod-cm6 .code-block-flair,
@@ -4836,11 +4670,11 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
   height: 2em;
   justify-content: center;
   min-height: var(--input-height);
+  min-width: var(--input-height);
   opacity: var(--icon-opacity);
   padding: 0.25rem;
   text-decoration: none;
   transition: opacity 0.15s ease-in-out;
-  min-width: 2em;
   width: auto;
 }
 
@@ -5005,6 +4839,177 @@ button.search-result-file-match-replace-button {
 }
 /* #endregion */
 /* #endregion */
+/* #region   Close buttons */
+
+.mod-close,
+.modal-close-button,
+.document-search-close-button,
+.workspace-tab-header-inner-close-button,
+.slides-close-btn,
+.clickable-icon.kanban-plugin__search-cancel-button,
+.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
+.mobile-tab .close-button,
+.bases-toolbar-menu-container-header .close-icon,
+.clickable-icon.document-search-close-button {
+  background-color: transparent;
+  border-radius: 100%;
+  border: none;
+  color: var(--theme-color-control);
+  /* Above .modal-title */
+  z-index: 2;
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
+  min-width: var(--theme-length-closeButtonWidth);
+  min-height: var(--theme-length-closeButtonWidth);
+  display: flex;
+  flex-shrink: 0;
+  align-content: center;
+  justify-content: center;
+  padding: 0.125em;
+
+  .svg-icon {
+    stroke: var(--theme-color-control);
+  }
+}
+@media (hover: hover) {
+  .mod-close:hover,
+  .modal-close-button:hover,
+  .document-search-close-button:hover,
+  .workspace-tab-header-inner-close-button:hover,
+  .workspace-tab-header.is-active
+    .workspace-tab-header-inner-close-button:hover,
+  .mod-sync-history .modal-close-button:hover,
+  .mod-settings .modal-close-button:hover,
+  .workspace-tab-header-inner-close-button:hover,
+  .slides-close-btn:hover,
+  .clickable-icon.kanban-plugin__search-cancel-button:hover,
+  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
+  .multi-select-pill-remove-button:hover,
+  .mobile-tab .close-button:hover,
+  .bases-toolbar-menu-container-header .close-icon:hover,
+  .clickable-icon.document-search-close-button:hover {
+    color: var(--theme-color-controlHover);
+    background-color: var(--theme-color-navigationButtonBgHover);
+
+    .svg-icon {
+      stroke: var(--theme-color-controlHover);
+    }
+  }
+}
+
+/* close buttons that use a text cross instead of an SVG */
+.document-search-close-button,
+.modal-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
+  padding: var(--size-2-1);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-content: center;
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  text-align: center;
+  justify-content: center;
+  line-height: var(--theme-length-closeButtonWidth);
+}
+.document-search-close-button:before,
+.modal-close-button:before {
+  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
+  margin-top: -3px;
+  line-height: var(--theme-length-closeButtonWidth);
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
+}
+
+/* Tab close button on left, macOS standard */
+.mod-macos {
+  .workspace .mod-root {
+    .workspace-tab-header .workspace-tab-header-inner-close-button {
+      position: static;
+      order: 0;
+    }
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title {
+      order: 1;
+    }
+  }
+  .modal-close-button {
+    left: var(--size-2-3);
+    right: auto;
+  }
+  .mod-community-modal .modal-sidebar .setting-item:first-child {
+    margin-inline-start: auto;
+  }
+  .modal-sidebar .community-modal-controls {
+    padding-inline-start: var(--size-4-5);
+  }
+  .multi-select-pill {
+    padding-inline-start: 0.25em;
+
+    .multi-select-pill-remove-button {
+      order: 0;
+    }
+    .multi-select-pill-content {
+      order: 1;
+      margin: 0;
+    }
+  }
+}
+/* #endregion */
+/* #region   Navigation buttons */
+/* Buttons that don't change the satete of content, just what we're currently looking at. Styled similarly to close buttons. */
+
+.modal-setting-back-button-icon,
+.view-header-nav-buttons > .clickable-icon,
+.mod-root .workspace-tab-header-status-icon,
+.mobile-tab .mobile-tab-pin,
+.map-view-graph-controls .minimize-button.svelte-1sl5jax {
+  color: var(--theme-color-control);
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
+  /* Above .modal-title */
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  cursor: default;
+
+  .svg-icon {
+    stroke: var(--theme-color-control);
+    width: 1rem;
+    height: 1rem;
+  }
+}
+.mobile-tab .mobile-tab-pin,
+.map-view-graph-controls .minimize-button.svelte-1sl5jax {
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
+}
+@media (hover: hover) {
+  .modal-setting-back-button-icon:hover,
+  .view-header-nav-buttons > .clickable-icon:hover,
+  .mod-root .workspace-tab-header-status-icon:hover,
+  .mobile-tab .mobile-tab-pin:hover,
+  .map-view-graph-controls .minimize-button.svelte-1sl5jax:hover {
+    color: var(--theme-color-control);
+    background-color: var(--theme-color-navigationButtonBgHover);
+    .svg-icon {
+      stroke: var(--theme-color-controlHover);
+    }
+  }
+  .mod-root .workspace-tab-header-status-icon .svg-icon {
+    width: 80%;
+  }
+}
+/* #endregion */
+
+
 /* #region   Lightweight form controls */
 /* Form controls that are rendered as text until they have focus */
 
@@ -5471,6 +5476,19 @@ input[type="radio"]:focus {
 }
 /*   #endregion */
 /* #region   Item lists */
+.vertical-tab-header-group-title {
+  color: var(--text-normal);
+}
+
+/* Special case for lists of controls */
+.horizontal-tab-nav-item,
+.vertical-tab-nav-item {
+  color: var(--theme-color-control);
+
+  svg {
+    color: var(--theme-color-control);
+  }
+}
 
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover,
@@ -5479,6 +5497,10 @@ input[type="radio"]:focus {
     color: var(--nav-item-color-hover);
     background-color: var(--nav-item-background-hover);
     font-weight: var(--nav-item-weight-hover);
+
+    svg {
+      color: var(--nav-item-color-hover);
+    }
   }
 }
 .horizontal-tab-nav-item.is-active,
@@ -5487,6 +5509,10 @@ input[type="radio"]:focus {
 .nav-folder-title.is-active {
   background-color: var(--interactive-accent);
   color: var(--nav-item-color-active);
+
+  svg {
+    color: var(--nav-item-color-active);
+  }
 
   &.is-being-renamed {
     background: transparent;
