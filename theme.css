@@ -449,6 +449,24 @@ settings:
     description: "EXPERIMENTAL If you have many items in your status bar, you may find that it overflows onto the sidebars. This setting will push the main app workspace up so the status bar can use the full window width."
     type: class-toggle
   -
+    id: heading-icons
+    title: Icons
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: theme-setting-enableIconsInSettings
+    title: 'Enable icons in Settings'
+    description: "Obsidian normally shows icons beside settings groups. If you find that distracting, this setting allows you to hide them."
+    type: class-toggle
+    default: true
+  -
+    id: theme-setting-enableIconsInMenus
+    title: 'Enable icons in non-native Menus'
+    description: "Obsidian normally shows icons for menu items. This setting does not apply if Native Menus are enabled."
+    type: class-toggle
+    default: true
+  -
     id: heading-mobile
     title: Mobile
     type: heading
@@ -1699,28 +1717,28 @@ body {
   }
 }
 
-.theme-setting-headingScaleFactor1point067 {
+body.theme-setting-headingScaleFactor1point067 {
   --theme-value-headingScaleFactor: 1.067;
 }
-.theme-setting-headingScaleFactor1point125 {
+body.theme-setting-headingScaleFactor1point125 {
   --theme-value-headingScaleFactor: 1.125;
 }
-.theme-setting-headingScaleFactor1point2 {
+body.theme-setting-headingScaleFactor1point2 {
   --theme-value-headingScaleFactor: 1.2;
 }
-.theme-setting-headingScaleFactor1point25 {
+body.theme-setting-headingScaleFactor1point25 {
   --theme-value-headingScaleFactor: 1.25;
 }
-.theme-setting-headingScaleFactor1point333 {
+body.theme-setting-headingScaleFactor1point333 {
   --theme-value-headingScaleFactor: 1.333;
 }
-.theme-setting-headingScaleFactor1point414 {
+body.theme-setting-headingScaleFactor1point414 {
   --theme-value-headingScaleFactor: 1.414;
 }
-.theme-setting-headingScaleFactor1point5 {
+body.theme-setting-headingScaleFactor1point5 {
   --theme-value-headingScaleFactor: 1.5;
 }
-.theme-setting-headingScaleFactor1point618 {
+body.theme-setting-headingScaleFactor1point618 {
   --theme-value-headingScaleFactor: 1.618;
 }
 /* More compact typography to fit more on small screens */
@@ -1733,28 +1751,28 @@ body {
   --h5-size: calc(var(--theme-value-headingScaleFactorPhone) * var(--h6-size));
   --line-height-normal: 1.5;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point067 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point067 {
   --theme-value-headingScaleFactorPhone: 1.067;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point125 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point125 {
   --theme-value-headingScaleFactorPhone: 1.125;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point2 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point2 {
   --theme-value-headingScaleFactorPhone: 1.2;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point25 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point25 {
   --theme-value-headingScaleFactorPhone: 1.25;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point333 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point333 {
   --theme-value-headingScaleFactorPhone: 1.333;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point414 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point414 {
   --theme-value-headingScaleFactorPhone: 1.414;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point5 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point5 {
   --theme-value-headingScaleFactorPhone: 1.5;
 }
-.is-phone.theme-setting-headingScaleFactorPhone1point618 {
+body.is-phone.theme-setting-headingScaleFactorPhone1point618 {
   --theme-value-headingScaleFactorPhone: 1.618;
 }
 /* Smaller font size for markdown documents in sidebar */
@@ -2188,22 +2206,22 @@ li.is-collapsed .list-bullet:after,
   display: none;
 }
 
-.theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
+body.theme-setting-embeddedNoteTitleVisibilityHide .embed-title {
   display: none;
 }
-.theme-setting-embeddedNoteTitleVisibilityShow
+body.theme-setting-embeddedNoteTitleVisibilityShow
   .internal-embed:has(.embed-title:not(:empty)) {
   padding-top: 0.5rem;
 }
-.theme-setting-embeddedNoteTitleVisibilityShow .embed-title {
+body.theme-setting-embeddedNoteTitleVisibilityShow .embed-title {
   display: flex;
 }
 @media (hover: hover) {
-  .theme-setting-embeddedNoteTitleVisibilityHover
+  body.theme-setting-embeddedNoteTitleVisibilityHover
     .internal-embed:has(.embed-title:not(:empty)) {
     padding-top: 1.5rem;
   }
-  .theme-setting-embeddedNoteTitleVisibilityHover
+  body.theme-setting-embeddedNoteTitleVisibilityHover
     .internal-embed:has(.embed-title:not(:empty)):hover
     .embed-title {
     display: flex;
@@ -2241,7 +2259,7 @@ li.is-collapsed .list-bullet:after,
 .markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img {
   max-width: 100%;
 }
-.theme-setting-enableImageAdjustmentWithAltText {
+body.theme-setting-enableImageAdjustmentWithAltText {
   /* Center images */
   .markdown-source-view.mod-cm6 .cm-content > img[alt~=center],
   .markdown-source-view.mod-cm6 .cm-content .image-embed[alt~=center] img,
@@ -2280,7 +2298,7 @@ li.is-collapsed .list-bullet:after,
     border-radius: var(--theme-length-fullBorderRadius);
   }
 }
-.theme-setting-centerImages {
+body.theme-setting-centerImages {
   .markdown-source-view.mod-cm6 .cm-content > img,
   .markdown-source-view.mod-cm6 .cm-content .image-embed img,
   .markdown-source-view.mod-cm6 .cm-content > .cm-line .cm-html-embed img {
@@ -3170,7 +3188,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 .is-phone .modal.mod-sidebar-layout .modal-title {
   border-bottom: none;
 }
-.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-title {
+body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-title {
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 .is-phone .modal.mod-settings .vertical-tab-content {
@@ -3214,14 +3232,14 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   }
 }
 
-.is-phone.theme-setting-mobileCardsUI
+body.is-phone.theme-setting-mobileCardsUI
   .modal.mod-sidebar-layout
   .modal-setting-back-button {
   top: 0.5rem;
   left: 2.5rem;
   padding: 0;
 }
-.is-phone.theme-setting-mobileCardsUI .community-modal-search-summary {
+body.is-phone.theme-setting-mobileCardsUI .community-modal-search-summary {
   padding: 0;
 }
 .is-phone .modal.mod-community-modal .modal-content .modal-sidebar {
@@ -3276,10 +3294,10 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   border-bottom-left-radius: var(--tab-radius);
   border-bottom-right-radius: var(--tab-radius);
 }
-.is-phone.is-phone.theme-setting-mobileCardsUI .modal-container {
+body.is-phone.is-phone.theme-setting-mobileCardsUI .modal-container {
   padding: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
 }
-.is-phone.theme-setting-mobileCardsUI .mod-confirmation .modal {
+body.is-phone.theme-setting-mobileCardsUI .mod-confirmation .modal {
   left: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
   right: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
   width: min(
@@ -3290,7 +3308,7 @@ body.is-phone.theme-setting-mobileCardsUI:has(.modal-container)
   );
 }
 /* Style similarly to mobile prompt */
-.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
+body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
   width: min(
     calc(100vw - 2 * var(--theme-spacing-mobileHorizontalSpacing)),
     calc(100vw - 1rem)
@@ -4363,6 +4381,15 @@ body.mod-windows {
   color: var(--nav-item-color);
   background-color: var(--nav-item-background);
 }
+
+.menu-item-icon {
+  display: none;
+}
+body.theme-setting-enableIconsInMenus {
+  .menu-item-icon {
+    display: flex;
+  }
+}
 .menu-item.selected:not(.is-label):not(.is-disabled) {
   background-color: var(--nav-item-background);
   border-radius: var(--radius-s);
@@ -5067,7 +5094,9 @@ body:not(.is-grabbing) .tree-item-self.has-focus.is-being-renamed,
 body:not(.is-phone) .workspace-leaf.mod-active .tree-item-self.has-focus:focus-within {
   box-shadow: none;
 }
-
+.search-input-container {
+  padding: var(--input-border-width);
+}
 .search-input-container input[type="search"],
 input.document-search-input,
 input[type="email"],
@@ -5979,16 +6008,19 @@ body:not(.is-phone) .modal.mod-sync-history {
 }
 
 /* Settings modal */
-.modal.mod-settings .vertical-tab-header-group {
-  border-inline-end: none;
-  padding: 0 0 1.5em 0;
-}
-.modal.mod-settings .vertical-tab-header-group-title {
-  padding: 0 0.5em 0.5em 0.5em;
-}
-.mod-settings .vertical-tab-content {
-  background: var(--theme-color-settingsBg);
-  padding: 2em;
+
+.modal.mod-settings {
+  .vertical-tab-header-group {
+    border-inline-end: none;
+    padding: 0 0 1.5em 0;
+  }
+  .vertical-tab-header-group-title {
+    padding: 0 0.5em 0.5em 0.5em;
+  }
+  .vertical-tab-content {
+    background: var(--theme-color-settingsBg);
+    padding: 2em;
+  }
 }
 .modal-setting-nav-bar {
   border: none;
@@ -6014,6 +6046,14 @@ body:not(.is-phone) .modal.mod-sync-history {
   }
   .setting-group-search {
     margin-bottom: 4em;
+  }
+}
+.vertical-tab-nav-item-icon {
+  display: none;
+}
+body.theme-setting-enableIconsInSettings {
+  .vertical-tab-nav-item-icon {
+    display: flex;
   }
 }
 
@@ -6548,8 +6588,8 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
 }
 
 /* stick backlinks in document to bottom */
-.theme-setting-stickyEmbeddedLinks-on .cm-sizer > .embedded-backlinks,
-.theme-setting-stickyEmbeddedLinks-on .mod-footer:has(> .embedded-backlinks) {
+body.theme-setting-stickyEmbeddedLinks-on .cm-sizer > .embedded-backlinks,
+body.theme-setting-stickyEmbeddedLinks-on .mod-footer:has(> .embedded-backlinks) {
   position: sticky;
   bottom: 0;
   width: 100%;
@@ -6564,7 +6604,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
     }
   }
 }
-.theme-setting-stickyEmbeddedLinks-on
+body.theme-setting-stickyEmbeddedLinks-on
   .markdown-source-view.mod-cm6
   .cm-scroller {
   overflow-y: scroll;
@@ -6572,7 +6612,7 @@ body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
   flex-shrink: 1;
   flex-basis: 100%;
 }
-.theme-setting-stickyEmbeddedLinks-on
+body.theme-setting-stickyEmbeddedLinks-on
   .setting-properties-position-below
   .mod-root
   .is-live-preview
@@ -9360,28 +9400,30 @@ body.theme-setting-overrideStyleSettings {
     margin-inline-start: 0;
   }
 
-  .setting-item.setting-item-heading.style-settings-heading[data-id="kakano-style"]
-    + .style-settings-container {
-    .setting-item.setting-item-heading.style-settings-heading
-      .style-settings-collapse-indicator:after {
-      margin-inline-start: 0.5em;
-      vertical-align: top;
-      display: inline-block;
-      width: 1rem;
-      height: 1rem;
-      margin: 0.125em 0 0 0.5em;
-      opacity: 75%;
-    }
+  &.theme-setting-enableIconsInSettings {
+    .setting-item.setting-item-heading.style-settings-heading[data-id="kakano-style"]
+      + .style-settings-container {
+      .setting-item.setting-item-heading.style-settings-heading
+        .style-settings-collapse-indicator:after {
+        margin-inline-start: 0.5em;
+        vertical-align: top;
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin: 0.125em 0 0 0.5em;
+        opacity: 75%;
+      }
 
-    .setting-item.setting-item-heading.style-settings-heading[data-id="heading-baseColor"]
-      .style-settings-collapse-indicator:after {
-      filter: hue-rotate(0deg);
-      content: url("data:image/svg+xml,<svg width='100%' height='100%' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g><rect x='0' y='0' width='1' height='24' style='fill:rgb(255,0,0);'/><rect x='4' y='0' width='1' height='24' style='fill:rgb(255,255,0);'/><rect x='8' y='0' width='1' height='24' style='fill:rgb(0,255,0);'/><rect x='12' y='0' width='1' height='24' style='fill:rgb(0,255,255);'/><rect x='16' y='0' width='1' height='24' style='fill:rgb(0,0,255);'/><rect x='20' y='0' width='1' height='24' style='fill:rgb(255,0,255);'/><rect x='2' y='0' width='1' height='24' style='fill:rgb(255,127,0);'/><rect x='6' y='0' width='1' height='24' style='fill:rgb(127,255,0);'/><rect x='10' y='0' width='1' height='24' style='fill:rgb(0,255,127);'/><rect x='14' y='0' width='1' height='24' style='fill:rgb(0,127,255);'/><rect x='18' y='0' width='1' height='24' style='fill:rgb(127,0,255);'/><rect x='22' y='0' width='1' height='24' style='fill:rgb(255,0,127);'/><rect x='1' y='0' width='1' height='24' style='fill:rgb(255,63,0);'/><rect x='5' y='0' width='1' height='24' style='fill:rgb(191,255,0);'/><rect x='9' y='0' width='1' height='24' style='fill:rgb(0,255,63);'/><rect x='13' y='0' width='1' height='24' style='fill:rgb(0,191,255);'/><rect x='17' y='0' width='1' height='24' style='fill:rgb(63,0,255);'/><rect x='21' y='0' width='1' height='24' style='fill:rgb(255,0,191);'/><rect x='3' y='0' width='1' height='24' style='fill:rgb(255,191,0);'/><rect x='7' y='0' width='1' height='24' style='fill:rgb(63,255,0);'/><rect x='11' y='0' width='1' height='24' style='fill:rgb(0,255,191);'/><rect x='15' y='0' width='1' height='24' style='fill:rgb(0,63,255);'/><rect x='19' y='0' width='1' height='24' style='fill:rgb(191,0,255);'/><rect x='23' y='0' width='1' height='24' style='fill:rgb(255,0,63);'/></g></svg>");
-      opacity: 100%;
+      .setting-item.setting-item-heading.style-settings-heading[data-id="heading-baseColor"]
+        .style-settings-collapse-indicator:after {
+        filter: hue-rotate(0deg);
+        content: url("data:image/svg+xml,<svg width='100%' height='100%' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'><g><rect x='0' y='0' width='1' height='24' style='fill:rgb(255,0,0);'/><rect x='4' y='0' width='1' height='24' style='fill:rgb(255,255,0);'/><rect x='8' y='0' width='1' height='24' style='fill:rgb(0,255,0);'/><rect x='12' y='0' width='1' height='24' style='fill:rgb(0,255,255);'/><rect x='16' y='0' width='1' height='24' style='fill:rgb(0,0,255);'/><rect x='20' y='0' width='1' height='24' style='fill:rgb(255,0,255);'/><rect x='2' y='0' width='1' height='24' style='fill:rgb(255,127,0);'/><rect x='6' y='0' width='1' height='24' style='fill:rgb(127,255,0);'/><rect x='10' y='0' width='1' height='24' style='fill:rgb(0,255,127);'/><rect x='14' y='0' width='1' height='24' style='fill:rgb(0,127,255);'/><rect x='18' y='0' width='1' height='24' style='fill:rgb(127,0,255);'/><rect x='22' y='0' width='1' height='24' style='fill:rgb(255,0,127);'/><rect x='1' y='0' width='1' height='24' style='fill:rgb(255,63,0);'/><rect x='5' y='0' width='1' height='24' style='fill:rgb(191,255,0);'/><rect x='9' y='0' width='1' height='24' style='fill:rgb(0,255,63);'/><rect x='13' y='0' width='1' height='24' style='fill:rgb(0,191,255);'/><rect x='17' y='0' width='1' height='24' style='fill:rgb(63,0,255);'/><rect x='21' y='0' width='1' height='24' style='fill:rgb(255,0,191);'/><rect x='3' y='0' width='1' height='24' style='fill:rgb(255,191,0);'/><rect x='7' y='0' width='1' height='24' style='fill:rgb(63,255,0);'/><rect x='11' y='0' width='1' height='24' style='fill:rgb(0,255,191);'/><rect x='15' y='0' width='1' height='24' style='fill:rgb(0,63,255);'/><rect x='19' y='0' width='1' height='24' style='fill:rgb(191,0,255);'/><rect x='23' y='0' width='1' height='24' style='fill:rgb(255,0,63);'/></g></svg>");
+        opacity: 100%;
+      }
     }
   }
 }
-body.theme-setting-overrideStyleSettings.theme-light {
+body.theme-setting-overrideStyleSettings.theme-setting-enableIconsInSettings.theme-light {
   .setting-item.setting-item-heading.style-settings-heading
     .style-settings-collapse-indicator:after {
     filter: hue-rotate(calc(var(--base-h) * 1deg));
@@ -9414,7 +9456,7 @@ body.theme-setting-overrideStyleSettings.theme-light {
     }
   }
 }
-body.theme-setting-overrideStyleSettings.theme-dark {
+body.theme-setting-overrideStyleSettings.theme-setting-enableIconsInSettings.theme-dark {
   .setting-item.setting-item-heading.style-settings-heading
     .style-settings-collapse-indicator:after {
     filter: hue-rotate(calc(var(--base-h) * 1deg));
