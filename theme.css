@@ -2870,6 +2870,10 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   --view-header-height: auto;
   --input-radius: 5px;
   --clickable-icon-radius: 0.25rem;
+  --setting-items-background: transparent;
+  --setting-items-radius: 0;
+  --setting-items-border-width: 0;
+  --setting-items-border-color: var(--background-modifier-border);
 }
 .is-phone {
   /* I'm pretty sure this isn't used on mobile */
@@ -3102,13 +3106,6 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     ),
     calc(var(--safe-area-inset-top) + 0.5rem)
   );
-  padding-inline-end: max(
-    calc(
-      var(--safe-area-inset-right) + 2 *
-        var(--theme-spacing-mobileHorizontalSpacing)
-    ),
-    calc(var(--safe-area-inset-right) + 0.5rem)
-  );
   padding-bottom: max(
     calc(
       var(--safe-area-inset-bottom) + 2 *
@@ -3116,13 +3113,21 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     ),
     calc(var(--safe-area-inset-bottom) + 0.5rem)
   );
-  padding-inline-start: max(
+  /* TODO: removing these as they spoil the slide-in effect, but need to check whether this looks right in practice before deleting */
+  /* padding-inline-end: max(
+    calc(
+      var(--safe-area-inset-right) + 2 *
+        var(--theme-spacing-mobileHorizontalSpacing)
+    ),
+    calc(var(--safe-area-inset-right) + 0.5rem)
+  ); */
+  /* padding-inline-start: max(
     calc(
       var(--safe-area-inset-left) + 2 *
         var(--theme-spacing-mobileHorizontalSpacing)
     ),
     calc(var(--safe-area-inset-left) + 0.5rem)
-  );
+  ); */
 }
 .is-phone .mod-confirmation .modal {
   left: max(calc(var(--theme-spacing-mobileHorizontalSpacing)), 0.5rem);
@@ -3170,7 +3175,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   display: flex;
   align-items: center;
   height: 44px;
-  background-color: var(--theme-color-settingsGroupBg);
+  background-color: transparent;
   padding: 0 0.75em;
   margin: 0;
   border-radius: 0;
@@ -3186,6 +3191,10 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   }
 }
 .is-phone .modal.mod-sidebar-layout .modal-title {
+  border-bottom: none;
+}
+.is-phone .modal.mod-settings .vertical-tab-nav-item-chevron,
+.is-phone .modal.mod-settings .vertical-tab-nav-item-title {
   border-bottom: none;
 }
 body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-title {
@@ -3381,6 +3390,11 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
 /* #endregion */
 /* #endregion */
 
+/* TODO: figure out the right balance for floating nav to minimise overlap */
+.is-mobile.is-floating-nav.is-phone .workspace-drawer .workspace-leaf-content .nav-header ~ div:last-child {
+ margin-bottom: 44px;
+}
+
 /* #region Workspace */
 /* #region   Overall workspace */
 * {
@@ -3398,7 +3412,7 @@ body {
   background-color: var(--background-secondary);
   background: var(--theme-gradient-bottomToTop);
 }
-.theme-setting-fullWidthStatusBar .horizontal-main-container {
+body.theme-setting-fullWidthStatusBar .horizontal-main-container {
   margin-bottom: var(--theme-length-statusBarHeight);
 }
 .workspace {
@@ -3563,7 +3577,7 @@ body.mod-windows {
   }
 }
 /* #region     Wrap tabs setting */
-.theme-setting-wrapTabs {
+body.theme-setting-wrapTabs {
   .workspace-tab-header-container {
     height: auto;
   }
@@ -3592,7 +3606,7 @@ body.mod-windows {
 
 /* #endregion */
 /* #region     Tabs with Obsidian navigation or data (as opposed to user content) can have a different inactive color */
-.theme-setting-distinguishNonContentTabs {
+body.theme-setting-distinguishNonContentTabs {
 
   .workspace-split.mod-root {
     & .workspace-tab-header-container {
@@ -3919,7 +3933,7 @@ body.show-ribbon:not(.is-mobile)
   height: var(--theme-length-statusBarHeight);
   justify-content: space-between;
 }
-.theme-setting-fullWidthStatusBar .status-bar {
+body.theme-setting-fullWidthStatusBar .status-bar {
   width: 100%;
 }
 .status-bar-item {
