@@ -2897,6 +2897,9 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 .is-mobile .view-actions {
   padding: 0;
 }
+.is-phone .view-header .view-header-left .view-action {
+  /* TODO: fix position for this when there's space left/right of main tab */
+}
 .is-mobile .view-header-title-container {
   height: auto;
   padding-inline-start: 0;
@@ -2962,11 +2965,12 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 
 /* #region   Drawers */
 .workspace-drawer {
-  background: none;
-  bottom: 0.5rem;
+  background-color: var(--background-secondary);
+  background: var(--theme-gradient-bottomToTop);
+  bottom: 0;
   padding-bottom: var(--safe-area-inset-bottom);
   padding-top: var(--safe-area-inset-top);
-  top: 0.5rem;
+  top: 0;
 
   &.theme-dark {
     /* Override weirdness in app theme */
@@ -2978,16 +2982,6 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   }
 }
 .workspace-drawer-inner {
-  background-color: var(--background-secondary);
-  background: var(--theme-gradient-bottomToTop);
-}
-.workspace-drawer.mod-left .workspace-drawer-inner {
-  border-top-right-radius: var(--radius-xl);
-  border-bottom-right-radius: var(--radius-xl);
-}
-.workspace-drawer.mod-right .workspace-drawer-inner {
-  border-top-left-radius: var(--radius-xl);
-  border-bottom-left-radius: var(--radius-xl);
 }
 .workspace-drawer-ribbon {
   border: none;
