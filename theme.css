@@ -1520,10 +1520,6 @@ body {
   --line-height-normal: 1.6;
   --link-decoration-thickness: 1px;
   --link-unresolved-decoration-style: dashed;
-
-
-  /* Hanging punctuation isn't supported in Electron yet (Dec 2023), but here for when it is. */
-  hanging-punctuation: first allow-end last;
 }
 
 /* #endregion */
