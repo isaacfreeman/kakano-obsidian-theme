@@ -621,6 +621,7 @@ body {
   --code-normal: var(--text-normal);
 
   --divider-width: 0;
+  --dropdown-background: var(--theme-color-controlBg);
   --embed-background: var(--theme-color-baseTransparent12);
   --embed-border-bottom: none;
   --embed-border-left: none;
@@ -653,7 +654,6 @@ body {
   --modal-height: 85vh;
   --modal-max-height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom) - 2em);
   --modal-max-width: calc(100vw - var(--safe-area-inset-left) - var(--safe-area-inset-right) - 2em);
-  --modal-width: 65rem;
   --nav-item-background-hover: var(--theme-color-baseTransparent75);
   --nav-item-children-margin-start: calc(var(--size-4-4) / 2 - var(--nav-indentation-guide-width) / 2);
   --nav-item-children-padding-start: calc(1em - var(--nav-indentation-guide-width) / 2);
@@ -737,6 +737,12 @@ body {
   /* Used for callouts, embeds etc. */
   --theme-padding-blockHorizontal: 1.5em;
   --theme-padding-blockVertical: 0.75em;
+}
+
+/* TODO: what about other OSes */
+.mod-macos:not(.is-mobile) .mod-settings {
+  --dropdown-background: var(--theme-color-controlBg);
+  --dropdown-icon-background: transparent;
 }
 
 /* #endregion */
@@ -5077,7 +5083,6 @@ button.search-result-file-match-replace-button {
 /* #region   Close buttons */
 
 .mod-close,
-.modal-close-button,
 .document-search-close-button,
 .workspace-tab-header-inner-close-button,
 .slides-close-btn,
@@ -5110,12 +5115,9 @@ button.search-result-file-match-replace-button {
 @media (hover: hover) {
 
   .mod-close:hover,
-  .modal-close-button:hover,
   .document-search-close-button:hover,
   .workspace-tab-header-inner-close-button:hover,
   .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,
-  .mod-sync-history .modal-close-button:hover,
-  .mod-settings .modal-close-button:hover,
   .workspace-tab-header-inner-close-button:hover,
   .slides-close-btn:hover,
   .clickable-icon.kanban-plugin__search-cancel-button:hover,
@@ -5135,7 +5137,6 @@ button.search-result-file-match-replace-button {
 
 /* close buttons that use a text cross instead of an SVG */
 .document-search-close-button,
-.modal-close-button,
 .is-mobile .document-search .document-search-close-button,
 .is-mobile .document-replace .document-search-close-button {
   padding: var(--size-2-1);
@@ -5150,8 +5151,7 @@ button.search-result-file-match-replace-button {
   line-height: var(--theme-length-closeButtonWidth);
 }
 
-.document-search-close-button:before,
-.modal-close-button:before {
+.document-search-close-button:before {
   /* This uses a text cross instead of an SVG. Hack for visual alignment. */
   margin-top: -3px;
   line-height: var(--theme-length-closeButtonWidth);
@@ -5173,17 +5173,8 @@ button.search-result-file-match-replace-button {
     }
   }
 
-  .modal-close-button {
-    left: var(--size-2-3);
-    right: auto;
-  }
-
   .mod-community-modal .modal-sidebar .setting-item:first-child {
     margin-inline-start: auto;
-  }
-
-  .modal-sidebar .community-modal-controls {
-    padding-inline-start: var(--size-4-5);
   }
 
   .multi-select-pill {
@@ -6098,7 +6089,7 @@ input[type="text"].prompt-input::placeholder {
 .modal-sidebar,
 .modal.mod-settings .vertical-tab-header {
   border-inline-end: none;
-  padding: 2.5em 1em 1em 1.5em;
+  padding: 0;
   margin: 0;
   background: var(--theme-gradient-topToBottom);
   color: var(--theme-color-control);
@@ -6109,18 +6100,6 @@ input[type="text"].prompt-input::placeholder {
 
 .modal-setting-nav-bar {
   margin-inline-start: 0.5rem;
-}
-
-/***** Resizeable modals *****/
-body:not(.is-phone) .modal.mod-settings.mod-sidebar-layout,
-body:not(.is-phone) .modal.mod-community-modal,
-body:not(.is-phone) .modal.mod-sync-history {
-  resize: both;
-  width: var(--modal-width);
-  min-width: 36rem;
-  min-height: 20rem;
-  border-bottom-right-radius: 0.25rem;
-  box-shadow: var(--shadow-l);
 }
 
 /* Help modal */
@@ -6138,7 +6117,7 @@ body:not(.is-phone) .modal.mod-sync-history {
 
   .community-modal-controls {
     background: var(--theme-color-settingsBg);
-    padding: 2.5em 1.5em 1em 1.5em;
+    padding: 1em 1.5em 1em 1.5em;
     box-shadow: var(--shadow-s);
     z-index: 1;
   }
@@ -6147,6 +6126,7 @@ body:not(.is-phone) .modal.mod-sync-history {
     z-index: 2;
   }
 
+  .modal-sidebar .setting-item:not(.setting-item-heading),
   .community-modal-controls .setting-item {
     padding: 0;
     margin-bottom: 0.5em;
