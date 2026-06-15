@@ -3735,8 +3735,10 @@ body.theme-setting-distinguishNonContentTabs {
 }
 
 /* Override built-in style for .is-focused */
-.is-focused {
+body.is-focused {
   .mod-sidedock {
+
+    .mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
     .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
       color: var(--icon-color-focused);
     }
