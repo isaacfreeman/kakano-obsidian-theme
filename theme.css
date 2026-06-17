@@ -1011,6 +1011,7 @@ body {
   --background-modifier-active-hover: var(--theme-color-baseLightened60);
   --background-modifier-border-focus: var(--theme-color-base);
   --background-modifier-border: var(--theme-color-baseLightened25);
+  --background-modifier-cover: var(--theme-color-darkenTransparent25);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseLightened80);
   --caret-color: hsl(var(--accent-h), 150%, 50%);
@@ -1218,6 +1219,7 @@ body.theme-light.theme-setting-customGradient {
   --background-modifier-active-hover: var(--theme-color-baseDarkened70);
   --background-modifier-border-focus: var(--theme-color-baseDarkened25);
   --background-modifier-border: var(--theme-color-baseDarkened25);
+  --background-modifier-cover: var(--theme-color-darkenTransparent50);
   --background-modifier-hover: var(--theme-color-base);
   --blockquote-border-color: var(--theme-color-baseDarkened80);
   --caret-color: hsl(var(--accent-h), 150%, 80%);
@@ -5749,12 +5751,15 @@ input[type="radio"]:focus {
 /* #region   Item lists */
 .vertical-tab-header-group-title {
   color: var(--text-normal);
+  font-size: var(--font-ui-medium);
 }
 
 /* Special case for lists of controls */
 .horizontal-tab-nav-item,
 .vertical-tab-nav-item {
   color: var(--theme-color-control);
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
 
   svg {
     color: var(--theme-color-control);
@@ -6304,6 +6309,12 @@ input[type="text"].prompt-input::placeholder {
     background: var(--theme-color-settingsBg);
     padding: 2em;
   }
+
+  .vertical-tab-header {
+    .setting-search-container {
+      padding: 1rem;
+    }
+  }
 }
 
 .modal-setting-nav-bar {
@@ -6328,6 +6339,10 @@ input[type="text"].prompt-input::placeholder {
     }
   }
 
+  .setting-item:not(.setting-item-heading)::before {
+    border: none;
+  }
+
   .setting-items {
     margin-bottom: 4em;
   }
@@ -6335,6 +6350,14 @@ input[type="text"].prompt-input::placeholder {
   .setting-group-search {
     margin-bottom: 4em;
   }
+}
+
+.setting-item-name {
+  font-size: var(--font-ui-medium);
+}
+
+.setting-item-description {
+  font-size: var(--font-ui-small);
 }
 
 .vertical-tab-nav-item-icon {
