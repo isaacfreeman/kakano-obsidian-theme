@@ -2791,7 +2791,8 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
   border-bottom-right-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
-  margin-left: 0 var(--theme-spacing-mobileHorizontalSpacing);
+  margin: 0 var(--theme-spacing-mobileHorizontalSpacing);
+  width: auto;
 }
 
 .is-phone .markdown-source-view .cm-contentContainer {
