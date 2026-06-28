@@ -2769,8 +2769,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 
 .is-phone .view-header {
   padding: 0;
-  column-gap: 1rem;
-  row-gap: 0;
+  gap: 0 1rem;
   border-bottom: none;
   flex-wrap: wrap;
   background: transparent;
@@ -3239,8 +3238,7 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
   }
 
   .mobile-tab-group-container {
-    column-gap: 1em;
-    row-gap: 0.75em;
+    gap: 0.75em 1em;
   }
 
 }
@@ -9953,13 +9951,11 @@ body.theme-setting-overrideTasks {
   }
 
   .tasks-modal-priorities {
-    row-gap: 1em;
-    column-gap: 0.5em;
+    gap: 1em 0.5em;
   }
 
   .tasks-modal-dates {
-    row-gap: 0.5em;
-    column-gap: 0.5em;
+    gap: 0.5em 0.5em;
   }
 
   .tasks-modal-priorities label {
