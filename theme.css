@@ -2080,7 +2080,6 @@ body.theme-setting-codeBlockLineNumbers {
 /* #endregion */
 /* #region   Markdown Checkboxes */
 .markdown-source-view.mod-cm6 .task-list-label .task-list-item-checkbox {
-  border-radius: 0.33em;
   border-radius: var(--checkbox-radius);
   border-color: var(--theme-color-controlContentArea);
   /* Needs room at left for collapse indicator */
@@ -3075,7 +3074,6 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout .modal-title
 
 .is-phone .modal.mod-settings .vertical-tab-content {
   background-color: var(--theme-color-settingsGroupBg);
-  padding: var(--size-4-5) max(var(--size-4-5), var(--safe-area-inset-right)) 100px max(var(--size-4-5), var(--safe-area-inset-left));
   border-radius: var(--radius-m);
   padding: 0;
   background: transparent;
@@ -6592,7 +6590,6 @@ body.theme-setting-enableIconsInSettings {
   border-inline-end: var(--embed-border-right);
   border-top: var(--embed-border-top);
   margin: 0;
-  padding: 1em;
   background: var(--theme-gradient-cardSet);
   border: 0;
   padding: 1.5em;
@@ -6899,7 +6896,6 @@ body {
 
 /* Checkboxes styled like markdown */
 .bases-tbody .metadata-input-checkbox {
-  border-radius: 0.33em;
   border-radius: var(--checkbox-radius);
   border-color: var(--theme-color-controlContentArea);
 }
