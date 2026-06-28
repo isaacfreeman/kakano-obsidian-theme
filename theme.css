@@ -2731,7 +2731,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 
 /* Mobile workspace */
 .is-mobile .workspace>.mod-root {
-  padding: var(--safe-area-inset-top) calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-right)) 0 calc(var(--theme-spacing-mobileHorizontalSpacing) + var(--safe-area-inset-left));
+  padding: var(--safe-area-inset-top) var(--safe-area-inset-right) 0 var(--safe-area-inset-left);
   background: transparent;
 }
 
@@ -2791,6 +2791,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
   border-bottom-right-radius: calc(var(--tab-radius) * min(var(--theme-setting-mobileHorizontalPadding), 0.5) / 0.5);
+  margin-left: 0 var(---theme-spacing-mobileHorizontalSpacing);
 }
 
 .is-phone .markdown-source-view .cm-contentContainer {
@@ -3264,6 +3265,41 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
 /* TODO: figure out the right balance for floating nav to minimise overlap */
 .is-mobile.is-floating-nav.is-phone .workspace-drawer .workspace-leaf-content .nav-header~div:last-child {
   margin-bottom: calc(44px + 0.5rem);
+}
+
+.is-mobile.is-floating-nav .mod-raised {
+  flex-direction: column;
+}
+
+.is-mobile.is-floating-nav .mod-raised.mobiule-navbar {
+  flex-direction: row;
+}
+
+.is-phone .view-header .view-header-left {
+  height: auto;
+}
+
+.is-phone .view-header .view-action {
+  height: auto;
+}
+
+.is-mobile.is-floating-nav.is-ios {
+  --raised-mask-border-width: 0;
+}
+
+.is-phone.auto-full-screen .mod-root,
+.is-phone.is-floating-nav .mod-root {
+  mask-image: var(--view-bottom-fade-mask);
+}
+
+.is-phone.is-floating-nav {
+  --view-top-fade-mask: none;
+  --view-bottom-fade-mask: none;
+}
+
+.is-phone.is-hidden-nav {
+  --view-top-fade-mask: none;
+  --view-bottom-fade-mask: none;
 }
 
 /* #region Workspace */
