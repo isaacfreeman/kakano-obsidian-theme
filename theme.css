@@ -2474,7 +2474,6 @@ audio::-webkit-media-controls-panel {
   max-height: 800px;
   overflow: auto;
   border: none;
-  background-color: var(--background-secondary);
   background-color: transparent;
   border-radius: 0;
 }
@@ -3329,7 +3328,6 @@ body.theme-setting-fullWidthStatusBar .horizontal-main-container {
 }
 
 .workspace-split.mod-root {
-  background: transparent;
   background: var(--theme-gradient-topToBottom);
   padding-bottom: 1.5rem;
   padding: 0 0.5em var(--theme-length-statusBarHeight) 0.5em;
@@ -5701,7 +5699,6 @@ body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .
 .outgoing-link-pane .search-result-container,
 .graph-control-section .tree-item-children,
 body.theme-setting-overrideMapView .map-view-graph-controls .graph-control-div .collapsible .contents {
-  margin: 0 1em 1em 1em;
   font-size: var(--font-ui-small);
   padding: 0;
   margin: 0.5em 0;
@@ -5951,7 +5948,6 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
 .community-modal-search-results-wrapper,
 .vault-list,
 .sync-file-tree-container {
-  background: var(--theme-gradient-topToBottom);
   background: var(--theme-gradient-DarkenedTopToBottom);
   border: 0;
   padding: 1.5em;
@@ -6941,7 +6937,6 @@ body {
 
   @media (hover: hover) {
     .filter-expression:hover {
-      background-color: var(--metadata-property-background-hover);
       --metadata-divider-color: var(--metadata-divider-color-hover);
       background-color: var(--metadata-property-background-hover);
       box-shadow: var(--metadata-property-box-shadow-hover);
@@ -8438,7 +8433,6 @@ body.theme-setting-overrideDataview {
   .cards table.dataview thead {
     user-select: none;
     width: 180px;
-    display: block;
     display: none;
     float: right;
     position: relative;
@@ -8479,7 +8473,6 @@ body.theme-setting-overrideDataview {
   .cards table.dataview.table-view-table>tbody>tr:last-of-type>td:first-of-type,
   .cards table.dataview.table-view-table>tbody>tr:last-of-type>td:last-of-type {
     border: none;
-    padding: 0;
     border-radius: 0;
     padding: 0.5em 0.75em 0.5em 0.75em;
   }
@@ -8902,7 +8895,6 @@ body.theme-setting-overrideFolderNote {
     border-inline-end: var(--embed-border-right);
     border-top: var(--embed-border-top);
     margin: 0;
-    padding: 1em;
     background: var(--theme-gradient-cardSetGenerated);
     border: 0;
     padding: 1.5em;
@@ -8929,7 +8921,6 @@ body.theme-setting-overrideFolderNote {
       }
 
       & h1 {
-        color: inherit;
         padding: 0;
         font-size: var(--font-text);
         font-weight: var(--inline-title-weight);
@@ -9020,7 +9011,6 @@ body.theme-setting-overrideJiraIssue {
     .ji-tag:last-child {
       border-radius: var(--radius-s);
       border: var(--tag-border-width) solid var(--tag-border-color);
-      font-weight: var(--tag-weight);
       padding: 0.25em 0.5em;
       vertical-align: baseline;
       line-height: var(--line-height-tight);
@@ -9640,7 +9630,6 @@ body.theme-setting-overrideMapView {
     background: var(--theme-color-controlSetBg);
     border: none;
     padding: 0.25rem;
-    gap: 0;
     box-shadow: var(--theme-shadow-input);
     border-radius: var(--radius-m);
     display: flex;
