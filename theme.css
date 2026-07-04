@@ -3940,6 +3940,12 @@ body.theme-setting-fullWidthStatusBar .status-bar {
 }
 
 /* #endregion */
+/* #region.  Popout windows */
+body.is-popout-modal.is-frameless .titlebar {
+  border-bottom: none;
+}
+
+/* #endregion */
 /* #endregion */
 
 /* #region   macOS window frame styles */
