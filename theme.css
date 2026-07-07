@@ -9961,7 +9961,7 @@ body.theme-setting-overrideTasks {
 
 body.theme-setting-overridePluginUpdateTracker {
   .plugin-update-tracker-icon {
-    background-color: var(--theme-color-baseTransparent25);
+    background-color: var(--theme-color-baseTransparent12);
     border-radius: 9999px;
     padding: 0.25rem;
 
@@ -9984,6 +9984,17 @@ body.theme-setting-overridePluginUpdateTracker {
 
     &.plugin-update-tracker-icon--no-updates-available .plugin-update-tracker-icon-chip {
       background-color: var(--theme-color-greenDarkened);
+    }
+  }
+
+  @media (hover: hover) {
+    .plugin-update-tracker-icon:hover {
+      color: var(--theme-color-controlHover);
+      background-color: var(--background-modifier-hover);
+
+      svg.plugin-update-tracker-icon-plug-icon {
+        color: var(--theme-color-controlHover);
+      }
     }
   }
 }
