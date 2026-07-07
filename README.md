@@ -4,6 +4,9 @@
 
 Bring some color to your desktop. Kakano lets you choose a base color, and generates a clean consistent interface with a smooth gradient background. Compatible with a wide range of plugins, and full of little touches to improve your [Obsidian](https://obsidian.md/) experience.
 
+> "With complete control over the palette, the whole interface becomes vibrant, lively, and unbelievably cute."
+> — Pablo
+
 <div align="center">
   <a href="https://www.buymeacoffee.com/isaacfreeman">
     <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee!&emoji=&slug=isaacfreeman&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
