@@ -6405,6 +6405,11 @@ body.theme-setting-enableIconsInSettings {
   }
 }
 
+.setting-page-titlebar {
+  background-color: transparent;
+  box-shadow: var(--shadow-s);
+}
+
 /* Font settings modal */
 .setting-font-list+.setting-item {
   border: none;
