@@ -270,6 +270,7 @@ Kakano has specific styling for the following plugins:
 - Kanban
 - Map View
 - Natural Language Dates
+- Plugin Update Tracker
 - Recent files
 - Style settings
 - Table Editor

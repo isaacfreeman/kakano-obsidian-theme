@@ -52,6 +52,7 @@ community:
 - obsidian-jira-issue
 - obsidian-kanban
 - obsidian-map-view
+- obsidian-plugin-update-tracker
 - obsidian-style-settings
 - obsidian-tasks-plugin
 - oz-clear-unused-images
@@ -9999,6 +10000,123 @@ body.theme-setting-overridePluginUpdateTracker {
 
       svg.plugin-update-tracker-icon-plug-icon {
         color: var(--theme-color-controlHover);
+      }
+    }
+  }
+
+  /* Bloody stupid HTML classes */
+
+  &.theme-setting-distinguishNonContentTabs .workspace-leaf.mod-active .workspace-leaf-content[data-type^="swar8080"],
+  &.theme-setting-distinguishNonContentTabs.is-focused .workspace-leaf.mod-active .workspace-leaf-content[data-type^="swar8080"] {
+    .view-header {
+      background-color: var(--theme-color-tabNavActiveBg);
+      border-bottom: none;
+
+      .mod-fade:after {
+        display: none;
+      }
+    }
+
+    .view-content {
+      padding: 0;
+      background: var(--theme-gradient-DarkenedTopToBottom);
+    }
+  }
+
+  /* TODO: Match view-header for web view */
+
+  /* Match view-header for web view */
+  .frrqx {
+    background-color: var(--theme-color-tabNavActiveBg);
+    border-bottom: none;
+  }
+
+  .frrqx:before {
+    content: "Select all";
+    margin-right: 0.5em;
+  }
+
+  /* Match .community-modal-search-results-wrapper */
+  .dZeFDr {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border: 0;
+    padding: 1.5em;
+    gap: 1.5em;
+    background: transparent;
+
+    /* Match .community-item */
+    .dDdsrb {
+      border: none;
+      background: yellow;
+      margin: 0;
+      background: var(--theme-color-communityItemBg);
+      border-radius: var(--radius-m);
+      border: none;
+      box-shadow: var(--shadow-l);
+      cursor: var(--cursor);
+      padding: 0;
+      position: relative;
+      max-width: 100%;
+
+      .hjuwXh {
+        border: none;
+        align-items: center;
+        padding: 0.5em 0.5em 0.5em 1rem;
+      }
+
+      /* Match .community-item-name */
+      h2.iMNRsU {
+        font-size: var(--font-ui-medium);
+        text-align: left;
+        font-weight: var(--font-semibold);
+        padding: 0;
+        margin: 0 0.5em 0 0;
+      }
+
+      .emNspu {
+        font-size: var(--font-ui-small);
+        flex-direction: column;
+        border: none;
+
+        /* Match .community-item-author etc. */
+        >* {
+          display: block;
+          padding: 0 1rem;
+          border: none;
+          line-height: var(--line-height-tight);
+          color: var(--text-normal);
+        }
+      }
+
+      /* Match to .mod-collapsible */
+      .ljPreH {
+        border-radius: var(--radius-s);
+        color: var(--text-faint);
+        font-size: var(--nav-item-size);
+        font-weight: var(--font-medium);
+        padding: 0.25em 0.5em 0.25em 0;
+        line-height: var(--theme-lineHeight-tight);
+        display: flex;
+        align-items: top;
+        width: 100%;
+        background-color: transparent;
+        margin: 0;
+
+        .dzHLvC {
+          margin: 0 0 0 0.6em;
+        }
+
+        .hBsmvY {
+          font-size: var(--font-ui-medium);
+          font-weight: normal;
+        }
+      }
+
+      .kHzOAR {
+        width: calc(100% - 1.5rem);
+        overflow: auto;
       }
     }
   }
