@@ -3949,7 +3949,7 @@ body.is-popout-modal.is-frameless .titlebar {
 /* #endregion */
 /* #endregion */
 
-/* #region   macOS window frame styles */
+/* #region macOS window frame styles */
 body.mod-macos {
 
   .workspace-tab-header-new-tab,
@@ -3959,7 +3959,7 @@ body.mod-macos {
   }
 }
 
-/* #region     "Native frame" style */
+/* #region   "Native frame" style */
 body.mod-macos {
   &:not(.is-frameless) {
     &:not(.is-mobile) {
@@ -4042,7 +4042,7 @@ body.mod-macos {
 }
 
 /* #endregion */
-/* #region     "Obsidian frame" style */
+/* #region   "Obsidian frame" style */
 body.mod-macos {
   &.is-frameless:not(.is-hidden-frameless) {
     --titlebar-height: 40px;
@@ -4163,7 +4163,7 @@ body.mod-macos {
 }
 
 /* #endregion */
-/* #region     "Hidden (default)" style. This is the default appearance! */
+/* #region   "Hidden (default)" style. This is the default appearance! */
 /* In this window style we need to make sure buttons don't overlap the window controls. */
 body.mod-macos.is-frameless.is-hidden-frameless {
 
@@ -4277,6 +4277,60 @@ body.mod-macos.is-frameless.is-hidden-frameless {
     .sidebar-toggle-button.mod-left {
       top: 0;
       left: 0;
+    }
+  }
+}
+
+/* #endregion */
+/* #region   Tab close button on left, macOS standard */
+.mod-macos {
+  .workspace .mod-root {
+    .workspace-tab-header .workspace-tab-header-inner-close-button {
+      position: static;
+      order: 0;
+    }
+
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title {
+      order: 1;
+    }
+  }
+
+  .modal-header-button,
+  .modal-close-button {
+    inset-inline-start: 0.5rem;
+    inset-inline-end: auto;
+  }
+
+  .mod-community-modal .modal-sidebar .setting-item:first-child {
+    margin-inline-start: auto;
+  }
+
+  .multi-select-pill {
+    padding-inline-start: 0.25em;
+
+    .multi-select-pill-remove-button {
+      order: 0;
+    }
+
+    .multi-select-pill-content {
+      order: 1;
+      margin: 0;
+    }
+  }
+
+  .modal.mod-settings {
+    .vertical-tab-header {
+      .setting-search-container {
+        /* Room for close button */
+        padding-left: 2.5rem;
+      }
+    }
+  }
+
+  .mod-community-modal {
+    .community-modal-controls {
+      padding-left: 2.5rem;
     }
   }
 }
@@ -5130,7 +5184,8 @@ button.search-result-file-match-replace-button {
 .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
 .mobile-tab .close-button,
 .bases-toolbar-menu-container-header .close-icon,
-.clickable-icon.document-search-close-button {
+.clickable-icon.document-search-close-button,
+.modal-header-button {
   background-color: transparent;
   border-radius: 100%;
   border: none;
@@ -5165,7 +5220,8 @@ button.search-result-file-match-replace-button {
   .multi-select-pill-remove-button:hover,
   .mobile-tab .close-button:hover,
   .bases-toolbar-menu-container-header .close-icon:hover,
-  .clickable-icon.document-search-close-button:hover {
+  .clickable-icon.document-search-close-button:hover,
+  .modal-header-button:hover {
     color: var(--theme-color-controlHover);
     background-color: var(--theme-color-navigationButtonBgHover);
 
@@ -5197,38 +5253,6 @@ button.search-result-file-match-replace-button {
   line-height: var(--theme-length-closeButtonWidth);
   width: var(--theme-length-closeButtonWidth);
   height: var(--theme-length-closeButtonWidth);
-}
-
-/* Tab close button on left, macOS standard */
-.mod-macos {
-  .workspace .mod-root {
-    .workspace-tab-header .workspace-tab-header-inner-close-button {
-      position: static;
-      order: 0;
-    }
-
-    .workspace-tab-header-inner-icon,
-    .workspace-tab-header-inner-title {
-      order: 1;
-    }
-  }
-
-  .mod-community-modal .modal-sidebar .setting-item:first-child {
-    margin-inline-start: auto;
-  }
-
-  .multi-select-pill {
-    padding-inline-start: 0.25em;
-
-    .multi-select-pill-remove-button {
-      order: 0;
-    }
-
-    .multi-select-pill-content {
-      order: 1;
-      margin: 0;
-    }
-  }
 }
 
 /* #endregion */
@@ -6005,50 +6029,272 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
 }
 
 /* #endregion */
-/* #region   Modals */
-
-/********* Prompts *********/
-
-.prompt-input-container,
-.is-phone .prompt-input-container {
-  border-bottom: none;
-  background: var(--background-secondary);
-  box-shadow: var(--theme-shadow-indent-small);
+/* #region   Properties */
+.workspace>.workspace-split:not(.mod-root) .metadata-container {
+  --metadata-divider-width: inherit;
 }
 
+.setting-properties-position-below .mod-root .is-live-preview .metadata-container {
+  padding: 0.5em 2em 0 2em;
+}
+
+.setting-properties-position-below .mod-root .is-live-preview .metadata-container:has(~ .embedded-backlinks[style*="display: none"]) {
+  padding-bottom: 0.5em;
+}
+
+.view-content .metadata-properties-heading .collapse-indicator svg.svg-icon,
+.view-content .metadata-properties-heading .is-collapsed .collapse-indicator svg.svg-icon {
+  color: var(--theme-color-control);
+}
+
+.metadata-properties-title {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  font-weight: var(--font-semibold);
+  padding: 0;
+  user-select: none;
+}
+
+.metadata-property {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 0.5em;
+  padding: var(--input-border-width);
+
+  .metadata-property-key {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.5em;
+  }
+}
+
+.metadata-property:focus-within {
+  background: var(--metadata-property-background-hover);
+  border-color: var(--metadata-property-background-hover);
+  box-shadow: none;
+}
+
+.metadata-property .metadata-property-key:focus-within {
+  background: transparent;
+}
+
+.metadata-property input.metadata-property-key-input {
+  height: var(--input-height);
+  color: var(--theme-color-control);
+}
+
+.metadata-property .multi-select-input {
+  padding: var(--pill-padding-y) 0;
+}
+
+.metadata-property-icon:before {
+  display: none;
+}
+
+/* #endregion */
+/* #region   File lists */
+
+/* Styles used by both Files and Recent Files */
+
+.nav-file-title {
+  justify-content: space-between;
+  padding: 0;
+}
+
+.nav-file-title-content,
+.nav-folder-title-content {
+  flex-grow: 1;
+  padding: var(--nav-item-padding);
+}
+
+.nav-file-tag {
+  background: transparent;
+  border: solid 1px var(--nav-file-tag-border-color);
+  color: var(--theme-color-navFileTag);
+}
+
+.nav-file-title.is-active .nav-file-tag {
+  color: var(--theme-color-navFileTagActive);
+  border-color: var(--theme-color-navFileTagActiveBorder);
+}
+
+@media (hover: hover) {
+
+  /* No hover effect for vault title, as clicking doesn't do anything */
+  .nav-folder.mod-root>.nav-folder-title:hover {
+    color: inherit;
+  }
+}
+
+/* #endregion */
+/* #region   Document search */
+.document-search-container,
+.mod-active .document-search-container,
+.is-mobile .document-search-container,
+.kanban-plugin__search-wrapper {
+  animation: 0.5s 1 alternate fadein;
+  background: var(--theme-color-controlSetBg);
+  border: none;
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-s);
+  gap: 0.5em;
+  margin: 0 auto;
+  padding: 0.5em;
+  width: auto;
+}
+
+.document-search,
+.document-replace {
+  gap: 0.5em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.document-search-button {
+  border: none;
+  color: var(--theme-color-control);
+}
+
+.document-search-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
+  top: calc(50% - 0.5em);
+}
+
+/* Close button on left for macOS */
+.mod-macos .document-search-container {
+  .document-search {
+    .document-search-close-button {
+      order: 0;
+    }
+
+    .document-search-input {
+      order: 1;
+    }
+
+    .document-search-buttons {
+      order: 2;
+    }
+  }
+
+  .document-replace {
+    padding-left: calc(var(--theme-length-closeButtonWidth) + 0.5em);
+  }
+}
+
+/* #endregion */
+/* #endregion */
+/* #region Modals */
+
+/* #region   Default modal appearance */
+.modal-container {
+  padding-top: var(--safe-area-inset-top);
+  padding-inline-end: var(--safe-area-inset-right);
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-inline-start: var(--safe-area-inset-left);
+}
+
+.modal {
+  padding: 0;
+  overflow: hidden;
+}
+
+.modal-title {
+  /* Space for modal-close-button in line with title */
+  padding: 0.5em calc(var(--size-2-3) + 2rem);
+  /* Align with top position for modal-close-button */
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: var(--font-ui-medium);
+  line-height: 1.4em;
+}
+
+.modal-bg,
+.modal,
 .prompt {
-  background-color: var(--background-prompt);
+  animation: 0.5s 1 alternate fadein;
+  animation-timing-function: ease-in-out;
 }
 
-.is-phone .prompt {
-  --prompt-top: calc(var(--safe-area-inset-top) + var(--header-height) + 1em);
-  box-shadow: var(--shadow-l);
+.modal-content {
+  margin: 0 0;
+  /* Allow space for input borders */
+  padding: var(--input-border-width) 2em;
+  overflow: auto;
 }
 
-input.prompt-input[type="text"] {
-  background: var(--background-secondary);
-  border-bottom: none;
-  box-shadow: none;
+.modal-header:has(.modal-title:empty) {
+  /* The built-in styles always apply a bottom margin */
+  margin-bottom: 0;
 }
 
-input.prompt-input[type="text"]:focus {
-  background: var(--background-secondary);
-  border-bottom: none;
-  box-shadow: none;
+.modal-header-button,
+.modal-close-button {
+  position: absolute;
+  top: 0.5rem;
+  inset-inline-end: 0.5rem;
+  z-index: 10;
 }
 
-input[type="text"].prompt-input::placeholder {
-  color: var(--theme-color-base);
+.modal-content p {
+  margin: 0 0 0.5em;
 }
 
-.prompt-instructions {
-  background: var(--background-secondary);
-  border-top: 0;
-  box-shadow: var(--theme-shadow-indent-small);
+.modal-content p:last-child {
+  margin-bottom: 0;
 }
 
-/* Default modal */
+.modal-content>hr {
+  /* Used in the Manage Workspaces modal, but there's currently no way to target that. */
+  border: none;
+  margin: 1em 0;
+}
 
+.modal-button-container {
+  margin-top: 0;
+  padding: 1em 2rem;
+}
+
+.modal-content:has(.modal-button-container),
+.modal-content:has(.button-container) {
+  /* Sometimes the .modal-button-container is nested inside the .modal-content */
+  overflow: scroll;
+  background-color: var(--theme-color-modalContentBg);
+  padding: 1em 2em;
+}
+
+.modal-content .modal-button-container {
+  padding: 0;
+}
+
+/* #endregion */
+/* #region   Modals with sidebar layout */
+.mod-sidebar-layout .modal-content {
+  padding: 0;
+  margin: 0;
+}
+
+.modal-sidebar,
+.modal.mod-settings .vertical-tab-header {
+  border-inline-end: none;
+  padding: 0;
+  margin: 0;
+  background: var(--theme-gradient-topToBottom);
+  color: var(--theme-color-control);
+  height: 100%;
+  box-shadow: var(--shadow-s);
+  z-index: 1;
+}
+
+.modal-setting-nav-bar {
+  margin-inline-start: 0.5rem;
+}
+
+/* #endregion */
+/* #region   Prompts */
 .modal-container {
   padding-top: var(--safe-area-inset-top);
   padding-inline-end: var(--safe-area-inset-right);
@@ -6121,36 +6367,8 @@ input[type="text"].prompt-input::placeholder {
   padding: 0;
 }
 
-/* Modals with sidebar layout */
-.mod-sidebar-layout .modal-content {
-  padding: 0;
-  margin: 0;
-}
-
-.modal-sidebar,
-.modal.mod-settings .vertical-tab-header {
-  border-inline-end: none;
-  padding: 0;
-  margin: 0;
-  background: var(--theme-gradient-topToBottom);
-  color: var(--theme-color-control);
-  height: 100%;
-  box-shadow: var(--shadow-s);
-  z-index: 1;
-}
-
-.modal-setting-nav-bar {
-  margin-inline-start: 0.5rem;
-}
-
-/* Help modal */
-.modal.mod-canvas-help .modal-content {
-  height: 100%;
-  overflow: scroll;
-  padding-inline-end: 1em;
-}
-
-/* Community modal */
+/* #endregion */
+/* #region   Community modals */
 .mod-community-modal {
   .modal-sidebar {
     padding: 0;
@@ -6329,8 +6547,17 @@ input[type="text"].prompt-input::placeholder {
   }
 }
 
-/* Settings modal */
+/* #endregion */
 
+/* #region   Help modal */
+.modal.mod-canvas-help .modal-content {
+  height: 100%;
+  overflow: scroll;
+  padding-inline-end: 1em;
+}
+
+/* #endregion */
+/* #region   Settings modal */
 .modal.mod-settings {
   .vertical-tab-header-group {
     border-inline-end: none;
@@ -6348,7 +6575,7 @@ input[type="text"].prompt-input::placeholder {
 
   .vertical-tab-header {
     .setting-search-container {
-      padding: 1rem;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
     }
   }
 }
@@ -6411,12 +6638,14 @@ body.theme-setting-enableIconsInSettings {
   box-shadow: var(--shadow-s);
 }
 
-/* Font settings modal */
+/* #endregion */
+/* #region   Font settings modal */
 .setting-font-list+.setting-item {
   border: none;
 }
 
-/* Debug modal */
+/* #endregion */
+/* #region   Debug modal */
 .modal-content:has(.modal-button-container):has(.debug-textarea) {
   /* Show shadow below buttons */
   overflow: visible;
@@ -6427,163 +6656,6 @@ body.theme-setting-enableIconsInSettings {
 .debug-textarea {
   margin: 0;
   border-radius: 0;
-}
-
-/* #endregion */
-/* #region   Properties */
-.workspace>.workspace-split:not(.mod-root) .metadata-container {
-  --metadata-divider-width: inherit;
-}
-
-.setting-properties-position-below .mod-root .is-live-preview .metadata-container {
-  padding: 0.5em 2em 0 2em;
-}
-
-.setting-properties-position-below .mod-root .is-live-preview .metadata-container:has(~ .embedded-backlinks[style*="display: none"]) {
-  padding-bottom: 0.5em;
-}
-
-.view-content .metadata-properties-heading .collapse-indicator svg.svg-icon,
-.view-content .metadata-properties-heading .is-collapsed .collapse-indicator svg.svg-icon {
-  color: var(--theme-color-control);
-}
-
-.metadata-properties-title {
-  font-size: var(--font-ui-smaller);
-  color: var(--text-faint);
-  font-weight: var(--font-semibold);
-  padding: 0;
-  user-select: none;
-}
-
-.metadata-property {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  display: flex;
-  gap: 0.5em;
-  padding: var(--input-border-width);
-
-  .metadata-property-key {
-    align-items: flex-start;
-    display: flex;
-    gap: 0.5em;
-  }
-}
-
-.metadata-property:focus-within {
-  background: var(--metadata-property-background-hover);
-  border-color: var(--metadata-property-background-hover);
-  box-shadow: none;
-}
-
-.metadata-property .metadata-property-key:focus-within {
-  background: transparent;
-}
-
-.metadata-property input.metadata-property-key-input {
-  height: var(--input-height);
-  color: var(--theme-color-control);
-}
-
-.metadata-property .multi-select-input {
-  padding: var(--pill-padding-y) 0;
-}
-
-.metadata-property-icon:before {
-  display: none;
-}
-
-/* #endregion */
-/* #region   File lists */
-
-/* Styles used by both Files and Recent Files */
-
-.nav-file-title {
-  justify-content: space-between;
-  padding: 0;
-}
-
-.nav-file-title-content,
-.nav-folder-title-content {
-  flex-grow: 1;
-  padding: var(--nav-item-padding);
-}
-
-.nav-file-tag {
-  background: transparent;
-  border: solid 1px var(--nav-file-tag-border-color);
-  color: var(--theme-color-navFileTag);
-}
-
-.nav-file-title.is-active .nav-file-tag {
-  color: var(--theme-color-navFileTagActive);
-  border-color: var(--theme-color-navFileTagActiveBorder);
-}
-
-@media (hover: hover) {
-
-  /* No hover effect for vault title, as clicking doesn't do anything */
-  .nav-folder.mod-root>.nav-folder-title:hover {
-    color: inherit;
-  }
-}
-
-/* #endregion */
-/* #region   Document search */
-.document-search-container,
-.mod-active .document-search-container,
-.is-mobile .document-search-container,
-.kanban-plugin__search-wrapper {
-  animation: 0.5s 1 alternate fadein;
-  background: var(--theme-color-controlSetBg);
-  border: none;
-  border-radius: var(--radius-l);
-  box-shadow: var(--shadow-s);
-  gap: 0.5em;
-  margin: 0 auto;
-  padding: 0.5em;
-  width: auto;
-}
-
-.document-search,
-.document-replace {
-  gap: 0.5em;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-.document-search-button {
-  border: none;
-  color: var(--theme-color-control);
-}
-
-.document-search-close-button,
-.is-mobile .document-search .document-search-close-button,
-.is-mobile .document-replace .document-search-close-button {
-  top: calc(50% - 0.5em);
-}
-
-/* Close button on left for macOS */
-.mod-macos .document-search-container {
-  .document-search {
-    .document-search-close-button {
-      order: 0;
-    }
-
-    .document-search-input {
-      order: 1;
-    }
-
-    .document-search-buttons {
-      order: 2;
-    }
-  }
-
-  .document-replace {
-    padding-left: calc(var(--theme-length-closeButtonWidth) + 0.5em);
-  }
 }
 
 /* #endregion */
