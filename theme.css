@@ -399,6 +399,21 @@ settings:
     level: 1
     collapsed: false
   -
+    id: heading-ui-appearance
+    title: Appearance
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: theme-setting-roundness
+    title: 'Roundness'
+    description: 'Degree of roundness for UI elements. Zero for sharp corners, higher for more rounding.'
+    type: variable-number-slider
+    default: 0.5
+    min: 0
+    max: 2
+    step: 0.25
+  -
     id: heading-ui-background
     title: Background
     type: heading
@@ -519,7 +534,7 @@ settings:
     default: true
   -
     id: heading-communityPlugins
-    title: Community Plugins Toggles
+    title: Community Plugin Toggles
     type: heading
     level: 2
     collapsed: true
@@ -614,7 +629,6 @@ body {
   --checkbox-border-color-hover: var(--interactive-accent-hover);
   --checkbox-border-color: var(--interactive-accent);
   --checkbox-color: var(--interactive-accent);
-  --clickable-icon-radius: 0.25rem;
   --code-background: light-dark(var(--theme-color-darkenTransparent06),
       var(--theme-color-lightenTransparent06));
   --code-comment: light-dark(var(--theme-color-darkenTransparent50),
@@ -640,9 +654,7 @@ body {
   --header-height: calc(var(--icon-size) + 1rem);
   --heading-spacing: 0.67em;
   --input-border-width: 2px;
-  --input-radius: 5px;
   --list-marker-color: var(--text-normal);
-  --list-bullet-radius: 50%;
   --list-bullet-size: 0.25em;
   --list-bullet-transform: none;
   --list-marker-color-collapsed: var(--list-marker-color);
@@ -666,10 +678,7 @@ body {
   --pill-focus-width: 100%;
   --prompt-border-color: transparent;
   --prompt-border-width: 0;
-  --radius-s: 0.25rem;
-  --radius-m: 0.5rem;
-  --radius-l: 0.75rem;
-  --radius-xl: 1rem;
+
   --ribbon-background-collapsed: transparent;
   --ribbon-background: transparent;
   --ribbon-width: 3em;
@@ -678,7 +687,6 @@ body {
   --setting-group-heading-weight: var(--font-semibold);
   --setting-items-background: none;
   --setting-items-padding: 0;
-  --setting-items-radius: 0;
   --setting-items-border-width: 0;
   --setting-items-border-color: var(--background-modifier-border);
   --sidebar-markdown-font-size: calc(var(--font-text-size) * var(--theme-value-sidebarFontScalingFactor));
@@ -686,10 +694,7 @@ body {
   --status-bar-background: var(--theme-color-gradientTop);
   --status-bar-text-color: var(--text-normal);
   --tab-container-background: transparent;
-  --tab-curve: calc(var(--tab-radius) * 0.5);
   --tab-outline-width: 0;
-  --tab-radius-active: 0.25em;
-  --tab-radius: 0.25em;
   --tab-switcher-preview-background-shadow: var(--shadow-l);
   --tab-switcher-preview-shadow: none;
   --tab-switcher-preview-shadow-active: none;
@@ -701,6 +706,32 @@ body {
   --titlebar-background-focused: transparent;
   --titlebar-background: transparent;
   --vault-profile-color-hover: var(--theme-color-controlHover);
+
+  /* Roundness */
+  --theme-setting-roundness: 0.5;
+  --theme-setting-baseRadius: calc(1rem * var(--theme-setting-roundness));
+
+  --radius-xs: calc(0.25 * var(--theme-setting-baseRadius));
+  --radius-s: calc(0.5 * var(--theme-setting-baseRadius));
+  --radius-m: var(--theme-setting-baseRadius);
+  --radius-l: calc(1.5 * var(--theme-setting-baseRadius));
+  --radius-xl: calc(2 * var(--theme-setting-baseRadius));
+
+  --checkbox-radius: var(--radius-s);
+  --clickable-icon-radius: var(--radius-s);
+  --input-radius: var(--radius-s);
+  --modal-radius: var(--radius-m);
+  --search-input-radius: var(--radius-s);
+  --tab-curve: var(--radius-xs);
+  --tab-radius-active: var(--radius-s);
+  --tab-radius: var(--radius-s);
+  --toggle-radius: var(--radius-l);
+  --toggle-thumb-radius: var(--radius-l);
+  --vault-profile-radius: var(--radius-m);
+  --setting-items-radius: 0;
+  /* These are transparent for Kakano, so the radius doesn't matter. */
+  --list-bullet-radius: 50%;
+  --theme-length-fullBorderRadius: 9999px;
 
   /* Other new variables for this theme */
   --theme-color-dragTarget: var(--theme-color-baseTransparent50);
@@ -716,12 +747,10 @@ body {
   --theme-color-cardBgHover: var(--theme-color-base);
   --theme-setting-lineWidth: 60;
   --theme-spacing-mobileHorizontalSpacing: calc(var(--theme-setting-mobileHorizontalPadding) * 1rem);
-  --theme-length-fullBorderRadius: 9999px;
   --theme-length-checkboxBorderWidth: 1px;
   --theme-length-closeButtonWidth: 1.5rem;
   --theme-length-collapseIndicatorSize: 1.5rem;
   --theme-length-controlSetSpacing: 0.5rem;
-  --theme-length-radiusXS: 0.125rem;
   --theme-length-statusBarHeight: 2rem;
   /* Additional radius size alongside built-in radius-x */
   --theme-value-sidebarFontScalingFactor: 0.8;
@@ -2135,7 +2164,7 @@ body.theme-setting-highlightActiveLine {
   .markdown-source-view.mod-cm6 {
     .cm-active:not(.HyperMD-codeblock) {
       background-color: var(--theme-color-activeLineHighlight);
-      border-radius: var(--theme-length-radiusXS);
+      border-radius: var(--radius-xs);
     }
   }
 }
@@ -3951,6 +3980,16 @@ body.is-popout-modal.is-frameless .titlebar {
 
 /* #region macOS window frame styles */
 body.mod-macos {
+
+  /* Base CSS overrides these values, presumably to look like macOS Tahoe. I don't like the excessive rounding in macOS Tahoe, so I'm resetting radii back to standard for Kakano. */
+  --clickable-icon-radius: var(--radius-s);
+  --input-radius: var(--radius-s);
+  --modal-radius: var(--radius-m);
+  --search-input-radius: var(--radius-s);
+  --tab-radius: var(--radius-s);
+  --toggle-radius: var(--radius-l);
+  --toggle-thumb-radius: var(--radius-l);
+  --vault-profile-radius: var(--radius-m);
 
   .workspace-tab-header-new-tab,
   .workspace-tab-header-tab-list {
@@ -10112,7 +10151,6 @@ body.theme-setting-overridePluginUpdateTracker {
   .dZeFDr {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
     border: 0;
     padding: 1.5em;
     gap: 1.5em;
@@ -10120,8 +10158,6 @@ body.theme-setting-overridePluginUpdateTracker {
 
     /* Match .community-item */
     .dDdsrb {
-      border: none;
-      background: yellow;
       margin: 0;
       background: var(--theme-color-communityItemBg);
       border-radius: var(--radius-m);
