@@ -780,6 +780,7 @@ body {
   --theme-padding-blockHorizontal: 1.5em;
   --theme-padding-blockVertical: 0.75em;
 }
+
 /* TODO: what about other OSes */
 .mod-macos:not(.is-mobile) .mod-settings {
   --dropdown-background: var(--theme-color-controlBg);
@@ -2901,8 +2902,9 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
   --setting-items-border-width: 0;
   --setting-items-border-color: var(--background-modifier-border);
 }
-.is-mobile.is-dark,
-.is-mobile.is-light {
+
+.is-mobile.theme-dark .mod-settings,
+.is-mobile.theme-light .mod-settings {
   --setting-items-background: transparent;
 }
 .is-phone {
@@ -3489,7 +3491,7 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
   justify-content: center;
 }
 
-/* TODO: check that these worka fter deploy */
+/* TODO: check that these work after deploy */
 .is-phone .view-header .view-header-left .view-action {
   border-radius: 0 var(--radius-m) var(--radius-m) 0;
 }
