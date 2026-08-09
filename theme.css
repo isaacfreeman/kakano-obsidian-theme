@@ -2352,7 +2352,10 @@ body.theme-dark,
 
   /* Line numbers */
   .markdown-source-view.mod-cm6 .cm-gutters {
-    color: var(--theme-color-lineNumbers) !important;
+    /* App CSS uses this colour with !important, so we can't override directly. */
+    --text-faint: var(--theme-color-lineNumbers);
+    margin-inline-end: 0.5rem;
+    width: auto;
   }
 
   /* Highlight active line setting */
@@ -2791,26 +2794,33 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     -webkit-mask-position: 50% 50%;
     -webkit-mask-size: 100%;
     -webkit-mask-repeat: no-repeat;
+    mask-position: 50% 50%;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
   }
   & input[data-task="/"]:checked:after,
   & li[data-task="/"] > input:checked:after,
   & li[data-task="/"] > p > input:checked:after {
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="12,-12 48,-12 48,36 12,36" transform="rotate(45) translate(5,-12)"></polyline></g></g></svg>');
+    mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="12,-12 48,-12 48,36 12,36" transform="rotate(45) translate(5,-12)"></polyline></g></g></svg>');
   }
   & input[data-task="<"]:checked:after,
   & li[data-task="<"] > input:checked:after,
   & li[data-task="<"] > p > input:checked:after {
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="15,4.5 6,12 15,19.5 16.75,17.5 10,12 16.75,6.5"></polyline></g></g></svg>');
+    mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="15,4.5 6,12 15,19.5 16.75,17.5 10,12 16.75,6.5"></polyline></g></g></svg>');
   }
   & input[data-task="!"]:checked:after,
   & li[data-task="!"] > input:checked:after,
   & li[data-task="!"] > p > input:checked:after {
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="13"/><line x1="12" x2="12" y1="19" y2="19"/></svg>');
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="13"/><line x1="12" x2="12" y1="19" y2="19"/></svg>');
   }
   & input[data-task="?"]:checked:after,
   & li[data-task="?"] > input:checked:after,
   & li[data-task="?"] > p > input:checked:after {
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5,6.852c0.463,-1.049 1.493,-2.872 4.5,-2.852c3.957,0.026 5.001,2.617 5,4.5c-0.002,2.952 -4.963,3.463 -5,7.5"/><path d="M12.25,20l-0.443,-0"/></svg>');
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5,6.852c0.463,-1.049 1.493,-2.872 4.5,-2.852c3.957,0.026 5.001,2.617 5,4.5c-0.002,2.952 -4.963,3.463 -5,7.5"/><path d="M12.25,20l-0.443,-0"/></svg>');
   }
 
   /* Complete states */
@@ -2863,6 +2873,7 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     display: block;
     background-color: var(--checkbox-marker-color);
     -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
   & input[data-task="x"]:checked:after,
   & li[data-task="x"] > input:checked:after,
@@ -2870,6 +2881,9 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     -webkit-mask-position: 52% 52%;
     -webkit-mask-size: 65%;
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="12px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-4.000000, -6.000000)" fill="%23000000"><path d="M8.1043257,14.0367999 L4.52468714,10.5420499 C4.32525014,10.3497722 4.32525014,10.0368095 4.52468714,9.8424863 L5.24777413,9.1439454 C5.44721114,8.95166768 5.77142411,8.95166768 5.97086112,9.1439454 L8.46638057,11.5903727 L14.0291389,6.1442083 C14.2285759,5.95193057 14.5527889,5.95193057 14.7522259,6.1442083 L15.4753129,6.84377194 C15.6747499,7.03604967 15.6747499,7.35003511 15.4753129,7.54129009 L8.82741268,14.0367999 C8.62797568,14.2290777 8.3037627,14.2290777 8.1043257,14.0367999"></path></g></g></svg>');
+    mask-position: 52% 52%;
+    mask-size: 65%;
+    mask-image: url('data:image/svg+xml; utf8, <svg width="12px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-4.000000, -6.000000)" fill="%23000000"><path d="M8.1043257,14.0367999 L4.52468714,10.5420499 C4.32525014,10.3497722 4.32525014,10.0368095 4.52468714,9.8424863 L5.24777413,9.1439454 C5.44721114,8.95166768 5.77142411,8.95166768 5.97086112,9.1439454 L8.46638057,11.5903727 L14.0291389,6.1442083 C14.2285759,5.95193057 14.5527889,5.95193057 14.7522259,6.1442083 L15.4753129,6.84377194 C15.6747499,7.03604967 15.6747499,7.35003511 15.4753129,7.54129009 L8.82741268,14.0367999 C8.62797568,14.2290777 8.3037627,14.2290777 8.1043257,14.0367999"></path></g></g></svg>');
   }
   & input[data-task="-"]:checked:after,
   & li[data-task="-"] > input:checked:after,
@@ -2878,6 +2892,9 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     -webkit-mask-position: 50% 50%;
     -webkit-mask-size: 100%;
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="4,10.5 20,10.5 20,13.5 4,13.5"></polyline></g></g></svg>');
+    mask-position: 50% 50%;
+    mask-size: 100%;
+    mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="4,10.5 20,10.5 20,13.5 4,13.5"></polyline></g></g></svg>');
   }
   & input[data-task=">"]:checked:after,
   & li[data-task=">"] > input:checked:after,
@@ -2886,6 +2903,10 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     -webkit-mask-size: 100%;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="9,4.5 18,12 9,19.5 7.25,17.5 14,12 7.25,6.5"></polyline></g></g></svg>');
+    mask-position: 50% 50%;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="%23000000"><polyline points="9,4.5 18,12 9,19.5 7.25,17.5 14,12 7.25,6.5"></polyline></g></g></svg>');
   }
 }
 /* #endregion */
@@ -2927,9 +2948,6 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
 }
 .is-mobile .view-actions {
   padding: 0;
-}
-.is-phone .view-header .view-header-left .view-action {
-  /* TODO: fix position for this when there's space left/right of main tab */
 }
 .is-mobile .view-header-title-container {
   height: auto;
@@ -3022,9 +3040,6 @@ body.theme-setting-enableBuiltInAlternativeCheckboxes {
     /* } */
 }
 
-.workspace-drawer .workspace-leaf {
-
-}
 .workspace-drawer-inner {
   display: flex;
   gap: 1rem;
@@ -4530,8 +4545,6 @@ body.mod-windows {
 /* #endregion */
 
 /* #region   Linux window frame styles */
-.mod-linux {
-}
 /* #endregion */
 /* #region Content area - src/workspace/content_area.css */
   /* #region Order of items in content area */
@@ -4620,7 +4633,10 @@ body.mod-windows {
     .cm-contentContainer {
       justify-content: center;
       /* Allow space at left and right when note is narrow */
-      padding: 1rem calc( var(--input-width) + 0.5rem);
+      padding: 1rem 0.5rem;
+    }
+    .markdown-preview-view {
+      padding: 1rem 0.5rem;
     }
 
     /* Override inline styles — Obsidian injects a large padding-bottom on these
@@ -7235,15 +7251,9 @@ body {
   }
 }
 
-
-
-
-
 /* #endregion */
 /* #region   Core Plugin: File Recovery */
 
-.mode-sync-history {
-}
 .sync-history-list-container {
   border: none;
 }
@@ -7448,21 +7458,9 @@ body {
   color: var(--theme-color-graphLine);
   opacity: 0.5;
 }
-.graph-view.color-fill-tag {
-}
-.graph-view.color-fill-attachment {
-}
-.graph-view.color-circle {
-}
 .graph-view.color-text {
   color: var(--theme-color-graphLine);
   opacity: 0.5;
-}
-.graph-view.color-fill-highlight {
-}
-.graph-view.color-line-highlight {
-}
-.graph-view.color-fill-unresolved {
 }
 
 /* #endregion */
@@ -7495,7 +7493,10 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.outgoing-link-item:hover {
   -webkit-mask-position: 50% 50%;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100%;
-  background-color: var(--link-external-color);
+  mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" stroke="black" fill="none" stroke-width="1"><path d="M6.125,3.938L1.313,3.938L1.313,12.688L10.063,12.688L10.063,7.875M7.875,1.75L12.25,1.75L12.25,6.125M12.25,1.75L6.125,7.875"/></svg>');
+  mask-position: 50% 50%;
+  mask-repeat: no-repeat;
+  mask-size: 100%;  background-color: var(--link-external-color);
   background-image: none;
   content: "";
   display: inline-block;
@@ -7853,6 +7854,41 @@ body.theme-setting-overrideAdvancedTables {
     .nav-buttons-container
     .nav-action-button {
     margin-inline-end: 0.25em;
+  }
+}
+/* #endregion */
+/* #region   Community Plugin: Buttons */
+/*TODO: style setting */
+/*TODO: hover colors*/
+button.button-default:not(.clickable-icon):not(.dropdown-menu-item) {
+  padding: 0.125em 0.5em;
+  min-height: 0;
+  border: none;
+  box-shadow: var(--theme-shadow-control);
+  background-color: var(--theme-color-controlLowWeightBg);
+  color: var(--theme-color-controlText);
+  line-height: var(--line-height-tight);
+  min-height: 1.5rem;
+
+  &.red {
+    background-color: light-dark(var(--theme-color-redLightened), var(--theme-color-redDarkened)) !important;
+    color: light-dark(var(--theme-color-redDarkened), var(--theme-color-redLightened)) !important;
+  }
+  &.yellow {
+    background-color: light-dark(var(--theme-color-yellowLightened), var(--theme-color-yellowDarkened)) !important;
+    color: light-dark(var(--theme-color-yellowDarkened), var(--theme-color-yellowLightened)) !important;
+  }
+  &.green {
+    background-color: light-dark(var(--theme-color-greenLightened), var(--theme-color-greenDarkened)) !important;
+    color: light-dark(var(--theme-color-greenDarkened), var(--theme-color-greenLightened)) !important;
+  }
+  &.blue {
+    background-color: light-dark(var(--theme-color-blueLightened), var(--theme-color-blueDarkened)) !important;
+    color: light-dark(var(--theme-color-blueDarkened), var(--theme-color-blueLightened)) !important;
+  }
+  &.purple {
+    background-color: light-dark(var(--theme-color-purpleLightened), var(--theme-color-purpleDarkened)) !important;
+    color: light-dark(var(--theme-color-purpleDarkened), var(--theme-color-purpleLightened)) !important;
   }
 }
 /* #endregion */
@@ -9271,7 +9307,9 @@ body.theme-setting-overrideMapView {
     height: 10px;
     margin-top: -5px;
     -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
     -webkit-mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8L12 17L21 8"></path></svg>');
+    mask-image: url('data:image/svg+xml; utf8, <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8L12 17L21 8"></path></svg>');
     transition: transform 100ms ease-in-out;
     transform: rotate(-90deg);
   }
