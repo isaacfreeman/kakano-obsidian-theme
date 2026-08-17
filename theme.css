@@ -1197,9 +1197,9 @@ body {
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: var(--theme-color-lightenTransparent25);
   --theme-color-controlBg: var(--theme-color-baseLightened95);
-  --theme-color-controlLowWeightBg: var(--theme-color-lightenTransparent50);
+  --theme-color-controlLowWeightBg: var(--theme-color-baseLightened95);
   --theme-color-controlContentArea: var(--theme-color-base);
-  --theme-color-controlContentAreaHover: var(--theme-color-baseLightened80);
+  --theme-color-controlContentAreaHover: var(--theme-color-baseLightened95);
   --theme-color-controlUIHover: var(--theme-color-baseLightened60);
   --theme-color-controlUISelected: var(--theme-color-baseLightened80);
   --theme-color-controlSetBg: var(--theme-color-baseLightened80);
@@ -1445,7 +1445,7 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-contentItemBgActive: var(--theme-color-base);
   --theme-color-contentItemBgHover: rgb(0, 0, 0, 0.1);
   --theme-color-controlBg: var(--theme-color-baseDarkened25);
-  --theme-color-controlLowWeightBg: var(--theme-color-darkenTransparent25);
+  --theme-color-controlLowWeightBg: var(--theme-color-baseDarkened25);
   --theme-color-controlContentArea: var(--theme-color-baseLightened60);
   --theme-color-controlContentAreaHover: var(--theme-color-baseDarkened80);
   --theme-color-controlUIHover: var(--theme-color-baseDarkened70);
@@ -5990,6 +5990,7 @@ button.search-result-file-match-replace-button {
   border: none;
   box-shadow: var(--theme-shadow-control);
   background-color: var(--theme-color-controlLowWeightBg);
+  background-color: pink;
   color: var(--theme-color-controlText);
   font-size: var(--font-ui-smaller);
   line-height: var(--line-height-tight);
