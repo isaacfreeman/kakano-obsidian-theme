@@ -632,7 +632,7 @@ body {
     var(--theme-color-lightenTransparent50)
   );
   --code-normal: var(--text-normal);
-
+  --default-border-color: red;
   --divider-width: 0;
   --dropdown-background: var(--theme-color-controlBg);
   --embed-background: var(--theme-color-baseTransparent12);
@@ -2041,34 +2041,6 @@ body.theme-dark,
     }
 
   /* #endregion */
-  /* #region Tables */
-
-  .markdown-rendered th,
-  .markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n + 2) {
-    background: var(--theme-color-tableHeaderBg);
-  }
-  .cm-html-embed td,
-  .markdown-rendered td,
-  .cm-html-embed th,
-  .markdown-rendered th {
-    padding: 0.375em 0.75em;
-  }
-
-  .is-mobile
-    .cm-table-widget
-    .markdown-rendered
-    table:not(.calendar)
-    thead
-    tr
-    > th:last-child {
-    /* Make room for the edit button to not overlap. */
-    padding-inline-end: 2em;
-  }
-  .is-mobile .markdown-source-view .cm-table-widget .edit-block-button {
-    top: 0;
-    right: 0;
-  }
-  /* #endregion */
   /* #region Blocks and Callouts */
   .callout {
     /* Embeds and dataviews would normally have a background colour, but we skip it inside a callout because it can look messy. */
@@ -2342,6 +2314,53 @@ body.theme-dark,
     }
   /* #endregion */
 /* #endregion */
+/* Tables */
+
+.markdown-rendered th,
+.markdown-rendered table:not(.calendar) thead tr > th:nth-child(2n + 2) {
+  background: var(--theme-color-tableHeaderBg);
+}
+.cm-html-embed td,
+.markdown-rendered td,
+.cm-html-embed th,
+.markdown-rendered th {
+  padding: 0.375em 0.75em;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-row-btn, .markdown-source-view.mod-cm6 .cm-table-widget .table-col-btn {
+    --icon-size: var(--icon-s);
+    --icon-stroke: var(--icon-s-stroke-width);
+    position: absolute;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    height: var(--table-drag-handle-size);
+    width: var(--table-drag-handle-size);
+    background-color: var(--table-add-button-background);
+    border: var(--table-add-button-border-width) solid var(--table-add-button-border-color);
+    color: var(--text-faint);
+    transition: opacity 0s 0.1s;
+    opacity: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.is-mobile
+  .cm-table-widget
+  .markdown-rendered
+  table:not(.calendar)
+  thead
+  tr
+  > th:last-child {
+  /* Make room for the edit button to not overlap. */
+  padding-inline-end: 2em;
+}
+.is-mobile .markdown-source-view .cm-table-widget .edit-block-button {
+  top: 0;
+  right: 0;
+}
 /* #region Typography for markup and controls associated with user's text - src/typography_meta.css */
   /* Markdown formatting shown while editing e.g. ### for headings */
   .cm-formatting.cm-formatting-header {
@@ -5024,338 +5043,6 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 }
 /* #endregion */
 
-/* #region   Buttons */
-/* #region     Clickable icon buttons */
-.markdown-source-view.mod-cm6 .code-block-flair,
-.clickable-icon,
-.setting-item-control .clickable-icon,
-.mod-community-modal .modal-sidebar button.clickable-icon,
-.metadata-property-icon,
-.markdown-embed-link,
-.file-embed-link,
-.markdown-source-view.mod-cm6 .edit-block-button,
-.tasks-edit,
-.workspace-tab-header-tab-list .clickable-icon,
-.workspace-tab-header-new-tab .clickable-icon,
-.map-view-main
-  .mv-icon-button
-  .map-view-main
-  .leaflet-control-container
-  .leaflet-top.leaflet-right
-  a,
-  .bases-toolbar-menu-item .clickable-icon {
-  align-items: center;
-  background-color: transparent;
-  border-radius: var(--clickable-icon-radius);
-  border: none;
-  box-shadow: none;
-  color: var(--theme-color-control);
-  cursor: var(--cursor);
-  display: flex;
-  height: 2em;
-  justify-content: center;
-  min-height: var(--input-height);
-  min-width: var(--input-height);
-  opacity: var(--icon-opacity);
-  padding: 0.25rem;
-  text-decoration: none;
-  transition: opacity 0.15s ease-in-out;
-  width: auto;
-}
-
-.is-mobile .clickable-icon {
-  min-height: 44px;
-  min-width: 44px;
-}
-@media (hover: hover) {
-  .markdown-source-view.mod-cm6 .code-block-flair:hover,
-  .clickable-icon:hover,
-  .side-dock-actions .side-dock-ribbon-action.clickable-icon:hover,
-  .mod-community-modal .modal-sidebar button.clickable-icon:hover,
-  .metadata-property-icon:hover,
-  .markdown-embed-link:hover,
-  .file-embed-link:hover,
-  .markdown-source-view.mod-cm6 .edit-block-button:hover,
-  .tasks-edit:hover,
-  .map-view-main .mv-icon-button:hover,
-  .bases-toolbar-menu-item .clickable-icon:hover{
-    color: var(--theme-color-controlHover);
-    background-color: var(--background-modifier-hover);
-  }
-}
-.clickable-icon.is-active,
-.map-view-main .mv-icon-button.on {
-  opacity: var(--icon-opacity-hover);
-  color: var(--theme-color-controlLightweightActive);
-  background-color: var(--theme-color-interactiveActive);
-}
-@media (hover: hover) {
-  .clickable-icon.is-active:hover {
-    background-color: var(--background-modifier-hover);
-    color: var(--theme-color-controlHover);
-  }
-}
-/* #endregion */
-/* #region     Regular buttons */
-button:not(.clickable-icon):not(.dropdown-menu-item),
-button:not(.clickable-icon).mod-cta,
-.sync-history-load-more-button,
-.empty-state-action,
-.is-mobile .document-search .document-search-button,
-.is-mobile .document-replace .document-search-button,
-.style-settings-import-label,
-.style-settings-copy,
-.style-settings-download,
-.style-settings-import,
-.style-settings-export,
-.popover.hover-popover > .file-embed.mod-empty {
-  background-color: var(--theme-color-controlBg);
-  border: none;
-  border-radius: var(--button-radius);
-  box-shadow: var(--theme-shadow-control);
-  color: var(--theme-color-controlText);
-  padding: 0.25em 0.5em;
-  min-height: var(--input-height);
-  height: auto;
-  text-decoration: none;
-}
-@media (hover: hover) {
-  button:not(.clickable-icon):not(.dropdown-menu-item):hover,
-  button:not(.clickable-icon).mod-cta:hover,
-  .sync-history-load-more-button:hover,
-  .empty-state-action:hover,
-  .is-mobile .document-search .document-search-button:hover,
-  .is-mobile .document-replace .document-search-button:hover,
-  .style-settings-import-label:hover,
-  .style-settings-copy:hover,
-  .style-settings-download:hover,
-  .style-settings-import:hover,
-  .style-settings-export:hover,
-.popover.hover-popover > .file-embed.mod-empty:hover {
-    border: none;
-    background: var(--theme-color-controlBgHover);
-    color: var(--theme-color-controlTextHover);
-    text-decoration: none;
-  }
-}
-button:not(.clickable-icon):not(.dropdown-menu-item):focus,
-button:not(.clickable-icon).mod-cta:focus,
-.sync-history-load-more-button:focus,
-.empty-state-action:focus,
-.is-mobile .document-search .document-search-button:focus,
-.is-mobile .document-replace .document-search-button:focus,
-.style-settings-import-label:focus,
-.style-settings-copy:focus,
-.style-settings-download:focus,
-.style-settings-import:focus,
-.style-settings-export:focus,
-.popover.hover-popover > .file-embed.mod-empty:focus {
-  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
-}
-
-/* Buttons - regular but small */
-button.search-result-file-match-replace-button {
-  min-height: auto;
-}
-/* #endregion */
-/* #region     Lightweight buttons */
-.search-result-file-match-destination-file,
-.text-icon-button,
-.query-toolbar .query-toolbar-item.mod-views .text-icon-button {
-  border: none;
-  box-shadow: var(--theme-shadow-control);
-  background-color: var(--theme-color-controlLowWeightBg);
-  color: var(--theme-color-controlText);
-  font-size: var(--font-ui-smaller);
-  line-height: var(--line-height-tight);
-  min-height: 1.5rem;
-  padding: 0.25em 0.5em;
-}
-.search-result-file-match-destination-file:focus,
-.text-icon-button:focus,
-.query-toolbar .query-toolbar-item.mod-views .text-icon-button:focus {
-  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
-  outline: none;
-}
-.text-icon-button.is-active {
-  color: var(--theme-color-controlActive);
-  background-color: var(--theme-color-controlBgActive);
-
-  .text-button-icon {
-    color: var(--theme-color-controlActive);
-    background-color: var(--theme-color-controlBgActive);
-  }
-}
-.text-icon-button.has-active-menu {
-  color: var(--theme-color-controlHasActiveMenu);
-
-  .text-button-icon {
-    color: var(--theme-color-controlHasActiveMenu);
-  }
-}
-@media (hover: hover) {
-  .search-result-file-match:hover
-    .search-result-file-match-destination-file:hover,
-  .text-icon-button:hover,
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover {
-    border: none;
-    background-color: var(--theme-color-controlBgHover);
-    color: var(--theme-color-controlTextHover);
-
-    .text-button-icon {
-      color: var(--theme-color-controlTextHover);
-    }
-  }
-  .text-icon-button.is-active:hover,
-  .text-icon-button.has-active-menu:hover {
-    border: none;
-    background-color: var(--theme-color-controlBgHover);
-    color: var(--theme-color-controlTextHover);
-
-    .text-button-icon {
-      color: var(--theme-color-controlTextHover);
-    }
-  }
-  .search-result-file-match:hover
-    .search-result-file-match-destination-file:hover
-    .search-result-file-match-destination-file-icon {
-    color: var(--theme-color-controlTextHover);
-  }
-}
-/* #endregion */
-/* #endregion */
-/* #region   Close buttons */
-
-.mod-close,
-.document-search-close-button,
-.workspace-tab-header-inner-close-button,
-.slides-close-btn,
-.clickable-icon.kanban-plugin__search-cancel-button,
-.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
-.mobile-tab .close-button,
-.bases-toolbar-menu-container-header .close-icon,
-.clickable-icon.document-search-close-button,
-.modal-header-button {
-  background-color: transparent;
-  border-radius: 100%;
-  border: none;
-  color: var(--theme-color-control);
-  /* Above .modal-title */
-  z-index: 2;
-  width: var(--theme-length-closeButtonWidth);
-  height: var(--theme-length-closeButtonWidth);
-  min-width: var(--theme-length-closeButtonWidth);
-  min-height: var(--theme-length-closeButtonWidth);
-  display: flex;
-  flex-shrink: 0;
-  align-content: center;
-  justify-content: center;
-  padding: 0.125em;
-
-  .svg-icon {
-    stroke: var(--theme-color-control);
-  }
-}
-@media (hover: hover) {
-  .mod-close:hover,
-  .document-search-close-button:hover,
-  .workspace-tab-header-inner-close-button:hover,
-  .workspace-tab-header.is-active
-    .workspace-tab-header-inner-close-button:hover,
-  .workspace-tab-header-inner-close-button:hover,
-  .slides-close-btn:hover,
-  .clickable-icon.kanban-plugin__search-cancel-button:hover,
-  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
-  .multi-select-pill-remove-button:hover,
-  .mobile-tab .close-button:hover,
-  .bases-toolbar-menu-container-header .close-icon:hover,
-  .clickable-icon.document-search-close-button:hover,
-  .modal-header-button:hover {
-    color: var(--theme-color-controlHover);
-    background-color: var(--theme-color-navigationButtonBgHover);
-
-    .svg-icon {
-      stroke: var(--theme-color-controlHover);
-    }
-  }
-}
-
-/* close buttons that use a text cross instead of an SVG */
-.document-search-close-button,
-.is-mobile .document-search .document-search-close-button,
-.is-mobile .document-replace .document-search-close-button {
-  padding: var(--size-2-1);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-content: center;
-  --icon-size: var(--icon-s);
-  --icon-stroke: var(--icon-s-stroke-width);
-  text-align: center;
-  justify-content: center;
-  line-height: var(--theme-length-closeButtonWidth);
-}
-.document-search-close-button:before {
-  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
-  margin-top: -3px;
-  line-height: var(--theme-length-closeButtonWidth);
-  width: var(--theme-length-closeButtonWidth);
-  height: var(--theme-length-closeButtonWidth);
-}
-/* #endregion */
-/* #region   Navigation buttons */
-/* Buttons that don't change the satete of content, just what we're currently looking at. Styled similarly to close buttons. */
-
-.modal-setting-back-button-icon,
-.view-header-nav-buttons > .clickable-icon,
-.mod-root .workspace-tab-header-status-icon,
-.mobile-tab .mobile-tab-pin,
-.map-view-graph-controls .minimize-button.svelte-1sl5jax {
-  color: var(--theme-color-control);
-  border: none;
-  border-radius: 100%;
-  background-color: transparent;
-  /* Above .modal-title */
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  cursor: default;
-
-  .svg-icon {
-    stroke: var(--theme-color-control);
-    width: 1rem;
-    height: 1rem;
-  }
-}
-.mobile-tab .mobile-tab-pin,
-.map-view-graph-controls .minimize-button.svelte-1sl5jax {
-  width: var(--theme-length-closeButtonWidth);
-  height: var(--theme-length-closeButtonWidth);
-}
-@media (hover: hover) {
-  .modal-setting-back-button-icon:hover,
-  .view-header-nav-buttons > .clickable-icon:hover,
-  .mod-root .workspace-tab-header-status-icon:hover,
-  .mobile-tab .mobile-tab-pin:hover,
-  .map-view-graph-controls .minimize-button.svelte-1sl5jax:hover {
-    color: var(--theme-color-control);
-    background-color: var(--theme-color-navigationButtonBgHover);
-    .svg-icon {
-      stroke: var(--theme-color-controlHover);
-    }
-  }
-  .mod-root .workspace-tab-header-status-icon .svg-icon {
-    width: 80%;
-  }
-}
-/* #endregion */
-
-
 /* #region   Lightweight form controls */
 /* Form controls that are rendered as text until they have focus */
 
@@ -6160,6 +5847,337 @@ body .metadata-property[data-property-key="tags"] .multi-select-pill,
 }
 
 /* #endregion */
+/* #endregion */
+
+/* #region   Buttons */
+/* #region     Clickable icon buttons */
+.markdown-source-view.mod-cm6 .code-block-flair,
+.clickable-icon,
+.setting-item-control .clickable-icon,
+.mod-community-modal .modal-sidebar button.clickable-icon,
+.metadata-property-icon,
+.markdown-embed-link,
+.file-embed-link,
+.markdown-source-view.mod-cm6 .edit-block-button,
+.tasks-edit,
+.workspace-tab-header-tab-list .clickable-icon,
+.workspace-tab-header-new-tab .clickable-icon,
+.map-view-main
+  .mv-icon-button
+  .map-view-main
+  .leaflet-control-container
+  .leaflet-top.leaflet-right
+  a,
+  .bases-toolbar-menu-item .clickable-icon {
+  align-items: center;
+  background-color: transparent;
+  border-radius: var(--clickable-icon-radius);
+  border: none;
+  box-shadow: none;
+  color: var(--theme-color-control);
+  cursor: var(--cursor);
+  display: flex;
+  height: 2em;
+  justify-content: center;
+  min-height: var(--input-height);
+  min-width: var(--input-height);
+  opacity: var(--icon-opacity);
+  padding: 0.25rem;
+  text-decoration: none;
+  transition: opacity 0.15s ease-in-out;
+  width: auto;
+}
+
+.is-mobile .clickable-icon {
+  min-height: 44px;
+  min-width: 44px;
+}
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .code-block-flair:hover,
+  .clickable-icon:hover,
+  .side-dock-actions .side-dock-ribbon-action.clickable-icon:hover,
+  .mod-community-modal .modal-sidebar button.clickable-icon:hover,
+  .metadata-property-icon:hover,
+  .markdown-embed-link:hover,
+  .file-embed-link:hover,
+  .markdown-source-view.mod-cm6 .edit-block-button:hover,
+  .tasks-edit:hover,
+  .map-view-main .mv-icon-button:hover,
+  .bases-toolbar-menu-item .clickable-icon:hover{
+    color: var(--theme-color-controlHover);
+    background-color: var(--background-modifier-hover);
+  }
+}
+.clickable-icon.is-active,
+.map-view-main .mv-icon-button.on {
+  opacity: var(--icon-opacity-hover);
+  color: var(--theme-color-controlLightweightActive);
+  background-color: var(--theme-color-interactiveActive);
+}
+@media (hover: hover) {
+  .clickable-icon.is-active:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--theme-color-controlHover);
+  }
+}
+/* #endregion */
+/* #region     Regular buttons */
+button:not(.clickable-icon):not(.dropdown-menu-item):not(.color-picker__button),
+button:not(.clickable-icon).mod-cta,
+.sync-history-load-more-button,
+.empty-state-action,
+.is-mobile .document-search .document-search-button,
+.is-mobile .document-replace .document-search-button,
+.style-settings-import-label,
+.style-settings-copy,
+.style-settings-download,
+.style-settings-import,
+.style-settings-export,
+.popover.hover-popover > .file-embed.mod-empty {
+  background-color: var(--theme-color-controlBg);
+  border: none;
+  border-radius: var(--button-radius);
+  box-shadow: var(--theme-shadow-control);
+  color: var(--theme-color-controlText);
+  padding: 0.25em 0.5em;
+  min-height: var(--input-height);
+  height: auto;
+  text-decoration: none;
+}
+@media (hover: hover) {
+  button:not(.clickable-icon):not(.dropdown-menu-item):not(.color-picker__button):hover,
+  button:not(.clickable-icon).mod-cta:hover,
+  .sync-history-load-more-button:hover,
+  .empty-state-action:hover,
+  .is-mobile .document-search .document-search-button:hover,
+  .is-mobile .document-replace .document-search-button:hover,
+  .style-settings-import-label:hover,
+  .style-settings-copy:hover,
+  .style-settings-download:hover,
+  .style-settings-import:hover,
+  .style-settings-export:hover,
+.popover.hover-popover > .file-embed.mod-empty:hover {
+    border: none;
+    background: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlTextHover);
+    text-decoration: none;
+  }
+}
+button:not(.clickable-icon):not(.dropdown-menu-item):focus,
+button:not(.clickable-icon).mod-cta:focus,
+.sync-history-load-more-button:focus,
+.empty-state-action:focus,
+.is-mobile .document-search .document-search-button:focus,
+.is-mobile .document-replace .document-search-button:focus,
+.style-settings-import-label:focus,
+.style-settings-copy:focus,
+.style-settings-download:focus,
+.style-settings-import:focus,
+.style-settings-export:focus,
+.popover.hover-popover > .file-embed.mod-empty:focus {
+  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+}
+
+/* Buttons - regular but small */
+button.search-result-file-match-replace-button {
+  min-height: auto;
+}
+/* #endregion */
+/* #region     Lightweight buttons */
+.search-result-file-match-destination-file,
+.text-icon-button,
+.query-toolbar .query-toolbar-item.mod-views .text-icon-button {
+  border: none;
+  box-shadow: var(--theme-shadow-control);
+  background-color: var(--theme-color-controlLowWeightBg);
+  color: var(--theme-color-controlText);
+  font-size: var(--font-ui-smaller);
+  line-height: var(--line-height-tight);
+  min-height: 1.5rem;
+  padding: 0.25em 0.5em;
+}
+.search-result-file-match-destination-file:focus,
+.text-icon-button:focus,
+.query-toolbar .query-toolbar-item.mod-views .text-icon-button:focus {
+  box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
+  outline: none;
+}
+.text-icon-button.is-active {
+  color: var(--theme-color-controlActive);
+  background-color: var(--theme-color-controlBgActive);
+
+  .text-button-icon {
+    color: var(--theme-color-controlActive);
+    background-color: var(--theme-color-controlBgActive);
+  }
+}
+.text-icon-button.has-active-menu {
+  color: var(--theme-color-controlHasActiveMenu);
+
+  .text-button-icon {
+    color: var(--theme-color-controlHasActiveMenu);
+  }
+}
+@media (hover: hover) {
+  .search-result-file-match:hover
+    .search-result-file-match-destination-file:hover,
+  .text-icon-button:hover,
+  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover {
+    border: none;
+    background-color: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlTextHover);
+
+    .text-button-icon {
+      color: var(--theme-color-controlTextHover);
+    }
+  }
+  .text-icon-button.is-active:hover,
+  .text-icon-button.has-active-menu:hover {
+    border: none;
+    background-color: var(--theme-color-controlBgHover);
+    color: var(--theme-color-controlTextHover);
+
+    .text-button-icon {
+      color: var(--theme-color-controlTextHover);
+    }
+  }
+  .search-result-file-match:hover
+    .search-result-file-match-destination-file:hover
+    .search-result-file-match-destination-file-icon {
+    color: var(--theme-color-controlTextHover);
+  }
+}
+/* #endregion */
+/* #endregion */
+/* #region   Close buttons */
+
+.mod-close,
+.document-search-close-button,
+.workspace-tab-header-inner-close-button,
+.slides-close-btn,
+.clickable-icon.kanban-plugin__search-cancel-button,
+.clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"],
+.mobile-tab .close-button,
+.bases-toolbar-menu-container-header .close-icon,
+.clickable-icon.document-search-close-button,
+.modal-header-button {
+  background-color: transparent;
+  border-radius: 100%;
+  border: none;
+  color: var(--theme-color-control);
+  /* Above .modal-title */
+  z-index: 2;
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
+  min-width: var(--theme-length-closeButtonWidth);
+  min-height: var(--theme-length-closeButtonWidth);
+  display: flex;
+  flex-shrink: 0;
+  align-content: center;
+  justify-content: center;
+  padding: 0.125em;
+
+  .svg-icon {
+    stroke: var(--theme-color-control);
+  }
+}
+@media (hover: hover) {
+  .mod-close:hover,
+  .document-search-close-button:hover,
+  .workspace-tab-header-inner-close-button:hover,
+  .workspace-tab-header.is-active
+    .workspace-tab-header-inner-close-button:hover,
+  .workspace-tab-header-inner-close-button:hover,
+  .slides-close-btn:hover,
+  .clickable-icon.kanban-plugin__search-cancel-button:hover,
+  .clickable-icon.kanban-plugin__lane-settings-button[aria-label="Close"]:hover,
+  .multi-select-pill-remove-button:hover,
+  .mobile-tab .close-button:hover,
+  .bases-toolbar-menu-container-header .close-icon:hover,
+  .clickable-icon.document-search-close-button:hover,
+  .modal-header-button:hover {
+    color: var(--theme-color-controlHover);
+    background-color: var(--theme-color-navigationButtonBgHover);
+
+    .svg-icon {
+      stroke: var(--theme-color-controlHover);
+    }
+  }
+}
+
+/* close buttons that use a text cross instead of an SVG */
+.document-search-close-button,
+.is-mobile .document-search .document-search-close-button,
+.is-mobile .document-replace .document-search-close-button {
+  padding: var(--size-2-1);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-content: center;
+  --icon-size: var(--icon-s);
+  --icon-stroke: var(--icon-s-stroke-width);
+  text-align: center;
+  justify-content: center;
+  line-height: var(--theme-length-closeButtonWidth);
+}
+.document-search-close-button:before {
+  /* This uses a text cross instead of an SVG. Hack for visual alignment. */
+  margin-top: -3px;
+  line-height: var(--theme-length-closeButtonWidth);
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
+}
+/* #endregion */
+/* #region   Navigation buttons */
+/* Buttons that don't change the satete of content, just what we're currently looking at. Styled similarly to close buttons. */
+
+.modal-setting-back-button-icon,
+.view-header-nav-buttons > .clickable-icon,
+.mod-root .workspace-tab-header-status-icon,
+.mobile-tab .mobile-tab-pin,
+.map-view-graph-controls .minimize-button.svelte-1sl5jax {
+  color: var(--theme-color-control);
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
+  /* Above .modal-title */
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  cursor: default;
+
+  .svg-icon {
+    stroke: var(--theme-color-control);
+    width: 1rem;
+    height: 1rem;
+  }
+}
+.mobile-tab .mobile-tab-pin,
+.map-view-graph-controls .minimize-button.svelte-1sl5jax {
+  width: var(--theme-length-closeButtonWidth);
+  height: var(--theme-length-closeButtonWidth);
+}
+@media (hover: hover) {
+  .modal-setting-back-button-icon:hover,
+  .view-header-nav-buttons > .clickable-icon:hover,
+  .mod-root .workspace-tab-header-status-icon:hover,
+  .mobile-tab .mobile-tab-pin:hover,
+  .map-view-graph-controls .minimize-button.svelte-1sl5jax:hover {
+    color: var(--theme-color-control);
+    background-color: var(--theme-color-navigationButtonBgHover);
+    .svg-icon {
+      stroke: var(--theme-color-controlHover);
+    }
+  }
+  .mod-root .workspace-tab-header-status-icon .svg-icon {
+    width: 80%;
+  }
+}
 /* #endregion */
 /* #region Modals */
 
@@ -8681,6 +8699,22 @@ body.theme-setting-overrideExcalidraw {
     .excalidraw-view .excalidraw .zoom-button:hover {
       background-color: var(--background-modifier-hover) !important; /* Ugh. */
     }
+  }
+
+  .excalidraw .color-picker__button {
+    border-radius: var(--clickable-icon-radius);
+    border: none;
+    box-shadow: none;
+    cursor: var(--cursor);
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    text-decoration: none;
+    transition: opacity 0.15s ease-in-out;
+  }
+
+  .excalidraw .color-picker__top-picks {
+    gap: 0.25rem;
   }
 
   /* Match style of small notice */
