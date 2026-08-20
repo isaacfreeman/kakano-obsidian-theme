@@ -543,6 +543,11 @@ settings:
     type: class-toggle
     default: true
   -
+    id: theme-setting-overrideButtons
+    title: 'Buttons'
+    type: class-toggle
+    default: true
+  -
     id: theme-setting-overrideCalendar
     title: 'Calendar'
     type: class-toggle
@@ -5990,7 +5995,6 @@ button.search-result-file-match-replace-button {
   border: none;
   box-shadow: var(--theme-shadow-control);
   background-color: var(--theme-color-controlLowWeightBg);
-  background-color: pink;
   color: var(--theme-color-controlText);
   font-size: var(--font-ui-smaller);
   line-height: var(--line-height-tight);
@@ -7873,41 +7877,6 @@ body.theme-setting-overrideAdvancedTables {
     .nav-buttons-container
     .nav-action-button {
     margin-inline-end: 0.25em;
-  }
-}
-/* #endregion */
-/* #region   Community Plugin: Buttons */
-/*TODO: style setting */
-/*TODO: hover colors*/
-button.button-default:not(.clickable-icon):not(.dropdown-menu-item) {
-  padding: 0.125em 0.5em;
-  min-height: 0;
-  border: none;
-  box-shadow: var(--theme-shadow-control);
-  background-color: var(--theme-color-controlLowWeightBg);
-  color: var(--theme-color-controlText);
-  line-height: var(--line-height-tight);
-  min-height: 1.5rem;
-
-  &.red {
-    background-color: light-dark(var(--theme-color-redLightened), var(--theme-color-redDarkened)) !important;
-    color: light-dark(var(--theme-color-redDarkened), var(--theme-color-redLightened)) !important;
-  }
-  &.yellow {
-    background-color: light-dark(var(--theme-color-yellowLightened), var(--theme-color-yellowDarkened)) !important;
-    color: light-dark(var(--theme-color-yellowDarkened), var(--theme-color-yellowLightened)) !important;
-  }
-  &.green {
-    background-color: light-dark(var(--theme-color-greenLightened), var(--theme-color-greenDarkened)) !important;
-    color: light-dark(var(--theme-color-greenDarkened), var(--theme-color-greenLightened)) !important;
-  }
-  &.blue {
-    background-color: light-dark(var(--theme-color-blueLightened), var(--theme-color-blueDarkened)) !important;
-    color: light-dark(var(--theme-color-blueDarkened), var(--theme-color-blueLightened)) !important;
-  }
-  &.purple {
-    background-color: light-dark(var(--theme-color-purpleLightened), var(--theme-color-purpleDarkened)) !important;
-    color: light-dark(var(--theme-color-purpleDarkened), var(--theme-color-purpleLightened)) !important;
   }
 }
 /* #endregion */
@@ -9887,6 +9856,69 @@ body.theme-setting-overridePluginUpdateTracker {
   }
 }
 /* #endregion */
+body.theme-setting-overrideButtons {
+  .cm-contentContainer, .markdown-reading-view {
+    button.button-default:not(.clickable-icon):not(.dropdown-menu-item) {
+      padding: 0.125em 0.5em;
+      min-height: 0;
+      border: none;
+      box-shadow: var(--theme-shadow-control);
+      background-color: var(--theme-color-controlLowWeightBg);
+      color: var(--theme-color-controlText);
+      line-height: var(--line-height-tight);
+      min-height: 1.5rem;
+
+      &.red {
+        background-color: light-dark(var(--theme-color-redLightened), var(--theme-color-redDarkened)) !important;
+        color: light-dark(var(--theme-color-redDarkened), var(--theme-color-redLightened)) !important;
+      }
+      &.yellow {
+        background-color: light-dark(var(--theme-color-yellowLightened), var(--theme-color-yellowDarkened)) !important;
+        color: light-dark(var(--theme-color-yellowDarkened), var(--theme-color-yellowLightened)) !important;
+      }
+      &.green {
+        background-color: light-dark(var(--theme-color-greenLightened), var(--theme-color-greenDarkened)) !important;
+        color: light-dark(var(--theme-color-greenDarkened), var(--theme-color-greenLightened)) !important;
+      }
+      &.blue {
+        background-color: light-dark(var(--theme-color-blueLightened), var(--theme-color-blueDarkened)) !important;
+        color: light-dark(var(--theme-color-blueDarkened), var(--theme-color-blueLightened)) !important;
+      }
+      &.purple {
+        background-color: light-dark(var(--theme-color-purpleLightened), var(--theme-color-purpleDarkened)) !important;
+        color: light-dark(var(--theme-color-purpleDarkened), var(--theme-color-purpleLightened)) !important;
+      }
+    }
+
+    @media (hover: hover) {
+      button.button-default:not(.clickable-icon):not(.dropdown-menu-item):hover {
+        background-color: var(--theme-color-controlBgHover);
+        color: var(--theme-color-controlTextHover);
+
+        &.red {
+          background-color: light-dark(var(--theme-color-redDarkened), var(--theme-color-redLightened)) !important;
+          color: light-dark(var(--theme-color-redLightened), var(--theme-color-redDarkened)) !important;
+        }
+        &.yellow {
+          background-color: light-dark(var(--theme-color-yellowDarkened), var(--theme-color-yellowLightened)) !important;
+          color: light-dark(var(--theme-color-yellowLightened), var(--theme-color-yellowDarkened)) !important;
+        }
+        &.green {
+          background-color: light-dark(var(--theme-color-greenDarkened), var(--theme-color-greenLightened)) !important;
+          color: light-dark(var(--theme-color-greenLightened), var(--theme-color-greenDarkened)) !important;
+        }
+        &.blue {
+          background-color: light-dark(var(--theme-color-blueDarkened), var(--theme-color-blueLightened)) !important;
+          color: light-dark(var(--theme-color-blueLightened), var(--theme-color-blueDarkened)) !important;
+        }
+        &.purple {
+          background-color: light-dark(var(--theme-color-purpleDarkened), var(--theme-color-purpleLightened)) !important;
+          color: light-dark(var(--theme-color-purpleLightened), var(--theme-color-purpleDarkened)) !important;
+        }
+      }
+    }
+  }
+}
 /* #region Dev stuff */
 
 /* Show border of content area clearly */

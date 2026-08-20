@@ -259,6 +259,7 @@ Kakano has specific styling for the following plugins:
 - Audio recorder
 - Backlinks
 - Bookmarks
+- Buttons
 - Canvas
 - Command Palette
 - Files
