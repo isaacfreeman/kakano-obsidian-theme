@@ -22,6 +22,7 @@ core:
 - backlink
 - bases
 - bookmarks
+- buttons
 - command-palette
 - daily-notes
 - file-explorer
@@ -4468,11 +4469,6 @@ body.mod-macos.is-frameless.is-hidden-frameless {
       }
     }
   }
-  .mod-community-modal {
-    .community-modal-controls {
-      padding-left: 2.5rem;
-    }
-  }
 }
 /* #endregion */
 /* #endregion */
@@ -6365,12 +6361,26 @@ button.search-result-file-match-replace-button {
 .mod-community-modal {
   .modal-sidebar {
     padding: 0;
+    .community-modal-search {
+      padding: 0;
+      flex-grow: 1;
+      max-width: none;
+    }
   }
   .community-modal-controls {
     background: var(--theme-color-settingsBg);
-    padding: 1em 1.5em 1em 1.5em;
+    padding: 1em 1.5em 0.5em 1.5em;
     box-shadow: var(--shadow-s);
     z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0 1rem;
+    align-items: center;
+
+    .setting-item {
+      align-items: center;
+    }
   }
   .modal-close-button {
     z-index: 2;
@@ -6401,9 +6411,11 @@ button.search-result-file-match-replace-button {
   padding-inline-start: 2em;
   float: inline-end;
 }
+
 .community-modal-search-summary {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 .community-modal-details {
   border: none;
