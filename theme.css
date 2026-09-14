@@ -2279,7 +2279,7 @@ body.theme-dark,
     /* #endregion */
   /* #region Invalid frontmatter */
     .cm-line:has(.cm-hmd-frontmatter .is-invalid) {
-      background-color: rgba(var(--callout-error), 0.1);
+      background-color: rgb(from var(--callout-error) r g b / 0.1);
     }
     .metadata-error-container {
       background: none;
@@ -4702,7 +4702,7 @@ body.mod-windows {
       width: 100%;
 
       &.mod-error {
-        background-color: rgba(var(--callout-error), 0.1);
+        background-color: rgb(from var(--callout-error) r g b / 0.1);
       }
     }
     body:not(.is-mobile) .mod-root .markdown-reading-view .metadata-container {
@@ -9935,7 +9935,7 @@ body.theme-setting-overrideButtons {
 
 /* Show border of content area clearly */
 /* .cm-contentContainer > .cm-content {
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgb(255, 0, 0, 0.1);
 } */
 
 /* #endregion */
