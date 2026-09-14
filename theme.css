@@ -716,7 +716,7 @@ body {
   --tab-text-color-focused-active-current: var(--text-normal);
   --tag-weight: 400;
   --text-on-accent: var(--theme-color-baseLightened95);
-  --text-muted: color-mix(in srgb, var(--text-normal), transparent 30%);
+  --text-muted: color-mix(in oklab, var(--text-normal), transparent 30%);
   --titlebar-background-focused: transparent;
   --titlebar-background: transparent;
   --vault-profile-color-hover: var(--theme-color-controlHover);
@@ -904,83 +904,83 @@ body.css-settings-manager.theme-setting-baseColorPreset-kiwikiwi {
 
 body {
   --theme-color-baseLightened95: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.95)
   );
   --theme-color-baseLightened85: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.85)
   );
   --theme-color-baseLightened80: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.8)
   );
   --theme-color-baseLightened70: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.7)
   );
   --theme-color-baseLightened60: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.6)
   );
   --theme-color-baseLightened40: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.4)
   );
   --theme-color-baseLightened25: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.25)
   );
   --theme-color-baseLightened12: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.125)
   );
 
   --theme-color-baseDarkened12: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.125)
   );
   --theme-color-baseDarkened25: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.25)
   );
   --theme-color-baseDarkened40: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.4)
   );
   --theme-color-baseDarkened60: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.6)
   );
   --theme-color-baseDarkened70: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.7)
   );
   --theme-color-baseDarkened80: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.8)
   );
   --theme-color-baseDarkened85: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.85)
   );
   --theme-color-baseDarkened90: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.9)
   );
@@ -1319,34 +1319,34 @@ body {
   At 1, the top is white, bottom is base color
   */
   --theme-color-gradientTop: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * (0.5 + 0.5 * var(--theme-value-gradientContrast)))
   );
   --theme-color-gradientBottom: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * (0.5 - 0.5 * var(--theme-value-gradientContrast)))
   );
   --theme-color-gradientDarkenedTop: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * (0.5 - 0.25 * var(--theme-value-gradientContrast)))
   );
   --theme-color-gradientDarkenedBottom: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * (0.5 - 1.25 * var(--theme-value-gradientContrast)))
   );
 }
 body.theme-light.theme-setting-customGradient {
   --theme-color-gradientTop: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-customGradientBaseTop),
     white calc(100% * (0.5 + 0.5 * var(--theme-value-gradientContrast)))
   );
   --theme-color-gradientBottom: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-customGradientBaseBottom),
     white calc(100% * (0.5 - 0.5 * var(--theme-value-gradientContrast)))
   );
@@ -1363,7 +1363,7 @@ body.theme-light.theme-setting-customGradient {
 }
 .theme-light.theme-setting-lightModeNoteBgNearWhite {
   --background-primary: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     white calc(100% * 0.97)
   );
@@ -1431,7 +1431,7 @@ body.theme-light.theme-setting-customGradient {
   /* Background for content area */
   /* This may be overridden below by the theme-value-darkModeNoteBg style setting. */
   --background-primary: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * 0.95)
   );
@@ -1447,9 +1447,9 @@ body.theme-light.theme-setting-customGradient {
   --theme-color-communityItemBgActive: var(--theme-color-base);
   --theme-color-communityItemBgHover: var(--theme-color-baseDarkened70);
   --theme-color-communityItemBgSelected: var(--theme-color-baseDarkened12);
-  --theme-color-contentItemBg: rgb(0, 0, 0, 0.2);
+  --theme-color-contentItemBg: oklab(0% 0 0 / 0.2);
   --theme-color-contentItemBgActive: var(--theme-color-base);
-  --theme-color-contentItemBgHover: rgb(0, 0, 0, 0.1);
+  --theme-color-contentItemBgHover: oklab(0% 0 0 / 0.1);
   --theme-color-controlBg: var(--theme-color-baseDarkened25);
   --theme-color-controlLowWeightBg: var(--theme-color-baseDarkened25);
   --theme-color-controlContentArea: var(--theme-color-baseLightened60);
@@ -1567,24 +1567,24 @@ body.theme-light.theme-setting-customGradient {
   At 1, the top is base color, bottom pure black
   */
   --theme-color-gradientTop: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * (0.7 - 0.5 * var(--theme-value-gradientContrast)))
   );
   --theme-color-gradientBottom: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-base),
     black calc(100% * (0.7 + 0.5 * var(--theme-value-gradientContrast)))
   );
 }
 body.theme-dark.theme-setting-customGradient {
   --theme-color-gradientTop: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-customGradientBaseTop),
     black calc(100% * (0.7 - 0.5 * var(--theme-value-gradientContrast)))
   );
   --theme-color-gradientBottom: color-mix(
-    in srgb,
+    in oklab,
     var(--theme-color-customGradientBaseBottom),
     black calc(100% * (0.7 + 0.5 * var(--theme-value-gradientContrast)))
   );
@@ -1661,34 +1661,34 @@ body.theme-dark,
 .theme-dark .theme-light {
   --input-shadow: var(--theme-shadow-control);
   --shadow-l: 0 0 0.2rem
-      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
+      color-mix(in oklab, var(--theme-color-shadow) 2%, transparent),
     0 0.2rem 0.4rem
-      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+      color-mix(in oklab, var(--theme-color-shadow) 4%, transparent),
     0 0.4rem 1.2rem
-      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
-    0 1.2rem 2rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
-    0 2rem 4rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
+      color-mix(in oklab, var(--theme-color-shadow) 6%, transparent),
+      0 1.2rem 2rem color-mix(in oklab, var(--theme-color-shadow) 8%, transparent),
+      0 2rem 4rem color-mix(in oklab, var(--theme-color-shadow) 10%, transparent);
   --shadow-s: 0 0 0.05rem
-      color-mix(in srgb, var(--theme-color-shadow) 2%, transparent),
+      color-mix(in oklab, var(--theme-color-shadow) 2%, transparent),
     0 0.05rem 0.1rem
-      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
+      color-mix(in oklab, var(--theme-color-shadow) 4%, transparent),
     0 0.1rem 0.3rem
-      color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
+      color-mix(in oklab, var(--theme-color-shadow) 6%, transparent),
     0 0.3rem 0.5rem
-      color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
-    0 0.5rem 1rem color-mix(in srgb, var(--theme-color-shadow) 10%, transparent);
+      color-mix(in oklab, var(--theme-color-shadow) 8%, transparent),
+      0 0.5rem 1rem color-mix(in oklab, var(--theme-color-shadow) 10%, transparent);
   --theme-shadow-indent: 0 0 0.2rem
-      color-mix(in srgb, var(--theme-color-shadow) 3%, transparent),
-    0 0 0.2rem color-mix(in srgb, var(--theme-color-shadow) 6%, transparent),
-    0 0 0.4rem color-mix(in srgb, var(--theme-color-shadow) 9%, transparent),
-    0 0 1.2rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
-    0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 15%, transparent);
+      color-mix(in oklab, var(--theme-color-shadow) 3%, transparent),
+      0 0 0.2rem color-mix(in oklab, var(--theme-color-shadow) 6%, transparent),
+      0 0 0.4rem color-mix(in oklab, var(--theme-color-shadow) 9%, transparent),
+      0 0 1.2rem color-mix(in oklab, var(--theme-color-shadow) 12%, transparent),
+      0 0 2rem color-mix(in oklab, var(--theme-color-shadow) 15%, transparent);
   --theme-shadow-indent-small: 0 0 0.05rem
-      color-mix(in srgb, var(--theme-color-shadow) 4%, transparent),
-    0 0 0.2rem color-mix(in srgb, var(--theme-color-shadow) 8%, transparent),
-    0 0 0.6rem color-mix(in srgb, var(--theme-color-shadow) 12%, transparent),
-    0 0 1rem color-mix(in srgb, var(--theme-color-shadow) 16%, transparent),
-    0 0 2rem color-mix(in srgb, var(--theme-color-shadow) 20%, transparent);}
+      color-mix(in oklab, var(--theme-color-shadow) 4%, transparent),
+      0 0 0.2rem color-mix(in oklab, var(--theme-color-shadow) 8%, transparent),
+      0 0 0.6rem color-mix(in oklab, var(--theme-color-shadow) 12%, transparent),
+      0 0 1rem color-mix(in oklab, var(--theme-color-shadow) 16%, transparent),
+      0 0 2rem color-mix(in oklab, var(--theme-color-shadow) 20%, transparent);}
 /* #endregion */
 /* #endregion */
 /* #endregion */
@@ -2557,11 +2557,6 @@ body.theme-dark,
         top: 0.5rem;
         left: 1rem;
       }
-    }
-    .markdown-embed .markdown-embed-content {
-      height: fit-content;
-      max-height: var(--embed-max-height);
-      overflow: auto;
     }
     .markdown-source-view.mod-cm6
       .cm-content
@@ -5168,7 +5163,7 @@ textarea::placeholder {
 input.document-search-input.mod-no-match,
 input.document-replace-input.mod-no-match {
   background-color: color-mix(
-    in srgb,
+    in oklab,
     var(--background-input),
     var(--background-modifier-error) 50%
   );
@@ -9935,7 +9930,7 @@ body.theme-setting-overrideButtons {
 
 /* Show border of content area clearly */
 /* .cm-contentContainer > .cm-content {
-  background-color: rgb(255, 0, 0, 0.1);
+  background-color: oklab(62.8% 0.225 0.126 / 0.1);
 } */
 
 /* #endregion */
