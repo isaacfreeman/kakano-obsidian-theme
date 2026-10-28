@@ -657,6 +657,9 @@ body {
   --font-ui-smaller: 0.8rem;
   --header-height: calc(var(--icon-size) + 1rem);
   --heading-spacing: 0.67em;
+  --hotkey-font: var(--font-interface);
+  --hotkey-background: transparent;
+  --hotkey-radius: var(--radius-s);
   --input-border-width: 2px;
   --list-marker-color: var(--text-normal);
   --list-bullet-size: 0.25em;
@@ -5023,14 +5026,16 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 
 .suggestion-hotkey,
 .setting-hotkey,
-.prompt-instruction-command {
-  background: transparent;
+.prompt-instruction-command,
+.empty-state-hotkey {
   border: solid 1px var(--theme-color-hotkey);
   color: var(--theme-color-hotkey);
   font-size: var(--font-ui-smaller);
-  font-family: var(--font-interface);
   padding: 2px 6px;
   border-radius: var(--radius-s);
+  white-space: nowrap;
+  background-color: var(--hotkey-background);
+  border-radius: var(--hotkey-radius);
 }
 .suggestion-item.is-selected .suggestion-hotkey {
   border-color: var(--theme-color-textSelected);
@@ -5984,10 +5989,15 @@ button.search-result-file-match-replace-button {
 }
 /* #endregion */
 /* #region     Lightweight buttons */
+
+/* Note that I override .text-icon-button.mod-pill, as it's not a semantic class. There's no explanation why some buttons are pills, so I consider it an inconsistency to remove. */
 .search-result-file-match-destination-file,
 .text-icon-button,
+.text-icon-button.mod-pill,
+.empty-state-action-list>.text-icon-button.mod-pill,
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button {
   border: none;
+  border-radius: var(--button-radius);
   box-shadow: var(--theme-shadow-control);
   background-color: var(--theme-color-controlLowWeightBg);
   color: var(--theme-color-controlText);
@@ -5996,8 +6006,11 @@ button.search-result-file-match-replace-button {
   min-height: 1.5rem;
   padding: 0.25em 0.5em;
 }
+
 .search-result-file-match-destination-file:focus,
 .text-icon-button:focus,
+.text-icon-button.mod-pill:focus,
+.empty-state-action-list>.text-icon-button.mod-pill:focus,
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button:focus {
   box-shadow: 0 0 0 3px var(--background-modifier-border-focus);
   outline: none;
@@ -6022,6 +6035,8 @@ button.search-result-file-match-replace-button {
   .search-result-file-match:hover
     .search-result-file-match-destination-file:hover,
   .text-icon-button:hover,
+  .text-icon-button.mod-pill:hover,
+  .empty-state-action-list>.text-icon-button.mod-pill:hover,
   .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover {
     border: none;
     background-color: var(--theme-color-controlBgHover);
