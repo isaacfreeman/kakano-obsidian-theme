@@ -3451,7 +3451,7 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
     box-shadow: var(--theme-shadow-indent);
     padding-top: 0;
 
-    z-index: 1;
+    z-index: 3;
   }
 
   .mobile-tab-group-container {
@@ -3507,10 +3507,10 @@ body.is-phone.theme-setting-mobileCardsUI .modal.mod-sidebar-layout {
   --view-bottom-fade-mask: none;
 }
 
-.is-mobile.is-floating-nav.is-phone .view-header {
+.is-mobile.is-floating-nav.is-phone .view-header,
+.is-mobile.is-floating-nav.is-phone .sidebar-toggle-button.mod-left {
   margin: 0.5rem 0 0 0;
 }
-
 
 .is-phone {
   --view-header-top-offset: var(--safe-area-inset-top);
