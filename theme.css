@@ -3835,11 +3835,17 @@ body.theme-setting-distinguishNonContentTabs {
   gap: 0.5em;
   margin-top: 0;
 }
-.empty-state-action-list .empty-state-action {
+.empty-state-action-list>.text-icon-button.mod-pill {
   padding: 0 1.5em;
+  margin-top: 1rem;
 }
-.empty-state-action-list .empty-state-action.mod-close {
+.empty-state-action.mod-close {
   display: none;
+}
+
+/* Group buttons that create new notes */
+.empty-state-action-list>.text-icon-button.mod-pill[aria-label^="New "] {
+  margin-top: 0;
 }
 .is-mobile {
   .empty-state-action-list {
