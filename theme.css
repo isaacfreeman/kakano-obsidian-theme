@@ -3828,17 +3828,23 @@ body.theme-setting-distinguishNonContentTabs {
   max-width: none;
   padding: 1.5em 1.5em 1.5em 1.5em;
   margin: 1.5em;
+
+  .empty-state-action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 0;
+  }
+  .empty-state-action-list>.text-icon-button.mod-pill {
+    padding: 0.5em 0.75em 0.5em 1em;
+    margin-top: 1rem;
+
+    .empty-state-hotkey {
+      margin-left: 3em;
+    }
+  }
 }
-.empty-state-action-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  margin-top: 0;
-}
-.empty-state-action-list>.text-icon-button.mod-pill {
-  padding: 0 1.5em;
-  margin-top: 1rem;
-}
+
 .empty-state-action.mod-close {
   display: none;
 }
@@ -5028,31 +5034,6 @@ p.mod-warning:has(+ p.mod-warning, .setting-message),
 }
 
 /* #endregion */
-/* #region   Hotkeys */
-
-.suggestion-hotkey,
-.setting-hotkey,
-.prompt-instruction-command,
-.empty-state-hotkey {
-  border: solid 1px var(--theme-color-hotkey);
-  color: var(--theme-color-hotkey);
-  font-size: var(--font-ui-smaller);
-  padding: 2px 6px;
-  border-radius: var(--radius-s);
-  white-space: nowrap;
-  background-color: var(--hotkey-background);
-  border-radius: var(--hotkey-radius);
-}
-.suggestion-item.is-selected .suggestion-hotkey {
-  border-color: var(--theme-color-textSelected);
-  color: var(--theme-color-textSelected);
-}
-.setting-hotkey.has-conflict {
-  background: transparent;
-  border: solid 1px var(--background-modifier-error);
-  color: var(--background-modifier-error);
-}
-/* #endregion */
 
 /* #region   Lightweight form controls */
 /* Form controls that are rendered as text until they have focus */
@@ -6198,6 +6179,31 @@ button.search-result-file-match-replace-button {
   .mod-root .workspace-tab-header-status-icon .svg-icon {
     width: 80%;
   }
+}
+/* #endregion */
+/* #region   Hotkeys */
+
+.suggestion-hotkey,
+.setting-hotkey,
+.prompt-instruction-command,
+.empty-state-hotkey {
+  border: solid 1px var(--theme-color-hotkey);
+  color: var(--theme-color-hotkey);
+  font-size: var(--font-ui-smaller);
+  padding: 0.125em 0.5em;
+  border-radius: var(--radius-s);
+  white-space: nowrap;
+  background-color: var(--hotkey-background);
+  border-radius: var(--hotkey-radius);
+}
+.suggestion-item.is-selected .suggestion-hotkey {
+  border-color: var(--theme-color-textSelected);
+  color: var(--theme-color-textSelected);
+}
+.setting-hotkey.has-conflict {
+  background: transparent;
+  border: solid 1px var(--background-modifier-error);
+  color: var(--background-modifier-error);
 }
 /* #endregion */
 /* #region Modals */
